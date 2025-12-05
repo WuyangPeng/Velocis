@@ -1,0 +1,15 @@
+﻿syntax = "proto3";
+
+import "proto/service/registry.proto";
+import "proto/service/auth.proto";
+import "proto/service/payment.proto";
+
+package celeritas.proto.service;
+
+message service_response {
+  oneof payload {
+    service_registry_response registry = 1;
+    service_auth_response auth = 2;
+    service_payment_response payment = 3;
+  }
+}
