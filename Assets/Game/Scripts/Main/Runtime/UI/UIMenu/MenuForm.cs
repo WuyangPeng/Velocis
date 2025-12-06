@@ -1,8 +1,5 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
-using Game.Scripts.Main.Runtime.GameEnum;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
@@ -21,9 +18,9 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             procedureMenu.OpenUIForm(UIFormId.LoadForm);
         }
 
-        public void OnAchievementButtonClick()
+        public void OnGuestLoginButtonClick()
         {
-            procedureMenu.LoadGame();
+             
         }
 
         public void OnSettingButtonClick()
@@ -38,12 +35,12 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         public void OnQuitButtonClick()
         {
-            GameEntry.UI.OpenDialog(new DialogParams()
+            GameEntry.UI.OpenDialog(new DialogParams
             {
                 Mode = 2,
                 Title = GameEntry.Localization.GetString("AskQuitGame.Title"),
                 Message = GameEntry.Localization.GetString("AskQuitGame.Message"),
-                OnClickConfirm = delegate (object userData) { UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Quit); },
+                OnClickConfirm = delegate  { UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Quit); },
             });
         }
 
