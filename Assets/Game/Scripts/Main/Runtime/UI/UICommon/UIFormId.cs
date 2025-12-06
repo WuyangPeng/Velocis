@@ -31,56 +31,61 @@
         /// 载入。
         /// </summary>
         LoadForm = 103,
+        
+        /// <summary>
+        /// 服务器列表。
+        /// </summary>
+        ServerListForm = 200,
 
         /// <summary>
         /// 选择难度。
         /// </summary>
-        SelectGameDifficultyForm = 200,
+        SelectGameDifficultyForm = 201,
 
         /// <summary>
         /// 选择参数。
         /// </summary>
-        SelectGameParameterForm = 201,
+        SelectGameParameterForm = 202,
 
         /// <summary>
         /// 选择头像。
         /// </summary>
-        SelectAvatarForm = 202,
+        SelectAvatarForm = 203,
 
         /// <summary>
         /// 选择性格。
         /// </summary>
-        SelectCampForm = 203,
+        SelectCampForm = 204,
 
         /// <summary>
         /// 选择种族。
         /// </summary>
-        SelectRaceForm = 204,
+        SelectRaceForm = 205,
 
         /// <summary>
         /// 选择属性。
         /// </summary>
-        SelectPropertyForm = 205,
+        SelectPropertyForm = 206,
 
         /// <summary>
         /// 选择灵根。
         /// </summary>
-        SelectSpiritualForm = 206,
+        SelectSpiritualForm = 207,
 
         /// <summary>
         /// 选择功法。
         /// </summary>
-        SelectMartialArtsForm = 207,
+        SelectMartialArtsForm = 208,
 
         /// <summary>
         /// 选择技艺。
         /// </summary>
-        SelectTechniqueForm = 208,
+        SelectTechniqueForm = 209,
 
         /// <summary>
         /// 选择天赋。
         /// </summary>
-        SelectTalentForm = 209,
+        SelectTalentForm = 210,
 
         /// <summary>
         /// 下部菜单。

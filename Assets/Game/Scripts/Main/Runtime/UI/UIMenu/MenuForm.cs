@@ -20,7 +20,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         public void OnGuestLoginButtonClick()
         {
-             
+            GameEntry.UI.OpenUIForm(UIFormId.ServerListForm);
         }
 
         public void OnSettingButtonClick()
