@@ -9,17 +9,16 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
     [InitializeOnLoad]
     public static class ToolbarExtender
     {
-        private static readonly int ToolCount;
-        private static GUIStyle s_CommandStyle;
-
-        public static readonly List<Action> LeftToolbarGUI = new();
-        public static readonly List<Action> RightToolbarGUI = new();
-
         public const float Space = 8;
         public const float LargeSpace = 20;
         public const float ButtonWidth = 32;
         public const float DropdownWidth = 80;
         public const float PlayPauseStopWidth = 140;
+        private static readonly int ToolCount;
+        private static GUIStyle s_CommandStyle;
+
+        public static readonly List<Action> LeftToolbarGUI = new();
+        public static readonly List<Action> RightToolbarGUI = new();
 
         static ToolbarExtender()
         {
@@ -27,9 +26,10 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
 
             const string fieldName = "k_ToolCount";
 
-            var toolIcons = toolbarType.GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+            var toolIcons = toolbarType.GetField(fieldName,
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
 
-            ToolCount = toolIcons != null ? ((int)toolIcons.GetValue(null)) : 8;
+            ToolCount = toolIcons != null ? (int)toolIcons.GetValue(null) : 8;
 
             ToolbarCallback.OnToolbarGUI = OnGUI;
             ToolbarCallback.OnToolbarGUILeft = GUILeft;
@@ -86,23 +86,20 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
             {
                 GUILayout.BeginArea(leftRect);
                 GUILayout.BeginHorizontal();
-                foreach (var handler in LeftToolbarGUI)
-                {
-                    handler();
-                }
+                foreach (var handler in LeftToolbarGUI) handler();
 
                 GUILayout.EndHorizontal();
                 GUILayout.EndArea();
             }
 
-            if (rightRect.width <= 0) return;
+            if (rightRect.width <= 0)
+            {
+                return;
+            }
 
             GUILayout.BeginArea(rightRect);
             GUILayout.BeginHorizontal();
-            foreach (var handler in RightToolbarGUI)
-            {
-                handler();
-            }
+            foreach (var handler in RightToolbarGUI) handler();
 
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
@@ -111,20 +108,14 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
         public static void GUILeft()
         {
             GUILayout.BeginHorizontal();
-            foreach (var handler in LeftToolbarGUI)
-            {
-                handler();
-            }
+            foreach (var handler in LeftToolbarGUI) handler();
             GUILayout.EndHorizontal();
         }
 
         public static void GUIRight()
         {
             GUILayout.BeginHorizontal();
-            foreach (var handler in RightToolbarGUI)
-            {
-                handler();
-            }
+            foreach (var handler in RightToolbarGUI) handler();
             GUILayout.EndHorizontal();
         }
     }

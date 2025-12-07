@@ -27,7 +27,9 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
             };
 
             GUILayout.FlexibleSpace();
-            if (GUILayout.Button(new GUIContent("Launcher", EditorGUIUtility.FindTexture("PlayButton"), $"Start Scene Launcher"), s_ButtonGuiStyle))
+            if (GUILayout.Button(
+                    new GUIContent("Launcher", EditorGUIUtility.FindTexture("PlayButton"), "Start Scene Launcher"),
+                    s_ButtonGuiStyle))
             {
                 SceneHelper.StartScene(SceneName);
             }
@@ -48,12 +50,13 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
             s_SceneToOpen = sceneName;
             EditorApplication.update += OnUpdate;
         }
+
         private static void OnUpdate()
         {
             if (s_SceneToOpen == null ||
-                EditorApplication.isPlaying || 
+                EditorApplication.isPlaying ||
                 EditorApplication.isPaused ||
-                EditorApplication.isCompiling || 
+                EditorApplication.isCompiling ||
                 EditorApplication.isPlayingOrWillChangePlaymode)
             {
                 return;
@@ -75,6 +78,7 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
                     EditorApplication.isPlaying = true;
                 }
             }
+
             s_SceneToOpen = null;
         }
     }

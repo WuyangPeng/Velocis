@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Game.Scripts.Main.Runtime.Game;
+using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using GameFramework.Event;
 using UnityEngine;
@@ -101,7 +102,8 @@ namespace Game.Scripts.Main.Runtime.Login
                 {
                     Log.Info("Guest login successful.");
 
-                    GameEntry.Account.Token.SetToken(tokenResponse.token, tokenResponse.expire_milliseconds);
+                    var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+                    accountModule.token.SetToken(tokenResponse.token, tokenResponse.expire_milliseconds);
 
                     // 直接将结果传递出去，不再持有它
                     menuForm.OnLoginSuccess(tokenResponse);

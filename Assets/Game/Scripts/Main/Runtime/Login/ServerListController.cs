@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Game.Scripts.Main.Runtime.Game;
+using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using GameFramework.Event;
 using UnityEngine;
@@ -31,9 +32,10 @@ namespace Game.Scripts.Main.Runtime.Login
             }
 
             var url = GameEntry.Account.serverListUrl;
+            var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
             var queryParams = new Dictionary<string, string>
             {
-                { "token", GameEntry.Account.Token.GetToken() }
+                { "token", accountModule.token.GetToken() }
             };
             var queryString = string.Join("&",
                 queryParams.Select(kvp => $"{Uri.EscapeDataString(kvp.Key)}={Uri.EscapeDataString(kvp.Value)}"));

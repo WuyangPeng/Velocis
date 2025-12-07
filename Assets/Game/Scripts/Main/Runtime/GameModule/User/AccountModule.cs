@@ -1,3 +1,4 @@
+using Game.Scripts.Main.Runtime.Account;
 using Game.Scripts.Main.Runtime.GameData.User;
 using Game.Scripts.Main.Runtime.GameModule.Base;
 using Game.Scripts.Main.Runtime.SaveData;
@@ -8,6 +9,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
     public class AccountModule : BaseModule
     {
         private readonly AccountData accountData = new();
+        public readonly Token token = new();
 
         public void Clear()
         {

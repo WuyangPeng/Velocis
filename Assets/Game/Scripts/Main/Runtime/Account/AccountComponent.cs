@@ -12,7 +12,5 @@ namespace Game.Scripts.Main.Runtime.Account
         [SerializeField] public string appId;
 
         [SerializeField] public string secret;
-
-        public Token Token { get; private set; }
     }
 }
