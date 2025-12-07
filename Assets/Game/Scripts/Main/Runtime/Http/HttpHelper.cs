@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,29 +33,39 @@ namespace Game.Scripts.Main.Runtime.Http
         /// 向指定的 URI 发送 GET 请求。
         /// </summary>
         /// <param name="requestUri">请求发送到的 URI。</param>
+        /// <param name="queryParams">要附加到 URI 的查询参数字典。</param>
         /// <returns>一个代表异步操作的任务。任务结果包含响应体作为字符串；如果发生错误，则为 null。</returns>
-        public static async Task<string> GetAsync(string requestUri)
+        public static async Task<string> GetAsync(string requestUri, Dictionary<string, string> queryParams = null)
         {
+            var finalUri = requestUri;
+            if (queryParams != null && queryParams.Count > 0)
+            {
+                var queryString = string.Join("&", queryParams.Select(kvp => $"{Uri.EscapeDataString(kvp.Key)}={Uri.EscapeDataString(kvp.Value)}"));
+                finalUri = requestUri.Contains("?") ? $"{requestUri}&{queryString}" : $"{requestUri}?{queryString}";
+            }
+            
             try
             {
-                HttpResponseMessage response = await HttpClient.GetAsync(requestUri);
-                response.EnsureSuccessStatusCode(); // 如果 HTTP 响应状态是错误代码，则会引发异常。
-                string responseBody = await response.Content.ReadAsStringAsync();
+                var response = await HttpClient.GetAsync(finalUri);
+                // 如果 HTTP 响应状态是错误代码，则会引发异常。
+                response.EnsureSuccessStatusCode(); 
+                var responseBody = await response.Content.ReadAsStringAsync();
                 return responseBody;
             }
-            catch (HttpRequestException e)
+            catch (HttpRequestException error)
             { 
-                Log.Warning($"[HttpHelper] 向 {requestUri} 发送 GET 请求失败: {e.Message}");
+                Log.Warning($"[HttpHelper] 向 {finalUri} 发送 GET 请求失败: {error.Message}");
                 return null;
             }
-            catch (TaskCanceledException e) // 捕获超时
-            {
-                Log.Warning($"[HttpHelper] 向 {requestUri} 发送 GET 请求超时: {e.Message}");
+            catch (TaskCanceledException error)
+            { 
+                // 捕获超时
+                Log.Warning($"[HttpHelper] 向 {finalUri} 发送 GET 请求超时: {error.Message}");
                 return null;
             }
-            catch (Exception e)
+            catch (Exception error)
             {
-                Log.Warning($"[HttpHelper] 向 {requestUri} 发送 GET 请求时发生意外错误: {e.Message}");
+                Log.Warning($"[HttpHelper] 向 {finalUri} 发送 GET 请求时发生意外错误: {error.Message}");
                 return null;
             }
         }
@@ -70,24 +82,25 @@ namespace Game.Scripts.Main.Runtime.Http
             try
             {
                 var content = new StringContent(payload, Encoding.UTF8, mediaType);
-                HttpResponseMessage response = await HttpClient.PostAsync(requestUri, content);
+                var response = await HttpClient.PostAsync(requestUri, content);
                 response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
+                var responseBody = await response.Content.ReadAsStringAsync();
                 return responseBody;
             }
-            catch (HttpRequestException e)
+            catch (HttpRequestException error)
             {
-                Log.Warning($"[HttpHelper] 向 {requestUri} 发送 POST 请求失败: {e.Message}");
+                Log.Warning($"[HttpHelper] 向 {requestUri} 发送 POST 请求失败: {error.Message}");
                 return null;
             }
-            catch (TaskCanceledException e) // 捕获超时
+            catch (TaskCanceledException error) 
             {
-                Log.Warning($"[HttpHelper] 向 {requestUri} 发送 POST 请求超时: {e.Message}");
+                // 捕获超时
+                Log.Warning($"[HttpHelper] 向 {requestUri} 发送 POST 请求超时: {error.Message}");
                 return null;
             }
-            catch (Exception e)
+            catch (Exception error)
             {
-                Log.Warning($"[HttpHelper] 向 {requestUri} 发送 POST 请求时发生意外错误: {e.Message}");
+                Log.Warning($"[HttpHelper] 向 {requestUri} 发送 POST 请求时发生意外错误: {error.Message}");
                 return null;
             }
         }

@@ -7,6 +7,9 @@
 		<String Key="Game.Summary" Value="This project is a demo game made with Game Framework. It's intended to demonstrate how this game framework should be used for developers' reference." />
 		<String Key="Game.Introduction" Value="Game Framework is literally a game framework, based on Unity game engine. It encapsulates commonly used game modules during development, and, to a large degree, standardises the process, enhances the development speed and ensures the product quality." />
 		<String Key="Game.ServerList" Value="服务器列表" />
+		<String Key="Login.LoginFailed" Value="登陆失败" />
+		<String Key="Login.ConnectServerFailed" Value="无法连接到服务器，请稍后再试。" />
+		<String Key="Login.ConnectServerExceptional" Value="发生未知错误，请检查日志获取详情。" />
 		<String Key="Menu.StartButton" Value="START" />
 		<String Key="Menu.GuestLoginButton" Value="游客登陆" />
 		<String Key="Menu.SettingButton" Value="SETTINGS" />

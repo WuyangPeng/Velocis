@@ -7,6 +7,9 @@
 		<String Key="Game.Summary" Value="這是一個使用 Game Framework 遊戲框架製作的遊戲演示專案，目的是對此遊戲框架的使用方法做一些示範，供使用者參考。" />
 		<String Key="Game.Introduction" Value="Game Framework 是基於 Unity 引擎的遊戲框架，主要對遊戲開發過程中常用模組進行了封裝，很大程度地規範開發過程、加快開發速度並保證產品品質。" />
 		<String Key="Game.ServerList" Value="服务器列表" />
+		<String Key="Login.LoginFailed" Value="登陆失败" />
+		<String Key="Login.ConnectServerFailed" Value="无法连接到服务器，请稍后再试。" />
+		<String Key="Login.ConnectServerExceptional" Value="发生未知错误，请检查日志获取详情。" />
 		<String Key="Menu.StartButton" Value="開始" />
 		<String Key="Menu.GuestLoginButton" Value="游客登陆" />
 		<String Key="Menu.SettingButton" Value="設置" />

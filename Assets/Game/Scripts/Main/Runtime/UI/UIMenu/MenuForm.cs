@@ -1,4 +1,6 @@
-﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using System;
+using Game.Scripts.Main.Runtime.Login;
+using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -11,16 +13,49 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         [SerializeField]
         private GameObject quitButton = null;
 
-        private ProcedureMenu procedureMenu = null;
+        private ProcedureMenu procedureMenu = null; 
 
         public void OnStartButtonClick()
         {
             procedureMenu.OpenUIForm(UIFormId.LoadForm);
         }
 
-        public void OnGuestLoginButtonClick()
+        public async void OnGuestLoginButtonClick()
         {
-            GameEntry.UI.OpenUIForm(UIFormId.ServerListForm);
+            try
+            {
+                var loginController = new LoginController();
+                var isSuccess = await loginController.GuestLoginAsync();
+
+                if (isSuccess)
+                {
+                    // 登录成功，从成员变量获取 token
+                    Log.Info($"Login successful. Token: {loginController.TokenResponse.token}");
+                    GameEntry.UI.OpenUIForm(UIFormId.ServerListForm);
+                }
+                else
+                {
+                    // 登录失败，显示错误提示
+                    var message = loginController.TokenResponse != null ? loginController.TokenResponse.message : GameEntry.Localization.GetString("Login.ConnectServerFailed");
+                    GameEntry.UI.OpenDialog(new DialogParams
+                    {
+                        Mode = 1,
+                        Title = GameEntry.Localization.GetString("Login.LoginFailed"),
+                        Message = message,
+                    });
+                }
+            }
+            catch (Exception error)
+            {
+                // 捕获所有未预料到的异常，防止程序崩溃
+                Log.Error("An unexpected error occurred in the login UI: " + error);
+                GameEntry.UI.OpenDialog(new DialogParams
+                {
+                    Mode = 1,
+                    Title = GameEntry.Localization.GetString("Login.LoginFailed"),
+                    Message = GameEntry.Localization.GetString("Login.ConnectServerExceptional"),
+                });
+            }
         }
 
         public void OnSettingButtonClick()
