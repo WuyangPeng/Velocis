@@ -1,8 +1,8 @@
-﻿using System;
-using Game.Scripts.Main.Runtime.Login;
+﻿using Game.Scripts.Main.Runtime.Login;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
@@ -10,52 +10,55 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
     public class MenuForm : UGuiForm
     {
-        [SerializeField]
-        private GameObject quitButton = null;
+        [SerializeField] private CommonButton guestLoginButton;
 
-        private ProcedureMenu procedureMenu = null; 
+        [SerializeField] private GameObject quitButton;
+
+        [SerializeField] private InputField inputField;
+
+        private LoginController loginController;
+
+        private ProcedureMenu procedureMenu;
+
+        public string getInputField()
+        {
+            return inputField.text;
+        }
+
+        protected override void OnOpen(object userData)
+        {
+            base.OnOpen(userData);
+
+            procedureMenu = (ProcedureMenu)GetCurrentProcedure();
+            if (procedureMenu == null)
+            {
+                Log.Warning("ProcedureMenu is invalid when open MenuForm.");
+                return;
+            }
+
+            loginController = new LoginController(this);
+
+            quitButton.SetActive(Application.platform != RuntimePlatform.IPhonePlayer);
+        }
+
+        protected override void OnClose(bool isShutdown, object userData)
+        {
+            procedureMenu = null;
+
+            base.OnClose(isShutdown, userData);
+        }
+
+        #region UI Event
 
         public void OnStartButtonClick()
         {
             procedureMenu.OpenUIForm(UIFormId.LoadForm);
         }
 
-        public async void OnGuestLoginButtonClick()
+        public void OnGuestLoginButtonClick()
         {
-            try
-            {
-                var loginController = new LoginController();
-                var isSuccess = await loginController.GuestLoginAsync();
-
-                if (isSuccess)
-                {
-                    // 登录成功，从成员变量获取 token
-                    Log.Info($"Login successful. Token: {loginController.TokenResponse.token}");
-                    GameEntry.UI.OpenUIForm(UIFormId.ServerListForm);
-                }
-                else
-                {
-                    // 登录失败，显示错误提示
-                    var message = loginController.TokenResponse != null ? loginController.TokenResponse.message : GameEntry.Localization.GetString("Login.ConnectServerFailed");
-                    GameEntry.UI.OpenDialog(new DialogParams
-                    {
-                        Mode = 1,
-                        Title = GameEntry.Localization.GetString("Login.LoginFailed"),
-                        Message = message,
-                    });
-                }
-            }
-            catch (Exception error)
-            {
-                // 捕获所有未预料到的异常，防止程序崩溃
-                Log.Error("An unexpected error occurred in the login UI: " + error);
-                GameEntry.UI.OpenDialog(new DialogParams
-                {
-                    Mode = 1,
-                    Title = GameEntry.Localization.GetString("Login.LoginFailed"),
-                    Message = GameEntry.Localization.GetString("Login.ConnectServerExceptional"),
-                });
-            }
+            guestLoginButton.enabled = false;
+            loginController.GuestLogin();
         }
 
         public void OnSettingButtonClick()
@@ -75,29 +78,45 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 Mode = 2,
                 Title = GameEntry.Localization.GetString("AskQuitGame.Title"),
                 Message = GameEntry.Localization.GetString("AskQuitGame.Message"),
-                OnClickConfirm = delegate  { UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Quit); },
+                OnClickConfirm = delegate { UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Quit); }
             });
         }
 
-        protected override void OnOpen(object userData)
-        {
-            base.OnOpen(userData);
+        #endregion
 
-            procedureMenu = (ProcedureMenu)GetCurrentProcedure();
-            if (procedureMenu == null)
+        #region Login Callbacks
+
+        /// <summary>
+        ///     由 LoginController 在登录成功时调用。
+        /// </summary>
+        public void OnLoginSuccess(TokenHttpResponse responseData)
+        {
+            Log.Info($"Login successful. Token: {responseData.token}");
+
+            // 重新启用按钮
+            guestLoginButton.enabled = true;
+
+            GameEntry.UI.OpenUIForm(UIFormId.ServerListForm);
+        }
+
+        /// <summary>
+        ///     由 LoginController 在登录失败时调用。
+        /// </summary>
+        public void OnLoginFailure(string errorMessage)
+        {
+            // 重新启用按钮
+            guestLoginButton.enabled = true;
+
+            GameEntry.UI.OpenDialog(new DialogParams
             {
-                Log.Warning("ProcedureMenu is invalid when open MenuForm.");
-                return;
-            }
-
-            quitButton.SetActive(Application.platform != RuntimePlatform.IPhonePlayer);
+                Mode = 1,
+                Title = GameEntry.Localization.GetString("Login.LoginFailed"),
+                Message = string.IsNullOrEmpty(errorMessage)
+                    ? GameEntry.Localization.GetString("Login.ConnectServerFailed")
+                    : errorMessage
+            });
         }
 
-        protected override void OnClose(bool isShutdown, object userData)
-        {
-            procedureMenu = null;
-
-            base.OnClose(isShutdown, userData);
-        }
+        #endregion
     }
 }

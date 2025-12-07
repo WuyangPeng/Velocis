@@ -2,7 +2,14 @@
 {
     public class Token
     {
-        private string token;
-        private long expireMilliseconds;
+        private long _expireMilliseconds;
+
+        private string _token;
+
+        public void SetToken(string token, long expireMilliseconds)
+        {
+            _token = token;
+            _expireMilliseconds = expireMilliseconds;
+        }
     }
 }
