@@ -11,5 +11,10 @@
             _token = token;
             _expireMilliseconds = expireMilliseconds;
         }
+
+        public string GetToken()
+        {
+            return _token;
+        }
     }
 }

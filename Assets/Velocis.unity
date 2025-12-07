@@ -1229,6 +1229,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc781fa2fea549a9a6fbb0a90e1d5537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guestLoginUrl: https://celeritas.fjbgwl.com:37000/guest
+  serverListUrl: https://celeritas.fjbgwl.com:37000/server_list
+  appId: 1
+  secret: 12sdfvsafsadfasd
 --- !u!1 &1852670052
 GameObject:
   m_ObjectHideFlags: 0

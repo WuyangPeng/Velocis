@@ -20,7 +20,9 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         private ProcedureMenu procedureMenu;
 
-        public string getInputField()
+        private ServerListController serverListController;
+
+        public string GetInputField()
         {
             return inputField.text;
         }
@@ -38,6 +40,8 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
             loginController = new LoginController(this);
 
+            serverListController = new ServerListController(this);
+
             quitButton.SetActive(Application.platform != RuntimePlatform.IPhonePlayer);
         }
 
@@ -49,11 +53,6 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         }
 
         #region UI Event
-
-        public void OnStartButtonClick()
-        {
-            procedureMenu.OpenUIForm(UIFormId.LoadForm);
-        }
 
         public void OnGuestLoginButtonClick()
         {
@@ -93,6 +92,36 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             Log.Info($"Login successful. Token: {responseData.token}");
 
+            serverListController.ServerList();
+        }
+
+        /// <summary>
+        ///     由 LoginController 在登录失败时调用。
+        /// </summary>
+        public void OnLoginFailure(string errorMessage)
+        {
+            // 重新启用按钮
+            guestLoginButton.enabled = true;
+
+            GameEntry.UI.OpenDialog(new DialogParams
+            {
+                Mode = 1,
+                Title = GameEntry.Localization.GetString("Login.LoginFailed"),
+                Message = string.IsNullOrEmpty(errorMessage)
+                    ? GameEntry.Localization.GetString("Login.ConnectServerFailed")
+                    : errorMessage
+            });
+        }
+
+        #endregion
+
+        #region ServerList Callbacks
+
+        /// <summary>
+        ///     由 LoginController 在登录成功时调用。
+        /// </summary>
+        public void OnServerListSuccess(LoginServersResponse responseData)
+        {
             // 重新启用按钮
             guestLoginButton.enabled = true;
 
@@ -102,7 +131,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         /// <summary>
         ///     由 LoginController 在登录失败时调用。
         /// </summary>
-        public void OnLoginFailure(string errorMessage)
+        public void OnServerListFailure(string errorMessage)
         {
             // 重新启用按钮
             guestLoginButton.enabled = true;
