@@ -37,15 +37,15 @@ namespace Game.Scripts.Main.Runtime.Login
             var token = accountModule.GetToken();
             var appId = GameEntry.Account.appId;
             var timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString();
-            var onlyPreferred = false.ToString();
-            var includeDetails = false.ToString();
-            var websocket = false.ToString();
+            var onlyPreferred = false;
+            var includeDetails = false;
+            var websocket = false;
             var sign = HmacSha256Util.ComputeHash(GameEntry.Account.secret,
                 appId,
                 token,
-                onlyPreferred,
-                includeDetails,
-                websocket,
+                onlyPreferred ? "1" : "0",
+                includeDetails ? "1" : "0",
+                websocket ? "1" : "0",
                 timestamp);
 
             var queryParams = new Dictionary<string, string>
@@ -53,9 +53,9 @@ namespace Game.Scripts.Main.Runtime.Login
                 { "token", accountModule.GetToken() },
                 { "app_id", appId },
                 { "timestamp", timestamp },
-                { "only_preferred", onlyPreferred },
-                { "include_details", includeDetails },
-                { "websocket", websocket },
+                { "only_preferred", onlyPreferred ? "true" : "false" },
+                { "include_details", includeDetails ? "true" : "false" },
+                { "websocket", websocket ? "true" : "false" },
                 { "sign", sign }
             };
             var queryString = string.Join("&",
