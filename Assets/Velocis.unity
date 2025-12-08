@@ -1232,7 +1232,7 @@ MonoBehaviour:
   guestLoginUrl: https://celeritas.fjbgwl.com:37000/guest
   serverListUrl: https://celeritas.fjbgwl.com:37000/servers
   appId: 1
-  secret: 12sdfvsafsadfasd
+  secret: aB8kL2mN9pQ3rS5tV7wX1yZ4cE6fH0jK
 --- !u!1 &1852670052
 GameObject:
   m_ObjectHideFlags: 0

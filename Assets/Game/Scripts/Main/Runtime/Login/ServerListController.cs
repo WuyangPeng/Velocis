@@ -5,6 +5,7 @@ using System.Text;
 using Game.Scripts.Main.Runtime.Game;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
+using Game.Scripts.Main.Runtime.Utils;
 using GameFramework.Event;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -33,9 +34,29 @@ namespace Game.Scripts.Main.Runtime.Login
 
             var url = GameEntry.Account.serverListUrl;
             var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+            var token = accountModule.GetToken();
+            var appId = GameEntry.Account.appId;
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString();
+            var onlyPreferred = false.ToString();
+            var includeDetails = false.ToString();
+            var websocket = false.ToString();
+            var sign = HmacSha256Util.ComputeHash(GameEntry.Account.secret,
+                appId,
+                token,
+                onlyPreferred,
+                includeDetails,
+                websocket,
+                timestamp);
+
             var queryParams = new Dictionary<string, string>
             {
-                { "token", accountModule.token.GetToken() }
+                { "token", accountModule.GetToken() },
+                { "app_id", appId },
+                { "timestamp", timestamp },
+                { "only_preferred", onlyPreferred },
+                { "include_details", includeDetails },
+                { "websocket", websocket },
+                { "sign", sign }
             };
             var queryString = string.Join("&",
                 queryParams.Select(kvp => $"{Uri.EscapeDataString(kvp.Key)}={Uri.EscapeDataString(kvp.Value)}"));
@@ -99,6 +120,8 @@ namespace Game.Scripts.Main.Runtime.Login
                 {
                     Log.Info("Guest login successful.");
 
+                    var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+                    accountModule.SetLoginServerInfo(loginServersResponse.login_server_info);
 
                     // 直接将结果传递出去，不再持有它
                     menuForm.OnServerListSuccess(loginServersResponse);

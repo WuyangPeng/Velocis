@@ -5,6 +5,7 @@ using System.Text;
 using Game.Scripts.Main.Runtime.Game;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
+using Game.Scripts.Main.Runtime.Utils;
 using GameFramework.Event;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -35,10 +36,21 @@ namespace Game.Scripts.Main.Runtime.Login
             }
 
             var url = GameEntry.Account.guestLoginUrl;
-            var device_id = menuForm.GetInputField();
+            var deviceId = menuForm.GetInputField();
+            if (string.IsNullOrEmpty(deviceId))
+            {
+                deviceId = SystemInfo.deviceUniqueIdentifier;
+            }
+
+            var appId = GameEntry.Account.appId;
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString();
+            var sign = HmacSha256Util.ComputeHash(GameEntry.Account.secret, appId, deviceId, timestamp);
             var queryParams = new Dictionary<string, string>
             {
-                { "device_id", string.IsNullOrEmpty(device_id) ? SystemInfo.deviceUniqueIdentifier : device_id }
+                { "device_id", deviceId },
+                { "app_id", appId },
+                { "timestamp", timestamp },
+                { "sign", sign }
             };
             var queryString = string.Join("&",
                 queryParams.Select(kvp => $"{Uri.EscapeDataString(kvp.Key)}={Uri.EscapeDataString(kvp.Value)}"));
@@ -103,7 +115,7 @@ namespace Game.Scripts.Main.Runtime.Login
                     Log.Info("Guest login successful.");
 
                     var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
-                    accountModule.token.SetToken(tokenResponse.token, tokenResponse.expire_milliseconds);
+                    accountModule.SetToken(tokenResponse.token, tokenResponse.expire_milliseconds);
 
                     // 直接将结果传递出去，不再持有它
                     menuForm.OnLoginSuccess(tokenResponse);
