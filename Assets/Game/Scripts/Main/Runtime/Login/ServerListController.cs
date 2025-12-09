@@ -67,7 +67,7 @@ namespace Game.Scripts.Main.Runtime.Login
             GameEntry.Event.Subscribe(WebRequestFailureEventArgs.EventId, OnWebRequestFailure);
 
             // 发送请求并保存序列号
-            serialId = GameEntry.WebRequest.AddWebRequest(finalUri, this);
+            serialId = GameEntry.WebRequest.AddWebRequest(finalUri);
 
             if (serialId == 0)
             {

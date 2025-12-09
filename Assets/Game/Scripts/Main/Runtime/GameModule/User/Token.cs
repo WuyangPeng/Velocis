@@ -4,7 +4,7 @@
     {
         private long _expireMilliseconds;
 
-        private string _token;
+        private string _token = "";
 
         public void SetToken(string token, long expireMilliseconds)
         {
