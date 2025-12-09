@@ -39,14 +39,19 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             }
 
             loginController = new LoginController(this);
+            loginController.OnEnter();
+
 
             serverListController = new ServerListController(this);
+            serverListController.OnEnter();
 
             quitButton.SetActive(Application.platform != RuntimePlatform.IPhonePlayer);
         }
 
         protected override void OnClose(bool isShutdown, object userData)
         {
+            loginController.OnLeave();
+            serverListController.OnLeave();
             procedureMenu = null;
 
             base.OnClose(isShutdown, userData);

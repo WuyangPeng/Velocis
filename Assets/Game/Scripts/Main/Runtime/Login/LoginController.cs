@@ -24,6 +24,19 @@ namespace Game.Scripts.Main.Runtime.Login
             serialId = 0;
         }
 
+        public void OnEnter()
+        {
+            // 订阅事件
+            GameEntry.Event.Subscribe(WebRequestSuccessEventArgs.EventId, OnWebRequestSuccess);
+            GameEntry.Event.Subscribe(WebRequestFailureEventArgs.EventId, OnWebRequestFailure);
+        }
+
+        public void OnLeave()
+        {
+            GameEntry.Event.Unsubscribe(WebRequestSuccessEventArgs.EventId, OnWebRequestSuccess);
+            GameEntry.Event.Unsubscribe(WebRequestFailureEventArgs.EventId, OnWebRequestFailure);
+        }
+
         /// <summary>
         ///     执行游客登录。结果将通过回调传递给 MenuForm。
         /// </summary>
@@ -56,12 +69,9 @@ namespace Game.Scripts.Main.Runtime.Login
                 queryParams.Select(kvp => $"{Uri.EscapeDataString(kvp.Key)}={Uri.EscapeDataString(kvp.Value)}"));
             var finalUri = $"{url}?{queryString}";
 
-            // 订阅事件
-            GameEntry.Event.Subscribe(WebRequestSuccessEventArgs.EventId, OnWebRequestSuccess);
-            GameEntry.Event.Subscribe(WebRequestFailureEventArgs.EventId, OnWebRequestFailure);
 
             // 发送请求并保存序列号
-            serialId = GameEntry.WebRequest.AddWebRequest(finalUri,this);
+            serialId = GameEntry.WebRequest.AddWebRequest(finalUri, this);
 
             if (serialId == 0)
             {
@@ -145,8 +155,6 @@ namespace Game.Scripts.Main.Runtime.Login
 
         private void CleanUp()
         {
-            GameEntry.Event.Unsubscribe(WebRequestSuccessEventArgs.EventId, OnWebRequestSuccess);
-            GameEntry.Event.Unsubscribe(WebRequestFailureEventArgs.EventId, OnWebRequestFailure);
             serialId = 0;
         }
     }
