@@ -65,9 +65,9 @@ namespace Game.Scripts.Main.Runtime.Login
             // 订阅事件
             GameEntry.Event.Subscribe(WebRequestSuccessEventArgs.EventId, OnWebRequestSuccess);
             GameEntry.Event.Subscribe(WebRequestFailureEventArgs.EventId, OnWebRequestFailure);
-
+         
             // 发送请求并保存序列号
-            serialId = GameEntry.WebRequest.AddWebRequest(finalUri);
+            serialId = GameEntry.WebRequest.AddWebRequest(finalUri,this);
 
             if (serialId == 0)
             {
@@ -82,7 +82,7 @@ namespace Game.Scripts.Main.Runtime.Login
             try
             {
                 var webRequestSuccessEventArgs = (WebRequestSuccessEventArgs)args;
-                if (webRequestSuccessEventArgs.SerialId != serialId)
+                if (webRequestSuccessEventArgs.UserData != this)
                 {
                     return;
                 }
@@ -138,7 +138,7 @@ namespace Game.Scripts.Main.Runtime.Login
         private void OnWebRequestFailure(object sender, GameEventArgs args)
         {
             var webRequestFailureEventArgs = (WebRequestFailureEventArgs)args;
-            if (webRequestFailureEventArgs.SerialId != serialId)
+            if (webRequestFailureEventArgs.UserData != this)
             {
                 return;
             }
