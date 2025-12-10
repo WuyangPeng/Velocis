@@ -14,7 +14,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
 
         [SerializeField] private int poolCapacity = 20;
 
-        [SerializeField] private Text talentDescription;
+        [SerializeField] private Text serverListDescription;
 
         private readonly List<ServerListItemObject> activeServerListItemObject = new();
         private readonly List<GameObject> rowGameObjects = new();
