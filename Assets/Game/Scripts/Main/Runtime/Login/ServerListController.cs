@@ -120,6 +120,8 @@ namespace Game.Scripts.Main.Runtime.Login
             }
             else
             {
+                Log.Info("Server List Response Json =" + responseJson);
+                
                 var loginServersResponse = JsonUtility.FromJson<LoginServersResponse>(responseJson);
                 if (loginServersResponse == null)
                 {
