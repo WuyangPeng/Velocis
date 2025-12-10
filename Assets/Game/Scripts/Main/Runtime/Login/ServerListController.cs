@@ -115,7 +115,7 @@ namespace Game.Scripts.Main.Runtime.Login
             var responseJson = Encoding.UTF8.GetString(webRequestSuccessEventArgs.GetWebResponseBytes());
             if (string.IsNullOrEmpty(responseJson))
             {
-                Log.Error("Guest login request failed: The response was null or empty.");
+                Log.Error("Server List request failed: The response was null or empty.");
                 menuForm.OnServerListFailure(GameEntry.Localization.GetString("Login.ConnectServerFailed"));
             }
             else
@@ -128,7 +128,7 @@ namespace Game.Scripts.Main.Runtime.Login
                 }
                 else if (loginServersResponse.code == GameErrorType.Success)
                 {
-                    Log.Info("Guest login successful.");
+                    Log.Info("Server List successful.");
 
                     var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
                     accountModule.SetLoginServerInfo(loginServersResponse.login_server_info);
@@ -139,7 +139,7 @@ namespace Game.Scripts.Main.Runtime.Login
                 else
                 {
                     Log.Warning(
-                        $"Guest login failed with code: {loginServersResponse.code}, Message: {loginServersResponse.message}");
+                        $"Server List failed with code: {loginServersResponse.code}, Message: {loginServersResponse.message}");
                     menuForm.OnServerListFailure(loginServersResponse.message);
                 }
             }
