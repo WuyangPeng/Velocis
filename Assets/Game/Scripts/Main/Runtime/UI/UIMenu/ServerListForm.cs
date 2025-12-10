@@ -1,14 +1,13 @@
 ﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
-using UnityEngine;
 using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
-    public class ServerListForm  : UGuiForm
+    public class ServerListForm : UGuiForm
     {
-        private ProcedureMenu procedureMenu = null;
-        
+        private ProcedureMenu procedureMenu;
+
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
@@ -17,7 +16,6 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             if (procedureMenu == null)
             {
                 Log.Warning("ProcedureMenu is invalid when open ServerListForm.");
-                return;
             }
         }
 
@@ -26,6 +24,11 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             procedureMenu = null;
 
             base.OnClose(isShutdown, userData);
+        }
+
+        public void OnReturnButtonClick()
+        {
+            procedureMenu.RemoveUIForm(UIFormId.ServerListForm);
         }
     }
 }

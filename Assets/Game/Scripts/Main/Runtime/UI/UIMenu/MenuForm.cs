@@ -130,7 +130,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             // 重新启用按钮
             guestLoginButton.enabled = true;
 
-            GameEntry.UI.OpenUIForm(UIFormId.ServerListForm);
+            procedureMenu.OpenUIForm(UIFormId.ServerListForm);
         }
 
         /// <summary>
