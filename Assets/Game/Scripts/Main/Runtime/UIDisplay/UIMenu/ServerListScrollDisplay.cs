@@ -90,7 +90,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
                 return result;
             }
 
-            Log.Error("预制体没挂 TalentItem");
+            Log.Error("预制体没挂 ServerListItem");
             Destroy(itemGameObject);
             return null;
         }
