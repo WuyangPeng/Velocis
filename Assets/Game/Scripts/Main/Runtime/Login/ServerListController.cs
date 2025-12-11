@@ -15,13 +15,13 @@ namespace Game.Scripts.Main.Runtime.Login
 {
     public class ServerListController
     {
-        private readonly MenuForm menuForm;
-        private int serialId;
+        private readonly MenuForm _menuForm;
+        private int _serialId;
 
         public ServerListController(MenuForm menuForm)
         {
-            this.menuForm = menuForm;
-            serialId = 0;
+            _menuForm = menuForm;
+            _serialId = 0;
         }
 
         public void OnEnter()
@@ -39,7 +39,7 @@ namespace Game.Scripts.Main.Runtime.Login
 
         public void ServerList()
         {
-            if (serialId != 0)
+            if (_serialId != 0)
             {
                 Log.Warning("Server List request is already in progress.");
                 return;
@@ -77,13 +77,13 @@ namespace Game.Scripts.Main.Runtime.Login
 
 
             // 发送请求并保存序列号
-            serialId = GameEntry.WebRequest.AddWebRequest(finalUri, this);
+            _serialId = GameEntry.WebRequest.AddWebRequest(finalUri, this);
 
-            if (serialId == 0)
+            if (_serialId == 0)
             {
                 Log.Error("Failed to add web request to the queue.");
                 CleanUp();
-                menuForm.OnServerListFailure(GameEntry.Localization.GetString("Login.ConnectServerFailed"));
+                _menuForm.OnServerListFailure(GameEntry.Localization.GetString("Login.ConnectServerFailed"));
             }
         }
 
@@ -102,7 +102,7 @@ namespace Game.Scripts.Main.Runtime.Login
             catch (Exception error)
             {
                 Log.Error("An exception occurred during web request success handling: " + error);
-                menuForm.OnServerListFailure(GameEntry.Localization.GetString("Login.ConnectServerExceptional"));
+                _menuForm.OnServerListFailure(GameEntry.Localization.GetString("Login.ConnectServerExceptional"));
             }
             finally
             {
@@ -116,17 +116,17 @@ namespace Game.Scripts.Main.Runtime.Login
             if (string.IsNullOrEmpty(responseJson))
             {
                 Log.Error("Server List request failed: The response was null or empty.");
-                menuForm.OnServerListFailure(GameEntry.Localization.GetString("Login.ConnectServerFailed"));
+                _menuForm.OnServerListFailure(GameEntry.Localization.GetString("Login.ConnectServerFailed"));
             }
             else
             {
                 Log.Info("Server List Response Json =" + responseJson);
-                
+
                 var loginServersResponse = JsonUtility.FromJson<LoginServersResponse>(responseJson);
                 if (loginServersResponse == null)
                 {
                     Log.Error("Failed to deserialize the login response JSON.");
-                    menuForm.OnServerListFailure(GameEntry.Localization.GetString("Login.ConnectServerFailed"));
+                    _menuForm.OnServerListFailure(GameEntry.Localization.GetString("Login.ConnectServerFailed"));
                 }
                 else if (loginServersResponse.code == GameErrorType.Success)
                 {
@@ -136,13 +136,13 @@ namespace Game.Scripts.Main.Runtime.Login
                     accountModule.SetLoginServerInfo(loginServersResponse.login_server_info);
 
                     // 直接将结果传递出去，不再持有它
-                    menuForm.OnServerListSuccess(loginServersResponse);
+                    _menuForm.OnServerListSuccess(loginServersResponse);
                 }
                 else
                 {
                     Log.Warning(
                         $"Server List failed with code: {loginServersResponse.code}, Message: {loginServersResponse.message}");
-                    menuForm.OnServerListFailure(loginServersResponse.message);
+                    _menuForm.OnServerListFailure(loginServersResponse.message);
                 }
             }
         }
@@ -157,13 +157,13 @@ namespace Game.Scripts.Main.Runtime.Login
 
             Log.Error(
                 $"Web request failed. Uri: {webRequestFailureEventArgs.WebRequestUri}, Error: {webRequestFailureEventArgs.ErrorMessage}");
-            menuForm.OnServerListFailure(GameEntry.Localization.GetString("Login.ConnectServerFailed"));
+            _menuForm.OnServerListFailure(GameEntry.Localization.GetString("Login.ConnectServerFailed"));
             CleanUp();
         }
 
         private void CleanUp()
         {
-            serialId = 0;
+            _serialId = 0;
         }
     }
 }

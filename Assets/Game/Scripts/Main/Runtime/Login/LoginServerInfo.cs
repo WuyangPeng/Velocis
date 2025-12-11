@@ -10,5 +10,15 @@ namespace Game.Scripts.Main.Runtime.Login
         private PlayerRole player_role;
         private string server_name;
         private ServerStatusType server_status;
+
+        public string getServerName()
+        {
+            return server_name;
+        }
+
+        public ServerStatusType getServerStatus()
+        {
+            return server_status;
+        }
     }
 }

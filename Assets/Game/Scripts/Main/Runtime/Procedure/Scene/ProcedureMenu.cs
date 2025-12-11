@@ -1,12 +1,12 @@
-﻿using Game.Scripts.Main.Runtime.Game;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Game.Scripts.Main.Runtime.Game;
+using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.SaveData;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIForm;
 using GameFramework;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Game.Scripts.Main.Runtime.GameModule.User;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
@@ -15,13 +15,13 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
     public class ProcedureMenu : ProcedureBase
     {
-        private int m_NextSceneId = 0;
         private readonly FormComponent formComponent = new();
         private readonly List<HeadSaveData> headData = new();
 
-        public override bool UseNativeDialog => false;
-
         public readonly int SaveMaxCount = 2;
+        private int m_NextSceneId;
+
+        public override bool UseNativeDialog => false;
 
         public void LoadGame()
         {
@@ -61,19 +61,6 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         {
             var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
             accountModule.Clear();
-
-            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/AccountSaves", "TalentData.idx");
-
-            var bytes = fileSystems?.ReadFile("AccountSaves");
-
-            if (bytes == null)
-            {
-                return;
-            }
-
-            var json = Encoding.UTF8.GetString(bytes);
-            var talentData = Utility.Json.ToObject<TalentSaveData>(json);
-            accountModule.SetTalentData(talentData);
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -88,7 +75,11 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (m_NextSceneId <= 0) return;
+            if (m_NextSceneId <= 0)
+            {
+                return;
+            }
+
             procedureOwner.SetData<VarInt32>("NextSceneId", m_NextSceneId);
             procedureOwner.SetData<VarByte>("GameMode", (byte)GameMode.Survival);
             ChangeState<ProcedureChangeScene>(procedureOwner);

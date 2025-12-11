@@ -13,33 +13,32 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 {
     public class TalentScrollDisplay : ScrollDisplayBase
     {
-        [SerializeField]
-        private TalentItem itemPrefab;
+        private const int PerRow = 2;
 
-        [SerializeField]
-        private int poolCapacity = 20;
+        [SerializeField] private TalentItem itemPrefab;
 
-        [SerializeField]
-        private Text talentDescription;
+        [SerializeField] private int poolCapacity = 20;
+
+        [SerializeField] private Text talentDescription;
+
+        private readonly List<TalentItemObject> activeTalentItemObject = new();
+        private readonly List<GameObject> rowGameObjects = new();
+        private readonly List<int> selectedIndex = new();
+        private readonly List<DRTalent> talentData = new();
 
         private IObjectPool<TalentItemObject> pool;
-        private readonly List<DRTalent> talentData = new();
-        private readonly List<int> selectedIndex = new();
-        private readonly List<TalentItemObject> activeTalentItemObject = new();
-        private const int PerRow = 2;
-        private readonly List<GameObject> rowGameObjects = new();
 
         private void Start()
         {
             const string poolName = "TalentItemPool";
-            pool = GameEntry.ObjectPool.HasObjectPool<TalentItemObject>(poolName) ?
-                GameEntry.ObjectPool.GetObjectPool<TalentItemObject>(poolName) :
-                GameEntry.ObjectPool.CreateSingleSpawnObjectPool<TalentItemObject>(poolName, poolCapacity, 30f, 16);
+            pool = GameEntry.ObjectPool.HasObjectPool<TalentItemObject>(poolName)
+                ? GameEntry.ObjectPool.GetObjectPool<TalentItemObject>(poolName)
+                : GameEntry.ObjectPool.CreateSingleSpawnObjectPool<TalentItemObject>(poolName, poolCapacity, 30f, 16);
 
             Refresh();
         }
 
-        public void Refresh()
+        private void Refresh()
         {
             SetAvatarData();
             UnSpawnAvatar();
@@ -57,7 +56,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
             var talents = GameEntry.DataTable.GetDataTable<DRTalent>();
             foreach (var talent in talents)
             {
-                if (!talent.DefaultEnabled && !accountModule.HasTalent(talent.Id))
+                if (!talent.DefaultEnabled)
                 {
                     continue;
                 }
@@ -77,12 +76,10 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
             var rowCount = Mathf.CeilToInt((float)talentData.Count / PerRow);
 
             for (var row = 0; row < rowCount; row++)
-            {
                 if (!SpawnAvatar(row))
                 {
                     return;
                 }
-            }
 
             talentDescription.text = "";
         }
@@ -94,12 +91,10 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
             rowGameObjects.Add(rowGameObject);
 
             for (var column = 0; column < PerRow; column++)
-            {
                 if (!SpawnAvatar(row, column, rowGameObject))
                 {
                     return false;
                 }
-            }
 
             return true;
         }
@@ -137,15 +132,13 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
                 {
                     item.transform.SetParent(null, false);
                 }
+
                 pool.Unspawn(element);
             }
 
             activeTalentItemObject.Clear();
 
-            foreach (var rowGameObject in rowGameObjects)
-            {
-                DestroyImmediate(rowGameObject);
-            }
+            foreach (var rowGameObject in rowGameObjects) DestroyImmediate(rowGameObject);
 
             rowGameObjects.Clear();
         }
@@ -153,7 +146,10 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
         private TalentItemObject GetSpawn()
         {
             var result = pool.Spawn();
-            if (result != null) return result;
+            if (result != null)
+            {
+                return result;
+            }
 
             var itemGameObject = Instantiate(itemPrefab.gameObject, null);
             if (itemGameObject.TryGetComponent<TalentItem>(out var item))
@@ -201,7 +197,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
         {
             for (var i = 0; i < activeTalentItemObject.Count; i++)
             {
-                var avatarItem = (TalentItem)(activeTalentItemObject[i].Target);
+                var avatarItem = (TalentItem)activeTalentItemObject[i].Target;
                 avatarItem.SetSelected(selectedIndex.Contains(i));
             }
         }

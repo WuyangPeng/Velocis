@@ -6,14 +6,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
     public class ServerListForm : UGuiForm
     {
-        private ProcedureMenu procedureMenu;
+        private ProcedureMenu _procedureMenu;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            procedureMenu = (ProcedureMenu)GetCurrentProcedure();
-            if (procedureMenu == null)
+            _procedureMenu = (ProcedureMenu)GetCurrentProcedure();
+            if (_procedureMenu == null)
             {
                 Log.Warning("ProcedureMenu is invalid when open ServerListForm.");
             }
@@ -21,14 +21,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureMenu = null;
+            _procedureMenu = null;
 
             base.OnClose(isShutdown, userData);
         }
 
         public void OnReturnButtonClick()
         {
-            procedureMenu.RemoveUIForm(UIFormId.ServerListForm);
+            _procedureMenu.RemoveUIForm(UIFormId.ServerListForm);
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
-using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.Login;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
+using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
 {
@@ -13,29 +13,62 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
 
         [SerializeField] private Text talentText;
 
-        private Action<int> onClick;
-        private int selfIndex;
+        private Action<int> _onClick;
+        private int _selfIndex;
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            onClick?.Invoke(selfIndex);
+            _onClick?.Invoke(_selfIndex);
         }
 
-        public void SetData(int index, DRTalent data, Action<int> clickCallback)
+        public void SetData(int index, LoginServerInfo loginServerInfo, Action<int> clickCallback)
         {
-            selfIndex = index;
-            onClick = clickCallback;
-            talentText.text = GameEntry.Localization.GetString(data.Name);
+            _selfIndex = index;
+            _onClick = clickCallback;
+            talentText.text = loginServerInfo.getServerName();
+            SetSelected(loginServerInfo.getServerStatus());
         }
 
-        public void SetSelected(bool selected)
+        private void SetSelected(ServerStatusType serverStatusType)
         {
-            imageBackground.color = selected ? Color.blue : Color.yellow;
+            switch (serverStatusType)
+            {
+                case ServerStatusType.Normal:
+                {
+                    imageBackground.color = Color.green;
+                    break;
+                }
+                case ServerStatusType.Busy:
+                {
+                    imageBackground.color = new Color(1f, 0.5f, 0f);
+                    break;
+                }
+                case ServerStatusType.Crowded:
+                {
+                    imageBackground.color = Color.yellow;
+                    break;
+                }
+                case ServerStatusType.Full:
+                {
+                    imageBackground.color = Color.red;
+                    break;
+                }
+                case ServerStatusType.Maintenance:
+                {
+                    imageBackground.color = Color.black;
+                    break;
+                }
+                default:
+                {
+                    Log.Warning("ServerStatusType error.serverStatusType = " + serverStatusType);
+                    break;
+                }
+            }
         }
 
         public override void OnRecycle()
         {
-            onClick = null;
+            _onClick = null;
         }
     }
 }

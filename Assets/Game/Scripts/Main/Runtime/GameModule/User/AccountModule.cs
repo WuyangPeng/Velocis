@@ -1,48 +1,48 @@
 using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.Account;
-using Game.Scripts.Main.Runtime.GameData.User;
 using Game.Scripts.Main.Runtime.GameModule.Base;
 using Game.Scripts.Main.Runtime.Login;
-using Game.Scripts.Main.Runtime.SaveData;
 
 namespace Game.Scripts.Main.Runtime.GameModule.User
 {
     [Module]
     public class AccountModule : BaseModule
     {
-        private readonly AccountData accountData = new();
-        private readonly Token token = new();
-        private LoginServerInfo currentLoginServerInfo;
-        private List<LoginServerInfo> loginServerInfo = new();
+        private LoginServerInfo _currentLoginServerInfo;
+        private List<LoginServerInfo> _loginServerInfo = new();
+        private Token _token = new();
 
         public void SetToken(string token, long expireMilliseconds)
         {
-            this.token.SetToken(token, expireMilliseconds);
+            _token.SetToken(token, expireMilliseconds);
         }
 
         public void SetLoginServerInfo(List<LoginServerInfo> loginServerInfo)
         {
-            this.loginServerInfo = loginServerInfo;
+            _loginServerInfo = loginServerInfo;
+            _currentLoginServerInfo = null;
         }
 
         public string GetToken()
         {
-            return token.GetToken();
+            return _token.GetToken();
+        }
+
+        public List<LoginServerInfo> GetLoginServerInfo()
+        {
+            return _loginServerInfo;
         }
 
         public void Clear()
         {
-            accountData.Clear();
+            _currentLoginServerInfo = null;
+            _loginServerInfo.Clear();
+            _token = new Token();
         }
 
-        public void SetTalentData(TalentSaveData talentSaveData)
+        public void SetCurrentLoginServerInfo(int index)
         {
-            accountData.SetTalentData(talentSaveData);
-        }
-
-        public bool HasTalent(int talentId)
-        {
-            return accountData.HasTalent(talentId);
+            _currentLoginServerInfo = _loginServerInfo[index];
         }
     }
 }

@@ -16,11 +16,11 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         [SerializeField] private InputField inputField;
 
-        private LoginController loginController;
+        private LoginController _loginController;
 
-        private ProcedureMenu procedureMenu;
+        private ProcedureMenu _procedureMenu;
 
-        private ServerListController serverListController;
+        private ServerListController _serverListController;
 
         public string GetInputField()
         {
@@ -31,28 +31,27 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             base.OnOpen(userData);
 
-            procedureMenu = (ProcedureMenu)GetCurrentProcedure();
-            if (procedureMenu == null)
+            _procedureMenu = (ProcedureMenu)GetCurrentProcedure();
+            if (_procedureMenu == null)
             {
                 Log.Warning("ProcedureMenu is invalid when open MenuForm.");
                 return;
             }
 
-            loginController = new LoginController(this);
-            loginController.OnEnter();
+            _loginController = new LoginController(this);
+            _loginController.OnEnter();
 
-
-            serverListController = new ServerListController(this);
-            serverListController.OnEnter();
+            _serverListController = new ServerListController(this);
+            _serverListController.OnEnter();
 
             quitButton.SetActive(Application.platform != RuntimePlatform.IPhonePlayer);
         }
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            loginController.OnLeave();
-            serverListController.OnLeave();
-            procedureMenu = null;
+            _loginController.OnLeave();
+            _serverListController.OnLeave();
+            _procedureMenu = null;
 
             base.OnClose(isShutdown, userData);
         }
@@ -62,7 +61,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         public void OnGuestLoginButtonClick()
         {
             guestLoginButton.enabled = false;
-            loginController.GuestLogin();
+            _loginController.GuestLogin();
         }
 
         public void OnSettingButtonClick()
@@ -97,7 +96,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             Log.Info($"Login successful. Token: {responseData.token}");
 
-            serverListController.ServerList();
+            _serverListController.ServerList();
         }
 
         /// <summary>
@@ -123,18 +122,18 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         #region ServerList Callbacks
 
         /// <summary>
-        ///     由 LoginController 在登录成功时调用。
+        ///     由 ServerListController 在成功时调用。
         /// </summary>
         public void OnServerListSuccess(LoginServersResponse responseData)
         {
             // 重新启用按钮
             guestLoginButton.enabled = true;
 
-            procedureMenu.OpenUIForm(UIFormId.ServerListForm);
+            _procedureMenu.OpenUIForm(UIFormId.ServerListForm);
         }
 
         /// <summary>
-        ///     由 LoginController 在登录失败时调用。
+        ///     由 ServerListController 在失败时调用。
         /// </summary>
         public void OnServerListFailure(string errorMessage)
         {

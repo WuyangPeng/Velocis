@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.GameModule.User;
+using Game.Scripts.Main.Runtime.Login;
 using Game.Scripts.Main.Runtime.UIItem.UIMenu;
 using Game.Scripts.Main.Runtime.UIObject.UIMenu;
 using GameFramework.ObjectPool;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
@@ -14,12 +16,8 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
 
         [SerializeField] private int poolCapacity = 20;
 
-        [SerializeField] private Text serverListDescription;
-
         private readonly List<ServerListItemObject> activeServerListItemObject = new();
         private readonly List<GameObject> rowGameObjects = new();
-        private readonly List<int> selectedIndex = new();
-
         private IObjectPool<ServerListItemObject> pool;
 
         private void Start()
@@ -30,11 +28,78 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
                 : GameEntry.ObjectPool.CreateSingleSpawnObjectPool<ServerListItemObject>(poolName, poolCapacity, 30f,
                     16);
 
-            Refresh();
+            SetData();
         }
 
-        public void Refresh()
+        private void SetData()
         {
+            var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+            var loginServerInfo = accountModule.GetLoginServerInfo();
+
+            for (var row = 0; row < loginServerInfo.Count; row++)
+            {
+                if (!SetData(loginServerInfo[row], row))
+                {
+                    Log.Warning("login server list set data error.row = " + row);
+                }
+            }
+        }
+
+        private bool SetData(LoginServerInfo loginServerInfo, int row)
+        {
+            var rowGameObject = GetRowGameObject(row);
+
+            rowGameObjects.Add(rowGameObject);
+
+            return SetData(loginServerInfo, row, rowGameObject);
+        }
+
+        private bool SetData(LoginServerInfo loginServerInfo, int row, GameObject rowGameObject)
+        {
+            var spawn = GetSpawn();
+            if (spawn == null)
+            {
+                return false;
+            }
+
+            activeServerListItemObject.Add(spawn);
+
+            var avatarItem = (ServerListItem)spawn.Target;
+            avatarItem.transform.SetParent(rowGameObject.transform, false);
+            avatarItem.SetData(row, loginServerInfo, OnItemClick);
+
+            return true;
+        }
+
+        private ServerListItemObject GetSpawn()
+        {
+            var result = pool.Spawn();
+            if (result != null)
+            {
+                return result;
+            }
+
+            var itemGameObject = Instantiate(itemPrefab.gameObject, null);
+            if (itemGameObject.TryGetComponent<ServerListItem>(out var item))
+            {
+                var avatarItemObject = ServerListItemObject.Create(item);
+                pool.Register(avatarItemObject, true);
+                pool.Unspawn(avatarItemObject);
+                result = pool.Spawn();
+
+                return result;
+            }
+
+            Log.Error("预制体没挂 TalentItem");
+            Destroy(itemGameObject);
+            return null;
+        }
+
+
+        private void OnItemClick(int index)
+        {
+            var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+            accountModule.SetCurrentLoginServerInfo(index);
         }
     }
 }
