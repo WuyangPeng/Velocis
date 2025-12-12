@@ -25,8 +25,8 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
         {
             _selfIndex = index;
             _onClick = clickCallback;
-            talentText.text = loginServerInfo.getServerName();
-            SetSelected(loginServerInfo.getServerStatus());
+            talentText.text = loginServerInfo.server_name;
+            SetSelected(loginServerInfo.server_status);
         }
 
         private void SetSelected(ServerStatusType serverStatusType)
@@ -35,27 +35,27 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
             {
                 case ServerStatusType.Normal:
                 {
-                    imageBackground.color = Color.green;
+                    talentText.color = Color.green;
                     break;
                 }
                 case ServerStatusType.Busy:
                 {
-                    imageBackground.color = new Color(1f, 0.5f, 0f);
+                    talentText.color = new Color(1f, 0.5f, 0f);
                     break;
                 }
                 case ServerStatusType.Crowded:
                 {
-                    imageBackground.color = Color.yellow;
+                    talentText.color = Color.yellow;
                     break;
                 }
                 case ServerStatusType.Full:
                 {
-                    imageBackground.color = Color.red;
+                    talentText.color = Color.red;
                     break;
                 }
                 case ServerStatusType.Maintenance:
                 {
-                    imageBackground.color = Color.black;
+                    talentText.color = Color.black;
                     break;
                 }
                 default:

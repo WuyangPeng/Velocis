@@ -28,6 +28,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
                 : GameEntry.ObjectPool.CreateSingleSpawnObjectPool<ServerListItemObject>(poolName, poolCapacity, 30f,
                     16);
 
+            UnSpawn();
             SetData();
         }
 
@@ -47,7 +48,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
 
         private bool SetData(LoginServerInfo loginServerInfo, int row)
         {
-            var rowGameObject = GetRowGameObject(row);
+            var rowGameObject = GetRowGameObject(row, TextAnchor.LowerCenter, 70);
 
             rowGameObjects.Add(rowGameObject);
 
@@ -95,6 +96,25 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
             return null;
         }
 
+        private void UnSpawn()
+        {
+            foreach (var element in activeServerListItemObject)
+            {
+                var item = (ServerListItem)element.Target;
+                if (item != null && item.gameObject != null)
+                {
+                    item.transform.SetParent(null, false);
+                }
+
+                pool.Unspawn(element);
+            }
+
+            activeServerListItemObject.Clear();
+
+            foreach (var rowGameObject in rowGameObjects) DestroyImmediate(rowGameObject);
+
+            rowGameObjects.Clear();
+        }
 
         private void OnItemClick(int index)
         {

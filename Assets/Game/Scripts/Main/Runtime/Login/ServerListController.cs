@@ -133,6 +133,7 @@ namespace Game.Scripts.Main.Runtime.Login
                     Log.Info("Server List successful.");
 
                     var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+
                     accountModule.SetLoginServerInfo(loginServersResponse.login_server_info);
 
                     // 直接将结果传递出去，不再持有它

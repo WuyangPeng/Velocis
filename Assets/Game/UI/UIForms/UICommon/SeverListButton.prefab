@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 20
+    m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 1
   m_Spacing: 10
@@ -258,11 +258,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 3526086946916140257}
-  content: {fileID: 2750433323359343646}
+  content: {fileID: 96775660168192698}
   itemPrefab: {fileID: 6459787434390776839, guid: ac297de7aff32514c98b984d02907704,
     type: 3}
   poolCapacity: 20
-  talentDescription: {fileID: 0}
 --- !u!1 &9014629815220720363
 GameObject:
   m_ObjectHideFlags: 0

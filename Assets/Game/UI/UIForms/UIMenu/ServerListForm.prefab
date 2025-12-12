@@ -545,7 +545,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 96775660168192698, guid: 5b0ca910fbcdda3479c18a83f16b4252,
         type: 3}
-      propertyPath: m_SizeDelta.y
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323345807988, guid: 5b0ca910fbcdda3479c18a83f16b4252,
@@ -571,7 +571,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 5b0ca910fbcdda3479c18a83f16b4252,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 5b0ca910fbcdda3479c18a83f16b4252,
         type: 3}
@@ -581,7 +581,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: 5b0ca910fbcdda3479c18a83f16b4252,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: 5b0ca910fbcdda3479c18a83f16b4252,
         type: 3}
@@ -652,6 +652,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8243564984301356031, guid: 5b0ca910fbcdda3479c18a83f16b4252,
+        type: 3}
+      propertyPath: m_HorizontalFit
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -5,20 +5,10 @@ namespace Game.Scripts.Main.Runtime.Login
     [Serializable]
     public class LoginServerInfo
     {
-        private ConnectionInfo connection_info;
-        private string game_server_id;
-        private PlayerRole player_role;
-        private string server_name;
-        private ServerStatusType server_status;
-
-        public string getServerName()
-        {
-            return server_name;
-        }
-
-        public ServerStatusType getServerStatus()
-        {
-            return server_status;
-        }
+        public ConnectionInfo connection_info;
+        public string game_server_id;
+        public PlayerRole player_role;
+        public string server_name;
+        public ServerStatusType server_status;
     }
 }
