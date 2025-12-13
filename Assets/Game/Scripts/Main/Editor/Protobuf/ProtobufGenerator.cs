@@ -11,10 +11,17 @@ namespace Game.Scripts.Main.Editor.Protobuf
         [MenuItem("Velocis/Generate Protobuf")]
         private static void Generate()
         {
-            var projectRoot = Directory.GetParent(Application.dataPath).FullName;
+            var directory = Directory.GetParent(Application.dataPath);
+            if (directory == null)
+            {
+                Debug.LogError("directory not found at: " + Application.dataPath);
+                return;
+            }
+
+            var projectRoot = directory.FullName;
             var protocPath = Path.Combine(projectRoot, "Assets", "Plugins", "libs", "Google.Protobuf", "protoc.exe");
-            var protoDirectory = Path.Combine(projectRoot, "Assets", "Game", "proto");
-            var outputDirectory = Path.Combine(projectRoot, "Assets", "Game", "Scripts","Main","Runtime","Protobuf");
+            var protoDirectory = Path.Combine(projectRoot, "Assets", "Game");
+            var outputDirectory = Path.Combine(projectRoot, "Assets", "Game", "Scripts", "Main", "Runtime", "Protobuf");
 
             if (!File.Exists(protocPath))
             {
@@ -37,23 +44,43 @@ namespace Game.Scripts.Main.Editor.Protobuf
 
             foreach (var protoFile in protoFiles)
             {
+                var fileDir = Path.GetDirectoryName(protoFile);
+                var relativeDir = Path.GetRelativePath(protoDirectory, fileDir);
+
+                var fileSpecificOutputDirectory = outputDirectory;
+                if (!string.IsNullOrEmpty(relativeDir) && relativeDir != ".")
+                {
+                    fileSpecificOutputDirectory = Path.Combine(outputDirectory, relativeDir);
+                }
+
+                Directory.CreateDirectory(fileSpecificOutputDirectory);
+
                 var startInfo = new ProcessStartInfo
                 {
                     FileName = protocPath,
-                    Arguments = $"--csharp_out=\"{outputDirectory}\" --proto_path=\"{protoDirectory}\" \"{protoFile}\"",
+                    Arguments =
+                        $"--csharp_out=\"{fileSpecificOutputDirectory}\" --proto_path=\"{protoDirectory}\" \"{protoFile}\"",
                     RedirectStandardError = true,
                     UseShellExecute = false,
                     CreateNoWindow = true
                 };
 
-                using (var process = Process.Start(startInfo))
+                using var process = Process.Start(startInfo);
+                if (process == null)
                 {
-                    process.WaitForExit();
-                    var error = process.StandardError.ReadToEnd();
-                    if (process.ExitCode != 0)
-                    {
-                        Debug.LogError($"Error generating code from {protoFile}:\n{error}");
-                    }
+                    Debug.LogError("process is null.");
+                    return;
+                }
+
+                process.WaitForExit();
+                var error = process.StandardError.ReadToEnd();
+                if (process.ExitCode != 0)
+                {
+                    Debug.LogError($"Error generating code from {protoFile}:\n{error}");
+                }
+                else
+                {
+                    Debug.Log($"Successfully generated code for: {protoFile}");
                 }
             }
 
