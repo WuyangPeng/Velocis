@@ -3,28 +3,35 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Game.Scripts.Main.Runtime.Network.Packet;
+using Game.Scripts.Main.Runtime.Procedure.Scene;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Network;
 using ProtoBuf;
 using ProtoBuf.Meta;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
+using NetworkClosedEventArgs = UnityGameFramework.Runtime.NetworkClosedEventArgs;
+using NetworkConnectedEventArgs = UnityGameFramework.Runtime.NetworkConnectedEventArgs;
+using NetworkCustomErrorEventArgs = UnityGameFramework.Runtime.NetworkCustomErrorEventArgs;
+using NetworkErrorEventArgs = UnityGameFramework.Runtime.NetworkErrorEventArgs;
+using NetworkMissHeartBeatEventArgs = UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs;
 
 namespace Game.Scripts.Main.Runtime.Network
 {
     public class NetworkChannelHelper : INetworkChannelHelper
     {
-        private readonly Dictionary<int, Type> m_ServerToClientPacketTypes = new();
         private readonly MemoryStream m_CachedStream = new(1024 * 8);
+        private readonly Dictionary<int, Type> m_ServerToClientPacketTypes = new();
         private INetworkChannel m_NetworkChannel;
 
         /// <summary>
-        /// 获取消息包头长度。
+        ///     获取消息包头长度。
         /// </summary>
         public int PacketHeaderLength => sizeof(int);
 
         /// <summary>
-        /// 初始化网络频道辅助器。
+        ///     初始化网络频道辅助器。
         /// </summary>
         /// <param name="networkChannel">网络频道。</param>
         public void Initialize(INetworkChannel networkChannel)
@@ -49,7 +56,8 @@ namespace Game.Scripts.Main.Runtime.Network
                     var packetType = GetServerToClientPacketType(packetBase.Id);
                     if (packetType != null)
                     {
-                        Log.Warning("Already exist packet type '{0}', check '{1}' or '{2}'?.", packetBase.Id.ToString(), packetType.Name, packetBase.GetType().Name);
+                        Log.Warning("Already exist packet type '{0}', check '{1}' or '{2}'?.", packetBase.Id.ToString(),
+                            packetType.Name, packetBase.GetType().Name);
                         continue;
                     }
 
@@ -62,29 +70,29 @@ namespace Game.Scripts.Main.Runtime.Network
                 }
             }
 
-            Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkConnectedEventArgs.EventId, OnNetworkConnected);
-            Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkClosedEventArgs.EventId, OnNetworkClosed);
-            Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs.EventId, OnNetworkMissHeartBeat);
-            Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkErrorEventArgs.EventId, OnNetworkError);
-            Base.GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkCustomErrorEventArgs.EventId, OnNetworkCustomError);
+            GameEntry.Event.Subscribe(NetworkConnectedEventArgs.EventId, OnNetworkConnected);
+            GameEntry.Event.Subscribe(NetworkClosedEventArgs.EventId, OnNetworkClosed);
+            GameEntry.Event.Subscribe(NetworkMissHeartBeatEventArgs.EventId, OnNetworkMissHeartBeat);
+            GameEntry.Event.Subscribe(NetworkErrorEventArgs.EventId, OnNetworkError);
+            GameEntry.Event.Subscribe(NetworkCustomErrorEventArgs.EventId, OnNetworkCustomError);
         }
 
         /// <summary>
-        /// 关闭并清理网络频道辅助器。
+        ///     关闭并清理网络频道辅助器。
         /// </summary>
         public void Shutdown()
         {
-            Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkConnectedEventArgs.EventId, OnNetworkConnected);
-            Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkClosedEventArgs.EventId, OnNetworkClosed);
-            Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs.EventId, OnNetworkMissHeartBeat);
-            Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkErrorEventArgs.EventId, OnNetworkError);
-            Base.GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkCustomErrorEventArgs.EventId, OnNetworkCustomError);
+            GameEntry.Event.Unsubscribe(NetworkConnectedEventArgs.EventId, OnNetworkConnected);
+            GameEntry.Event.Unsubscribe(NetworkClosedEventArgs.EventId, OnNetworkClosed);
+            GameEntry.Event.Unsubscribe(NetworkMissHeartBeatEventArgs.EventId, OnNetworkMissHeartBeat);
+            GameEntry.Event.Unsubscribe(NetworkErrorEventArgs.EventId, OnNetworkError);
+            GameEntry.Event.Unsubscribe(NetworkCustomErrorEventArgs.EventId, OnNetworkCustomError);
 
             m_NetworkChannel = null;
         }
 
         /// <summary>
-        /// 准备进行连接。
+        ///     准备进行连接。
         /// </summary>
         public void PrepareForConnecting()
         {
@@ -93,7 +101,7 @@ namespace Game.Scripts.Main.Runtime.Network
         }
 
         /// <summary>
-        /// 发送心跳消息包。
+        ///     发送心跳消息包。
         /// </summary>
         /// <returns>是否发送心跳消息包成功。</returns>
         public bool SendHeartBeat()
@@ -103,7 +111,7 @@ namespace Game.Scripts.Main.Runtime.Network
         }
 
         /// <summary>
-        /// 序列化消息包。
+        ///     序列化消息包。
         /// </summary>
         /// <typeparam name="T">消息包类型。</typeparam>
         /// <param name="packet">要序列化的消息包。</param>
@@ -138,7 +146,7 @@ namespace Game.Scripts.Main.Runtime.Network
         }
 
         /// <summary>
-        /// 反序列化消息包头。
+        ///     反序列化消息包头。
         /// </summary>
         /// <param name="source">要反序列化的来源流。</param>
         /// <param name="customErrorData">用户自定义错误数据。</param>
@@ -147,17 +155,19 @@ namespace Game.Scripts.Main.Runtime.Network
         {
             // 注意：此函数并不在主线程调用！
             customErrorData = null;
-            return (IPacketHeader)RuntimeTypeModel.Default.Deserialize(source, ReferencePool.Acquire<SCPacketHeader>(), typeof(SCPacketHeader));
+            return (IPacketHeader)RuntimeTypeModel.Default.Deserialize(source, ReferencePool.Acquire<SCPacketHeader>(),
+                typeof(SCPacketHeader));
         }
 
         /// <summary>
-        /// 反序列化消息包。
+        ///     反序列化消息包。
         /// </summary>
         /// <param name="packetHeader">消息包头。</param>
         /// <param name="source">要反序列化的来源流。</param>
         /// <param name="customErrorData">用户自定义错误数据。</param>
         /// <returns>反序列化后的消息包。</returns>
-        public GameFramework.Network.Packet DeserializePacket(IPacketHeader packetHeader, Stream source, out object customErrorData)
+        public GameFramework.Network.Packet DeserializePacket(IPacketHeader packetHeader, Stream source,
+            out object customErrorData)
         {
             // 注意：此函数并不在主线程调用！
             customErrorData = null;
@@ -175,7 +185,8 @@ namespace Game.Scripts.Main.Runtime.Network
                 var packetType = GetServerToClientPacketType(scPacketHeader.Id);
                 if (packetType != null)
                 {
-                    packet = (GameFramework.Network.Packet)RuntimeTypeModel.Default.DeserializeWithLengthPrefix(source, ReferencePool.Acquire(packetType), packetType, PrefixStyle.Fixed32, 0);
+                    packet = (GameFramework.Network.Packet)RuntimeTypeModel.Default.DeserializeWithLengthPrefix(source,
+                        ReferencePool.Acquire(packetType), packetType, PrefixStyle.Fixed32, 0);
                 }
                 else
                 {
@@ -198,18 +209,29 @@ namespace Game.Scripts.Main.Runtime.Network
 
         private void OnNetworkConnected(object sender, GameEventArgs e)
         {
-            var ne = (UnityGameFramework.Runtime.NetworkConnectedEventArgs)e;
+            var ne = (NetworkConnectedEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
             {
                 return;
             }
 
-            Log.Info("Network channel '{0}' connected, local address '{1}', remote address '{2}'.", ne.NetworkChannel.Name, ne.NetworkChannel.Socket.LocalEndPoint.ToString(), ne.NetworkChannel.Socket.RemoteEndPoint.ToString());
+            Log.Info("Network channel '{0}' connected, local address '{1}', remote address '{2}'.",
+                ne.NetworkChannel.Name, ne.NetworkChannel.Socket.LocalEndPoint.ToString(),
+                ne.NetworkChannel.Socket.RemoteEndPoint.ToString());
+
+            var procedureMenu = (ProcedureMenu)GameEntry.Procedure.CurrentProcedure;
+            if (procedureMenu == null)
+            {
+                Log.Warning("ProcedureMenu is invalid when On Network Connected.");
+                return;
+            }
+
+            procedureMenu.StartGame();
         }
 
         private void OnNetworkClosed(object sender, GameEventArgs e)
         {
-            var ne = (UnityGameFramework.Runtime.NetworkClosedEventArgs)e;
+            var ne = (NetworkClosedEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
             {
                 return;
@@ -220,13 +242,14 @@ namespace Game.Scripts.Main.Runtime.Network
 
         private void OnNetworkMissHeartBeat(object sender, GameEventArgs e)
         {
-            var ne = (UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs)e;
+            var ne = (NetworkMissHeartBeatEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
             {
                 return;
             }
 
-            Log.Info("Network channel '{0}' miss heart beat '{1}' times.", ne.NetworkChannel.Name, ne.MissCount.ToString());
+            Log.Info("Network channel '{0}' miss heart beat '{1}' times.", ne.NetworkChannel.Name,
+                ne.MissCount.ToString());
 
             if (ne.MissCount < 2)
             {
@@ -238,23 +261,23 @@ namespace Game.Scripts.Main.Runtime.Network
 
         private void OnNetworkError(object sender, GameEventArgs e)
         {
-            var ne = (UnityGameFramework.Runtime.NetworkErrorEventArgs)e;
+            var ne = (NetworkErrorEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
             {
                 return;
             }
 
-            Log.Info("Network channel '{0}' error, error code is '{1}', error message is '{2}'.", ne.NetworkChannel.Name, ne.ErrorCode.ToString(), ne.ErrorMessage);
+            Log.Info("Network channel '{0}' error, error code is '{1}', error message is '{2}'.",
+                ne.NetworkChannel.Name, ne.ErrorCode.ToString(), ne.ErrorMessage);
 
             ne.NetworkChannel.Close();
         }
 
         private void OnNetworkCustomError(object sender, GameEventArgs e)
         {
-            var ne = (UnityGameFramework.Runtime.NetworkCustomErrorEventArgs)e;
+            var ne = (NetworkCustomErrorEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
             {
-                return;
             }
         }
     }

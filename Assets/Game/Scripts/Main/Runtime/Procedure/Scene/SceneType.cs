@@ -1,14 +1,14 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
     public enum SceneType
     {
-        [InspectorName("²Ëµ¥")] Menu = 1,
-        [InspectorName("Ö÷³¡¾°£¨²âÊÔ£©")] Main = 2,
-        [InspectorName("´´½¨½ÇÉ«")] Create = 3,
-        [InspectorName("³õÊ¼»¯ÓÎÏ·")] InitGame = 4,
-        [InspectorName("Ö÷³¡¾°")] Home = 5,
-        [InspectorName("Õ½¶·")] Battle = 6
+        [InspectorName("èœå•")] Menu = 1,
+        [InspectorName("ä¸»åœºæ™¯ï¼ˆæµ‹è¯•ï¼‰")] Main = 2,
+        [InspectorName("åˆ›å»ºè§’è‰²")] Create = 3,
+        [InspectorName("åˆå§‹åŒ–æ¸¸æˆ")] InitGame = 4,
+        [InspectorName("ä¸»åœºæ™¯")] Home = 5,
+        [InspectorName("æˆ˜æ–—")] Battle = 6
     }
 }

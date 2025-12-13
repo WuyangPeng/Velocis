@@ -151,16 +151,8 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
             }
 
 
-            var networkComponent = GameEntry.Entity.GetComponent<NetworkComponent>();
-            if (networkComponent == null)
-            {
-                Log.Error("NetworkComponent is not available.");
-                return;
-            }
-
-
-            var channel = networkComponent.GetNetworkChannel("TcpChannel") ??
-                          networkComponent.CreateNetworkChannel("TcpChannel", ServiceType.Tcp,
+            var channel = GameEntry.Network.GetNetworkChannel("TcpChannel") ??
+                          GameEntry.Network.CreateNetworkChannel("TcpChannel", ServiceType.Tcp,
                               new NetworkChannelHelper());
 
             channel.Connect(ipAddress, port);

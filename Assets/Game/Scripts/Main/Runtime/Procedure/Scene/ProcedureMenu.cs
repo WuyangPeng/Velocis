@@ -30,7 +30,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
         public void StartGame()
         {
-            m_NextSceneId = GameEntry.Config.GetInt("Scene.Create");
+            m_NextSceneId = GameEntry.Config.GetInt("Scene.Home");
         }
 
         public void OpenUIForm(UIFormId form)
