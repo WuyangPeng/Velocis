@@ -7,7 +7,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     public sealed class DataTableGeneratorMenu
     {
-        [MenuItem("Rise of History/Generate DataTables")]
+        [MenuItem("Velocis/Generate DataTables")]
         private static void GenerateDataTables()
         {
             foreach (var dataTableName in ProcedurePreload.DataTableNames)
