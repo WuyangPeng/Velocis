@@ -1,11 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Login;
+using Game.Scripts.Main.Runtime.Network;
 using Game.Scripts.Main.Runtime.UIItem.UIMenu;
 using Game.Scripts.Main.Runtime.UIObject.UIMenu;
+using GameFramework.Network;
 using GameFramework.ObjectPool;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using AddressFamily = System.Net.Sockets.AddressFamily;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
@@ -119,7 +124,46 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
         private void OnItemClick(int index)
         {
             var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
-            accountModule.SetCurrentLoginServerInfo(index);
+            var currentLoginServerInfo = accountModule.SetCurrentLoginServerInfo(index);
+            var host = currentLoginServerInfo.connection_info.host;
+            var port = currentLoginServerInfo.connection_info.port;
+
+            IPAddress ipAddress;
+            try
+            {
+                if (!IPAddress.TryParse(host, out ipAddress))
+                {
+                    var addresses = Dns.GetHostAddresses(host);
+                    if (addresses.Length == 0)
+                    {
+                        Log.Error("Unable to resolve host '{0}'.", host);
+                        return;
+                    }
+
+                    ipAddress = Array.Find(addresses, a => a.AddressFamily == AddressFamily.InterNetwork) ??
+                                addresses[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Failed to resolve host '{0}': {1}", host, ex.Message);
+                return;
+            }
+
+
+            var networkComponent = GameEntry.Entity.GetComponent<NetworkComponent>();
+            if (networkComponent == null)
+            {
+                Log.Error("NetworkComponent is not available.");
+                return;
+            }
+
+
+            var channel = networkComponent.GetNetworkChannel("TcpChannel") ??
+                          networkComponent.CreateNetworkChannel("TcpChannel", ServiceType.Tcp,
+                              new NetworkChannelHelper());
+
+            channel.Connect(ipAddress, port);
         }
     }
 }

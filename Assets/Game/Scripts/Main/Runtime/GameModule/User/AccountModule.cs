@@ -12,6 +12,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
         private List<LoginServerInfo> _loginServerInfo = new();
         private Token _token = new();
 
+
         public void SetToken(string token, long expireMilliseconds)
         {
             _token.SetToken(token, expireMilliseconds);
@@ -40,9 +41,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
             _token = new Token();
         }
 
-        public void SetCurrentLoginServerInfo(int index)
+        public LoginServerInfo SetCurrentLoginServerInfo(int index)
         {
             _currentLoginServerInfo = _loginServerInfo[index];
+
+            return _currentLoginServerInfo;
         }
     }
 }
