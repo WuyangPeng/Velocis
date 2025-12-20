@@ -12,5 +12,7 @@ namespace Game.Scripts.Main.Runtime.Account
         [SerializeField] public string appId;
 
         [SerializeField] public string secret;
+
+        [SerializeField] public string appVersion;
     }
 }

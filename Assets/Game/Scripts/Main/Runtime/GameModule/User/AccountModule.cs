@@ -29,6 +29,12 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
             return _token.GetToken();
         }
 
+
+        public string GetCurrentGameServerId()
+        {
+            return _currentLoginServerInfo.game_server_id;
+        }
+
         public List<LoginServerInfo> GetLoginServerInfo()
         {
             return _loginServerInfo;

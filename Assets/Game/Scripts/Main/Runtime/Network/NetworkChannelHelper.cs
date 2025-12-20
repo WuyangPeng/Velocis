@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Network.Packet;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using GameFramework;
@@ -9,6 +10,7 @@ using GameFramework.Event;
 using GameFramework.Network;
 using ProtoBuf;
 using ProtoBuf.Meta;
+using UnityEngine.Device;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using NetworkClosedEventArgs = UnityGameFramework.Runtime.NetworkClosedEventArgs;
@@ -24,6 +26,7 @@ namespace Game.Scripts.Main.Runtime.Network
         private readonly MemoryStream m_CachedStream = new(1024 * 8);
         private readonly Dictionary<int, Type> m_ServerToClientPacketTypes = new();
         private INetworkChannel m_NetworkChannel;
+
 
         /// <summary>
         ///     获取消息包头长度。
@@ -134,9 +137,9 @@ namespace Game.Scripts.Main.Runtime.Network
             m_CachedStream.SetLength(m_CachedStream.Capacity); // 此行防止 Array.Copy 的数据无法写入
             m_CachedStream.Position = 0L;
 
-            var packetHeader = ReferencePool.Acquire<CSPacketHeader>();
+            /* var packetHeader = ReferencePool.Acquire<CSPacketHeader>();
             Serializer.Serialize(m_CachedStream, packetHeader);
-            ReferencePool.Release(packetHeader);
+            ReferencePool.Release(packetHeader);*/
 
             Serializer.SerializeWithLengthPrefix(m_CachedStream, packet, PrefixStyle.Fixed32);
             ReferencePool.Release(packetImpl);
@@ -202,6 +205,30 @@ namespace Game.Scripts.Main.Runtime.Network
             return packet;
         }
 
+
+        private void SendProto(CSCeleritas packet)
+        {
+            m_NetworkChannel.Send(packet);
+        }
+
+        /// <summary>
+        ///     发送登陆消息。
+        /// </summary>
+        private void SendLogin()
+        {
+            var packet = ProtoHelper.GetProto();
+
+            var login = packet.SetPlayerLogin();
+
+            var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+            login.Token = accountModule.GetToken();
+            login.GameServerId = accountModule.GetCurrentGameServerId();
+            login.DeviceId = SystemInfo.deviceUniqueIdentifier;
+            login.AppVersion = GameEntry.Account.appVersion;
+
+            SendProto(packet);
+        }
+
         private Type GetServerToClientPacketType(int id)
         {
             return m_ServerToClientPacketTypes.GetValueOrDefault(id);
@@ -226,7 +253,7 @@ namespace Game.Scripts.Main.Runtime.Network
                 return;
             }
 
-            procedureMenu.StartGame();
+            SendLogin();
         }
 
         private void OnNetworkClosed(object sender, GameEventArgs e)

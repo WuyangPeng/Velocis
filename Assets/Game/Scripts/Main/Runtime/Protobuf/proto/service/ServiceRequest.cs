@@ -27,16 +27,18 @@ namespace Celeritas.Proto.Service {
             "CiNwcm90by9zZXJ2aWNlL3NlcnZpY2VfcmVxdWVzdC5wcm90bxIXY2VsZXJp",
             "dGFzLnByb3RvLnNlcnZpY2UaHHByb3RvL3NlcnZpY2UvcmVnaXN0cnkucHJv",
             "dG8aGHByb3RvL3NlcnZpY2UvYXV0aC5wcm90bxobcHJvdG8vc2VydmljZS9w",
-            "YXltZW50LnByb3RvIucBCg9zZXJ2aWNlX3JlcXVlc3QSRQoIcmVnaXN0cnkY",
-            "ASABKAsyMS5jZWxlcml0YXMucHJvdG8uc2VydmljZS5zZXJ2aWNlX3JlZ2lz",
-            "dHJ5X3JlcXVlc3RIABI9CgRhdXRoGAIgASgLMi0uY2VsZXJpdGFzLnByb3Rv",
-            "LnNlcnZpY2Uuc2VydmljZV9hdXRoX3JlcXVlc3RIABJDCgdwYXltZW50GAMg",
-            "ASgLMjAuY2VsZXJpdGFzLnByb3RvLnNlcnZpY2Uuc2VydmljZV9wYXltZW50",
-            "X3JlcXVlc3RIAEIJCgdwYXlsb2FkYgZwcm90bzM="));
+            "YXltZW50LnByb3RvGhpwcm90by9zZXJ2aWNlL3BsYXllci5wcm90byKqAgoP",
+            "c2VydmljZV9yZXF1ZXN0EkUKCHJlZ2lzdHJ5GAEgASgLMjEuY2VsZXJpdGFz",
+            "LnByb3RvLnNlcnZpY2Uuc2VydmljZV9yZWdpc3RyeV9yZXF1ZXN0SAASPQoE",
+            "YXV0aBgCIAEoCzItLmNlbGVyaXRhcy5wcm90by5zZXJ2aWNlLnNlcnZpY2Vf",
+            "YXV0aF9yZXF1ZXN0SAASQwoHcGF5bWVudBgDIAEoCzIwLmNlbGVyaXRhcy5w",
+            "cm90by5zZXJ2aWNlLnNlcnZpY2VfcGF5bWVudF9yZXF1ZXN0SAASQQoGcGxh",
+            "eWVyGAQgASgLMi8uY2VsZXJpdGFzLnByb3RvLnNlcnZpY2Uuc2VydmljZV9w",
+            "bGF5ZXJfcmVxdWVzdEgAQgkKB3BheWxvYWRiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Celeritas.Proto.Service.RegistryReflection.Descriptor, global::Celeritas.Proto.Service.AuthReflection.Descriptor, global::Celeritas.Proto.Service.PaymentReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Celeritas.Proto.Service.RegistryReflection.Descriptor, global::Celeritas.Proto.Service.AuthReflection.Descriptor, global::Celeritas.Proto.Service.PaymentReflection.Descriptor, global::Celeritas.Proto.Service.PlayerReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_request), global::Celeritas.Proto.Service.service_request.Parser, new[]{ "Registry", "Auth", "Payment" }, new[]{ "Payload" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_request), global::Celeritas.Proto.Service.service_request.Parser, new[]{ "Registry", "Auth", "Payment", "Player" }, new[]{ "Payload" }, null, null, null)
           }));
     }
     #endregion
@@ -88,6 +90,9 @@ namespace Celeritas.Proto.Service {
         case PayloadOneofCase.Payment:
           Payment = other.Payment.Clone();
           break;
+        case PayloadOneofCase.Player:
+          Player = other.Player.Clone();
+          break;
       }
 
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -135,6 +140,18 @@ namespace Celeritas.Proto.Service {
       }
     }
 
+    /// <summary>Field number for the "player" field.</summary>
+    public const int PlayerFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Service.service_player_request Player {
+      get { return payloadCase_ == PayloadOneofCase.Player ? (global::Celeritas.Proto.Service.service_player_request) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Player;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
@@ -142,6 +159,7 @@ namespace Celeritas.Proto.Service {
       Registry = 1,
       Auth = 2,
       Payment = 3,
+      Player = 4,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -175,6 +193,7 @@ namespace Celeritas.Proto.Service {
       if (!object.Equals(Registry, other.Registry)) return false;
       if (!object.Equals(Auth, other.Auth)) return false;
       if (!object.Equals(Payment, other.Payment)) return false;
+      if (!object.Equals(Player, other.Player)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -186,6 +205,7 @@ namespace Celeritas.Proto.Service {
       if (payloadCase_ == PayloadOneofCase.Registry) hash ^= Registry.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.Auth) hash ^= Auth.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.Payment) hash ^= Payment.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.Player) hash ^= Player.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -217,6 +237,10 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(26);
         output.WriteMessage(Payment);
       }
+      if (payloadCase_ == PayloadOneofCase.Player) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Player);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -239,6 +263,10 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(26);
         output.WriteMessage(Payment);
       }
+      if (payloadCase_ == PayloadOneofCase.Player) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Player);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -257,6 +285,9 @@ namespace Celeritas.Proto.Service {
       }
       if (payloadCase_ == PayloadOneofCase.Payment) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Payment);
+      }
+      if (payloadCase_ == PayloadOneofCase.Player) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Player);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -288,6 +319,12 @@ namespace Celeritas.Proto.Service {
             Payment = new global::Celeritas.Proto.Service.service_payment_request();
           }
           Payment.MergeFrom(other.Payment);
+          break;
+        case PayloadOneofCase.Player:
+          if (Player == null) {
+            Player = new global::Celeritas.Proto.Service.service_player_request();
+          }
+          Player.MergeFrom(other.Player);
           break;
       }
 
@@ -337,6 +374,15 @@ namespace Celeritas.Proto.Service {
             Payment = subBuilder;
             break;
           }
+          case 34: {
+            global::Celeritas.Proto.Service.service_player_request subBuilder = new global::Celeritas.Proto.Service.service_player_request();
+            if (payloadCase_ == PayloadOneofCase.Player) {
+              subBuilder.MergeFrom(Player);
+            }
+            input.ReadMessage(subBuilder);
+            Player = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -381,6 +427,15 @@ namespace Celeritas.Proto.Service {
             }
             input.ReadMessage(subBuilder);
             Payment = subBuilder;
+            break;
+          }
+          case 34: {
+            global::Celeritas.Proto.Service.service_player_request subBuilder = new global::Celeritas.Proto.Service.service_player_request();
+            if (payloadCase_ == PayloadOneofCase.Player) {
+              subBuilder.MergeFrom(Player);
+            }
+            input.ReadMessage(subBuilder);
+            Player = subBuilder;
             break;
           }
         }

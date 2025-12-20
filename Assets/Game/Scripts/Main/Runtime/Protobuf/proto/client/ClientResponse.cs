@@ -25,14 +25,14 @@ namespace Celeritas.Proto.Client {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiJwcm90by9jbGllbnQvY2xpZW50X3Jlc3BvbnNlLnByb3RvEhZjZWxlcml0",
-            "YXMucHJvdG8uY2xpZW50Ghdwcm90by9jbGllbnQvYXV0aC5wcm90byJaCg9j",
-            "bGllbnRfcmVzcG9uc2USPAoEYXV0aBgBIAEoCzIsLmNlbGVyaXRhcy5wcm90",
-            "by5jbGllbnQuY2xpZW50X2F1dGhfcmVzcG9uc2VIAEIJCgdwYXlsb2FkYgZw",
-            "cm90bzM="));
+            "YXMucHJvdG8uY2xpZW50GiBwcm90by9jbGllbnQvcGxheWVyL3BsYXllci5w",
+            "cm90byJeCg9jbGllbnRfcmVzcG9uc2USQAoGcGxheWVyGAEgASgLMi4uY2Vs",
+            "ZXJpdGFzLnByb3RvLmNsaWVudC5jbGllbnRfcGxheWVyX3Jlc3BvbnNlSABC",
+            "CQoHcGF5bG9hZGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Celeritas.Proto.Client.AuthReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Celeritas.Proto.Client.PlayerReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_response), global::Celeritas.Proto.Client.client_response.Parser, new[]{ "Auth" }, new[]{ "Payload" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_response), global::Celeritas.Proto.Client.client_response.Parser, new[]{ "Player" }, new[]{ "Payload" }, null, null, null)
           }));
     }
     #endregion
@@ -75,8 +75,8 @@ namespace Celeritas.Proto.Client {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public client_response(client_response other) : this() {
       switch (other.PayloadCase) {
-        case PayloadOneofCase.Auth:
-          Auth = other.Auth.Clone();
+        case PayloadOneofCase.Player:
+          Player = other.Player.Clone();
           break;
       }
 
@@ -89,15 +89,15 @@ namespace Celeritas.Proto.Client {
       return new client_response(this);
     }
 
-    /// <summary>Field number for the "auth" field.</summary>
-    public const int AuthFieldNumber = 1;
+    /// <summary>Field number for the "player" field.</summary>
+    public const int PlayerFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Celeritas.Proto.Client.client_auth_response Auth {
-      get { return payloadCase_ == PayloadOneofCase.Auth ? (global::Celeritas.Proto.Client.client_auth_response) payload_ : null; }
+    public global::Celeritas.Proto.Client.client_player_response Player {
+      get { return payloadCase_ == PayloadOneofCase.Player ? (global::Celeritas.Proto.Client.client_player_response) payload_ : null; }
       set {
         payload_ = value;
-        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Auth;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Player;
       }
     }
 
@@ -105,7 +105,7 @@ namespace Celeritas.Proto.Client {
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
       None = 0,
-      Auth = 1,
+      Player = 1,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -136,7 +136,7 @@ namespace Celeritas.Proto.Client {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Auth, other.Auth)) return false;
+      if (!object.Equals(Player, other.Player)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -145,7 +145,7 @@ namespace Celeritas.Proto.Client {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (payloadCase_ == PayloadOneofCase.Auth) hash ^= Auth.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.Player) hash ^= Player.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -165,9 +165,9 @@ namespace Celeritas.Proto.Client {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (payloadCase_ == PayloadOneofCase.Auth) {
+      if (payloadCase_ == PayloadOneofCase.Player) {
         output.WriteRawTag(10);
-        output.WriteMessage(Auth);
+        output.WriteMessage(Player);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -179,9 +179,9 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (payloadCase_ == PayloadOneofCase.Auth) {
+      if (payloadCase_ == PayloadOneofCase.Player) {
         output.WriteRawTag(10);
-        output.WriteMessage(Auth);
+        output.WriteMessage(Player);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -193,8 +193,8 @@ namespace Celeritas.Proto.Client {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (payloadCase_ == PayloadOneofCase.Auth) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Auth);
+      if (payloadCase_ == PayloadOneofCase.Player) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Player);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -209,11 +209,11 @@ namespace Celeritas.Proto.Client {
         return;
       }
       switch (other.PayloadCase) {
-        case PayloadOneofCase.Auth:
-          if (Auth == null) {
-            Auth = new global::Celeritas.Proto.Client.client_auth_response();
+        case PayloadOneofCase.Player:
+          if (Player == null) {
+            Player = new global::Celeritas.Proto.Client.client_player_response();
           }
-          Auth.MergeFrom(other.Auth);
+          Player.MergeFrom(other.Player);
           break;
       }
 
@@ -237,12 +237,12 @@ namespace Celeritas.Proto.Client {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            global::Celeritas.Proto.Client.client_auth_response subBuilder = new global::Celeritas.Proto.Client.client_auth_response();
-            if (payloadCase_ == PayloadOneofCase.Auth) {
-              subBuilder.MergeFrom(Auth);
+            global::Celeritas.Proto.Client.client_player_response subBuilder = new global::Celeritas.Proto.Client.client_player_response();
+            if (payloadCase_ == PayloadOneofCase.Player) {
+              subBuilder.MergeFrom(Player);
             }
             input.ReadMessage(subBuilder);
-            Auth = subBuilder;
+            Player = subBuilder;
             break;
           }
         }
@@ -265,12 +265,12 @@ namespace Celeritas.Proto.Client {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            global::Celeritas.Proto.Client.client_auth_response subBuilder = new global::Celeritas.Proto.Client.client_auth_response();
-            if (payloadCase_ == PayloadOneofCase.Auth) {
-              subBuilder.MergeFrom(Auth);
+            global::Celeritas.Proto.Client.client_player_response subBuilder = new global::Celeritas.Proto.Client.client_player_response();
+            if (payloadCase_ == PayloadOneofCase.Player) {
+              subBuilder.MergeFrom(Player);
             }
             input.ReadMessage(subBuilder);
-            Auth = subBuilder;
+            Player = subBuilder;
             break;
           }
         }
