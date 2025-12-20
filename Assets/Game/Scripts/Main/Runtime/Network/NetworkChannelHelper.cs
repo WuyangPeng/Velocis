@@ -5,13 +5,12 @@ using System.Reflection;
 using System.Text;
 using Celeritas.Proto;
 using Celeritas.Proto.Common;
-using Game.Scripts.Main.Runtime.GameModule.User;
+using Game.Scripts.Main.Runtime.Login;
 using Game.Scripts.Main.Runtime.Network.Packet;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Network;
 using Google.Protobuf;
-using UnityEngine.Device;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using NetworkClosedEventArgs = UnityGameFramework.Runtime.NetworkClosedEventArgs;
@@ -253,23 +252,6 @@ namespace Game.Scripts.Main.Runtime.Network
             m_NetworkChannel.Send(packet);
         }
 
-        /// <summary>
-        ///     发送登陆消息。
-        /// </summary>
-        private void SendLogin()
-        {
-            var packet = ProtoHelper.GetProto();
-
-            var login = packet.SetPlayerLogin();
-
-            var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
-            login.Token = accountModule.GetToken();
-            login.GameServerId = accountModule.GetCurrentGameServerId();
-            login.DeviceId = SystemInfo.deviceUniqueIdentifier;
-            login.AppVersion = GameEntry.Account.appVersion;
-
-            SendProto(packet);
-        }
 
         private Type GetServerToClientPacketType(int id)
         {
@@ -288,7 +270,7 @@ namespace Game.Scripts.Main.Runtime.Network
                 ne.NetworkChannel.Name, ne.NetworkChannel.Socket.LocalEndPoint.ToString(),
                 ne.NetworkChannel.Socket.RemoteEndPoint.ToString());
 
-            SendLogin();
+            SendLogin.SendMessage();
         }
 
         private void OnNetworkClosed(object sender, GameEventArgs e)
