@@ -7,6 +7,7 @@ using Celeritas.Proto;
 using Celeritas.Proto.Common;
 using Game.Scripts.Main.Runtime.Login;
 using Game.Scripts.Main.Runtime.Network.Packet;
+using Game.Scripts.Main.Runtime.Network.PacketHandler;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Network;
@@ -24,6 +25,7 @@ namespace Game.Scripts.Main.Runtime.Network
     public class NetworkChannelHelper : INetworkChannelHelper
     {
         private readonly MemoryStream m_CachedStream = new(1024 * 8);
+        private readonly Dictionary<Type, object> m_CeleritasHandlers = new();
         private readonly Dictionary<int, Type> m_ServerToClientPacketTypes = new();
         private INetworkChannel m_NetworkChannel;
 
@@ -44,6 +46,7 @@ namespace Game.Scripts.Main.Runtime.Network
             // 反射注册包和包处理函数。
             var packetBaseType = typeof(SCPacketBase);
             var packetHandlerBaseType = typeof(PacketHandlerBase);
+            var celeritasHandlerBaseType = typeof(ICeleritasHandler);
             var assembly = Assembly.GetExecutingAssembly();
             var types = assembly.GetTypes();
             foreach (var type in types)
@@ -70,6 +73,33 @@ namespace Game.Scripts.Main.Runtime.Network
                 {
                     var packetHandler = (IPacketHandler)Activator.CreateInstance(type);
                     m_NetworkChannel.RegisterHandler(packetHandler);
+                }
+                else if (celeritasHandlerBaseType.IsAssignableFrom(type))
+                {
+                    var handler = Activator.CreateInstance(type);
+
+                    var baseType = type.BaseType;
+                    while (baseType != null)
+                    {
+                        if (baseType.IsGenericType &&
+                            baseType.GetGenericTypeDefinition() == typeof(CeleritasHandlerBase<>))
+                        {
+                            var messageType = baseType.GetGenericArguments()[0];
+                            if (m_CeleritasHandlers.ContainsKey(messageType))
+                            {
+                                Log.Warning("Duplicate handler for message type '{0}': '{1}' and '{2}'",
+                                    messageType.Name, m_CeleritasHandlers[messageType].GetType().Name, type.Name);
+                            }
+                            else
+                            {
+                                m_CeleritasHandlers.Add(messageType, handler);
+                            }
+
+                            break;
+                        }
+
+                        baseType = baseType.BaseType;
+                    }
                 }
             }
 
@@ -244,6 +274,16 @@ namespace Game.Scripts.Main.Runtime.Network
                 ReferencePool.Release(messageHeader);
                 return null;
             }
+        }
+
+        public CeleritasHandlerBase<T> GetCeleritasHandler<T>()
+        {
+            if (m_CeleritasHandlers.TryGetValue(typeof(T), out var handler))
+            {
+                return handler as CeleritasHandlerBase<T>;
+            }
+
+            return null;
         }
 
 

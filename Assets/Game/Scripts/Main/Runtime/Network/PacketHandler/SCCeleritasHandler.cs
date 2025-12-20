@@ -1,4 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.Network.Generate;
+﻿using Celeritas.Proto;
 using Game.Scripts.Main.Runtime.Network.Packet;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
@@ -18,7 +18,16 @@ namespace Game.Scripts.Main.Runtime.Network.PacketHandler
 
             if (packetImpl.Common.ToGateway.Code == 1)
             {
-                new CeleritasRootHandler().Handle(packetImpl.Celeritas);
+                var networkChannelHelper = (NetworkChannelHelper)sender;
+                var handler = networkChannelHelper.GetCeleritasHandler<celeritas>();
+                if (handler != null)
+                {
+                    handler.Handle(sender, packetImpl.Celeritas);
+                }
+                else
+                {
+                    Log.Error("Can not find handler for 'celeritas'.");
+                }
             }
             else
             {
