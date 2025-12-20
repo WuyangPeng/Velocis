@@ -1,6 +1,7 @@
 ﻿using Celeritas.Proto;
 using Game.Scripts.Main.Runtime.Network.PacketHandler;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.Network.Generate
 {
@@ -8,11 +9,10 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
     {
         public override void Handle(object sender, celeritas message)
         {
-            var networkChannelHelper = (NetworkChannelHelper)sender;
             switch (message.PayloadCase)
             {
                 case celeritas.PayloadOneofCase.CeleritasResponse:
-                    var handler = networkChannelHelper.GetCeleritasHandler<response>();
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<response>();
                     if (handler != null)
                     {
                         handler.Handle(sender, message.CeleritasResponse);

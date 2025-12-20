@@ -16,10 +16,9 @@ namespace Game.Scripts.Main.Runtime.Network.PacketHandler
             var packetImpl = (SCCeleritas)packet;
             Log.Info("Receive packet '{0}'.", packetImpl.Id.ToString());
 
-            if (packetImpl.Common.ToGateway.Code == 1)
+             if (packetImpl.Common.ToGateway.Code == 1)
             {
-                var networkChannelHelper = (NetworkChannelHelper)sender;
-                var handler = networkChannelHelper.GetCeleritasHandler<celeritas>();
+                var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<celeritas>();
                 if (handler != null)
                 {
                     handler.Handle(sender, packetImpl.Celeritas);
