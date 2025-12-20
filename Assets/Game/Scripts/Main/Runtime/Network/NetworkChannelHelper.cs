@@ -31,7 +31,7 @@ namespace Game.Scripts.Main.Runtime.Network
         /// <summary>
         ///     获取消息包头长度。
         /// </summary>
-        public int PacketHeaderLength => sizeof(short) + sizeof(short) + sizeof(int); // 修正为 8 字节
+        public int PacketHeaderLength => sizeof(short) + sizeof(short) + sizeof(int);
 
         /// <summary>
         ///     初始化网络频道辅助器。
