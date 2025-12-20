@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Celeritas.Proto;
 using Celeritas.Proto.Client;
 using Celeritas.Proto.Common;
@@ -48,6 +48,14 @@ namespace Game.Scripts.Main.Runtime.Network.Packet
             Celeritas.CeleritasRequest.Client.Player.Login.Login = new login_request();
 
             return Celeritas.CeleritasRequest.Client.Player.Login.Login;
+        }
+
+        public client_heartbeat_request SetPlayerClientHeartbeat()
+        {
+            SetPlayer();
+            Celeritas.CeleritasRequest.Client.Player.Heartbeat = new client_heartbeat_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Heartbeat;
         }
 
         public override void Clear()
