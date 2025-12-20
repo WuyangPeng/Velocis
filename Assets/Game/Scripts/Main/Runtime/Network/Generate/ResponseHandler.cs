@@ -5,7 +5,6 @@
 
 using Celeritas.Proto;
 using Celeritas.Proto.Client;
-using Celeritas.Proto.Service;
 using Game.Scripts.Main.Runtime.Network.PacketHandler;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
@@ -18,20 +17,6 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
         {
             switch (message.PayloadCase)
             {
-                case response.PayloadOneofCase.Service:
-                {
-                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<service_response>();
-                    if (handler != null)
-                    {
-                        handler.Handle(sender, message.Service);
-                    }
-                    else
-                    {
-                        Log.Error("Can not find handler for 'service'.");
-                    }
-
-                    break;
-                }
                 case response.PayloadOneofCase.Client:
                 {
                     var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<client_response>();
@@ -44,6 +29,15 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
                         Log.Error("Can not find handler for 'client'.");
                     }
 
+                    break;
+                }
+                case response.PayloadOneofCase.None:
+                {
+                    break;
+                }
+                default:
+                {
+                    Log.Warning($"Unhandled payload case '{message.PayloadCase}' in message 'response'.");
                     break;
                 }
             }

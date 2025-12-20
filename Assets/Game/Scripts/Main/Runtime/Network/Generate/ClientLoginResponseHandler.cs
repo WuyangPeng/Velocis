@@ -44,6 +44,15 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
 
                     break;
                 }
+                case client_login_response.PayloadOneofCase.None:
+                {
+                    break;
+                }
+                default:
+                {
+                    Log.Warning($"Unhandled payload case '{message.PayloadCase}' in message 'client_login_response'.");
+                    break;
+                }
             }
         }
     }

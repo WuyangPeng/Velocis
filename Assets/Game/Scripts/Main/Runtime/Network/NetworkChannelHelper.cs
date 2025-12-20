@@ -111,7 +111,12 @@ namespace Game.Scripts.Main.Runtime.Network
         /// <returns>是否发送心跳消息包成功。</returns>
         public bool SendHeartBeat()
         {
-            // m_NetworkChannel.Send(ReferencePool.Acquire<CSHeartBeat>());
+            var packet = ProtoHelper.GetProto();
+
+            packet.Mutable_Player_ClientHeartbeat();
+
+            m_NetworkChannel.Send(packet);
+
             return true;
         }
 
@@ -246,12 +251,6 @@ namespace Game.Scripts.Main.Runtime.Network
                 ReferencePool.Release(messageHeader);
                 return null;
             }
-        }
-
-
-        private void SendProto(CSCeleritas packet)
-        {
-            m_NetworkChannel.Send(packet);
         }
 
 

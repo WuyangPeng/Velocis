@@ -16,20 +16,6 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
         {
             switch (message.PayloadCase)
             {
-                case celeritas.PayloadOneofCase.CeleritasRequest:
-                {
-                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<request>();
-                    if (handler != null)
-                    {
-                        handler.Handle(sender, message.CeleritasRequest);
-                    }
-                    else
-                    {
-                        Log.Error("Can not find handler for 'celeritas_request'.");
-                    }
-
-                    break;
-                }
                 case celeritas.PayloadOneofCase.CeleritasResponse:
                 {
                     var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<response>();
@@ -42,6 +28,15 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
                         Log.Error("Can not find handler for 'celeritas_response'.");
                     }
 
+                    break;
+                }
+                case celeritas.PayloadOneofCase.None:
+                {
+                    break;
+                }
+                default:
+                {
+                    Log.Warning($"Unhandled payload case '{message.PayloadCase}' in message 'celeritas'.");
                     break;
                 }
             }
