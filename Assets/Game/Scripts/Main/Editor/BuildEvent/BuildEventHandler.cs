@@ -34,7 +34,8 @@ namespace Game.Scripts.Main.Editor.BuildEvent
             string outputPackedPath,
             string buildReportPath)
         {
-            var streamingAssetsPath = Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "StreamingAssets"));
+            var streamingAssetsPath =
+                Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "StreamingAssets"));
             var fileNames = Directory.GetFiles(streamingAssetsPath, "*", SearchOption.AllDirectories);
             foreach (var fileName in fileNames)
             {
@@ -75,19 +76,47 @@ namespace Game.Scripts.Main.Editor.BuildEvent
         {
         }
 
-        public void OnPreprocessPlatform(Platform platform, string workingPath, bool outputPackageSelected, string outputPackagePath, bool outputFullSelected, string outputFullPath, bool outputPackedSelected, string outputPackedPath)
+        public void OnPreprocessPlatform(Platform platform,
+            string workingPath,
+            bool outputPackageSelected,
+            string outputPackagePath,
+            bool outputFullSelected,
+            string outputFullPath,
+            bool outputPackedSelected,
+            string outputPackedPath)
         {
         }
 
-        public void OnBuildAssetBundlesComplete(Platform platform, string workingPath, bool outputPackageSelected, string outputPackagePath, bool outputFullSelected, string outputFullPath, bool outputPackedSelected, string outputPackedPath, AssetBundleManifest assetBundleManifest)
+        public void OnBuildAssetBundlesComplete(Platform platform,
+            string workingPath,
+            bool outputPackageSelected,
+            string outputPackagePath,
+            bool outputFullSelected,
+            string outputFullPath,
+            bool outputPackedSelected,
+            string outputPackedPath,
+            AssetBundleManifest assetBundleManifest)
         {
         }
 
-        public void OnOutputUpdatableVersionListData(Platform platform, string versionListPath, int versionListLength, int versionListHashCode, int versionListCompressedLength, int versionListCompressedHashCode)
+        public void OnOutputUpdatableVersionListData(Platform platform,
+            string versionListPath,
+            int versionListLength,
+            int versionListHashCode,
+            int versionListCompressedLength,
+            int versionListCompressedHashCode)
         {
         }
 
-        public void OnPostprocessPlatform(Platform platform, string workingPath, bool outputPackageSelected, string outputPackagePath, bool outputFullSelected, string outputFullPath, bool outputPackedSelected, string outputPackedPath, bool isSuccess)
+        public void OnPostprocessPlatform(Platform platform,
+            string workingPath,
+            bool outputPackageSelected,
+            string outputPackagePath,
+            bool outputFullSelected,
+            string outputFullPath,
+            bool outputPackedSelected,
+            string outputPackedPath,
+            bool isSuccess)
         {
             if (!outputPackageSelected)
             {
@@ -99,11 +128,14 @@ namespace Game.Scripts.Main.Editor.BuildEvent
                 return;
             }
 
-            var streamingAssetsPath = Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "StreamingAssets"));
+            var streamingAssetsPath =
+                Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "StreamingAssets"));
             var fileNames = Directory.GetFiles(outputPackagePath, "*", SearchOption.AllDirectories);
             foreach (var fileName in fileNames)
             {
-                var destFileName = Utility.Path.GetRegularPath(Path.Combine(streamingAssetsPath, fileName[outputPackagePath.Length..]));
+                var destFileName =
+                    Utility.Path.GetRegularPath(Path.Combine(streamingAssetsPath,
+                        fileName[outputPackagePath.Length..]));
                 var destFileInfo = new FileInfo(destFileName);
                 if (destFileInfo.Directory is { Exists: false })
                 {

@@ -4,41 +4,9 @@ using UnityEngine;
 
 namespace Game.Scripts.Main.Editor.ToolbarExtender
 {
-    [InitializeOnLoad]
-    public class SceneSwitchLeftButton
-    {
-        private const string SceneName = "Velocis";
-
-        private const string ButtonStyleName = "Tab middle";
-        private static GUIStyle s_ButtonGuiStyle;
-
-        static SceneSwitchLeftButton()
-        {
-            ToolbarExtender.LeftToolbarGUI.Add(OnToolbarGUI);
-        }
-
-        private static void OnToolbarGUI()
-        {
-            s_ButtonGuiStyle ??= new GUIStyle(ButtonStyleName)
-            {
-                padding = new RectOffset(2, 8, 2, 2),
-                alignment = TextAnchor.MiddleCenter,
-                fontStyle = FontStyle.Bold
-            };
-
-            GUILayout.FlexibleSpace();
-            if (GUILayout.Button(
-                    new GUIContent("Launcher", EditorGUIUtility.FindTexture("PlayButton"), "Start Scene Launcher"),
-                    s_ButtonGuiStyle))
-            {
-                SceneHelper.StartScene(SceneName);
-            }
-        }
-    }
-
     internal static class SceneHelper
     {
-        private static string s_SceneToOpen;
+        private static string _sceneToOpen;
 
         public static void StartScene(string sceneName)
         {
@@ -47,13 +15,13 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
                 EditorApplication.isPlaying = false;
             }
 
-            s_SceneToOpen = sceneName;
+            _sceneToOpen = sceneName;
             EditorApplication.update += OnUpdate;
         }
 
         private static void OnUpdate()
         {
-            if (s_SceneToOpen == null ||
+            if (_sceneToOpen == null ||
                 EditorApplication.isPlaying ||
                 EditorApplication.isPaused ||
                 EditorApplication.isCompiling ||
@@ -66,7 +34,7 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
 
             if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
             {
-                var guids = AssetDatabase.FindAssets("t:scene " + s_SceneToOpen, null);
+                var guids = AssetDatabase.FindAssets("t:scene " + _sceneToOpen, null);
                 if (guids.Length == 0)
                 {
                     Debug.LogWarning("Couldn't find scene file");
@@ -79,7 +47,7 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
                 }
             }
 
-            s_SceneToOpen = null;
+            _sceneToOpen = null;
         }
     }
 }

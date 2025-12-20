@@ -18,7 +18,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                     Debug.LogError(Utility.Text.Format("Check raw data failure. DataTableName='{0}'", dataTableName));
                     break;
                 }
-
+ 
                 DataTableGenerator.GenerateDataFile(dataTableProcessor, dataTableName);
                 DataTableGenerator.GenerateCodeFile(dataTableProcessor, dataTableName);
             }
