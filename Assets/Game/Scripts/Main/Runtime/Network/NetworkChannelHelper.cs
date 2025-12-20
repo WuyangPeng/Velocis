@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Text;
+using Celeritas.Proto;
+using Celeritas.Proto.Common;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Network.Packet;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Network;
-using ProtoBuf;
-using ProtoBuf.Meta;
+using Google.Protobuf;
 using UnityEngine.Device;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
@@ -31,7 +32,7 @@ namespace Game.Scripts.Main.Runtime.Network
         /// <summary>
         ///     获取消息包头长度。
         /// </summary>
-        public int PacketHeaderLength => sizeof(int);
+        public int PacketHeaderLength => sizeof(short) + sizeof(short) + sizeof(int); // 修正为 8 字节
 
         /// <summary>
         ///     初始化网络频道辅助器。
@@ -109,7 +110,7 @@ namespace Game.Scripts.Main.Runtime.Network
         /// <returns>是否发送心跳消息包成功。</returns>
         public bool SendHeartBeat()
         {
-            m_NetworkChannel.Send(ReferencePool.Acquire<CSHeartBeat>());
+            // m_NetworkChannel.Send(ReferencePool.Acquire<CSHeartBeat>());
             return true;
         }
 
@@ -134,32 +135,55 @@ namespace Game.Scripts.Main.Runtime.Network
                 return false;
             }
 
-            m_CachedStream.SetLength(m_CachedStream.Capacity); // 此行防止 Array.Copy 的数据无法写入
-            m_CachedStream.Position = 0L;
+            if (packet is not CSCeleritas celeritas)
+            {
+                Log.Error("Packet '{0}' is not a CSCeleritas.", packet.GetType().FullName);
+                return false;
+            }
 
-            /* var packetHeader = ReferencePool.Acquire<CSPacketHeader>();
-            Serializer.Serialize(m_CachedStream, packetHeader);
-            ReferencePool.Release(packetHeader);*/
+            m_CachedStream.SetLength(0);
 
-            Serializer.SerializeWithLengthPrefix(m_CachedStream, packet, PrefixStyle.Fixed32);
+            var packetHeader = ReferencePool.Acquire<MessageHeader>();
+            packetHeader.headerSize = (short)celeritas.Common.CalculateSize();
+            packetHeader.bodySize = celeritas.Celeritas.CalculateSize();
+
+            using (var writer = new BinaryWriter(m_CachedStream, Encoding.UTF8, true))
+            {
+                packetHeader.WriteTo(writer);
+            }
+
+            celeritas.Common.WriteTo(m_CachedStream);
+            celeritas.Celeritas.WriteTo(m_CachedStream);
+
+            ReferencePool.Release(packetHeader);
             ReferencePool.Release(packetImpl);
 
             m_CachedStream.WriteTo(destination);
+
             return true;
         }
 
         /// <summary>
         ///     反序列化消息包头。
         /// </summary>
-        /// <param name="source">要反序列化的来源流。</param>
-        /// <param name="customErrorData">用户自定义错误数据。</param>
-        /// <returns>反序列化后的消息包头。</returns>
         public IPacketHeader DeserializePacketHeader(Stream source, out object customErrorData)
         {
-            // 注意：此函数并不在主线程调用！
             customErrorData = null;
-            return (IPacketHeader)RuntimeTypeModel.Default.Deserialize(source, ReferencePool.Acquire<SCPacketHeader>(),
-                typeof(SCPacketHeader));
+            try
+            {
+                using var reader = new BinaryReader(source, Encoding.UTF8, true);
+
+                var header = ReferencePool.Acquire<MessageHeader>();
+
+                header.ReadFrom(reader);
+
+                return header;
+            }
+            catch (Exception ex)
+            {
+                customErrorData = ex.ToString();
+                return null;
+            }
         }
 
         /// <summary>
@@ -175,34 +199,52 @@ namespace Game.Scripts.Main.Runtime.Network
             // 注意：此函数并不在主线程调用！
             customErrorData = null;
 
-            var scPacketHeader = packetHeader as SCPacketHeader;
-            if (scPacketHeader == null)
+            var messageHeader = packetHeader as MessageHeader;
+            if (messageHeader == null)
             {
-                Log.Warning("Packet header is invalid.");
+                Log.Warning("Packet header is not a MessageHeader.");
                 return null;
             }
 
-            GameFramework.Network.Packet packet = null;
-            if (scPacketHeader.IsValid)
-            {
-                var packetType = GetServerToClientPacketType(scPacketHeader.Id);
-                if (packetType != null)
-                {
-                    packet = (GameFramework.Network.Packet)RuntimeTypeModel.Default.DeserializeWithLengthPrefix(source,
-                        ReferencePool.Acquire(packetType), packetType, PrefixStyle.Fixed32, 0);
-                }
-                else
-                {
-                    Log.Warning("Can not deserialize packet for packet id '{0}'.", scPacketHeader.Id.ToString());
-                }
-            }
-            else
-            {
-                Log.Warning("Packet header is invalid.");
-            }
 
-            ReferencePool.Release(scPacketHeader);
-            return packet;
+            try
+            {
+                var commonData = new byte[messageHeader.headerSize];
+                var bytesRead = source.Read(commonData, 0, commonData.Length);
+                if (bytesRead < commonData.Length)
+                {
+                    throw new EndOfStreamException(
+                        $"Expected to read {commonData.Length} bytes for Common header, but only got {bytesRead}.");
+                }
+
+                var common = header.Parser.ParseFrom(commonData);
+
+
+                var bodyData = new byte[messageHeader.bodySize];
+                bytesRead = source.Read(bodyData, 0, bodyData.Length);
+                if (bytesRead < bodyData.Length)
+                {
+                    throw new EndOfStreamException(
+                        $"Expected to read {bodyData.Length} bytes for Celeritas body, but only got {bytesRead}.");
+                }
+
+                var celeritasBody = celeritas.Parser.ParseFrom(bodyData);
+
+
+                var packet = ReferencePool.Acquire<SCCeleritas>();
+                packet.Common = common;
+                packet.Celeritas = celeritasBody;
+
+                ReferencePool.Release(messageHeader);
+                return packet;
+            }
+            catch (Exception e)
+            {
+                customErrorData = e.ToString();
+                Log.Error("Deserialize packet failed: {0}", e.ToString());
+                ReferencePool.Release(messageHeader);
+                return null;
+            }
         }
 
 
@@ -245,13 +287,6 @@ namespace Game.Scripts.Main.Runtime.Network
             Log.Info("Network channel '{0}' connected, local address '{1}', remote address '{2}'.",
                 ne.NetworkChannel.Name, ne.NetworkChannel.Socket.LocalEndPoint.ToString(),
                 ne.NetworkChannel.Socket.RemoteEndPoint.ToString());
-
-            var procedureMenu = (ProcedureMenu)GameEntry.Procedure.CurrentProcedure;
-            if (procedureMenu == null)
-            {
-                Log.Warning("ProcedureMenu is invalid when On Network Connected.");
-                return;
-            }
 
             SendLogin();
         }

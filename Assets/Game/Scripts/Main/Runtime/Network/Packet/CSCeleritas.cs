@@ -24,8 +24,8 @@ namespace Game.Scripts.Main.Runtime.Network.Packet
 
         public override int Id => 100;
 
-        [ProtoMember(1)] public header Common { get; set; }
-        [ProtoMember(2)] public celeritas Celeritas { get; set; }
+        public header Common { get; set; }
+        public celeritas Celeritas { get; set; }
 
         public client_player_request SetPlayer()
         {
@@ -52,8 +52,14 @@ namespace Game.Scripts.Main.Runtime.Network.Packet
 
         public override void Clear()
         {
-            Common = null;
-            Celeritas = null;
+            Common = new header();
+            Celeritas = new celeritas
+            {
+                CeleritasRequest = new request
+                {
+                    Client = new client_request()
+                }
+            };
         }
     }
 }
