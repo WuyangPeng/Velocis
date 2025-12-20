@@ -32,32 +32,32 @@ namespace Game.Scripts.Main.Runtime.Network.Packet
         public header Common { get; set; }
         public celeritas Celeritas { get; set; }
 
-        public client_player_request SetPlayer()
+        private client_player_request Mutable_Player()
         {
             Celeritas.CeleritasRequest.Client.Player = new client_player_request();
 
             return Celeritas.CeleritasRequest.Client.Player;
         }
 
-        public client_login_request SetPlayerClientLogin()
+        private client_login_request Mutable_Player_ClientLogin()
         {
-            SetPlayer();
+            Mutable_Player();
             Celeritas.CeleritasRequest.Client.Player.Login = new client_login_request();
 
             return Celeritas.CeleritasRequest.Client.Player.Login;
         }
 
-        public login_request SetPlayerLogin()
+        public login_request Mutable_Player_ClientLogin_Login()
         {
-            SetPlayerClientLogin();
+            Mutable_Player_ClientLogin();
             Celeritas.CeleritasRequest.Client.Player.Login.Login = new login_request();
 
             return Celeritas.CeleritasRequest.Client.Player.Login.Login;
         }
 
-        public client_heartbeat_request SetPlayerClientHeartbeat()
+        public client_heartbeat_request Mutable_Player_ClientHeartbeat()
         {
-            SetPlayer();
+            Mutable_Player();
             Celeritas.CeleritasRequest.Client.Player.Heartbeat = new client_heartbeat_request();
 
             return Celeritas.CeleritasRequest.Client.Player.Heartbeat;

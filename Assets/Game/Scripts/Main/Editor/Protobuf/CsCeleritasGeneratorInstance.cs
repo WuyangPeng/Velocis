@@ -99,7 +99,41 @@ namespace Game.Scripts.Main.Editor.Protobuf
                     var fieldPropertyName = ToPascalCase(field.Name);
                     var newPropertyPath = propertyPath + "." + fieldPropertyName;
 
-                    sb.AppendLine($"        public {returnType} {methodName}()");
+                    // 判断是否为底层（叶子节点）
+                    // 规则：
+                    // 1. 如果没有 oneof，是底层。
+                    // 2. 如果有 oneof，且所有 oneof 字段的类型都包含 "request" 或 "response"，则不是底层（是路由节点）。
+                    // 3. 如果有 oneof，但只要有一个字段类型不包含 "request" 或 "response"，则是底层（混合或数据节点）。
+                    bool isLeaf = true;
+                    var childMsg = FindMessage(fieldType);
+                    if (childMsg != null)
+                    {
+                        bool hasOneOf = false;
+                        bool allOneOfAreReqOrRes = true;
+
+                        foreach (var childField in childMsg.Fields)
+                        {
+                            if (!string.IsNullOrEmpty(childField.OneOfGroup))
+                            {
+                                hasOneOf = true;
+                                var childTypeName = childField.Type.ToLower();
+                                if (!childTypeName.Contains("request") && !childTypeName.Contains("response"))
+                                {
+                                    allOneOfAreReqOrRes = false;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (hasOneOf && allOneOfAreReqOrRes)
+                        {
+                            isLeaf = false;
+                        }
+                    }
+
+                    string accessModifier = isLeaf ? "public" : "private";
+
+                    sb.AppendLine($"        {accessModifier} {returnType} {methodName}()");
                     sb.AppendLine("        {");
 
                     if (path.Count > 0)
@@ -114,7 +148,6 @@ namespace Game.Scripts.Main.Editor.Protobuf
                     sb.AppendLine("        }");
                     sb.AppendLine();
 
-                    var childMsg = FindMessage(fieldType);
                     if (childMsg != null)
                     {
                         GenerateMethods(sb, childMsg, currentPath, newPropertyPath);
@@ -129,15 +162,13 @@ namespace Game.Scripts.Main.Editor.Protobuf
                 return "";
             }
 
-            var first = GetCleanTypeName(path[0].Type);
-
-            if (path.Count == 1)
+            var sb = new StringBuilder("Mutable");
+            foreach (var field in path)
             {
-                return "Set" + first;
+                sb.Append("_");
+                sb.Append(GetCleanTypeName(field.Type));
             }
-
-            var last = GetCleanTypeName(path[path.Count - 1].Type);
-            return "Set" + first + last;
+            return sb.ToString();
         }
 
         private string GetCleanTypeName(string typeName)

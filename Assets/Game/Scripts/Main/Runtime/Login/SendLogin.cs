@@ -11,7 +11,7 @@ namespace Game.Scripts.Main.Runtime.Login
         {
             var packet = ProtoHelper.GetProto();
 
-            var login = packet.SetPlayerLogin();
+            var login = packet.Mutable_Player_ClientLogin_Login();
 
             var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
             login.Token = accountModule.GetToken();
