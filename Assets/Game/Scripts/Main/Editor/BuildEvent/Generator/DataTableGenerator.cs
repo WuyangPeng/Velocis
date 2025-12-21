@@ -337,42 +337,9 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         /// <returns>生成的属性数组及相关方法的C#代码字符串。</returns>
         private static string GenerateDataTablePropertyArray(DataTableProcessor dataTableProcessor)
         {
-            var propertyCollections = new List<PropertyCollection>();
-            for (var i = 0; i < dataTableProcessor.RawColumnCount; i++)
-            {
-                if (dataTableProcessor.IsCommentColumn(i))
-                {
-                    // 注释列
-                    continue;
-                }
-
-                if (dataTableProcessor.IsIdColumn(i))
-                {
-                    // 编号列
-                    continue;
-                }
-
-                var name = dataTableProcessor.GetName(i);
-                if (!EndWithNumberRegex.IsMatch(name))
-                {
-                    continue;
-                }
-
-                var propertyCollectionName = EndWithNumberRegex.Replace(name, string.Empty);
-                var id = int.Parse(EndWithNumberRegex.Match(name).Value);
-
-                var propertyCollection = propertyCollections.FirstOrDefault(pc => pc.Name == propertyCollectionName);
-
-                if (propertyCollection == null)
-                {
-                    propertyCollection = new PropertyCollection(propertyCollectionName, dataTableProcessor.GetLanguageKeyword(i));
-                    propertyCollections.Add(propertyCollection);
-                }
-
-                propertyCollection.AddItem(id, name);
-            }
-
+            var propertyCollections = CollectPropertyCollections(dataTableProcessor);
             var stringBuilder = new StringBuilder();
+
             var firstProperty = true;
             foreach (var propertyCollection in propertyCollections)
             {
@@ -456,6 +423,43 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 .Append("        }");
 
             return stringBuilder.ToString();
+        }
+        
+        /// <summary>
+        /// 收集所有可成组的属性。
+        /// </summary>
+        /// <param name="dataTableProcessor">数据表处理器。</param>
+        /// <returns>属性集合列表。</returns>
+        private static List<PropertyCollection> CollectPropertyCollections(DataTableProcessor dataTableProcessor)
+        {
+            var propertyCollections = new List<PropertyCollection>();
+            for (var i = 0; i < dataTableProcessor.RawColumnCount; i++)
+            {
+                if (dataTableProcessor.IsCommentColumn(i) || dataTableProcessor.IsIdColumn(i))
+                {
+                    continue;
+                }
+
+                var name = dataTableProcessor.GetName(i);
+                if (!EndWithNumberRegex.IsMatch(name))
+                {
+                    continue;
+                }
+
+                var propertyCollectionName = EndWithNumberRegex.Replace(name, string.Empty);
+                var id = int.Parse(EndWithNumberRegex.Match(name).Value);
+
+                var propertyCollection = propertyCollections.FirstOrDefault(pc => pc.Name == propertyCollectionName);
+
+                if (propertyCollection == null)
+                {
+                    propertyCollection = new PropertyCollection(propertyCollectionName, dataTableProcessor.GetLanguageKeyword(i));
+                    propertyCollections.Add(propertyCollection);
+                }
+
+                propertyCollection.AddItem(id, name);
+            }
+            return propertyCollections;
         }
     }
 }
