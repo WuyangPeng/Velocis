@@ -6,13 +6,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
     {
         private sealed class Int32Processor : GenericDataProcessor<int>
         {
-            public override bool IsSystem
-            {
-                get
-                {
-                    return true;
-                }
-            }
+            public override bool IsSystem => true;
 
             public override string LanguageKeyword => "int";
 

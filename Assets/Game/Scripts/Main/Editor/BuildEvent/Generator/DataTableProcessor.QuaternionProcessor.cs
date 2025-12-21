@@ -13,7 +13,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
             public override string[] GetTypeStrings()
             {
-                return new string[]
+                return new[]
                 {
                     "quaternion",
                     "unityengine.quaternion"
