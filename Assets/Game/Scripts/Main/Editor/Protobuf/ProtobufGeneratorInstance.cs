@@ -74,6 +74,12 @@ namespace Game.Scripts.Main.Editor.Protobuf
 
         private static void GenerateCodeForFile(string protoFile, string protocPath, string protoDirectory, string outputDirectory)
         {
+            var fileSpecificOutputDirectory = PrepareOutputDirectory(protoFile, protoDirectory, outputDirectory);
+            ExecuteProtocCommand(protoFile, protocPath, protoDirectory, fileSpecificOutputDirectory);
+        }
+
+        private static string PrepareOutputDirectory(string protoFile, string protoDirectory, string outputDirectory)
+        {
             var fileDir = Path.GetDirectoryName(protoFile);
             var relativeDir = Path.GetRelativePath(protoDirectory, fileDir);
 
@@ -84,11 +90,15 @@ namespace Game.Scripts.Main.Editor.Protobuf
             }
 
             Directory.CreateDirectory(fileSpecificOutputDirectory);
+            return fileSpecificOutputDirectory;
+        }
 
+        private static void ExecuteProtocCommand(string protoFile, string protocPath, string protoDirectory, string outputDirectory)
+        {
             var startInfo = new ProcessStartInfo
             {
                 FileName = protocPath,
-                Arguments = $"--csharp_out=\"{fileSpecificOutputDirectory}\" --proto_path=\"{protoDirectory}\" \"{protoFile}\"",
+                Arguments = $"--csharp_out=\"{outputDirectory}\" --proto_path=\"{protoDirectory}\" \"{protoFile}\"",
                 RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
