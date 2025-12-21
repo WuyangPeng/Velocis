@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Main.Editor.Protobuf
 {
-    public sealed class HandlerGenerator
+    public static class HandlerGenerator
     {
         [MenuItem("Velocis/Generate Protobuf Handlers")]
         public static void Generate()

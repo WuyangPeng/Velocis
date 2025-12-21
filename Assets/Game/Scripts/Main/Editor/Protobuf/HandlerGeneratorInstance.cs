@@ -12,27 +12,23 @@ namespace Game.Scripts.Main.Editor.Protobuf
     public class HandlerGeneratorInstance
     {
         private readonly Dictionary<string, ProtoMessage> _messages = new();
-        private string _outputDirAbs;
-        private string _protoRootAbs;
+        private readonly string _outputDirAbs = Path.Combine(Application.dataPath, "Game", "proto");
+        private readonly string _protoRootAbs = Path.Combine(Application.dataPath, "Game/Scripts/Main/Runtime/Network/Generate");
 
         public void Run()
         {
-            _protoRootAbs = Path.Combine(Application.dataPath, "Game", "proto");
-            _outputDirAbs = Path.Combine(Application.dataPath, "Game/Scripts/Main/Runtime/Network/Generate");
-
             if (!Directory.Exists(_outputDirAbs))
             {
                 Directory.CreateDirectory(_outputDirAbs);
             }
 
             _messages.Clear();
-            ParseAllProtos(_protoRootAbs);
+            ParseAllProto(_protoRootAbs);
 
-            foreach (var message in _messages.Values)
-                if (message.OneOfs.Any() && !message.Name.Contains("request", StringComparison.OrdinalIgnoreCase))
-                {
-                    GenerateHandlerForMessage(message);
-                }
+            foreach (var message in _messages.Values.Where(message => message.OneOfs.Any() && !message.Name.Contains("request", StringComparison.OrdinalIgnoreCase)))
+            {
+                GenerateHandlerForMessage(message);
+            }
 
             AssetDatabase.Refresh();
         }
@@ -65,7 +61,11 @@ namespace Game.Scripts.Main.Editor.Protobuf
             sb.AppendLine("//     Do not modify");
             sb.AppendLine("// </auto-generated>");
             sb.AppendLine();
-            foreach (var ns in requiredNamespaces.OrderBy(n => n)) sb.AppendLine($"using {ns};");
+            foreach (var ns in requiredNamespaces.OrderBy(n => n))
+            {
+                sb.AppendLine($"using {ns};");
+            }
+
             sb.AppendLine("using Game.Scripts.Main.Runtime.Network.PacketHandler;");
             sb.AppendLine("using UnityGameFramework.Runtime;");
             sb.AppendLine("using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;");
@@ -93,8 +93,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
                     var fieldType = GetCSharpTypeName(field.Type);
                     sb.AppendLine($"                case {messageName}.{oneOfPascal}OneofCase.{fieldPascal}:");
                     sb.AppendLine("                {");
-                    sb.AppendLine(
-                        $"                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<{fieldType}>();");
+                    sb.AppendLine($"                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<{fieldType}>();");
                     sb.AppendLine("                    if (handler != null)");
                     sb.AppendLine("                    {");
                     sb.AppendLine($"                        handler.Handle(sender, message.{fieldPascal});");
@@ -114,8 +113,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
                 sb.AppendLine("                }");
                 sb.AppendLine("                default:");
                 sb.AppendLine("                {");
-                sb.AppendLine(
-                    $"                    Log.Warning($\"Unhandled payload case '{{message.{oneOfPascal}Case}}' in message '{messageName}'.\");");
+                sb.AppendLine($"                    Log.Warning($\"Unhandled payload case '{{message.{oneOfPascal}Case}}' in message '{messageName}'.\");");
                 sb.AppendLine("                    break;");
                 sb.AppendLine("                }");
 
@@ -135,14 +133,17 @@ namespace Game.Scripts.Main.Editor.Protobuf
             Debug.Log($"Generated handler: {className}.cs");
         }
 
-        private void ParseAllProtos(string rootPath)
+        private void ParseAllProto(string rootPath)
         {
             var files = Directory.GetFiles(rootPath, "*.proto", SearchOption.AllDirectories)
                 .Where(file =>
                     !file.Contains(Path.DirectorySeparatorChar + "service" + Path.DirectorySeparatorChar) &&
                     !file.Contains(Path.DirectorySeparatorChar + "common" + Path.DirectorySeparatorChar)
                 );
-            foreach (var file in files) ParseProtoFile(file);
+            foreach (var file in files)
+            {
+                ParseProtoFile(file);
+            }
         }
 
         private void ParseProtoFile(string path)
@@ -156,7 +157,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
                 package = packageMatch.Groups[1].Value;
             }
 
-            content = Regex.Replace(content, @"//.*", "");
+            content = Regex.Replace(content, "//.*", "");
 
             var lines = content.Split('\n');
             ProtoMessage currentMessage = null;
@@ -234,45 +235,25 @@ namespace Game.Scripts.Main.Editor.Protobuf
             }
 
             var matchingKeys = _messages.Keys.Where(k => k.EndsWith("." + typeName)).ToList();
-            if (matchingKeys.Count == 1)
-            {
-                return matchingKeys[0];
-            }
-
-            return null;
+            return matchingKeys.Count == 1 ? matchingKeys[0] : null;
         }
 
         private string GetCSharpNamespace(string protoPackage)
         {
-            if (string.IsNullOrEmpty(protoPackage))
-            {
-                return "Celeritas.Proto";
-            }
-
-            return string.Join(".", protoPackage.Split('.').Select(ToPascalCase));
+            return string.IsNullOrEmpty(protoPackage) ? "Celeritas.Proto" : string.Join(".", protoPackage.Split('.').Select(ToPascalCase));
         }
 
-        private string GetCleanMessageName(string protoName)
+        private static string GetCleanMessageName(string protoName)
         {
-            if (protoName.Contains("."))
-            {
-                return protoName.Substring(protoName.LastIndexOf('.') + 1);
-            }
-
-            return protoName;
+            return protoName.Contains(".") ? protoName[(protoName.LastIndexOf('.') + 1)..] : protoName;
         }
 
-        private string GetCSharpTypeName(string protoType)
+        private static string GetCSharpTypeName(string protoType)
         {
-            if (protoType.Contains("."))
-            {
-                return protoType.Substring(protoType.LastIndexOf('.') + 1);
-            }
-
-            return protoType;
+            return protoType.Contains(".") ? protoType[(protoType.LastIndexOf('.') + 1)..] : protoType;
         }
 
-        private string ToPascalCase(string str)
+        private static string ToPascalCase(string str)
         {
             if (string.IsNullOrEmpty(str))
             {
