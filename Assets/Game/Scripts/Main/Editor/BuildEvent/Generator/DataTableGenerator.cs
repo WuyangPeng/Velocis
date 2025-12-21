@@ -9,6 +9,14 @@ using UnityEngine;
 
 namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
+    /// <summary>
+    /// 数据表生成器。
+    /// <para>这是一个编辑器工具类，用于根据文本格式的数据表（.txt）自动生成二进制数据文件（.bytes）和对应的C#数据结构代码（DR*.cs）。</para>
+    /// <para>主要流程：</para>
+    /// <para>1. 读取位于 Assets/Game/DataTables 的 .txt 文件。</para>
+    /// <para>2. 将其转换为高效的二进制 .bytes 文件，供游戏运行时读取。</para>
+    /// <para>3. 根据数据表结构和模板（DataTableCodeTemplate.txt），生成强类型的C#类，方便在代码中安全、便捷地访问数据。</para>
+    /// </summary>
     public static class DataTableGenerator
     {
         private const string DataTablePath = "Assets/Game/DataTables";
@@ -17,10 +25,15 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         private static readonly Regex EndWithNumberRegex = new(@"\d+$");
         private static readonly Regex NameRegex = new("^[A-Z][A-Za-z0-9_]*$");
 
+        /// <summary>
+        /// 创建并配置一个数据表处理器。
+        /// </summary>
+        /// <param name="dataTableName">数据表名称（不含扩展名）。</param>
+        /// <returns>配置好的数据表处理器实例。</returns>
         public static DataTableProcessor CreateDataTableProcessor(string dataTableName)
         {
             return new DataTableProcessor(Utility.Path.GetRegularPath(Path.Combine(DataTablePath, dataTableName + ".txt")),
-                Encoding.GetEncoding("GB2312"),
+                Encoding.UTF8,
                 1,
                 2,
                 null,
@@ -29,6 +42,12 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 1);
         }
 
+        /// <summary>
+        /// 检查原始数据表的有效性，主要是校验字段命名是否规范。
+        /// </summary>
+        /// <param name="dataTableProcessor">已创建的数据表处理器。</param>
+        /// <param name="dataTableName">要检查的数据表名称。</param>
+        /// <returns>如果数据有效，则返回 true；否则返回 false。</returns>
         public static bool CheckRawData(DataTableProcessor dataTableProcessor, string dataTableName)
         {
             for (var i = 0; i < dataTableProcessor.RawColumnCount; i++)
@@ -51,6 +70,11 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             return true;
         }
 
+        /// <summary>
+        /// 根据数据表处理器，生成二进制数据文件（.bytes）。
+        /// </summary>
+        /// <param name="dataTableProcessor">已创建的数据表处理器。</param>
+        /// <param name="dataTableName">要生成的数据表名称。</param>
         public static void GenerateDataFile(DataTableProcessor dataTableProcessor, string dataTableName)
         {
             var binaryDataFileName = Utility.Path.GetRegularPath(Path.Combine(DataTablePath, dataTableName + ".bytes"));
@@ -60,6 +84,11 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             }
         }
 
+        /// <summary>
+        /// 根据数据表处理器，生成对应的C#代码文件（DR*.cs）。
+        /// </summary>
+        /// <param name="dataTableProcessor">已创建的数据表处理器。</param>
+        /// <param name="dataTableName">要生成的数据表名称。</param>
         public static void GenerateCodeFile(DataTableProcessor dataTableProcessor, string dataTableName)
         {
             dataTableProcessor.SetCodeTemplate(CSharpCodeTemplateFileName, Encoding.UTF8);
@@ -73,6 +102,13 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             }
         }
 
+        /// <summary>
+        /// 数据表代码生成的具体实现回调方法。
+        /// <para>此方法会替换代码模板文件中的特定占位符（如 __DATA_TABLE_CLASS_NAME__）为实际生成的内容。</para>
+        /// </summary>
+        /// <param name="dataTableProcessor">数据表处理器。</param>
+        /// <param name="codeContent">用于构建代码内容的 StringBuilder 对象。</param>
+        /// <param name="userData">用户自定义数据，此处为数据表名称。</param>
         private static void DataTableCodeGenerator(DataTableProcessor dataTableProcessor, StringBuilder codeContent, object userData)
         {
             var dataTableName = (string)userData;
@@ -87,6 +123,11 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             codeContent.Replace("__DATA_TABLE_PROPERTY_ARRAY__", GenerateDataTablePropertyArray(dataTableProcessor));
         }
 
+        /// <summary>
+        /// 为数据表生成所有公开属性的C#代码。
+        /// </summary>
+        /// <param name="dataTableProcessor">数据表处理器。</param>
+        /// <returns>生成的属性C#代码字符串。</returns>
         private static string GenerateDataTableProperties(DataTableProcessor dataTableProcessor)
         {
             var stringBuilder = new StringBuilder();
@@ -128,6 +169,11 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             return stringBuilder.ToString();
         }
 
+        /// <summary>
+        /// 生成数据行解析相关的C#代码，包括从字符串（txt）和二进制（bytes）两种数据源的解析逻辑。
+        /// </summary>
+        /// <param name="dataTableProcessor">数据表处理器。</param>
+        /// <returns>生成的解析逻辑C#代码字符串。</returns>
         private static string GenerateDataTableParser(DataTableProcessor dataTableProcessor)
         {
             var stringBuilder = new StringBuilder();
@@ -225,11 +271,22 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             return stringBuilder.ToString();
         }
 
+        /// <summary>
+        /// 工具方法：将字符串的第一个字符转换为小写。
+        /// </summary>
+        /// <param name="input">输入字符串。</param>
+        /// <returns>转换后的字符串。</returns>
         private static string FirstCharToLower(string input)
         {
             return string.IsNullOrEmpty(input) ? input : char.ToLowerInvariant(input[0]) + (input.Length > 1 ? input[1..] : "");
         }
 
+        /// <summary>
+        /// 为以数字结尾的属性组（如 Prop1, Prop2）生成数组和访问器方法。
+        /// <para>例如，如果数据表中有 Reward1, Reward2, Reward3，此方法会生成一个 Reward 数组和 GetReward(id), GetRewardAt(index) 等辅助方法。</para>
+        /// </summary>
+        /// <param name="dataTableProcessor">数据表处理器。</param>
+        /// <returns>生成的属性数组及相关方法的C#代码字符串。</returns>
         private static string GenerateDataTablePropertyArray(DataTableProcessor dataTableProcessor)
         {
             var propertyCollections = new List<PropertyCollection>();
@@ -351,39 +408,6 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 .Append("        }");
 
             return stringBuilder.ToString();
-        }
-
-        private sealed class PropertyCollection
-        {
-            private readonly List<KeyValuePair<int, string>> _items;
-
-            public PropertyCollection(string name, string languageKeyword)
-            {
-                Name = name;
-                LanguageKeyword = languageKeyword;
-                _items = new List<KeyValuePair<int, string>>();
-            }
-
-            public string Name { get; }
-
-            public string LanguageKeyword { get; }
-
-            public int ItemCount => _items.Count;
-
-            public KeyValuePair<int, string> GetItem(int index)
-            {
-                if (index < 0 || index >= _items.Count)
-                {
-                    throw new GameFrameworkException(Utility.Text.Format("GetItem with invalid index '{0}'.", index));
-                }
-
-                return _items[index];
-            }
-
-            public void AddItem(int id, string propertyName)
-            {
-                _items.Add(new KeyValuePair<int, string>(id, propertyName));
-            }
         }
     }
 }
