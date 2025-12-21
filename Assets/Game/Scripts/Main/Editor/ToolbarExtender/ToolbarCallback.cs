@@ -38,14 +38,22 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
                 return;
             }
 
-            var toolbars = Resources.FindObjectsOfTypeAll(ToolbarType);
+            FindToolbar();
 
-            _currentToolbar = toolbars.Length > 0 ? (ScriptableObject)toolbars[0] : null;
-            if (_currentToolbar == null)
+            if (_currentToolbar != null)
             {
-                return;
+                SetupToolbar();
             }
+        }
 
+        private static void FindToolbar()
+        {
+            var toolbars = Resources.FindObjectsOfTypeAll(ToolbarType);
+            _currentToolbar = toolbars.Length > 0 ? (ScriptableObject)toolbars[0] : null;
+        }
+
+        private static void SetupToolbar()
+        {
             var root = _currentToolbar.GetType().GetField("m_Root", BindingFlags.NonPublic | BindingFlags.Instance);
             if (root == null)
             {

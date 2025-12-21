@@ -40,66 +40,87 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
             _commandStyle ??= new GUIStyle("CommandLeft");
 
             var screenWidth = EditorGUIUtility.currentViewWidth;
+            var playButtonsPosition = Mathf.RoundToInt((screenWidth - PlayPauseStopWidth) / 2);
 
-            float playButtonsPosition = Mathf.RoundToInt((screenWidth - PlayPauseStopWidth) / 2);
+            var leftRect = GetLeftRect(screenWidth, playButtonsPosition);
+            var rightRect = GetRightRect(screenWidth, playButtonsPosition);
 
-            var leftRect = new Rect(0, 0, screenWidth, Screen.height);
-            leftRect.xMin += Space; // 左侧间距
-            leftRect.xMin += ButtonWidth * ToolCount; // 工具按钮
+            DrawLeftGUI(leftRect);
+            DrawRightGUI(rightRect);
+        }
 
-            leftRect.xMin += Space; // 工具和枢轴之间的间距
-
-            leftRect.xMin += 64 * 2; // 枢轴按钮
-            leftRect.xMax = playButtonsPosition;
-
-            var rightRect = new Rect(playButtonsPosition, screenWidth, screenWidth, Screen.height);
-
-            rightRect.xMin += _commandStyle.fixedWidth * 3; // 播放按钮
-
-            rightRect.xMax -= Space; // 右侧间距
-            rightRect.xMax -= DropdownWidth; // 布局
-            rightRect.xMax -= Space; // 布局和图层之间的间距
-            rightRect.xMax -= DropdownWidth; // 图层
-
-            rightRect.xMax -= Space; // 图层和账户之间的间距
-
-            rightRect.xMax -= DropdownWidth; // 账户
-            rightRect.xMax -= Space; // 账户和Cloud之间的间距
-            rightRect.xMax -= ButtonWidth; // Cloud
-            rightRect.xMax -= Space; // cloud和collab之间的间距
-            rightRect.xMax -= 78; // Colab
+        private static Rect GetLeftRect(float screenWidth, float playButtonsPosition)
+        {
+            var rect = new Rect(0, 0, screenWidth, Screen.height);
+            rect.xMin += Space; // 左侧间距
+            rect.xMin += ButtonWidth * ToolCount; // 工具按钮
+            rect.xMin += Space; // 工具和枢轴之间的间距
+            rect.xMin += 64 * 2; // 枢轴按钮
+            rect.xMax = playButtonsPosition;
 
             // 在现有控件周围添加间距
-            leftRect.xMin += Space;
-            leftRect.xMax -= Space;
-            rightRect.xMin += Space;
-            rightRect.xMax -= Space;
+            rect.xMin += Space;
+            rect.xMax -= Space;
 
             // 添加上下边距
-            leftRect.y = 4;
-            leftRect.height = 22;
-            rightRect.y = 4;
-            rightRect.height = 22;
+            rect.y = 4;
+            rect.height = 22;
 
-            if (leftRect.width > 0)
-            {
-                GUILayout.BeginArea(leftRect);
-                GUILayout.BeginHorizontal();
-                foreach (var handler in LeftToolbarGUI)
-                {
-                    handler();
-                }
+            return rect;
+        }
 
-                GUILayout.EndHorizontal();
-                GUILayout.EndArea();
-            }
+        private static Rect GetRightRect(float screenWidth, float playButtonsPosition)
+        {
+            var rect = new Rect(playButtonsPosition, screenWidth, screenWidth, Screen.height);
+            rect.xMin += _commandStyle.fixedWidth * 3; // 播放按钮
+            rect.xMax -= Space; // 右侧间距
+            rect.xMax -= DropdownWidth; // 布局
+            rect.xMax -= Space; // 布局和图层之间的间距
+            rect.xMax -= DropdownWidth; // 图层
+            rect.xMax -= Space; // 图层和账户之间的间距
+            rect.xMax -= DropdownWidth; // 账户
+            rect.xMax -= Space; // 账户和Cloud之间的间距
+            rect.xMax -= ButtonWidth; // Cloud
+            rect.xMax -= Space; // cloud和collab之间的间距
+            rect.xMax -= 78; // Colab
 
-            if (rightRect.width <= 0)
+            // 在现有控件周围添加间距
+            rect.xMin += Space;
+            rect.xMax -= Space;
+
+            // 添加上下边距
+            rect.y = 4;
+            rect.height = 22;
+
+            return rect;
+        }
+
+        private static void DrawLeftGUI(Rect rect)
+        {
+            if (rect.width <= 0)
             {
                 return;
             }
 
-            GUILayout.BeginArea(rightRect);
+            GUILayout.BeginArea(rect);
+            GUILayout.BeginHorizontal();
+            foreach (var handler in LeftToolbarGUI)
+            {
+                handler();
+            }
+
+            GUILayout.EndHorizontal();
+            GUILayout.EndArea();
+        }
+
+        private static void DrawRightGUI(Rect rect)
+        {
+            if (rect.width <= 0)
+            {
+                return;
+            }
+
+            GUILayout.BeginArea(rect);
             GUILayout.BeginHorizontal();
             foreach (var handler in RightToolbarGUI)
             {
