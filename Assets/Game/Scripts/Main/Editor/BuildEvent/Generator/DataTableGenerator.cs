@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
-    public sealed class DataTableGenerator
+    public static class DataTableGenerator
     {
         private const string DataTablePath = "Assets/Game/DataTables";
         private const string CSharpCodePath = "Assets/Game/Scripts/Main/Runtime/DataTable";
@@ -73,8 +73,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             }
         }
 
-        private static void DataTableCodeGenerator(DataTableProcessor dataTableProcessor, StringBuilder codeContent,
-            object userData)
+        private static void DataTableCodeGenerator(DataTableProcessor dataTableProcessor, StringBuilder codeContent, object userData)
         {
             var dataTableName = (string)userData;
 
