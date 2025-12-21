@@ -26,7 +26,14 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
         private string _codeTemplate;
 
-        public DataTableProcessor(string dataTableFileName, Encoding encoding, int nameRow, int typeRow, int? defaultValueRow, int? commentRow, int contentStartRow, int idColumn)
+        public DataTableProcessor(string dataTableFileName,
+            Encoding encoding,
+            int nameRow,
+            int typeRow,
+            int? defaultValueRow,
+            int? commentRow,
+            int contentStartRow,
+            int idColumn)
         {
             if (string.IsNullOrEmpty(dataTableFileName))
             {
@@ -48,7 +55,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
             var rawColumnCount = 0;
             var rawValues = new List<string[]>();
-            for (var i = 0; i < lines.Length; i++)
+            for (var i = 0; i < lines.Length; ++i)
             {
                 var rawValue = lines[i].Split(DataSplitSeparators);
                 for (var j = 0; j < rawValue.Length; j++)
@@ -104,12 +111,12 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 throw new GameException(Utility.Text.Format("Type row '{0}' >= raw row count '{1}' is not allow.", typeRow, rawRowCount));
             }
 
-            if (defaultValueRow.HasValue && defaultValueRow.Value >= rawRowCount)
+            if (defaultValueRow >= rawRowCount)
             {
                 throw new GameException(Utility.Text.Format("Default value row '{0}' >= raw row count '{1}' is not allow.", defaultValueRow.Value, rawRowCount));
             }
 
-            if (commentRow.HasValue && commentRow.Value >= rawRowCount)
+            if (commentRow >= rawRowCount)
             {
                 throw new GameException(Utility.Text.Format("Comment row '{0}' >= raw row count '{1}' is not allow.", commentRow.Value, rawRowCount));
             }
@@ -132,7 +139,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             IdColumn = idColumn;
 
             _dataProcessor = new DataProcessor[rawColumnCount];
-            for (var i = 0; i < rawColumnCount; i++)
+            for (var i = 0; i < rawColumnCount; ++i)
             {
                 if (i == IdColumn)
                 {
@@ -145,14 +152,14 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             }
 
             var strings = new Dictionary<string, int>(StringComparer.Ordinal);
-            for (var i = contentStartRow; i < rawRowCount; i++)
+            for (var i = contentStartRow; i < rawRowCount; ++i)
             {
                 if (IsCommentRow(i))
                 {
                     continue;
                 }
 
-                for (var j = 0; j < rawColumnCount; j++)
+                for (var j = 0; j < rawColumnCount; ++j)
                 {
                     if (_dataProcessor[j].LanguageKeyword != "string")
                     {
@@ -162,7 +169,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                     var str = _rawValues[i][j];
                     if (!strings.TryAdd(str, 1))
                     {
-                        strings[str]++;
+                        ++strings[str];
                     }
                 }
             }
@@ -324,7 +331,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             {
                 using var fileStream = new FileStream(outputFileName, FileMode.Create, FileAccess.Write);
                 using var binaryWriter = new BinaryWriter(fileStream, Encoding.UTF8);
-                for (var rawRow = ContentStartRow; rawRow < RawRowCount; rawRow++)
+                for (var rawRow = ContentStartRow; rawRow < RawRowCount; ++rawRow)
                 {
                     if (IsCommentRow(rawRow))
                     {
@@ -401,7 +408,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             using var memoryStream = new MemoryStream();
             using var binaryWriter = new BinaryWriter(memoryStream, Encoding.UTF8);
-            for (var rawColumn = 0; rawColumn < RawColumnCount; rawColumn++)
+            for (var rawColumn = 0; rawColumn < RawColumnCount; ++rawColumn)
             {
                 if (IsCommentColumn(rawColumn))
                 {
