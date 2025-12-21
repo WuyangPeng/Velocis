@@ -11,17 +11,13 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
         private static readonly Type ToolbarType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.Toolbar");
         private static readonly Type GuiViewType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.GUIView");
 
-        private static readonly Type WindowBackendType =
-            typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.IWindowBackend");
+        private static readonly Type WindowBackendType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.IWindowBackend");
 
-        private static readonly PropertyInfo WindowBackend = GuiViewType.GetProperty("windowBackend",
-            BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        private static readonly PropertyInfo WindowBackend = GuiViewType.GetProperty("windowBackend", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
-        private static readonly PropertyInfo ViewVisualTree = WindowBackendType.GetProperty("visualTree",
-            BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        private static readonly PropertyInfo ViewVisualTree = WindowBackendType.GetProperty("visualTree", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
-        private static readonly FieldInfo ImguiContainerOnGui = typeof(IMGUIContainer).GetField("m_OnGUIHandler",
-            BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        private static readonly FieldInfo ImguiContainerOnGui = typeof(IMGUIContainer).GetField("m_OnGUIHandler", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
         private static ScriptableObject _currentToolbar;
 

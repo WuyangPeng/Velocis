@@ -10,7 +10,7 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
     public static class ToolbarExtender
     {
         private const float Space = 8;
-        public const float LargeSpace = 20;
+        private const float LargeSpace = 20;
         private const float ButtonWidth = 32;
         private const float DropdownWidth = 80;
         private const float PlayPauseStopWidth = 140;
@@ -26,8 +26,7 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
 
             const string fieldName = "k_ToolCount";
 
-            var toolIcons = toolbarType.GetField(fieldName,
-                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+            var toolIcons = toolbarType.GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
 
             ToolCount = toolIcons != null ? (int)toolIcons.GetValue(null) : 8;
 

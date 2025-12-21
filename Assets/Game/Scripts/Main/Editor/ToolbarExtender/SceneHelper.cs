@@ -21,11 +21,7 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
 
         private static void OnUpdate()
         {
-            if (_sceneToOpen == null ||
-                EditorApplication.isPlaying ||
-                EditorApplication.isPaused ||
-                EditorApplication.isCompiling ||
-                EditorApplication.isPlayingOrWillChangePlaymode)
+            if (ShouldWait())
             {
                 return;
             }
@@ -34,20 +30,34 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
 
             if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
             {
-                var guids = AssetDatabase.FindAssets("t:scene " + _sceneToOpen, null);
-                if (guids.Length == 0)
-                {
-                    Debug.LogWarning("Couldn't find scene file");
-                }
-                else
-                {
-                    var scenePath = AssetDatabase.GUIDToAssetPath(guids[0]);
-                    EditorSceneManager.OpenScene(scenePath);
-                    EditorApplication.isPlaying = true;
-                }
+                OpenSceneAndPlay(_sceneToOpen);
             }
 
             _sceneToOpen = null;
+        }
+
+        private static bool ShouldWait()
+        {
+            return _sceneToOpen == null ||
+                   EditorApplication.isPlaying ||
+                   EditorApplication.isPaused ||
+                   EditorApplication.isCompiling ||
+                   EditorApplication.isPlayingOrWillChangePlaymode;
+        }
+
+        private static void OpenSceneAndPlay(string sceneName)
+        {
+            var guids = AssetDatabase.FindAssets("t:scene " + sceneName, null);
+            if (guids.Length == 0)
+            {
+                Debug.LogWarning("Couldn't find scene file");
+            }
+            else
+            {
+                var scenePath = AssetDatabase.GUIDToAssetPath(guids[0]);
+                EditorSceneManager.OpenScene(scenePath);
+                EditorApplication.isPlaying = true;
+            }
         }
     }
 }

@@ -26,11 +26,7 @@ namespace Game.Scripts.Main.Editor.ToolbarExtender
             };
 
             GUILayout.FlexibleSpace();
-            if (GUILayout.Button(
-                    new GUIContent("Launcher",
-                        EditorGUIUtility.FindTexture("PlayButton"),
-                        "Start Scene Launcher"),
-                    _buttonGuiStyle))
+            if (GUILayout.Button(new GUIContent("Launcher", EditorGUIUtility.FindTexture("PlayButton"), "Start Scene Launcher"), _buttonGuiStyle))
             {
                 SceneHelper.StartScene(SceneName);
             }
