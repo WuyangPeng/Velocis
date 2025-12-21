@@ -282,30 +282,9 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 .AppendLine("                using (var binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))")
                 .AppendLine("                {");
 
-            for (var i = 0; i < dataTableProcessor.RawColumnCount; i++)
+            for (var index = 0; index < dataTableProcessor.RawColumnCount; ++index)
             {
-                if (dataTableProcessor.IsCommentColumn(i))
-                {
-                    // 注释列
-                    continue;
-                }
-
-                if (dataTableProcessor.IsIdColumn(i))
-                {
-                    // 编号列
-                    stringBuilder.AppendLine("                    m_Id = binaryReader.Read7BitEncodedInt32();");
-                    continue;
-                }
-
-                var languageKeyword = dataTableProcessor.GetLanguageKeyword(i);
-                if (languageKeyword is "int" or "uint" or "long" or "ulong")
-                {
-                    stringBuilder.AppendFormat("                    {0} = binaryReader.Read7BitEncoded{1}();", dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
-                }
-                else
-                {
-                    stringBuilder.AppendFormat("                    {0} = binaryReader.Read{1}();", dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
-                }
+                stringBuilder.Append(GenerateBinaryDataRowParser(dataTableProcessor, index));
             }
 
             stringBuilder
@@ -315,6 +294,35 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 .AppendLine("            GeneratePropertyArray();")
                 .AppendLine("            return true;")
                 .Append("        }");
+
+            return stringBuilder.ToString();
+        }
+
+        private static string GenerateBinaryDataRowParser(DataTableProcessor dataTableProcessor, int index)
+        {
+            if (dataTableProcessor.IsCommentColumn(index))
+            {
+                // 注释列
+                return string.Empty;
+            }
+
+            var stringBuilder = new StringBuilder();
+            if (dataTableProcessor.IsIdColumn(index))
+            {
+                // 编号列
+                stringBuilder.AppendLine("                    m_Id = binaryReader.Read7BitEncodedInt32();");
+                return stringBuilder.ToString();
+            }
+
+            var languageKeyword = dataTableProcessor.GetLanguageKeyword(index);
+            if (languageKeyword is "int" or "uint" or "long" or "ulong")
+            {
+                stringBuilder.AppendFormat("                    {0} = binaryReader.Read7BitEncoded{1}();", dataTableProcessor.GetName(index), dataTableProcessor.GetType(index).Name).AppendLine();
+            }
+            else
+            {
+                stringBuilder.AppendFormat("                    {0} = binaryReader.Read{1}();", dataTableProcessor.GetName(index), dataTableProcessor.GetType(index).Name).AppendLine();
+            }
 
             return stringBuilder.ToString();
         }
@@ -338,7 +346,46 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         private static string GenerateDataTablePropertyArray(DataTableProcessor dataTableProcessor)
         {
             var propertyCollections = CollectPropertyCollections(dataTableProcessor);
+            
             var stringBuilder = new StringBuilder();
+            stringBuilder.Append(GenerateAllPropertyAccessors(propertyCollections));
+            
+            if (propertyCollections.Count > 0)
+            {
+                stringBuilder.AppendLine().AppendLine();
+            }
+            
+            stringBuilder.Append(GeneratePropertyArrayInitializationMethod(propertyCollections));
+            
+            return stringBuilder.ToString();
+        }
+
+        private static string GenerateAllPropertyAccessors(List<PropertyCollection> propertyCollections)
+        {
+            var stringBuilder = new StringBuilder();
+            var firstProperty = true;
+            foreach (var propertyCollection in propertyCollections)
+            {
+                if (firstProperty)
+                {
+                    firstProperty = false;
+                }
+                else
+                {
+                    stringBuilder.AppendLine().AppendLine();
+                }
+                
+                GenerateAccessorsForCollection(propertyCollection, stringBuilder);
+            }
+            return stringBuilder.ToString();
+        }
+        
+        private static string GeneratePropertyArrayInitializationMethod(List<PropertyCollection> propertyCollections)
+        {
+            var stringBuilder = new StringBuilder();
+            stringBuilder
+                .AppendLine("        private void GeneratePropertyArray()")
+                .AppendLine("        {");
 
             var firstProperty = true;
             foreach (var propertyCollection in propertyCollections)
@@ -352,70 +399,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                     stringBuilder.AppendLine().AppendLine();
                 }
 
-                stringBuilder
-                    .AppendFormat("        private KeyValuePair<int, {1}>[] {0};", FirstCharToLower(propertyCollection.Name), propertyCollection.LanguageKeyword).AppendLine()
-                    .AppendLine()
-                    .AppendFormat("        public int {0}Count => {1}.Length;", propertyCollection.Name, FirstCharToLower(propertyCollection.Name)).AppendLine()
-                    .AppendLine()
-                    .AppendFormat("        public {1} Get{0}(int id)", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
-                    .AppendLine("        {")
-                    .AppendFormat("            foreach (var i in {0})", FirstCharToLower(propertyCollection.Name))
-                    .AppendLine()
-                    .AppendLine("            {")
-                    .AppendLine("                if (i.Key == id)")
-                    .AppendLine("                {")
-                    .AppendLine("                    return i.Value;")
-                    .AppendLine("                }")
-                    .AppendLine("            }")
-                    .AppendLine()
-                    .AppendFormat("            throw new GameFrameworkException(Utility.Text.Format(\"Get{0} with invalid id '{{0}}'.\", id));", propertyCollection.Name).AppendLine()
-                    .AppendLine("        }")
-                    .AppendLine()
-                    .AppendFormat("        public {1} Get{0}At(int index)", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
-                    .AppendLine("        {")
-                    .AppendFormat("            if (index < 0 || index >= {0}.Length)", FirstCharToLower(propertyCollection.Name)).AppendLine()
-                    .AppendLine("            {")
-                    .AppendFormat("                throw new GameFrameworkException(Utility.Text.Format(\"Get{0}At with invalid index '{{0}}'.\", index));", propertyCollection.Name).AppendLine()
-                    .AppendLine("            }")
-                    .AppendLine()
-                    .AppendFormat("            return {0}[index].Value;", FirstCharToLower(propertyCollection.Name))
-                    .AppendLine()
-                    .Append("        }");
-            }
-
-            if (propertyCollections.Count > 0)
-            {
-                stringBuilder.AppendLine().AppendLine();
-            }
-
-            stringBuilder
-                .AppendLine("        private void GeneratePropertyArray()")
-                .AppendLine("        {");
-
-            firstProperty = true;
-            foreach (var propertyCollection in propertyCollections)
-            {
-                if (firstProperty)
-                {
-                    firstProperty = false;
-                }
-                else
-                {
-                    stringBuilder.AppendLine().AppendLine();
-                }
-
-                stringBuilder
-                    .AppendFormat("            {0} = new KeyValuePair<int, {1}>[]", FirstCharToLower(propertyCollection.Name), propertyCollection.LanguageKeyword).AppendLine()
-                    .AppendLine("            {");
-
-                var itemCount = propertyCollection.ItemCount;
-                for (var i = 0; i < itemCount; i++)
-                {
-                    var item = propertyCollection.GetItem(i);
-                    stringBuilder.AppendFormat("                new ({0}, {1}),", item.Key.ToString(), item.Value).AppendLine();
-                }
-
-                stringBuilder.Append("            };");
+                GenerateInitializationForCollection(propertyCollection, stringBuilder);
             }
 
             stringBuilder
@@ -424,42 +408,98 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
             return stringBuilder.ToString();
         }
-        
+
+        private static void GenerateAccessorsForCollection(PropertyCollection propertyCollection, StringBuilder stringBuilder)
+        {
+            stringBuilder
+                .AppendFormat("        private KeyValuePair<int, {1}>[] {0};", FirstCharToLower(propertyCollection.Name), propertyCollection.LanguageKeyword).AppendLine()
+                .AppendLine()
+                .AppendFormat("        public int {0}Count => {1}.Length;", propertyCollection.Name, FirstCharToLower(propertyCollection.Name)).AppendLine()
+                .AppendLine()
+                .AppendFormat("        public {1} Get{0}(int id)", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
+                .AppendLine("        {")
+                .AppendFormat("            foreach (var i in {0})", FirstCharToLower(propertyCollection.Name))
+                .AppendLine()
+                .AppendLine("            {")
+                .AppendLine("                if (i.Key == id)")
+                .AppendLine("                {")
+                .AppendLine("                    return i.Value;")
+                .AppendLine("                }")
+                .AppendLine("            }")
+                .AppendLine()
+                .AppendFormat("            throw new GameFrameworkException(Utility.Text.Format(\"Get{0} with invalid id '{{0}}'.\", id));", propertyCollection.Name).AppendLine()
+                .AppendLine("        }")
+                .AppendLine()
+                .AppendFormat("        public {1} Get{0}At(int index)", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
+                .AppendLine("        {")
+                .AppendFormat("            if (index < 0 || index >= {0}.Length)", FirstCharToLower(propertyCollection.Name)).AppendLine()
+                .AppendLine("            {")
+                .AppendFormat("                throw new GameFrameworkException(Utility.Text.Format(\"Get{0}At with invalid index '{{0}}'.\", index));", propertyCollection.Name).AppendLine()
+                .AppendLine("            }")
+                .AppendLine()
+                .AppendFormat("            return {0}[index].Value;", FirstCharToLower(propertyCollection.Name))
+                .AppendLine()
+                .Append("        }");
+        }
+
+        private static void GenerateInitializationForCollection(PropertyCollection propertyCollection, StringBuilder stringBuilder)
+        {
+            stringBuilder
+                .AppendFormat("            {0} = new KeyValuePair<int, {1}>[]", FirstCharToLower(propertyCollection.Name), propertyCollection.LanguageKeyword).AppendLine()
+                .AppendLine("            {");
+
+            var itemCount = propertyCollection.ItemCount;
+            for (var index = 0; index < itemCount; ++index)
+            {
+                var item = propertyCollection.GetItem(index);
+                stringBuilder.AppendFormat("                new ({0}, {1}),", item.Key.ToString(), item.Value).AppendLine();
+            }
+
+            stringBuilder.Append("            };");
+        }
+
+
         /// <summary>
-        /// 收集所有可成组的属性。
+        ///     收集所有可成组的属性。
         /// </summary>
         /// <param name="dataTableProcessor">数据表处理器。</param>
         /// <returns>属性集合列表。</returns>
         private static List<PropertyCollection> CollectPropertyCollections(DataTableProcessor dataTableProcessor)
         {
             var propertyCollections = new List<PropertyCollection>();
-            for (var i = 0; i < dataTableProcessor.RawColumnCount; ++i)
+            for (var index = 0; index < dataTableProcessor.RawColumnCount; ++index)
             {
-                if (dataTableProcessor.IsCommentColumn(i) || dataTableProcessor.IsIdColumn(i))
-                {
-                    continue;
-                }
-
-                var name = dataTableProcessor.GetName(i);
-                if (!EndWithNumberRegex.IsMatch(name))
-                {
-                    continue;
-                }
-
-                var propertyCollectionName = EndWithNumberRegex.Replace(name, string.Empty);
-                var id = int.Parse(EndWithNumberRegex.Match(name).Value);
-
-                var propertyCollection = propertyCollections.FirstOrDefault(pc => pc.Name == propertyCollectionName);
-
-                if (propertyCollection == null)
-                {
-                    propertyCollection = new PropertyCollection(propertyCollectionName, dataTableProcessor.GetLanguageKeyword(i));
-                    propertyCollections.Add(propertyCollection);
-                }
-
-                propertyCollection.AddItem(id, name);
+                CollectPropertyCollections(dataTableProcessor, index, propertyCollections);
             }
+
             return propertyCollections;
+        }
+
+        private static void CollectPropertyCollections(DataTableProcessor dataTableProcessor, int index, ICollection<PropertyCollection> propertyCollections)
+        {
+            if (dataTableProcessor.IsCommentColumn(index) || dataTableProcessor.IsIdColumn(index))
+            {
+                return;
+            }
+
+            var name = dataTableProcessor.GetName(index);
+            if (!EndWithNumberRegex.IsMatch(name))
+            {
+                return;
+            }
+
+            var propertyCollectionName = EndWithNumberRegex.Replace(name, string.Empty);
+            var id = int.Parse(EndWithNumberRegex.Match(name).Value);
+
+            var propertyCollection = propertyCollections.FirstOrDefault(pc => pc.Name == propertyCollectionName);
+
+            if (propertyCollection == null)
+            {
+                propertyCollection = new PropertyCollection(propertyCollectionName, dataTableProcessor.GetLanguageKeyword(index));
+                propertyCollections.Add(propertyCollection);
+            }
+
+            propertyCollection.AddItem(id, name);
         }
     }
 }
