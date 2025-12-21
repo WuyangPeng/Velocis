@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Game.Scripts.Main.Runtime.RuntimeException;
 using GameFramework;
 using UnityEngine;
 
@@ -25,24 +26,21 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
         private string _codeTemplate;
 
-        public DataTableProcessor(string dataTableFileName, Encoding encoding, int nameRow, int typeRow,
-            int? defaultValueRow, int? commentRow, int contentStartRow, int idColumn)
+        public DataTableProcessor(string dataTableFileName, Encoding encoding, int nameRow, int typeRow, int? defaultValueRow, int? commentRow, int contentStartRow, int idColumn)
         {
             if (string.IsNullOrEmpty(dataTableFileName))
             {
-                throw new GameFrameworkException("Data table file name is invalid.");
+                throw new GameException("Data table file name is invalid.");
             }
 
             if (!dataTableFileName.EndsWith(".txt", StringComparison.Ordinal))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Data table file '{0}' is not a txt.",
-                    dataTableFileName));
+                throw new GameException(Utility.Text.Format("Data table file '{0}' is not a txt.", dataTableFileName));
             }
 
             if (!File.Exists(dataTableFileName))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Data table file '{0}' is not exist.",
-                    dataTableFileName));
+                throw new GameException(Utility.Text.Format("Data table file '{0}' is not exist.", dataTableFileName));
             }
 
             var lines = File.ReadAllLines(dataTableFileName, encoding);
@@ -64,8 +62,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 }
                 else if (rawValue.Length != rawColumnCount)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format(
-                        "Data table file '{0}', raw Column is '{2}', but line '{1}' column is '{3}'.",
+                    throw new GameException(Utility.Text.Format("Data table file '{0}', raw Column is '{2}', but line '{1}' column is '{3}'.",
                         dataTableFileName,
                         i,
                         rawColumnCount,
@@ -79,60 +76,52 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
             if (nameRow < 0)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Name row '{0}' is invalid.", nameRow));
+                throw new GameException(Utility.Text.Format("Name row '{0}' is invalid.", nameRow));
             }
 
             if (typeRow < 0)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Type row '{0}' is invalid.", typeRow));
+                throw new GameException(Utility.Text.Format("Type row '{0}' is invalid.", typeRow));
             }
 
             if (contentStartRow < 0)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Content start row '{0}' is invalid.",
-                    contentStartRow));
+                throw new GameException(Utility.Text.Format("Content start row '{0}' is invalid.", contentStartRow));
             }
 
             if (idColumn < 0)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Id column '{0}' is invalid.", idColumn));
+                throw new GameException(Utility.Text.Format("Id column '{0}' is invalid.", idColumn));
             }
 
             if (nameRow >= rawRowCount)
             {
-                throw new GameFrameworkException(
-                    Utility.Text.Format("Name row '{0}' >= raw row count '{1}' is not allow.", nameRow, rawRowCount));
+                throw new GameException(Utility.Text.Format("Name row '{0}' >= raw row count '{1}' is not allow.", nameRow, rawRowCount));
             }
 
             if (typeRow >= rawRowCount)
             {
-                throw new GameFrameworkException(
-                    Utility.Text.Format("Type row '{0}' >= raw row count '{1}' is not allow.", typeRow, rawRowCount));
+                throw new GameException(Utility.Text.Format("Type row '{0}' >= raw row count '{1}' is not allow.", typeRow, rawRowCount));
             }
 
             if (defaultValueRow.HasValue && defaultValueRow.Value >= rawRowCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format(
-                    "Default value row '{0}' >= raw row count '{1}' is not allow.", defaultValueRow.Value,
-                    rawRowCount));
+                throw new GameException(Utility.Text.Format("Default value row '{0}' >= raw row count '{1}' is not allow.", defaultValueRow.Value, rawRowCount));
             }
 
             if (commentRow.HasValue && commentRow.Value >= rawRowCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format(
-                    "Comment row '{0}' >= raw row count '{1}' is not allow.", commentRow.Value, rawRowCount));
+                throw new GameException(Utility.Text.Format("Comment row '{0}' >= raw row count '{1}' is not allow.", commentRow.Value, rawRowCount));
             }
 
             if (contentStartRow > rawRowCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format(
-                    "Content start row '{0}' > raw row count '{1}' is not allow.", contentStartRow, rawRowCount));
+                throw new GameException(Utility.Text.Format("Content start row '{0}' > raw row count '{1}' is not allow.", contentStartRow, rawRowCount));
             }
 
             if (idColumn >= rawColumnCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format(
-                    "Id column '{0}' >= raw column count '{1}' is not allow.", idColumn, rawColumnCount));
+                throw new GameException(Utility.Text.Format("Id column '{0}' >= raw column count '{1}' is not allow.", idColumn, rawColumnCount));
             }
 
             _nameRow = _rawValues[nameRow];
@@ -178,7 +167,8 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 }
             }
 
-            _strings = strings.OrderBy(value => value.Key).ThenByDescending(value => value.Value)
+            _strings = strings
+                .OrderBy(value => value.Key).ThenByDescending(value => value.Value)
                 .Select(value => value.Key).ToArray();
 
             _codeTemplate = null;
@@ -199,7 +189,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (rawColumn < 0 || rawColumn >= RawColumnCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
+                throw new GameException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
             }
 
             return _dataProcessor[rawColumn].IsId;
@@ -209,7 +199,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (rawRow < 0 || rawRow >= RawRowCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Raw row '{0}' is out of range.", rawRow));
+                throw new GameException(Utility.Text.Format("Raw row '{0}' is out of range.", rawRow));
             }
 
             return GetValue(rawRow, 0).StartsWith(CommentLineSeparator, StringComparison.Ordinal);
@@ -219,7 +209,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (rawColumn < 0 || rawColumn >= RawColumnCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
+                throw new GameException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
             }
 
             return string.IsNullOrEmpty(GetName(rawColumn)) || _dataProcessor[rawColumn].IsComment;
@@ -229,7 +219,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (rawColumn < 0 || rawColumn >= RawColumnCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
+                throw new GameException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
             }
 
             return IsIdColumn(rawColumn) ? "Id" : _nameRow[rawColumn];
@@ -239,7 +229,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (rawColumn < 0 || rawColumn >= RawColumnCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
+                throw new GameException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
             }
 
             return _dataProcessor[rawColumn].IsSystem;
@@ -249,7 +239,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (rawColumn < 0 || rawColumn >= RawColumnCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
+                throw new GameException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
             }
 
             return _dataProcessor[rawColumn].Type;
@@ -259,7 +249,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (rawColumn < 0 || rawColumn >= RawColumnCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
+                throw new GameException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
             }
 
             return _dataProcessor[rawColumn].LanguageKeyword;
@@ -269,7 +259,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (rawColumn < 0 || rawColumn >= RawColumnCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
+                throw new GameException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
             }
 
             return _defaultValueRow?[rawColumn];
@@ -279,7 +269,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (rawColumn < 0 || rawColumn >= RawColumnCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
+                throw new GameException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
             }
 
             return _commentRow?[rawColumn];
@@ -289,12 +279,12 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (rawRow < 0 || rawRow >= RawRowCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Raw row '{0}' is out of range.", rawRow));
+                throw new GameException(Utility.Text.Format("Raw row '{0}' is out of range.", rawRow));
             }
 
             if (rawColumn < 0 || rawColumn >= RawColumnCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
+                throw new GameException(Utility.Text.Format("Raw column '{0}' is out of range.", rawColumn));
             }
 
             return _rawValues[rawRow][rawColumn];
@@ -304,7 +294,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (index < 0 || index >= StringCount)
             {
-                throw new GameFrameworkException(Utility.Text.Format("String index '{0}' is out of range.", index));
+                throw new GameException(Utility.Text.Format("String index '{0}' is out of range.", index));
             }
 
             return _strings[index];
@@ -327,7 +317,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (string.IsNullOrEmpty(outputFileName))
             {
-                throw new GameFrameworkException("Output file name is invalid.");
+                throw new GameException("Output file name is invalid.");
             }
 
             try
@@ -351,8 +341,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             }
             catch (Exception exception)
             {
-                Debug.LogError(Utility.Text.Format("Parse data table '{0}' failure, exception is '{1}'.",
-                    outputFileName, exception));
+                Debug.LogError(Utility.Text.Format("Parse data table '{0}' failure, exception is '{1}'.", outputFileName, exception));
                 return false;
             }
         }
@@ -367,8 +356,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             }
             catch (Exception exception)
             {
-                Debug.LogError(Utility.Text.Format("Set code template '{0}' failure, exception is '{1}'.",
-                    codeTemplateFileName, exception));
+                Debug.LogError(Utility.Text.Format("Set code template '{0}' failure, exception is '{1}'.", codeTemplateFileName, exception));
                 return false;
             }
         }
@@ -382,12 +370,12 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (string.IsNullOrEmpty(_codeTemplate))
             {
-                throw new GameFrameworkException("You must set code template first.");
+                throw new GameException("You must set code template first.");
             }
 
             if (string.IsNullOrEmpty(outputFileName))
             {
-                throw new GameFrameworkException("Output file name is invalid.");
+                throw new GameException("Output file name is invalid.");
             }
 
             try
@@ -404,8 +392,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             }
             catch (Exception exception)
             {
-                Debug.LogError(Utility.Text.Format("Generate code file '{0}' failure, exception is '{1}'.",
-                    outputFileName, exception));
+                Debug.LogError(Utility.Text.Format("Generate code file '{0}' failure, exception is '{1}'.", outputFileName, exception));
                 return false;
             }
         }
@@ -429,8 +416,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 {
                     if (_dataProcessor[rawColumn].IsId || string.IsNullOrEmpty(GetDefaultValue(rawColumn)))
                     {
-                        Debug.LogError(Utility.Text.Format(
-                            "Parse raw value failure. OutputFileName='{0}' RawRow='{1}' RowColumn='{2}' Name='{3}' Type='{4}' RawValue='{5}'",
+                        Debug.LogError(Utility.Text.Format("Parse raw value failure. OutputFileName='{0}' RawRow='{1}' RowColumn='{2}' Name='{3}' Type='{4}' RawValue='{5}'",
                             outputFileName,
                             rawRow,
                             rawColumn,
@@ -440,8 +426,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                         return null;
                     }
 
-                    Debug.LogWarning(Utility.Text.Format(
-                        "Parse raw value failure, will try default value. OutputFileName='{0}' RawRow='{1}' RowColumn='{2}' Name='{3}' Type='{4}' RawValue='{5}'",
+                    Debug.LogWarning(Utility.Text.Format("Parse raw value failure, will try default value. OutputFileName='{0}' RawRow='{1}' RowColumn='{2}' Name='{3}' Type='{4}' RawValue='{5}'",
                         outputFileName,
                         rawRow,
                         rawColumn,
@@ -454,8 +439,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                     }
                     catch
                     {
-                        Debug.LogError(Utility.Text.Format(
-                            "Parse default value failure. OutputFileName='{0}' RawRow='{1}' RowColumn='{2}' Name='{3}' Type='{4}' RawValue='{5}'",
+                        Debug.LogError(Utility.Text.Format("Parse default value failure. OutputFileName='{0}' RawRow='{1}' RowColumn='{2}' Name='{3}' Type='{4}' RawValue='{5}'",
                             outputFileName,
                             rawRow,
                             rawColumn,

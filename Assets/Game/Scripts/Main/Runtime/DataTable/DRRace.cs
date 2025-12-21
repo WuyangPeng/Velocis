@@ -3,6 +3,7 @@
 //------------------------------------------------------------
 
 using GameFramework;
+using Game.Scripts.Main.Runtime.RuntimeException;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -146,14 +147,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 }
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("GetPropertyId with invalid id '{0}'.", id));
+            throw new GameException(Utility.Text.Format("GetPropertyId with invalid id '{0}'.", id));
         }
 
         public int GetPropertyIdAt(int index)
         {
             if (index < 0 || index >= propertyId.Length)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetPropertyIdAt with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetPropertyIdAt with invalid index '{0}'.", index));
             }
 
             return propertyId[index].Value;
@@ -173,14 +174,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 }
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("GetPropertyChange with invalid id '{0}'.", id));
+            throw new GameException(Utility.Text.Format("GetPropertyChange with invalid id '{0}'.", id));
         }
 
         public int GetPropertyChangeAt(int index)
         {
             if (index < 0 || index >= propertyChange.Length)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetPropertyChangeAt with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetPropertyChangeAt with invalid index '{0}'.", index));
             }
 
             return propertyChange[index].Value;

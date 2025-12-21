@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.RuntimeException;
 using GameFramework;
 
 namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
     /// <summary>
-    /// 辅助类，用于收集和组织以数字结尾的同名前缀属性。
+    ///     辅助类，用于收集和组织以数字结尾的同名前缀属性。
     /// </summary>
     public sealed class PropertyCollection
     {
         private readonly List<KeyValuePair<int, string>> _items;
 
         /// <summary>
-        /// 初始化 PropertyCollection 的新实例。
+        ///     初始化 PropertyCollection 的新实例。
         /// </summary>
         /// <param name="name">属性集合的名称（不含数字后缀）。</param>
         /// <param name="languageKeyword">属性的语言类型关键字（如 "int", "string"）。</param>
@@ -29,7 +30,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         public int ItemCount => _items.Count;
 
         /// <summary>
-        /// 按索引获取属性项。
+        ///     按索引获取属性项。
         /// </summary>
         /// <param name="index">项的索引。</param>
         /// <returns>包含ID和属性名的键值对。</returns>
@@ -37,14 +38,14 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             if (index < 0 || index >= _items.Count)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetItem with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetItem with invalid index '{0}'.", index));
             }
 
             return _items[index];
         }
 
         /// <summary>
-        /// 向集合中添加一个属性项。
+        ///     向集合中添加一个属性项。
         /// </summary>
         /// <param name="id">属性的数字后缀ID。</param>
         /// <param name="propertyName">完整的属性名。</param>

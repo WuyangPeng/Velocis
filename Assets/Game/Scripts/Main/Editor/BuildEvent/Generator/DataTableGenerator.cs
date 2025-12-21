@@ -99,7 +99,11 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         /// <param name="dataTableName">要生成的数据表名称。</param>
         public static void GenerateCodeFile(DataTableProcessor dataTableProcessor, string dataTableName)
         {
-            dataTableProcessor.SetCodeTemplate(CSharpCodeTemplateFileName, Encoding.UTF8);
+            if (!dataTableProcessor.SetCodeTemplate(CSharpCodeTemplateFileName, Encoding.UTF8))
+            {
+                return;
+            }
+
             dataTableProcessor.SetCodeGenerator(DataTableCodeGenerator);
 
             var csharpCodeFileName = Utility.Path.GetRegularPath(Path.Combine(CSharpCodePath, "DR" + dataTableName + ".cs"));
@@ -346,17 +350,17 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         private static string GenerateDataTablePropertyArray(DataTableProcessor dataTableProcessor)
         {
             var propertyCollections = CollectPropertyCollections(dataTableProcessor);
-            
+
             var stringBuilder = new StringBuilder();
             stringBuilder.Append(GenerateAllPropertyAccessors(propertyCollections));
-            
+
             if (propertyCollections.Count > 0)
             {
                 stringBuilder.AppendLine().AppendLine();
             }
-            
+
             stringBuilder.Append(GeneratePropertyArrayInitializationMethod(propertyCollections));
-            
+
             return stringBuilder.ToString();
         }
 
@@ -374,12 +378,13 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 {
                     stringBuilder.AppendLine().AppendLine();
                 }
-                
+
                 GenerateAccessorsForCollection(propertyCollection, stringBuilder);
             }
+
             return stringBuilder.ToString();
         }
-        
+
         private static string GeneratePropertyArrayInitializationMethod(List<PropertyCollection> propertyCollections)
         {
             var stringBuilder = new StringBuilder();
@@ -427,14 +432,14 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 .AppendLine("                }")
                 .AppendLine("            }")
                 .AppendLine()
-                .AppendFormat("            throw new GameFrameworkException(Utility.Text.Format(\"Get{0} with invalid id '{{0}}'.\", id));", propertyCollection.Name).AppendLine()
+                .AppendFormat("            throw new GameException(Utility.Text.Format(\"Get{0} with invalid id '{{0}}'.\", id));", propertyCollection.Name).AppendLine()
                 .AppendLine("        }")
                 .AppendLine()
                 .AppendFormat("        public {1} Get{0}At(int index)", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
                 .AppendLine("        {")
                 .AppendFormat("            if (index < 0 || index >= {0}.Length)", FirstCharToLower(propertyCollection.Name)).AppendLine()
                 .AppendLine("            {")
-                .AppendFormat("                throw new GameFrameworkException(Utility.Text.Format(\"Get{0}At with invalid index '{{0}}'.\", index));", propertyCollection.Name).AppendLine()
+                .AppendFormat("                throw new GameException(Utility.Text.Format(\"Get{0}At with invalid index '{{0}}'.\", index));", propertyCollection.Name).AppendLine()
                 .AppendLine("            }")
                 .AppendLine()
                 .AppendFormat("            return {0}[index].Value;", FirstCharToLower(propertyCollection.Name))

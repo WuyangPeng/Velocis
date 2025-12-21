@@ -3,6 +3,7 @@
 //------------------------------------------------------------
 
 using GameFramework;
+using Game.Scripts.Main.Runtime.RuntimeException;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -168,14 +169,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 }
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("GetWeaponId with invalid id '{0}'.", id));
+            throw new GameException(Utility.Text.Format("GetWeaponId with invalid id '{0}'.", id));
         }
 
         public int GetWeaponIdAt(int index)
         {
             if (index < 0 || index >= weaponId.Length)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetWeaponIdAt with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetWeaponIdAt with invalid index '{0}'.", index));
             }
 
             return weaponId[index].Value;
@@ -195,14 +196,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 }
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("GetArmorId with invalid id '{0}'.", id));
+            throw new GameException(Utility.Text.Format("GetArmorId with invalid id '{0}'.", id));
         }
 
         public int GetArmorIdAt(int index)
         {
             if (index < 0 || index >= armorId.Length)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetArmorIdAt with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetArmorIdAt with invalid index '{0}'.", index));
             }
 
             return armorId[index].Value;

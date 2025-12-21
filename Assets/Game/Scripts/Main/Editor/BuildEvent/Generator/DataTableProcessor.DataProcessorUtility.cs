@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Game.Scripts.Main.Runtime.RuntimeException;
 using GameFramework;
 
 namespace Game.Scripts.Main.Editor.BuildEvent.Generator
@@ -40,7 +41,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             {
                 type ??= string.Empty;
 
-                return DataProcessors.TryGetValue(type.ToLowerInvariant(), out var dataProcessor) ? dataProcessor : throw new GameFrameworkException(Utility.Text.Format("Not supported data processor type '{0}'.", type));
+                return DataProcessors.TryGetValue(type.ToLowerInvariant(), out var dataProcessor) ? dataProcessor : throw new GameException(Utility.Text.Format("Not supported data processor type '{0}'.", type));
             }
         }
     }

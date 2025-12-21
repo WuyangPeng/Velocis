@@ -3,6 +3,7 @@
 //------------------------------------------------------------
 
 using GameFramework;
+using Game.Scripts.Main.Runtime.RuntimeException;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -300,14 +301,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 }
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("GetPropertyId with invalid id '{0}'.", id));
+            throw new GameException(Utility.Text.Format("GetPropertyId with invalid id '{0}'.", id));
         }
 
         public int GetPropertyIdAt(int index)
         {
             if (index < 0 || index >= propertyId.Length)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetPropertyIdAt with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetPropertyIdAt with invalid index '{0}'.", index));
             }
 
             return propertyId[index].Value;
@@ -327,14 +328,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 }
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("GetPropertyChange with invalid id '{0}'.", id));
+            throw new GameException(Utility.Text.Format("GetPropertyChange with invalid id '{0}'.", id));
         }
 
         public int GetPropertyChangeAt(int index)
         {
             if (index < 0 || index >= propertyChange.Length)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetPropertyChangeAt with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetPropertyChangeAt with invalid index '{0}'.", index));
             }
 
             return propertyChange[index].Value;
@@ -354,14 +355,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 }
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("GetSpiritualId with invalid id '{0}'.", id));
+            throw new GameException(Utility.Text.Format("GetSpiritualId with invalid id '{0}'.", id));
         }
 
         public int GetSpiritualIdAt(int index)
         {
             if (index < 0 || index >= spiritualId.Length)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetSpiritualIdAt with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetSpiritualIdAt with invalid index '{0}'.", index));
             }
 
             return spiritualId[index].Value;
@@ -381,14 +382,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 }
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("GetSpiritualChange with invalid id '{0}'.", id));
+            throw new GameException(Utility.Text.Format("GetSpiritualChange with invalid id '{0}'.", id));
         }
 
         public int GetSpiritualChangeAt(int index)
         {
             if (index < 0 || index >= spiritualChange.Length)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetSpiritualChangeAt with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetSpiritualChangeAt with invalid index '{0}'.", index));
             }
 
             return spiritualChange[index].Value;
@@ -408,14 +409,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 }
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("GetMartialArtsId with invalid id '{0}'.", id));
+            throw new GameException(Utility.Text.Format("GetMartialArtsId with invalid id '{0}'.", id));
         }
 
         public int GetMartialArtsIdAt(int index)
         {
             if (index < 0 || index >= martialArtsId.Length)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetMartialArtsIdAt with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetMartialArtsIdAt with invalid index '{0}'.", index));
             }
 
             return martialArtsId[index].Value;
@@ -435,14 +436,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 }
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("GetMartialArtsChange with invalid id '{0}'.", id));
+            throw new GameException(Utility.Text.Format("GetMartialArtsChange with invalid id '{0}'.", id));
         }
 
         public int GetMartialArtsChangeAt(int index)
         {
             if (index < 0 || index >= martialArtsChange.Length)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetMartialArtsChangeAt with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetMartialArtsChangeAt with invalid index '{0}'.", index));
             }
 
             return martialArtsChange[index].Value;
@@ -462,14 +463,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 }
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("GetTechniqueId with invalid id '{0}'.", id));
+            throw new GameException(Utility.Text.Format("GetTechniqueId with invalid id '{0}'.", id));
         }
 
         public int GetTechniqueIdAt(int index)
         {
             if (index < 0 || index >= techniqueId.Length)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetTechniqueIdAt with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetTechniqueIdAt with invalid index '{0}'.", index));
             }
 
             return techniqueId[index].Value;
@@ -489,14 +490,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 }
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("GetTechniqueChange with invalid id '{0}'.", id));
+            throw new GameException(Utility.Text.Format("GetTechniqueChange with invalid id '{0}'.", id));
         }
 
         public int GetTechniqueChangeAt(int index)
         {
             if (index < 0 || index >= techniqueChange.Length)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetTechniqueChangeAt with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetTechniqueChangeAt with invalid index '{0}'.", index));
             }
 
             return techniqueChange[index].Value;

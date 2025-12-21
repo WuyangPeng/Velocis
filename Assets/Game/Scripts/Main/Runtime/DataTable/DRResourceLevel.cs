@@ -3,6 +3,7 @@
 //------------------------------------------------------------
 
 using GameFramework;
+using Game.Scripts.Main.Runtime.RuntimeException;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -201,14 +202,14 @@ namespace Game.Scripts.Main.Runtime.DataTable
                 }
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("GetLevel with invalid id '{0}'.", id));
+            throw new GameException(Utility.Text.Format("GetLevel with invalid id '{0}'.", id));
         }
 
         public float GetLevelAt(int index)
         {
             if (index < 0 || index >= level.Length)
             {
-                throw new GameFrameworkException(Utility.Text.Format("GetLevelAt with invalid index '{0}'.", index));
+                throw new GameException(Utility.Text.Format("GetLevelAt with invalid index '{0}'.", index));
             }
 
             return level[index].Value;
