@@ -7,7 +7,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
         [MenuItem("Velocis/Generate Protobuf Celeritas")]
         public static void Generate()
         {
-            var generator = new CsCeleritasGeneratorInstance();
+            var generator = new CeleritasGeneratorInstance();
             generator.Run();
         }
     }

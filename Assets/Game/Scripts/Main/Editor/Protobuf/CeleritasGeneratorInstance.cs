@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Main.Editor.Protobuf
 {
-    public class CsCeleritasGeneratorInstance
+    public class CeleritasGeneratorInstance
     {
         private readonly Dictionary<string, ProtoMessage> _messages = new();
         private string _protoRootAbs;
@@ -78,8 +78,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
             sb.AppendLine("    }");
             sb.AppendLine("}");
 
-            var finalPath = Path.Combine(Application.dataPath,
-                "Game/Scripts/Main/Runtime/Network/Packet/CSCeleritas.cs");
+            var finalPath = Path.Combine(Application.dataPath, "Game/Scripts/Main/Runtime/Network/Packet/CSCeleritas.cs");
             File.WriteAllText(finalPath, sb.ToString());
             AssetDatabase.Refresh();
             Debug.Log("CSCeleritas generated successfully.");
@@ -88,6 +87,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
         private void GenerateMethods(StringBuilder sb, ProtoMessage msg, List<ProtoField> path, string propertyPath)
         {
             foreach (var field in msg.Fields)
+            {
                 if (!string.IsNullOrEmpty(field.OneOfGroup))
                 {
                     var currentPath = new List<ProtoField>(path);
@@ -104,12 +104,12 @@ namespace Game.Scripts.Main.Editor.Protobuf
                     // 1. 如果没有 oneof，是底层。
                     // 2. 如果有 oneof，且所有 oneof 字段的类型都包含 "request" 或 "response"，则不是底层（是路由节点）。
                     // 3. 如果有 oneof，但只要有一个字段类型不包含 "request" 或 "response"，则是底层（混合或数据节点）。
-                    bool isLeaf = true;
+                    var isLeaf = true;
                     var childMsg = FindMessage(fieldType);
                     if (childMsg != null)
                     {
-                        bool hasOneOf = false;
-                        bool allOneOfAreReqOrRes = true;
+                        var hasOneOf = false;
+                        var allOneOfAreReqOrRes = true;
 
                         foreach (var childField in childMsg.Fields)
                         {
@@ -131,7 +131,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
                         }
                     }
 
-                    string accessModifier = isLeaf ? "public" : "private";
+                    var accessModifier = isLeaf ? "public" : "private";
 
                     sb.AppendLine($"        {accessModifier} {returnType} {methodName}()");
                     sb.AppendLine("        {");
@@ -153,6 +153,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
                         GenerateMethods(sb, childMsg, currentPath, newPropertyPath);
                     }
                 }
+            }
         }
 
         private string GetMethodName(List<ProtoField> path)
@@ -168,6 +169,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
                 sb.Append("_");
                 sb.Append(GetCleanTypeName(field.Type));
             }
+
             return sb.ToString();
         }
 
@@ -256,7 +258,10 @@ namespace Game.Scripts.Main.Editor.Protobuf
         private void ParseAllProtos(string rootPath)
         {
             var files = Directory.GetFiles(rootPath, "*.proto", SearchOption.AllDirectories);
-            foreach (var file in files) ParseProtoFile(file);
+            foreach (var file in files)
+            {
+                ParseProtoFile(file);
+            }
         }
 
         private void ParseProtoFile(string path)
