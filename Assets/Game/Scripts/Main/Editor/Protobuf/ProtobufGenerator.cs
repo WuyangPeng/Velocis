@@ -6,7 +6,7 @@ using Debug = UnityEngine.Debug;
 
 namespace Game.Scripts.Main.Editor.Protobuf
 {
-    public sealed class ProtobufGenerator
+    public static class ProtobufGenerator
     {
         [MenuItem("Velocis/Generate Protobuf")]
         private static void Generate()
@@ -58,8 +58,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
                 var startInfo = new ProcessStartInfo
                 {
                     FileName = protocPath,
-                    Arguments =
-                        $"--csharp_out=\"{fileSpecificOutputDirectory}\" --proto_path=\"{protoDirectory}\" \"{protoFile}\"",
+                    Arguments = $"--csharp_out=\"{fileSpecificOutputDirectory}\" --proto_path=\"{protoDirectory}\" \"{protoFile}\"",
                     RedirectStandardError = true,
                     UseShellExecute = false,
                     CreateNoWindow = true
