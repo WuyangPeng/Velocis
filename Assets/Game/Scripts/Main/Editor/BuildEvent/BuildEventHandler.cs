@@ -34,8 +34,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent
             string outputPackedPath,
             string buildReportPath)
         {
-            var streamingAssetsPath =
-                Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "StreamingAssets"));
+            var streamingAssetsPath = Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "StreamingAssets"));
             var fileNames = Directory.GetFiles(streamingAssetsPath, "*", SearchOption.AllDirectories);
             foreach (var fileName in fileNames)
             {
@@ -128,14 +127,11 @@ namespace Game.Scripts.Main.Editor.BuildEvent
                 return;
             }
 
-            var streamingAssetsPath =
-                Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "StreamingAssets"));
+            var streamingAssetsPath = Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "StreamingAssets"));
             var fileNames = Directory.GetFiles(outputPackagePath, "*", SearchOption.AllDirectories);
             foreach (var fileName in fileNames)
             {
-                var destFileName =
-                    Utility.Path.GetRegularPath(Path.Combine(streamingAssetsPath,
-                        fileName[outputPackagePath.Length..]));
+                var destFileName = Utility.Path.GetRegularPath(Path.Combine(streamingAssetsPath, fileName[outputPackagePath.Length..]));
                 var destFileInfo = new FileInfo(destFileName);
                 if (destFileInfo.Directory is { Exists: false })
                 {
