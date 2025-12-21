@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 {
-    public sealed class DataTableGeneratorMenu
+    public static class DataTableGeneratorMenu
     {
         [MenuItem("Velocis/Generate DataTables")]
         private static void GenerateDataTables()
