@@ -15,13 +15,18 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         private const string CSharpCodePath = "Assets/Game/Scripts/Main/Runtime/DataTable";
         private const string CSharpCodeTemplateFileName = "Assets/Game/Configs/DataTableCodeTemplate.txt";
         private static readonly Regex EndWithNumberRegex = new(@"\d+$");
-        private static readonly Regex NameRegex = new(@"^[A-Z][A-Za-z0-9_]*$");
+        private static readonly Regex NameRegex = new("^[A-Z][A-Za-z0-9_]*$");
 
         public static DataTableProcessor CreateDataTableProcessor(string dataTableName)
         {
-            return new DataTableProcessor(
-                Utility.Path.GetRegularPath(Path.Combine(DataTablePath, dataTableName + ".txt")),
-                Encoding.GetEncoding("GB2312"), 1, 2, null, 3, 4, 1);
+            return new DataTableProcessor(Utility.Path.GetRegularPath(Path.Combine(DataTablePath, dataTableName + ".txt")),
+                Encoding.GetEncoding("GB2312"),
+                1,
+                2,
+                null,
+                3,
+                4,
+                1);
         }
 
         public static bool CheckRawData(DataTableProcessor dataTableProcessor, string dataTableName)
@@ -39,8 +44,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                     continue;
                 }
 
-                Debug.LogWarning(Utility.Text.Format("Check raw data failure. DataTableName='{0}' Name='{1}'",
-                    dataTableName, name));
+                Debug.LogWarning(Utility.Text.Format("Check raw data failure. DataTableName='{0}' Name='{1}'", dataTableName, name));
                 return false;
             }
 
@@ -61,8 +65,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             dataTableProcessor.SetCodeTemplate(CSharpCodeTemplateFileName, Encoding.UTF8);
             dataTableProcessor.SetCodeGenerator(DataTableCodeGenerator);
 
-            var csharpCodeFileName =
-                Utility.Path.GetRegularPath(Path.Combine(CSharpCodePath, "DR" + dataTableName + ".cs"));
+            var csharpCodeFileName = Utility.Path.GetRegularPath(Path.Combine(CSharpCodePath, "DR" + dataTableName + ".cs"));
             if (!dataTableProcessor.GenerateCodeFile(csharpCodeFileName, Encoding.UTF8, dataTableName) &&
                 File.Exists(csharpCodeFileName))
             {
@@ -75,13 +78,11 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             var dataTableName = (string)userData;
 
-            codeContent.Replace("__DATA_TABLE_CREATE_TIME__",
-                DateTime.UtcNow.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss.fff"));
+            codeContent.Replace("__DATA_TABLE_CREATE_TIME__", DateTime.UtcNow.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss.fff"));
             codeContent.Replace("__DATA_TABLE_NAME_SPACE__", "Game.Scripts.Main.Runtime.DataTable");
             codeContent.Replace("__DATA_TABLE_CLASS_NAME__", "DR" + dataTableName);
             codeContent.Replace("__DATA_TABLE_COMMENT__", dataTableProcessor.GetValue(0, 1) + "。");
-            codeContent.Replace("__DATA_TABLE_ID_COMMENT__",
-                "获取" + dataTableProcessor.GetComment(dataTableProcessor.IdColumn) + "。");
+            codeContent.Replace("__DATA_TABLE_ID_COMMENT__", "获取" + dataTableProcessor.GetComment(dataTableProcessor.IdColumn) + "。");
             codeContent.Replace("__DATA_TABLE_PROPERTIES__", GenerateDataTableProperties(dataTableProcessor));
             codeContent.Replace("__DATA_TABLE_PARSER__", GenerateDataTableParser(dataTableProcessor));
             codeContent.Replace("__DATA_TABLE_PROPERTY_ARRAY__", GenerateDataTablePropertyArray(dataTableProcessor));
@@ -118,8 +119,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                     .AppendLine("        /// <summary>")
                     .AppendFormat("        /// 获取{0}。", dataTableProcessor.GetComment(i)).AppendLine()
                     .AppendLine("        /// </summary>")
-                    .AppendFormat("        public {0} {1}", dataTableProcessor.GetLanguageKeyword(i),
-                        dataTableProcessor.GetName(i)).AppendLine()
+                    .AppendFormat("        public {0} {1}", dataTableProcessor.GetLanguageKeyword(i), dataTableProcessor.GetName(i)).AppendLine()
                     .AppendLine("        {")
                     .AppendLine("            get;")
                     .AppendLine("            private set;")
@@ -135,12 +135,10 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             stringBuilder
                 .AppendLine("        public override bool ParseDataRow(string dataRowString, object userData)")
                 .AppendLine("        {")
-                .AppendLine(
-                    "            var columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);")
+                .AppendLine("            var columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);")
                 .AppendLine("            for (var i = 0; i < columnStrings.Length; i++)")
                 .AppendLine("            {")
-                .AppendLine(
-                    "                columnStrings[i] = columnStrings[i].Trim(DataTableExtension.DataTrimSeparators);")
+                .AppendLine("                columnStrings[i] = columnStrings[i].Trim(DataTableExtension.DataTrimSeparators);")
                 .AppendLine("            }")
                 .AppendLine()
                 .AppendLine("            var index = 0;");
@@ -166,19 +164,16 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                     var languageKeyword = dataTableProcessor.GetLanguageKeyword(i);
                     if (languageKeyword == "string")
                     {
-                        stringBuilder.AppendFormat("            {0} = columnStrings[index++];",
-                            dataTableProcessor.GetName(i)).AppendLine();
+                        stringBuilder.AppendFormat("            {0} = columnStrings[index++];", dataTableProcessor.GetName(i)).AppendLine();
                     }
                     else
                     {
-                        stringBuilder.AppendFormat("            {0} = {1}.Parse(columnStrings[index++]);",
-                            dataTableProcessor.GetName(i), languageKeyword).AppendLine();
+                        stringBuilder.AppendFormat("            {0} = {1}.Parse(columnStrings[index++]);", dataTableProcessor.GetName(i), languageKeyword).AppendLine();
                     }
                 }
                 else
                 {
-                    stringBuilder.AppendFormat("            {0} = DataTableExtension.Parse{1}(columnStrings[index++]);",
-                        dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
+                    stringBuilder.AppendFormat("            {0} = DataTableExtension.Parse{1}(columnStrings[index++]);", dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
                 }
             }
 
@@ -187,11 +182,9 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 .AppendLine("            return true;")
                 .AppendLine("        }")
                 .AppendLine()
-                .AppendLine(
-                    "        public override bool ParseDataRow(byte[] dataRowBytes, int startIndex, int length, object userData)")
+                .AppendLine("        public override bool ParseDataRow(byte[] dataRowBytes, int startIndex, int length, object userData)")
                 .AppendLine("        {")
-                .AppendLine(
-                    "            using (var memoryStream = new MemoryStream(dataRowBytes, startIndex, length, false))")
+                .AppendLine("            using (var memoryStream = new MemoryStream(dataRowBytes, startIndex, length, false))")
                 .AppendLine("            {")
                 .AppendLine("                using (var binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))")
                 .AppendLine("                {");
@@ -212,16 +205,13 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 }
 
                 var languageKeyword = dataTableProcessor.GetLanguageKeyword(i);
-                if (languageKeyword == "int" || languageKeyword == "uint" || languageKeyword == "long" ||
-                    languageKeyword == "ulong")
+                if (languageKeyword is "int" or "uint" or "long" or "ulong")
                 {
-                    stringBuilder.AppendFormat("                    {0} = binaryReader.Read7BitEncoded{1}();",
-                        dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
+                    stringBuilder.AppendFormat("                    {0} = binaryReader.Read7BitEncoded{1}();", dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
                 }
                 else
                 {
-                    stringBuilder.AppendFormat("                    {0} = binaryReader.Read{1}();",
-                        dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
+                    stringBuilder.AppendFormat("                    {0} = binaryReader.Read{1}();", dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
                 }
             }
 
@@ -238,9 +228,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
         private static string FirstCharToLower(string input)
         {
-            return string.IsNullOrEmpty(input)
-                ? input
-                : char.ToLowerInvariant(input[0]) + (input.Length > 1 ? input[1..] : "");
+            return string.IsNullOrEmpty(input) ? input : char.ToLowerInvariant(input[0]) + (input.Length > 1 ? input[1..] : "");
         }
 
         private static string GenerateDataTablePropertyArray(DataTableProcessor dataTableProcessor)
@@ -273,8 +261,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
                 if (propertyCollection == null)
                 {
-                    propertyCollection =
-                        new PropertyCollection(propertyCollectionName, dataTableProcessor.GetLanguageKeyword(i));
+                    propertyCollection = new PropertyCollection(propertyCollectionName, dataTableProcessor.GetLanguageKeyword(i));
                     propertyCollections.Add(propertyCollection);
                 }
 
@@ -295,14 +282,11 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 }
 
                 stringBuilder
-                    .AppendFormat("        private KeyValuePair<int, {1}>[] {0};",
-                        FirstCharToLower(propertyCollection.Name), propertyCollection.LanguageKeyword).AppendLine()
+                    .AppendFormat("        private KeyValuePair<int, {1}>[] {0};", FirstCharToLower(propertyCollection.Name), propertyCollection.LanguageKeyword).AppendLine()
                     .AppendLine()
-                    .AppendFormat("        public int {0}Count => {1}.Length;", propertyCollection.Name,
-                        FirstCharToLower(propertyCollection.Name)).AppendLine()
+                    .AppendFormat("        public int {0}Count => {1}.Length;", propertyCollection.Name, FirstCharToLower(propertyCollection.Name)).AppendLine()
                     .AppendLine()
-                    .AppendFormat("        public {1} Get{0}(int id)", propertyCollection.Name,
-                        propertyCollection.LanguageKeyword).AppendLine()
+                    .AppendFormat("        public {1} Get{0}(int id)", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
                     .AppendLine("        {")
                     .AppendFormat("            foreach (var i in {0})", FirstCharToLower(propertyCollection.Name))
                     .AppendLine()
@@ -313,20 +297,14 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                     .AppendLine("                }")
                     .AppendLine("            }")
                     .AppendLine()
-                    .AppendFormat(
-                        "            throw new GameFrameworkException(Utility.Text.Format(\"Get{0} with invalid id '{{0}}'.\", id));",
-                        propertyCollection.Name).AppendLine()
+                    .AppendFormat("            throw new GameFrameworkException(Utility.Text.Format(\"Get{0} with invalid id '{{0}}'.\", id));", propertyCollection.Name).AppendLine()
                     .AppendLine("        }")
                     .AppendLine()
-                    .AppendFormat("        public {1} Get{0}At(int index)", propertyCollection.Name,
-                        propertyCollection.LanguageKeyword).AppendLine()
+                    .AppendFormat("        public {1} Get{0}At(int index)", propertyCollection.Name, propertyCollection.LanguageKeyword).AppendLine()
                     .AppendLine("        {")
-                    .AppendFormat("            if (index < 0 || index >= {0}.Length)",
-                        FirstCharToLower(propertyCollection.Name)).AppendLine()
+                    .AppendFormat("            if (index < 0 || index >= {0}.Length)", FirstCharToLower(propertyCollection.Name)).AppendLine()
                     .AppendLine("            {")
-                    .AppendFormat(
-                        "                throw new GameFrameworkException(Utility.Text.Format(\"Get{0}At with invalid index '{{0}}'.\", index));",
-                        propertyCollection.Name).AppendLine()
+                    .AppendFormat("                throw new GameFrameworkException(Utility.Text.Format(\"Get{0}At with invalid index '{{0}}'.\", index));", propertyCollection.Name).AppendLine()
                     .AppendLine("            }")
                     .AppendLine()
                     .AppendFormat("            return {0}[index].Value;", FirstCharToLower(propertyCollection.Name))
@@ -356,16 +334,14 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 }
 
                 stringBuilder
-                    .AppendFormat("            {0} = new KeyValuePair<int, {1}>[]",
-                        FirstCharToLower(propertyCollection.Name), propertyCollection.LanguageKeyword).AppendLine()
+                    .AppendFormat("            {0} = new KeyValuePair<int, {1}>[]", FirstCharToLower(propertyCollection.Name), propertyCollection.LanguageKeyword).AppendLine()
                     .AppendLine("            {");
 
                 var itemCount = propertyCollection.ItemCount;
                 for (var i = 0; i < itemCount; i++)
                 {
                     var item = propertyCollection.GetItem(i);
-                    stringBuilder.AppendFormat("                new ({0}, {1}),", item.Key.ToString(), item.Value)
-                        .AppendLine();
+                    stringBuilder.AppendFormat("                new ({0}, {1}),", item.Key.ToString(), item.Value).AppendLine();
                 }
 
                 stringBuilder.Append("            };");
@@ -380,34 +356,34 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
 
         private sealed class PropertyCollection
         {
-            private readonly List<KeyValuePair<int, string>> m_Items;
+            private readonly List<KeyValuePair<int, string>> _items;
 
             public PropertyCollection(string name, string languageKeyword)
             {
                 Name = name;
                 LanguageKeyword = languageKeyword;
-                m_Items = new List<KeyValuePair<int, string>>();
+                _items = new List<KeyValuePair<int, string>>();
             }
 
             public string Name { get; }
 
             public string LanguageKeyword { get; }
 
-            public int ItemCount => m_Items.Count;
+            public int ItemCount => _items.Count;
 
             public KeyValuePair<int, string> GetItem(int index)
             {
-                if (index < 0 || index >= m_Items.Count)
+                if (index < 0 || index >= _items.Count)
                 {
                     throw new GameFrameworkException(Utility.Text.Format("GetItem with invalid index '{0}'.", index));
                 }
 
-                return m_Items[index];
+                return _items[index];
             }
 
             public void AddItem(int id, string propertyName)
             {
-                m_Items.Add(new KeyValuePair<int, string>(id, propertyName));
+                _items.Add(new KeyValuePair<int, string>(id, propertyName));
             }
         }
     }
