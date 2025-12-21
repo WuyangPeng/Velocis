@@ -140,7 +140,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         {
             var stringBuilder = new StringBuilder();
             var firstProperty = true;
-            for (var index = 0; index < dataTableProcessor.RawColumnCount; index++)
+            for (var index = 0; index < dataTableProcessor.RawColumnCount; ++index)
             {
                 if (GenerateDataTableProperties(dataTableProcessor, index, firstProperty, stringBuilder))
                 {
@@ -216,7 +216,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 .AppendLine()
                 .AppendLine("            var index = 0;");
 
-            for (var index = 0; index < dataTableProcessor.RawColumnCount; index++)
+            for (var index = 0; index < dataTableProcessor.RawColumnCount; ++index)
             {
                 stringBuilder.Append(GenerateStringDataRowParser(dataTableProcessor, index));
             }
@@ -229,38 +229,38 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             return stringBuilder.ToString();
         }
 
-        private static string GenerateStringDataRowParser(DataTableProcessor dataTableProcessor, int i)
+        private static string GenerateStringDataRowParser(DataTableProcessor dataTableProcessor, int index)
         {
             var stringBuilder = new StringBuilder();
-            if (dataTableProcessor.IsCommentColumn(i))
+            if (dataTableProcessor.IsCommentColumn(index))
             {
                 // 注释列
                 stringBuilder.AppendLine("            index++;");
                 return stringBuilder.ToString();
             }
 
-            if (dataTableProcessor.IsIdColumn(i))
+            if (dataTableProcessor.IsIdColumn(index))
             {
                 // 编号列
                 stringBuilder.AppendLine("            m_Id = int.Parse(columnStrings[index++]);");
                 return stringBuilder.ToString();
             }
 
-            if (dataTableProcessor.IsSystem(i))
+            if (dataTableProcessor.IsSystem(index))
             {
-                var languageKeyword = dataTableProcessor.GetLanguageKeyword(i);
+                var languageKeyword = dataTableProcessor.GetLanguageKeyword(index);
                 if (languageKeyword == "string")
                 {
-                    stringBuilder.AppendFormat("            {0} = columnStrings[index++];", dataTableProcessor.GetName(i)).AppendLine();
+                    stringBuilder.AppendFormat("            {0} = columnStrings[index++];", dataTableProcessor.GetName(index)).AppendLine();
                 }
                 else
                 {
-                    stringBuilder.AppendFormat("            {0} = {1}.Parse(columnStrings[index++]);", dataTableProcessor.GetName(i), languageKeyword).AppendLine();
+                    stringBuilder.AppendFormat("            {0} = {1}.Parse(columnStrings[index++]);", dataTableProcessor.GetName(index), languageKeyword).AppendLine();
                 }
             }
             else
             {
-                stringBuilder.AppendFormat("            {0} = DataTableExtension.Parse{1}(columnStrings[index++]);", dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
+                stringBuilder.AppendFormat("            {0} = DataTableExtension.Parse{1}(columnStrings[index++]);", dataTableProcessor.GetName(index), dataTableProcessor.GetType(index).Name).AppendLine();
             }
 
             return stringBuilder.ToString();
@@ -433,7 +433,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         private static List<PropertyCollection> CollectPropertyCollections(DataTableProcessor dataTableProcessor)
         {
             var propertyCollections = new List<PropertyCollection>();
-            for (var i = 0; i < dataTableProcessor.RawColumnCount; i++)
+            for (var i = 0; i < dataTableProcessor.RawColumnCount; ++i)
             {
                 if (dataTableProcessor.IsCommentColumn(i) || dataTableProcessor.IsIdColumn(i))
                 {
