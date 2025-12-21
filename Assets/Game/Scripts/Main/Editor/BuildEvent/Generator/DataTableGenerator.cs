@@ -198,7 +198,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         }
 
         /// <summary>
-        /// 生成从字符串解析数据行的C#代码。
+        ///     生成从字符串解析数据行的C#代码。
         /// </summary>
         /// <param name="dataTableProcessor">数据表处理器。</param>
         /// <returns>生成的解析逻辑C#代码字符串。</returns>
@@ -216,38 +216,9 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
                 .AppendLine()
                 .AppendLine("            var index = 0;");
 
-            for (var i = 0; i < dataTableProcessor.RawColumnCount; i++)
+            for (var index = 0; index < dataTableProcessor.RawColumnCount; index++)
             {
-                if (dataTableProcessor.IsCommentColumn(i))
-                {
-                    // 注释列
-                    stringBuilder.AppendLine("            index++;");
-                    continue;
-                }
-
-                if (dataTableProcessor.IsIdColumn(i))
-                {
-                    // 编号列
-                    stringBuilder.AppendLine("            m_Id = int.Parse(columnStrings[index++]);");
-                    continue;
-                }
-
-                if (dataTableProcessor.IsSystem(i))
-                {
-                    var languageKeyword = dataTableProcessor.GetLanguageKeyword(i);
-                    if (languageKeyword == "string")
-                    {
-                        stringBuilder.AppendFormat("            {0} = columnStrings[index++];", dataTableProcessor.GetName(i)).AppendLine();
-                    }
-                    else
-                    {
-                        stringBuilder.AppendFormat("            {0} = {1}.Parse(columnStrings[index++]);", dataTableProcessor.GetName(i), languageKeyword).AppendLine();
-                    }
-                }
-                else
-                {
-                    stringBuilder.AppendFormat("            {0} = DataTableExtension.Parse{1}(columnStrings[index++]);", dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
-                }
+                stringBuilder.Append(GenerateStringDataRowParser(dataTableProcessor, index));
             }
 
             stringBuilder.AppendLine()
@@ -258,8 +229,45 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
             return stringBuilder.ToString();
         }
 
+        private static string GenerateStringDataRowParser(DataTableProcessor dataTableProcessor, int i)
+        {
+            var stringBuilder = new StringBuilder();
+            if (dataTableProcessor.IsCommentColumn(i))
+            {
+                // 注释列
+                stringBuilder.AppendLine("            index++;");
+                return stringBuilder.ToString();
+            }
+
+            if (dataTableProcessor.IsIdColumn(i))
+            {
+                // 编号列
+                stringBuilder.AppendLine("            m_Id = int.Parse(columnStrings[index++]);");
+                return stringBuilder.ToString();
+            }
+
+            if (dataTableProcessor.IsSystem(i))
+            {
+                var languageKeyword = dataTableProcessor.GetLanguageKeyword(i);
+                if (languageKeyword == "string")
+                {
+                    stringBuilder.AppendFormat("            {0} = columnStrings[index++];", dataTableProcessor.GetName(i)).AppendLine();
+                }
+                else
+                {
+                    stringBuilder.AppendFormat("            {0} = {1}.Parse(columnStrings[index++]);", dataTableProcessor.GetName(i), languageKeyword).AppendLine();
+                }
+            }
+            else
+            {
+                stringBuilder.AppendFormat("            {0} = DataTableExtension.Parse{1}(columnStrings[index++]);", dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
+            }
+
+            return stringBuilder.ToString();
+        }
+
         /// <summary>
-        /// 生成从二进制解析数据行的C#代码。
+        ///     生成从二进制解析数据行的C#代码。
         /// </summary>
         /// <param name="dataTableProcessor">数据表处理器。</param>
         /// <returns>生成的解析逻辑C#代码字符串。</returns>
