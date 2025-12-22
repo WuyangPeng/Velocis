@@ -1,4 +1,5 @@
 ﻿using UnityEditor;
+using UnityEngine;
 
 namespace Game.Scripts.Main.Editor.Protobuf
 {
@@ -9,6 +10,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
         {
             var generator = new CeleritasGeneratorInstance();
             generator.Run();
+            Debug.Log("CSCeleritas generated successfully.");
         }
     }
 }

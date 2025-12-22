@@ -82,7 +82,6 @@ namespace Game.Scripts.Main.Editor.Protobuf
             var finalPath = Path.Combine(Application.dataPath, "Game/Scripts/Main/Runtime/Network/Packet/CSCeleritas.cs");
             File.WriteAllText(finalPath, stringBuilder.ToString());
             AssetDatabase.Refresh();
-            Debug.Log("CSCeleritas generated successfully.");
         }
 
         private void GenerateMethods(StringBuilder sb, ProtoMessage msg, List<ProtoField> path, string propertyPath)
