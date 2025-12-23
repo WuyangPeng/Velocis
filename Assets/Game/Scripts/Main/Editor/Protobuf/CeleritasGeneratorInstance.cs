@@ -11,7 +11,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
     public class CeleritasGeneratorInstance
     {
         private readonly Dictionary<string, ProtoMessage> _messages = new();
-        private readonly string _outputDirAbs = Path.Combine(Application.dataPath, "Game/Scripts/Main/Runtime/Network/Packet/CSCeleritas.cs");
+        private readonly string _outputDirAbs = Path.Combine(Application.dataPath, "Game", "Scripts", "Main", "Runtime", "Network", "Packet", "CSCeleritas.cs");
         private readonly string _protoRootAbs = Path.Combine(Application.dataPath, "Game", "proto");
 
         public void Run()
@@ -309,83 +309,120 @@ namespace Game.Scripts.Main.Editor.Protobuf
         private void ParseProtoFile(string path)
         {
             var content = File.ReadAllText(path);
-            var package = "";
-
-            var packageMatch = Regex.Match(content, @"package\s+([\w\.]+);");
-            if (packageMatch.Success)
-            {
-                package = packageMatch.Groups[1].Value;
-            }
-
-            content = Regex.Replace(content, "//.*", "");
+            var package = ExtractPackage(content);
+            content = RemoveComments(content);
 
             var lines = content.Split('\n');
+            ProcessLines(lines, package);
+        }
+
+        private static string ExtractPackage(string content)
+        {
+            var packageMatch = Regex.Match(content, @"package\s+([\w\.]+);");
+            return packageMatch.Success ? packageMatch.Groups[1].Value : "";
+        }
+
+        private static string RemoveComments(string content)
+        {
+            return Regex.Replace(content, "//.*", "");
+        }
+
+        private void ProcessLines(string[] lines, string package)
+        {
             ProtoMessage currentMessage = null;
             string currentOneOf = null;
 
-            foreach (var line in lines)
+            foreach (var element in lines)
             {
-                var l = line.Trim();
-                if (string.IsNullOrEmpty(l))
+                var line = element.Trim();
+                if (string.IsNullOrEmpty(line))
                 {
                     continue;
                 }
 
-                if (l.StartsWith("message "))
+                if (line.StartsWith("message "))
                 {
-                    var match = Regex.Match(l, @"message\s+(\w+)\s*\{?");
-                    if (!match.Success)
+                    if (TryProcessMessage(line, package, out var newMessage))
                     {
-                        continue;
+                        currentMessage = newMessage;
                     }
-
-                    var msgName = match.Groups[1].Value;
-                    var fullName = string.IsNullOrEmpty(package) ? msgName : package + "." + msgName;
-                    currentMessage = new ProtoMessage { Name = fullName, Package = package };
-                    _messages[fullName] = currentMessage;
                 }
-                else if (l.StartsWith("oneof "))
+                else if (line.StartsWith("oneof "))
                 {
-                    var match = Regex.Match(l, @"oneof\s+(\w+)\s*\{?");
-                    if (!match.Success)
+                    if (TryProcessOneOf(line, currentMessage, out var newOneOf))
                     {
-                        continue;
+                        currentOneOf = newOneOf;
                     }
-
-                    currentOneOf = match.Groups[1].Value;
-                    currentMessage?.OneOfs.Add(currentOneOf);
                 }
-                else if (l.Contains("}"))
+                else if (line.Contains("}"))
                 {
-                    if (currentOneOf != null)
-                    {
-                        if (l.Contains("}"))
-                        {
-                            currentOneOf = null;
-                        }
-                    }
-                    else if (currentMessage != null)
-                    {
-                        // 消息结束
-                    }
+                    ProcessClosingBrace(line, ref currentOneOf);
                 }
                 else if (currentMessage != null)
                 {
-                    var fieldMatch = Regex.Match(l, @"^([\w\.]+)\s+(\w+)\s*=\s*\d+;");
-                    if (!fieldMatch.Success)
-                    {
-                        continue;
-                    }
-
-                    var field = new ProtoField
-                    {
-                        Type = fieldMatch.Groups[1].Value,
-                        Name = fieldMatch.Groups[2].Value,
-                        OneOfGroup = currentOneOf
-                    };
-                    currentMessage.Fields.Add(field);
+                    ProcessField(line, currentMessage, currentOneOf);
                 }
             }
+        }
+
+        private bool TryProcessMessage(string line, string package, out ProtoMessage message)
+        {
+            message = null;
+            var match = Regex.Match(line, @"message\s+(\w+)\s*\{?");
+            if (!match.Success)
+            {
+                return false;
+            }
+
+            var msgName = match.Groups[1].Value;
+            var fullName = string.IsNullOrEmpty(package) ? msgName : package + "." + msgName;
+            message = new ProtoMessage { Name = fullName, Package = package };
+            _messages[fullName] = message;
+            return true;
+        }
+
+        private static bool TryProcessOneOf(string line, ProtoMessage currentMessage, out string oneOfName)
+        {
+            oneOfName = null;
+            var match = Regex.Match(line, @"oneof\s+(\w+)\s*\{?");
+            if (!match.Success)
+            {
+                return false;
+            }
+
+            oneOfName = match.Groups[1].Value;
+            currentMessage?.OneOfs.Add(oneOfName);
+            return true;
+        }
+
+        private static void ProcessClosingBrace(string line, ref string currentOneOf)
+        {
+            if (currentOneOf == null)
+            {
+                return;
+            }
+
+            if (line.Contains("}"))
+            {
+                currentOneOf = null;
+            }
+        }
+
+        private static void ProcessField(string line, ProtoMessage currentMessage, string currentOneOf)
+        {
+            var fieldMatch = Regex.Match(line, @"^([\w\.]+)\s+(\w+)\s*=\s*\d+;");
+            if (!fieldMatch.Success)
+            {
+                return;
+            }
+
+            var field = new ProtoField
+            {
+                Type = fieldMatch.Groups[1].Value,
+                Name = fieldMatch.Groups[2].Value,
+                OneOfGroup = currentOneOf
+            };
+            currentMessage.Fields.Add(field);
         }
     }
 }
