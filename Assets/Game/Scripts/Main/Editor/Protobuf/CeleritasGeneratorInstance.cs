@@ -37,7 +37,9 @@ namespace Game.Scripts.Main.Editor.Protobuf
             var rootMessage = FindMessage("client_request");
             if (rootMessage != null)
             {
-                stringBuilder.Append(GenerateMethods(rootMessage, new List<ProtoField>(), "Celeritas.CeleritasRequest.Client"));
+                stringBuilder.Append(GenerateMethods(rootMessage,
+                    new List<ProtoField>(),
+                    "Celeritas.CeleritasRequest.Client"));
             }
             else
             {
@@ -129,74 +131,83 @@ namespace Game.Scripts.Main.Editor.Protobuf
         private StringBuilder GenerateMethods(ProtoMessage msg, List<ProtoField> path, string propertyPath)
         {
             var stringBuilder = new StringBuilder();
-            foreach (var field in msg.Fields)
+            foreach (var field in msg.Fields.Where(field => !string.IsNullOrEmpty(field.OneOfGroup)))
             {
-                if (string.IsNullOrEmpty(field.OneOfGroup))
+                stringBuilder.Append(ProcessField(field, path, propertyPath));
+            }
+
+            return stringBuilder;
+        }
+
+        private StringBuilder ProcessField(ProtoField field, List<ProtoField> path, string propertyPath)
+        {
+            var stringBuilder = new StringBuilder();
+            var currentPath = new List<ProtoField>(path) { field };
+
+            var methodName = GetMethodName(currentPath);
+            var fieldType = field.Type;
+            var returnType = GetCSharpTypeName(fieldType);
+            var fieldPropertyName = ToPascalCase(field.Name);
+            var newPropertyPath = propertyPath + "." + fieldPropertyName;
+
+            var childMessage = FindMessage(fieldType);
+            var isLeaf = IsLeafNode(childMessage);
+
+            stringBuilder.Append(GenerateMethodCode(methodName, returnType, newPropertyPath, path, isLeaf));
+
+            if (childMessage != null)
+            {
+                stringBuilder.Append(GenerateMethods(childMessage, currentPath, newPropertyPath));
+            }
+
+            return stringBuilder;
+        }
+
+        private static bool IsLeafNode(ProtoMessage childMessage)
+        {
+            if (childMessage == null)
+            {
+                return true;
+            }
+
+            var hasOneOf = false;
+            var allOneOfAreReqOrRes = true;
+
+            foreach (var childField in childMessage.Fields.Where(childField => !string.IsNullOrEmpty(childField.OneOfGroup)))
+            {
+                hasOneOf = true;
+                var childTypeName = childField.Type.ToLower();
+                if (childTypeName.Contains("request") || childTypeName.Contains("response"))
                 {
                     continue;
                 }
 
-                var currentPath = new List<ProtoField>(path) { field };
-
-                var methodName = GetMethodName(currentPath);
-                var fieldType = field.Type;
-                var returnType = GetCSharpTypeName(fieldType);
-                var fieldPropertyName = ToPascalCase(field.Name);
-                var newPropertyPath = propertyPath + "." + fieldPropertyName;
-
-                // 判断是否为底层（叶子节点）
-                // 规则：
-                // 1. 如果没有 oneof，是底层。
-                // 2. 如果有 oneof，且所有 oneof 字段的类型都包含 "request" 或 "response"，则不是底层（是路由节点）。
-                // 3. 如果有 oneof，但只要有一个字段类型不包含 "request" 或 "response"，则是底层（混合或数据节点）。
-                var isLeaf = true;
-                var childMessage = FindMessage(fieldType);
-                if (childMessage != null)
-                {
-                    var hasOneOf = false;
-                    var allOneOfAreReqOrRes = true;
-
-                    foreach (var childField in childMessage.Fields.Where(childField => !string.IsNullOrEmpty(childField.OneOfGroup)))
-                    {
-                        hasOneOf = true;
-                        var childTypeName = childField.Type.ToLower();
-                        if (childTypeName.Contains("request") || childTypeName.Contains("response"))
-                        {
-                            continue;
-                        }
-
-                        allOneOfAreReqOrRes = false;
-                        break;
-                    }
-
-                    if (hasOneOf && allOneOfAreReqOrRes)
-                    {
-                        isLeaf = false;
-                    }
-                }
-
-                var accessModifier = isLeaf ? "public" : "private";
-
-                stringBuilder.AppendLine($"        {accessModifier} {returnType} {methodName}()");
-                stringBuilder.AppendLine("        {");
-
-                if (path.Count > 0)
-                {
-                    var parentMethodName = GetMethodName(path);
-                    stringBuilder.AppendLine($"            {parentMethodName}();");
-                }
-
-                stringBuilder.AppendLine($"            {newPropertyPath} = new {returnType}();");
-                stringBuilder.AppendLine();
-                stringBuilder.AppendLine($"            return {newPropertyPath};");
-                stringBuilder.AppendLine("        }");
-                stringBuilder.AppendLine();
-
-                if (childMessage != null)
-                {
-                    stringBuilder.Append(GenerateMethods(childMessage, currentPath, newPropertyPath));
-                }
+                allOneOfAreReqOrRes = false;
+                break;
             }
+
+            return !hasOneOf || !allOneOfAreReqOrRes;
+        }
+
+        private static StringBuilder GenerateMethodCode(string methodName, string returnType, string newPropertyPath, List<ProtoField> path, bool isLeaf)
+        {
+            var stringBuilder = new StringBuilder();
+            var accessModifier = isLeaf ? "public" : "private";
+
+            stringBuilder.AppendLine($"        {accessModifier} {returnType} {methodName}()");
+            stringBuilder.AppendLine("        {");
+
+            if (path.Count > 0)
+            {
+                var parentMethodName = GetMethodName(path);
+                stringBuilder.AppendLine($"            {parentMethodName}();");
+            }
+
+            stringBuilder.AppendLine($"            {newPropertyPath} = new {returnType}();");
+            stringBuilder.AppendLine();
+            stringBuilder.AppendLine($"            return {newPropertyPath};");
+            stringBuilder.AppendLine("        }");
+            stringBuilder.AppendLine();
 
             return stringBuilder;
         }
@@ -228,17 +239,6 @@ namespace Game.Scripts.Main.Editor.Protobuf
             if (typeName.EndsWith("_request"))
             {
                 typeName = typeName[..^"_request".Length];
-            }
-
-            if (!typeName.StartsWith("client_"))
-            {
-                return ToPascalCase(typeName);
-            }
-
-            var withoutClient = typeName["client_".Length..];
-            if (withoutClient == "player")
-            {
-                typeName = withoutClient;
             }
 
             return ToPascalCase(typeName);
