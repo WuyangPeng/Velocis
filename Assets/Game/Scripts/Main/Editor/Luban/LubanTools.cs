@@ -2,6 +2,7 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityGameFramework.Runtime;
 using Debug = UnityEngine.Debug;
 
 namespace Game.Scripts.Main.Editor.Luban;
@@ -16,7 +17,14 @@ public static class LubanTools
 
     private static void Export(string target)
     {
-        var projectRoot = Directory.GetParent(Application.dataPath).FullName;
+        var parent = Directory.GetParent(Application.dataPath);
+        if (parent == null)
+        {
+            Log.Error("Can't find Luban.exe");
+            return;
+        }
+
+        var projectRoot = parent.FullName;
         var toolsDir = Path.Combine(projectRoot, "Tools", "Luban");
         var lubanDll = Path.Combine(toolsDir, "Luban.dll");
         var lubanExe = Path.Combine(toolsDir, "Luban.exe");
@@ -36,7 +44,7 @@ public static class LubanTools
         }
         else
         {
-            Debug.LogError($"Luban not found at {toolsDir}. Expected Luban.dll or Luban.exe");
+            Log.Error($"Luban not found at {toolsDir}. Expected Luban.dll or Luban.exe");
             return;
         }
 
@@ -72,50 +80,55 @@ public static class LubanTools
     {
         Debug.Log($"Running Luban: {cmd} {args}");
 
-        var startInfo = new ProcessStartInfo();
-        startInfo.FileName = cmd;
-        startInfo.Arguments = args;
-        startInfo.UseShellExecute = false;
-        startInfo.RedirectStandardOutput = true;
-        startInfo.RedirectStandardError = true;
-        startInfo.CreateNoWindow = true;
-        startInfo.WorkingDirectory = Directory.GetParent(Application.dataPath).FullName;
-
-        using (var process = Process.Start(startInfo))
+        var startInfo = new ProcessStartInfo
         {
-            // 异步读取输出以避免死锁
-            var output = "";
-            var error = "";
+            FileName = cmd,
+            Arguments = args,
+            UseShellExecute = false,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            CreateNoWindow = true,
+            WorkingDirectory = Directory.GetParent(Application.dataPath)!.FullName
+        };
 
-            process.OutputDataReceived += (sender, e) =>
+        using var process = Process.Start(startInfo);
+        if (process == null)
+        {
+            Log.Error("Can't find Luban.exe");
+            return;
+        }
+
+        var output = "";
+        var error = "";
+
+        process.OutputDataReceived += (sender, e) =>
+        {
+            if (e.Data != null)
             {
-                if (e.Data != null)
-                {
-                    output += e.Data + "\n";
-                }
-            };
-            process.ErrorDataReceived += (sender, e) =>
-            {
-                if (e.Data != null)
-                {
-                    error += e.Data + "\n";
-                }
-            };
-
-            process.BeginOutputReadLine();
-            process.BeginErrorReadLine();
-
-            process.WaitForExit();
-
-            if (process.ExitCode == 0)
-            {
-                Debug.Log($"Luban Export Success:\n{output}");
-                AssetDatabase.Refresh();
+                output += e.Data + "\n";
             }
-            else
+        };
+        process.ErrorDataReceived += (sender, e) =>
+        {
+            if (e.Data != null)
             {
-                Debug.LogError($"Luban Export Failed (ExitCode {process.ExitCode}):\n{output}\n{error}");
+                error += e.Data + "\n";
             }
+        };
+
+        process.BeginOutputReadLine();
+        process.BeginErrorReadLine();
+
+        process.WaitForExit();
+
+        if (process.ExitCode == 0)
+        {
+            Log.Error($"Luban Export Success:\n{output}");
+            AssetDatabase.Refresh();
+        }
+        else
+        {
+            Log.Error($"Luban Export Failed (ExitCode {process.ExitCode}):\n{output}\n{error}");
         }
     }
 }
