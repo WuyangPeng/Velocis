@@ -1,16 +1,15 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Game.Scripts.Main.Editor.Protobuf
+namespace Game.Scripts.Main.Editor.Protobuf;
+
+public static class CeleritasGenerator
 {
-    public sealed class CeleritasGenerator : EditorWindow
+    [MenuItem("Velocis/Generate Protobuf Celeritas")]
+    public static void Generate()
     {
-        [MenuItem("Velocis/Generate Protobuf Celeritas")]
-        public static void Generate()
-        {
-            var generator = new CeleritasGeneratorInstance();
-            generator.Run();
-            Debug.Log("CSCeleritas generated successfully.");
-        }
+        var generator = new CeleritasGeneratorInstance();
+        generator.Run();
+        Debug.Log("CSCeleritas generated successfully.");
     }
 }

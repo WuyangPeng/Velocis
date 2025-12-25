@@ -27,32 +27,39 @@ namespace Celeritas.Proto.Service {
             "Chpwcm90by9zZXJ2aWNlL3BsYXllci5wcm90bxIXY2VsZXJpdGFzLnByb3Rv",
             "LnNlcnZpY2UiNwoYcmVsb2FkX2NvbmZpZ19kYl9yZXF1ZXN0Eg8KB2RiX25h",
             "bWUYASABKAkSCgoCaWQYAiABKAMiGwoZcmVsb2FkX2NvbmZpZ19kYl9yZXNw",
-            "b25zZSLbAQoVc2VydmljZV9sb2dpbl9yZXF1ZXN0EhIKCmFjY291bnRfaWQY",
-            "ASABKAMSEwoLbmV3X2FjY291bnQYAiABKAgSFwoPYWNjb3VudF9iaW5kX2lk",
-            "GAMgASgDEhoKEm5ld19nYW1lX3NlcnZlcl9pZBgEIAEoCBIWCg5nYW1lX3Nl",
-            "cnZlcl9pZBgFIAEoCRIRCglkZXZpY2VfaWQYBiABKAkSEwoLYXBwX3ZlcnNp",
-            "b24YByABKAkSEgoKc2Vzc2lvbl9pZBgIIAEoAxIQCghwcm90b2NvbBgJIAEo",
-            "BSJpChZzZXJ2aWNlX2xvZ2luX3Jlc3BvbnNlEhQKDGN1cnJlbnRfdGltZRgB",
-            "IAEoAxISCgpzZXNzaW9uX2lkGAIgASgDEhAKCHByb3RvY29sGAMgASgFEhMK",
-            "C2luc3RhbmNlX2lkGAQgASgJIrsBChZzZXJ2aWNlX3BsYXllcl9yZXF1ZXN0",
-            "Ek0KEHJlbG9hZF9jb25maWdfZGIYASABKAsyMS5jZWxlcml0YXMucHJvdG8u",
-            "c2VydmljZS5yZWxvYWRfY29uZmlnX2RiX3JlcXVlc3RIABJHCg1zZXJ2aWNl",
-            "X2xvZ2luGAIgASgLMi4uY2VsZXJpdGFzLnByb3RvLnNlcnZpY2Uuc2Vydmlj",
-            "ZV9sb2dpbl9yZXF1ZXN0SABCCQoHcGF5bG9hZCK+AQoXc2VydmljZV9wbGF5",
-            "ZXJfcmVzcG9uc2USTgoQcmVsb2FkX2NvbmZpZ19kYhgBIAEoCzIyLmNlbGVy",
-            "aXRhcy5wcm90by5zZXJ2aWNlLnJlbG9hZF9jb25maWdfZGJfcmVzcG9uc2VI",
-            "ABJICg1zZXJ2aWNlX2xvZ2luGAIgASgLMi8uY2VsZXJpdGFzLnByb3RvLnNl",
-            "cnZpY2Uuc2VydmljZV9sb2dpbl9yZXNwb25zZUgAQgkKB3BheWxvYWRiBnBy",
-            "b3RvMw=="));
+            "b25zZSIcChpyZWxvYWRfZ2FtZV9jb25maWdfcmVxdWVzdCIdChtyZWxvYWRf",
+            "Z2FtZV9jb25maWdfcmVzcG9uc2Ui2wEKFXNlcnZpY2VfbG9naW5fcmVxdWVz",
+            "dBISCgphY2NvdW50X2lkGAEgASgDEhMKC25ld19hY2NvdW50GAIgASgIEhcK",
+            "D2FjY291bnRfYmluZF9pZBgDIAEoAxIaChJuZXdfZ2FtZV9zZXJ2ZXJfaWQY",
+            "BCABKAgSFgoOZ2FtZV9zZXJ2ZXJfaWQYBSABKAkSEQoJZGV2aWNlX2lkGAYg",
+            "ASgJEhMKC2FwcF92ZXJzaW9uGAcgASgJEhIKCnNlc3Npb25faWQYCCABKAMS",
+            "EAoIcHJvdG9jb2wYCSABKAUiaQoWc2VydmljZV9sb2dpbl9yZXNwb25zZRIU",
+            "CgxjdXJyZW50X3RpbWUYASABKAMSEgoKc2Vzc2lvbl9pZBgCIAEoAxIQCghw",
+            "cm90b2NvbBgDIAEoBRITCgtpbnN0YW5jZV9pZBgEIAEoCSKOAgoWc2Vydmlj",
+            "ZV9wbGF5ZXJfcmVxdWVzdBJNChByZWxvYWRfY29uZmlnX2RiGAEgASgLMjEu",
+            "Y2VsZXJpdGFzLnByb3RvLnNlcnZpY2UucmVsb2FkX2NvbmZpZ19kYl9yZXF1",
+            "ZXN0SAASUQoScmVsb2FkX2dhbWVfY29uZmlnGAIgASgLMjMuY2VsZXJpdGFz",
+            "LnByb3RvLnNlcnZpY2UucmVsb2FkX2dhbWVfY29uZmlnX3JlcXVlc3RIABJH",
+            "Cg1zZXJ2aWNlX2xvZ2luGAMgASgLMi4uY2VsZXJpdGFzLnByb3RvLnNlcnZp",
+            "Y2Uuc2VydmljZV9sb2dpbl9yZXF1ZXN0SABCCQoHcGF5bG9hZCKSAgoXc2Vy",
+            "dmljZV9wbGF5ZXJfcmVzcG9uc2USTgoQcmVsb2FkX2NvbmZpZ19kYhgBIAEo",
+            "CzIyLmNlbGVyaXRhcy5wcm90by5zZXJ2aWNlLnJlbG9hZF9jb25maWdfZGJf",
+            "cmVzcG9uc2VIABJSChJyZWxvYWRfZ2FtZV9jb25maWcYAiABKAsyNC5jZWxl",
+            "cml0YXMucHJvdG8uc2VydmljZS5yZWxvYWRfZ2FtZV9jb25maWdfcmVzcG9u",
+            "c2VIABJICg1zZXJ2aWNlX2xvZ2luGAMgASgLMi8uY2VsZXJpdGFzLnByb3Rv",
+            "LnNlcnZpY2Uuc2VydmljZV9sb2dpbl9yZXNwb25zZUgAQgkKB3BheWxvYWRi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.reload_config_db_request), global::Celeritas.Proto.Service.reload_config_db_request.Parser, new[]{ "DbName", "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.reload_config_db_response), global::Celeritas.Proto.Service.reload_config_db_response.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.reload_game_config_request), global::Celeritas.Proto.Service.reload_game_config_request.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.reload_game_config_response), global::Celeritas.Proto.Service.reload_game_config_response.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_login_request), global::Celeritas.Proto.Service.service_login_request.Parser, new[]{ "AccountId", "NewAccount", "AccountBindId", "NewGameServerId", "GameServerId", "DeviceId", "AppVersion", "SessionId", "Protocol" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_login_response), global::Celeritas.Proto.Service.service_login_response.Parser, new[]{ "CurrentTime", "SessionId", "Protocol", "InstanceId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_player_request), global::Celeritas.Proto.Service.service_player_request.Parser, new[]{ "ReloadConfigDb", "ServiceLogin" }, new[]{ "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_player_response), global::Celeritas.Proto.Service.service_player_response.Parser, new[]{ "ReloadConfigDb", "ServiceLogin" }, new[]{ "Payload" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_player_request), global::Celeritas.Proto.Service.service_player_request.Parser, new[]{ "ReloadConfigDb", "ReloadGameConfig", "ServiceLogin" }, new[]{ "Payload" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_player_response), global::Celeritas.Proto.Service.service_player_response.Parser, new[]{ "ReloadConfigDb", "ReloadGameConfig", "ServiceLogin" }, new[]{ "Payload" }, null, null, null)
           }));
     }
     #endregion
@@ -458,6 +465,331 @@ namespace Celeritas.Proto.Service {
 
   }
 
+  /// <summary>
+  /// 重载游戏数据库
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class reload_game_config_request : pb::IMessage<reload_game_config_request>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<reload_game_config_request> _parser = new pb::MessageParser<reload_game_config_request>(() => new reload_game_config_request());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<reload_game_config_request> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public reload_game_config_request() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public reload_game_config_request(reload_game_config_request other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public reload_game_config_request Clone() {
+      return new reload_game_config_request(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as reload_game_config_request);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(reload_game_config_request other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(reload_game_config_request other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class reload_game_config_response : pb::IMessage<reload_game_config_response>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<reload_game_config_response> _parser = new pb::MessageParser<reload_game_config_response>(() => new reload_game_config_response());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<reload_game_config_response> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public reload_game_config_response() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public reload_game_config_response(reload_game_config_response other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public reload_game_config_response Clone() {
+      return new reload_game_config_response(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as reload_game_config_response);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(reload_game_config_response other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(reload_game_config_response other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
+
+  }
+
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class service_login_request : pb::IMessage<service_login_request>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -473,7 +805,7 @@ namespace Celeritas.Proto.Service {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -967,7 +1299,7 @@ namespace Celeritas.Proto.Service {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1276,7 +1608,7 @@ namespace Celeritas.Proto.Service {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1299,6 +1631,9 @@ namespace Celeritas.Proto.Service {
       switch (other.PayloadCase) {
         case PayloadOneofCase.ReloadConfigDb:
           ReloadConfigDb = other.ReloadConfigDb.Clone();
+          break;
+        case PayloadOneofCase.ReloadGameConfig:
+          ReloadGameConfig = other.ReloadGameConfig.Clone();
           break;
         case PayloadOneofCase.ServiceLogin:
           ServiceLogin = other.ServiceLogin.Clone();
@@ -1326,8 +1661,20 @@ namespace Celeritas.Proto.Service {
       }
     }
 
+    /// <summary>Field number for the "reload_game_config" field.</summary>
+    public const int ReloadGameConfigFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Service.reload_game_config_request ReloadGameConfig {
+      get { return payloadCase_ == PayloadOneofCase.ReloadGameConfig ? (global::Celeritas.Proto.Service.reload_game_config_request) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.ReloadGameConfig;
+      }
+    }
+
     /// <summary>Field number for the "service_login" field.</summary>
-    public const int ServiceLoginFieldNumber = 2;
+    public const int ServiceLoginFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Celeritas.Proto.Service.service_login_request ServiceLogin {
@@ -1343,7 +1690,8 @@ namespace Celeritas.Proto.Service {
     public enum PayloadOneofCase {
       None = 0,
       ReloadConfigDb = 1,
-      ServiceLogin = 2,
+      ReloadGameConfig = 2,
+      ServiceLogin = 3,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1375,6 +1723,7 @@ namespace Celeritas.Proto.Service {
         return true;
       }
       if (!object.Equals(ReloadConfigDb, other.ReloadConfigDb)) return false;
+      if (!object.Equals(ReloadGameConfig, other.ReloadGameConfig)) return false;
       if (!object.Equals(ServiceLogin, other.ServiceLogin)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1385,6 +1734,7 @@ namespace Celeritas.Proto.Service {
     public override int GetHashCode() {
       int hash = 1;
       if (payloadCase_ == PayloadOneofCase.ReloadConfigDb) hash ^= ReloadConfigDb.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) hash ^= ReloadGameConfig.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.ServiceLogin) hash ^= ServiceLogin.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
@@ -1409,8 +1759,12 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(10);
         output.WriteMessage(ReloadConfigDb);
       }
-      if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
+      if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) {
         output.WriteRawTag(18);
+        output.WriteMessage(ReloadGameConfig);
+      }
+      if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
+        output.WriteRawTag(26);
         output.WriteMessage(ServiceLogin);
       }
       if (_unknownFields != null) {
@@ -1427,8 +1781,12 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(10);
         output.WriteMessage(ReloadConfigDb);
       }
-      if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
+      if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) {
         output.WriteRawTag(18);
+        output.WriteMessage(ReloadGameConfig);
+      }
+      if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
+        output.WriteRawTag(26);
         output.WriteMessage(ServiceLogin);
       }
       if (_unknownFields != null) {
@@ -1443,6 +1801,9 @@ namespace Celeritas.Proto.Service {
       int size = 0;
       if (payloadCase_ == PayloadOneofCase.ReloadConfigDb) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReloadConfigDb);
+      }
+      if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReloadGameConfig);
       }
       if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ServiceLogin);
@@ -1465,6 +1826,12 @@ namespace Celeritas.Proto.Service {
             ReloadConfigDb = new global::Celeritas.Proto.Service.reload_config_db_request();
           }
           ReloadConfigDb.MergeFrom(other.ReloadConfigDb);
+          break;
+        case PayloadOneofCase.ReloadGameConfig:
+          if (ReloadGameConfig == null) {
+            ReloadGameConfig = new global::Celeritas.Proto.Service.reload_game_config_request();
+          }
+          ReloadGameConfig.MergeFrom(other.ReloadGameConfig);
           break;
         case PayloadOneofCase.ServiceLogin:
           if (ServiceLogin == null) {
@@ -1503,6 +1870,15 @@ namespace Celeritas.Proto.Service {
             break;
           }
           case 18: {
+            global::Celeritas.Proto.Service.reload_game_config_request subBuilder = new global::Celeritas.Proto.Service.reload_game_config_request();
+            if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) {
+              subBuilder.MergeFrom(ReloadGameConfig);
+            }
+            input.ReadMessage(subBuilder);
+            ReloadGameConfig = subBuilder;
+            break;
+          }
+          case 26: {
             global::Celeritas.Proto.Service.service_login_request subBuilder = new global::Celeritas.Proto.Service.service_login_request();
             if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
               subBuilder.MergeFrom(ServiceLogin);
@@ -1540,6 +1916,15 @@ namespace Celeritas.Proto.Service {
             break;
           }
           case 18: {
+            global::Celeritas.Proto.Service.reload_game_config_request subBuilder = new global::Celeritas.Proto.Service.reload_game_config_request();
+            if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) {
+              subBuilder.MergeFrom(ReloadGameConfig);
+            }
+            input.ReadMessage(subBuilder);
+            ReloadGameConfig = subBuilder;
+            break;
+          }
+          case 26: {
             global::Celeritas.Proto.Service.service_login_request subBuilder = new global::Celeritas.Proto.Service.service_login_request();
             if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
               subBuilder.MergeFrom(ServiceLogin);
@@ -1570,7 +1955,7 @@ namespace Celeritas.Proto.Service {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1593,6 +1978,9 @@ namespace Celeritas.Proto.Service {
       switch (other.PayloadCase) {
         case PayloadOneofCase.ReloadConfigDb:
           ReloadConfigDb = other.ReloadConfigDb.Clone();
+          break;
+        case PayloadOneofCase.ReloadGameConfig:
+          ReloadGameConfig = other.ReloadGameConfig.Clone();
           break;
         case PayloadOneofCase.ServiceLogin:
           ServiceLogin = other.ServiceLogin.Clone();
@@ -1620,8 +2008,20 @@ namespace Celeritas.Proto.Service {
       }
     }
 
+    /// <summary>Field number for the "reload_game_config" field.</summary>
+    public const int ReloadGameConfigFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Service.reload_game_config_response ReloadGameConfig {
+      get { return payloadCase_ == PayloadOneofCase.ReloadGameConfig ? (global::Celeritas.Proto.Service.reload_game_config_response) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.ReloadGameConfig;
+      }
+    }
+
     /// <summary>Field number for the "service_login" field.</summary>
-    public const int ServiceLoginFieldNumber = 2;
+    public const int ServiceLoginFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Celeritas.Proto.Service.service_login_response ServiceLogin {
@@ -1637,7 +2037,8 @@ namespace Celeritas.Proto.Service {
     public enum PayloadOneofCase {
       None = 0,
       ReloadConfigDb = 1,
-      ServiceLogin = 2,
+      ReloadGameConfig = 2,
+      ServiceLogin = 3,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1669,6 +2070,7 @@ namespace Celeritas.Proto.Service {
         return true;
       }
       if (!object.Equals(ReloadConfigDb, other.ReloadConfigDb)) return false;
+      if (!object.Equals(ReloadGameConfig, other.ReloadGameConfig)) return false;
       if (!object.Equals(ServiceLogin, other.ServiceLogin)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1679,6 +2081,7 @@ namespace Celeritas.Proto.Service {
     public override int GetHashCode() {
       int hash = 1;
       if (payloadCase_ == PayloadOneofCase.ReloadConfigDb) hash ^= ReloadConfigDb.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) hash ^= ReloadGameConfig.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.ServiceLogin) hash ^= ServiceLogin.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
@@ -1703,8 +2106,12 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(10);
         output.WriteMessage(ReloadConfigDb);
       }
-      if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
+      if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) {
         output.WriteRawTag(18);
+        output.WriteMessage(ReloadGameConfig);
+      }
+      if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
+        output.WriteRawTag(26);
         output.WriteMessage(ServiceLogin);
       }
       if (_unknownFields != null) {
@@ -1721,8 +2128,12 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(10);
         output.WriteMessage(ReloadConfigDb);
       }
-      if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
+      if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) {
         output.WriteRawTag(18);
+        output.WriteMessage(ReloadGameConfig);
+      }
+      if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
+        output.WriteRawTag(26);
         output.WriteMessage(ServiceLogin);
       }
       if (_unknownFields != null) {
@@ -1737,6 +2148,9 @@ namespace Celeritas.Proto.Service {
       int size = 0;
       if (payloadCase_ == PayloadOneofCase.ReloadConfigDb) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReloadConfigDb);
+      }
+      if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReloadGameConfig);
       }
       if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ServiceLogin);
@@ -1759,6 +2173,12 @@ namespace Celeritas.Proto.Service {
             ReloadConfigDb = new global::Celeritas.Proto.Service.reload_config_db_response();
           }
           ReloadConfigDb.MergeFrom(other.ReloadConfigDb);
+          break;
+        case PayloadOneofCase.ReloadGameConfig:
+          if (ReloadGameConfig == null) {
+            ReloadGameConfig = new global::Celeritas.Proto.Service.reload_game_config_response();
+          }
+          ReloadGameConfig.MergeFrom(other.ReloadGameConfig);
           break;
         case PayloadOneofCase.ServiceLogin:
           if (ServiceLogin == null) {
@@ -1797,6 +2217,15 @@ namespace Celeritas.Proto.Service {
             break;
           }
           case 18: {
+            global::Celeritas.Proto.Service.reload_game_config_response subBuilder = new global::Celeritas.Proto.Service.reload_game_config_response();
+            if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) {
+              subBuilder.MergeFrom(ReloadGameConfig);
+            }
+            input.ReadMessage(subBuilder);
+            ReloadGameConfig = subBuilder;
+            break;
+          }
+          case 26: {
             global::Celeritas.Proto.Service.service_login_response subBuilder = new global::Celeritas.Proto.Service.service_login_response();
             if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
               subBuilder.MergeFrom(ServiceLogin);
@@ -1834,6 +2263,15 @@ namespace Celeritas.Proto.Service {
             break;
           }
           case 18: {
+            global::Celeritas.Proto.Service.reload_game_config_response subBuilder = new global::Celeritas.Proto.Service.reload_game_config_response();
+            if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) {
+              subBuilder.MergeFrom(ReloadGameConfig);
+            }
+            input.ReadMessage(subBuilder);
+            ReloadGameConfig = subBuilder;
+            break;
+          }
+          case 26: {
             global::Celeritas.Proto.Service.service_login_response subBuilder = new global::Celeritas.Proto.Service.service_login_response();
             if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
               subBuilder.MergeFrom(ServiceLogin);

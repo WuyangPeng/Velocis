@@ -1,12 +1,9 @@
-﻿using System;
-using System.IO;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
-using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Editor.Luban;
 
-public class FileCopierTool : EditorWindow
+public sealed class FileCopierTool : EditorWindow
 {
     private const string PrefKeySource1 = "FileCopierTool_SourcePath1";
     private const string PrefKeySource2 = "FileCopierTool_SourcePath2";
@@ -73,7 +70,7 @@ public class FileCopierTool : EditorWindow
 
         if (GUILayout.Button("Confirm"))
         {
-            CopyFiles();
+            FileCopier.CopyFiles(_sourcePath1, _sourcePath2);
         }
     }
 
@@ -81,68 +78,5 @@ public class FileCopierTool : EditorWindow
     public static void ShowWindow()
     {
         GetWindow<FileCopierTool>("File Copier");
-    }
-
-    private void CopyFiles()
-    {
-        var targetBase = Path.Combine(Application.dataPath, "Game");
-        var target1 = Path.Combine(targetBase, "luban");
-        var target2 = Path.Combine(targetBase, "proto");
-
-        var success1 = CopyDirectory(_sourcePath1, target1);
-        var success2 = CopyDirectory(_sourcePath2, target2);
-
-        if (!success1 && !success2)
-        {
-            return;
-        }
-
-        AssetDatabase.Refresh();
-        EditorUtility.DisplayDialog("Result", "Copy operation completed. Check console for details.", "OK");
-    }
-
-    private static bool CopyDirectory(string sourceDir, string targetDir)
-    {
-        if (string.IsNullOrEmpty(sourceDir))
-        {
-            return false;
-        }
-
-        if (!Directory.Exists(sourceDir))
-        {
-            Log.Error($"Source directory not found: {sourceDir}");
-            return false;
-        }
-
-        try
-        {
-            if (!Directory.Exists(targetDir))
-            {
-                Directory.CreateDirectory(targetDir);
-            }
-
-            var files = Directory.GetFiles(sourceDir);
-            foreach (var file in files)
-            {
-                var fileName = Path.GetFileName(file);
-                var destFile = Path.Combine(targetDir, fileName);
-                File.Copy(file, destFile, true);
-            }
-
-            var subDirs = Directory.GetDirectories(sourceDir);
-            foreach (var subDir in subDirs)
-            {
-                var dirName = Path.GetFileName(subDir);
-                var destSubDir = Path.Combine(targetDir, dirName);
-                CopyDirectory(subDir, destSubDir);
-            }
-
-            return true;
-        }
-        catch (Exception e)
-        {
-            Log.Error($"Error copying files from {sourceDir} to {targetDir}: {e.Message}");
-            return false;
-        }
     }
 }
