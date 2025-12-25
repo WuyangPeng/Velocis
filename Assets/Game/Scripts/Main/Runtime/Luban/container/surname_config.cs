@@ -10,21 +10,20 @@
 using Luban;
 
 
-namespace Celeritas.Config
+namespace Celeritas.Config.container
 {
-public sealed partial class name_config : Luban.BeanBase
+public sealed partial class surname_config : Luban.BeanBase
 {
-    public name_config(ByteBuf _buf) 
+    public surname_config(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
-        SexType = (sex_type)_buf.ReadInt();
         Weight = _buf.ReadInt();
     }
 
-    public static name_config Deserializename_config(ByteBuf _buf)
+    public static surname_config Deserializesurname_config(ByteBuf _buf)
     {
-        return new name_config(_buf);
+        return new container.surname_config(_buf);
     }
 
     /// <summary>
@@ -36,18 +35,14 @@ public sealed partial class name_config : Luban.BeanBase
     /// </summary>
     public readonly string Name;
     /// <summary>
-    /// 性别
-    /// </summary>
-    public readonly sex_type SexType;
-    /// <summary>
     /// 权重
     /// </summary>
     public readonly int Weight;
    
-    public const int __ID__ = -138271882;
+    public const int __ID__ = 25979955;
     public override int GetTypeId() => __ID__;
 
-    public  void ResolveRef(Tables tables)
+    public  void ResolveRef(tables tables)
     {
     }
 
@@ -56,7 +51,6 @@ public sealed partial class name_config : Luban.BeanBase
         return "{ "
         + "id:" + Id + ","
         + "name:" + Name + ","
-        + "sexType:" + SexType + ","
         + "weight:" + Weight + ","
         + "}";
     }

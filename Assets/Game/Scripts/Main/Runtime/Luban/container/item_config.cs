@@ -10,7 +10,7 @@
 using Luban;
 
 
-namespace Celeritas.Config
+namespace Celeritas.Config.container
 {
 public sealed partial class item_config : Luban.BeanBase
 {
@@ -24,7 +24,7 @@ public sealed partial class item_config : Luban.BeanBase
 
     public static item_config Deserializeitem_config(ByteBuf _buf)
     {
-        return new item_config(_buf);
+        return new container.item_config(_buf);
     }
 
     /// <summary>
@@ -44,10 +44,10 @@ public sealed partial class item_config : Luban.BeanBase
     /// </summary>
     public readonly bool Squares;
    
-    public const int __ID__ = -844891666;
+    public const int __ID__ = -209370111;
     public override int GetTypeId() => __ID__;
 
-    public  void ResolveRef(Tables tables)
+    public  void ResolveRef(tables tables)
     {
     }
 

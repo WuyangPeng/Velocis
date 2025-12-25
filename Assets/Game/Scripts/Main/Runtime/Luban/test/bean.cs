@@ -50,7 +50,7 @@ public sealed partial class bean : Luban.BeanBase
     public const int __ID__ = -1225911412;
     public override int GetTypeId() => __ID__;
 
-    public  void ResolveRef(Tables tables)
+    public  void ResolveRef(tables tables)
     {
     }
 

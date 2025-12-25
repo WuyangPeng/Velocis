@@ -11,21 +11,21 @@ using Luban;
 
 namespace Celeritas.Config
 {
-public partial class Tables
+public partial class tables
 {
-    public surname_config_container SurnameConfigContainer {get; }
-    public name_config_container NameConfigContainer {get; }
-    public red_dot_config_container RedDotConfigContainer {get; }
-    public item_config_container ItemConfigContainer {get; }
-    public develop_config_container DevelopConfigContainer {get; }
+    public container.surname_config_container SurnameConfigContainer {get; }
+    public container.name_config_container NameConfigContainer {get; }
+    public container.red_dot_config_container RedDotConfigContainer {get; }
+    public container.item_config_container ItemConfigContainer {get; }
+    public container.develop_config_container DevelopConfigContainer {get; }
 
-    public Tables(System.Func<string, ByteBuf> loader)
+    public tables(System.Func<string, ByteBuf> loader)
     {
-        SurnameConfigContainer = new surname_config_container(loader("surname_config_container"));
-        NameConfigContainer = new name_config_container(loader("name_config_container"));
-        RedDotConfigContainer = new red_dot_config_container(loader("red_dot_config_container"));
-        ItemConfigContainer = new item_config_container(loader("item_config_container"));
-        DevelopConfigContainer = new develop_config_container(loader("develop_config_container"));
+        SurnameConfigContainer = new container.surname_config_container(loader("surname_config_container"));
+        NameConfigContainer = new container.name_config_container(loader("name_config_container"));
+        RedDotConfigContainer = new container.red_dot_config_container(loader("red_dot_config_container"));
+        ItemConfigContainer = new container.item_config_container(loader("item_config_container"));
+        DevelopConfigContainer = new container.develop_config_container(loader("develop_config_container"));
         ResolveRef();
     }
     

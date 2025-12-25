@@ -11,107 +11,106 @@ using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace Game.Scripts.Main.Runtime.Procedure.Scene
+namespace Game.Scripts.Main.Runtime.Procedure.Scene;
+
+public class ProcedureMenu : ProcedureBase
 {
-    public class ProcedureMenu : ProcedureBase
+    private readonly FormComponent formComponent = new();
+    private readonly List<HeadSaveData> headData = new();
+
+    public readonly int SaveMaxCount = 2;
+    private int m_NextSceneId;
+
+    public override bool UseNativeDialog => false;
+
+    public void LoadGame()
     {
-        private readonly FormComponent formComponent = new();
-        private readonly List<HeadSaveData> headData = new();
+        m_NextSceneId = GameEntry.Config.GetInt("Scene.InitGame");
+    }
 
-        public readonly int SaveMaxCount = 2;
-        private int m_NextSceneId;
+    public void StartGame()
+    {
+        m_NextSceneId = GameEntry.Config.GetInt("Scene.Home");
+    }
 
-        public override bool UseNativeDialog => false;
+    public void OpenUIForm(UIFormId form)
+    {
+        formComponent.OpenUIForm(form);
+    }
 
-        public void LoadGame()
+    public void RemoveUIForm(UIFormId form)
+    {
+        formComponent.RemoveUIForm(form);
+    }
+
+    protected override void OnEnter(ProcedureOwner procedureOwner)
+    {
+        base.OnEnter(procedureOwner);
+
+        m_NextSceneId = 0;
+
+        formComponent.AddForm(UIFormId.MenuForm);
+        formComponent.OnEnter(procedureOwner);
+
+        GameEntry.ModuleComponent.ResetModule();
+
+        LoadAccountData();
+    }
+
+    private static void LoadAccountData()
+    {
+        var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+        accountModule.Clear();
+    }
+
+    protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
+    {
+        base.OnLeave(procedureOwner, isShutdown);
+
+        formComponent.OnLeave(procedureOwner, isShutdown);
+    }
+
+
+    protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
+    {
+        base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
+
+        if (m_NextSceneId <= 0)
         {
-            m_NextSceneId = GameEntry.Config.GetInt("Scene.InitGame");
+            return;
         }
 
-        public void StartGame()
+        procedureOwner.SetData<VarInt32>("NextSceneId", m_NextSceneId);
+        procedureOwner.SetData<VarByte>("GameMode", (byte)GameMode.Survival);
+        ChangeState<ProcedureChangeScene>(procedureOwner);
+    }
+
+    public void LoadHeadData()
+    {
+        for (var i = 0; i < SaveMaxCount; ++i)
         {
-            m_NextSceneId = GameEntry.Config.GetInt("Scene.Home");
-        }
+            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + i, "HeadData.idx");
 
-        public void OpenUIForm(UIFormId form)
-        {
-            formComponent.OpenUIForm(form);
-        }
+            var bytes = fileSystems?.ReadFile("GameSaves");
 
-        public void RemoveUIForm(UIFormId form)
-        {
-            formComponent.RemoveUIForm(form);
-        }
-
-        protected override void OnEnter(ProcedureOwner procedureOwner)
-        {
-            base.OnEnter(procedureOwner);
-
-            m_NextSceneId = 0;
-
-            formComponent.AddForm(UIFormId.MenuForm);
-            formComponent.OnEnter(procedureOwner);
-
-            GameEntry.ModuleComponent.ResetModule();
-
-            LoadAccountData();
-        }
-
-        private static void LoadAccountData()
-        {
-            var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
-            accountModule.Clear();
-        }
-
-        protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
-        {
-            base.OnLeave(procedureOwner, isShutdown);
-
-            formComponent.OnLeave(procedureOwner, isShutdown);
-        }
-
-
-        protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
-        {
-            base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
-
-            if (m_NextSceneId <= 0)
+            if (bytes == null)
             {
-                return;
+                continue;
             }
 
-            procedureOwner.SetData<VarInt32>("NextSceneId", m_NextSceneId);
-            procedureOwner.SetData<VarByte>("GameMode", (byte)GameMode.Survival);
-            ChangeState<ProcedureChangeScene>(procedureOwner);
+            var json = Encoding.UTF8.GetString(bytes);
+            var data = Utility.Json.ToObject<HeadSaveData>(json);
+            headData.Add(data);
         }
+    }
 
-        public void LoadHeadData()
-        {
-            for (var i = 0; i < SaveMaxCount; ++i)
-            {
-                var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + i, "HeadData.idx");
+    public bool HasHeadData(int index)
+    {
+        return headData.Any(data => data.Index == index);
+    }
 
-                var bytes = fileSystems?.ReadFile("GameSaves");
-
-                if (bytes == null)
-                {
-                    continue;
-                }
-
-                var json = Encoding.UTF8.GetString(bytes);
-                var data = Utility.Json.ToObject<HeadSaveData>(json);
-                headData.Add(data);
-            }
-        }
-
-        public bool HasHeadData(int index)
-        {
-            return headData.Any(data => data.Index == index);
-        }
-
-        public List<HeadSaveData> GetHeadData()
-        {
-            return headData;
-        }
+    public List<HeadSaveData> GetHeadData()
+    {
+        return headData;
     }
 }
