@@ -1,5 +1,6 @@
 ﻿using Game.Scripts.Main.Runtime.Account;
 using Game.Scripts.Main.Runtime.BuiltinData;
+using Game.Scripts.Main.Runtime.Config;
 using Game.Scripts.Main.Runtime.HPBar;
 using Game.Scripts.Main.Runtime.Network;
 using UnityEngine;
@@ -15,8 +16,9 @@ namespace Game.Scripts.Main.Runtime.Base
 
         public static HpBarComponent HpBar { get; private set; }
 
-        public static AccountComponent Account { get; private set; }
+        public static GameConfigComponent GameConfig { get; private set; }
 
+        public static AccountComponent Account { get; private set; }
 
         public static CeleritasHandlerComponent CeleritasHandler { get; private set; }
 
@@ -24,6 +26,7 @@ namespace Game.Scripts.Main.Runtime.Base
         {
             BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent>();
             HpBar = UnityGameFramework.Runtime.GameEntry.GetComponent<HpBarComponent>();
+            GameConfig = UnityGameFramework.Runtime.GameEntry.GetComponent<GameConfigComponent>();
             Account = UnityGameFramework.Runtime.GameEntry.GetComponent<AccountComponent>();
             CeleritasHandler = UnityGameFramework.Runtime.GameEntry.GetComponent<CeleritasHandlerComponent>();
         }

@@ -10,10 +10,8 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
     public class ProcedureHome : ProcedureBase
     {
-        private readonly FormComponent formComponent = new();
-
-
         private const float GameOverDelayedSeconds = 2f;
+        private readonly FormComponent formComponent = new();
 
         private readonly Dictionary<GameMode, GameBase> m_Games = new();
         private GameBase m_CurrentGame;
@@ -27,6 +25,8 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             base.OnInit(procedureOwner);
 
             m_Games.Add(GameMode.Survival, new SurvivalGame());
+
+            GameEntry.GameConfig.Initialize();
         }
 
         protected override void OnDestroy(ProcedureOwner procedureOwner)
@@ -67,7 +67,6 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         }
 
 
-
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
@@ -85,7 +84,11 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             }
 
             m_GotoMenuDelaySeconds += elapseSeconds;
-            if (!(m_GotoMenuDelaySeconds >= GameOverDelayedSeconds)) return;
+            if (!(m_GotoMenuDelaySeconds >= GameOverDelayedSeconds))
+            {
+                return;
+            }
+
             procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
             ChangeState<ProcedureChangeScene>(procedureOwner);
         }
