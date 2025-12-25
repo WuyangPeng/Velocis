@@ -2,7 +2,7 @@
 <UnityGameFramework>
   <BuildSettings>
     <DefaultScenes>
-      <DefaultScene Name="Assets/RiseOfHistory.unity" />
+      <DefaultScene Name="Assets/Velocis.unity" />
     </DefaultScenes>
     <SearchScenePaths>
       <SearchScenePath Path="Assets" />
