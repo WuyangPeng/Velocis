@@ -4,7 +4,7 @@ namespace Game.Scripts.Main.Editor.Luban;
 
 public static class LubanTools
 {
-    [MenuItem("Velocis/Export Luban")]
+    [MenuItem("Velocis/Generate Luban")]
     public static void ExportClient()
     {
         LubanExporter.Export("client");

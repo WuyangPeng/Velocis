@@ -69,7 +69,7 @@ public sealed class FileCopierTool : EditorWindow
         GUILayout.Space(20);
 
         if (GUILayout.Button("Confirm"))
-        {
+        { 
             FileCopier.CopyFiles(_sourcePath1, _sourcePath2);
         }
     }

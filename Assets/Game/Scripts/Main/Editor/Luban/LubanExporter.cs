@@ -14,7 +14,7 @@ public static class LubanExporter
         var parent = Directory.GetParent(Application.dataPath);
         if (parent == null)
         {
-            Log.Error("Can't find Luban.exe");
+            Debug.Log("Can't find Luban.exe");
             return;
         }
 
@@ -38,7 +38,7 @@ public static class LubanExporter
         }
         else
         {
-            Log.Error($"Luban not found at {toolsDir}. Expected Luban.dll or Luban.exe");
+            Debug.Log($"Luban not found at {toolsDir}. Expected Luban.dll or Luban.exe");
             return;
         }
 

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.IO;
 using UnityEditor;
-using UnityEngine;
-using UnityGameFramework.Runtime;
+using UnityEngine; 
 
 namespace Game.Scripts.Main.Editor.Luban
 {
@@ -23,7 +22,7 @@ namespace Game.Scripts.Main.Editor.Luban
             }
 
             AssetDatabase.Refresh();
-            EditorUtility.DisplayDialog("Result", "Copy operation completed. Check console for details.", "OK");
+            EditorUtility.DisplayDialog("Result", "Copy operation completed. Check console for details.", "OK"); 
         }
 
         private static bool CopyDirectory(string sourceDir, string targetDir)
@@ -35,7 +34,7 @@ namespace Game.Scripts.Main.Editor.Luban
 
             if (!Directory.Exists(sourceDir))
             {
-                Log.Error($"Source directory not found: {sourceDir}");
+                Debug.Log($"Source directory not found: {sourceDir}");
                 return false;
             }
 
@@ -67,7 +66,7 @@ namespace Game.Scripts.Main.Editor.Luban
             }
             catch (Exception e)
             {
-                Log.Error($"Error copying files from {sourceDir} to {targetDir}: {e.Message}");
+                Debug.Log($"Error copying files from {sourceDir} to {targetDir}: {e.Message}");
                 return false;
             }
         }
