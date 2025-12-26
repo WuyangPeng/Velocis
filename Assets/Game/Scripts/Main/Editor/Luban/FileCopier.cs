@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -70,17 +71,15 @@ namespace Game.Scripts.Main.Editor.Luban
             }
 
             var subDirectories = Directory.GetDirectories(sourceDirectory);
-            foreach (var subDirectory in subDirectories)
-            {
-                var directoryName = Path.GetFileName(subDirectory);
-                var destSubDirectory = Path.Combine(targetDirectory, directoryName);
-                if (!CopyDirectory(subDirectory, destSubDirectory))
-                {
-                    return false;
-                }
-            }
+            return subDirectories.All(subDirectory => CopySubDirectory(targetDirectory, subDirectory));
+        }
 
-            return true;
+        private static bool CopySubDirectory(string targetDirectory, string subDirectory)
+        {
+            var directoryName = Path.GetFileName(subDirectory);
+            var destSubDirectory = Path.Combine(targetDirectory, directoryName);
+            
+            return CopyDirectory(subDirectory, destSubDirectory);
         }
     }
 }
