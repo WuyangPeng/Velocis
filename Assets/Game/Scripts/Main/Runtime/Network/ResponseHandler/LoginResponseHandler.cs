@@ -1,4 +1,5 @@
 ﻿using Celeritas.Proto.Client;
+using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Network.PacketHandler;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using UnityGameFramework.Runtime;
@@ -18,6 +19,9 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
             }
 
             procedureMenu.StartGame();
+
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            userModule.SetServerTime(message.CurrentTime);
 
             Log.Info("login_.CurrentTime ='{0}'.", message.CurrentTime);
         }
