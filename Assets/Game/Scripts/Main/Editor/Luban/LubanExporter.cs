@@ -85,9 +85,17 @@ namespace Game.Scripts.Main.Editor.Luban
 
         private static void RunCommand(LubanInfo lubanInfo)
         {
+            var startInfo = CreateProcessStartInfo(lubanInfo);
+            var result = ExecuteProcess(startInfo);
+            
+            HandleProcessResult(result);
+        }
+
+        private static ProcessStartInfo CreateProcessStartInfo(LubanInfo lubanInfo)
+        {
             Debug.Log($"Running Luban: {lubanInfo.GetCommand()} {lubanInfo.GetArgument()}");
 
-            var startInfo = new ProcessStartInfo
+            return new ProcessStartInfo
             {
                 FileName = lubanInfo.GetCommand(),
                 Arguments = lubanInfo.GetArgument(),
@@ -97,12 +105,15 @@ namespace Game.Scripts.Main.Editor.Luban
                 CreateNoWindow = true,
                 WorkingDirectory = LubanDirectory.GetProjectRoot()
             };
+        }
 
+        private static ProcessResult ExecuteProcess(ProcessStartInfo startInfo)
+        {
             using var process = Process.Start(startInfo);
             if (process == null)
             {
                 Debug.LogError("Can't find Luban.exe");
-                return;
+                return new ProcessResult(-1, "", "Process.Start returned null");
             }
 
             var output = "";
@@ -129,14 +140,19 @@ namespace Game.Scripts.Main.Editor.Luban
 
             process.WaitForExit();
 
-            if (process.ExitCode == 0)
+            return new ProcessResult(process.ExitCode, output, error);
+        }
+
+        private static void HandleProcessResult(ProcessResult result)
+        {
+            if (result.ExitCode == 0)
             {
-                Debug.Log($"Luban Export Success:\n{output}");
+                Debug.Log($"Luban Export Success:\n{result.Output}");
                 AssetDatabase.Refresh();
             }
             else
             {
-                Debug.LogError($"Luban Export Failed (ExitCode {process.ExitCode}):\n{output}\n{error}");
+                Debug.LogError($"Luban Export Failed (ExitCode {result.ExitCode}):\n{result.Output}\n{result.Error}");
             }
         }
     }
