@@ -9,6 +9,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base
     public class ModuleComponent : GameFrameworkComponent
     {
         private readonly Dictionary<Type, BaseModule> modules = new();
+
         public void InitModule()
         {
             var attributes = ScanWithAttribute();
@@ -48,7 +49,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base
 
             foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
             {
-                if (asm.IsDynamic) continue;
+                if (asm.IsDynamic)
+                {
+                    continue;
+                }
 
                 try
                 {
@@ -74,6 +78,14 @@ namespace Game.Scripts.Main.Runtime.GameModule.Base
         public T GetModule<T>() where T : BaseModule
         {
             return (T)GetBaseModule(typeof(T));
+        }
+
+        public void LoginFinish()
+        {
+            foreach (var module in modules)
+            {
+                module.Value.LoginFinish();
+            }
         }
     }
 }
