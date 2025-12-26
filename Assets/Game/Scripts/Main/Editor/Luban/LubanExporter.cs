@@ -8,19 +8,17 @@ namespace Game.Scripts.Main.Editor.Luban
 {
     public static class LubanExporter
     {
+        private static readonly LubanDirectory LubanDirectory = new();
+
         private static LubanInfo GetLubanInfo()
         {
-            var parent = Directory.GetParent(Application.dataPath);
-            if (parent == null)
+            if (!LubanDirectory.IsEffective())
             {
-                Debug.Log("Can't find Luban.exe");
                 return null;
             }
 
-            var projectRoot = parent.FullName;
-            var toolsDirectory = Path.Combine(projectRoot, "Tools", "Luban");
-            var lubanDll = Path.Combine(toolsDirectory, "Luban.dll");
-            var lubanExe = Path.Combine(toolsDirectory, "Luban.exe");
+            var lubanDll = LubanDirectory.GetLubanDll();
+            var lubanExe = LubanDirectory.GetLubanExe();
 
             if (File.Exists(lubanDll))
             {
@@ -32,7 +30,7 @@ namespace Game.Scripts.Main.Editor.Luban
                 return new LubanInfo(lubanExe, "");
             }
 
-            Debug.LogError($"Luban not found at {toolsDirectory}. Expected Luban.dll or Luban.exe");
+            Debug.LogError($"Luban not found at {LubanDirectory.GetToolsDirectory()}. Expected Luban.dll or Luban.exe");
 
             return null;
         }
@@ -85,7 +83,7 @@ namespace Game.Scripts.Main.Editor.Luban
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 CreateNoWindow = true,
-                WorkingDirectory = Directory.GetParent(Application.dataPath)!.FullName
+                WorkingDirectory = LubanDirectory.GetProjectRoot()
             };
 
             using var process = Process.Start(startInfo);
