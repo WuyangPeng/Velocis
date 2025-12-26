@@ -8,13 +8,13 @@ namespace Game.Scripts.Main.Editor.Luban
 {
     public static class LubanExporter
     {
-        public static void Export(string target)
+        private static LubanInfo GetLubanInfo()
         {
             var parent = Directory.GetParent(Application.dataPath);
             if (parent == null)
             {
                 Debug.Log("Can't find Luban.exe");
-                return;
+                return null;
             }
 
             var projectRoot = parent.FullName;
@@ -22,22 +22,26 @@ namespace Game.Scripts.Main.Editor.Luban
             var lubanDll = Path.Combine(toolsDirectory, "Luban.dll");
             var lubanExe = Path.Combine(toolsDirectory, "Luban.exe");
 
-            var cmd = "";
-            var args = "";
-
             if (File.Exists(lubanDll))
             {
-                cmd = "dotnet";
-                args = $"\"{lubanDll}\"";
+                return new LubanInfo("dotnet", $"\"{lubanDll}\"");
             }
-            else if (File.Exists(lubanExe))
+
+            if (File.Exists(lubanExe))
             {
-                cmd = lubanExe;
-                args = "";
+                return new LubanInfo(lubanExe, "");
             }
-            else
+
+            Debug.LogError($"Luban not found at {toolsDirectory}. Expected Luban.dll or Luban.exe");
+
+            return null;
+        }
+
+        public static void Export(string target)
+        {
+            var lubanInfo = GetLubanInfo();
+            if (lubanInfo == null)
             {
-                Debug.Log($"Luban not found at {toolsDirectory}. Expected Luban.dll or Luban.exe");
                 return;
             }
 
@@ -55,28 +59,28 @@ namespace Game.Scripts.Main.Editor.Luban
                 Directory.CreateDirectory(dataOutputDirectory);
             }
 
-            args += " -c cs-bin";
-            args += " -d bin";
+            lubanInfo.AddArgument(" -c cs-bin");
+            lubanInfo.AddArgument(" -d bin");
 
             // 构建参数
-            args += $" -t {target}";
-            args += $" --conf \"{confPath}\"";
+            lubanInfo.AddArgument($" -t {target}");
+            lubanInfo.AddArgument($" --conf \"{confPath}\"");
 
             // 将输出目录作为自定义参数 (xargs) 传递，这在模板中通常会用到
-            args += $" -x outputCodeDir=\"{codeOutputDirectory}\"";
-            args += $" -x outputDataDir=\"{dataOutputDirectory}\"";
+            lubanInfo.AddArgument($" -x outputCodeDir=\"{codeOutputDirectory}\"");
+            lubanInfo.AddArgument($" -x outputDataDir=\"{dataOutputDirectory}\"");
 
-            RunCommand(cmd, args);
+            RunCommand(lubanInfo);
         }
 
-        private static void RunCommand(string cmd, string args)
+        private static void RunCommand(LubanInfo lubanInfo)
         {
-            Debug.Log($"Running Luban: {cmd} {args}");
+            Debug.Log($"Running Luban: {lubanInfo.GetCommand()} {lubanInfo.GetArgument()}");
 
             var startInfo = new ProcessStartInfo
             {
-                FileName = cmd,
-                Arguments = args,
+                FileName = lubanInfo.GetCommand(),
+                Arguments = lubanInfo.GetArgument(),
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
@@ -87,21 +91,22 @@ namespace Game.Scripts.Main.Editor.Luban
             using var process = Process.Start(startInfo);
             if (process == null)
             {
-                Debug.Log("Can't find Luban.exe");
+                Debug.LogError("Can't find Luban.exe");
                 return;
             }
 
             var output = "";
             var error = "";
 
-            process.OutputDataReceived += (sender, data) =>
+            process.OutputDataReceived += (_, data) =>
             {
                 if (data.Data != null)
                 {
                     output += data.Data + "\n";
                 }
             };
-            process.ErrorDataReceived += (sender, data) =>
+
+            process.ErrorDataReceived += (_, data) =>
             {
                 if (data.Data != null)
                 {
@@ -121,7 +126,7 @@ namespace Game.Scripts.Main.Editor.Luban
             }
             else
             {
-                Debug.Log($"Luban Export Failed (ExitCode {process.ExitCode}):\n{output}\n{error}");
+                Debug.LogError($"Luban Export Failed (ExitCode {process.ExitCode}):\n{output}\n{error}");
             }
         }
     }

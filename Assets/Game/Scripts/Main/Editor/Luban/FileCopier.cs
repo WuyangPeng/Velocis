@@ -26,6 +26,8 @@ namespace Game.Scripts.Main.Editor.Luban
 
             AssetDatabase.Refresh();
             EditorUtility.DisplayDialog("Result", "Copy operation completed. Check console for details.", "OK");
+
+            Debug.Log("Copy operation completed");
         }
 
         private static bool CopyDirectory(string sourceDirectory, string targetDirectory)
@@ -36,32 +38,54 @@ namespace Game.Scripts.Main.Editor.Luban
             }
             catch (Exception e)
             {
-                Debug.Log($"Error copying files from {sourceDirectory} to {targetDirectory}: {e.Message}");
+                Debug.LogError($"Error copying files from {sourceDirectory} to {targetDirectory}: {e.Message}");
                 return false;
             }
         }
 
         private static bool DoCopyDirectory(string sourceDirectory, string targetDirectory)
         {
+            if (!ValidateSourceDirectory(sourceDirectory))
+            {
+                return false;
+            }
+
+            PrepareTargetDirectory(targetDirectory);
+            CopyFilesInDirectory(sourceDirectory, targetDirectory);
+
+            return CopyAllSubDirectories(sourceDirectory, targetDirectory);
+        }
+
+        private static bool ValidateSourceDirectory(string sourceDirectory)
+        {
             if (string.IsNullOrEmpty(sourceDirectory))
             {
-                Debug.Log("Source directory is empty.");
+                Debug.LogError("Source directory is empty.");
                 return false;
             }
 
-            if (!Directory.Exists(sourceDirectory))
+            if (Directory.Exists(sourceDirectory))
             {
-                Debug.Log($"Source directory not found: {sourceDirectory}");
-                return false;
+                return true;
             }
 
+            Debug.LogError($"Source directory not found: {sourceDirectory}");
+
+            return false;
+        }
+
+        private static void PrepareTargetDirectory(string targetDirectory)
+        {
             if (Directory.Exists(targetDirectory))
             {
                 Directory.Delete(targetDirectory, true);
             }
 
             Directory.CreateDirectory(targetDirectory);
+        }
 
+        private static void CopyFilesInDirectory(string sourceDirectory, string targetDirectory)
+        {
             var files = Directory.GetFiles(sourceDirectory);
             foreach (var file in files)
             {
@@ -69,7 +93,10 @@ namespace Game.Scripts.Main.Editor.Luban
                 var destFile = Path.Combine(targetDirectory, fileName);
                 File.Copy(file, destFile, true);
             }
+        }
 
+        private static bool CopyAllSubDirectories(string sourceDirectory, string targetDirectory)
+        {
             var subDirectories = Directory.GetDirectories(sourceDirectory);
             return subDirectories.All(subDirectory => CopySubDirectory(targetDirectory, subDirectory));
         }
@@ -78,7 +105,7 @@ namespace Game.Scripts.Main.Editor.Luban
         {
             var directoryName = Path.GetFileName(subDirectory);
             var destSubDirectory = Path.Combine(targetDirectory, directoryName);
-            
+
             return CopyDirectory(subDirectory, destSubDirectory);
         }
     }

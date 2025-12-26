@@ -38,26 +38,40 @@ namespace Game.Scripts.Main.Editor.Luban
             GUILayout.Label(label);
             EditorGUILayout.BeginHorizontal();
 
-            var newPath = EditorGUILayout.TextField(path);
-            if (newPath != path)
-            {
-                path = newPath;
-                EditorPrefs.SetString(prefKey, path);
-            }
-
-            if (GUILayout.Button("Browse", GUILayout.Width(60)))
-            {
-                var selectedPath = EditorUtility.OpenFolderPanel(browserTitle, path, "");
-                if (!string.IsNullOrEmpty(selectedPath))
-                {
-                    path = selectedPath;
-                    EditorPrefs.SetString(prefKey, path);
-                }
-            }
+            DrawPathTextField(ref path, prefKey);
+            DrawBrowseButton(ref path, prefKey, browserTitle);
 
             EditorGUILayout.EndHorizontal();
         }
 
+        private static void DrawPathTextField(ref string path, string prefKey)
+        {
+            var newPath = EditorGUILayout.TextField(path);
+            if (newPath == path)
+            {
+                return;
+            }
+
+            path = newPath;
+            EditorPrefs.SetString(prefKey, path);
+        }
+
+        private static void DrawBrowseButton(ref string path, string prefKey, string browserTitle)
+        {
+            if (!GUILayout.Button("Browse", GUILayout.Width(60)))
+            {
+                return;
+            }
+
+            var selectedPath = EditorUtility.OpenFolderPanel(browserTitle, path, "");
+            if (string.IsNullOrEmpty(selectedPath))
+            {
+                return;
+            }
+
+            path = selectedPath;
+            EditorPrefs.SetString(prefKey, path);
+        }
 
         [MenuItem("Velocis/File Copier")]
         public static void ShowWindow()
