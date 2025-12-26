@@ -19,9 +19,9 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
     /// </summary>
     public static class DataTableGenerator
     {
-        private const string DataTablePath = "Assets/Game/DataTables";
-        private const string CSharpCodePath = "Assets/Game/Scripts/Main/Runtime/DataTable";
-        private const string CSharpCodeTemplateFileName = "Assets/Game/Configs/DataTableCodeTemplate.txt";
+        private static readonly string CSharpCodePath = Path.Combine(Application.dataPath, "Game", "Scripts", "Main", "Runtime", "DataTable");
+        private static readonly string CSharpCodeTemplateFileName = Path.Combine(Application.dataPath, "Game", "Configs", "DataTableCodeTemplate.txt");
+        private static readonly string DataTablePath = Path.Combine(Application.dataPath, "Game", "DataTables");
         private static readonly Regex EndWithNumberRegex = new(@"\d+$");
         private static readonly Regex NameRegex = new("^[A-Z][A-Za-z0-9_]*$");
 
