@@ -6,88 +6,90 @@ using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace Game.Scripts.Main.Runtime.Procedure.Scene;
-
-public class ProcedureHome : ProcedureBase
+namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
-    private const float GameOverDelayedSeconds = 2f;
-    private readonly FormComponent formComponent = new();
 
-    private readonly Dictionary<GameMode, GameBase> m_Games = new();
-    private GameBase m_CurrentGame;
-    private bool m_GotoMenu;
-    private float m_GotoMenuDelaySeconds;
-
-    public override bool UseNativeDialog => false;
-
-    protected override void OnInit(ProcedureOwner procedureOwner)
+    public class ProcedureHome : ProcedureBase
     {
-        base.OnInit(procedureOwner);
+        private const float GameOverDelayedSeconds = 2f;
+        private readonly FormComponent formComponent = new();
 
-        m_Games.Add(GameMode.Survival, new SurvivalGame());
-    }
+        private readonly Dictionary<GameMode, GameBase> m_Games = new();
+        private GameBase m_CurrentGame;
+        private bool m_GotoMenu;
+        private float m_GotoMenuDelaySeconds;
 
-    protected override void OnDestroy(ProcedureOwner procedureOwner)
-    {
-        base.OnDestroy(procedureOwner);
+        public override bool UseNativeDialog => false;
 
-        m_Games.Clear();
-    }
-
-    protected override void OnEnter(ProcedureOwner procedureOwner)
-    {
-        base.OnEnter(procedureOwner);
-
-        m_GotoMenu = false;
-        var gameMode = (GameMode)procedureOwner.GetData<VarByte>("GameMode").Value;
-        m_CurrentGame = m_Games[gameMode];
-        m_CurrentGame.Initialize();
-
-        formComponent.AddForm(UIFormId.BottomForm);
-        formComponent.AddForm(UIFormId.UpperForm);
-        formComponent.AddForm(UIFormId.LeftForm);
-        formComponent.AddForm(UIFormId.RightForm);
-
-        formComponent.OnEnter(procedureOwner);
-    }
-
-    protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
-    {
-        if (m_CurrentGame != null)
+        protected override void OnInit(ProcedureOwner procedureOwner)
         {
-            m_CurrentGame.Shutdown();
-            m_CurrentGame = null;
+            base.OnInit(procedureOwner);
+
+            m_Games.Add(GameMode.Survival, new SurvivalGame());
         }
 
-        base.OnLeave(procedureOwner, isShutdown);
-
-        formComponent.OnLeave(procedureOwner, isShutdown);
-    }
-
-
-    protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
-    {
-        base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
-
-        if (m_CurrentGame is { GameOver: false })
+        protected override void OnDestroy(ProcedureOwner procedureOwner)
         {
-            m_CurrentGame.Update(elapseSeconds, realElapseSeconds);
-            return;
+            base.OnDestroy(procedureOwner);
+
+            m_Games.Clear();
         }
 
-        if (!m_GotoMenu)
+        protected override void OnEnter(ProcedureOwner procedureOwner)
         {
-            m_GotoMenu = true;
-            m_GotoMenuDelaySeconds = 0;
+            base.OnEnter(procedureOwner);
+
+            m_GotoMenu = false;
+            var gameMode = (GameMode)procedureOwner.GetData<VarByte>("GameMode").Value;
+            m_CurrentGame = m_Games[gameMode];
+            m_CurrentGame.Initialize();
+
+            formComponent.AddForm(UIFormId.BottomForm);
+            formComponent.AddForm(UIFormId.UpperForm);
+            formComponent.AddForm(UIFormId.LeftForm);
+            formComponent.AddForm(UIFormId.RightForm);
+
+            formComponent.OnEnter(procedureOwner);
         }
 
-        m_GotoMenuDelaySeconds += elapseSeconds;
-        if (!(m_GotoMenuDelaySeconds >= GameOverDelayedSeconds))
+        protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
-            return;
+            if (m_CurrentGame != null)
+            {
+                m_CurrentGame.Shutdown();
+                m_CurrentGame = null;
+            }
+
+            base.OnLeave(procedureOwner, isShutdown);
+
+            formComponent.OnLeave(procedureOwner, isShutdown);
         }
 
-        procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
-        ChangeState<ProcedureChangeScene>(procedureOwner);
+
+        protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
+        {
+            base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
+
+            if (m_CurrentGame is { GameOver: false })
+            {
+                m_CurrentGame.Update(elapseSeconds, realElapseSeconds);
+                return;
+            }
+
+            if (!m_GotoMenu)
+            {
+                m_GotoMenu = true;
+                m_GotoMenuDelaySeconds = 0;
+            }
+
+            m_GotoMenuDelaySeconds += elapseSeconds;
+            if (!(m_GotoMenuDelaySeconds >= GameOverDelayedSeconds))
+            {
+                return;
+            }
+
+            procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
+            ChangeState<ProcedureChangeScene>(procedureOwner);
+        }
     }
 }

@@ -1,12 +1,13 @@
 ﻿using UnityEditor;
 
-namespace Game.Scripts.Main.Editor.Luban;
-
-public static class LubanTools
+namespace Game.Scripts.Main.Editor.Luban
 {
-    [MenuItem("Velocis/Generate Luban")]
-    public static void ExportClient()
+    public static class LubanTools
     {
-        LubanExporter.Export("client");
+        [MenuItem("Velocis/Generate Luban")]
+        public static void ExportClient()
+        {
+            LubanExporter.Export("client");
+        }
     }
 }
