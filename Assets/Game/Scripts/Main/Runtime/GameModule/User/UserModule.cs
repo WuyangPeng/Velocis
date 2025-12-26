@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.DataTable;
@@ -10,12 +11,30 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
     [Module]
     public class UserModule : BaseModule
     {
-        private UserData userData = new();
+        private long _serverTimeOffset;
+        private long _clientTime;
         private PropertyData propertyData = new();
+        private long _serverTime;
+        private UserData userData = new();
 
         public void SetGameDifficulty(GameDifficultyType gameDifficulty)
         {
             userData.GameDifficultyType = gameDifficulty;
+        }
+
+        public void SetServerTime(long serverTime)
+        {
+            _serverTime = serverTime;
+            _clientTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+            _serverTimeOffset = serverTime - _clientTime;
+        }
+
+        public long GetCurrentServerTime()
+        {
+            var currentLocalTimestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+            var currentServerTimestamp = currentLocalTimestamp + _serverTimeOffset;
+
+            return currentServerTimestamp;
         }
 
         public void Init()
@@ -118,10 +137,12 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
         {
             return userData.PropertyCount;
         }
+
         public int GetSpiritualCount()
         {
             return userData.SpiritualCount;
         }
+
         public int GetInitBaseProperty(BasePropertyType basePropertyType)
         {
             var property = GameEntry.DataTable.GetDataTable<DRProperty>();
@@ -220,7 +241,6 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
         {
             userData.AddProperty();
             propertyData.ReduceBaseProperty(propertyId);
-
         }
 
         public void AddSpiritual(int spiritualId)
@@ -233,7 +253,6 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
         {
             userData.AddSpiritual();
             propertyData.ReduceSpiritual(spiritualId);
-
         }
 
         public bool HasSpiritual()
