@@ -18,9 +18,9 @@ namespace Game.Scripts.Main.Editor.Luban
             }
 
             var projectRoot = parent.FullName;
-            var toolsDir = Path.Combine(projectRoot, "Tools", "Luban");
-            var lubanDll = Path.Combine(toolsDir, "Luban.dll");
-            var lubanExe = Path.Combine(toolsDir, "Luban.exe");
+            var toolsDirectory = Path.Combine(projectRoot, "Tools", "Luban");
+            var lubanDll = Path.Combine(toolsDirectory, "Luban.dll");
+            var lubanExe = Path.Combine(toolsDirectory, "Luban.exe");
 
             var cmd = "";
             var args = "";
@@ -37,22 +37,22 @@ namespace Game.Scripts.Main.Editor.Luban
             }
             else
             {
-                Debug.Log($"Luban not found at {toolsDir}. Expected Luban.dll or Luban.exe");
+                Debug.Log($"Luban not found at {toolsDirectory}. Expected Luban.dll or Luban.exe");
                 return;
             }
 
             var confPath = Path.Combine(Application.dataPath, "Game", "luban", "luban.conf");
-            var codeOutputDir = Path.Combine(Application.dataPath, "Game", "Scripts", "Main", "Runtime", "Luban");
-            var dataOutputDir = Path.Combine(Application.dataPath, "Game", "Bin");
+            var codeOutputDirectory = Path.Combine(Application.dataPath, "Game", "Scripts", "Main", "Runtime", "Luban");
+            var dataOutputDirectory = Path.Combine(Application.dataPath, "Game", "Bin");
 
-            if (!Directory.Exists(codeOutputDir))
+            if (!Directory.Exists(codeOutputDirectory))
             {
-                Directory.CreateDirectory(codeOutputDir);
+                Directory.CreateDirectory(codeOutputDirectory);
             }
 
-            if (!Directory.Exists(dataOutputDir))
+            if (!Directory.Exists(dataOutputDirectory))
             {
-                Directory.CreateDirectory(dataOutputDir);
+                Directory.CreateDirectory(dataOutputDirectory);
             }
 
             args += " -c cs-bin";
@@ -63,8 +63,8 @@ namespace Game.Scripts.Main.Editor.Luban
             args += $" --conf \"{confPath}\"";
 
             // 将输出目录作为自定义参数 (xargs) 传递，这在模板中通常会用到
-            args += $" -x outputCodeDir=\"{codeOutputDir}\"";
-            args += $" -x outputDataDir=\"{dataOutputDir}\"";
+            args += $" -x outputCodeDir=\"{codeOutputDirectory}\"";
+            args += $" -x outputDataDir=\"{dataOutputDirectory}\"";
 
             RunCommand(cmd, args);
         }
@@ -94,18 +94,18 @@ namespace Game.Scripts.Main.Editor.Luban
             var output = "";
             var error = "";
 
-            process.OutputDataReceived += (sender, e) =>
+            process.OutputDataReceived += (sender, data) =>
             {
-                if (e.Data != null)
+                if (data.Data != null)
                 {
-                    output += e.Data + "\n";
+                    output += data.Data + "\n";
                 }
             };
-            process.ErrorDataReceived += (sender, e) =>
+            process.ErrorDataReceived += (sender, data) =>
             {
-                if (e.Data != null)
+                if (data.Data != null)
                 {
-                    error += e.Data + "\n";
+                    error += data.Data + "\n";
                 }
             };
 
