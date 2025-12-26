@@ -43,7 +43,16 @@ namespace Game.Scripts.Main.Editor.Luban
                 return;
             }
 
+            var outputDirectories = PrepareDirectories();
             var confPath = Path.Combine(Application.dataPath, "Game", "luban", "luban.conf");
+
+            BuildArguments(lubanInfo, target, confPath, outputDirectories);
+
+            RunCommand(lubanInfo);
+        }
+
+        private static LubanOutputDirectories PrepareDirectories()
+        {
             var codeOutputDirectory = Path.Combine(Application.dataPath, "Game", "Scripts", "Main", "Runtime", "Luban");
             var dataOutputDirectory = Path.Combine(Application.dataPath, "Game", "Bin");
 
@@ -57,6 +66,11 @@ namespace Game.Scripts.Main.Editor.Luban
                 Directory.CreateDirectory(dataOutputDirectory);
             }
 
+            return new LubanOutputDirectories(codeOutputDirectory, dataOutputDirectory);
+        }
+
+        private static void BuildArguments(LubanInfo lubanInfo, string target, string confPath, LubanOutputDirectories outputDirectory)
+        {
             lubanInfo.AddArgument(" -c cs-bin");
             lubanInfo.AddArgument(" -d bin");
 
@@ -64,11 +78,9 @@ namespace Game.Scripts.Main.Editor.Luban
             lubanInfo.AddArgument($" -t {target}");
             lubanInfo.AddArgument($" --conf \"{confPath}\"");
 
-            // 将输出目录作为自定义参数 (xargs) 传递，这在模板中通常会用到
-            lubanInfo.AddArgument($" -x outputCodeDir=\"{codeOutputDirectory}\"");
-            lubanInfo.AddArgument($" -x outputDataDir=\"{dataOutputDirectory}\"");
-
-            RunCommand(lubanInfo);
+            // 将输出目录作为自定义参数传递，这在模板中通常会用到
+            lubanInfo.AddArgument($" -x outputCodeDir=\"{outputDirectory.CodeOutputDirectory}\"");
+            lubanInfo.AddArgument($" -x outputDataDir=\"{outputDirectory.DataOutputDirectory}\"");
         }
 
         private static void RunCommand(LubanInfo lubanInfo)
