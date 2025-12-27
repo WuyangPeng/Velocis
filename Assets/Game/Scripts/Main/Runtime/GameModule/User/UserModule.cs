@@ -12,16 +12,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
     public class UserModule : BaseModule
     {
         private long _clientTime;
+        private PropertyData _propertyData = new();
         private long _serverTime;
         private long _serverTimeOffset;
+        private UserData _userData = new();
         private long _userId;
-        private PropertyData propertyData = new();
-        private UserData userData = new();
-
-        public void SetGameDifficulty(GameDifficultyType gameDifficulty)
-        {
-            userData.GameDifficultyType = gameDifficulty;
-        }
 
         public void SetServerTime(long serverTime)
         {
@@ -35,6 +30,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
             _userId = userId;
         }
 
+        public long GetUserId()
+        {
+            return _userId;
+        }
+
         public long GetCurrentServerTime()
         {
             var currentLocalTimestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
@@ -45,108 +45,113 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
 
         public void Init()
         {
-            userData.InitGameParameter();
-            propertyData.Init();
+            _userData.InitGameParameter();
+            _propertyData.Init();
+        }
+
+        public void SetGameDifficulty(GameDifficultyType gameDifficulty)
+        {
+            _userData.GameDifficultyType = gameDifficulty;
         }
 
         public void SetMapSize(GameParameterType gameParameterType)
         {
-            userData.SetMapSize(gameParameterType);
+            _userData.SetMapSize(gameParameterType);
         }
 
         public void SetNpcCount(GameParameterType gameParameterType)
         {
-            userData.SetNpcCount(gameParameterType);
+            _userData.SetNpcCount(gameParameterType);
         }
 
         public void SetSectCount(GameParameterType gameParameterType)
         {
-            userData.SetSectCount(gameParameterType);
+            _userData.SetSectCount(gameParameterType);
         }
 
         public void SetFamilyCount(GameParameterType gameParameterType)
         {
-            userData.SetFamilyCount(gameParameterType);
+            _userData.SetFamilyCount(gameParameterType);
         }
 
         public int GetInitMapSize()
         {
-            return userData.InitMapSize;
+            return _userData.InitMapSize;
         }
 
         public int GetInitNpcCount()
         {
-            return userData.InitNpcCount;
+            return _userData.InitNpcCount;
         }
 
         public int GetInitSectCount()
         {
-            return userData.InitSectCount;
+            return _userData.InitSectCount;
         }
 
         public int GetInitFamilyCount()
         {
-            return userData.InitFamilyCount;
+            return _userData.InitFamilyCount;
         }
 
         public SexType GetSexType()
         {
-            return userData.SexType;
+            return _userData.SexType;
         }
 
         public void SetSexType(SexType sexType)
         {
-            userData.SexType = sexType;
+            _userData.SexType = sexType;
         }
 
         public void SetAvatarId(int avatarId)
         {
-            userData.AvatarId = avatarId;
+            _userData.AvatarId = avatarId;
         }
 
         public int GetAvatarId()
         {
-            return userData.AvatarId;
+            return _userData.AvatarId;
         }
 
         public void SetRulesType(RulesType rulesType)
         {
-            userData.SetRulesType(rulesType);
+            _userData.SetRulesType(rulesType);
         }
 
         public void SetMoralityType(MoralityType moralityType)
         {
-            userData.SetMoralityType(moralityType);
+            _userData.SetMoralityType(moralityType);
         }
 
         public RulesType GetRulesType()
         {
-            return userData.GetRulesType();
+            return _userData.GetRulesType();
         }
 
         public MoralityType GetMoralityType()
         {
-            return userData.GetMoralityType();
+            return _userData.GetMoralityType();
         }
 
         public RaceType GetRaceType()
         {
-            return userData.RaceType;
+            return _userData.RaceType;
         }
 
         public void SetRaceType(RaceType raceType)
         {
-            userData.RaceType = raceType;
+            _userData.RaceType = raceType;
         }
 
         public int GetPropertyCount()
         {
-            return userData.PropertyCount;
+            return _userData.PropertyCount;
         }
 
         public int GetSpiritualCount()
         {
-            return userData.SpiritualCount;
+            return _userData.SpiritualCount;
         }
 
         public int GetInitBaseProperty(BasePropertyType basePropertyType)
@@ -174,12 +179,12 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
 
         public int GetBaseProperty(BasePropertyType basePropertyType)
         {
-            return propertyData.GetBaseProperty(basePropertyType) + GetInitBaseProperty(basePropertyType);
+            return _propertyData.GetBaseProperty(basePropertyType) + GetInitBaseProperty(basePropertyType);
         }
 
         public int GetSpiritual(SpiritualType spiritual)
         {
-            return propertyData.GetSpiritual(spiritual) + GetInitSpiritual(spiritual);
+            return _propertyData.GetSpiritual(spiritual) + GetInitSpiritual(spiritual);
         }
 
         public static int GetInitSpiritual(SpiritualType spiritualId)
@@ -191,7 +196,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
 
         public int GetMartialArts(MartialArtsType martialArtsType)
         {
-            return propertyData.GetMartialArts(martialArtsType) + GetInitMartialArts(martialArtsType);
+            return _propertyData.GetMartialArts(martialArtsType) + GetInitMartialArts(martialArtsType);
         }
 
         public static int GetInitMartialArts(MartialArtsType martialArtsType)
@@ -203,7 +208,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
 
         public int GetTechnique(TechniqueType techniqueType)
         {
-            return propertyData.GetTechnique(techniqueType) + GetInitTechnique(techniqueType);
+            return _propertyData.GetTechnique(techniqueType) + GetInitTechnique(techniqueType);
         }
 
         public static int GetInitTechnique(TechniqueType techniqueType)
@@ -215,50 +220,50 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
 
         public void AddTechnique(int techniqueId)
         {
-            userData.ReduceTechnique();
-            propertyData.AddTechnique(techniqueId);
+            _userData.ReduceTechnique();
+            _propertyData.AddTechnique(techniqueId);
         }
 
         public void ReduceTechnique(int techniqueId)
         {
-            userData.AddTechnique();
-            propertyData.ReduceTechnique(techniqueId);
+            _userData.AddTechnique();
+            _propertyData.ReduceTechnique(techniqueId);
         }
 
         public void AddMartialArts(int martialArtsId)
         {
-            userData.ReduceMartialArts();
-            propertyData.AddMartialArts(martialArtsId);
+            _userData.ReduceMartialArts();
+            _propertyData.AddMartialArts(martialArtsId);
         }
 
         public void ReduceMartialArts(int martialArtsId)
         {
-            userData.AddMartialArts();
-            propertyData.ReduceMartialArts(martialArtsId);
+            _userData.AddMartialArts();
+            _propertyData.ReduceMartialArts(martialArtsId);
         }
 
         public void AddBaseProperty(int propertyId)
         {
-            userData.ReduceProperty();
-            propertyData.AddBaseProperty(propertyId);
+            _userData.ReduceProperty();
+            _propertyData.AddBaseProperty(propertyId);
         }
 
         public void ReduceBaseProperty(int propertyId)
         {
-            userData.AddProperty();
-            propertyData.ReduceBaseProperty(propertyId);
+            _userData.AddProperty();
+            _propertyData.ReduceBaseProperty(propertyId);
         }
 
         public void AddSpiritual(int spiritualId)
         {
-            userData.ReduceSpiritual();
-            propertyData.AddSpiritual(spiritualId);
+            _userData.ReduceSpiritual();
+            _propertyData.AddSpiritual(spiritualId);
         }
 
         public void ReduceSpiritual(int spiritualId)
         {
-            userData.AddSpiritual();
-            propertyData.ReduceSpiritual(spiritualId);
+            _userData.AddSpiritual();
+            _propertyData.ReduceSpiritual(spiritualId);
         }
 
         public bool HasSpiritual()
@@ -277,12 +282,12 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
 
         public int GetMartialArtsCount()
         {
-            return userData.MartialArtsCount;
+            return _userData.MartialArtsCount;
         }
 
         public int GetTechniqueCount()
         {
-            return userData.TechniqueCount;
+            return _userData.TechniqueCount;
         }
 
         public bool HasTechnique()
@@ -294,120 +299,120 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
 
         public bool HasSelectedTalent(int talentId)
         {
-            return userData.HasSelectedTalent(talentId);
+            return _userData.HasSelectedTalent(talentId);
         }
 
         public void AddTalent(int id)
         {
-            userData.AddTalent(id);
+            _userData.AddTalent(id);
         }
 
         public bool HasTalent(int id)
         {
-            return userData.HasTalent(id);
+            return _userData.HasTalent(id);
         }
 
         public bool CanAddTalent(int id)
         {
-            return userData.CanAddTalent(id);
+            return _userData.CanAddTalent(id);
         }
 
         public bool HasSelectTalent()
         {
-            return userData.HasSelectTalent();
+            return _userData.HasSelectTalent();
         }
 
         public int GetSaveIndex()
         {
-            return userData.SaveIndex;
+            return _userData.SaveIndex;
         }
 
         public void SetSaveIndex(int index)
         {
-            userData.SaveIndex = index;
+            _userData.SaveIndex = index;
         }
 
         public GameDifficultyType GetGameDifficultyType()
         {
-            return userData.GameDifficultyType;
+            return _userData.GameDifficultyType;
         }
 
         public string GetFullName()
         {
             var surname = GameEntry.DataTable.GetDataTable<DRSurname>();
 
-            return GameEntry.Localization.GetString(surname.GetDataRow(userData.Surname).Name) + userData.Name;
+            return GameEntry.Localization.GetString(surname.GetDataRow(_userData.Surname).Name) + _userData.Name;
         }
 
         public string GetName()
         {
-            return userData.Name;
+            return _userData.Name;
         }
 
         public int GetSurname()
         {
-            return userData.Surname;
+            return _userData.Surname;
         }
 
         public void RemoveTalent(int id)
         {
-            userData.RemoveTalent(id);
+            _userData.RemoveTalent(id);
         }
 
         public void SetName(string playerName)
         {
-            userData.Name = playerName;
+            _userData.Name = playerName;
         }
 
         public void SetSurname(int surname)
         {
-            userData.Surname = surname;
+            _userData.Surname = surname;
         }
 
         public bool IsInitWorld()
         {
-            return userData.InitWorld;
+            return _userData.InitWorld;
         }
 
         public void SetInitWorld()
         {
-            userData.InitWorld = true;
+            _userData.InitWorld = true;
         }
 
         public PropertyData GetPropertyData()
         {
-            return propertyData;
+            return _propertyData;
         }
 
         public UserData GetUserData()
         {
-            return userData;
+            return _userData;
         }
 
         public void Init(UserData initUserData, PropertyData initPropertyData)
         {
-            userData = initUserData;
-            propertyData = initPropertyData;
+            _userData = initUserData;
+            _propertyData = initPropertyData;
         }
 
         public void SetFamilyId(long id)
         {
-            userData.FamilyId = id;
+            _userData.FamilyId = id;
         }
 
         public void SetSect(long id)
         {
-            userData.SectId = id;
+            _userData.SectId = id;
         }
 
         public long GetFamilyId()
         {
-            return userData.FamilyId;
+            return _userData.FamilyId;
         }
 
         public long GetSectId()
         {
-            return userData.SectId;
+            return _userData.SectId;
         }
     }
 }
