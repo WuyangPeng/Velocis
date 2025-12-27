@@ -1,6 +1,8 @@
 ﻿using Celeritas.Proto.Client;
+using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Network.PacketHandler;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
 {
@@ -9,6 +11,10 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
         public override void Handle(object sender, client_heartbeat_response message)
         {
             Log.Info("ServerTime ='{0}'.", message.ServerTime);
+            
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            userModule.SetServerTime(message.ServerTime);
+
         }
     }
 }
