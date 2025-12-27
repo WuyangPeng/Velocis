@@ -313,7 +313,7 @@ PrefabInstance:
     - target: {fileID: 4279363595797086173, guid: 348dc14b4346988478626986e6d22558,
         type: 3}
       propertyPath: m_Name
-      value: Role
+      value: Hero
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: 348dc14b4346988478626986e6d22558,
         type: 3}
@@ -333,7 +333,7 @@ PrefabInstance:
     - target: {fileID: 4279363595803128075, guid: 348dc14b4346988478626986e6d22558,
         type: 3}
       propertyPath: m_Text
-      value: Button.Role
+      value: Button.Hero
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595817266997, guid: 348dc14b4346988478626986e6d22558,
         type: 3}

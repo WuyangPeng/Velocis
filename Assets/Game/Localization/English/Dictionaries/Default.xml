@@ -44,6 +44,14 @@
         <String Key="Button.MainCity" Value="主城"/>
         <String Key="Button.Copy" Value="副本"/>
         <String Key="Button.Backpack" Value="背包"/>
+        <String Key="Button.Hero" Value="英雄"/>
+        <String Key="Button.Mail" Value="邮件"/>
+        <String Key="Button.Shop" Value="商店"/>
+        <String Key="Button.Ranking" Value="排行榜"/>
+        <String Key="Button.Activity" Value="活动"/>
+        <String Key="Button.Sect" Value="门派"/>
+        <String Key="Button.Task" Value="任务"/>
+        <String Key="Button.Friend" Value="好友"/>
         <String Key="PropertyGroup.Base" Value="基础属性"/>
         <String Key="PropertyGroup.Base.Description" Value="基础属性"/>
         <String Key="PropertyGroup.Default" Value="默认属性"/>

@@ -45,6 +45,48 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
 
                     break;
                 }
+                case client_player_response.PayloadOneofCase.Role:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<client_role_response>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.Role);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'role'.");
+                    }
+
+                    break;
+                }
+                case client_player_response.PayloadOneofCase.RedDot:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<client_red_dot_response>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.RedDot);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'red_dot'.");
+                    }
+
+                    break;
+                }
+                case client_player_response.PayloadOneofCase.Item:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<client_item_response>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.Item);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'item'.");
+                    }
+
+                    break;
+                }
                 case client_player_response.PayloadOneofCase.None:
                 {
                     break;

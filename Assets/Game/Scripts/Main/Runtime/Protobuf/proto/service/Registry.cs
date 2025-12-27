@@ -39,17 +39,22 @@ namespace Celeritas.Proto.Service {
             "cl90aW1lGAYgASgDEhEKCWlzX2hlYWx0aBgHIAEoCCJkChFkaXNjb3Zlcl9y",
             "ZXNwb25zZRIUCgxzZXJ2aWNlX25hbWUYASABKAkSOQoLc2VydmVyX2luZm8Y",
             "AiADKAsyJC5jZWxlcml0YXMucHJvdG8uc2VydmljZS5zZXJ2ZXJfaW5mbyIk",
-            "Cg1jbG9zZV9yZXF1ZXN0EhMKC2luc3RhbmNlX2lkGAEgASgJIvEBChhzZXJ2",
-            "aWNlX3JlZ2lzdHJ5X3JlcXVlc3QSRAoPc2VydmVyX3JlZ2lzdGVyGAEgASgL",
-            "MikuY2VsZXJpdGFzLnByb3RvLnNlcnZpY2UucmVnaXN0ZXJfcmVxdWVzdEgA",
-            "EkQKD3NlcnZlcl9kaXNjb3ZlchgCIAEoCzIpLmNlbGVyaXRhcy5wcm90by5z",
-            "ZXJ2aWNlLmRpc2NvdmVyX3JlcXVlc3RIABI+CgxzZXJ2ZXJfY2xvc2UYAyAB",
-            "KAsyJi5jZWxlcml0YXMucHJvdG8uc2VydmljZS5jbG9zZV9yZXF1ZXN0SABC",
-            "CQoHcGF5bG9hZCK0AQoZc2VydmljZV9yZWdpc3RyeV9yZXNwb25zZRJFCg9z",
-            "ZXJ2ZXJfcmVnaXN0ZXIYASABKAsyKi5jZWxlcml0YXMucHJvdG8uc2Vydmlj",
-            "ZS5yZWdpc3Rlcl9yZXNwb25zZUgAEkUKD3NlcnZlcl9kaXNjb3ZlchgCIAEo",
-            "CzIqLmNlbGVyaXRhcy5wcm90by5zZXJ2aWNlLmRpc2NvdmVyX3Jlc3BvbnNl",
-            "SABCCQoHcGF5bG9hZGIGcHJvdG8z"));
+            "Cg1jbG9zZV9yZXF1ZXN0EhMKC2luc3RhbmNlX2lkGAEgASgJIhsKGXNlcnZp",
+            "Y2VfaGVhcnRiZWF0X3JlcXVlc3QiHAoac2VydmljZV9oZWFydGJlYXRfcmVz",
+            "cG9uc2UiwgIKGHNlcnZpY2VfcmVnaXN0cnlfcmVxdWVzdBJECg9zZXJ2ZXJf",
+            "cmVnaXN0ZXIYASABKAsyKS5jZWxlcml0YXMucHJvdG8uc2VydmljZS5yZWdp",
+            "c3Rlcl9yZXF1ZXN0SAASRAoPc2VydmVyX2Rpc2NvdmVyGAIgASgLMikuY2Vs",
+            "ZXJpdGFzLnByb3RvLnNlcnZpY2UuZGlzY292ZXJfcmVxdWVzdEgAEj4KDHNl",
+            "cnZlcl9jbG9zZRgDIAEoCzImLmNlbGVyaXRhcy5wcm90by5zZXJ2aWNlLmNs",
+            "b3NlX3JlcXVlc3RIABJPChFzZXJ2aWNlX2hlYXJ0YmVhdBgEIAEoCzIyLmNl",
+            "bGVyaXRhcy5wcm90by5zZXJ2aWNlLnNlcnZpY2VfaGVhcnRiZWF0X3JlcXVl",
+            "c3RIAEIJCgdwYXlsb2FkIoYCChlzZXJ2aWNlX3JlZ2lzdHJ5X3Jlc3BvbnNl",
+            "EkUKD3NlcnZlcl9yZWdpc3RlchgBIAEoCzIqLmNlbGVyaXRhcy5wcm90by5z",
+            "ZXJ2aWNlLnJlZ2lzdGVyX3Jlc3BvbnNlSAASRQoPc2VydmVyX2Rpc2NvdmVy",
+            "GAIgASgLMiouY2VsZXJpdGFzLnByb3RvLnNlcnZpY2UuZGlzY292ZXJfcmVz",
+            "cG9uc2VIABJQChFzZXJ2aWNlX2hlYXJ0YmVhdBgDIAEoCzIzLmNlbGVyaXRh",
+            "cy5wcm90by5zZXJ2aWNlLnNlcnZpY2VfaGVhcnRiZWF0X3Jlc3BvbnNlSABC",
+            "CQoHcGF5bG9hZGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -60,8 +65,10 @@ namespace Celeritas.Proto.Service {
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.server_info), global::Celeritas.Proto.Service.server_info.Parser, new[]{ "InstanceId", "GameServerId", "Host", "ExternalHost", "Port", "StartServerTime", "IsHealth" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.discover_response), global::Celeritas.Proto.Service.discover_response.Parser, new[]{ "ServiceName", "ServerInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.close_request), global::Celeritas.Proto.Service.close_request.Parser, new[]{ "InstanceId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_registry_request), global::Celeritas.Proto.Service.service_registry_request.Parser, new[]{ "ServerRegister", "ServerDiscover", "ServerClose" }, new[]{ "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_registry_response), global::Celeritas.Proto.Service.service_registry_response.Parser, new[]{ "ServerRegister", "ServerDiscover" }, new[]{ "Payload" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_heartbeat_request), global::Celeritas.Proto.Service.service_heartbeat_request.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_heartbeat_response), global::Celeritas.Proto.Service.service_heartbeat_response.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_registry_request), global::Celeritas.Proto.Service.service_registry_request.Parser, new[]{ "ServerRegister", "ServerDiscover", "ServerClose", "ServiceHeartbeat" }, new[]{ "Payload" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_registry_response), global::Celeritas.Proto.Service.service_registry_response.Parser, new[]{ "ServerRegister", "ServerDiscover", "ServiceHeartbeat" }, new[]{ "Payload" }, null, null, null)
           }));
     }
     #endregion
@@ -1911,6 +1918,331 @@ namespace Celeritas.Proto.Service {
 
   }
 
+  /// <summary>
+  /// 服务器心跳消息
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class service_heartbeat_request : pb::IMessage<service_heartbeat_request>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<service_heartbeat_request> _parser = new pb::MessageParser<service_heartbeat_request>(() => new service_heartbeat_request());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<service_heartbeat_request> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Service.RegistryReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public service_heartbeat_request() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public service_heartbeat_request(service_heartbeat_request other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public service_heartbeat_request Clone() {
+      return new service_heartbeat_request(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as service_heartbeat_request);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(service_heartbeat_request other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(service_heartbeat_request other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class service_heartbeat_response : pb::IMessage<service_heartbeat_response>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<service_heartbeat_response> _parser = new pb::MessageParser<service_heartbeat_response>(() => new service_heartbeat_response());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<service_heartbeat_response> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Service.RegistryReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public service_heartbeat_response() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public service_heartbeat_response(service_heartbeat_response other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public service_heartbeat_response Clone() {
+      return new service_heartbeat_response(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as service_heartbeat_response);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(service_heartbeat_response other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(service_heartbeat_response other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
+
+  }
+
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class service_registry_request : pb::IMessage<service_registry_request>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -1926,7 +2258,7 @@ namespace Celeritas.Proto.Service {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Service.RegistryReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Celeritas.Proto.Service.RegistryReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1955,6 +2287,9 @@ namespace Celeritas.Proto.Service {
           break;
         case PayloadOneofCase.ServerClose:
           ServerClose = other.ServerClose.Clone();
+          break;
+        case PayloadOneofCase.ServiceHeartbeat:
+          ServiceHeartbeat = other.ServiceHeartbeat.Clone();
           break;
       }
 
@@ -2003,6 +2338,18 @@ namespace Celeritas.Proto.Service {
       }
     }
 
+    /// <summary>Field number for the "service_heartbeat" field.</summary>
+    public const int ServiceHeartbeatFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Service.service_heartbeat_request ServiceHeartbeat {
+      get { return payloadCase_ == PayloadOneofCase.ServiceHeartbeat ? (global::Celeritas.Proto.Service.service_heartbeat_request) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.ServiceHeartbeat;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
@@ -2010,6 +2357,7 @@ namespace Celeritas.Proto.Service {
       ServerRegister = 1,
       ServerDiscover = 2,
       ServerClose = 3,
+      ServiceHeartbeat = 4,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2043,6 +2391,7 @@ namespace Celeritas.Proto.Service {
       if (!object.Equals(ServerRegister, other.ServerRegister)) return false;
       if (!object.Equals(ServerDiscover, other.ServerDiscover)) return false;
       if (!object.Equals(ServerClose, other.ServerClose)) return false;
+      if (!object.Equals(ServiceHeartbeat, other.ServiceHeartbeat)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2054,6 +2403,7 @@ namespace Celeritas.Proto.Service {
       if (payloadCase_ == PayloadOneofCase.ServerRegister) hash ^= ServerRegister.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.ServerDiscover) hash ^= ServerDiscover.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.ServerClose) hash ^= ServerClose.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.ServiceHeartbeat) hash ^= ServiceHeartbeat.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2085,6 +2435,10 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(26);
         output.WriteMessage(ServerClose);
       }
+      if (payloadCase_ == PayloadOneofCase.ServiceHeartbeat) {
+        output.WriteRawTag(34);
+        output.WriteMessage(ServiceHeartbeat);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2107,6 +2461,10 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(26);
         output.WriteMessage(ServerClose);
       }
+      if (payloadCase_ == PayloadOneofCase.ServiceHeartbeat) {
+        output.WriteRawTag(34);
+        output.WriteMessage(ServiceHeartbeat);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2125,6 +2483,9 @@ namespace Celeritas.Proto.Service {
       }
       if (payloadCase_ == PayloadOneofCase.ServerClose) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ServerClose);
+      }
+      if (payloadCase_ == PayloadOneofCase.ServiceHeartbeat) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ServiceHeartbeat);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2156,6 +2517,12 @@ namespace Celeritas.Proto.Service {
             ServerClose = new global::Celeritas.Proto.Service.close_request();
           }
           ServerClose.MergeFrom(other.ServerClose);
+          break;
+        case PayloadOneofCase.ServiceHeartbeat:
+          if (ServiceHeartbeat == null) {
+            ServiceHeartbeat = new global::Celeritas.Proto.Service.service_heartbeat_request();
+          }
+          ServiceHeartbeat.MergeFrom(other.ServiceHeartbeat);
           break;
       }
 
@@ -2205,6 +2572,15 @@ namespace Celeritas.Proto.Service {
             ServerClose = subBuilder;
             break;
           }
+          case 34: {
+            global::Celeritas.Proto.Service.service_heartbeat_request subBuilder = new global::Celeritas.Proto.Service.service_heartbeat_request();
+            if (payloadCase_ == PayloadOneofCase.ServiceHeartbeat) {
+              subBuilder.MergeFrom(ServiceHeartbeat);
+            }
+            input.ReadMessage(subBuilder);
+            ServiceHeartbeat = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -2251,6 +2627,15 @@ namespace Celeritas.Proto.Service {
             ServerClose = subBuilder;
             break;
           }
+          case 34: {
+            global::Celeritas.Proto.Service.service_heartbeat_request subBuilder = new global::Celeritas.Proto.Service.service_heartbeat_request();
+            if (payloadCase_ == PayloadOneofCase.ServiceHeartbeat) {
+              subBuilder.MergeFrom(ServiceHeartbeat);
+            }
+            input.ReadMessage(subBuilder);
+            ServiceHeartbeat = subBuilder;
+            break;
+          }
         }
       }
     }
@@ -2273,7 +2658,7 @@ namespace Celeritas.Proto.Service {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Service.RegistryReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Celeritas.Proto.Service.RegistryReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2299,6 +2684,9 @@ namespace Celeritas.Proto.Service {
           break;
         case PayloadOneofCase.ServerDiscover:
           ServerDiscover = other.ServerDiscover.Clone();
+          break;
+        case PayloadOneofCase.ServiceHeartbeat:
+          ServiceHeartbeat = other.ServiceHeartbeat.Clone();
           break;
       }
 
@@ -2335,12 +2723,25 @@ namespace Celeritas.Proto.Service {
       }
     }
 
+    /// <summary>Field number for the "service_heartbeat" field.</summary>
+    public const int ServiceHeartbeatFieldNumber = 3;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Service.service_heartbeat_response ServiceHeartbeat {
+      get { return payloadCase_ == PayloadOneofCase.ServiceHeartbeat ? (global::Celeritas.Proto.Service.service_heartbeat_response) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.ServiceHeartbeat;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
       None = 0,
       ServerRegister = 1,
       ServerDiscover = 2,
+      ServiceHeartbeat = 3,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2373,6 +2774,7 @@ namespace Celeritas.Proto.Service {
       }
       if (!object.Equals(ServerRegister, other.ServerRegister)) return false;
       if (!object.Equals(ServerDiscover, other.ServerDiscover)) return false;
+      if (!object.Equals(ServiceHeartbeat, other.ServiceHeartbeat)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2383,6 +2785,7 @@ namespace Celeritas.Proto.Service {
       int hash = 1;
       if (payloadCase_ == PayloadOneofCase.ServerRegister) hash ^= ServerRegister.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.ServerDiscover) hash ^= ServerDiscover.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.ServiceHeartbeat) hash ^= ServiceHeartbeat.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2410,6 +2813,10 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(18);
         output.WriteMessage(ServerDiscover);
       }
+      if (payloadCase_ == PayloadOneofCase.ServiceHeartbeat) {
+        output.WriteRawTag(26);
+        output.WriteMessage(ServiceHeartbeat);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2428,6 +2835,10 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(18);
         output.WriteMessage(ServerDiscover);
       }
+      if (payloadCase_ == PayloadOneofCase.ServiceHeartbeat) {
+        output.WriteRawTag(26);
+        output.WriteMessage(ServiceHeartbeat);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2443,6 +2854,9 @@ namespace Celeritas.Proto.Service {
       }
       if (payloadCase_ == PayloadOneofCase.ServerDiscover) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ServerDiscover);
+      }
+      if (payloadCase_ == PayloadOneofCase.ServiceHeartbeat) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ServiceHeartbeat);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2468,6 +2882,12 @@ namespace Celeritas.Proto.Service {
             ServerDiscover = new global::Celeritas.Proto.Service.discover_response();
           }
           ServerDiscover.MergeFrom(other.ServerDiscover);
+          break;
+        case PayloadOneofCase.ServiceHeartbeat:
+          if (ServiceHeartbeat == null) {
+            ServiceHeartbeat = new global::Celeritas.Proto.Service.service_heartbeat_response();
+          }
+          ServiceHeartbeat.MergeFrom(other.ServiceHeartbeat);
           break;
       }
 
@@ -2508,6 +2928,15 @@ namespace Celeritas.Proto.Service {
             ServerDiscover = subBuilder;
             break;
           }
+          case 26: {
+            global::Celeritas.Proto.Service.service_heartbeat_response subBuilder = new global::Celeritas.Proto.Service.service_heartbeat_response();
+            if (payloadCase_ == PayloadOneofCase.ServiceHeartbeat) {
+              subBuilder.MergeFrom(ServiceHeartbeat);
+            }
+            input.ReadMessage(subBuilder);
+            ServiceHeartbeat = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -2543,6 +2972,15 @@ namespace Celeritas.Proto.Service {
             }
             input.ReadMessage(subBuilder);
             ServerDiscover = subBuilder;
+            break;
+          }
+          case 26: {
+            global::Celeritas.Proto.Service.service_heartbeat_response subBuilder = new global::Celeritas.Proto.Service.service_heartbeat_response();
+            if (payloadCase_ == PayloadOneofCase.ServiceHeartbeat) {
+              subBuilder.MergeFrom(ServiceHeartbeat);
+            }
+            input.ReadMessage(subBuilder);
+            ServiceHeartbeat = subBuilder;
             break;
           }
         }
