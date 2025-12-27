@@ -45,7 +45,7 @@ namespace Game.Scripts.Main.Runtime.Login
                 return;
             }
 
-            var url = GameEntry.Account.serverListUrl;
+            var url = GameEntry.Account.ServerListUrl;
             var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
             var token = accountModule.GetToken();
             var appId = GameEntry.Account.appId;

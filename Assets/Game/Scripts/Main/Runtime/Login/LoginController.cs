@@ -48,7 +48,7 @@ namespace Game.Scripts.Main.Runtime.Login
                 return;
             }
 
-            var url = GameEntry.Account.guestLoginUrl;
+            var url = GameEntry.Account.GuestLoginUrl;
             var deviceId = _menuForm.GetInputField();
             if (string.IsNullOrEmpty(deviceId))
             {

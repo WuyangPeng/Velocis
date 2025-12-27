@@ -1275,8 +1275,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc781fa2fea549a9a6fbb0a90e1d5537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guestLoginUrl: https://celeritas.fjbgwl.com:37000/guest
-  serverListUrl: https://celeritas.fjbgwl.com:37000/servers
+  serverType: 1
+  intranetGuestLoginUrl: http://127.0.0.1:30101/api/v1/login/guest
+  intranetServerListUrl: http://127.0.0.1:30101/api/v1/login/servers
+  externalGuestLoginUrl: https://celeritas.fjbgwl.com:37000/guest
+  externalServerListUrl: https://celeritas.fjbgwl.com:37000/servers
   appId: 1
   secret: aB8kL2mN9pQ3rS5tV7wX1yZ4cE6fH0jK
   appVersion: 1.0.0

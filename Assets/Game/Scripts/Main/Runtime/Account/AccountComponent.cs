@@ -5,14 +5,24 @@ namespace Game.Scripts.Main.Runtime.Account
 {
     public class AccountComponent : GameFrameworkComponent
     {
-        [SerializeField] public string guestLoginUrl;
+        [Header("ServerType")] [SerializeField]
+        public ServerType serverType;
 
-        [SerializeField] public string serverListUrl;
+        [Header("Intranet")] [SerializeField] private string intranetGuestLoginUrl;
 
-        [SerializeField] public string appId;
+        [SerializeField] private string intranetServerListUrl;
+
+        [Header("External")] [SerializeField] private string externalGuestLoginUrl;
+
+        [SerializeField] private string externalServerListUrl;
+
+        [Header("App")] [SerializeField] public string appId;
 
         [SerializeField] public string secret;
 
         [SerializeField] public string appVersion;
+
+        public string GuestLoginUrl => serverType == ServerType.Intranet ? intranetGuestLoginUrl : externalGuestLoginUrl;
+        public string ServerListUrl => serverType == ServerType.Intranet ? intranetServerListUrl : externalServerListUrl;
     }
 }
