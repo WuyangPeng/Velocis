@@ -11,10 +11,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
     [Module]
     public class UserModule : BaseModule
     {
-        private long _serverTimeOffset;
         private long _clientTime;
-        private PropertyData propertyData = new();
         private long _serverTime;
+        private long _serverTimeOffset;
+        private long _userId;
+        private PropertyData propertyData = new();
         private UserData userData = new();
 
         public void SetGameDifficulty(GameDifficultyType gameDifficulty)
@@ -27,6 +28,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
             _serverTime = serverTime;
             _clientTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
             _serverTimeOffset = serverTime - _clientTime;
+        }
+
+        public void SetUserId(long userId)
+        {
+            _userId = userId;
         }
 
         public long GetCurrentServerTime()

@@ -87,6 +87,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
                 stringBuilder.AppendLine($"using {namespaces};");
             }
 
+            stringBuilder.AppendLine("using Celeritas.Proto.Common;");
             stringBuilder.AppendLine("using Game.Scripts.Main.Runtime.Network.PacketHandler;");
             stringBuilder.AppendLine("using UnityGameFramework.Runtime;");
             stringBuilder.AppendLine("using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;");
@@ -103,7 +104,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
             stringBuilder.AppendLine("{");
             stringBuilder.AppendLine($"    public class {className} : CeleritasHandlerBase<{messageName}>");
             stringBuilder.AppendLine("    {");
-            stringBuilder.AppendLine($"        public override void Handle(object sender, {messageName} message)");
+            stringBuilder.AppendLine($"        public override void Handle(object sender, header header, {messageName} message)");
             stringBuilder.AppendLine("        {");
 
             stringBuilder.Append(GenerateHandleMethodBody(message, messageName));
@@ -183,7 +184,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
             stringBuilder.AppendLine($"                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<{fieldType}>();");
             stringBuilder.AppendLine("                    if (handler != null)");
             stringBuilder.AppendLine("                    {");
-            stringBuilder.AppendLine($"                        handler.Handle(sender, message.{fieldPascal});");
+            stringBuilder.AppendLine($"                        handler.Handle(sender, header, message.{fieldPascal});");
             stringBuilder.AppendLine("                    }");
             stringBuilder.AppendLine("                    else");
             stringBuilder.AppendLine("                    {");

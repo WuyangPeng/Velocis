@@ -4,6 +4,7 @@
 // </auto-generated>
 
 using Celeritas.Proto.Client;
+using Celeritas.Proto.Common;
 using Game.Scripts.Main.Runtime.Network.PacketHandler;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
@@ -12,7 +13,7 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
 {
     public class ClientPlayerResponseHandler : CeleritasHandlerBase<client_player_response>
     {
-        public override void Handle(object sender, client_player_response message)
+        public override void Handle(object sender, header header, client_player_response message)
         {
             switch (message.PayloadCase)
             {
@@ -21,7 +22,7 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
                     var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<client_login_response>();
                     if (handler != null)
                     {
-                        handler.Handle(sender, message.Login);
+                        handler.Handle(sender, header, message.Login);
                     }
                     else
                     {
@@ -35,7 +36,7 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
                     var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<client_heartbeat_response>();
                     if (handler != null)
                     {
-                        handler.Handle(sender, message.Heartbeat);
+                        handler.Handle(sender, header, message.Heartbeat);
                     }
                     else
                     {
