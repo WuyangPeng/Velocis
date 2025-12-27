@@ -1,6 +1,7 @@
 ﻿using Celeritas.Proto.Client;
-using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.Network.PacketHandler;
+using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
 {
@@ -8,6 +9,8 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
     {
         public override void Handle(object sender, login_finish_response message)
         {
+            Log.Info("Login Finish.");
+
             GameEntry.ModuleComponent.LoginFinish();
         }
     }
