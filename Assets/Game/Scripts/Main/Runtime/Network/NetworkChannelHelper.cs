@@ -111,6 +111,8 @@ namespace Game.Scripts.Main.Runtime.Network
         /// <returns>是否发送心跳消息包成功。</returns>
         public bool SendHeartBeat()
         {
+            Log.Info("Send Heart Beat");
+            
             var packet = ProtoHelper.GetProto();
 
             packet.Mutable_ClientPlayer_ClientHeartbeat();

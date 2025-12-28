@@ -8,13 +8,12 @@ using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedure
 
 namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
-
     public class ProcedureHome : ProcedureBase
     {
         private const float GameOverDelayedSeconds = 2f;
         private readonly FormComponent formComponent = new();
 
-        private readonly Dictionary<GameMode, GameBase> m_Games = new();
+        private readonly Dictionary<GameMode, GameBase> m_Games = new(); 
         private GameBase m_CurrentGame;
         private bool m_GotoMenu;
         private float m_GotoMenuDelaySeconds;
@@ -69,6 +68,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
+
 
             if (m_CurrentGame is { GameOver: false })
             {
