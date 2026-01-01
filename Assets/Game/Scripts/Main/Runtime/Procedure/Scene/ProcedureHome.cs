@@ -13,7 +13,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         private const float GameOverDelayedSeconds = 2f;
         private readonly FormComponent formComponent = new();
 
-        private readonly Dictionary<GameMode, GameBase> m_Games = new(); 
+        private readonly Dictionary<GameMode, GameBase> m_Games = new();
         private GameBase m_CurrentGame;
         private bool m_GotoMenu;
         private float m_GotoMenuDelaySeconds;
@@ -49,6 +49,16 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             formComponent.AddForm(UIFormId.RightForm);
 
             formComponent.OnEnter(procedureOwner);
+        }
+
+        public void OpenUIForm(UIFormId form)
+        {
+            formComponent.OpenUIForm(form);
+        }
+
+        public void RemoveUIForm(UIFormId formId)
+        {
+            formComponent.RemoveUIForm(formId);
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)

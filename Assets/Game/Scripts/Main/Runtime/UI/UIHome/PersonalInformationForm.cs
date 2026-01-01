@@ -1,10 +1,10 @@
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.UI.UIHome
 {
-    public class UpperForm : UGuiForm
+    public class PersonalInformationForm : UGuiForm
     {
         private ProcedureHome procedureHome;
 
@@ -26,9 +26,9 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             base.OnClose(isShutdown, userData);
         }
 
-        public void OnPersonalInformationButtonClick()
+        public void OnReturnButtonClick()
         {
-            procedureHome.OpenUIForm(UIFormId.PersonalInformationForm);
+            procedureHome.RemoveUIForm(UIFormId.PersonalInformationForm);
         }
     }
 }
