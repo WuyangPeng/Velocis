@@ -192,7 +192,7 @@ namespace Game.Scripts.Main.Runtime.InitGame
                     };
 
                     AddExistName(npcBaseData.Surname, npcBaseData.Name);
-                    npcBaseData.Talent.AddRange(talentWeightRandom.RollMultiple(Constant.Game.MaxTalentCount));
+                    npcBaseData.Talent.UnionWith(talentWeightRandom.RollMultiple(Constant.Game.MaxTalentCount));
 
                     npcModule.AddNpc(npcBaseData);
                     mapModule.SetChunkByFamilyId(npcBaseData.ID, element.ID);
@@ -276,7 +276,7 @@ namespace Game.Scripts.Main.Runtime.InitGame
                 };
 
                 AddExistName(npcBaseData.Surname, npcBaseData.Name);
-                npcBaseData.Talent.AddRange(talentWeightRandom.RollMultiple(Constant.Game.MaxTalentCount));
+                npcBaseData.Talent.UnionWith(talentWeightRandom.RollMultiple(Constant.Game.MaxTalentCount));
 
                 npcModule.AddNpc(npcBaseData);
             }

@@ -18,7 +18,7 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public void SetTalentData(TalentSaveData talentSaveData)
         {
-            unlockTalent.AddRange(talentSaveData.UnlockTalent);
+            unlockTalent.UnionWith(talentSaveData.UnlockTalent);
         }
 
         public bool HasTalent(int talentId)
