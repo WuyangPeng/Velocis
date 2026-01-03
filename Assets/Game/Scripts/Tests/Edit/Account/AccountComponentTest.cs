@@ -3,7 +3,7 @@ using Game.Scripts.Main.Runtime.Account;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace Game.Scripts.Tests.Account
+namespace Game.Scripts.Tests.Edit.Account
 {
     /// <summary>
     ///     针对 AccountComponent 的单元测试类。
