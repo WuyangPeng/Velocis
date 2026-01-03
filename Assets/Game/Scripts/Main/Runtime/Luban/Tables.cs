@@ -13,19 +13,39 @@ namespace Celeritas.Config
 {
 public partial class tables
 {
-    public container.surname_config_container SurnameConfigContainer {get; }
-    public container.name_config_container NameConfigContainer {get; }
-    public container.red_dot_config_container RedDotConfigContainer {get; }
-    public container.item_config_container ItemConfigContainer {get; }
-    public container.develop_config_container DevelopConfigContainer {get; }
+    /// <summary>
+    /// 姓氏
+    /// </summary>
+    public game.surname_config_container SurnameConfigContainer {get; }
+    /// <summary>
+    /// 名字
+    /// </summary>
+    public game.name_config_container NameConfigContainer {get; }
+    /// <summary>
+    /// 红点
+    /// </summary>
+    public game.red_dot_config_container RedDotConfigContainer {get; }
+    /// <summary>
+    /// 物品
+    /// </summary>
+    public game.item_config_container ItemConfigContainer {get; }
+    /// <summary>
+    /// 养成
+    /// </summary>
+    public game.develop_config_container DevelopConfigContainer {get; }
+    /// <summary>
+    /// 改名消耗
+    /// </summary>
+    public game.rename_cost_config_container RenameCostConfigContainer {get; }
 
     public tables(System.Func<string, ByteBuf> loader)
     {
-        SurnameConfigContainer = new container.surname_config_container(loader("surname_config_container"));
-        NameConfigContainer = new container.name_config_container(loader("name_config_container"));
-        RedDotConfigContainer = new container.red_dot_config_container(loader("red_dot_config_container"));
-        ItemConfigContainer = new container.item_config_container(loader("item_config_container"));
-        DevelopConfigContainer = new container.develop_config_container(loader("develop_config_container"));
+        SurnameConfigContainer = new game.surname_config_container(loader("surname_config_container"));
+        NameConfigContainer = new game.name_config_container(loader("name_config_container"));
+        RedDotConfigContainer = new game.red_dot_config_container(loader("red_dot_config_container"));
+        ItemConfigContainer = new game.item_config_container(loader("item_config_container"));
+        DevelopConfigContainer = new game.develop_config_container(loader("develop_config_container"));
+        RenameCostConfigContainer = new game.rename_cost_config_container(loader("rename_cost_config_container"));
         ResolveRef();
     }
     
@@ -36,6 +56,7 @@ public partial class tables
         RedDotConfigContainer.ResolveRef(this);
         ItemConfigContainer.ResolveRef(this);
         DevelopConfigContainer.ResolveRef(this);
+        RenameCostConfigContainer.ResolveRef(this);
     }
 }
 

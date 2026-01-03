@@ -10,7 +10,7 @@
 using Luban;
 
 
-namespace Celeritas.Config.container
+namespace Celeritas.Config.game
 {
 public sealed partial class red_dot_config : Luban.BeanBase
 {
@@ -25,7 +25,7 @@ public sealed partial class red_dot_config : Luban.BeanBase
 
     public static red_dot_config Deserializered_dot_config(ByteBuf _buf)
     {
-        return new container.red_dot_config(_buf);
+        return new game.red_dot_config(_buf);
     }
 
     /// <summary>
@@ -49,7 +49,7 @@ public sealed partial class red_dot_config : Luban.BeanBase
     /// </summary>
     public readonly bool SaveDatabase;
    
-    public const int __ID__ = 771197043;
+    public const int __ID__ = -1058170654;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(tables tables)

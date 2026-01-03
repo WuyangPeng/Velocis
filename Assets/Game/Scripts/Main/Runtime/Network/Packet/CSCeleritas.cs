@@ -63,6 +63,22 @@ namespace Game.Scripts.Main.Runtime.Network.Packet
             return Celeritas.CeleritasRequest.Client.Player.Heartbeat;
         }
 
+        private client_role_request Mutable_ClientPlayer_ClientRole()
+        {
+            Mutable_ClientPlayer();
+            Celeritas.CeleritasRequest.Client.Player.Role = new client_role_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Role;
+        }
+
+        public change_role_name_request Mutable_ClientPlayer_ClientRole_ChangeRoleName()
+        {
+            Mutable_ClientPlayer_ClientRole();
+            Celeritas.CeleritasRequest.Client.Player.Role.ChangeRoleName = new change_role_name_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Role.ChangeRoleName;
+        }
+
         public override void Clear()
         {
             Common = new header();

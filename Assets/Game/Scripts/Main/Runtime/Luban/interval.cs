@@ -10,36 +10,34 @@
 using Luban;
 
 
-namespace Celeritas.Config.container
+namespace Celeritas.Config
 {
-public sealed partial class surname_config : Luban.BeanBase
+/// <summary>
+/// 区间
+/// </summary>
+public sealed partial class interval : Luban.BeanBase
 {
-    public surname_config(ByteBuf _buf) 
+    public interval(ByteBuf _buf) 
     {
-        Id = _buf.ReadInt();
-        Name = _buf.ReadString();
-        Weight = _buf.ReadInt();
+        Min = _buf.ReadInt();
+        Max = _buf.ReadInt();
     }
 
-    public static surname_config Deserializesurname_config(ByteBuf _buf)
+    public static interval Deserializeinterval(ByteBuf _buf)
     {
-        return new container.surname_config(_buf);
+        return new interval(_buf);
     }
 
     /// <summary>
-    /// id
+    /// 最小值
     /// </summary>
-    public readonly int Id;
+    public readonly int Min;
     /// <summary>
-    /// 名字
+    /// 最大值
     /// </summary>
-    public readonly string Name;
-    /// <summary>
-    /// 权重
-    /// </summary>
-    public readonly int Weight;
+    public readonly int Max;
    
-    public const int __ID__ = 25979955;
+    public const int __ID__ = 570418373;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(tables tables)
@@ -49,9 +47,8 @@ public sealed partial class surname_config : Luban.BeanBase
     public override string ToString()
     {
         return "{ "
-        + "id:" + Id + ","
-        + "name:" + Name + ","
-        + "weight:" + Weight + ","
+        + "min:" + Min + ","
+        + "max:" + Max + ","
         + "}";
     }
 }

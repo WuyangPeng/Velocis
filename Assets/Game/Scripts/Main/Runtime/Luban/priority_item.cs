@@ -10,44 +10,39 @@
 using Luban;
 
 
-namespace Celeritas.Config.test
+namespace Celeritas.Config
 {
 /// <summary>
-/// 这是个测试excel结构
+/// 带优先级的物品
 /// </summary>
-public sealed partial class bean : Luban.BeanBase
+public sealed partial class priority_item : Luban.BeanBase
 {
-    public bean(ByteBuf _buf) 
+    public priority_item(ByteBuf _buf) 
     {
-        X1 = _buf.ReadInt();
-        X2 = _buf.ReadString();
-        X3 = _buf.ReadInt();
-        X4 = _buf.ReadFloat();
+        ItemId = _buf.ReadInt();
+        ItemCount = _buf.ReadInt();
+        Priority = _buf.ReadInt();
     }
 
-    public static bean Deserializebean(ByteBuf _buf)
+    public static priority_item Deserializepriority_item(ByteBuf _buf)
     {
-        return new test.bean(_buf);
+        return new priority_item(_buf);
     }
 
     /// <summary>
-    /// 最高品质
+    /// 道具id
     /// </summary>
-    public readonly int X1;
+    public readonly int ItemId;
     /// <summary>
-    /// 黑色的
+    /// 道具数量
     /// </summary>
-    public readonly string X2;
+    public readonly int ItemCount;
     /// <summary>
-    /// 蓝色的
+    /// 优先级
     /// </summary>
-    public readonly int X3;
-    /// <summary>
-    /// 最差品质
-    /// </summary>
-    public readonly float X4;
+    public readonly int Priority;
    
-    public const int __ID__ = -1225911412;
+    public const int __ID__ = 841097422;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(tables tables)
@@ -57,10 +52,9 @@ public sealed partial class bean : Luban.BeanBase
     public override string ToString()
     {
         return "{ "
-        + "x1:" + X1 + ","
-        + "x2:" + X2 + ","
-        + "x3:" + X3 + ","
-        + "x4:" + X4 + ","
+        + "itemId:" + ItemId + ","
+        + "itemCount:" + ItemCount + ","
+        + "priority:" + Priority + ","
         + "}";
     }
 }

@@ -10,7 +10,7 @@
 using Luban;
 
 
-namespace Celeritas.Config.container
+namespace Celeritas.Config.game
 {
 public sealed partial class name_config : Luban.BeanBase
 {
@@ -24,7 +24,7 @@ public sealed partial class name_config : Luban.BeanBase
 
     public static name_config Deserializename_config(ByteBuf _buf)
     {
-        return new container.name_config(_buf);
+        return new game.name_config(_buf);
     }
 
     /// <summary>
@@ -44,7 +44,7 @@ public sealed partial class name_config : Luban.BeanBase
     /// </summary>
     public readonly int Weight;
    
-    public const int __ID__ = 497249673;
+    public const int __ID__ = 1822542714;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(tables tables)

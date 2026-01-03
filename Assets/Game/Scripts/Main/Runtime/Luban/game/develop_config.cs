@@ -10,7 +10,7 @@
 using Luban;
 
 
-namespace Celeritas.Config.container
+namespace Celeritas.Config.game
 {
 public sealed partial class develop_config : Luban.BeanBase
 {
@@ -25,7 +25,7 @@ public sealed partial class develop_config : Luban.BeanBase
 
     public static develop_config Deserializedevelop_config(ByteBuf _buf)
     {
-        return new container.develop_config(_buf);
+        return new game.develop_config(_buf);
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ public sealed partial class develop_config : Luban.BeanBase
     public readonly int MaxLevel;
     public readonly develop_reset_type DevelopResetType;
    
-    public const int __ID__ = -562616207;
+    public const int __ID__ = 1902983392;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(tables tables)

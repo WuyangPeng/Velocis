@@ -10,21 +10,21 @@
 using Luban;
 
 
-namespace Celeritas.Config.container
+namespace Celeritas.Config.game
 {
 public sealed partial class item_config : Luban.BeanBase
 {
     public item_config(ByteBuf _buf) 
     {
         ItemTemplateId = _buf.ReadInt();
-        ItemType = _buf.ReadInt();
+        ItemType = (item_type)_buf.ReadInt();
         Stacked = _buf.ReadInt();
         Squares = _buf.ReadBool();
     }
 
     public static item_config Deserializeitem_config(ByteBuf _buf)
     {
-        return new container.item_config(_buf);
+        return new game.item_config(_buf);
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ public sealed partial class item_config : Luban.BeanBase
     /// <summary>
     /// 物品类型
     /// </summary>
-    public readonly int ItemType;
+    public readonly item_type ItemType;
     /// <summary>
     /// 堆叠数
     /// </summary>
@@ -44,7 +44,7 @@ public sealed partial class item_config : Luban.BeanBase
     /// </summary>
     public readonly bool Squares;
    
-    public const int __ID__ = -209370111;
+    public const int __ID__ = 1115922930;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(tables tables)

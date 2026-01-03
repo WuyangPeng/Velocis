@@ -28,21 +28,24 @@ namespace Celeritas.Proto.Client {
             "cHJvdG8uY2xpZW50Il4KDWxvZ2luX3JlcXVlc3QSDQoFdG9rZW4YASABKAkS",
             "FgoOZ2FtZV9zZXJ2ZXJfaWQYAiABKAkSEQoJZGV2aWNlX2lkGAMgASgJEhMK",
             "C2FwcF92ZXJzaW9uGAQgASgJIiYKDmxvZ2luX3Jlc3BvbnNlEhQKDGN1cnJl",
-            "bnRfdGltZRgBIAEoAyIXChVsb2dpbl9maW5pc2hfcmVzcG9uc2UiWQoUY2xp",
-            "ZW50X2xvZ2luX3JlcXVlc3QSNgoFbG9naW4YASABKAsyJS5jZWxlcml0YXMu",
-            "cHJvdG8uY2xpZW50LmxvZ2luX3JlcXVlc3RIAEIJCgdwYXlsb2FkIqIBChVj",
-            "bGllbnRfbG9naW5fcmVzcG9uc2USNwoFbG9naW4YASABKAsyJi5jZWxlcml0",
-            "YXMucHJvdG8uY2xpZW50LmxvZ2luX3Jlc3BvbnNlSAASRQoMbG9naW5fZmlu",
-            "aXNoGAIgASgLMi0uY2VsZXJpdGFzLnByb3RvLmNsaWVudC5sb2dpbl9maW5p",
-            "c2hfcmVzcG9uc2VIAEIJCgdwYXlsb2FkYgZwcm90bzM="));
+            "bnRfdGltZRgBIAEoAyIXChVsb2dpbl9maW5pc2hfcmVzcG9uc2UiEAoOZXJy",
+            "b3JfcmVzcG9uc2UiWQoUY2xpZW50X2xvZ2luX3JlcXVlc3QSNgoFbG9naW4Y",
+            "ASABKAsyJS5jZWxlcml0YXMucHJvdG8uY2xpZW50LmxvZ2luX3JlcXVlc3RI",
+            "AEIJCgdwYXlsb2FkItsBChVjbGllbnRfbG9naW5fcmVzcG9uc2USNwoFbG9n",
+            "aW4YASABKAsyJi5jZWxlcml0YXMucHJvdG8uY2xpZW50LmxvZ2luX3Jlc3Bv",
+            "bnNlSAASRQoMbG9naW5fZmluaXNoGAIgASgLMi0uY2VsZXJpdGFzLnByb3Rv",
+            "LmNsaWVudC5sb2dpbl9maW5pc2hfcmVzcG9uc2VIABI3CgVlcnJvchgDIAEo",
+            "CzImLmNlbGVyaXRhcy5wcm90by5jbGllbnQuZXJyb3JfcmVzcG9uc2VIAEIJ",
+            "CgdwYXlsb2FkYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.login_request), global::Celeritas.Proto.Client.login_request.Parser, new[]{ "Token", "GameServerId", "DeviceId", "AppVersion" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.login_response), global::Celeritas.Proto.Client.login_response.Parser, new[]{ "CurrentTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.login_finish_response), global::Celeritas.Proto.Client.login_finish_response.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.error_response), global::Celeritas.Proto.Client.error_response.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_login_request), global::Celeritas.Proto.Client.client_login_request.Parser, new[]{ "Login" }, new[]{ "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_login_response), global::Celeritas.Proto.Client.client_login_response.Parser, new[]{ "Login", "LoginFinish" }, new[]{ "Payload" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_login_response), global::Celeritas.Proto.Client.client_login_response.Parser, new[]{ "Login", "LoginFinish", "Error" }, new[]{ "Payload" }, null, null, null)
           }));
     }
     #endregion
@@ -718,6 +721,167 @@ namespace Celeritas.Proto.Client {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class error_response : pb::IMessage<error_response>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<error_response> _parser = new pb::MessageParser<error_response>(() => new error_response());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<error_response> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Client.LoginReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public error_response() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public error_response(error_response other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public error_response Clone() {
+      return new error_response(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as error_response);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(error_response other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(error_response other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class client_login_request : pb::IMessage<client_login_request>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -732,7 +896,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.LoginReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Celeritas.Proto.Client.LoginReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -973,7 +1137,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.LoginReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Celeritas.Proto.Client.LoginReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -999,6 +1163,9 @@ namespace Celeritas.Proto.Client {
           break;
         case PayloadOneofCase.LoginFinish:
           LoginFinish = other.LoginFinish.Clone();
+          break;
+        case PayloadOneofCase.Error:
+          Error = other.Error.Clone();
           break;
       }
 
@@ -1035,12 +1202,25 @@ namespace Celeritas.Proto.Client {
       }
     }
 
+    /// <summary>Field number for the "error" field.</summary>
+    public const int ErrorFieldNumber = 3;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Client.error_response Error {
+      get { return payloadCase_ == PayloadOneofCase.Error ? (global::Celeritas.Proto.Client.error_response) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Error;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
       None = 0,
       Login = 1,
       LoginFinish = 2,
+      Error = 3,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1073,6 +1253,7 @@ namespace Celeritas.Proto.Client {
       }
       if (!object.Equals(Login, other.Login)) return false;
       if (!object.Equals(LoginFinish, other.LoginFinish)) return false;
+      if (!object.Equals(Error, other.Error)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1083,6 +1264,7 @@ namespace Celeritas.Proto.Client {
       int hash = 1;
       if (payloadCase_ == PayloadOneofCase.Login) hash ^= Login.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.LoginFinish) hash ^= LoginFinish.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.Error) hash ^= Error.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1110,6 +1292,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(18);
         output.WriteMessage(LoginFinish);
       }
+      if (payloadCase_ == PayloadOneofCase.Error) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Error);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1128,6 +1314,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(18);
         output.WriteMessage(LoginFinish);
       }
+      if (payloadCase_ == PayloadOneofCase.Error) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Error);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1143,6 +1333,9 @@ namespace Celeritas.Proto.Client {
       }
       if (payloadCase_ == PayloadOneofCase.LoginFinish) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(LoginFinish);
+      }
+      if (payloadCase_ == PayloadOneofCase.Error) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Error);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1168,6 +1361,12 @@ namespace Celeritas.Proto.Client {
             LoginFinish = new global::Celeritas.Proto.Client.login_finish_response();
           }
           LoginFinish.MergeFrom(other.LoginFinish);
+          break;
+        case PayloadOneofCase.Error:
+          if (Error == null) {
+            Error = new global::Celeritas.Proto.Client.error_response();
+          }
+          Error.MergeFrom(other.Error);
           break;
       }
 
@@ -1208,6 +1407,15 @@ namespace Celeritas.Proto.Client {
             LoginFinish = subBuilder;
             break;
           }
+          case 26: {
+            global::Celeritas.Proto.Client.error_response subBuilder = new global::Celeritas.Proto.Client.error_response();
+            if (payloadCase_ == PayloadOneofCase.Error) {
+              subBuilder.MergeFrom(Error);
+            }
+            input.ReadMessage(subBuilder);
+            Error = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -1243,6 +1451,15 @@ namespace Celeritas.Proto.Client {
             }
             input.ReadMessage(subBuilder);
             LoginFinish = subBuilder;
+            break;
+          }
+          case 26: {
+            global::Celeritas.Proto.Client.error_response subBuilder = new global::Celeritas.Proto.Client.error_response();
+            if (payloadCase_ == PayloadOneofCase.Error) {
+              subBuilder.MergeFrom(Error);
+            }
+            input.ReadMessage(subBuilder);
+            Error = subBuilder;
             break;
           }
         }
