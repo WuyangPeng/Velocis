@@ -45,6 +45,20 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
 
                     break;
                 }
+                case client_login_response.PayloadOneofCase.Error:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<error_response>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.Error);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'error'.");
+                    }
+
+                    break;
+                }
                 case client_login_response.PayloadOneofCase.None:
                 {
                     break;

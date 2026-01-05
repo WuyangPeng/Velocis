@@ -17,8 +17,8 @@ public sealed partial class rename_cost_config : Luban.BeanBase
     public rename_cost_config(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
-        Interval = global::Celeritas.Config.interval.Deserializeinterval(_buf);
-        {int n0 = _buf.ReadSize(); PriorityItem = new System.Collections.Generic.List<priority_item>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { priority_item _e0;  _e0 = global::Celeritas.Config.priority_item.Deserializepriority_item(_buf); PriorityItem.Add(_e0);}}
+        RenameCount = global::Celeritas.Config.interval.Deserializeinterval(_buf);
+        {int n0 = _buf.ReadSize(); Item = new System.Collections.Generic.List<priority_item>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { priority_item _e0;  _e0 = global::Celeritas.Config.priority_item.Deserializepriority_item(_buf); Item.Add(_e0);}}
     }
 
     public static rename_cost_config Deserializerename_cost_config(ByteBuf _buf)
@@ -33,27 +33,27 @@ public sealed partial class rename_cost_config : Luban.BeanBase
     /// <summary>
     /// 区间
     /// </summary>
-    public readonly interval Interval;
+    public readonly interval RenameCount;
     /// <summary>
     /// 所需物品
     /// </summary>
-    public readonly System.Collections.Generic.List<priority_item> PriorityItem;
+    public readonly System.Collections.Generic.List<priority_item> Item;
    
     public const int __ID__ = 2043646959;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(tables tables)
     {
-        Interval?.ResolveRef(tables);
-        foreach (var _e in PriorityItem) { _e?.ResolveRef(tables); }
+        RenameCount?.ResolveRef(tables);
+        foreach (var _e in Item) { _e?.ResolveRef(tables); }
     }
 
     public override string ToString()
     {
         return "{ "
         + "id:" + Id + ","
-        + "interval:" + Interval + ","
-        + "priorityItem:" + Luban.StringUtil.CollectionToString(PriorityItem) + ","
+        + "renameCount:" + RenameCount + ","
+        + "item:" + Luban.StringUtil.CollectionToString(Item) + ","
         + "}";
     }
 }
