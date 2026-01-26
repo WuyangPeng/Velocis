@@ -21,6 +21,7 @@ namespace Game.Scripts.Main.Runtime.Network.PacketHandler
                 var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<celeritas>();
                 if (handler != null)
                 {
+                    Log.Info("Receive packet rpc ='{0}',message ={1}.", packetImpl.Common.ToGateway.Rpc, packetImpl.Celeritas.ToString());
                     handler.Handle(sender, packetImpl.Common, packetImpl.Celeritas);
                 }
                 else
