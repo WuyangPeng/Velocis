@@ -31,6 +31,34 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
 
                     break;
                 }
+                case client_item_response.PayloadOneofCase.ItemDelete:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<item_delete_response>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.ItemDelete);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'item_delete'.");
+                    }
+
+                    break;
+                }
+                case client_item_response.PayloadOneofCase.ItemSelected:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<item_selected_response>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.ItemSelected);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'item_selected'.");
+                    }
+
+                    break;
+                }
                 case client_item_response.PayloadOneofCase.None:
                 {
                     break;
