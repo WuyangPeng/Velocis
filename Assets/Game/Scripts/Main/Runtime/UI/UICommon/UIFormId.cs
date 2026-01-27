@@ -110,6 +110,11 @@
         /// <summary>
         ///     个人信息。
         /// </summary>
-        PersonalInformationForm = 401
+        PersonalInformationForm = 401,
+
+        /// <summary>
+        ///     改名。
+        /// </summary>
+        ChangeNameForm = 402
     }
 }

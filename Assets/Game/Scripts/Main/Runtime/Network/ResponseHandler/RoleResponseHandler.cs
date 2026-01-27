@@ -21,6 +21,12 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
             {
                 personalInformationForm.SetText();
             }
+            
+            var changeNameForm = GameEntry.UI.GetUIForm(UIFormId.ChangeNameForm) as ChangeNameForm;
+            if (changeNameForm != null)
+            {
+                changeNameForm.Return();
+            }
         }
     }
 }

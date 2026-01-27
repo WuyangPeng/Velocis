@@ -28,7 +28,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             procedureHome = (ProcedureHome)GetCurrentProcedure();
             if (procedureHome == null)
             {
-                Log.Warning("ProcedureHome is invalid when open UpperForm.");
+                Log.Warning("ProcedureHome is invalid when open PersonalInformationForm.");
             }
 
             SetText();
@@ -44,7 +44,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         public void SetText()
         {
             var roleModule = GameEntry.ModuleComponent.GetModule<RoleModule>();
-            roleName.text = roleModule.GetName();
+            roleName.text = roleModule.GetFullName();
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -62,6 +62,11 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         public void OnSetButtonClick()
         {
             procedureHome.OpenUIForm(UIFormId.SettingForm);
+        }
+
+        public void OnChangeNameButtonClick()
+        {
+            procedureHome.OpenUIForm(UIFormId.ChangeNameForm);
         }
 
         public void OnServerListButtonClick()

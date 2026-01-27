@@ -27,6 +27,26 @@ namespace Game.Scripts.Main.Runtime.GameModule.Role
         {
             if (_modifyName)
             {
+                return _name;
+            }
+
+            return GameEntry.Localization.GetString(_name);
+        }
+
+        public string GetSurname()
+        {
+            if (_modifyName)
+            {
+                return _surname;
+            }
+
+            return GameEntry.Localization.GetString(_surname);
+        }
+
+        public string GetFullName()
+        {
+            if (_modifyName)
+            {
                 return _surname + _name;
             }
 
