@@ -4,6 +4,8 @@ using System.Net;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Login;
 using Game.Scripts.Main.Runtime.Network;
+using Game.Scripts.Main.Runtime.UI.UICommon;
+using Game.Scripts.Main.Runtime.UI.UIMenu;
 using Game.Scripts.Main.Runtime.UIItem.UIMenu;
 using Game.Scripts.Main.Runtime.UIObject.UIMenu;
 using GameFramework.Network;
@@ -129,6 +131,12 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
             var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
             if (accountModule.getCurrentIndex() == index)
             {
+                GameEntry.UI.OpenDialog(new DialogParams
+                {
+                    Mode = 1,
+                    Title = GameEntry.Localization.GetString("Server.Error"),
+                    Message = GameEntry.Localization.GetString("Home.CurrentServer")
+                });
                 return;
             }
 

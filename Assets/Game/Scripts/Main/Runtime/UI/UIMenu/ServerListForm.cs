@@ -1,34 +1,36 @@
-﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using Game.Scripts.Main.Runtime.Event;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using GameFramework.Procedure;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
     public class ServerListForm : UGuiForm
     {
-        private ProcedureMenu _procedureMenu;
+        private ProcedureBase _ProcedureBase;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            _procedureMenu = (ProcedureMenu)GetCurrentProcedure();
-            if (_procedureMenu == null)
+            _ProcedureBase = GetCurrentProcedure();
+            if (_ProcedureBase == null)
             {
-                Log.Warning("ProcedureMenu is invalid when open ServerListForm.");
+                Log.Warning("ProcedureBase is invalid when open ServerListForm.");
             }
         }
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            _procedureMenu = null;
+            _ProcedureBase = null;
 
             base.OnClose(isShutdown, userData);
         }
 
         public void OnReturnButtonClick()
         {
-            _procedureMenu.RemoveUIForm(UIFormId.ServerListForm);
+            GameEntry.Event.Fire(this, ServerListEventArgs.Create());
         }
     }
 }

@@ -1,80 +1,71 @@
-﻿using Game.Scripts.Main.Runtime.Sound;
+﻿using Game.Scripts.Main.Runtime.Definition.Constant;
+using Game.Scripts.Main.Runtime.Sound;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework.Localization;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
     public class SettingForm : UGuiForm
     {
-        [SerializeField]
-        private Toggle musicMuteToggle;
+        [SerializeField] private Toggle musicMuteToggle;
 
-        [SerializeField]
-        private Slider musicVolumeSlider;
+        [SerializeField] private Slider musicVolumeSlider;
 
-        [SerializeField]
-        private Toggle soundMuteToggle;
+        [SerializeField] private Toggle soundMuteToggle;
 
-        [SerializeField]
-        private Slider soundVolumeSlider;
+        [SerializeField] private Slider soundVolumeSlider;
 
-        [SerializeField]
-        private Toggle uiSoundMuteToggle;
+        [SerializeField] private Toggle uiSoundMuteToggle;
 
-        [SerializeField]
-        private Slider uiSoundVolumeSlider;
+        [SerializeField] private Slider uiSoundVolumeSlider;
 
-        [SerializeField]
-        private CanvasGroup languageTipsCanvasGroup;
+        [SerializeField] private CanvasGroup languageTipsCanvasGroup;
 
-        [SerializeField]
-        private Toggle englishToggle;
+        [SerializeField] private Toggle englishToggle;
 
-        [SerializeField]
-        private Toggle chineseSimplifiedToggle;
+        [SerializeField] private Toggle chineseSimplifiedToggle;
 
-        [SerializeField]
-        private Toggle chineseTraditionalToggle;
+        [SerializeField] private Toggle chineseTraditionalToggle;
 
-        [SerializeField]
-        private Toggle koreanToggle;
+        [SerializeField] private Toggle koreanToggle;
 
         private Language selectedLanguage = Language.Unspecified;
 
         public void OnMusicMuteChanged(bool isOn)
         {
-            Base.GameEntry.Sound.Mute("Music", !isOn);
+            GameEntry.Sound.Mute("Music", !isOn);
             musicVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnMusicVolumeChanged(float volume)
         {
-            Base.GameEntry.Sound.SetVolume("Music", volume);
+            GameEntry.Sound.SetVolume("Music", volume);
         }
 
         public void OnSoundMuteChanged(bool isOn)
         {
-            Base.GameEntry.Sound.Mute("Sound", !isOn);
+            GameEntry.Sound.Mute("Sound", !isOn);
             soundVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnSoundVolumeChanged(float volume)
         {
-            Base.GameEntry.Sound.SetVolume("Sound", volume);
+            GameEntry.Sound.SetVolume("Sound", volume);
         }
 
         public void OnUISoundMuteChanged(bool isOn)
         {
-            Base.GameEntry.Sound.Mute("UISound", !isOn);
+            GameEntry.Sound.Mute("UISound", !isOn);
             uiSoundVolumeSlider.gameObject.SetActive(isOn);
         }
 
         public void OnUISoundVolumeChanged(float volume)
         {
-            Base.GameEntry.Sound.SetVolume("UISound", volume);
+            GameEntry.Sound.SetVolume("UISound", volume);
         }
 
         public void OnEnglishSelected(bool isOn)
@@ -123,17 +114,17 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         public void OnSubmitButtonClick()
         {
-            if (selectedLanguage == Base.GameEntry.Localization.Language)
+            if (selectedLanguage == GameEntry.Localization.Language)
             {
                 Close();
                 return;
             }
 
-            Base.GameEntry.Setting.SetString(Definition.Constant.Constant.Setting.Language, selectedLanguage.ToString());
-            Base.GameEntry.Setting.Save();
+            GameEntry.Setting.SetString(Constant.Setting.Language, selectedLanguage.ToString());
+            GameEntry.Setting.Save();
 
-            Base.GameEntry.Sound.StopMusic();
-            GameEntry.Shutdown(ShutdownType.Restart);
+            GameEntry.Sound.StopMusic();
+            UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Restart);
         }
 
 
@@ -141,16 +132,16 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             base.OnOpen(userData);
 
-            musicMuteToggle.isOn = !Base.GameEntry.Sound.IsMuted("Music");
-            musicVolumeSlider.value = Base.GameEntry.Sound.GetVolume("Music");
+            musicMuteToggle.isOn = !GameEntry.Sound.IsMuted("Music");
+            musicVolumeSlider.value = GameEntry.Sound.GetVolume("Music");
 
-            soundMuteToggle.isOn = !Base.GameEntry.Sound.IsMuted("Sound");
-            soundVolumeSlider.value = Base.GameEntry.Sound.GetVolume("Sound");
+            soundMuteToggle.isOn = !GameEntry.Sound.IsMuted("Sound");
+            soundVolumeSlider.value = GameEntry.Sound.GetVolume("Sound");
 
-            uiSoundMuteToggle.isOn = !Base.GameEntry.Sound.IsMuted("UISound");
-            uiSoundVolumeSlider.value = Base.GameEntry.Sound.GetVolume("UISound");
+            uiSoundMuteToggle.isOn = !GameEntry.Sound.IsMuted("UISound");
+            uiSoundVolumeSlider.value = GameEntry.Sound.GetVolume("UISound");
 
-            selectedLanguage = Base.GameEntry.Localization.Language;
+            selectedLanguage = GameEntry.Localization.Language;
             switch (selectedLanguage)
             {
                 case Language.English:
@@ -168,9 +159,6 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 case Language.Korean:
                     koreanToggle.isOn = true;
                     break;
-
-                default:
-                    break;
             }
         }
 
@@ -187,7 +175,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         private void RefreshLanguageTips()
         {
-            languageTipsCanvasGroup.gameObject.SetActive(selectedLanguage != Base.GameEntry.Localization.Language);
+            languageTipsCanvasGroup.gameObject.SetActive(selectedLanguage != GameEntry.Localization.Language);
         }
     }
 }

@@ -72,7 +72,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         public void OnSetButtonClick()
         {
-            procedureHome.OpenUIForm(UIFormId.SettingForm);
+            GameEntry.UI.OpenUIForm(UIFormId.SettingForm);
         }
 
         public void OnChangeNameButtonClick()

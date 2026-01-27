@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.Event;
 using Game.Scripts.Main.Runtime.Game;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIForm;
+using GameFramework.Event;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
@@ -49,6 +51,13 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             formComponent.AddForm(UIFormId.RightForm);
 
             formComponent.OnEnter(procedureOwner);
+
+            GameEntry.Event.Subscribe(ServerListEventArgs.EventId, OnServerListClose);
+        }
+
+        private void OnServerListClose(object sender, GameEventArgs e)
+        {
+            RemoveUIForm(UIFormId.ServerListForm);
         }
 
         public void OpenUIForm(UIFormId form)
@@ -63,6 +72,8 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
+            GameEntry.Event.Unsubscribe(ServerListEventArgs.EventId, OnServerListClose);
+
             if (m_CurrentGame != null)
             {
                 m_CurrentGame.Shutdown();

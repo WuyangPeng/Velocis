@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Game.Scripts.Main.Runtime.Event;
 using Game.Scripts.Main.Runtime.Game;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.SaveData;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIForm;
 using GameFramework;
+using GameFramework.Event;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
 namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
-
     public class ProcedureMenu : ProcedureBase
     {
         private readonly FormComponent formComponent = new();
@@ -56,6 +57,13 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             GameEntry.ModuleComponent.ResetModule();
 
             LoadAccountData();
+
+            GameEntry.Event.Subscribe(ServerListEventArgs.EventId, OnServerListClose);
+        }
+
+        private void OnServerListClose(object sender, GameEventArgs e)
+        {
+            RemoveUIForm(UIFormId.ServerListForm);
         }
 
         private static void LoadAccountData()
@@ -66,6 +74,8 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
+            GameEntry.Event.Unsubscribe(ServerListEventArgs.EventId, OnServerListClose);
+
             base.OnLeave(procedureOwner, isShutdown);
 
             formComponent.OnLeave(procedureOwner, isShutdown);
