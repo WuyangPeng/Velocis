@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Main.Runtime.Login;
+﻿using Game.Scripts.Main.Runtime.Game;
+using Game.Scripts.Main.Runtime.Login;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityEngine;
@@ -129,7 +130,19 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             // 重新启用按钮
             guestLoginButton.enabled = true;
 
-            _procedureMenu.OpenUIForm(UIFormId.ServerListForm);
+            if (responseData.code == GameErrorType.Success)
+            {
+                _procedureMenu.OpenUIForm(UIFormId.ServerListForm);
+            }
+            else
+            {
+                GameEntry.UI.OpenDialog(new DialogParams
+                {
+                    Mode = 1,
+                    Title = GameEntry.Localization.GetString("Login.LoginFailed"),
+                    Message = GameEntry.Localization.GetString("Login.ConnectServerFailed")
+                });
+            }
         }
 
         /// <summary>

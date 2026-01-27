@@ -2,6 +2,8 @@
 using Celeritas.Proto.Common;
 using Game.Scripts.Main.Runtime.GameModule.Role;
 using Game.Scripts.Main.Runtime.Network.PacketHandler;
+using Game.Scripts.Main.Runtime.UI.UICommon;
+using Game.Scripts.Main.Runtime.UI.UIHome;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
@@ -13,6 +15,12 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
             var roleModule = GameEntry.ModuleComponent.GetModule<RoleModule>();
 
             roleModule.SetRole(message);
+
+            var personalInformationForm = GameEntry.UI.GetUIForm(UIFormId.PersonalInformationForm) as PersonalInformationForm;
+            if (personalInformationForm != null)
+            {
+                personalInformationForm.SetText();
+            }
         }
     }
 }

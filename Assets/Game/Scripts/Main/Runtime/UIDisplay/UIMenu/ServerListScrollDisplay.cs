@@ -116,7 +116,10 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
 
             activeServerListItemObject.Clear();
 
-            foreach (var rowGameObject in rowGameObjects) DestroyImmediate(rowGameObject);
+            foreach (var rowGameObject in rowGameObjects)
+            {
+                DestroyImmediate(rowGameObject);
+            }
 
             rowGameObjects.Clear();
         }
@@ -124,6 +127,11 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
         private void OnItemClick(int index)
         {
             var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+            if (accountModule.getCurrentIndex() == index)
+            {
+                return;
+            }
+
             var currentLoginServerInfo = accountModule.SetCurrentLoginServerInfo(index);
             var host = currentLoginServerInfo.connection_info.host;
             var port = currentLoginServerInfo.connection_info.port;
@@ -154,6 +162,11 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
             var channel = GameEntry.Network.GetNetworkChannel("TcpChannel") ??
                           GameEntry.Network.CreateNetworkChannel("TcpChannel", ServiceType.Tcp,
                               new NetworkChannelHelper());
+
+            if (channel.Connected)
+            {
+                channel.Close();
+            }
 
             channel.Connect(ipAddress, port);
         }
