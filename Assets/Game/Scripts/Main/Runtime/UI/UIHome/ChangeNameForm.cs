@@ -1,6 +1,8 @@
-﻿using Game.Scripts.Main.Runtime.GameModule.Role;
+﻿using Game.Scripts.Main.Runtime.Event;
+using Game.Scripts.Main.Runtime.GameModule.Role;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using GameFramework.Event;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
@@ -10,8 +12,8 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 {
     public class ChangeNameForm : UGuiForm
     {
-        [SerializeField] private InputField surname;
-        [SerializeField] private InputField name;
+        [SerializeField] private InputField surnameInputField;
+        [SerializeField] private InputField nameInputField;
         private ProcedureHome procedureHome;
 
         protected override void OnOpen(object userData)
@@ -25,13 +27,22 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             }
 
             var roleModule = GameEntry.ModuleComponent.GetModule<RoleModule>();
-            surname.text = roleModule.GetSurname();
-            name.text = roleModule.GetName();
+            surnameInputField.text = roleModule.GetSurname();
+            nameInputField.text = roleModule.GetName();
+
+            GameEntry.Event.Subscribe(ChangeNameEventArgs.EventId, OnSetTextSuccess);
+        }
+
+        private void OnSetTextSuccess(object sender, GameEventArgs e)
+        {
+            procedureHome.RemoveUIForm(UIFormId.ChangeNameForm);
         }
 
 
         protected override void OnClose(bool isShutdown, object userData)
         {
+            GameEntry.Event.Unsubscribe(ChangeNameEventArgs.EventId, OnSetTextSuccess);
+
             procedureHome = null;
 
             base.OnClose(isShutdown, userData);
@@ -45,12 +56,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         public void OnChangeNameButtonClick()
         {
             var roleModule = GameEntry.ModuleComponent.GetModule<RoleModule>();
-            roleModule.ChangeName(surname.text, name.text);
-        }
-
-        public void Return()
-        {
-            procedureHome.RemoveUIForm(UIFormId.ChangeNameForm);
+            roleModule.ChangeName(surnameInputField.text, nameInputField.text);
         }
     }
 }

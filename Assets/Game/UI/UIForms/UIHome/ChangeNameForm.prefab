@@ -237,8 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af7a398be16412b93861ff8dd5f0612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  surname: {fileID: 4251881799134433122}
-  name: {fileID: 2477086855941925654}
+  surnameInputField: {fileID: 4251881799134433122}
+  nameInputField: {fileID: 2477086855941925654}
 --- !u!1001 &809108119200171848
 PrefabInstance:
   m_ObjectHideFlags: 0

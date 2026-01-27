@@ -1,7 +1,9 @@
-﻿using Game.Scripts.Main.Runtime.GameModule.Role;
+﻿using Game.Scripts.Main.Runtime.Event;
+using Game.Scripts.Main.Runtime.GameModule.Role;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using GameFramework.Event;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
@@ -39,9 +41,16 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
             serverName.text = accountModule.GetCurrentGameServerName();
             version.text = "1.0.0";
+
+            GameEntry.Event.Subscribe(ChangeNameEventArgs.EventId, OnSetTextSuccess);
         }
 
-        public void SetText()
+        private void OnSetTextSuccess(object sender, GameEventArgs e)
+        {
+            SetText();
+        }
+
+        private void SetText()
         {
             var roleModule = GameEntry.ModuleComponent.GetModule<RoleModule>();
             roleName.text = roleModule.GetFullName();
@@ -49,6 +58,8 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         protected override void OnClose(bool isShutdown, object userData)
         {
+            GameEntry.Event.Unsubscribe(ChangeNameEventArgs.EventId, OnSetTextSuccess);
+
             procedureHome = null;
 
             base.OnClose(isShutdown, userData);

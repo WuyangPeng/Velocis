@@ -25,14 +25,17 @@ namespace Celeritas.Proto.Client {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiFwcm90by9jbGllbnQvcGxheWVyL3JlZF9kb3QucHJvdG8SFmNlbGVyaXRh",
-            "cy5wcm90by5jbGllbnQiEgoQcmVkX2RvdF9yZXNwb25zZSJhChdjbGllbnRf",
-            "cmVkX2RvdF9yZXNwb25zZRI7CgdyZWRfZG90GAEgASgLMiguY2VsZXJpdGFz",
-            "LnByb3RvLmNsaWVudC5yZWRfZG90X3Jlc3BvbnNlSABCCQoHcGF5bG9hZGIG",
-            "cHJvdG8z"));
+            "cy5wcm90by5jbGllbnQiMwoMcmVkX2RvdF9ub2RlEhQKDHJlZF9kb3RfdHlw",
+            "ZRgBIAEoBRINCgV2YWx1ZRgCIAEoBSJYChByZWRfZG90X3Jlc3BvbnNlEjIK",
+            "BG5vZGUYASADKAsyJC5jZWxlcml0YXMucHJvdG8uY2xpZW50LnJlZF9kb3Rf",
+            "bm9kZRIQCghpc19sb2dpbhgCIAEoCCJhChdjbGllbnRfcmVkX2RvdF9yZXNw",
+            "b25zZRI7CgdyZWRfZG90GAEgASgLMiguY2VsZXJpdGFzLnByb3RvLmNsaWVu",
+            "dC5yZWRfZG90X3Jlc3BvbnNlSABCCQoHcGF5bG9hZGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.red_dot_response), global::Celeritas.Proto.Client.red_dot_response.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.red_dot_node), global::Celeritas.Proto.Client.red_dot_node.Parser, new[]{ "RedDotType", "Value" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.red_dot_response), global::Celeritas.Proto.Client.red_dot_response.Parser, new[]{ "Node", "IsLogin" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_red_dot_response), global::Celeritas.Proto.Client.client_red_dot_response.Parser, new[]{ "RedDot" }, new[]{ "Payload" }, null, null, null)
           }));
     }
@@ -41,16 +44,16 @@ namespace Celeritas.Proto.Client {
   }
   #region Messages
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class red_dot_response : pb::IMessage<red_dot_response>
+  public sealed partial class red_dot_node : pb::IMessage<red_dot_node>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<red_dot_response> _parser = new pb::MessageParser<red_dot_response>(() => new red_dot_response());
+    private static readonly pb::MessageParser<red_dot_node> _parser = new pb::MessageParser<red_dot_node>(() => new red_dot_node());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<red_dot_response> Parser { get { return _parser; } }
+    public static pb::MessageParser<red_dot_node> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -66,7 +69,7 @@ namespace Celeritas.Proto.Client {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public red_dot_response() {
+    public red_dot_node() {
       OnConstruction();
     }
 
@@ -74,31 +77,59 @@ namespace Celeritas.Proto.Client {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public red_dot_response(red_dot_response other) : this() {
+    public red_dot_node(red_dot_node other) : this() {
+      redDotType_ = other.redDotType_;
+      value_ = other.value_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public red_dot_response Clone() {
-      return new red_dot_response(this);
+    public red_dot_node Clone() {
+      return new red_dot_node(this);
+    }
+
+    /// <summary>Field number for the "red_dot_type" field.</summary>
+    public const int RedDotTypeFieldNumber = 1;
+    private int redDotType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int RedDotType {
+      get { return redDotType_; }
+      set {
+        redDotType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "value" field.</summary>
+    public const int ValueFieldNumber = 2;
+    private int value_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Value {
+      get { return value_; }
+      set {
+        value_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as red_dot_response);
+      return Equals(other as red_dot_node);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(red_dot_response other) {
+    public bool Equals(red_dot_node other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (RedDotType != other.RedDotType) return false;
+      if (Value != other.Value) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -106,6 +137,8 @@ namespace Celeritas.Proto.Client {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (RedDotType != 0) hash ^= RedDotType.GetHashCode();
+      if (Value != 0) hash ^= Value.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -124,6 +157,14 @@ namespace Celeritas.Proto.Client {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (RedDotType != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(RedDotType);
+      }
+      if (Value != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Value);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -134,6 +175,14 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (RedDotType != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(RedDotType);
+      }
+      if (Value != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Value);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -144,6 +193,12 @@ namespace Celeritas.Proto.Client {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (RedDotType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RedDotType);
+      }
+      if (Value != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Value);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -152,9 +207,15 @@ namespace Celeritas.Proto.Client {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(red_dot_response other) {
+    public void MergeFrom(red_dot_node other) {
       if (other == null) {
         return;
+      }
+      if (other.RedDotType != 0) {
+        RedDotType = other.RedDotType;
+      }
+      if (other.Value != 0) {
+        Value = other.Value;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -175,6 +236,14 @@ namespace Celeritas.Proto.Client {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 8: {
+            RedDotType = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Value = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -194,6 +263,238 @@ namespace Celeritas.Proto.Client {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 8: {
+            RedDotType = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Value = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class red_dot_response : pb::IMessage<red_dot_response>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<red_dot_response> _parser = new pb::MessageParser<red_dot_response>(() => new red_dot_response());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<red_dot_response> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Client.RedDotReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public red_dot_response() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public red_dot_response(red_dot_response other) : this() {
+      node_ = other.node_.Clone();
+      isLogin_ = other.isLogin_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public red_dot_response Clone() {
+      return new red_dot_response(this);
+    }
+
+    /// <summary>Field number for the "node" field.</summary>
+    public const int NodeFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Celeritas.Proto.Client.red_dot_node> _repeated_node_codec
+        = pb::FieldCodec.ForMessage(10, global::Celeritas.Proto.Client.red_dot_node.Parser);
+    private readonly pbc::RepeatedField<global::Celeritas.Proto.Client.red_dot_node> node_ = new pbc::RepeatedField<global::Celeritas.Proto.Client.red_dot_node>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Celeritas.Proto.Client.red_dot_node> Node {
+      get { return node_; }
+    }
+
+    /// <summary>Field number for the "is_login" field.</summary>
+    public const int IsLoginFieldNumber = 2;
+    private bool isLogin_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsLogin {
+      get { return isLogin_; }
+      set {
+        isLogin_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as red_dot_response);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(red_dot_response other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!node_.Equals(other.node_)) return false;
+      if (IsLogin != other.IsLogin) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= node_.GetHashCode();
+      if (IsLogin != false) hash ^= IsLogin.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      node_.WriteTo(output, _repeated_node_codec);
+      if (IsLogin != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(IsLogin);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      node_.WriteTo(ref output, _repeated_node_codec);
+      if (IsLogin != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(IsLogin);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += node_.CalculateSize(_repeated_node_codec);
+      if (IsLogin != false) {
+        size += 1 + 1;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(red_dot_response other) {
+      if (other == null) {
+        return;
+      }
+      node_.Add(other.node_);
+      if (other.IsLogin != false) {
+        IsLogin = other.IsLogin;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            node_.AddEntriesFrom(input, _repeated_node_codec);
+            break;
+          }
+          case 16: {
+            IsLogin = input.ReadBool();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            node_.AddEntriesFrom(ref input, _repeated_node_codec);
+            break;
+          }
+          case 16: {
+            IsLogin = input.ReadBool();
+            break;
+          }
         }
       }
     }
@@ -216,7 +517,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.RedDotReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Celeritas.Proto.Client.RedDotReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
