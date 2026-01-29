@@ -1,7 +1,9 @@
-﻿using Celeritas.Config;
+﻿using System.Collections.Generic;
+using Celeritas.Config;
 using Celeritas.Proto.Client;
 using Celeritas.Proto.Common;
 using Game.Scripts.Main.Runtime.Base;
+using Game.Scripts.Main.Runtime.Event;
 using Game.Scripts.Main.Runtime.GameModule.RedDot;
 using Game.Scripts.Main.Runtime.Network.PacketHandler;
 
@@ -17,9 +19,19 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
                 redDotModule.ClearRedDotNode();
             }
 
+            Dictionary<red_dot_type, int> redDot = new();
             foreach (var element in message.Node)
             {
                 redDotModule.AddRedDotNode(new RedDotNode((red_dot_type)element.RedDotType, element.Value));
+                if (!message.IsLogin)
+                {
+                    redDot[(red_dot_type)element.RedDotType] = element.Value;
+                }
+            }
+
+            if (!message.IsLogin)
+            {
+                GameEntry.Event.Fire(this, ChangeRedDotEventArgs.Create(redDot));
             }
         }
     }

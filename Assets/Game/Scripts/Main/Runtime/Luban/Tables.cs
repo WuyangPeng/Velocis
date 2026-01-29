@@ -37,6 +37,10 @@ public partial class tables
     /// 改名消耗
     /// </summary>
     public game.rename_cost_config_container RenameCostConfigContainer {get; }
+    /// <summary>
+    /// 默认物品
+    /// </summary>
+    public game.default_item_config_container DefaultItemConfigContainer {get; }
 
     public tables(System.Func<string, ByteBuf> loader)
     {
@@ -46,6 +50,7 @@ public partial class tables
         ItemConfigContainer = new game.item_config_container(loader("item_config_container"));
         DevelopConfigContainer = new game.develop_config_container(loader("develop_config_container"));
         RenameCostConfigContainer = new game.rename_cost_config_container(loader("rename_cost_config_container"));
+        DefaultItemConfigContainer = new game.default_item_config_container(loader("default_item_config_container"));
         ResolveRef();
     }
     
@@ -57,6 +62,7 @@ public partial class tables
         ItemConfigContainer.ResolveRef(this);
         DevelopConfigContainer.ResolveRef(this);
         RenameCostConfigContainer.ResolveRef(this);
+        DefaultItemConfigContainer.ResolveRef(this);
     }
 }
 

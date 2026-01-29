@@ -14,6 +14,11 @@ namespace Game.Scripts.Main.Runtime.GameModule.RedDot
             _redDotNode[node.Type] = node;
         }
 
+        public int GetRedDotNodeValue(red_dot_type type)
+        {
+            return _redDotNode.TryGetValue(type, out var node) ? node.Value : 0;
+        }
+
         public void ClearRedDotNode()
         {
             _redDotNode.Clear();

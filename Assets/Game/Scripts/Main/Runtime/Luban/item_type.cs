@@ -29,6 +29,22 @@ namespace Celeritas.Config
         /// 装备
         /// </summary>
         equipment = 3,
+        /// <summary>
+        /// 头像
+        /// </summary>
+        Avatar = 4,
+        /// <summary>
+        /// 头像框
+        /// </summary>
+        Frame = 5,
+        /// <summary>
+        /// 称号
+        /// </summary>
+        Title = 6,
+        /// <summary>
+        /// 英雄
+        /// </summary>
+        Hero = 7,
     }
 
 } 
