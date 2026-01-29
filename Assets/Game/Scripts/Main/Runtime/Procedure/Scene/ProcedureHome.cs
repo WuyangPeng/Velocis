@@ -16,8 +16,10 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         private readonly FormComponent formComponent = new();
 
         private readonly Dictionary<GameMode, GameBase> m_Games = new();
+
         private GameBase m_CurrentGame;
-        private bool m_GotoMenu;
+
+        //private bool m_GotoMenu;
         private float m_GotoMenuDelaySeconds;
 
         public override bool UseNativeDialog => false;
@@ -40,7 +42,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         {
             base.OnEnter(procedureOwner);
 
-            m_GotoMenu = false;
+            // m_GotoMenu = false;
             var gameMode = (GameMode)procedureOwner.GetData<VarByte>("GameMode").Value;
             m_CurrentGame = m_Games[gameMode];
             m_CurrentGame.Initialize();
@@ -94,23 +96,22 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             if (m_CurrentGame is { GameOver: false })
             {
                 m_CurrentGame.Update(elapseSeconds, realElapseSeconds);
-                return;
             }
 
-            if (!m_GotoMenu)
-            {
-                m_GotoMenu = true;
-                m_GotoMenuDelaySeconds = 0;
-            }
+            /* if (!m_GotoMenu)
+             {
+                 m_GotoMenu = true;
+                 m_GotoMenuDelaySeconds = 0;
+             }
 
-            m_GotoMenuDelaySeconds += elapseSeconds;
-            if (!(m_GotoMenuDelaySeconds >= GameOverDelayedSeconds))
-            {
-                return;
-            }
+             m_GotoMenuDelaySeconds += elapseSeconds;
+             if (!(m_GotoMenuDelaySeconds >= GameOverDelayedSeconds))
+             {
+                 return;
+             }
 
-            procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
-            ChangeState<ProcedureChangeScene>(procedureOwner);
+             procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
+             ChangeState<ProcedureChangeScene>(procedureOwner);*/
         }
     }
 }

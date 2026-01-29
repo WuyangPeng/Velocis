@@ -115,6 +115,11 @@
         /// <summary>
         ///     改名。
         /// </summary>
-        ChangeNameForm = 402
+        ChangeNameForm = 402,
+
+        /// <summary>
+        ///     测试。
+        /// </summary>
+        DebugForm = 403
     }
 }

@@ -52,6 +52,7 @@
         <String Key="Button.Sect" Value="门派"/>
         <String Key="Button.Task" Value="任务"/>
         <String Key="Button.Friend" Value="好友"/>
+        <String Key="Button.Debug" Value="测试"/>
         <String Key="Home.PersonalInformation" Value="个人信息"/>
         <String Key="Home.ChangeName" Value="改名"/>
         <String Key="Home.UserId" Value="玩家id："/>

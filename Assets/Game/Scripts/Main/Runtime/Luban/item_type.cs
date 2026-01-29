@@ -32,19 +32,19 @@ namespace Celeritas.Config
         /// <summary>
         /// 头像
         /// </summary>
-        Avatar = 4,
+        avatar = 4,
         /// <summary>
         /// 头像框
         /// </summary>
-        Frame = 5,
+        frame = 5,
         /// <summary>
         /// 称号
         /// </summary>
-        Title = 6,
+        title = 6,
         /// <summary>
         /// 英雄
         /// </summary>
-        Hero = 7,
+        hero = 7,
     }
 
 } 
