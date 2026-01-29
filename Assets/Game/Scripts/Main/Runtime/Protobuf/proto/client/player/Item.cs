@@ -33,25 +33,26 @@ namespace Celeritas.Proto.Client {
             "ASgLMiMuY2VsZXJpdGFzLnByb3RvLmNsaWVudC5jdXN0b21fZGF0YUgAEj0K",
             "CmNvbnN1bWFibGUYBiABKAsyJy5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNv",
             "bnN1bWFibGVfZGF0YUgAEjsKCWVxdWlwbWVudBgHIAEoCzImLmNlbGVyaXRh",
-            "cy5wcm90by5jbGllbnQuZXF1aXBtZW50X2RhdGFIAEIJCgdwYXlsb2FkIlwK",
-            "Eml0ZW1fc2VsZWN0ZWRfZGF0YRIKCgJpZBgBIAEoAxIRCglpdGVtX3R5cGUY",
-            "AiABKAUSEgoKY2hpbGRfdHlwZRgDIAEoBRITCgtzZWxlY3RlZF9pZBgEIAEo",
-            "AyJcCg1pdGVtX3Jlc3BvbnNlEjkKCWludmVudG9yeRgBIAMoCzImLmNlbGVy",
-            "aXRhcy5wcm90by5jbGllbnQuaW52ZW50b3J5X2RhdGESEAoIaXNfbG9naW4Y",
-            "AiABKAgiJwoUaXRlbV9kZWxldGVfcmVzcG9uc2USDwoHaXRlbV9pZBgBIAMo",
-            "AyJaChVpdGVtX3NlbGVjdGVkX3JlcXVlc3QSQQoNaXRlbV9zZWxlY3RlZBgB",
-            "IAEoCzIqLmNlbGVyaXRhcy5wcm90by5jbGllbnQuaXRlbV9zZWxlY3RlZF9k",
-            "YXRhIm0KFml0ZW1fc2VsZWN0ZWRfcmVzcG9uc2USQQoNaXRlbV9zZWxlY3Rl",
-            "ZBgBIAMoCzIqLmNlbGVyaXRhcy5wcm90by5jbGllbnQuaXRlbV9zZWxlY3Rl",
-            "ZF9kYXRhEhAKCGlzX2xvZ2luGAIgASgIImgKE2NsaWVudF9pdGVtX3JlcXVl",
-            "c3QSRgoNaXRlbV9zZWxlY3RlZBgBIAEoCzItLmNlbGVyaXRhcy5wcm90by5j",
-            "bGllbnQuaXRlbV9zZWxlY3RlZF9yZXF1ZXN0SABCCQoHcGF5bG9hZCLmAQoU",
-            "Y2xpZW50X2l0ZW1fcmVzcG9uc2USNQoEaXRlbRgBIAEoCzIlLmNlbGVyaXRh",
-            "cy5wcm90by5jbGllbnQuaXRlbV9yZXNwb25zZUgAEkMKC2l0ZW1fZGVsZXRl",
-            "GAIgASgLMiwuY2VsZXJpdGFzLnByb3RvLmNsaWVudC5pdGVtX2RlbGV0ZV9y",
-            "ZXNwb25zZUgAEkcKDWl0ZW1fc2VsZWN0ZWQYAyABKAsyLi5jZWxlcml0YXMu",
-            "cHJvdG8uY2xpZW50Lml0ZW1fc2VsZWN0ZWRfcmVzcG9uc2VIAEIJCgdwYXls",
-            "b2FkYgZwcm90bzM="));
+            "cy5wcm90by5jbGllbnQuZXF1aXBtZW50X2RhdGFIAEIJCgdwYXlsb2FkIoUB",
+            "ChJpdGVtX3NlbGVjdGVkX2RhdGESCgoCaWQYASABKAMSEQoJaXRlbV90eXBl",
+            "GAIgASgFEhIKCmNoaWxkX3R5cGUYAyABKAUSFAoMb3BlcmF0aW9uX2lkGAQg",
+            "ASgDEhEKCXBhcmFtZXRlchgFIAEoBRITCgtzZWxlY3RlZF9pZBgGIAEoAyJc",
+            "Cg1pdGVtX3Jlc3BvbnNlEjkKCWludmVudG9yeRgBIAMoCzImLmNlbGVyaXRh",
+            "cy5wcm90by5jbGllbnQuaW52ZW50b3J5X2RhdGESEAoIaXNfbG9naW4YAiAB",
+            "KAgiJwoUaXRlbV9kZWxldGVfcmVzcG9uc2USDwoHaXRlbV9pZBgBIAMoAyJa",
+            "ChVpdGVtX3NlbGVjdGVkX3JlcXVlc3QSQQoNaXRlbV9zZWxlY3RlZBgBIAEo",
+            "CzIqLmNlbGVyaXRhcy5wcm90by5jbGllbnQuaXRlbV9zZWxlY3RlZF9kYXRh",
+            "Im0KFml0ZW1fc2VsZWN0ZWRfcmVzcG9uc2USQQoNaXRlbV9zZWxlY3RlZBgB",
+            "IAMoCzIqLmNlbGVyaXRhcy5wcm90by5jbGllbnQuaXRlbV9zZWxlY3RlZF9k",
+            "YXRhEhAKCGlzX2xvZ2luGAIgASgIImgKE2NsaWVudF9pdGVtX3JlcXVlc3QS",
+            "RgoNaXRlbV9zZWxlY3RlZBgBIAEoCzItLmNlbGVyaXRhcy5wcm90by5jbGll",
+            "bnQuaXRlbV9zZWxlY3RlZF9yZXF1ZXN0SABCCQoHcGF5bG9hZCLmAQoUY2xp",
+            "ZW50X2l0ZW1fcmVzcG9uc2USNQoEaXRlbRgBIAEoCzIlLmNlbGVyaXRhcy5w",
+            "cm90by5jbGllbnQuaXRlbV9yZXNwb25zZUgAEkMKC2l0ZW1fZGVsZXRlGAIg",
+            "ASgLMiwuY2VsZXJpdGFzLnByb3RvLmNsaWVudC5pdGVtX2RlbGV0ZV9yZXNw",
+            "b25zZUgAEkcKDWl0ZW1fc2VsZWN0ZWQYAyABKAsyLi5jZWxlcml0YXMucHJv",
+            "dG8uY2xpZW50Lml0ZW1fc2VsZWN0ZWRfcmVzcG9uc2VIAEIJCgdwYXlsb2Fk",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -59,7 +60,7 @@ namespace Celeritas.Proto.Client {
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.consumable_data), global::Celeritas.Proto.Client.consumable_data.Parser, new[]{ "ExpireTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.equipment_data), global::Celeritas.Proto.Client.equipment_data.Parser, new[]{ "Strength", "Durability" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.inventory_data), global::Celeritas.Proto.Client.inventory_data.Parser, new[]{ "ItemId", "TemplateId", "Count", "Position", "Custom", "Consumable", "Equipment" }, new[]{ "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_selected_data), global::Celeritas.Proto.Client.item_selected_data.Parser, new[]{ "Id", "ItemType", "ChildType", "SelectedId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_selected_data), global::Celeritas.Proto.Client.item_selected_data.Parser, new[]{ "Id", "ItemType", "ChildType", "OperationId", "Parameter", "SelectedId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_response), global::Celeritas.Proto.Client.item_response.Parser, new[]{ "Inventory", "IsLogin" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_delete_response), global::Celeritas.Proto.Client.item_delete_response.Parser, new[]{ "ItemId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_selected_request), global::Celeritas.Proto.Client.item_selected_request.Parser, new[]{ "ItemSelected" }, null, null, null, null),
@@ -1199,6 +1200,8 @@ namespace Celeritas.Proto.Client {
       id_ = other.id_;
       itemType_ = other.itemType_;
       childType_ = other.childType_;
+      operationId_ = other.operationId_;
+      parameter_ = other.parameter_;
       selectedId_ = other.selectedId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1245,8 +1248,32 @@ namespace Celeritas.Proto.Client {
       }
     }
 
+    /// <summary>Field number for the "operation_id" field.</summary>
+    public const int OperationIdFieldNumber = 4;
+    private long operationId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long OperationId {
+      get { return operationId_; }
+      set {
+        operationId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "parameter" field.</summary>
+    public const int ParameterFieldNumber = 5;
+    private int parameter_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Parameter {
+      get { return parameter_; }
+      set {
+        parameter_ = value;
+      }
+    }
+
     /// <summary>Field number for the "selected_id" field.</summary>
-    public const int SelectedIdFieldNumber = 4;
+    public const int SelectedIdFieldNumber = 6;
     private long selectedId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1275,6 +1302,8 @@ namespace Celeritas.Proto.Client {
       if (Id != other.Id) return false;
       if (ItemType != other.ItemType) return false;
       if (ChildType != other.ChildType) return false;
+      if (OperationId != other.OperationId) return false;
+      if (Parameter != other.Parameter) return false;
       if (SelectedId != other.SelectedId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1286,6 +1315,8 @@ namespace Celeritas.Proto.Client {
       if (Id != 0L) hash ^= Id.GetHashCode();
       if (ItemType != 0) hash ^= ItemType.GetHashCode();
       if (ChildType != 0) hash ^= ChildType.GetHashCode();
+      if (OperationId != 0L) hash ^= OperationId.GetHashCode();
+      if (Parameter != 0) hash ^= Parameter.GetHashCode();
       if (SelectedId != 0L) hash ^= SelectedId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1317,8 +1348,16 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(24);
         output.WriteInt32(ChildType);
       }
-      if (SelectedId != 0L) {
+      if (OperationId != 0L) {
         output.WriteRawTag(32);
+        output.WriteInt64(OperationId);
+      }
+      if (Parameter != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(Parameter);
+      }
+      if (SelectedId != 0L) {
+        output.WriteRawTag(48);
         output.WriteInt64(SelectedId);
       }
       if (_unknownFields != null) {
@@ -1343,8 +1382,16 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(24);
         output.WriteInt32(ChildType);
       }
-      if (SelectedId != 0L) {
+      if (OperationId != 0L) {
         output.WriteRawTag(32);
+        output.WriteInt64(OperationId);
+      }
+      if (Parameter != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(Parameter);
+      }
+      if (SelectedId != 0L) {
+        output.WriteRawTag(48);
         output.WriteInt64(SelectedId);
       }
       if (_unknownFields != null) {
@@ -1365,6 +1412,12 @@ namespace Celeritas.Proto.Client {
       }
       if (ChildType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(ChildType);
+      }
+      if (OperationId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(OperationId);
+      }
+      if (Parameter != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Parameter);
       }
       if (SelectedId != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(SelectedId);
@@ -1389,6 +1442,12 @@ namespace Celeritas.Proto.Client {
       }
       if (other.ChildType != 0) {
         ChildType = other.ChildType;
+      }
+      if (other.OperationId != 0L) {
+        OperationId = other.OperationId;
+      }
+      if (other.Parameter != 0) {
+        Parameter = other.Parameter;
       }
       if (other.SelectedId != 0L) {
         SelectedId = other.SelectedId;
@@ -1425,6 +1484,14 @@ namespace Celeritas.Proto.Client {
             break;
           }
           case 32: {
+            OperationId = input.ReadInt64();
+            break;
+          }
+          case 40: {
+            Parameter = input.ReadInt32();
+            break;
+          }
+          case 48: {
             SelectedId = input.ReadInt64();
             break;
           }
@@ -1460,6 +1527,14 @@ namespace Celeritas.Proto.Client {
             break;
           }
           case 32: {
+            OperationId = input.ReadInt64();
+            break;
+          }
+          case 40: {
+            Parameter = input.ReadInt32();
+            break;
+          }
+          case 48: {
             SelectedId = input.ReadInt64();
             break;
           }

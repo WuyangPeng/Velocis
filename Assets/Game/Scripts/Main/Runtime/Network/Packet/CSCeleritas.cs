@@ -55,12 +55,36 @@ namespace Game.Scripts.Main.Runtime.Network.Packet
             return Celeritas.CeleritasRequest.Client.Player.Login.Login;
         }
 
-        public client_heartbeat_request Mutable_ClientPlayer_ClientHeartbeat()
+        private client_heartbeat_request Mutable_ClientPlayer_ClientHeartbeat()
         {
             Mutable_ClientPlayer();
             Celeritas.CeleritasRequest.Client.Player.Heartbeat = new client_heartbeat_request();
 
             return Celeritas.CeleritasRequest.Client.Player.Heartbeat;
+        }
+
+        public heartbeat_request Mutable_ClientPlayer_ClientHeartbeat_Heartbeat()
+        {
+            Mutable_ClientPlayer_ClientHeartbeat();
+            Celeritas.CeleritasRequest.Client.Player.Heartbeat.Heartbeat = new heartbeat_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Heartbeat.Heartbeat;
+        }
+
+        private client_debug_request Mutable_ClientPlayer_ClientDebug()
+        {
+            Mutable_ClientPlayer();
+            Celeritas.CeleritasRequest.Client.Player.Debug = new client_debug_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Debug;
+        }
+
+        public debug_request Mutable_ClientPlayer_ClientDebug_Debug()
+        {
+            Mutable_ClientPlayer_ClientDebug();
+            Celeritas.CeleritasRequest.Client.Player.Debug.Debug = new debug_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Debug.Debug;
         }
 
         private client_role_request Mutable_ClientPlayer_ClientRole()
@@ -77,6 +101,30 @@ namespace Game.Scripts.Main.Runtime.Network.Packet
             Celeritas.CeleritasRequest.Client.Player.Role.ChangeRoleName = new change_role_name_request();
 
             return Celeritas.CeleritasRequest.Client.Player.Role.ChangeRoleName;
+        }
+
+        public client_red_dot_request Mutable_ClientPlayer_ClientRedDot()
+        {
+            Mutable_ClientPlayer();
+            Celeritas.CeleritasRequest.Client.Player.RedDot = new client_red_dot_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.RedDot;
+        }
+
+        private client_item_request Mutable_ClientPlayer_ClientItem()
+        {
+            Mutable_ClientPlayer();
+            Celeritas.CeleritasRequest.Client.Player.Item = new client_item_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Item;
+        }
+
+        public item_selected_request Mutable_ClientPlayer_ClientItem_ItemSelected()
+        {
+            Mutable_ClientPlayer_ClientItem();
+            Celeritas.CeleritasRequest.Client.Player.Item.ItemSelected = new item_selected_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Item.ItemSelected;
         }
 
         public override void Clear()

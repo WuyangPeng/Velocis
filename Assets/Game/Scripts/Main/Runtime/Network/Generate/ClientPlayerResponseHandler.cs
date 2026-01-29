@@ -45,6 +45,20 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
 
                     break;
                 }
+                case client_player_response.PayloadOneofCase.Debug:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<client_debug_response>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.Debug);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'debug'.");
+                    }
+
+                    break;
+                }
                 case client_player_response.PayloadOneofCase.Role:
                 {
                     var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<client_role_response>();

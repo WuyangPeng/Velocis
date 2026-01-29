@@ -115,7 +115,7 @@ namespace Game.Scripts.Main.Runtime.Network
             
             var packet = ProtoHelper.GetProto();
 
-            packet.Mutable_ClientPlayer_ClientHeartbeat();
+            packet.Mutable_ClientPlayer_ClientHeartbeat_Heartbeat();
 
             m_NetworkChannel.Send(packet);
 
