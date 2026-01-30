@@ -1,11 +1,16 @@
 ﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using UnityEngine;
+using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.UI.UIHome
 {
     public class DebugForm : UGuiForm
     {
+        [SerializeField] private InputField idInputField;
+        [SerializeField] private InputField parameterInputField;
+
         private ProcedureHome procedureHome;
 
         protected override void OnOpen(object userData)
@@ -30,6 +35,11 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         public void OnReturnButtonClick()
         {
             procedureHome.RemoveUIForm(UIFormId.DebugForm);
+        }
+        
+        public void OnDebugButtonClick()
+        {
+             
         }
     }
 }
