@@ -4,8 +4,8 @@ using Game.Scripts.Main.Runtime.GameModule.Base;
 namespace Game.Scripts.Main.Runtime.GameModule.Item
 {
     [Module]
-    public class EquipmentModule : ItemModule
+    public class FrameModule : ItemModule
     {
-        public Dictionary<long, EquipmentData> Items { get; } = new();
+        public Dictionary<long, FrameData> Items { get; } = new();
     }
 }
