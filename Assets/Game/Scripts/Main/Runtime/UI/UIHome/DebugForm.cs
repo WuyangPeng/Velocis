@@ -69,7 +69,19 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         public void OnDebugButtonClick()
         {
             var debugModule = GameEntry.ModuleComponent.GetModule<DebugModule>();
-            debugModule.SendDebugMessage((debug_type)typeDropdown.value, Convert.ToInt64(idInputField.text), Convert.ToInt64(parameterInputField.text));
+            long id = 0;
+            if (!string.IsNullOrEmpty(idInputField.text))
+            {
+                id = Convert.ToInt64(idInputField.text);
+            }
+
+            long parameter = 0;
+            if (!string.IsNullOrEmpty(parameterInputField.text))
+            {
+                parameter = Convert.ToInt64(parameterInputField.text);
+            }
+
+            debugModule.SendDebugMessage((debug_type)typeDropdown.value, id, parameter);
         }
     }
 }
