@@ -2,15 +2,15 @@
 {
     public class EquipmentData
     {
-        private InventoryData Inventory { get; set; }
+        public EquipmentData()
+        {
+            Inventory = new InventoryData();
+        }
 
-        private int Strength { get; set; }
-
-        private int Durability { get; set; }
-
-        public EquipmentData() { Inventory = new InventoryData(); }
-
-        public EquipmentData(InventoryData inventory) { Inventory = inventory ?? new InventoryData(); }
+        public EquipmentData(InventoryData inventory)
+        {
+            Inventory = inventory ?? new InventoryData();
+        }
 
         public EquipmentData(InventoryData inventory, int strength, int durability)
         {
@@ -19,10 +19,27 @@
             Durability = durability;
         }
 
-        public EquipmentData Clone() => new EquipmentData(Inventory?.Clone(), Strength, Durability);
+        private InventoryData Inventory { get; }
 
-        public void Reset() { Inventory?.Reset(); Strength = 0; Durability = 0; }
+        public int Strength { get; set; }
 
-        public override string ToString() => $"EquipmentData(Inventory={Inventory}, Strength={Strength}, Durability={Durability})";
+        public int Durability { get; set; }
+
+        public EquipmentData Clone()
+        {
+            return new EquipmentData(Inventory?.Clone(), Strength, Durability);
+        }
+
+        public void Reset()
+        {
+            Inventory?.Reset();
+            Strength = 0;
+            Durability = 0;
+        }
+
+        public override string ToString()
+        {
+            return $"EquipmentData(Inventory={Inventory}, Strength={Strength}, Durability={Durability})";
+        }
     }
 }

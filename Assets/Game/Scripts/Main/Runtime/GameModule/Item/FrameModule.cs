@@ -7,5 +7,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.Item
     public class FrameModule : ItemModule
     {
         public Dictionary<long, FrameData> Items { get; } = new();
+
+        public void ClearItems()
+        {
+            Items.Clear();
+        }
     }
 }

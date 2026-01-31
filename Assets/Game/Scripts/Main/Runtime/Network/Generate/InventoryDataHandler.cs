@@ -59,6 +59,62 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
 
                     break;
                 }
+                case inventory_data.PayloadOneofCase.Avatar:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<avatar_data>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.Avatar);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'avatar'.");
+                    }
+
+                    break;
+                }
+                case inventory_data.PayloadOneofCase.Frame:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<frame_data>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.Frame);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'frame'.");
+                    }
+
+                    break;
+                }
+                case inventory_data.PayloadOneofCase.Title:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<title_data>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.Title);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'title'.");
+                    }
+
+                    break;
+                }
+                case inventory_data.PayloadOneofCase.Hero:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<hero_data>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.Hero);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'hero'.");
+                    }
+
+                    break;
+                }
                 case inventory_data.PayloadOneofCase.None:
                 {
                     break;

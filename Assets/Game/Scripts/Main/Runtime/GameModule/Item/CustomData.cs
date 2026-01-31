@@ -2,13 +2,15 @@
 {
     public class CustomData
     {
-        private InventoryData Inventory { get; set; }
+        public CustomData()
+        {
+            Inventory = new InventoryData();
+        }
 
-        private long ExpireTime { get; set; }
-
-        public CustomData() { Inventory = new InventoryData(); }
-
-        public CustomData(InventoryData inventory) { Inventory = inventory ?? new InventoryData(); }
+        public CustomData(InventoryData inventory)
+        {
+            Inventory = inventory ?? new InventoryData();
+        }
 
         public CustomData(InventoryData inventory, long expireTime)
         {
@@ -16,10 +18,24 @@
             ExpireTime = expireTime;
         }
 
-        public CustomData Clone() => new CustomData(Inventory?.Clone(), ExpireTime);
+        private InventoryData Inventory { get; }
 
-        public void Reset() { Inventory?.Reset(); ExpireTime = 0; }
+        public long ExpireTime { get; set; }
 
-        public override string ToString() => $"CustomData(Inventory={Inventory}, ExpireTime={ExpireTime})";
+        public CustomData Clone()
+        {
+            return new CustomData(Inventory?.Clone(), ExpireTime);
+        }
+
+        public void Reset()
+        {
+            Inventory?.Reset();
+            ExpireTime = 0;
+        }
+
+        public override string ToString()
+        {
+            return $"CustomData(Inventory={Inventory}, ExpireTime={ExpireTime})";
+        }
     }
 }

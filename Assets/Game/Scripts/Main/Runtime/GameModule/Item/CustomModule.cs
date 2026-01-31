@@ -7,5 +7,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.Item
     public class CustomModule : ItemModule
     {
         public Dictionary<long, CustomData> Items { get; } = new();
+
+        public void ClearItems()
+        {
+            Items.Clear();
+        }
     }
 }

@@ -2,15 +2,9 @@
 {
     public class InventoryData
     {
-        private long ItemId { get; set; }
-
-        private int TemplateId { get; set; }
-
-        private long Count { get; set; }
-
-        private int Position { get; set; }
-
-        public InventoryData() { }
+        public InventoryData()
+        {
+        }
 
         public InventoryData(long itemId, int templateId, long count, int position)
         {
@@ -20,7 +14,18 @@
             Position = position;
         }
 
-        public InventoryData Clone() => new InventoryData(ItemId, TemplateId, Count, Position);
+        public long ItemId { get; set; }
+
+        public int TemplateId { get; set; }
+
+        public long Count { get; set; }
+
+        public int Position { get; set; }
+
+        public InventoryData Clone()
+        {
+            return new InventoryData(ItemId, TemplateId, Count, Position);
+        }
 
         public void Reset()
         {
