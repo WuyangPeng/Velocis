@@ -10,5 +10,10 @@ namespace Game.Scripts.Main.Runtime.Config
         {
             gameConfig.Initialize();
         }
+
+        public GameConfig GetGameConfig()
+        {
+            return gameConfig;
+        }
     }
 }

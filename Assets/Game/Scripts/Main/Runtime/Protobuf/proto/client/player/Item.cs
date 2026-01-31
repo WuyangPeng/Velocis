@@ -39,26 +39,28 @@ namespace Celeritas.Proto.Client {
             "X2RhdGFIABIzCgVmcmFtZRgJIAEoCzIiLmNlbGVyaXRhcy5wcm90by5jbGll",
             "bnQuZnJhbWVfZGF0YUgAEjMKBXRpdGxlGAogASgLMiIuY2VsZXJpdGFzLnBy",
             "b3RvLmNsaWVudC50aXRsZV9kYXRhSAASMQoEaGVybxgLIAEoCzIhLmNlbGVy",
-            "aXRhcy5wcm90by5jbGllbnQuaGVyb19kYXRhSABCCQoHcGF5bG9hZCKFAQoS",
-            "aXRlbV9zZWxlY3RlZF9kYXRhEgoKAmlkGAEgASgDEhEKCWl0ZW1fdHlwZRgC",
-            "IAEoBRISCgpjaGlsZF90eXBlGAMgASgFEhQKDG9wZXJhdGlvbl9pZBgEIAEo",
-            "AxIRCglwYXJhbWV0ZXIYBSABKAUSEwoLc2VsZWN0ZWRfaWQYBiABKAMiXAoN",
-            "aXRlbV9yZXNwb25zZRI5CglpbnZlbnRvcnkYASADKAsyJi5jZWxlcml0YXMu",
-            "cHJvdG8uY2xpZW50LmludmVudG9yeV9kYXRhEhAKCGlzX2xvZ2luGAIgASgI",
-            "IicKFGl0ZW1fZGVsZXRlX3Jlc3BvbnNlEg8KB2l0ZW1faWQYASADKAMiWgoV",
-            "aXRlbV9zZWxlY3RlZF9yZXF1ZXN0EkEKDWl0ZW1fc2VsZWN0ZWQYASABKAsy",
-            "Ki5jZWxlcml0YXMucHJvdG8uY2xpZW50Lml0ZW1fc2VsZWN0ZWRfZGF0YSJt",
-            "ChZpdGVtX3NlbGVjdGVkX3Jlc3BvbnNlEkEKDWl0ZW1fc2VsZWN0ZWQYASAD",
-            "KAsyKi5jZWxlcml0YXMucHJvdG8uY2xpZW50Lml0ZW1fc2VsZWN0ZWRfZGF0",
-            "YRIQCghpc19sb2dpbhgCIAEoCCJoChNjbGllbnRfaXRlbV9yZXF1ZXN0EkYK",
-            "DWl0ZW1fc2VsZWN0ZWQYASABKAsyLS5jZWxlcml0YXMucHJvdG8uY2xpZW50",
-            "Lml0ZW1fc2VsZWN0ZWRfcmVxdWVzdEgAQgkKB3BheWxvYWQi5gEKFGNsaWVu",
-            "dF9pdGVtX3Jlc3BvbnNlEjUKBGl0ZW0YASABKAsyJS5jZWxlcml0YXMucHJv",
-            "dG8uY2xpZW50Lml0ZW1fcmVzcG9uc2VIABJDCgtpdGVtX2RlbGV0ZRgCIAEo",
-            "CzIsLmNlbGVyaXRhcy5wcm90by5jbGllbnQuaXRlbV9kZWxldGVfcmVzcG9u",
-            "c2VIABJHCg1pdGVtX3NlbGVjdGVkGAMgASgLMi4uY2VsZXJpdGFzLnByb3Rv",
-            "LmNsaWVudC5pdGVtX3NlbGVjdGVkX3Jlc3BvbnNlSABCCQoHcGF5bG9hZGIG",
-            "cHJvdG8z"));
+            "aXRhcy5wcm90by5jbGllbnQuaGVyb19kYXRhSABCCQoHcGF5bG9hZCI4ChBp",
+            "dGVtX2RlbGV0ZV9kYXRhEg8KB2l0ZW1faWQYASABKAMSEwoLdGVtcGxhdGVf",
+            "aWQYAiABKAUihQEKEml0ZW1fc2VsZWN0ZWRfZGF0YRIKCgJpZBgBIAEoAxIR",
+            "CglpdGVtX3R5cGUYAiABKAUSEgoKY2hpbGRfdHlwZRgDIAEoBRIUCgxvcGVy",
+            "YXRpb25faWQYBCABKAMSEQoJcGFyYW1ldGVyGAUgASgFEhMKC3NlbGVjdGVk",
+            "X2lkGAYgASgDIlwKDWl0ZW1fcmVzcG9uc2USOQoJaW52ZW50b3J5GAEgAygL",
+            "MiYuY2VsZXJpdGFzLnByb3RvLmNsaWVudC5pbnZlbnRvcnlfZGF0YRIQCghp",
+            "c19sb2dpbhgCIAEoCCJOChRpdGVtX2RlbGV0ZV9yZXNwb25zZRI2CgRkYXRh",
+            "GAEgAygLMiguY2VsZXJpdGFzLnByb3RvLmNsaWVudC5pdGVtX2RlbGV0ZV9k",
+            "YXRhIloKFWl0ZW1fc2VsZWN0ZWRfcmVxdWVzdBJBCg1pdGVtX3NlbGVjdGVk",
+            "GAEgASgLMiouY2VsZXJpdGFzLnByb3RvLmNsaWVudC5pdGVtX3NlbGVjdGVk",
+            "X2RhdGEibQoWaXRlbV9zZWxlY3RlZF9yZXNwb25zZRJBCg1pdGVtX3NlbGVj",
+            "dGVkGAEgAygLMiouY2VsZXJpdGFzLnByb3RvLmNsaWVudC5pdGVtX3NlbGVj",
+            "dGVkX2RhdGESEAoIaXNfbG9naW4YAiABKAgiaAoTY2xpZW50X2l0ZW1fcmVx",
+            "dWVzdBJGCg1pdGVtX3NlbGVjdGVkGAEgASgLMi0uY2VsZXJpdGFzLnByb3Rv",
+            "LmNsaWVudC5pdGVtX3NlbGVjdGVkX3JlcXVlc3RIAEIJCgdwYXlsb2FkIuYB",
+            "ChRjbGllbnRfaXRlbV9yZXNwb25zZRI1CgRpdGVtGAEgASgLMiUuY2VsZXJp",
+            "dGFzLnByb3RvLmNsaWVudC5pdGVtX3Jlc3BvbnNlSAASQwoLaXRlbV9kZWxl",
+            "dGUYAiABKAsyLC5jZWxlcml0YXMucHJvdG8uY2xpZW50Lml0ZW1fZGVsZXRl",
+            "X3Jlc3BvbnNlSAASRwoNaXRlbV9zZWxlY3RlZBgDIAEoCzIuLmNlbGVyaXRh",
+            "cy5wcm90by5jbGllbnQuaXRlbV9zZWxlY3RlZF9yZXNwb25zZUgAQgkKB3Bh",
+            "eWxvYWRiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -70,9 +72,10 @@ namespace Celeritas.Proto.Client {
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.title_data), global::Celeritas.Proto.Client.title_data.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.hero_data), global::Celeritas.Proto.Client.hero_data.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.inventory_data), global::Celeritas.Proto.Client.inventory_data.Parser, new[]{ "ItemId", "TemplateId", "Count", "Position", "Custom", "Consumable", "Equipment", "Avatar", "Frame", "Title", "Hero" }, new[]{ "Payload" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_delete_data), global::Celeritas.Proto.Client.item_delete_data.Parser, new[]{ "ItemId", "TemplateId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_selected_data), global::Celeritas.Proto.Client.item_selected_data.Parser, new[]{ "Id", "ItemType", "ChildType", "OperationId", "Parameter", "SelectedId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_response), global::Celeritas.Proto.Client.item_response.Parser, new[]{ "Inventory", "IsLogin" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_delete_response), global::Celeritas.Proto.Client.item_delete_response.Parser, new[]{ "ItemId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_delete_response), global::Celeritas.Proto.Client.item_delete_response.Parser, new[]{ "Data" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_selected_request), global::Celeritas.Proto.Client.item_selected_request.Parser, new[]{ "ItemSelected" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_selected_response), global::Celeritas.Proto.Client.item_selected_response.Parser, new[]{ "ItemSelected", "IsLogin" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_item_request), global::Celeritas.Proto.Client.client_item_request.Parser, new[]{ "ItemSelected" }, new[]{ "Payload" }, null, null, null),
@@ -2029,6 +2032,241 @@ namespace Celeritas.Proto.Client {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class item_delete_data : pb::IMessage<item_delete_data>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<item_delete_data> _parser = new pb::MessageParser<item_delete_data>(() => new item_delete_data());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<item_delete_data> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public item_delete_data() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public item_delete_data(item_delete_data other) : this() {
+      itemId_ = other.itemId_;
+      templateId_ = other.templateId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public item_delete_data Clone() {
+      return new item_delete_data(this);
+    }
+
+    /// <summary>Field number for the "item_id" field.</summary>
+    public const int ItemIdFieldNumber = 1;
+    private long itemId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long ItemId {
+      get { return itemId_; }
+      set {
+        itemId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "template_id" field.</summary>
+    public const int TemplateIdFieldNumber = 2;
+    private int templateId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int TemplateId {
+      get { return templateId_; }
+      set {
+        templateId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as item_delete_data);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(item_delete_data other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ItemId != other.ItemId) return false;
+      if (TemplateId != other.TemplateId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ItemId != 0L) hash ^= ItemId.GetHashCode();
+      if (TemplateId != 0) hash ^= TemplateId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (ItemId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(ItemId);
+      }
+      if (TemplateId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(TemplateId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ItemId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(ItemId);
+      }
+      if (TemplateId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(TemplateId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (ItemId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ItemId);
+      }
+      if (TemplateId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TemplateId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(item_delete_data other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ItemId != 0L) {
+        ItemId = other.ItemId;
+      }
+      if (other.TemplateId != 0) {
+        TemplateId = other.TemplateId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            ItemId = input.ReadInt64();
+            break;
+          }
+          case 16: {
+            TemplateId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            ItemId = input.ReadInt64();
+            break;
+          }
+          case 16: {
+            TemplateId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class item_selected_data : pb::IMessage<item_selected_data>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2043,7 +2281,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2426,7 +2664,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2650,7 +2888,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2670,7 +2908,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public item_delete_response(item_delete_response other) : this() {
-      itemId_ = other.itemId_.Clone();
+      data_ = other.data_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2680,15 +2918,15 @@ namespace Celeritas.Proto.Client {
       return new item_delete_response(this);
     }
 
-    /// <summary>Field number for the "item_id" field.</summary>
-    public const int ItemIdFieldNumber = 1;
-    private static readonly pb::FieldCodec<long> _repeated_itemId_codec
-        = pb::FieldCodec.ForInt64(10);
-    private readonly pbc::RepeatedField<long> itemId_ = new pbc::RepeatedField<long>();
+    /// <summary>Field number for the "data" field.</summary>
+    public const int DataFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Celeritas.Proto.Client.item_delete_data> _repeated_data_codec
+        = pb::FieldCodec.ForMessage(10, global::Celeritas.Proto.Client.item_delete_data.Parser);
+    private readonly pbc::RepeatedField<global::Celeritas.Proto.Client.item_delete_data> data_ = new pbc::RepeatedField<global::Celeritas.Proto.Client.item_delete_data>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<long> ItemId {
-      get { return itemId_; }
+    public pbc::RepeatedField<global::Celeritas.Proto.Client.item_delete_data> Data {
+      get { return data_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2706,7 +2944,7 @@ namespace Celeritas.Proto.Client {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!itemId_.Equals(other.itemId_)) return false;
+      if(!data_.Equals(other.data_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2714,7 +2952,7 @@ namespace Celeritas.Proto.Client {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= itemId_.GetHashCode();
+      hash ^= data_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2733,7 +2971,7 @@ namespace Celeritas.Proto.Client {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      itemId_.WriteTo(output, _repeated_itemId_codec);
+      data_.WriteTo(output, _repeated_data_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2744,7 +2982,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      itemId_.WriteTo(ref output, _repeated_itemId_codec);
+      data_.WriteTo(ref output, _repeated_data_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2755,7 +2993,7 @@ namespace Celeritas.Proto.Client {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += itemId_.CalculateSize(_repeated_itemId_codec);
+      size += data_.CalculateSize(_repeated_data_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -2768,7 +3006,7 @@ namespace Celeritas.Proto.Client {
       if (other == null) {
         return;
       }
-      itemId_.Add(other.itemId_);
+      data_.Add(other.data_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2788,9 +3026,8 @@ namespace Celeritas.Proto.Client {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10:
-          case 8: {
-            itemId_.AddEntriesFrom(input, _repeated_itemId_codec);
+          case 10: {
+            data_.AddEntriesFrom(input, _repeated_data_codec);
             break;
           }
         }
@@ -2812,9 +3049,8 @@ namespace Celeritas.Proto.Client {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10:
-          case 8: {
-            itemId_.AddEntriesFrom(ref input, _repeated_itemId_codec);
+          case 10: {
+            data_.AddEntriesFrom(ref input, _repeated_data_codec);
             break;
           }
         }
@@ -2839,7 +3075,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3046,7 +3282,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3270,7 +3506,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3511,7 +3747,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

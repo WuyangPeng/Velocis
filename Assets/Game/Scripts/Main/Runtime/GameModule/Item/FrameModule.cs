@@ -12,5 +12,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.Item
         {
             Items.Clear();
         }
+
+        public void DeleteItem(long itemId)
+        {
+            Items.Remove(itemId);
+        }
     }
 }
