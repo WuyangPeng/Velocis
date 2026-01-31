@@ -59,6 +59,7 @@
         <String Key="Home.Server" Value="服务器："/>
         <String Key="Home.CurrentServer" Value="这是当前服务器"/>
         <String Key="Home.Version" Value="客户端版本："/>
+        <String Key="Home.OperationSuccessful" Value="操作成功"/>
         <String Key="PropertyGroup.Base" Value="基础属性"/>
         <String Key="PropertyGroup.Base.Description" Value="基础属性"/>
         <String Key="PropertyGroup.Default" Value="默认属性"/>
