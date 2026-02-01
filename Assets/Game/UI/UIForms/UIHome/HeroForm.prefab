@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Button.Backpack
+  m_Text: Button.Hero
 --- !u!1 &136392
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,9 +163,9 @@ GameObject:
   - component: {fileID: 22455944}
   - component: {fileID: 22254414}
   - component: {fileID: 22372286}
-  - component: {fileID: 1782560494918647041}
+  - component: {fileID: 6004737960834090082}
   m_Layer: 5
-  m_Name: BackpackForm
+  m_Name: HeroForm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1782560494918647041
+--- !u!114 &6004737960834090082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 193354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9047fd43c00345dfa327e5f839630130, type: 3}
+  m_Script: {fileID: 11500000, guid: 74393069e62746dc83751a7306c1396f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &809108119200171848
@@ -261,17 +261,17 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1782560494918647041}
+      objectReference: {fileID: 6004737960834090082}
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1782560494918647041}
+      objectReference: {fileID: 6004737960834090082}
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1782560494918647041}
+      objectReference: {fileID: 6004737960834090082}
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -295,7 +295,7 @@ PrefabInstance:
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.Scripts.Main.Runtime.UI.UIHome.BackpackForm, Velocis.Runtime
+      value: Game.Scripts.Main.Runtime.UI.UIHome.HeroForm, Velocis.Runtime
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323351417244, guid: 04d4259f95633ac4eaddfcd2db8344d9,
         type: 3}

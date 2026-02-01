@@ -1,10 +1,10 @@
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.UI.UIHome
 {
-    public class BottomForm : UGuiForm
+    public class HeroForm : UGuiForm
     {
         private ProcedureHome procedureHome;
 
@@ -15,9 +15,10 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             procedureHome = (ProcedureHome)GetCurrentProcedure();
             if (procedureHome == null)
             {
-                Log.Warning("ProcedureHome is invalid when open BottomForm.");
+                Log.Warning("ProcedureHome is invalid when open HeroForm.");
             }
         }
+
 
         protected override void OnClose(bool isShutdown, object userData)
         {
@@ -26,27 +27,9 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             base.OnClose(isShutdown, userData);
         }
 
-        public void OnHeroButtonClick()
+        public void OnReturnButtonClick()
         {
-            procedureHome.OpenUIForm(UIFormId.HeroForm);
-        }
-
-        public void OnSkillButtonClick()
-        {
-        }
-
-        public void OnMainCityButtonClick()
-        {
-        }
-
-
-        public void OnCopyButtonClick()
-        {
-        }
-
-        public void OnBackpackButtonClick()
-        {
-            procedureHome.OpenUIForm(UIFormId.BackpackForm);
+            procedureHome.RemoveUIForm(UIFormId.HeroForm);
         }
     }
 }

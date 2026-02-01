@@ -120,6 +120,16 @@
         /// <summary>
         ///     测试。
         /// </summary>
-        DebugForm = 403
+        DebugForm = 403,
+
+        /// <summary>
+        ///     背包。
+        /// </summary>
+        BackpackForm = 404,
+
+        /// <summary>
+        ///     英雄。
+        /// </summary>
+        HeroForm = 405
     }
 }
