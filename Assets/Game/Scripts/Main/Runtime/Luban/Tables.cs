@@ -26,31 +26,36 @@ public partial class tables
     /// </summary>
     public game.red_dot_config_container RedDotConfigContainer {get; }
     /// <summary>
+    /// 改名消耗
+    /// </summary>
+    public game.rename_cost_config_container RenameCostConfigContainer {get; }
+    /// <summary>
     /// 物品
     /// </summary>
     public game.item_config_container ItemConfigContainer {get; }
+    /// <summary>
+    /// 默认物品
+    /// </summary>
+    public game.default_item_config_container DefaultItemConfigContainer {get; }
     /// <summary>
     /// 养成
     /// </summary>
     public game.develop_config_container DevelopConfigContainer {get; }
     /// <summary>
-    /// 改名消耗
+    /// 养成升级
     /// </summary>
-    public game.rename_cost_config_container RenameCostConfigContainer {get; }
-    /// <summary>
-    /// 默认物品
-    /// </summary>
-    public game.default_item_config_container DefaultItemConfigContainer {get; }
+    public game.develop_level_config_container DevelopLevelConfigContainer {get; }
 
     public tables(System.Func<string, ByteBuf> loader)
     {
         SurnameConfigContainer = new game.surname_config_container(loader("surname_config_container"));
         NameConfigContainer = new game.name_config_container(loader("name_config_container"));
         RedDotConfigContainer = new game.red_dot_config_container(loader("red_dot_config_container"));
-        ItemConfigContainer = new game.item_config_container(loader("item_config_container"));
-        DevelopConfigContainer = new game.develop_config_container(loader("develop_config_container"));
         RenameCostConfigContainer = new game.rename_cost_config_container(loader("rename_cost_config_container"));
+        ItemConfigContainer = new game.item_config_container(loader("item_config_container"));
         DefaultItemConfigContainer = new game.default_item_config_container(loader("default_item_config_container"));
+        DevelopConfigContainer = new game.develop_config_container(loader("develop_config_container"));
+        DevelopLevelConfigContainer = new game.develop_level_config_container(loader("develop_level_config_container"));
         ResolveRef();
     }
     
@@ -59,10 +64,11 @@ public partial class tables
         SurnameConfigContainer.ResolveRef(this);
         NameConfigContainer.ResolveRef(this);
         RedDotConfigContainer.ResolveRef(this);
-        ItemConfigContainer.ResolveRef(this);
-        DevelopConfigContainer.ResolveRef(this);
         RenameCostConfigContainer.ResolveRef(this);
+        ItemConfigContainer.ResolveRef(this);
         DefaultItemConfigContainer.ResolveRef(this);
+        DevelopConfigContainer.ResolveRef(this);
+        DevelopLevelConfigContainer.ResolveRef(this);
     }
 }
 

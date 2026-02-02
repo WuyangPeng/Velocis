@@ -127,6 +127,30 @@ namespace Game.Scripts.Main.Runtime.Network.Packet
             return Celeritas.CeleritasRequest.Client.Player.Item.ItemSelected;
         }
 
+        private client_develop_request Mutable_ClientPlayer_ClientDevelop()
+        {
+            Mutable_ClientPlayer();
+            Celeritas.CeleritasRequest.Client.Player.Develop = new client_develop_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Develop;
+        }
+
+        public develop_level_request Mutable_ClientPlayer_ClientDevelop_DevelopLevel()
+        {
+            Mutable_ClientPlayer_ClientDevelop();
+            Celeritas.CeleritasRequest.Client.Player.Develop.DevelopLevel = new develop_level_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Develop.DevelopLevel;
+        }
+
+        public develop_reset_request Mutable_ClientPlayer_ClientDevelop_DevelopReset()
+        {
+            Mutable_ClientPlayer_ClientDevelop();
+            Celeritas.CeleritasRequest.Client.Player.Develop.DevelopReset = new develop_reset_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Develop.DevelopReset;
+        }
+
         public override void Clear()
         {
             Common = new header();

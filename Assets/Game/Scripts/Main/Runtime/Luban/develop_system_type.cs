@@ -17,6 +17,10 @@ namespace Celeritas.Config
         /// 无
         /// </summary>
         none = 0,
+        /// <summary>
+        /// 英雄
+        /// </summary>
+        hero = 1,
     }
 
 } 

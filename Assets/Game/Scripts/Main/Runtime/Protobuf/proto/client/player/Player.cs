@@ -29,31 +29,35 @@ namespace Celeritas.Proto.Client {
             "bxojcHJvdG8vY2xpZW50L3BsYXllci9oZWFydGJlYXQucHJvdG8aHnByb3Rv",
             "L2NsaWVudC9wbGF5ZXIvcm9sZS5wcm90bxofcHJvdG8vY2xpZW50L3BsYXll",
             "ci9kZWJ1Zy5wcm90bxohcHJvdG8vY2xpZW50L3BsYXllci9yZWRfZG90LnBy",
-            "b3RvGh5wcm90by9jbGllbnQvcGxheWVyL2l0ZW0ucHJvdG8ipAMKFWNsaWVu",
-            "dF9wbGF5ZXJfcmVxdWVzdBI9CgVsb2dpbhgBIAEoCzIsLmNlbGVyaXRhcy5w",
-            "cm90by5jbGllbnQuY2xpZW50X2xvZ2luX3JlcXVlc3RIABJFCgloZWFydGJl",
-            "YXQYAiABKAsyMC5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNsaWVudF9oZWFy",
-            "dGJlYXRfcmVxdWVzdEgAEj0KBWRlYnVnGAMgASgLMiwuY2VsZXJpdGFzLnBy",
-            "b3RvLmNsaWVudC5jbGllbnRfZGVidWdfcmVxdWVzdEgAEjsKBHJvbGUYBCAB",
-            "KAsyKy5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNsaWVudF9yb2xlX3JlcXVl",
-            "c3RIABJBCgdyZWRfZG90GAUgASgLMi4uY2VsZXJpdGFzLnByb3RvLmNsaWVu",
-            "dC5jbGllbnRfcmVkX2RvdF9yZXF1ZXN0SAASOwoEaXRlbRgGIAEoCzIrLmNl",
-            "bGVyaXRhcy5wcm90by5jbGllbnQuY2xpZW50X2l0ZW1fcmVxdWVzdEgAQgkK",
-            "B3BheWxvYWQiqwMKFmNsaWVudF9wbGF5ZXJfcmVzcG9uc2USPgoFbG9naW4Y",
-            "ASABKAsyLS5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNsaWVudF9sb2dpbl9y",
-            "ZXNwb25zZUgAEkYKCWhlYXJ0YmVhdBgCIAEoCzIxLmNlbGVyaXRhcy5wcm90",
-            "by5jbGllbnQuY2xpZW50X2hlYXJ0YmVhdF9yZXNwb25zZUgAEj4KBWRlYnVn",
-            "GAMgASgLMi0uY2VsZXJpdGFzLnByb3RvLmNsaWVudC5jbGllbnRfZGVidWdf",
-            "cmVzcG9uc2VIABI8CgRyb2xlGAQgASgLMiwuY2VsZXJpdGFzLnByb3RvLmNs",
-            "aWVudC5jbGllbnRfcm9sZV9yZXNwb25zZUgAEkIKB3JlZF9kb3QYBSABKAsy",
-            "Ly5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNsaWVudF9yZWRfZG90X3Jlc3Bv",
-            "bnNlSAASPAoEaXRlbRgGIAEoCzIsLmNlbGVyaXRhcy5wcm90by5jbGllbnQu",
-            "Y2xpZW50X2l0ZW1fcmVzcG9uc2VIAEIJCgdwYXlsb2FkYgZwcm90bzM="));
+            "b3RvGh5wcm90by9jbGllbnQvcGxheWVyL2l0ZW0ucHJvdG8aIXByb3RvL2Ns",
+            "aWVudC9wbGF5ZXIvZGV2ZWxvcC5wcm90byLnAwoVY2xpZW50X3BsYXllcl9y",
+            "ZXF1ZXN0Ej0KBWxvZ2luGAEgASgLMiwuY2VsZXJpdGFzLnByb3RvLmNsaWVu",
+            "dC5jbGllbnRfbG9naW5fcmVxdWVzdEgAEkUKCWhlYXJ0YmVhdBgCIAEoCzIw",
+            "LmNlbGVyaXRhcy5wcm90by5jbGllbnQuY2xpZW50X2hlYXJ0YmVhdF9yZXF1",
+            "ZXN0SAASPQoFZGVidWcYAyABKAsyLC5jZWxlcml0YXMucHJvdG8uY2xpZW50",
+            "LmNsaWVudF9kZWJ1Z19yZXF1ZXN0SAASOwoEcm9sZRgEIAEoCzIrLmNlbGVy",
+            "aXRhcy5wcm90by5jbGllbnQuY2xpZW50X3JvbGVfcmVxdWVzdEgAEkEKB3Jl",
+            "ZF9kb3QYBSABKAsyLi5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNsaWVudF9y",
+            "ZWRfZG90X3JlcXVlc3RIABI7CgRpdGVtGAYgASgLMisuY2VsZXJpdGFzLnBy",
+            "b3RvLmNsaWVudC5jbGllbnRfaXRlbV9yZXF1ZXN0SAASQQoHZGV2ZWxvcBgH",
+            "IAEoCzIuLmNlbGVyaXRhcy5wcm90by5jbGllbnQuY2xpZW50X2RldmVsb3Bf",
+            "cmVxdWVzdEgAQgkKB3BheWxvYWQi7wMKFmNsaWVudF9wbGF5ZXJfcmVzcG9u",
+            "c2USPgoFbG9naW4YASABKAsyLS5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNs",
+            "aWVudF9sb2dpbl9yZXNwb25zZUgAEkYKCWhlYXJ0YmVhdBgCIAEoCzIxLmNl",
+            "bGVyaXRhcy5wcm90by5jbGllbnQuY2xpZW50X2hlYXJ0YmVhdF9yZXNwb25z",
+            "ZUgAEj4KBWRlYnVnGAMgASgLMi0uY2VsZXJpdGFzLnByb3RvLmNsaWVudC5j",
+            "bGllbnRfZGVidWdfcmVzcG9uc2VIABI8CgRyb2xlGAQgASgLMiwuY2VsZXJp",
+            "dGFzLnByb3RvLmNsaWVudC5jbGllbnRfcm9sZV9yZXNwb25zZUgAEkIKB3Jl",
+            "ZF9kb3QYBSABKAsyLy5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNsaWVudF9y",
+            "ZWRfZG90X3Jlc3BvbnNlSAASPAoEaXRlbRgGIAEoCzIsLmNlbGVyaXRhcy5w",
+            "cm90by5jbGllbnQuY2xpZW50X2l0ZW1fcmVzcG9uc2VIABJCCgdkZXZlbG9w",
+            "GAcgASgLMi8uY2VsZXJpdGFzLnByb3RvLmNsaWVudC5jbGllbnRfZGV2ZWxv",
+            "cF9yZXNwb25zZUgAQgkKB3BheWxvYWRiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Celeritas.Proto.Client.LoginReflection.Descriptor, global::Celeritas.Proto.Client.HeartbeatReflection.Descriptor, global::Celeritas.Proto.Client.RoleReflection.Descriptor, global::Celeritas.Proto.Client.DebugReflection.Descriptor, global::Celeritas.Proto.Client.RedDotReflection.Descriptor, global::Celeritas.Proto.Client.ItemReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Celeritas.Proto.Client.LoginReflection.Descriptor, global::Celeritas.Proto.Client.HeartbeatReflection.Descriptor, global::Celeritas.Proto.Client.RoleReflection.Descriptor, global::Celeritas.Proto.Client.DebugReflection.Descriptor, global::Celeritas.Proto.Client.RedDotReflection.Descriptor, global::Celeritas.Proto.Client.ItemReflection.Descriptor, global::Celeritas.Proto.Client.DevelopReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_player_request), global::Celeritas.Proto.Client.client_player_request.Parser, new[]{ "Login", "Heartbeat", "Debug", "Role", "RedDot", "Item" }, new[]{ "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_player_response), global::Celeritas.Proto.Client.client_player_response.Parser, new[]{ "Login", "Heartbeat", "Debug", "Role", "RedDot", "Item" }, new[]{ "Payload" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_player_request), global::Celeritas.Proto.Client.client_player_request.Parser, new[]{ "Login", "Heartbeat", "Debug", "Role", "RedDot", "Item", "Develop" }, new[]{ "Payload" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_player_response), global::Celeritas.Proto.Client.client_player_response.Parser, new[]{ "Login", "Heartbeat", "Debug", "Role", "RedDot", "Item", "Develop" }, new[]{ "Payload" }, null, null, null)
           }));
     }
     #endregion
@@ -113,6 +117,9 @@ namespace Celeritas.Proto.Client {
           break;
         case PayloadOneofCase.Item:
           Item = other.Item.Clone();
+          break;
+        case PayloadOneofCase.Develop:
+          Develop = other.Develop.Clone();
           break;
       }
 
@@ -197,6 +204,18 @@ namespace Celeritas.Proto.Client {
       }
     }
 
+    /// <summary>Field number for the "develop" field.</summary>
+    public const int DevelopFieldNumber = 7;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Client.client_develop_request Develop {
+      get { return payloadCase_ == PayloadOneofCase.Develop ? (global::Celeritas.Proto.Client.client_develop_request) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Develop;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
@@ -207,6 +226,7 @@ namespace Celeritas.Proto.Client {
       Role = 4,
       RedDot = 5,
       Item = 6,
+      Develop = 7,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -243,6 +263,7 @@ namespace Celeritas.Proto.Client {
       if (!object.Equals(Role, other.Role)) return false;
       if (!object.Equals(RedDot, other.RedDot)) return false;
       if (!object.Equals(Item, other.Item)) return false;
+      if (!object.Equals(Develop, other.Develop)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -257,6 +278,7 @@ namespace Celeritas.Proto.Client {
       if (payloadCase_ == PayloadOneofCase.Role) hash ^= Role.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.RedDot) hash ^= RedDot.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.Item) hash ^= Item.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.Develop) hash ^= Develop.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -300,6 +322,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(50);
         output.WriteMessage(Item);
       }
+      if (payloadCase_ == PayloadOneofCase.Develop) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Develop);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -334,6 +360,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(50);
         output.WriteMessage(Item);
       }
+      if (payloadCase_ == PayloadOneofCase.Develop) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Develop);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -361,6 +391,9 @@ namespace Celeritas.Proto.Client {
       }
       if (payloadCase_ == PayloadOneofCase.Item) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Item);
+      }
+      if (payloadCase_ == PayloadOneofCase.Develop) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Develop);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -410,6 +443,12 @@ namespace Celeritas.Proto.Client {
             Item = new global::Celeritas.Proto.Client.client_item_request();
           }
           Item.MergeFrom(other.Item);
+          break;
+        case PayloadOneofCase.Develop:
+          if (Develop == null) {
+            Develop = new global::Celeritas.Proto.Client.client_develop_request();
+          }
+          Develop.MergeFrom(other.Develop);
           break;
       }
 
@@ -486,6 +525,15 @@ namespace Celeritas.Proto.Client {
             Item = subBuilder;
             break;
           }
+          case 58: {
+            global::Celeritas.Proto.Client.client_develop_request subBuilder = new global::Celeritas.Proto.Client.client_develop_request();
+            if (payloadCase_ == PayloadOneofCase.Develop) {
+              subBuilder.MergeFrom(Develop);
+            }
+            input.ReadMessage(subBuilder);
+            Develop = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -559,6 +607,15 @@ namespace Celeritas.Proto.Client {
             Item = subBuilder;
             break;
           }
+          case 58: {
+            global::Celeritas.Proto.Client.client_develop_request subBuilder = new global::Celeritas.Proto.Client.client_develop_request();
+            if (payloadCase_ == PayloadOneofCase.Develop) {
+              subBuilder.MergeFrom(Develop);
+            }
+            input.ReadMessage(subBuilder);
+            Develop = subBuilder;
+            break;
+          }
         }
       }
     }
@@ -619,6 +676,9 @@ namespace Celeritas.Proto.Client {
           break;
         case PayloadOneofCase.Item:
           Item = other.Item.Clone();
+          break;
+        case PayloadOneofCase.Develop:
+          Develop = other.Develop.Clone();
           break;
       }
 
@@ -703,6 +763,18 @@ namespace Celeritas.Proto.Client {
       }
     }
 
+    /// <summary>Field number for the "develop" field.</summary>
+    public const int DevelopFieldNumber = 7;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Client.client_develop_response Develop {
+      get { return payloadCase_ == PayloadOneofCase.Develop ? (global::Celeritas.Proto.Client.client_develop_response) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Develop;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
@@ -713,6 +785,7 @@ namespace Celeritas.Proto.Client {
       Role = 4,
       RedDot = 5,
       Item = 6,
+      Develop = 7,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -749,6 +822,7 @@ namespace Celeritas.Proto.Client {
       if (!object.Equals(Role, other.Role)) return false;
       if (!object.Equals(RedDot, other.RedDot)) return false;
       if (!object.Equals(Item, other.Item)) return false;
+      if (!object.Equals(Develop, other.Develop)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -763,6 +837,7 @@ namespace Celeritas.Proto.Client {
       if (payloadCase_ == PayloadOneofCase.Role) hash ^= Role.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.RedDot) hash ^= RedDot.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.Item) hash ^= Item.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.Develop) hash ^= Develop.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -806,6 +881,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(50);
         output.WriteMessage(Item);
       }
+      if (payloadCase_ == PayloadOneofCase.Develop) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Develop);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -840,6 +919,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(50);
         output.WriteMessage(Item);
       }
+      if (payloadCase_ == PayloadOneofCase.Develop) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Develop);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -867,6 +950,9 @@ namespace Celeritas.Proto.Client {
       }
       if (payloadCase_ == PayloadOneofCase.Item) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Item);
+      }
+      if (payloadCase_ == PayloadOneofCase.Develop) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Develop);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -916,6 +1002,12 @@ namespace Celeritas.Proto.Client {
             Item = new global::Celeritas.Proto.Client.client_item_response();
           }
           Item.MergeFrom(other.Item);
+          break;
+        case PayloadOneofCase.Develop:
+          if (Develop == null) {
+            Develop = new global::Celeritas.Proto.Client.client_develop_response();
+          }
+          Develop.MergeFrom(other.Develop);
           break;
       }
 
@@ -992,6 +1084,15 @@ namespace Celeritas.Proto.Client {
             Item = subBuilder;
             break;
           }
+          case 58: {
+            global::Celeritas.Proto.Client.client_develop_response subBuilder = new global::Celeritas.Proto.Client.client_develop_response();
+            if (payloadCase_ == PayloadOneofCase.Develop) {
+              subBuilder.MergeFrom(Develop);
+            }
+            input.ReadMessage(subBuilder);
+            Develop = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -1063,6 +1164,15 @@ namespace Celeritas.Proto.Client {
             }
             input.ReadMessage(subBuilder);
             Item = subBuilder;
+            break;
+          }
+          case 58: {
+            global::Celeritas.Proto.Client.client_develop_response subBuilder = new global::Celeritas.Proto.Client.client_develop_response();
+            if (payloadCase_ == PayloadOneofCase.Develop) {
+              subBuilder.MergeFrom(Develop);
+            }
+            input.ReadMessage(subBuilder);
+            Develop = subBuilder;
             break;
           }
         }

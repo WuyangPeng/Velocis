@@ -101,6 +101,20 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
 
                     break;
                 }
+                case client_player_response.PayloadOneofCase.Develop:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<client_develop_response>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.Develop);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'develop'.");
+                    }
+
+                    break;
+                }
                 case client_player_response.PayloadOneofCase.None:
                 {
                     break;
