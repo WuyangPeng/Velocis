@@ -151,6 +151,62 @@ namespace Game.Scripts.Main.Runtime.Network.Packet
             return Celeritas.CeleritasRequest.Client.Player.Develop.DevelopReset;
         }
 
+        private client_mail_request Mutable_ClientPlayer_ClientMail()
+        {
+            Mutable_ClientPlayer();
+            Celeritas.CeleritasRequest.Client.Player.Mail = new client_mail_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Mail;
+        }
+
+        public mail_request Mutable_ClientPlayer_ClientMail_Mail()
+        {
+            Mutable_ClientPlayer_ClientMail();
+            Celeritas.CeleritasRequest.Client.Player.Mail.Mail = new mail_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Mail.Mail;
+        }
+
+        public mail_read_request Mutable_ClientPlayer_ClientMail_MailRead()
+        {
+            Mutable_ClientPlayer_ClientMail();
+            Celeritas.CeleritasRequest.Client.Player.Mail.MailRead = new mail_read_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Mail.MailRead;
+        }
+
+        public mail_collect_attachment_request Mutable_ClientPlayer_ClientMail_MailCollectAttachment()
+        {
+            Mutable_ClientPlayer_ClientMail();
+            Celeritas.CeleritasRequest.Client.Player.Mail.MailCollectAttachment = new mail_collect_attachment_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Mail.MailCollectAttachment;
+        }
+
+        public mail_delete_request Mutable_ClientPlayer_ClientMail_MailDelete()
+        {
+            Mutable_ClientPlayer_ClientMail();
+            Celeritas.CeleritasRequest.Client.Player.Mail.MailDelete = new mail_delete_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Mail.MailDelete;
+        }
+
+        public mail_collect_all_attachments_request Mutable_ClientPlayer_ClientMail_MailCollectAllAttachments()
+        {
+            Mutable_ClientPlayer_ClientMail();
+            Celeritas.CeleritasRequest.Client.Player.Mail.MailCollectAllAttachments = new mail_collect_all_attachments_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Mail.MailCollectAllAttachments;
+        }
+
+        public mail_delete_all_read_request Mutable_ClientPlayer_ClientMail_MailDeleteAllRead()
+        {
+            Mutable_ClientPlayer_ClientMail();
+            Celeritas.CeleritasRequest.Client.Player.Mail.MailDeleteAllRead = new mail_delete_all_read_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Mail.MailDeleteAllRead;
+        }
+
         public override void Clear()
         {
             Common = new header();

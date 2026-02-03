@@ -115,6 +115,20 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
 
                     break;
                 }
+                case client_player_response.PayloadOneofCase.Mail:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<client_mail_response>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.Mail);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'mail'.");
+                    }
+
+                    break;
+                }
                 case client_player_response.PayloadOneofCase.None:
                 {
                     break;

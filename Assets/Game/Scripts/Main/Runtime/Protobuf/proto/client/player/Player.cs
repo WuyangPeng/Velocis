@@ -30,34 +30,38 @@ namespace Celeritas.Proto.Client {
             "L2NsaWVudC9wbGF5ZXIvcm9sZS5wcm90bxofcHJvdG8vY2xpZW50L3BsYXll",
             "ci9kZWJ1Zy5wcm90bxohcHJvdG8vY2xpZW50L3BsYXllci9yZWRfZG90LnBy",
             "b3RvGh5wcm90by9jbGllbnQvcGxheWVyL2l0ZW0ucHJvdG8aIXByb3RvL2Ns",
-            "aWVudC9wbGF5ZXIvZGV2ZWxvcC5wcm90byLnAwoVY2xpZW50X3BsYXllcl9y",
-            "ZXF1ZXN0Ej0KBWxvZ2luGAEgASgLMiwuY2VsZXJpdGFzLnByb3RvLmNsaWVu",
-            "dC5jbGllbnRfbG9naW5fcmVxdWVzdEgAEkUKCWhlYXJ0YmVhdBgCIAEoCzIw",
-            "LmNlbGVyaXRhcy5wcm90by5jbGllbnQuY2xpZW50X2hlYXJ0YmVhdF9yZXF1",
-            "ZXN0SAASPQoFZGVidWcYAyABKAsyLC5jZWxlcml0YXMucHJvdG8uY2xpZW50",
-            "LmNsaWVudF9kZWJ1Z19yZXF1ZXN0SAASOwoEcm9sZRgEIAEoCzIrLmNlbGVy",
-            "aXRhcy5wcm90by5jbGllbnQuY2xpZW50X3JvbGVfcmVxdWVzdEgAEkEKB3Jl",
-            "ZF9kb3QYBSABKAsyLi5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNsaWVudF9y",
-            "ZWRfZG90X3JlcXVlc3RIABI7CgRpdGVtGAYgASgLMisuY2VsZXJpdGFzLnBy",
-            "b3RvLmNsaWVudC5jbGllbnRfaXRlbV9yZXF1ZXN0SAASQQoHZGV2ZWxvcBgH",
-            "IAEoCzIuLmNlbGVyaXRhcy5wcm90by5jbGllbnQuY2xpZW50X2RldmVsb3Bf",
-            "cmVxdWVzdEgAQgkKB3BheWxvYWQi7wMKFmNsaWVudF9wbGF5ZXJfcmVzcG9u",
-            "c2USPgoFbG9naW4YASABKAsyLS5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNs",
-            "aWVudF9sb2dpbl9yZXNwb25zZUgAEkYKCWhlYXJ0YmVhdBgCIAEoCzIxLmNl",
-            "bGVyaXRhcy5wcm90by5jbGllbnQuY2xpZW50X2hlYXJ0YmVhdF9yZXNwb25z",
-            "ZUgAEj4KBWRlYnVnGAMgASgLMi0uY2VsZXJpdGFzLnByb3RvLmNsaWVudC5j",
-            "bGllbnRfZGVidWdfcmVzcG9uc2VIABI8CgRyb2xlGAQgASgLMiwuY2VsZXJp",
-            "dGFzLnByb3RvLmNsaWVudC5jbGllbnRfcm9sZV9yZXNwb25zZUgAEkIKB3Jl",
-            "ZF9kb3QYBSABKAsyLy5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNsaWVudF9y",
-            "ZWRfZG90X3Jlc3BvbnNlSAASPAoEaXRlbRgGIAEoCzIsLmNlbGVyaXRhcy5w",
-            "cm90by5jbGllbnQuY2xpZW50X2l0ZW1fcmVzcG9uc2VIABJCCgdkZXZlbG9w",
-            "GAcgASgLMi8uY2VsZXJpdGFzLnByb3RvLmNsaWVudC5jbGllbnRfZGV2ZWxv",
-            "cF9yZXNwb25zZUgAQgkKB3BheWxvYWRiBnByb3RvMw=="));
+            "aWVudC9wbGF5ZXIvZGV2ZWxvcC5wcm90bxoecHJvdG8vY2xpZW50L3BsYXll",
+            "ci9tYWlsLnByb3RvIqQEChVjbGllbnRfcGxheWVyX3JlcXVlc3QSPQoFbG9n",
+            "aW4YASABKAsyLC5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNsaWVudF9sb2dp",
+            "bl9yZXF1ZXN0SAASRQoJaGVhcnRiZWF0GAIgASgLMjAuY2VsZXJpdGFzLnBy",
+            "b3RvLmNsaWVudC5jbGllbnRfaGVhcnRiZWF0X3JlcXVlc3RIABI9CgVkZWJ1",
+            "ZxgDIAEoCzIsLmNlbGVyaXRhcy5wcm90by5jbGllbnQuY2xpZW50X2RlYnVn",
+            "X3JlcXVlc3RIABI7CgRyb2xlGAQgASgLMisuY2VsZXJpdGFzLnByb3RvLmNs",
+            "aWVudC5jbGllbnRfcm9sZV9yZXF1ZXN0SAASQQoHcmVkX2RvdBgFIAEoCzIu",
+            "LmNlbGVyaXRhcy5wcm90by5jbGllbnQuY2xpZW50X3JlZF9kb3RfcmVxdWVz",
+            "dEgAEjsKBGl0ZW0YBiABKAsyKy5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNs",
+            "aWVudF9pdGVtX3JlcXVlc3RIABJBCgdkZXZlbG9wGAcgASgLMi4uY2VsZXJp",
+            "dGFzLnByb3RvLmNsaWVudC5jbGllbnRfZGV2ZWxvcF9yZXF1ZXN0SAASOwoE",
+            "bWFpbBgIIAEoCzIrLmNlbGVyaXRhcy5wcm90by5jbGllbnQuY2xpZW50X21h",
+            "aWxfcmVxdWVzdEgAQgkKB3BheWxvYWQirQQKFmNsaWVudF9wbGF5ZXJfcmVz",
+            "cG9uc2USPgoFbG9naW4YASABKAsyLS5jZWxlcml0YXMucHJvdG8uY2xpZW50",
+            "LmNsaWVudF9sb2dpbl9yZXNwb25zZUgAEkYKCWhlYXJ0YmVhdBgCIAEoCzIx",
+            "LmNlbGVyaXRhcy5wcm90by5jbGllbnQuY2xpZW50X2hlYXJ0YmVhdF9yZXNw",
+            "b25zZUgAEj4KBWRlYnVnGAMgASgLMi0uY2VsZXJpdGFzLnByb3RvLmNsaWVu",
+            "dC5jbGllbnRfZGVidWdfcmVzcG9uc2VIABI8CgRyb2xlGAQgASgLMiwuY2Vs",
+            "ZXJpdGFzLnByb3RvLmNsaWVudC5jbGllbnRfcm9sZV9yZXNwb25zZUgAEkIK",
+            "B3JlZF9kb3QYBSABKAsyLy5jZWxlcml0YXMucHJvdG8uY2xpZW50LmNsaWVu",
+            "dF9yZWRfZG90X3Jlc3BvbnNlSAASPAoEaXRlbRgGIAEoCzIsLmNlbGVyaXRh",
+            "cy5wcm90by5jbGllbnQuY2xpZW50X2l0ZW1fcmVzcG9uc2VIABJCCgdkZXZl",
+            "bG9wGAcgASgLMi8uY2VsZXJpdGFzLnByb3RvLmNsaWVudC5jbGllbnRfZGV2",
+            "ZWxvcF9yZXNwb25zZUgAEjwKBG1haWwYCCABKAsyLC5jZWxlcml0YXMucHJv",
+            "dG8uY2xpZW50LmNsaWVudF9tYWlsX3Jlc3BvbnNlSABCCQoHcGF5bG9hZGIG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Celeritas.Proto.Client.LoginReflection.Descriptor, global::Celeritas.Proto.Client.HeartbeatReflection.Descriptor, global::Celeritas.Proto.Client.RoleReflection.Descriptor, global::Celeritas.Proto.Client.DebugReflection.Descriptor, global::Celeritas.Proto.Client.RedDotReflection.Descriptor, global::Celeritas.Proto.Client.ItemReflection.Descriptor, global::Celeritas.Proto.Client.DevelopReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Celeritas.Proto.Client.LoginReflection.Descriptor, global::Celeritas.Proto.Client.HeartbeatReflection.Descriptor, global::Celeritas.Proto.Client.RoleReflection.Descriptor, global::Celeritas.Proto.Client.DebugReflection.Descriptor, global::Celeritas.Proto.Client.RedDotReflection.Descriptor, global::Celeritas.Proto.Client.ItemReflection.Descriptor, global::Celeritas.Proto.Client.DevelopReflection.Descriptor, global::Celeritas.Proto.Client.MailReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_player_request), global::Celeritas.Proto.Client.client_player_request.Parser, new[]{ "Login", "Heartbeat", "Debug", "Role", "RedDot", "Item", "Develop" }, new[]{ "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_player_response), global::Celeritas.Proto.Client.client_player_response.Parser, new[]{ "Login", "Heartbeat", "Debug", "Role", "RedDot", "Item", "Develop" }, new[]{ "Payload" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_player_request), global::Celeritas.Proto.Client.client_player_request.Parser, new[]{ "Login", "Heartbeat", "Debug", "Role", "RedDot", "Item", "Develop", "Mail" }, new[]{ "Payload" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_player_response), global::Celeritas.Proto.Client.client_player_response.Parser, new[]{ "Login", "Heartbeat", "Debug", "Role", "RedDot", "Item", "Develop", "Mail" }, new[]{ "Payload" }, null, null, null)
           }));
     }
     #endregion
@@ -120,6 +124,9 @@ namespace Celeritas.Proto.Client {
           break;
         case PayloadOneofCase.Develop:
           Develop = other.Develop.Clone();
+          break;
+        case PayloadOneofCase.Mail:
+          Mail = other.Mail.Clone();
           break;
       }
 
@@ -216,6 +223,18 @@ namespace Celeritas.Proto.Client {
       }
     }
 
+    /// <summary>Field number for the "mail" field.</summary>
+    public const int MailFieldNumber = 8;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Client.client_mail_request Mail {
+      get { return payloadCase_ == PayloadOneofCase.Mail ? (global::Celeritas.Proto.Client.client_mail_request) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Mail;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
@@ -227,6 +246,7 @@ namespace Celeritas.Proto.Client {
       RedDot = 5,
       Item = 6,
       Develop = 7,
+      Mail = 8,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -264,6 +284,7 @@ namespace Celeritas.Proto.Client {
       if (!object.Equals(RedDot, other.RedDot)) return false;
       if (!object.Equals(Item, other.Item)) return false;
       if (!object.Equals(Develop, other.Develop)) return false;
+      if (!object.Equals(Mail, other.Mail)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -279,6 +300,7 @@ namespace Celeritas.Proto.Client {
       if (payloadCase_ == PayloadOneofCase.RedDot) hash ^= RedDot.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.Item) hash ^= Item.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.Develop) hash ^= Develop.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.Mail) hash ^= Mail.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -326,6 +348,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(58);
         output.WriteMessage(Develop);
       }
+      if (payloadCase_ == PayloadOneofCase.Mail) {
+        output.WriteRawTag(66);
+        output.WriteMessage(Mail);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -364,6 +390,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(58);
         output.WriteMessage(Develop);
       }
+      if (payloadCase_ == PayloadOneofCase.Mail) {
+        output.WriteRawTag(66);
+        output.WriteMessage(Mail);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -394,6 +424,9 @@ namespace Celeritas.Proto.Client {
       }
       if (payloadCase_ == PayloadOneofCase.Develop) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Develop);
+      }
+      if (payloadCase_ == PayloadOneofCase.Mail) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Mail);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -449,6 +482,12 @@ namespace Celeritas.Proto.Client {
             Develop = new global::Celeritas.Proto.Client.client_develop_request();
           }
           Develop.MergeFrom(other.Develop);
+          break;
+        case PayloadOneofCase.Mail:
+          if (Mail == null) {
+            Mail = new global::Celeritas.Proto.Client.client_mail_request();
+          }
+          Mail.MergeFrom(other.Mail);
           break;
       }
 
@@ -534,6 +573,15 @@ namespace Celeritas.Proto.Client {
             Develop = subBuilder;
             break;
           }
+          case 66: {
+            global::Celeritas.Proto.Client.client_mail_request subBuilder = new global::Celeritas.Proto.Client.client_mail_request();
+            if (payloadCase_ == PayloadOneofCase.Mail) {
+              subBuilder.MergeFrom(Mail);
+            }
+            input.ReadMessage(subBuilder);
+            Mail = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -616,6 +664,15 @@ namespace Celeritas.Proto.Client {
             Develop = subBuilder;
             break;
           }
+          case 66: {
+            global::Celeritas.Proto.Client.client_mail_request subBuilder = new global::Celeritas.Proto.Client.client_mail_request();
+            if (payloadCase_ == PayloadOneofCase.Mail) {
+              subBuilder.MergeFrom(Mail);
+            }
+            input.ReadMessage(subBuilder);
+            Mail = subBuilder;
+            break;
+          }
         }
       }
     }
@@ -679,6 +736,9 @@ namespace Celeritas.Proto.Client {
           break;
         case PayloadOneofCase.Develop:
           Develop = other.Develop.Clone();
+          break;
+        case PayloadOneofCase.Mail:
+          Mail = other.Mail.Clone();
           break;
       }
 
@@ -775,6 +835,18 @@ namespace Celeritas.Proto.Client {
       }
     }
 
+    /// <summary>Field number for the "mail" field.</summary>
+    public const int MailFieldNumber = 8;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Client.client_mail_response Mail {
+      get { return payloadCase_ == PayloadOneofCase.Mail ? (global::Celeritas.Proto.Client.client_mail_response) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.Mail;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
@@ -786,6 +858,7 @@ namespace Celeritas.Proto.Client {
       RedDot = 5,
       Item = 6,
       Develop = 7,
+      Mail = 8,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -823,6 +896,7 @@ namespace Celeritas.Proto.Client {
       if (!object.Equals(RedDot, other.RedDot)) return false;
       if (!object.Equals(Item, other.Item)) return false;
       if (!object.Equals(Develop, other.Develop)) return false;
+      if (!object.Equals(Mail, other.Mail)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -838,6 +912,7 @@ namespace Celeritas.Proto.Client {
       if (payloadCase_ == PayloadOneofCase.RedDot) hash ^= RedDot.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.Item) hash ^= Item.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.Develop) hash ^= Develop.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.Mail) hash ^= Mail.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -885,6 +960,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(58);
         output.WriteMessage(Develop);
       }
+      if (payloadCase_ == PayloadOneofCase.Mail) {
+        output.WriteRawTag(66);
+        output.WriteMessage(Mail);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -923,6 +1002,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(58);
         output.WriteMessage(Develop);
       }
+      if (payloadCase_ == PayloadOneofCase.Mail) {
+        output.WriteRawTag(66);
+        output.WriteMessage(Mail);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -953,6 +1036,9 @@ namespace Celeritas.Proto.Client {
       }
       if (payloadCase_ == PayloadOneofCase.Develop) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Develop);
+      }
+      if (payloadCase_ == PayloadOneofCase.Mail) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Mail);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1008,6 +1094,12 @@ namespace Celeritas.Proto.Client {
             Develop = new global::Celeritas.Proto.Client.client_develop_response();
           }
           Develop.MergeFrom(other.Develop);
+          break;
+        case PayloadOneofCase.Mail:
+          if (Mail == null) {
+            Mail = new global::Celeritas.Proto.Client.client_mail_response();
+          }
+          Mail.MergeFrom(other.Mail);
           break;
       }
 
@@ -1093,6 +1185,15 @@ namespace Celeritas.Proto.Client {
             Develop = subBuilder;
             break;
           }
+          case 66: {
+            global::Celeritas.Proto.Client.client_mail_response subBuilder = new global::Celeritas.Proto.Client.client_mail_response();
+            if (payloadCase_ == PayloadOneofCase.Mail) {
+              subBuilder.MergeFrom(Mail);
+            }
+            input.ReadMessage(subBuilder);
+            Mail = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -1173,6 +1274,15 @@ namespace Celeritas.Proto.Client {
             }
             input.ReadMessage(subBuilder);
             Develop = subBuilder;
+            break;
+          }
+          case 66: {
+            global::Celeritas.Proto.Client.client_mail_response subBuilder = new global::Celeritas.Proto.Client.client_mail_response();
+            if (payloadCase_ == PayloadOneofCase.Mail) {
+              subBuilder.MergeFrom(Mail);
+            }
+            input.ReadMessage(subBuilder);
+            Mail = subBuilder;
             break;
           }
         }
