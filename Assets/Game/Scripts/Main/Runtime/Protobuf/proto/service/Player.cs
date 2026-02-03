@@ -25,33 +25,48 @@ namespace Celeritas.Proto.Service {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Chpwcm90by9zZXJ2aWNlL3BsYXllci5wcm90bxIXY2VsZXJpdGFzLnByb3Rv",
-            "LnNlcnZpY2UiNwoYcmVsb2FkX2NvbmZpZ19kYl9yZXF1ZXN0Eg8KB2RiX25h",
-            "bWUYASABKAkSCgoCaWQYAiABKAMiGwoZcmVsb2FkX2NvbmZpZ19kYl9yZXNw",
-            "b25zZSIcChpyZWxvYWRfZ2FtZV9jb25maWdfcmVxdWVzdCIdChtyZWxvYWRf",
-            "Z2FtZV9jb25maWdfcmVzcG9uc2Ui2wEKFXNlcnZpY2VfbG9naW5fcmVxdWVz",
-            "dBISCgphY2NvdW50X2lkGAEgASgDEhMKC25ld19hY2NvdW50GAIgASgIEhcK",
-            "D2FjY291bnRfYmluZF9pZBgDIAEoAxIaChJuZXdfZ2FtZV9zZXJ2ZXJfaWQY",
-            "BCABKAgSFgoOZ2FtZV9zZXJ2ZXJfaWQYBSABKAkSEQoJZGV2aWNlX2lkGAYg",
-            "ASgJEhMKC2FwcF92ZXJzaW9uGAcgASgJEhIKCnNlc3Npb25faWQYCCABKAMS",
-            "EAoIcHJvdG9jb2wYCSABKAUiaQoWc2VydmljZV9sb2dpbl9yZXNwb25zZRIU",
-            "CgxjdXJyZW50X3RpbWUYASABKAMSEgoKc2Vzc2lvbl9pZBgCIAEoAxIQCghw",
-            "cm90b2NvbBgDIAEoBRITCgtpbnN0YW5jZV9pZBgEIAEoCSIRCg9vZmZsaW5l",
-            "X3JlcXVlc3QiywIKFnNlcnZpY2VfcGxheWVyX3JlcXVlc3QSTQoQcmVsb2Fk",
-            "X2NvbmZpZ19kYhgBIAEoCzIxLmNlbGVyaXRhcy5wcm90by5zZXJ2aWNlLnJl",
-            "bG9hZF9jb25maWdfZGJfcmVxdWVzdEgAElEKEnJlbG9hZF9nYW1lX2NvbmZp",
-            "ZxgCIAEoCzIzLmNlbGVyaXRhcy5wcm90by5zZXJ2aWNlLnJlbG9hZF9nYW1l",
-            "X2NvbmZpZ19yZXF1ZXN0SAASRwoNc2VydmljZV9sb2dpbhgDIAEoCzIuLmNl",
-            "bGVyaXRhcy5wcm90by5zZXJ2aWNlLnNlcnZpY2VfbG9naW5fcmVxdWVzdEgA",
-            "EjsKB29mZmxpbmUYBCABKAsyKC5jZWxlcml0YXMucHJvdG8uc2VydmljZS5v",
-            "ZmZsaW5lX3JlcXVlc3RIAEIJCgdwYXlsb2FkIpICChdzZXJ2aWNlX3BsYXll",
-            "cl9yZXNwb25zZRJOChByZWxvYWRfY29uZmlnX2RiGAEgASgLMjIuY2VsZXJp",
-            "dGFzLnByb3RvLnNlcnZpY2UucmVsb2FkX2NvbmZpZ19kYl9yZXNwb25zZUgA",
-            "ElIKEnJlbG9hZF9nYW1lX2NvbmZpZxgCIAEoCzI0LmNlbGVyaXRhcy5wcm90",
-            "by5zZXJ2aWNlLnJlbG9hZF9nYW1lX2NvbmZpZ19yZXNwb25zZUgAEkgKDXNl",
-            "cnZpY2VfbG9naW4YAyABKAsyLy5jZWxlcml0YXMucHJvdG8uc2VydmljZS5z",
-            "ZXJ2aWNlX2xvZ2luX3Jlc3BvbnNlSABCCQoHcGF5bG9hZGIGcHJvdG8z"));
+            "LnNlcnZpY2UaF3Byb3RvL2NvbW1vbi9pdGVtLnByb3RvIjcKGHJlbG9hZF9j",
+            "b25maWdfZGJfcmVxdWVzdBIPCgdkYl9uYW1lGAEgASgJEgoKAmlkGAIgASgD",
+            "IhsKGXJlbG9hZF9jb25maWdfZGJfcmVzcG9uc2UiHAoacmVsb2FkX2dhbWVf",
+            "Y29uZmlnX3JlcXVlc3QiHQobcmVsb2FkX2dhbWVfY29uZmlnX3Jlc3BvbnNl",
+            "ItsBChVzZXJ2aWNlX2xvZ2luX3JlcXVlc3QSEgoKYWNjb3VudF9pZBgBIAEo",
+            "AxITCgtuZXdfYWNjb3VudBgCIAEoCBIXCg9hY2NvdW50X2JpbmRfaWQYAyAB",
+            "KAMSGgoSbmV3X2dhbWVfc2VydmVyX2lkGAQgASgIEhYKDmdhbWVfc2VydmVy",
+            "X2lkGAUgASgJEhEKCWRldmljZV9pZBgGIAEoCRITCgthcHBfdmVyc2lvbhgH",
+            "IAEoCRISCgpzZXNzaW9uX2lkGAggASgDEhAKCHByb3RvY29sGAkgASgFImkK",
+            "FnNlcnZpY2VfbG9naW5fcmVzcG9uc2USFAoMY3VycmVudF90aW1lGAEgASgD",
+            "EhIKCnNlc3Npb25faWQYAiABKAMSEAoIcHJvdG9jb2wYAyABKAUSEwoLaW5z",
+            "dGFuY2VfaWQYBCABKAkiEQoPb2ZmbGluZV9yZXF1ZXN0IjkKGHNlcnZlcl9t",
+            "YWlsX2NvbnRlbnRfZGF0YRIMCgR0eXBlGAEgASgFEg8KB2NvbnRlbnQYAiAB",
+            "KAkisgIKEHNlcnZlcl9tYWlsX2RhdGESDwoHbWFpbF9pZBgBIAEoAxIMCgR0",
+            "eXBlGAIgASgFEhQKDG11bHRpbGluZ3VhbBgDIAEoCBJACgV0aXRsZRgEIAMo",
+            "CzIxLmNlbGVyaXRhcy5wcm90by5zZXJ2aWNlLnNlcnZlcl9tYWlsX2NvbnRl",
+            "bnRfZGF0YRJCCgdjb250ZW50GAUgAygLMjEuY2VsZXJpdGFzLnByb3RvLnNl",
+            "cnZpY2Uuc2VydmVyX21haWxfY29udGVudF9kYXRhEhEKCXNlbmRfdGltZRgG",
+            "IAEoAxITCgtleHBpcmVfdGltZRgHIAEoAxI7CgthdHRhY2htZW50cxgIIAMo",
+            "CzImLmNlbGVyaXRhcy5wcm90by5jb21tb24uaW52ZW50b3J5X2RhdGEiUwoY",
+            "c2VuZF9zZXJ2ZXJfbWFpbF9yZXF1ZXN0EjcKBG1haWwYASABKAsyKS5jZWxl",
+            "cml0YXMucHJvdG8uc2VydmljZS5zZXJ2ZXJfbWFpbF9kYXRhIhsKGXNlbmRf",
+            "c2VydmVyX21haWxfcmVzcG9uc2UimgMKFnNlcnZpY2VfcGxheWVyX3JlcXVl",
+            "c3QSTQoQcmVsb2FkX2NvbmZpZ19kYhgBIAEoCzIxLmNlbGVyaXRhcy5wcm90",
+            "by5zZXJ2aWNlLnJlbG9hZF9jb25maWdfZGJfcmVxdWVzdEgAElEKEnJlbG9h",
+            "ZF9nYW1lX2NvbmZpZxgCIAEoCzIzLmNlbGVyaXRhcy5wcm90by5zZXJ2aWNl",
+            "LnJlbG9hZF9nYW1lX2NvbmZpZ19yZXF1ZXN0SAASRwoNc2VydmljZV9sb2dp",
+            "bhgDIAEoCzIuLmNlbGVyaXRhcy5wcm90by5zZXJ2aWNlLnNlcnZpY2VfbG9n",
+            "aW5fcmVxdWVzdEgAEjsKB29mZmxpbmUYBCABKAsyKC5jZWxlcml0YXMucHJv",
+            "dG8uc2VydmljZS5vZmZsaW5lX3JlcXVlc3RIABJNChBzZW5kX3NlcnZlcl9t",
+            "YWlsGAUgASgLMjEuY2VsZXJpdGFzLnByb3RvLnNlcnZpY2Uuc2VuZF9zZXJ2",
+            "ZXJfbWFpbF9yZXF1ZXN0SABCCQoHcGF5bG9hZCLiAgoXc2VydmljZV9wbGF5",
+            "ZXJfcmVzcG9uc2USTgoQcmVsb2FkX2NvbmZpZ19kYhgBIAEoCzIyLmNlbGVy",
+            "aXRhcy5wcm90by5zZXJ2aWNlLnJlbG9hZF9jb25maWdfZGJfcmVzcG9uc2VI",
+            "ABJSChJyZWxvYWRfZ2FtZV9jb25maWcYAiABKAsyNC5jZWxlcml0YXMucHJv",
+            "dG8uc2VydmljZS5yZWxvYWRfZ2FtZV9jb25maWdfcmVzcG9uc2VIABJICg1z",
+            "ZXJ2aWNlX2xvZ2luGAMgASgLMi8uY2VsZXJpdGFzLnByb3RvLnNlcnZpY2Uu",
+            "c2VydmljZV9sb2dpbl9yZXNwb25zZUgAEk4KEHNlbmRfc2VydmVyX21haWwY",
+            "BSABKAsyMi5jZWxlcml0YXMucHJvdG8uc2VydmljZS5zZW5kX3NlcnZlcl9t",
+            "YWlsX3Jlc3BvbnNlSABCCQoHcGF5bG9hZGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
+          new pbr::FileDescriptor[] { global::Celeritas.Proto.Common.ItemReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.reload_config_db_request), global::Celeritas.Proto.Service.reload_config_db_request.Parser, new[]{ "DbName", "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.reload_config_db_response), global::Celeritas.Proto.Service.reload_config_db_response.Parser, null, null, null, null, null),
@@ -60,8 +75,12 @@ namespace Celeritas.Proto.Service {
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_login_request), global::Celeritas.Proto.Service.service_login_request.Parser, new[]{ "AccountId", "NewAccount", "AccountBindId", "NewGameServerId", "GameServerId", "DeviceId", "AppVersion", "SessionId", "Protocol" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_login_response), global::Celeritas.Proto.Service.service_login_response.Parser, new[]{ "CurrentTime", "SessionId", "Protocol", "InstanceId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.offline_request), global::Celeritas.Proto.Service.offline_request.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_player_request), global::Celeritas.Proto.Service.service_player_request.Parser, new[]{ "ReloadConfigDb", "ReloadGameConfig", "ServiceLogin", "Offline" }, new[]{ "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_player_response), global::Celeritas.Proto.Service.service_player_response.Parser, new[]{ "ReloadConfigDb", "ReloadGameConfig", "ServiceLogin" }, new[]{ "Payload" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.server_mail_content_data), global::Celeritas.Proto.Service.server_mail_content_data.Parser, new[]{ "Type", "Content" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.server_mail_data), global::Celeritas.Proto.Service.server_mail_data.Parser, new[]{ "MailId", "Type", "Multilingual", "Title", "Content", "SendTime", "ExpireTime", "Attachments" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.send_server_mail_request), global::Celeritas.Proto.Service.send_server_mail_request.Parser, new[]{ "Mail" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.send_server_mail_response), global::Celeritas.Proto.Service.send_server_mail_response.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_player_request), global::Celeritas.Proto.Service.service_player_request.Parser, new[]{ "ReloadConfigDb", "ReloadGameConfig", "ServiceLogin", "Offline", "SendServerMail" }, new[]{ "Payload" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Service.service_player_response), global::Celeritas.Proto.Service.service_player_response.Parser, new[]{ "ReloadConfigDb", "ReloadGameConfig", "ServiceLogin", "SendServerMail" }, new[]{ "Payload" }, null, null, null)
           }));
     }
     #endregion
@@ -1757,6 +1776,1036 @@ namespace Celeritas.Proto.Service {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class server_mail_content_data : pb::IMessage<server_mail_content_data>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<server_mail_content_data> _parser = new pb::MessageParser<server_mail_content_data>(() => new server_mail_content_data());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<server_mail_content_data> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public server_mail_content_data() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public server_mail_content_data(server_mail_content_data other) : this() {
+      type_ = other.type_;
+      content_ = other.content_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public server_mail_content_data Clone() {
+      return new server_mail_content_data(this);
+    }
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 1;
+    private int type_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Type {
+      get { return type_; }
+      set {
+        type_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "content" field.</summary>
+    public const int ContentFieldNumber = 2;
+    private string content_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Content {
+      get { return content_; }
+      set {
+        content_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as server_mail_content_data);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(server_mail_content_data other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Type != other.Type) return false;
+      if (Content != other.Content) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Type != 0) hash ^= Type.GetHashCode();
+      if (Content.Length != 0) hash ^= Content.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Type != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Type);
+      }
+      if (Content.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Content);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Type != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Type);
+      }
+      if (Content.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Content);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Type != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Type);
+      }
+      if (Content.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Content);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(server_mail_content_data other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Type != 0) {
+        Type = other.Type;
+      }
+      if (other.Content.Length != 0) {
+        Content = other.Content;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Type = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Content = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Type = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Content = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class server_mail_data : pb::IMessage<server_mail_data>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<server_mail_data> _parser = new pb::MessageParser<server_mail_data>(() => new server_mail_data());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<server_mail_data> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public server_mail_data() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public server_mail_data(server_mail_data other) : this() {
+      mailId_ = other.mailId_;
+      type_ = other.type_;
+      multilingual_ = other.multilingual_;
+      title_ = other.title_.Clone();
+      content_ = other.content_.Clone();
+      sendTime_ = other.sendTime_;
+      expireTime_ = other.expireTime_;
+      attachments_ = other.attachments_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public server_mail_data Clone() {
+      return new server_mail_data(this);
+    }
+
+    /// <summary>Field number for the "mail_id" field.</summary>
+    public const int MailIdFieldNumber = 1;
+    private long mailId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long MailId {
+      get { return mailId_; }
+      set {
+        mailId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 2;
+    private int type_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Type {
+      get { return type_; }
+      set {
+        type_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "multilingual" field.</summary>
+    public const int MultilingualFieldNumber = 3;
+    private bool multilingual_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Multilingual {
+      get { return multilingual_; }
+      set {
+        multilingual_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "title" field.</summary>
+    public const int TitleFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::Celeritas.Proto.Service.server_mail_content_data> _repeated_title_codec
+        = pb::FieldCodec.ForMessage(34, global::Celeritas.Proto.Service.server_mail_content_data.Parser);
+    private readonly pbc::RepeatedField<global::Celeritas.Proto.Service.server_mail_content_data> title_ = new pbc::RepeatedField<global::Celeritas.Proto.Service.server_mail_content_data>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Celeritas.Proto.Service.server_mail_content_data> Title {
+      get { return title_; }
+    }
+
+    /// <summary>Field number for the "content" field.</summary>
+    public const int ContentFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::Celeritas.Proto.Service.server_mail_content_data> _repeated_content_codec
+        = pb::FieldCodec.ForMessage(42, global::Celeritas.Proto.Service.server_mail_content_data.Parser);
+    private readonly pbc::RepeatedField<global::Celeritas.Proto.Service.server_mail_content_data> content_ = new pbc::RepeatedField<global::Celeritas.Proto.Service.server_mail_content_data>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Celeritas.Proto.Service.server_mail_content_data> Content {
+      get { return content_; }
+    }
+
+    /// <summary>Field number for the "send_time" field.</summary>
+    public const int SendTimeFieldNumber = 6;
+    private long sendTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long SendTime {
+      get { return sendTime_; }
+      set {
+        sendTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "expire_time" field.</summary>
+    public const int ExpireTimeFieldNumber = 7;
+    private long expireTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long ExpireTime {
+      get { return expireTime_; }
+      set {
+        expireTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "attachments" field.</summary>
+    public const int AttachmentsFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::Celeritas.Proto.Common.inventory_data> _repeated_attachments_codec
+        = pb::FieldCodec.ForMessage(66, global::Celeritas.Proto.Common.inventory_data.Parser);
+    private readonly pbc::RepeatedField<global::Celeritas.Proto.Common.inventory_data> attachments_ = new pbc::RepeatedField<global::Celeritas.Proto.Common.inventory_data>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Celeritas.Proto.Common.inventory_data> Attachments {
+      get { return attachments_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as server_mail_data);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(server_mail_data other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (MailId != other.MailId) return false;
+      if (Type != other.Type) return false;
+      if (Multilingual != other.Multilingual) return false;
+      if(!title_.Equals(other.title_)) return false;
+      if(!content_.Equals(other.content_)) return false;
+      if (SendTime != other.SendTime) return false;
+      if (ExpireTime != other.ExpireTime) return false;
+      if(!attachments_.Equals(other.attachments_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (MailId != 0L) hash ^= MailId.GetHashCode();
+      if (Type != 0) hash ^= Type.GetHashCode();
+      if (Multilingual != false) hash ^= Multilingual.GetHashCode();
+      hash ^= title_.GetHashCode();
+      hash ^= content_.GetHashCode();
+      if (SendTime != 0L) hash ^= SendTime.GetHashCode();
+      if (ExpireTime != 0L) hash ^= ExpireTime.GetHashCode();
+      hash ^= attachments_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (MailId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(MailId);
+      }
+      if (Type != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Type);
+      }
+      if (Multilingual != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Multilingual);
+      }
+      title_.WriteTo(output, _repeated_title_codec);
+      content_.WriteTo(output, _repeated_content_codec);
+      if (SendTime != 0L) {
+        output.WriteRawTag(48);
+        output.WriteInt64(SendTime);
+      }
+      if (ExpireTime != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(ExpireTime);
+      }
+      attachments_.WriteTo(output, _repeated_attachments_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (MailId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(MailId);
+      }
+      if (Type != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Type);
+      }
+      if (Multilingual != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Multilingual);
+      }
+      title_.WriteTo(ref output, _repeated_title_codec);
+      content_.WriteTo(ref output, _repeated_content_codec);
+      if (SendTime != 0L) {
+        output.WriteRawTag(48);
+        output.WriteInt64(SendTime);
+      }
+      if (ExpireTime != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(ExpireTime);
+      }
+      attachments_.WriteTo(ref output, _repeated_attachments_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (MailId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MailId);
+      }
+      if (Type != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Type);
+      }
+      if (Multilingual != false) {
+        size += 1 + 1;
+      }
+      size += title_.CalculateSize(_repeated_title_codec);
+      size += content_.CalculateSize(_repeated_content_codec);
+      if (SendTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(SendTime);
+      }
+      if (ExpireTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ExpireTime);
+      }
+      size += attachments_.CalculateSize(_repeated_attachments_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(server_mail_data other) {
+      if (other == null) {
+        return;
+      }
+      if (other.MailId != 0L) {
+        MailId = other.MailId;
+      }
+      if (other.Type != 0) {
+        Type = other.Type;
+      }
+      if (other.Multilingual != false) {
+        Multilingual = other.Multilingual;
+      }
+      title_.Add(other.title_);
+      content_.Add(other.content_);
+      if (other.SendTime != 0L) {
+        SendTime = other.SendTime;
+      }
+      if (other.ExpireTime != 0L) {
+        ExpireTime = other.ExpireTime;
+      }
+      attachments_.Add(other.attachments_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            MailId = input.ReadInt64();
+            break;
+          }
+          case 16: {
+            Type = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Multilingual = input.ReadBool();
+            break;
+          }
+          case 34: {
+            title_.AddEntriesFrom(input, _repeated_title_codec);
+            break;
+          }
+          case 42: {
+            content_.AddEntriesFrom(input, _repeated_content_codec);
+            break;
+          }
+          case 48: {
+            SendTime = input.ReadInt64();
+            break;
+          }
+          case 56: {
+            ExpireTime = input.ReadInt64();
+            break;
+          }
+          case 66: {
+            attachments_.AddEntriesFrom(input, _repeated_attachments_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            MailId = input.ReadInt64();
+            break;
+          }
+          case 16: {
+            Type = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Multilingual = input.ReadBool();
+            break;
+          }
+          case 34: {
+            title_.AddEntriesFrom(ref input, _repeated_title_codec);
+            break;
+          }
+          case 42: {
+            content_.AddEntriesFrom(ref input, _repeated_content_codec);
+            break;
+          }
+          case 48: {
+            SendTime = input.ReadInt64();
+            break;
+          }
+          case 56: {
+            ExpireTime = input.ReadInt64();
+            break;
+          }
+          case 66: {
+            attachments_.AddEntriesFrom(ref input, _repeated_attachments_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// 发送全服邮件
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class send_server_mail_request : pb::IMessage<send_server_mail_request>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<send_server_mail_request> _parser = new pb::MessageParser<send_server_mail_request>(() => new send_server_mail_request());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<send_server_mail_request> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[9]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public send_server_mail_request() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public send_server_mail_request(send_server_mail_request other) : this() {
+      mail_ = other.mail_ != null ? other.mail_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public send_server_mail_request Clone() {
+      return new send_server_mail_request(this);
+    }
+
+    /// <summary>Field number for the "mail" field.</summary>
+    public const int MailFieldNumber = 1;
+    private global::Celeritas.Proto.Service.server_mail_data mail_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Service.server_mail_data Mail {
+      get { return mail_; }
+      set {
+        mail_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as send_server_mail_request);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(send_server_mail_request other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Mail, other.Mail)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (mail_ != null) hash ^= Mail.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (mail_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Mail);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (mail_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Mail);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (mail_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Mail);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(send_server_mail_request other) {
+      if (other == null) {
+        return;
+      }
+      if (other.mail_ != null) {
+        if (mail_ == null) {
+          Mail = new global::Celeritas.Proto.Service.server_mail_data();
+        }
+        Mail.MergeFrom(other.Mail);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (mail_ == null) {
+              Mail = new global::Celeritas.Proto.Service.server_mail_data();
+            }
+            input.ReadMessage(Mail);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (mail_ == null) {
+              Mail = new global::Celeritas.Proto.Service.server_mail_data();
+            }
+            input.ReadMessage(Mail);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class send_server_mail_response : pb::IMessage<send_server_mail_response>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<send_server_mail_response> _parser = new pb::MessageParser<send_server_mail_response>(() => new send_server_mail_response());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<send_server_mail_response> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[10]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public send_server_mail_response() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public send_server_mail_response(send_server_mail_response other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public send_server_mail_response Clone() {
+      return new send_server_mail_response(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as send_server_mail_response);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(send_server_mail_response other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(send_server_mail_response other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class service_player_request : pb::IMessage<service_player_request>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1771,7 +2820,7 @@ namespace Celeritas.Proto.Service {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1803,6 +2852,9 @@ namespace Celeritas.Proto.Service {
           break;
         case PayloadOneofCase.Offline:
           Offline = other.Offline.Clone();
+          break;
+        case PayloadOneofCase.SendServerMail:
+          SendServerMail = other.SendServerMail.Clone();
           break;
       }
 
@@ -1863,6 +2915,18 @@ namespace Celeritas.Proto.Service {
       }
     }
 
+    /// <summary>Field number for the "send_server_mail" field.</summary>
+    public const int SendServerMailFieldNumber = 5;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Service.send_server_mail_request SendServerMail {
+      get { return payloadCase_ == PayloadOneofCase.SendServerMail ? (global::Celeritas.Proto.Service.send_server_mail_request) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.SendServerMail;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
@@ -1871,6 +2935,7 @@ namespace Celeritas.Proto.Service {
       ReloadGameConfig = 2,
       ServiceLogin = 3,
       Offline = 4,
+      SendServerMail = 5,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1905,6 +2970,7 @@ namespace Celeritas.Proto.Service {
       if (!object.Equals(ReloadGameConfig, other.ReloadGameConfig)) return false;
       if (!object.Equals(ServiceLogin, other.ServiceLogin)) return false;
       if (!object.Equals(Offline, other.Offline)) return false;
+      if (!object.Equals(SendServerMail, other.SendServerMail)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1917,6 +2983,7 @@ namespace Celeritas.Proto.Service {
       if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) hash ^= ReloadGameConfig.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.ServiceLogin) hash ^= ServiceLogin.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.Offline) hash ^= Offline.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.SendServerMail) hash ^= SendServerMail.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1952,6 +3019,10 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(34);
         output.WriteMessage(Offline);
       }
+      if (payloadCase_ == PayloadOneofCase.SendServerMail) {
+        output.WriteRawTag(42);
+        output.WriteMessage(SendServerMail);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1978,6 +3049,10 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(34);
         output.WriteMessage(Offline);
       }
+      if (payloadCase_ == PayloadOneofCase.SendServerMail) {
+        output.WriteRawTag(42);
+        output.WriteMessage(SendServerMail);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1999,6 +3074,9 @@ namespace Celeritas.Proto.Service {
       }
       if (payloadCase_ == PayloadOneofCase.Offline) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Offline);
+      }
+      if (payloadCase_ == PayloadOneofCase.SendServerMail) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SendServerMail);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2036,6 +3114,12 @@ namespace Celeritas.Proto.Service {
             Offline = new global::Celeritas.Proto.Service.offline_request();
           }
           Offline.MergeFrom(other.Offline);
+          break;
+        case PayloadOneofCase.SendServerMail:
+          if (SendServerMail == null) {
+            SendServerMail = new global::Celeritas.Proto.Service.send_server_mail_request();
+          }
+          SendServerMail.MergeFrom(other.SendServerMail);
           break;
       }
 
@@ -2094,6 +3178,15 @@ namespace Celeritas.Proto.Service {
             Offline = subBuilder;
             break;
           }
+          case 42: {
+            global::Celeritas.Proto.Service.send_server_mail_request subBuilder = new global::Celeritas.Proto.Service.send_server_mail_request();
+            if (payloadCase_ == PayloadOneofCase.SendServerMail) {
+              subBuilder.MergeFrom(SendServerMail);
+            }
+            input.ReadMessage(subBuilder);
+            SendServerMail = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -2149,6 +3242,15 @@ namespace Celeritas.Proto.Service {
             Offline = subBuilder;
             break;
           }
+          case 42: {
+            global::Celeritas.Proto.Service.send_server_mail_request subBuilder = new global::Celeritas.Proto.Service.send_server_mail_request();
+            if (payloadCase_ == PayloadOneofCase.SendServerMail) {
+              subBuilder.MergeFrom(SendServerMail);
+            }
+            input.ReadMessage(subBuilder);
+            SendServerMail = subBuilder;
+            break;
+          }
         }
       }
     }
@@ -2171,7 +3273,7 @@ namespace Celeritas.Proto.Service {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Celeritas.Proto.Service.PlayerReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2200,6 +3302,9 @@ namespace Celeritas.Proto.Service {
           break;
         case PayloadOneofCase.ServiceLogin:
           ServiceLogin = other.ServiceLogin.Clone();
+          break;
+        case PayloadOneofCase.SendServerMail:
+          SendServerMail = other.SendServerMail.Clone();
           break;
       }
 
@@ -2248,6 +3353,18 @@ namespace Celeritas.Proto.Service {
       }
     }
 
+    /// <summary>Field number for the "send_server_mail" field.</summary>
+    public const int SendServerMailFieldNumber = 5;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Service.send_server_mail_response SendServerMail {
+      get { return payloadCase_ == PayloadOneofCase.SendServerMail ? (global::Celeritas.Proto.Service.send_server_mail_response) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.SendServerMail;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
@@ -2255,6 +3372,7 @@ namespace Celeritas.Proto.Service {
       ReloadConfigDb = 1,
       ReloadGameConfig = 2,
       ServiceLogin = 3,
+      SendServerMail = 5,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2288,6 +3406,7 @@ namespace Celeritas.Proto.Service {
       if (!object.Equals(ReloadConfigDb, other.ReloadConfigDb)) return false;
       if (!object.Equals(ReloadGameConfig, other.ReloadGameConfig)) return false;
       if (!object.Equals(ServiceLogin, other.ServiceLogin)) return false;
+      if (!object.Equals(SendServerMail, other.SendServerMail)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2299,6 +3418,7 @@ namespace Celeritas.Proto.Service {
       if (payloadCase_ == PayloadOneofCase.ReloadConfigDb) hash ^= ReloadConfigDb.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.ReloadGameConfig) hash ^= ReloadGameConfig.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.ServiceLogin) hash ^= ServiceLogin.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.SendServerMail) hash ^= SendServerMail.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2330,6 +3450,10 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(26);
         output.WriteMessage(ServiceLogin);
       }
+      if (payloadCase_ == PayloadOneofCase.SendServerMail) {
+        output.WriteRawTag(42);
+        output.WriteMessage(SendServerMail);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2352,6 +3476,10 @@ namespace Celeritas.Proto.Service {
         output.WriteRawTag(26);
         output.WriteMessage(ServiceLogin);
       }
+      if (payloadCase_ == PayloadOneofCase.SendServerMail) {
+        output.WriteRawTag(42);
+        output.WriteMessage(SendServerMail);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2370,6 +3498,9 @@ namespace Celeritas.Proto.Service {
       }
       if (payloadCase_ == PayloadOneofCase.ServiceLogin) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ServiceLogin);
+      }
+      if (payloadCase_ == PayloadOneofCase.SendServerMail) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SendServerMail);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2401,6 +3532,12 @@ namespace Celeritas.Proto.Service {
             ServiceLogin = new global::Celeritas.Proto.Service.service_login_response();
           }
           ServiceLogin.MergeFrom(other.ServiceLogin);
+          break;
+        case PayloadOneofCase.SendServerMail:
+          if (SendServerMail == null) {
+            SendServerMail = new global::Celeritas.Proto.Service.send_server_mail_response();
+          }
+          SendServerMail.MergeFrom(other.SendServerMail);
           break;
       }
 
@@ -2450,6 +3587,15 @@ namespace Celeritas.Proto.Service {
             ServiceLogin = subBuilder;
             break;
           }
+          case 42: {
+            global::Celeritas.Proto.Service.send_server_mail_response subBuilder = new global::Celeritas.Proto.Service.send_server_mail_response();
+            if (payloadCase_ == PayloadOneofCase.SendServerMail) {
+              subBuilder.MergeFrom(SendServerMail);
+            }
+            input.ReadMessage(subBuilder);
+            SendServerMail = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -2494,6 +3640,15 @@ namespace Celeritas.Proto.Service {
             }
             input.ReadMessage(subBuilder);
             ServiceLogin = subBuilder;
+            break;
+          }
+          case 42: {
+            global::Celeritas.Proto.Service.send_server_mail_response subBuilder = new global::Celeritas.Proto.Service.send_server_mail_response();
+            if (payloadCase_ == PayloadOneofCase.SendServerMail) {
+              subBuilder.MergeFrom(SendServerMail);
+            }
+            input.ReadMessage(subBuilder);
+            SendServerMail = subBuilder;
             break;
           }
         }

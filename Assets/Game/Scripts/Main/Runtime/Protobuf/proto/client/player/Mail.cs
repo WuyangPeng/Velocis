@@ -25,52 +25,52 @@ namespace Celeritas.Proto.Client {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5wcm90by9jbGllbnQvcGxheWVyL21haWwucHJvdG8SFmNlbGVyaXRhcy5w",
-            "cm90by5jbGllbnQaF3Byb3RvL2NvbW1vbi9pdGVtLnByb3RvItsBCgltYWls",
-            "X2RhdGESDwoHbWFpbF9pZBgBIAEoAxIMCgR0eXBlGAIgASgFEg0KBXRpdGxl",
-            "GAMgASgJEg8KB2NvbnRlbnQYBCABKAkSEQoJc2VuZF90aW1lGAUgASgDEhMK",
-            "C2V4cGlyZV90aW1lGAYgASgDEgwKBHJlYWQYByABKAgSHAoUYXR0YWNobWVu",
-            "dF9jb2xsZWN0ZWQYCCABKAgSOwoLYXR0YWNobWVudHMYCSADKAsyJi5jZWxl",
-            "cml0YXMucHJvdG8uY29tbW9uLmludmVudG9yeV9kYXRhIjoKDG1haWxfcmVx",
-            "dWVzdBITCgttYXhfbWFpbF9pZBgBIAEoAxIVCg1sYW5ndWFnZV90eXBlGAIg",
-            "ASgFIkAKDW1haWxfcmVzcG9uc2USLwoEbWFpbBgBIAMoCzIhLmNlbGVyaXRh",
-            "cy5wcm90by5jbGllbnQubWFpbF9kYXRhIiQKEW1haWxfcmVhZF9yZXF1ZXN0",
-            "Eg8KB21haWxfaWQYASABKAMiJQoSbWFpbF9yZWFkX3Jlc3BvbnNlEg8KB21h",
-            "aWxfaWQYASABKAMiMgofbWFpbF9jb2xsZWN0X2F0dGFjaG1lbnRfcmVxdWVz",
-            "dBIPCgdtYWlsX2lkGAEgASgDIjMKIG1haWxfY29sbGVjdF9hdHRhY2htZW50",
-            "X3Jlc3BvbnNlEg8KB21haWxfaWQYASABKAMiJgoTbWFpbF9kZWxldGVfcmVx",
-            "dWVzdBIPCgdtYWlsX2lkGAEgASgDIicKFG1haWxfZGVsZXRlX3Jlc3BvbnNl",
-            "Eg8KB21haWxfaWQYASABKAMiJgokbWFpbF9jb2xsZWN0X2FsbF9hdHRhY2ht",
-            "ZW50c19yZXF1ZXN0IjkKJW1haWxfY29sbGVjdF9hbGxfYXR0YWNobWVudHNf",
-            "cmVzcG9uc2USEAoIbWFpbF9pZHMYASADKAMiHgocbWFpbF9kZWxldGVfYWxs",
-            "X3JlYWRfcmVxdWVzdCIxCh1tYWlsX2RlbGV0ZV9hbGxfcmVhZF9yZXNwb25z",
-            "ZRIQCghtYWlsX2lkcxgBIAMoAyLyAwoTY2xpZW50X21haWxfcmVxdWVzdBI0",
-            "CgRtYWlsGAEgASgLMiQuY2VsZXJpdGFzLnByb3RvLmNsaWVudC5tYWlsX3Jl",
-            "cXVlc3RIABI+CgltYWlsX3JlYWQYAiABKAsyKS5jZWxlcml0YXMucHJvdG8u",
-            "Y2xpZW50Lm1haWxfcmVhZF9yZXF1ZXN0SAASWgoXbWFpbF9jb2xsZWN0X2F0",
-            "dGFjaG1lbnQYAyABKAsyNy5jZWxlcml0YXMucHJvdG8uY2xpZW50Lm1haWxf",
-            "Y29sbGVjdF9hdHRhY2htZW50X3JlcXVlc3RIABJCCgttYWlsX2RlbGV0ZRgE",
-            "IAEoCzIrLmNlbGVyaXRhcy5wcm90by5jbGllbnQubWFpbF9kZWxldGVfcmVx",
-            "dWVzdEgAEmQKHG1haWxfY29sbGVjdF9hbGxfYXR0YWNobWVudHMYBSABKAsy",
-            "PC5jZWxlcml0YXMucHJvdG8uY2xpZW50Lm1haWxfY29sbGVjdF9hbGxfYXR0",
-            "YWNobWVudHNfcmVxdWVzdEgAElQKFG1haWxfZGVsZXRlX2FsbF9yZWFkGAYg",
-            "ASgLMjQuY2VsZXJpdGFzLnByb3RvLmNsaWVudC5tYWlsX2RlbGV0ZV9hbGxf",
-            "cmVhZF9yZXF1ZXN0SABCCQoHcGF5bG9hZCL5AwoUY2xpZW50X21haWxfcmVz",
-            "cG9uc2USNQoEbWFpbBgBIAEoCzIlLmNlbGVyaXRhcy5wcm90by5jbGllbnQu",
-            "bWFpbF9yZXNwb25zZUgAEj8KCW1haWxfcmVhZBgCIAEoCzIqLmNlbGVyaXRh",
-            "cy5wcm90by5jbGllbnQubWFpbF9yZWFkX3Jlc3BvbnNlSAASWwoXbWFpbF9j",
-            "b2xsZWN0X2F0dGFjaG1lbnQYAyABKAsyOC5jZWxlcml0YXMucHJvdG8uY2xp",
-            "ZW50Lm1haWxfY29sbGVjdF9hdHRhY2htZW50X3Jlc3BvbnNlSAASQwoLbWFp",
-            "bF9kZWxldGUYBCABKAsyLC5jZWxlcml0YXMucHJvdG8uY2xpZW50Lm1haWxf",
-            "ZGVsZXRlX3Jlc3BvbnNlSAASZQocbWFpbF9jb2xsZWN0X2FsbF9hdHRhY2ht",
-            "ZW50cxgFIAEoCzI9LmNlbGVyaXRhcy5wcm90by5jbGllbnQubWFpbF9jb2xs",
-            "ZWN0X2FsbF9hdHRhY2htZW50c19yZXNwb25zZUgAElUKFG1haWxfZGVsZXRl",
-            "X2FsbF9yZWFkGAYgASgLMjUuY2VsZXJpdGFzLnByb3RvLmNsaWVudC5tYWls",
-            "X2RlbGV0ZV9hbGxfcmVhZF9yZXNwb25zZUgAQgkKB3BheWxvYWRiBnByb3Rv",
-            "Mw=="));
+            "cm90by5jbGllbnQaF3Byb3RvL2NvbW1vbi9pdGVtLnByb3RvIvEBCgltYWls",
+            "X2RhdGESDwoHbWFpbF9pZBgBIAEoAxIMCgR0eXBlGAIgASgFEhQKDG11bHRp",
+            "bGluZ3VhbBgDIAEoCBINCgV0aXRsZRgEIAEoCRIPCgdjb250ZW50GAUgASgJ",
+            "EhEKCXNlbmRfdGltZRgGIAEoAxITCgtleHBpcmVfdGltZRgHIAEoAxIMCgRy",
+            "ZWFkGAggASgIEhwKFGF0dGFjaG1lbnRfY29sbGVjdGVkGAkgASgIEjsKC2F0",
+            "dGFjaG1lbnRzGAogAygLMiYuY2VsZXJpdGFzLnByb3RvLmNvbW1vbi5pbnZl",
+            "bnRvcnlfZGF0YSI6CgxtYWlsX3JlcXVlc3QSEwoLbWF4X21haWxfaWQYASAB",
+            "KAMSFQoNbGFuZ3VhZ2VfdHlwZRgCIAEoBSJACg1tYWlsX3Jlc3BvbnNlEi8K",
+            "BG1haWwYASADKAsyIS5jZWxlcml0YXMucHJvdG8uY2xpZW50Lm1haWxfZGF0",
+            "YSIkChFtYWlsX3JlYWRfcmVxdWVzdBIPCgdtYWlsX2lkGAEgASgDIiUKEm1h",
+            "aWxfcmVhZF9yZXNwb25zZRIPCgdtYWlsX2lkGAEgASgDIjIKH21haWxfY29s",
+            "bGVjdF9hdHRhY2htZW50X3JlcXVlc3QSDwoHbWFpbF9pZBgBIAEoAyIzCiBt",
+            "YWlsX2NvbGxlY3RfYXR0YWNobWVudF9yZXNwb25zZRIPCgdtYWlsX2lkGAEg",
+            "ASgDIiYKE21haWxfZGVsZXRlX3JlcXVlc3QSDwoHbWFpbF9pZBgBIAEoAyIn",
+            "ChRtYWlsX2RlbGV0ZV9yZXNwb25zZRIPCgdtYWlsX2lkGAEgASgDIiYKJG1h",
+            "aWxfY29sbGVjdF9hbGxfYXR0YWNobWVudHNfcmVxdWVzdCI5CiVtYWlsX2Nv",
+            "bGxlY3RfYWxsX2F0dGFjaG1lbnRzX3Jlc3BvbnNlEhAKCG1haWxfaWRzGAEg",
+            "AygDIh4KHG1haWxfZGVsZXRlX2FsbF9yZWFkX3JlcXVlc3QiMQodbWFpbF9k",
+            "ZWxldGVfYWxsX3JlYWRfcmVzcG9uc2USEAoIbWFpbF9pZHMYASADKAMi8gMK",
+            "E2NsaWVudF9tYWlsX3JlcXVlc3QSNAoEbWFpbBgBIAEoCzIkLmNlbGVyaXRh",
+            "cy5wcm90by5jbGllbnQubWFpbF9yZXF1ZXN0SAASPgoJbWFpbF9yZWFkGAIg",
+            "ASgLMikuY2VsZXJpdGFzLnByb3RvLmNsaWVudC5tYWlsX3JlYWRfcmVxdWVz",
+            "dEgAEloKF21haWxfY29sbGVjdF9hdHRhY2htZW50GAMgASgLMjcuY2VsZXJp",
+            "dGFzLnByb3RvLmNsaWVudC5tYWlsX2NvbGxlY3RfYXR0YWNobWVudF9yZXF1",
+            "ZXN0SAASQgoLbWFpbF9kZWxldGUYBCABKAsyKy5jZWxlcml0YXMucHJvdG8u",
+            "Y2xpZW50Lm1haWxfZGVsZXRlX3JlcXVlc3RIABJkChxtYWlsX2NvbGxlY3Rf",
+            "YWxsX2F0dGFjaG1lbnRzGAUgASgLMjwuY2VsZXJpdGFzLnByb3RvLmNsaWVu",
+            "dC5tYWlsX2NvbGxlY3RfYWxsX2F0dGFjaG1lbnRzX3JlcXVlc3RIABJUChRt",
+            "YWlsX2RlbGV0ZV9hbGxfcmVhZBgGIAEoCzI0LmNlbGVyaXRhcy5wcm90by5j",
+            "bGllbnQubWFpbF9kZWxldGVfYWxsX3JlYWRfcmVxdWVzdEgAQgkKB3BheWxv",
+            "YWQi+QMKFGNsaWVudF9tYWlsX3Jlc3BvbnNlEjUKBG1haWwYASABKAsyJS5j",
+            "ZWxlcml0YXMucHJvdG8uY2xpZW50Lm1haWxfcmVzcG9uc2VIABI/CgltYWls",
+            "X3JlYWQYAiABKAsyKi5jZWxlcml0YXMucHJvdG8uY2xpZW50Lm1haWxfcmVh",
+            "ZF9yZXNwb25zZUgAElsKF21haWxfY29sbGVjdF9hdHRhY2htZW50GAMgASgL",
+            "MjguY2VsZXJpdGFzLnByb3RvLmNsaWVudC5tYWlsX2NvbGxlY3RfYXR0YWNo",
+            "bWVudF9yZXNwb25zZUgAEkMKC21haWxfZGVsZXRlGAQgASgLMiwuY2VsZXJp",
+            "dGFzLnByb3RvLmNsaWVudC5tYWlsX2RlbGV0ZV9yZXNwb25zZUgAEmUKHG1h",
+            "aWxfY29sbGVjdF9hbGxfYXR0YWNobWVudHMYBSABKAsyPS5jZWxlcml0YXMu",
+            "cHJvdG8uY2xpZW50Lm1haWxfY29sbGVjdF9hbGxfYXR0YWNobWVudHNfcmVz",
+            "cG9uc2VIABJVChRtYWlsX2RlbGV0ZV9hbGxfcmVhZBgGIAEoCzI1LmNlbGVy",
+            "aXRhcy5wcm90by5jbGllbnQubWFpbF9kZWxldGVfYWxsX3JlYWRfcmVzcG9u",
+            "c2VIAEIJCgdwYXlsb2FkYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Celeritas.Proto.Common.ItemReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.mail_data), global::Celeritas.Proto.Client.mail_data.Parser, new[]{ "MailId", "Type", "Title", "Content", "SendTime", "ExpireTime", "Read", "AttachmentCollected", "Attachments" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.mail_data), global::Celeritas.Proto.Client.mail_data.Parser, new[]{ "MailId", "Type", "Multilingual", "Title", "Content", "SendTime", "ExpireTime", "Read", "AttachmentCollected", "Attachments" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.mail_request), global::Celeritas.Proto.Client.mail_request.Parser, new[]{ "MaxMailId", "LanguageType" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.mail_response), global::Celeritas.Proto.Client.mail_response.Parser, new[]{ "Mail" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.mail_read_request), global::Celeritas.Proto.Client.mail_read_request.Parser, new[]{ "MailId" }, null, null, null, null),
@@ -128,6 +128,7 @@ namespace Celeritas.Proto.Client {
     public mail_data(mail_data other) : this() {
       mailId_ = other.mailId_;
       type_ = other.type_;
+      multilingual_ = other.multilingual_;
       title_ = other.title_;
       content_ = other.content_;
       sendTime_ = other.sendTime_;
@@ -168,8 +169,20 @@ namespace Celeritas.Proto.Client {
       }
     }
 
+    /// <summary>Field number for the "multilingual" field.</summary>
+    public const int MultilingualFieldNumber = 3;
+    private bool multilingual_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Multilingual {
+      get { return multilingual_; }
+      set {
+        multilingual_ = value;
+      }
+    }
+
     /// <summary>Field number for the "title" field.</summary>
-    public const int TitleFieldNumber = 3;
+    public const int TitleFieldNumber = 4;
     private string title_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -181,7 +194,7 @@ namespace Celeritas.Proto.Client {
     }
 
     /// <summary>Field number for the "content" field.</summary>
-    public const int ContentFieldNumber = 4;
+    public const int ContentFieldNumber = 5;
     private string content_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -193,7 +206,7 @@ namespace Celeritas.Proto.Client {
     }
 
     /// <summary>Field number for the "send_time" field.</summary>
-    public const int SendTimeFieldNumber = 5;
+    public const int SendTimeFieldNumber = 6;
     private long sendTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -205,7 +218,7 @@ namespace Celeritas.Proto.Client {
     }
 
     /// <summary>Field number for the "expire_time" field.</summary>
-    public const int ExpireTimeFieldNumber = 6;
+    public const int ExpireTimeFieldNumber = 7;
     private long expireTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -217,7 +230,7 @@ namespace Celeritas.Proto.Client {
     }
 
     /// <summary>Field number for the "read" field.</summary>
-    public const int ReadFieldNumber = 7;
+    public const int ReadFieldNumber = 8;
     private bool read_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -229,7 +242,7 @@ namespace Celeritas.Proto.Client {
     }
 
     /// <summary>Field number for the "attachment_collected" field.</summary>
-    public const int AttachmentCollectedFieldNumber = 8;
+    public const int AttachmentCollectedFieldNumber = 9;
     private bool attachmentCollected_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -241,9 +254,9 @@ namespace Celeritas.Proto.Client {
     }
 
     /// <summary>Field number for the "attachments" field.</summary>
-    public const int AttachmentsFieldNumber = 9;
+    public const int AttachmentsFieldNumber = 10;
     private static readonly pb::FieldCodec<global::Celeritas.Proto.Common.inventory_data> _repeated_attachments_codec
-        = pb::FieldCodec.ForMessage(74, global::Celeritas.Proto.Common.inventory_data.Parser);
+        = pb::FieldCodec.ForMessage(82, global::Celeritas.Proto.Common.inventory_data.Parser);
     private readonly pbc::RepeatedField<global::Celeritas.Proto.Common.inventory_data> attachments_ = new pbc::RepeatedField<global::Celeritas.Proto.Common.inventory_data>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -268,6 +281,7 @@ namespace Celeritas.Proto.Client {
       }
       if (MailId != other.MailId) return false;
       if (Type != other.Type) return false;
+      if (Multilingual != other.Multilingual) return false;
       if (Title != other.Title) return false;
       if (Content != other.Content) return false;
       if (SendTime != other.SendTime) return false;
@@ -284,6 +298,7 @@ namespace Celeritas.Proto.Client {
       int hash = 1;
       if (MailId != 0L) hash ^= MailId.GetHashCode();
       if (Type != 0) hash ^= Type.GetHashCode();
+      if (Multilingual != false) hash ^= Multilingual.GetHashCode();
       if (Title.Length != 0) hash ^= Title.GetHashCode();
       if (Content.Length != 0) hash ^= Content.GetHashCode();
       if (SendTime != 0L) hash ^= SendTime.GetHashCode();
@@ -317,28 +332,32 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(16);
         output.WriteInt32(Type);
       }
+      if (Multilingual != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Multilingual);
+      }
       if (Title.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteString(Title);
       }
       if (Content.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteString(Content);
       }
       if (SendTime != 0L) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteInt64(SendTime);
       }
       if (ExpireTime != 0L) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(56);
         output.WriteInt64(ExpireTime);
       }
       if (Read != false) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteBool(Read);
       }
       if (AttachmentCollected != false) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(72);
         output.WriteBool(AttachmentCollected);
       }
       attachments_.WriteTo(output, _repeated_attachments_codec);
@@ -360,28 +379,32 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(16);
         output.WriteInt32(Type);
       }
+      if (Multilingual != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Multilingual);
+      }
       if (Title.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteString(Title);
       }
       if (Content.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteString(Content);
       }
       if (SendTime != 0L) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteInt64(SendTime);
       }
       if (ExpireTime != 0L) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(56);
         output.WriteInt64(ExpireTime);
       }
       if (Read != false) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteBool(Read);
       }
       if (AttachmentCollected != false) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(72);
         output.WriteBool(AttachmentCollected);
       }
       attachments_.WriteTo(ref output, _repeated_attachments_codec);
@@ -400,6 +423,9 @@ namespace Celeritas.Proto.Client {
       }
       if (Type != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Type);
+      }
+      if (Multilingual != false) {
+        size += 1 + 1;
       }
       if (Title.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Title);
@@ -437,6 +463,9 @@ namespace Celeritas.Proto.Client {
       }
       if (other.Type != 0) {
         Type = other.Type;
+      }
+      if (other.Multilingual != false) {
+        Multilingual = other.Multilingual;
       }
       if (other.Title.Length != 0) {
         Title = other.Title;
@@ -484,31 +513,35 @@ namespace Celeritas.Proto.Client {
             Type = input.ReadInt32();
             break;
           }
-          case 26: {
-            Title = input.ReadString();
+          case 24: {
+            Multilingual = input.ReadBool();
             break;
           }
           case 34: {
+            Title = input.ReadString();
+            break;
+          }
+          case 42: {
             Content = input.ReadString();
             break;
           }
-          case 40: {
+          case 48: {
             SendTime = input.ReadInt64();
             break;
           }
-          case 48: {
+          case 56: {
             ExpireTime = input.ReadInt64();
             break;
           }
-          case 56: {
+          case 64: {
             Read = input.ReadBool();
             break;
           }
-          case 64: {
+          case 72: {
             AttachmentCollected = input.ReadBool();
             break;
           }
-          case 74: {
+          case 82: {
             attachments_.AddEntriesFrom(input, _repeated_attachments_codec);
             break;
           }
@@ -539,31 +572,35 @@ namespace Celeritas.Proto.Client {
             Type = input.ReadInt32();
             break;
           }
-          case 26: {
-            Title = input.ReadString();
+          case 24: {
+            Multilingual = input.ReadBool();
             break;
           }
           case 34: {
+            Title = input.ReadString();
+            break;
+          }
+          case 42: {
             Content = input.ReadString();
             break;
           }
-          case 40: {
+          case 48: {
             SendTime = input.ReadInt64();
             break;
           }
-          case 48: {
+          case 56: {
             ExpireTime = input.ReadInt64();
             break;
           }
-          case 56: {
+          case 64: {
             Read = input.ReadBool();
             break;
           }
-          case 64: {
+          case 72: {
             AttachmentCollected = input.ReadBool();
             break;
           }
-          case 74: {
+          case 82: {
             attachments_.AddEntriesFrom(ref input, _repeated_attachments_codec);
             break;
           }
