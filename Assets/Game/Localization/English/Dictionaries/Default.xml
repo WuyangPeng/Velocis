@@ -2,6 +2,9 @@
 <Dictionaries>
     <Dictionary Language="English">
         <String Key="Game.Name" Value="Velocis"/>
+        <String Key="Game.Title" Value="镇守孤城"/>
+        <String Key="Game.Subtitle" Value="The Lonely Citadel"/>
+        <String Key="Game.AccountInput" Value="请署名，以待诏令"/>
         <String Key="Game.Description" Value="Velocis Demo Program"/>
         <String Key="Game.Website" Value="https://GameFramework.cn/"/>
         <String Key="Game.Summary"
