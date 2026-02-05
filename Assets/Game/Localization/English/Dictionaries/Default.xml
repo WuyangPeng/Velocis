@@ -5,6 +5,10 @@
         <String Key="Game.Title" Value="镇守孤城"/>
         <String Key="Game.Subtitle" Value="The Lonely Citadel"/>
         <String Key="Game.AccountInput" Value="请署名，以待诏令"/>
+        <String Key="Game.Technology" Value="这款游戏使用celeritas和Velocis进行开发。"/>
+        <String Key="Game.Concept"
+                Value="这是一款融合了策略管理（SLG）与角色扮演（RPG）元素的游戏，玩家将扮演一位乱世中的城主，在天灾人祸与强敌环伺的绝境中，经营城池，培养将领，抵御进攻，谱写一段英雄史诗。"/>
+        <String Key="Game.Genre" Value="策略模拟 (Strategy/Simulation)"/>
         <String Key="Game.Description" Value="Velocis Demo Program"/>
         <String Key="Game.Website" Value="https://GameFramework.cn/"/>
         <String Key="Game.Summary"
