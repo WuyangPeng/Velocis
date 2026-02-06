@@ -6,6 +6,7 @@ using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Resource;
+using TMPro;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;
@@ -14,7 +15,6 @@ using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedure
 
 namespace Game.Scripts.Main.Runtime.Procedure
 {
-
     public class ProcedurePreload : ProcedureBase
     {
         public static readonly string[] DataTableNames =
@@ -111,6 +111,9 @@ namespace Game.Scripts.Main.Runtime.Procedure
             // Preload fonts
             LoadFont("MainFont");
 
+            // Preload TextMeshPro font
+            LoadTMPFont("NotoSerifSC-Black");
+
             GameEntry.GameConfig.Initialize();
         }
 
@@ -146,6 +149,23 @@ namespace Game.Scripts.Main.Runtime.Procedure
                     Log.Info("Load font '{0}' OK.", fontName);
                 },
                 (assetName, status, errorMessage, userData) => { Log.Error("Can not load font '{0}' from '{1}' with error message '{2}'.", fontName, assetName, errorMessage); }));
+        }
+
+        private void LoadTMPFont(string fontName)
+        {
+            m_LoadedFlag.Add(Utility.Text.Format("TMPFont.{0}", fontName), false);
+            GameEntry.Resource.LoadAsset(AssetUtility.GetTMPFontAsset(fontName), Constant.AssetPriority.FontAsset, new LoadAssetCallbacks(
+                (assetName, asset, duration, userData) =>
+                {
+                    m_LoadedFlag[Utility.Text.Format("TMPFont.{0}", fontName)] = true;
+                    UGuiForm.SetMainTMPFont((TMP_FontAsset)asset);
+                    Log.Info("Load TMP font '{0}' OK.", fontName);
+                },
+                (assetName, status, errorMessage, userData) =>
+                {
+                    Log.Warning("Can not load TMP font '{0}' from '{1}' with error message '{2}'. TextMeshPro will use default font.", fontName, assetName, errorMessage);
+                    m_LoadedFlag[Utility.Text.Format("TMPFont.{0}", fontName)] = true;
+                }));
         }
 
         private void OnLoadConfigSuccess(object sender, GameEventArgs e)

@@ -3,7 +3,6 @@ using GameFramework;
 
 namespace Game.Scripts.Main.Runtime.GameUtility
 {
-
     public static class AssetUtility
     {
         public static string GetConfigAsset(string assetName, bool fromBytes)
@@ -24,6 +23,11 @@ namespace Game.Scripts.Main.Runtime.GameUtility
         public static string GetFontAsset(string assetName)
         {
             return Utility.Text.Format("Assets/Game/Fonts/{0}.ttf", assetName);
+        }
+
+        public static string GetTMPFontAsset(string assetName)
+        {
+            return Utility.Text.Format("Assets/Game/Fonts/{0} SDF.asset", assetName);
         }
 
         public static string GetSceneAsset(string assetName)

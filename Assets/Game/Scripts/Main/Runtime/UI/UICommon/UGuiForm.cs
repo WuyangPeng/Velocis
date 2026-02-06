@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.Sound;
+using GameFramework.Procedure;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UICommon
 {
@@ -13,15 +16,12 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
         private const float FadeTime = 0.3f;
 
         private static Font s_MainFont;
+        private static TMP_FontAsset s_MainTMPFont;
+        private readonly List<Canvas> cachedCanvasContainer = new();
         private Canvas cachedCanvas;
         private CanvasGroup canvasGroup;
-        private readonly List<Canvas> cachedCanvasContainer = new();
 
-        public int OriginalDepth
-        {
-            get;
-            private set;
-        }
+        public int OriginalDepth { get; private set; }
 
         public int Depth => cachedCanvas.sortingOrder;
 
@@ -36,7 +36,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
 
             if (ignoreFade)
             {
-                Base.GameEntry.UI.CloseUIForm(this);
+                GameEntry.UI.CloseUIForm(this);
             }
             else
             {
@@ -46,7 +46,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
 
         public void PlayUISound(int uiSoundId)
         {
-            Base.GameEntry.Sound.PlayUISound(uiSoundId);
+            GameEntry.Sound.PlayUISound(uiSoundId);
         }
 
         public static void SetMainFont(Font mainFont)
@@ -57,7 +57,18 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
                 return;
             }
 
-            UGuiForm.s_MainFont = mainFont;
+            s_MainFont = mainFont;
+        }
+
+        public static void SetMainTMPFont(TMP_FontAsset mainTMPFont)
+        {
+            if (mainTMPFont == null)
+            {
+                Log.Error("Main TMP font is invalid.");
+                return;
+            }
+
+            s_MainTMPFont = mainTMPFont;
         }
 
         protected override void OnInit(object userData)
@@ -84,7 +95,21 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
                 text.font = s_MainFont;
                 if (!string.IsNullOrEmpty(text.text))
                 {
-                    text.text = Base.GameEntry.Localization.GetString(text.text);
+                    text.text = GameEntry.Localization.GetString(text.text);
+                }
+            }
+
+            var tmpTexts = GetComponentsInChildren<TMP_Text>(true);
+            foreach (var tmpText in tmpTexts)
+            {
+                if (s_MainTMPFont != null)
+                {
+                    tmpText.font = s_MainTMPFont;
+                }
+
+                if (!string.IsNullOrEmpty(tmpText.text))
+                {
+                    tmpText.text = GameEntry.Localization.GetString(tmpText.text);
                 }
             }
         }
@@ -97,6 +122,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             StopAllCoroutines();
             StartCoroutine(canvasGroup.FadeToAlpha(1f, FadeTime));
         }
+
         protected override void OnResume()
         {
             base.OnResume();
@@ -105,6 +131,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             StopAllCoroutines();
             StartCoroutine(canvasGroup.FadeToAlpha(1f, FadeTime));
         }
+
         protected override void OnDepthChanged(int uiGroupDepth, int depthInUIGroup)
         {
             var oldDepth = Depth;
@@ -122,12 +149,12 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
         private IEnumerator CloseCo(float duration)
         {
             yield return canvasGroup.FadeToAlpha(0f, duration);
-            Base.GameEntry.UI.CloseUIForm(this);
+            GameEntry.UI.CloseUIForm(this);
         }
 
-        protected GameFramework.Procedure.ProcedureBase GetCurrentProcedure()
+        protected ProcedureBase GetCurrentProcedure()
         {
-            return Base.GameEntry.Procedure.CurrentProcedure;
+            return GameEntry.Procedure.CurrentProcedure;
         }
     }
 }
