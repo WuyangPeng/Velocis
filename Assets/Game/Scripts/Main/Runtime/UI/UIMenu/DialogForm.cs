@@ -10,10 +10,10 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
     public class DialogForm : UGuiForm
     {
         [SerializeField]
-        private Text titleText = null;
+        private TMP_Text titleText = null;
 
         [SerializeField]
-        private Text messageText = null;
+        private TMP_Text messageText = null;
 
         [SerializeField]
         private GameObject[] modeObjects = null;
