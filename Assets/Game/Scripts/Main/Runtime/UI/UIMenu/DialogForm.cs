@@ -1,5 +1,6 @@
 ﻿using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
@@ -18,13 +19,13 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         private GameObject[] modeObjects = null;
 
         [SerializeField]
-        private Text[] confirmTexts = null;
+        private TMP_Text[] confirmTexts = null;
 
         [SerializeField]
-        private Text[] cancelTexts = null;
+        private TMP_Text[] cancelTexts = null;
 
         [SerializeField]
-        private Text[] otherTexts = null;
+        private TMP_Text[] otherTexts = null;
 
         private GameFrameworkAction<object> onClickConfirm = null;
         private GameFrameworkAction<object> onClickCancel = null;
