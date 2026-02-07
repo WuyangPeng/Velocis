@@ -941,6 +941,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 400
       objectReference: {fileID: 0}
+    - target: {fileID: 1998504199697933035, guid: 7464b322c6cad1747a7384feb97267c5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 3839058364833886306, guid: 7464b322c6cad1747a7384feb97267c5,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1060,6 +1065,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Account
+      objectReference: {fileID: 0}
+    - target: {fileID: 7780762017543072393, guid: 7464b322c6cad1747a7384feb97267c5,
+        type: 3}
+      propertyPath: m_text
+      value: Game.AccountInput
       objectReference: {fileID: 0}
     - target: {fileID: 8028220471578564702, guid: 7464b322c6cad1747a7384feb97267c5,
         type: 3}
