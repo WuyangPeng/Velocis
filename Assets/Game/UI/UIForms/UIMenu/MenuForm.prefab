@@ -467,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guestLoginButton: {fileID: 5880758767352820384}
   quitButton: {fileID: 6100347669070327240}
-  inputField: {fileID: 8859554894545816144}
+  inputField: {fileID: 8876651924953823120}
 --- !u!1001 &271319197589098854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1072,9 +1072,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7464b322c6cad1747a7384feb97267c5, type: 3}
---- !u!114 &8859554894545816144 stripped
+--- !u!114 &8876651924953823120 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3812551590146988418, guid: 7464b322c6cad1747a7384feb97267c5,
+  m_CorrespondingSourceObject: {fileID: 3831334720556049474, guid: 7464b322c6cad1747a7384feb97267c5,
     type: 3}
   m_PrefabInstance: {fileID: 5628251881243792338}
   m_PrefabAsset: {fileID: 0}
