@@ -467,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guestLoginButton: {fileID: 5880758767352820384}
   quitButton: {fileID: 6100347669070327240}
-  inputField: {fileID: 2697200104145166479}
+  inputField: {fileID: 8859554894545816144}
 --- !u!1001 &271319197589098854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -476,6 +476,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 22468674}
     m_Modifications:
+    - target: {fileID: 1234943499664169967, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
+      propertyPath: m_text
+      value: Menu.SettingButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2750433323345807988, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
       propertyPath: m_Name
@@ -680,7 +685,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359343646, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 100
+      value: 140
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -701,6 +706,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 22468674}
     m_Modifications:
+    - target: {fileID: 1234943499664169967, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
+      propertyPath: m_text
+      value: Menu.AboutButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2750433323345807988, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
       propertyPath: m_Name
@@ -905,7 +915,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359343646, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 100
+      value: 140
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1056,21 +1066,22 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 400
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7743359499910378333, guid: 7464b322c6cad1747a7384feb97267c5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7464b322c6cad1747a7384feb97267c5, type: 3}
---- !u!114 &2697200104145166479 stripped
+--- !u!114 &8859554894545816144 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7743359499910378333, guid: 7464b322c6cad1747a7384feb97267c5,
+  m_CorrespondingSourceObject: {fileID: 3812551590146988418, guid: 7464b322c6cad1747a7384feb97267c5,
     type: 3}
   m_PrefabInstance: {fileID: 5628251881243792338}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &8889123226028843952 stripped
@@ -1087,6 +1098,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 22468674}
     m_Modifications:
+    - target: {fileID: 1234943499664169967, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
+      propertyPath: m_text
+      value: Menu.QuitButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2750433323345807988, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
       propertyPath: m_Name
@@ -1291,7 +1307,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359343646, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 100
+      value: 140
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1318,6 +1334,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 22468674}
     m_Modifications:
+    - target: {fileID: 1234943499664169967, guid: fcaea75f76773774e9130422e68538d2,
+        type: 3}
+      propertyPath: m_text
+      value: Menu.GuestLoginButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2750433323345807988, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
       propertyPath: m_Name
@@ -1497,7 +1518,7 @@ PrefabInstance:
     - target: {fileID: 2750433323359187636, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -90
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359187636, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
@@ -1522,37 +1543,12 @@ PrefabInstance:
     - target: {fileID: 2750433323359343646, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 202
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2750433323359343646, guid: fcaea75f76773774e9130422e68538d2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 130
-      objectReference: {fileID: 0}
-    - target: {fileID: 2750433323359378604, guid: fcaea75f76773774e9130422e68538d2,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2750433323359378604, guid: fcaea75f76773774e9130422e68538d2,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2750433323359378604, guid: fcaea75f76773774e9130422e68538d2,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2750433323359378604, guid: fcaea75f76773774e9130422e68538d2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2750433323359378604, guid: fcaea75f76773774e9130422e68538d2,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -2,6 +2,7 @@
 using Game.Scripts.Main.Runtime.Login;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
@@ -15,7 +16,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         [SerializeField] private GameObject quitButton;
 
-        [SerializeField] private InputField inputField;
+        [SerializeField] private TMP_InputField inputField;
 
         private LoginController _loginController;
 
