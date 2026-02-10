@@ -1,5 +1,6 @@
 ﻿using System;
 using Game.Scripts.Main.Runtime.Login;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,7 +12,9 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
     {
         [SerializeField] private Image imageBackground;
 
-        [SerializeField] private Text talentText;
+        [SerializeField] private TMP_Text serverNameText;
+
+        [SerializeField] private TMP_Text playerNameText; 
 
         private Action<int> _onClick;
         private int _selfIndex;
@@ -25,7 +28,8 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
         {
             _selfIndex = index;
             _onClick = clickCallback;
-            talentText.text = loginServerInfo.server_name;
+            serverNameText.text = loginServerInfo.server_name;
+            playerNameText.text = loginServerInfo.getPlayerName(); 
             SetSelected(loginServerInfo.server_status);
         }
 
@@ -35,27 +39,27 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
             {
                 case ServerStatusType.Normal:
                 {
-                    talentText.color = Color.green;
+                    serverNameText.color = Color.green;
                     break;
                 }
                 case ServerStatusType.Busy:
                 {
-                    talentText.color = new Color(1f, 0.5f, 0f);
+                    serverNameText.color = new Color(1f, 0.5f, 0f);
                     break;
                 }
                 case ServerStatusType.Crowded:
                 {
-                    talentText.color = Color.yellow;
+                    serverNameText.color = Color.yellow;
                     break;
                 }
                 case ServerStatusType.Full:
                 {
-                    talentText.color = Color.red;
+                    serverNameText.color = Color.red;
                     break;
                 }
                 case ServerStatusType.Maintenance:
                 {
-                    talentText.color = Color.black;
+                    serverNameText.color = Color.black;
                     break;
                 }
                 default:

@@ -322,7 +322,6 @@ namespace Game.Scripts.Main.Runtime.Network
 
             ne.NetworkChannel.Close();
 
-
             GameEntry.Event.Fire(this, NetworkEventArgs.Create());
         }
 
