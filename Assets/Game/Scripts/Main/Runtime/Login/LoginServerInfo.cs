@@ -7,9 +7,9 @@ namespace Game.Scripts.Main.Runtime.Login
     public class LoginServerInfo
     {
         public ConnectionInfo connection_info;
-        public string game_server_id;
+        public string game_server_id = "";
         public PlayerRole player_role;
-        public string server_name;
+        public string server_name = "";
         public ServerStatusType server_status;
 
         public string getPlayerName()
@@ -22,6 +22,11 @@ namespace Game.Scripts.Main.Runtime.Login
             if (player_role.modify_name)
             {
                 return player_role.role_surname_name + player_role.role_name;
+            }
+
+            if (player_role.role_surname_name.Length == 0)
+            {
+                return player_role.role_name.Length == 0 ? "" : GameEntry.Localization.GetString(player_role.role_name);
             }
 
             return GameEntry.Localization.GetString(player_role.role_surname_name) +

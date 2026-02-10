@@ -51,7 +51,7 @@ namespace Game.Scripts.Main.Runtime.Login
             var appId = GameEntry.Account.appId;
             var timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString();
             var onlyPreferred = false;
-            var includeDetails = false;
+            var includeDetails = true;
             var websocket = false;
             var sign = HmacSha256Util.ComputeHash(GameEntry.Account.secret,
                 appId,
