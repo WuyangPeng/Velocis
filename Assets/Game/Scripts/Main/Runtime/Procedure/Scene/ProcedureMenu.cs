@@ -59,6 +59,13 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             LoadAccountData();
 
             GameEntry.Event.Subscribe(ServerListEventArgs.EventId, OnServerListClose);
+            GameEntry.Event.Subscribe(LoginLoadEventArgs.EventId, OnLoginLoad);
+            GameEntry.Event.Subscribe(NetworkClosedEventArgs.EventId, OnNetworkClosed);
+        }
+
+        private void OnLoginLoad(object sender, GameEventArgs e)
+        {
+            OpenUIForm(UIFormId.LoginLoadForm);
         }
 
         private void OnServerListClose(object sender, GameEventArgs e)
@@ -75,10 +82,17 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             GameEntry.Event.Unsubscribe(ServerListEventArgs.EventId, OnServerListClose);
+            GameEntry.Event.Unsubscribe(LoginLoadEventArgs.EventId, OnLoginLoad);
+            GameEntry.Event.Unsubscribe(NetworkClosedEventArgs.EventId, OnNetworkClosed);
 
             base.OnLeave(procedureOwner, isShutdown);
 
             formComponent.OnLeave(procedureOwner, isShutdown);
+        }
+
+        private void OnNetworkClosed(object sender, GameEventArgs e)
+        {
+            RemoveUIForm(UIFormId.LoginLoadForm);
         }
 
 

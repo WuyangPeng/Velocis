@@ -5,11 +5,10 @@ using System.Reflection;
 using System.Text;
 using Celeritas.Proto;
 using Celeritas.Proto.Common;
+using Game.Scripts.Main.Runtime.Event;
 using Game.Scripts.Main.Runtime.Login;
 using Game.Scripts.Main.Runtime.Network.Packet;
 using Game.Scripts.Main.Runtime.Network.PacketHandler;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
-using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Network;
@@ -114,7 +113,7 @@ namespace Game.Scripts.Main.Runtime.Network
         public bool SendHeartBeat()
         {
             Log.Info("Send Heart Beat");
-            
+
             var packet = ProtoHelper.GetProto();
 
             packet.Mutable_ClientPlayer_ClientHeartbeat_Heartbeat();
@@ -287,12 +286,8 @@ namespace Game.Scripts.Main.Runtime.Network
             }
 
             Log.Info("Network channel '{0}' closed.", ne.NetworkChannel.Name);
-            
-            var currentProcedure = GameEntry.Procedure.CurrentProcedure;
-            if (currentProcedure is ProcedureMenu procedureMenu)
-            {
-                procedureMenu.RemoveUIForm(UIFormId.LoginLoadForm);
-            }
+
+            GameEntry.Event.Fire(this, NetworkEventArgs.Create());
         }
 
         private void OnNetworkMissHeartBeat(object sender, GameEventArgs e)
@@ -326,12 +321,9 @@ namespace Game.Scripts.Main.Runtime.Network
                 ne.NetworkChannel.Name, ne.ErrorCode.ToString(), ne.ErrorMessage);
 
             ne.NetworkChannel.Close();
-            
-            var currentProcedure = GameEntry.Procedure.CurrentProcedure;
-            if (currentProcedure is ProcedureMenu procedureMenu)
-            {
-                procedureMenu.RemoveUIForm(UIFormId.LoginLoadForm);
-            }
+
+
+            GameEntry.Event.Fire(this, NetworkEventArgs.Create());
         }
 
         private void OnNetworkCustomError(object sender, GameEventArgs e)
@@ -339,7 +331,6 @@ namespace Game.Scripts.Main.Runtime.Network
             var ne = (NetworkCustomErrorEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
             {
-                
             }
         }
     }

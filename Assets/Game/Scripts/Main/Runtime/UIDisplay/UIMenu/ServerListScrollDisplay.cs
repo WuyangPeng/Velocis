@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using Game.Scripts.Main.Runtime.Event;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Login;
 using Game.Scripts.Main.Runtime.Network;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using Game.Scripts.Main.Runtime.UIItem.UIMenu;
@@ -167,11 +167,8 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
                 return;
             }
 
-            var currentProcedure = GameEntry.Procedure.CurrentProcedure;
-            if (currentProcedure is ProcedureMenu procedureMenu)
-            {
-                procedureMenu.OpenUIForm(UIFormId.LoginLoadForm);
-            }
+
+            GameEntry.Event.Fire(this, LoginLoadEventArgs.Create());
 
             var channel = GameEntry.Network.GetNetworkChannel("TcpChannel") ??
                           GameEntry.Network.CreateNetworkChannel("TcpChannel", ServiceType.Tcp,
