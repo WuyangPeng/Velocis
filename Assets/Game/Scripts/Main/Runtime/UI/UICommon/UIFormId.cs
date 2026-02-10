@@ -33,6 +33,11 @@
         LoadForm = 103,
 
         /// <summary>
+        ///     登陆载入。
+        /// </summary>
+        LoginLoadForm = 104,
+
+        /// <summary>
         ///     服务器列表。
         /// </summary>
         ServerListForm = 200,

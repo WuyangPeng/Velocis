@@ -8,6 +8,8 @@ using Celeritas.Proto.Common;
 using Game.Scripts.Main.Runtime.Login;
 using Game.Scripts.Main.Runtime.Network.Packet;
 using Game.Scripts.Main.Runtime.Network.PacketHandler;
+using Game.Scripts.Main.Runtime.Procedure.Scene;
+using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Network;
@@ -285,6 +287,12 @@ namespace Game.Scripts.Main.Runtime.Network
             }
 
             Log.Info("Network channel '{0}' closed.", ne.NetworkChannel.Name);
+            
+            var currentProcedure = GameEntry.Procedure.CurrentProcedure;
+            if (currentProcedure is ProcedureMenu procedureMenu)
+            {
+                procedureMenu.RemoveUIForm(UIFormId.LoginLoadForm);
+            }
         }
 
         private void OnNetworkMissHeartBeat(object sender, GameEventArgs e)
@@ -318,6 +326,12 @@ namespace Game.Scripts.Main.Runtime.Network
                 ne.NetworkChannel.Name, ne.ErrorCode.ToString(), ne.ErrorMessage);
 
             ne.NetworkChannel.Close();
+            
+            var currentProcedure = GameEntry.Procedure.CurrentProcedure;
+            if (currentProcedure is ProcedureMenu procedureMenu)
+            {
+                procedureMenu.RemoveUIForm(UIFormId.LoginLoadForm);
+            }
         }
 
         private void OnNetworkCustomError(object sender, GameEventArgs e)
@@ -325,6 +339,7 @@ namespace Game.Scripts.Main.Runtime.Network
             var ne = (NetworkCustomErrorEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
             {
+                
             }
         }
     }

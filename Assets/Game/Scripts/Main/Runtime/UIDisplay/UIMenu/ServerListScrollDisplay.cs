@@ -4,6 +4,7 @@ using System.Net;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Login;
 using Game.Scripts.Main.Runtime.Network;
+using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using Game.Scripts.Main.Runtime.UIItem.UIMenu;
@@ -23,14 +24,14 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
 
         [SerializeField] private int poolCapacity = 20;
 
-        private readonly List<ServerListItemObject> activeServerListItemObject = new();
-        private readonly List<GameObject> rowGameObjects = new();
-        private IObjectPool<ServerListItemObject> pool;
+        private readonly List<ServerListItemObject> _activeServerListItemObject = new();
+        private readonly List<GameObject> _rowGameObjects = new();
+        private IObjectPool<ServerListItemObject> _pool;
 
         private void Start()
         {
             const string poolName = "ServerListItemPool";
-            pool = GameEntry.ObjectPool.HasObjectPool<ServerListItemObject>(poolName)
+            _pool = GameEntry.ObjectPool.HasObjectPool<ServerListItemObject>(poolName)
                 ? GameEntry.ObjectPool.GetObjectPool<ServerListItemObject>(poolName)
                 : GameEntry.ObjectPool.CreateSingleSpawnObjectPool<ServerListItemObject>(poolName, poolCapacity, 30f,
                     16);
@@ -57,7 +58,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
         {
             var rowGameObject = GetRowGameObject(row, TextAnchor.LowerCenter, 70);
 
-            rowGameObjects.Add(rowGameObject);
+            _rowGameObjects.Add(rowGameObject);
 
             return SetData(loginServerInfo, row, rowGameObject);
         }
@@ -70,7 +71,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
                 return false;
             }
 
-            activeServerListItemObject.Add(spawn);
+            _activeServerListItemObject.Add(spawn);
 
             var avatarItem = (ServerListItem)spawn.Target;
             avatarItem.transform.SetParent(rowGameObject.transform, false);
@@ -81,7 +82,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
 
         private ServerListItemObject GetSpawn()
         {
-            var result = pool.Spawn();
+            var result = _pool.Spawn();
             if (result != null)
             {
                 return result;
@@ -91,9 +92,9 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
             if (itemGameObject.TryGetComponent<ServerListItem>(out var item))
             {
                 var avatarItemObject = ServerListItemObject.Create(item);
-                pool.Register(avatarItemObject, true);
-                pool.Unspawn(avatarItemObject);
-                result = pool.Spawn();
+                _pool.Register(avatarItemObject, true);
+                _pool.Unspawn(avatarItemObject);
+                result = _pool.Spawn();
 
                 return result;
             }
@@ -105,7 +106,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
 
         private void UnSpawn()
         {
-            foreach (var element in activeServerListItemObject)
+            foreach (var element in _activeServerListItemObject)
             {
                 var item = (ServerListItem)element.Target;
                 if (item != null && item.gameObject != null)
@@ -113,17 +114,17 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
                     item.transform.SetParent(null, false);
                 }
 
-                pool.Unspawn(element);
+                _pool.Unspawn(element);
             }
 
-            activeServerListItemObject.Clear();
+            _activeServerListItemObject.Clear();
 
-            foreach (var rowGameObject in rowGameObjects)
+            foreach (var rowGameObject in _rowGameObjects)
             {
                 DestroyImmediate(rowGameObject);
             }
 
-            rowGameObjects.Clear();
+            _rowGameObjects.Clear();
         }
 
         private void OnItemClick(int index)
@@ -166,6 +167,11 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
                 return;
             }
 
+            var currentProcedure = GameEntry.Procedure.CurrentProcedure;
+            if (currentProcedure is ProcedureMenu procedureMenu)
+            {
+                procedureMenu.OpenUIForm(UIFormId.LoginLoadForm);
+            }
 
             var channel = GameEntry.Network.GetNetworkChannel("TcpChannel") ??
                           GameEntry.Network.CreateNetworkChannel("TcpChannel", ServiceType.Tcp,
