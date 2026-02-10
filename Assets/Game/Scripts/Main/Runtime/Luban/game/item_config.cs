@@ -19,6 +19,7 @@ public sealed partial class item_config : Luban.BeanBase
         ItemTemplateId = _buf.ReadInt();
         ItemType = (item_type)_buf.ReadInt();
         Stacked = _buf.ReadInt();
+        Quality = (quality_type)_buf.ReadInt();
         Squares = _buf.ReadBool();
     }
 
@@ -40,6 +41,10 @@ public sealed partial class item_config : Luban.BeanBase
     /// </summary>
     public readonly int Stacked;
     /// <summary>
+    /// 品质
+    /// </summary>
+    public readonly quality_type Quality;
+    /// <summary>
     /// 格子
     /// </summary>
     public readonly bool Squares;
@@ -57,6 +62,7 @@ public sealed partial class item_config : Luban.BeanBase
         + "itemTemplateId:" + ItemTemplateId + ","
         + "itemType:" + ItemType + ","
         + "stacked:" + Stacked + ","
+        + "quality:" + Quality + ","
         + "squares:" + Squares + ","
         + "}";
     }

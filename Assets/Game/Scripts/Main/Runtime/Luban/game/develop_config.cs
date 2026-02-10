@@ -21,6 +21,7 @@ public sealed partial class develop_config : Luban.BeanBase
         DevelopSubType = (develop_sub_type)_buf.ReadInt();
         MaxLevel = _buf.ReadInt();
         DevelopResetType = (develop_reset_type)_buf.ReadInt();
+        RefundProportion = _buf.ReadInt();
     }
 
     public static develop_config Deserializedevelop_config(ByteBuf _buf)
@@ -36,6 +37,7 @@ public sealed partial class develop_config : Luban.BeanBase
     public readonly develop_sub_type DevelopSubType;
     public readonly int MaxLevel;
     public readonly develop_reset_type DevelopResetType;
+    public readonly int RefundProportion;
    
     public const int __ID__ = 1902983392;
     public override int GetTypeId() => __ID__;
@@ -52,6 +54,7 @@ public sealed partial class develop_config : Luban.BeanBase
         + "developSubType:" + DevelopSubType + ","
         + "maxLevel:" + MaxLevel + ","
         + "developResetType:" + DevelopResetType + ","
+        + "refundProportion:" + RefundProportion + ","
         + "}";
     }
 }

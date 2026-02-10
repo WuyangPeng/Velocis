@@ -45,6 +45,14 @@ public partial class tables
     /// 养成升级
     /// </summary>
     public game.develop_level_config_container DevelopLevelConfigContainer {get; }
+    /// <summary>
+    /// 任务
+    /// </summary>
+    public game.task_config_container TaskConfigContainer {get; }
+    /// <summary>
+    /// 头像
+    /// </summary>
+    public game.avatar_config_container AvatarConfigContainer {get; }
 
     public tables(System.Func<string, ByteBuf> loader)
     {
@@ -56,6 +64,8 @@ public partial class tables
         DefaultItemConfigContainer = new game.default_item_config_container(loader("default_item_config_container"));
         DevelopConfigContainer = new game.develop_config_container(loader("develop_config_container"));
         DevelopLevelConfigContainer = new game.develop_level_config_container(loader("develop_level_config_container"));
+        TaskConfigContainer = new game.task_config_container(loader("task_config_container"));
+        AvatarConfigContainer = new game.avatar_config_container(loader("avatar_config_container"));
         ResolveRef();
     }
     
@@ -69,6 +79,8 @@ public partial class tables
         DefaultItemConfigContainer.ResolveRef(this);
         DevelopConfigContainer.ResolveRef(this);
         DevelopLevelConfigContainer.ResolveRef(this);
+        TaskConfigContainer.ResolveRef(this);
+        AvatarConfigContainer.ResolveRef(this);
     }
 }
 
