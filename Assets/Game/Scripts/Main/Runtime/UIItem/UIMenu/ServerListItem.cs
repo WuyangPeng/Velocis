@@ -14,7 +14,7 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
 
         [SerializeField] private TMP_Text serverNameText;
 
-        [SerializeField] private TMP_Text playerNameText; 
+        [SerializeField] private TMP_Text playerNameText;
 
         private Action<int> _onClick;
         private int _selfIndex;
@@ -29,7 +29,7 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
             _selfIndex = index;
             _onClick = clickCallback;
             serverNameText.text = loginServerInfo.server_name;
-            playerNameText.text = loginServerInfo.getPlayerName(); 
+            playerNameText.text = loginServerInfo.getPlayerName();
             SetSelected(loginServerInfo.server_status);
         }
 
@@ -39,27 +39,27 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
             {
                 case ServerStatusType.Normal:
                 {
-                    serverNameText.color = Color.green;
+                    serverNameText.color = new Color(0.6f, 0.98f, 0.6f, 0.9f);
                     break;
                 }
                 case ServerStatusType.Busy:
                 {
-                    serverNameText.color = new Color(1f, 0.5f, 0f);
+                    serverNameText.color = new Color(1f, 0.65f, 0.31f, 0.9f);
                     break;
                 }
                 case ServerStatusType.Crowded:
                 {
-                    serverNameText.color = Color.yellow;
+                    serverNameText.color = new Color(0.96f, 0.82f, 0.25f, 0.9f);
                     break;
                 }
                 case ServerStatusType.Full:
                 {
-                    serverNameText.color = Color.red;
+                    serverNameText.color = new Color(0.8f, 0.36f, 0.36f, 0.9f);
                     break;
                 }
                 case ServerStatusType.Maintenance:
                 {
-                    serverNameText.color = Color.black;
+                    serverNameText.color = new Color(0.74f, 0.76f, 0.78f, 0.9f);
                     break;
                 }
                 default:
