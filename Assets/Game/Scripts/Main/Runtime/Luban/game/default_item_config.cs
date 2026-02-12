@@ -18,6 +18,7 @@ public sealed partial class default_item_config : Luban.BeanBase
     {
         Id = _buf.ReadInt();
         {int n0 = _buf.ReadSize(); PlayerItem = new System.Collections.Generic.List<item>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { item _e0;  _e0 = global::Celeritas.Config.item.Deserializeitem(_buf); PlayerItem.Add(_e0);}}
+        Wear = _buf.ReadBool();
     }
 
     public static default_item_config Deserializedefault_item_config(ByteBuf _buf)
@@ -33,6 +34,10 @@ public sealed partial class default_item_config : Luban.BeanBase
     /// 默认物品
     /// </summary>
     public readonly System.Collections.Generic.List<item> PlayerItem;
+    /// <summary>
+    /// 是否穿戴
+    /// </summary>
+    public readonly bool Wear;
    
     public const int __ID__ = -157206284;
     public override int GetTypeId() => __ID__;
@@ -47,6 +52,7 @@ public sealed partial class default_item_config : Luban.BeanBase
         return "{ "
         + "id:" + Id + ","
         + "playerItem:" + Luban.StringUtil.CollectionToString(PlayerItem) + ","
+        + "wear:" + Wear + ","
         + "}";
     }
 }
