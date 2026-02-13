@@ -127,6 +127,14 @@ namespace Game.Scripts.Main.Runtime.Network.Packet
             return Celeritas.CeleritasRequest.Client.Player.Item.ItemSelected;
         }
 
+        public unlock_item_request Mutable_ClientPlayer_ClientItem_UnlockItem()
+        {
+            Mutable_ClientPlayer_ClientItem();
+            Celeritas.CeleritasRequest.Client.Player.Item.UnlockItem = new unlock_item_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Item.UnlockItem;
+        }
+
         private client_develop_request Mutable_ClientPlayer_ClientDevelop()
         {
             Mutable_ClientPlayer();

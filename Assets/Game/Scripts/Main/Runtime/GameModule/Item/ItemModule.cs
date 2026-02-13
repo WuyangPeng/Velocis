@@ -26,5 +26,16 @@ namespace Game.Scripts.Main.Runtime.GameModule.Item
             var channel = GameEntry.Network.GetNetworkChannel("TcpChannel");
             channel.Send(packet);
         }
+
+        public void SendUnlockItemMessage(int itemId)
+        {
+            var packet = ProtoHelper.GetProto();
+
+            var request = packet.Mutable_ClientPlayer_ClientItem_UnlockItem();
+            request.TemplateId = itemId; 
+            
+            var channel = GameEntry.Network.GetNetworkChannel("TcpChannel");
+            channel.Send(packet);
+        }
     }
 }

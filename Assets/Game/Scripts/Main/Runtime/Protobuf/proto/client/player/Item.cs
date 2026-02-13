@@ -38,15 +38,19 @@ namespace Celeritas.Proto.Client {
             "KAsyKi5jZWxlcml0YXMucHJvdG8uY2xpZW50Lml0ZW1fc2VsZWN0ZWRfZGF0",
             "YSJtChZpdGVtX3NlbGVjdGVkX3Jlc3BvbnNlEkEKDWl0ZW1fc2VsZWN0ZWQY",
             "ASADKAsyKi5jZWxlcml0YXMucHJvdG8uY2xpZW50Lml0ZW1fc2VsZWN0ZWRf",
-            "ZGF0YRIQCghpc19sb2dpbhgCIAEoCCJoChNjbGllbnRfaXRlbV9yZXF1ZXN0",
-            "EkYKDWl0ZW1fc2VsZWN0ZWQYASABKAsyLS5jZWxlcml0YXMucHJvdG8uY2xp",
-            "ZW50Lml0ZW1fc2VsZWN0ZWRfcmVxdWVzdEgAQgkKB3BheWxvYWQi5gEKFGNs",
-            "aWVudF9pdGVtX3Jlc3BvbnNlEjUKBGl0ZW0YASABKAsyJS5jZWxlcml0YXMu",
-            "cHJvdG8uY2xpZW50Lml0ZW1fcmVzcG9uc2VIABJDCgtpdGVtX2RlbGV0ZRgC",
-            "IAEoCzIsLmNlbGVyaXRhcy5wcm90by5jbGllbnQuaXRlbV9kZWxldGVfcmVz",
-            "cG9uc2VIABJHCg1pdGVtX3NlbGVjdGVkGAMgASgLMi4uY2VsZXJpdGFzLnBy",
-            "b3RvLmNsaWVudC5pdGVtX3NlbGVjdGVkX3Jlc3BvbnNlSABCCQoHcGF5bG9h",
-            "ZGIGcHJvdG8z"));
+            "ZGF0YRIQCghpc19sb2dpbhgCIAEoCCIqChN1bmxvY2tfaXRlbV9yZXF1ZXN0",
+            "EhMKC3RlbXBsYXRlX2lkGAEgASgFIhYKFHVubG9ja19pdGVtX3Jlc3BvbnNl",
+            "IqwBChNjbGllbnRfaXRlbV9yZXF1ZXN0EkYKDWl0ZW1fc2VsZWN0ZWQYASAB",
+            "KAsyLS5jZWxlcml0YXMucHJvdG8uY2xpZW50Lml0ZW1fc2VsZWN0ZWRfcmVx",
+            "dWVzdEgAEkIKC3VubG9ja19pdGVtGAIgASgLMisuY2VsZXJpdGFzLnByb3Rv",
+            "LmNsaWVudC51bmxvY2tfaXRlbV9yZXF1ZXN0SABCCQoHcGF5bG9hZCKrAgoU",
+            "Y2xpZW50X2l0ZW1fcmVzcG9uc2USNQoEaXRlbRgBIAEoCzIlLmNlbGVyaXRh",
+            "cy5wcm90by5jbGllbnQuaXRlbV9yZXNwb25zZUgAEkMKC2l0ZW1fZGVsZXRl",
+            "GAIgASgLMiwuY2VsZXJpdGFzLnByb3RvLmNsaWVudC5pdGVtX2RlbGV0ZV9y",
+            "ZXNwb25zZUgAEkcKDWl0ZW1fc2VsZWN0ZWQYAyABKAsyLi5jZWxlcml0YXMu",
+            "cHJvdG8uY2xpZW50Lml0ZW1fc2VsZWN0ZWRfcmVzcG9uc2VIABJDCgt1bmxv",
+            "Y2tfaXRlbRgEIAEoCzIsLmNlbGVyaXRhcy5wcm90by5jbGllbnQudW5sb2Nr",
+            "X2l0ZW1fcmVzcG9uc2VIAEIJCgdwYXlsb2FkYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Celeritas.Proto.Common.ItemReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -56,8 +60,10 @@ namespace Celeritas.Proto.Client {
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_delete_response), global::Celeritas.Proto.Client.item_delete_response.Parser, new[]{ "Data" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_selected_request), global::Celeritas.Proto.Client.item_selected_request.Parser, new[]{ "ItemSelected" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.item_selected_response), global::Celeritas.Proto.Client.item_selected_response.Parser, new[]{ "ItemSelected", "IsLogin" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_item_request), global::Celeritas.Proto.Client.client_item_request.Parser, new[]{ "ItemSelected" }, new[]{ "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_item_response), global::Celeritas.Proto.Client.client_item_response.Parser, new[]{ "Item", "ItemDelete", "ItemSelected" }, new[]{ "Payload" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.unlock_item_request), global::Celeritas.Proto.Client.unlock_item_request.Parser, new[]{ "TemplateId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.unlock_item_response), global::Celeritas.Proto.Client.unlock_item_response.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_item_request), global::Celeritas.Proto.Client.client_item_request.Parser, new[]{ "ItemSelected", "UnlockItem" }, new[]{ "Payload" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_item_response), global::Celeritas.Proto.Client.client_item_response.Parser, new[]{ "Item", "ItemDelete", "ItemSelected", "UnlockItem" }, new[]{ "Payload" }, null, null, null)
           }));
     }
     #endregion
@@ -1525,6 +1531,365 @@ namespace Celeritas.Proto.Client {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class unlock_item_request : pb::IMessage<unlock_item_request>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<unlock_item_request> _parser = new pb::MessageParser<unlock_item_request>(() => new unlock_item_request());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<unlock_item_request> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public unlock_item_request() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public unlock_item_request(unlock_item_request other) : this() {
+      templateId_ = other.templateId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public unlock_item_request Clone() {
+      return new unlock_item_request(this);
+    }
+
+    /// <summary>Field number for the "template_id" field.</summary>
+    public const int TemplateIdFieldNumber = 1;
+    private int templateId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int TemplateId {
+      get { return templateId_; }
+      set {
+        templateId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as unlock_item_request);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(unlock_item_request other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (TemplateId != other.TemplateId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (TemplateId != 0) hash ^= TemplateId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (TemplateId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(TemplateId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (TemplateId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(TemplateId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (TemplateId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TemplateId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(unlock_item_request other) {
+      if (other == null) {
+        return;
+      }
+      if (other.TemplateId != 0) {
+        TemplateId = other.TemplateId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            TemplateId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            TemplateId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class unlock_item_response : pb::IMessage<unlock_item_response>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<unlock_item_response> _parser = new pb::MessageParser<unlock_item_response>(() => new unlock_item_response());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<unlock_item_response> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public unlock_item_response() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public unlock_item_response(unlock_item_response other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public unlock_item_response Clone() {
+      return new unlock_item_response(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as unlock_item_response);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(unlock_item_response other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(unlock_item_response other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class client_item_request : pb::IMessage<client_item_request>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1539,7 +1904,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1562,6 +1927,9 @@ namespace Celeritas.Proto.Client {
       switch (other.PayloadCase) {
         case PayloadOneofCase.ItemSelected:
           ItemSelected = other.ItemSelected.Clone();
+          break;
+        case PayloadOneofCase.UnlockItem:
+          UnlockItem = other.UnlockItem.Clone();
           break;
       }
 
@@ -1586,11 +1954,24 @@ namespace Celeritas.Proto.Client {
       }
     }
 
+    /// <summary>Field number for the "unlock_item" field.</summary>
+    public const int UnlockItemFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Client.unlock_item_request UnlockItem {
+      get { return payloadCase_ == PayloadOneofCase.UnlockItem ? (global::Celeritas.Proto.Client.unlock_item_request) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.UnlockItem;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
       None = 0,
       ItemSelected = 1,
+      UnlockItem = 2,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1622,6 +2003,7 @@ namespace Celeritas.Proto.Client {
         return true;
       }
       if (!object.Equals(ItemSelected, other.ItemSelected)) return false;
+      if (!object.Equals(UnlockItem, other.UnlockItem)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1631,6 +2013,7 @@ namespace Celeritas.Proto.Client {
     public override int GetHashCode() {
       int hash = 1;
       if (payloadCase_ == PayloadOneofCase.ItemSelected) hash ^= ItemSelected.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.UnlockItem) hash ^= UnlockItem.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1654,6 +2037,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(10);
         output.WriteMessage(ItemSelected);
       }
+      if (payloadCase_ == PayloadOneofCase.UnlockItem) {
+        output.WriteRawTag(18);
+        output.WriteMessage(UnlockItem);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1668,6 +2055,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(10);
         output.WriteMessage(ItemSelected);
       }
+      if (payloadCase_ == PayloadOneofCase.UnlockItem) {
+        output.WriteRawTag(18);
+        output.WriteMessage(UnlockItem);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1680,6 +2071,9 @@ namespace Celeritas.Proto.Client {
       int size = 0;
       if (payloadCase_ == PayloadOneofCase.ItemSelected) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ItemSelected);
+      }
+      if (payloadCase_ == PayloadOneofCase.UnlockItem) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UnlockItem);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1699,6 +2093,12 @@ namespace Celeritas.Proto.Client {
             ItemSelected = new global::Celeritas.Proto.Client.item_selected_request();
           }
           ItemSelected.MergeFrom(other.ItemSelected);
+          break;
+        case PayloadOneofCase.UnlockItem:
+          if (UnlockItem == null) {
+            UnlockItem = new global::Celeritas.Proto.Client.unlock_item_request();
+          }
+          UnlockItem.MergeFrom(other.UnlockItem);
           break;
       }
 
@@ -1730,6 +2130,15 @@ namespace Celeritas.Proto.Client {
             ItemSelected = subBuilder;
             break;
           }
+          case 18: {
+            global::Celeritas.Proto.Client.unlock_item_request subBuilder = new global::Celeritas.Proto.Client.unlock_item_request();
+            if (payloadCase_ == PayloadOneofCase.UnlockItem) {
+              subBuilder.MergeFrom(UnlockItem);
+            }
+            input.ReadMessage(subBuilder);
+            UnlockItem = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -1758,6 +2167,15 @@ namespace Celeritas.Proto.Client {
             ItemSelected = subBuilder;
             break;
           }
+          case 18: {
+            global::Celeritas.Proto.Client.unlock_item_request subBuilder = new global::Celeritas.Proto.Client.unlock_item_request();
+            if (payloadCase_ == PayloadOneofCase.UnlockItem) {
+              subBuilder.MergeFrom(UnlockItem);
+            }
+            input.ReadMessage(subBuilder);
+            UnlockItem = subBuilder;
+            break;
+          }
         }
       }
     }
@@ -1780,7 +2198,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Celeritas.Proto.Client.ItemReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1809,6 +2227,9 @@ namespace Celeritas.Proto.Client {
           break;
         case PayloadOneofCase.ItemSelected:
           ItemSelected = other.ItemSelected.Clone();
+          break;
+        case PayloadOneofCase.UnlockItem:
+          UnlockItem = other.UnlockItem.Clone();
           break;
       }
 
@@ -1857,6 +2278,18 @@ namespace Celeritas.Proto.Client {
       }
     }
 
+    /// <summary>Field number for the "unlock_item" field.</summary>
+    public const int UnlockItemFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Client.unlock_item_response UnlockItem {
+      get { return payloadCase_ == PayloadOneofCase.UnlockItem ? (global::Celeritas.Proto.Client.unlock_item_response) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.UnlockItem;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
@@ -1864,6 +2297,7 @@ namespace Celeritas.Proto.Client {
       Item = 1,
       ItemDelete = 2,
       ItemSelected = 3,
+      UnlockItem = 4,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1897,6 +2331,7 @@ namespace Celeritas.Proto.Client {
       if (!object.Equals(Item, other.Item)) return false;
       if (!object.Equals(ItemDelete, other.ItemDelete)) return false;
       if (!object.Equals(ItemSelected, other.ItemSelected)) return false;
+      if (!object.Equals(UnlockItem, other.UnlockItem)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1908,6 +2343,7 @@ namespace Celeritas.Proto.Client {
       if (payloadCase_ == PayloadOneofCase.Item) hash ^= Item.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.ItemDelete) hash ^= ItemDelete.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.ItemSelected) hash ^= ItemSelected.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.UnlockItem) hash ^= UnlockItem.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1939,6 +2375,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(26);
         output.WriteMessage(ItemSelected);
       }
+      if (payloadCase_ == PayloadOneofCase.UnlockItem) {
+        output.WriteRawTag(34);
+        output.WriteMessage(UnlockItem);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1961,6 +2401,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(26);
         output.WriteMessage(ItemSelected);
       }
+      if (payloadCase_ == PayloadOneofCase.UnlockItem) {
+        output.WriteRawTag(34);
+        output.WriteMessage(UnlockItem);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1979,6 +2423,9 @@ namespace Celeritas.Proto.Client {
       }
       if (payloadCase_ == PayloadOneofCase.ItemSelected) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ItemSelected);
+      }
+      if (payloadCase_ == PayloadOneofCase.UnlockItem) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UnlockItem);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2010,6 +2457,12 @@ namespace Celeritas.Proto.Client {
             ItemSelected = new global::Celeritas.Proto.Client.item_selected_response();
           }
           ItemSelected.MergeFrom(other.ItemSelected);
+          break;
+        case PayloadOneofCase.UnlockItem:
+          if (UnlockItem == null) {
+            UnlockItem = new global::Celeritas.Proto.Client.unlock_item_response();
+          }
+          UnlockItem.MergeFrom(other.UnlockItem);
           break;
       }
 
@@ -2059,6 +2512,15 @@ namespace Celeritas.Proto.Client {
             ItemSelected = subBuilder;
             break;
           }
+          case 34: {
+            global::Celeritas.Proto.Client.unlock_item_response subBuilder = new global::Celeritas.Proto.Client.unlock_item_response();
+            if (payloadCase_ == PayloadOneofCase.UnlockItem) {
+              subBuilder.MergeFrom(UnlockItem);
+            }
+            input.ReadMessage(subBuilder);
+            UnlockItem = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -2103,6 +2565,15 @@ namespace Celeritas.Proto.Client {
             }
             input.ReadMessage(subBuilder);
             ItemSelected = subBuilder;
+            break;
+          }
+          case 34: {
+            global::Celeritas.Proto.Client.unlock_item_response subBuilder = new global::Celeritas.Proto.Client.unlock_item_response();
+            if (payloadCase_ == PayloadOneofCase.UnlockItem) {
+              subBuilder.MergeFrom(UnlockItem);
+            }
+            input.ReadMessage(subBuilder);
+            UnlockItem = subBuilder;
             break;
           }
         }

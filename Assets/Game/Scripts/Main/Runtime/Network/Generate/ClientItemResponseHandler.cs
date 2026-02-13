@@ -59,6 +59,20 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
 
                     break;
                 }
+                case client_item_response.PayloadOneofCase.UnlockItem:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<unlock_item_response>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.UnlockItem);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'unlock_item'.");
+                    }
+
+                    break;
+                }
                 case client_item_response.PayloadOneofCase.None:
                 {
                     break;
