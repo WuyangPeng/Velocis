@@ -12,28 +12,27 @@ using Luban;
 
 namespace Celeritas.Config.game
 {
-public sealed partial class avatar_config : Luban.BeanBase
+public sealed partial class hero_config : Luban.BeanBase
 {
-    public avatar_config(ByteBuf _buf) 
+    public hero_config(ByteBuf _buf) 
     {
         ItemTemplateId = _buf.ReadInt();
         Quality = (quality_type)_buf.ReadInt();
-        Type = (avatar_type)_buf.ReadInt();
+        Type = (hero_type)_buf.ReadInt();
         IconRes = _buf.ReadString();
         FullRes = _buf.ReadString();
         Hidden = _buf.ReadBool();
-        IsOpen = _buf.ReadBool();
         Desc = _buf.ReadString();
         {int n0 = _buf.ReadSize(); Attribute = new System.Collections.Generic.List<attribute_bonus>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { attribute_bonus _e0;  _e0 = global::Celeritas.Config.attribute_bonus.Deserializeattribute_bonus(_buf); Attribute.Add(_e0);}}
     }
 
-    public static avatar_config Deserializeavatar_config(ByteBuf _buf)
+    public static hero_config Deserializehero_config(ByteBuf _buf)
     {
-        return new game.avatar_config(_buf);
+        return new game.hero_config(_buf);
     }
 
     /// <summary>
-    /// 头像编号
+    /// 英雄编号
     /// </summary>
     public readonly int ItemTemplateId;
     /// <summary>
@@ -43,7 +42,7 @@ public sealed partial class avatar_config : Luban.BeanBase
     /// <summary>
     /// 类型
     /// </summary>
-    public readonly avatar_type Type;
+    public readonly hero_type Type;
     /// <summary>
     /// 小图资源路径
     /// </summary>
@@ -57,10 +56,6 @@ public sealed partial class avatar_config : Luban.BeanBase
     /// </summary>
     public readonly bool Hidden;
     /// <summary>
-    /// 英雄是否开放
-    /// </summary>
-    public readonly bool IsOpen;
-    /// <summary>
     /// 获取途径描述文案
     /// </summary>
     public readonly string Desc;
@@ -69,7 +64,7 @@ public sealed partial class avatar_config : Luban.BeanBase
     /// </summary>
     public readonly System.Collections.Generic.List<attribute_bonus> Attribute;
    
-    public const int __ID__ = -2081427476;
+    public const int __ID__ = -1265808597;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(tables tables)
@@ -86,7 +81,6 @@ public sealed partial class avatar_config : Luban.BeanBase
         + "iconRes:" + IconRes + ","
         + "fullRes:" + FullRes + ","
         + "hidden:" + Hidden + ","
-        + "isOpen:" + IsOpen + ","
         + "desc:" + Desc + ","
         + "attribute:" + Luban.StringUtil.CollectionToString(Attribute) + ","
         + "}";

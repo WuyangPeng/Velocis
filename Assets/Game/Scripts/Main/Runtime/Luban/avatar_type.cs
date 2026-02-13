@@ -21,6 +21,18 @@ namespace Celeritas.Config
         /// 普通
         /// </summary>
         common = 1,
+        /// <summary>
+        /// 帝王
+        /// </summary>
+        emperor = 2,
+        /// <summary>
+        /// 后宫
+        /// </summary>
+        harem = 3,
+        /// <summary>
+        /// 名臣
+        /// </summary>
+        minister = 4,
     }
 
 } 

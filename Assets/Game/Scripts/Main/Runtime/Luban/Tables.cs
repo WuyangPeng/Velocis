@@ -38,6 +38,14 @@ public partial class tables
     /// </summary>
     public game.default_item_config_container DefaultItemConfigContainer {get; }
     /// <summary>
+    /// 头像
+    /// </summary>
+    public game.avatar_config_container AvatarConfigContainer {get; }
+    /// <summary>
+    /// 英雄
+    /// </summary>
+    public game.hero_config_container HeroConfigContainer {get; }
+    /// <summary>
     /// 养成
     /// </summary>
     public game.develop_config_container DevelopConfigContainer {get; }
@@ -49,10 +57,6 @@ public partial class tables
     /// 任务
     /// </summary>
     public game.task_config_container TaskConfigContainer {get; }
-    /// <summary>
-    /// 头像
-    /// </summary>
-    public game.avatar_config_container AvatarConfigContainer {get; }
 
     public tables(System.Func<string, ByteBuf> loader)
     {
@@ -62,10 +66,11 @@ public partial class tables
         RenameCostConfigContainer = new game.rename_cost_config_container(loader("rename_cost_config_container"));
         ItemConfigContainer = new game.item_config_container(loader("item_config_container"));
         DefaultItemConfigContainer = new game.default_item_config_container(loader("default_item_config_container"));
+        AvatarConfigContainer = new game.avatar_config_container(loader("avatar_config_container"));
+        HeroConfigContainer = new game.hero_config_container(loader("hero_config_container"));
         DevelopConfigContainer = new game.develop_config_container(loader("develop_config_container"));
         DevelopLevelConfigContainer = new game.develop_level_config_container(loader("develop_level_config_container"));
         TaskConfigContainer = new game.task_config_container(loader("task_config_container"));
-        AvatarConfigContainer = new game.avatar_config_container(loader("avatar_config_container"));
         ResolveRef();
     }
     
@@ -77,10 +82,11 @@ public partial class tables
         RenameCostConfigContainer.ResolveRef(this);
         ItemConfigContainer.ResolveRef(this);
         DefaultItemConfigContainer.ResolveRef(this);
+        AvatarConfigContainer.ResolveRef(this);
+        HeroConfigContainer.ResolveRef(this);
         DevelopConfigContainer.ResolveRef(this);
         DevelopLevelConfigContainer.ResolveRef(this);
         TaskConfigContainer.ResolveRef(this);
-        AvatarConfigContainer.ResolveRef(this);
     }
 }
 

@@ -11,24 +11,28 @@
 
 namespace Celeritas.Config
 { 
-    public enum task_event_type
+    public enum hero_type
     {
         /// <summary>
         /// 无
         /// </summary>
         none = 0,
         /// <summary>
-        /// 击杀怪物
+        /// 普通
         /// </summary>
-        kill_monster = 1,
+        common = 1,
         /// <summary>
-        /// 升级
+        /// 帝王
         /// </summary>
-        upgrade_level = 2,
+        emperor = 2,
         /// <summary>
-        /// 拥有物品
+        /// 后宫
         /// </summary>
-        hold_item = 3,
+        harem = 3,
+        /// <summary>
+        /// 名臣
+        /// </summary>
+        minister = 4,
     }
 
 } 

@@ -21,7 +21,11 @@ namespace Celeritas.Config
         /// 每日
         /// </summary>
         daily = 1,
-        max = 2,
+        /// <summary>
+        /// 头像
+        /// </summary>
+        avatar = 2,
+        max = 3,
     }
 
 } 
