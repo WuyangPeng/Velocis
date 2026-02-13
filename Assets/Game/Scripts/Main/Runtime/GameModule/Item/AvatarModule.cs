@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Celeritas.Config;
 using Game.Scripts.Main.Runtime.GameModule.Base;
+using Game.Scripts.Main.Runtime.RuntimeException;
 
 namespace Game.Scripts.Main.Runtime.GameModule.Item
 {
@@ -8,6 +11,16 @@ namespace Game.Scripts.Main.Runtime.GameModule.Item
     {
         public Dictionary<long, AvatarData> Items { get; } = new();
         private Dictionary<long, ItemSelectedData> SelectedItems { get; } = new();
+
+        public AvatarData GetSelectedAvatar()
+        {
+            foreach (var itemSelectedData in SelectedItems.Where(itemSelectedData => itemSelectedData.Value.ItemType == item_type.avatar))
+            {
+                return Items.GetValueOrDefault(itemSelectedData.Value.Id);
+            }
+
+            throw new GameException("avatar is empty.");
+        }
 
         public void ClearItems()
         {

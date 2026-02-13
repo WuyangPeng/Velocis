@@ -2,16 +2,31 @@
 {
     public class AvatarData
     {
-        private InventoryData Inventory { get; set; }
+        public AvatarData()
+        {
+            Inventory = new InventoryData();
+        }
 
-        public AvatarData() { Inventory = new InventoryData(); }
+        public AvatarData(InventoryData inventory)
+        {
+            Inventory = inventory ?? new InventoryData();
+        }
 
-        public AvatarData(InventoryData inventory) { Inventory = inventory ?? new InventoryData(); }
+        public InventoryData Inventory { get; set; }
 
-        public AvatarData Clone() => new AvatarData(Inventory?.Clone());
+        public AvatarData Clone()
+        {
+            return new AvatarData(Inventory?.Clone());
+        }
 
-        public void Reset() { Inventory?.Reset(); }
+        public void Reset()
+        {
+            Inventory?.Reset();
+        }
 
-        public override string ToString() => $"AvatarData(Inventory={Inventory})";
+        public override string ToString()
+        {
+            return $"AvatarData(Inventory={Inventory})";
+        }
     }
 }

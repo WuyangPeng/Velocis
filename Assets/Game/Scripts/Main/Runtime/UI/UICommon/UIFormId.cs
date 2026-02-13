@@ -135,6 +135,11 @@
         /// <summary>
         ///     英雄。
         /// </summary>
-        HeroForm = 405
+        HeroForm = 405,
+
+        /// <summary>
+        ///     头像。
+        /// </summary>
+        AvatarForm = 406
     }
 }

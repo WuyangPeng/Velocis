@@ -20,7 +20,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Item
 
         public long Id { get; private set; }
 
-        private item_type ItemType { get; set; }
+        public item_type ItemType { get; set; }
 
         private item_selected_child_type ChildType { get; set; }
 

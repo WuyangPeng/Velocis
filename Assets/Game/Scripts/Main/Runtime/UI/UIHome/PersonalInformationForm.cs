@@ -1,8 +1,10 @@
 ﻿using Game.Scripts.Main.Runtime.Event;
+using Game.Scripts.Main.Runtime.GameModule.Item;
 using Game.Scripts.Main.Runtime.GameModule.Role;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using Game.Scripts.Main.Runtime.UIItem.UICreate;
 using GameFramework.Event;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +22,8 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         [SerializeField] private Text serverName;
 
         [SerializeField] private Text version;
+
+        [SerializeField] private AvatarItem avatarItem;
 
         private ProcedureHome procedureHome;
 
@@ -43,6 +47,19 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             version.text = "1.0.0";
 
             GameEntry.Event.Subscribe(ChangeNameEventArgs.EventId, OnSetTextSuccess);
+
+            var avatarModule = GameEntry.ModuleComponent.GetModule<AvatarModule>();
+            var selectedAvatar = avatarModule.GetSelectedAvatar();
+            if (selectedAvatar == null)
+            {
+                return;
+            }
+
+            var avatarConfig = GameEntry.GameConfig.GetGameConfig().GetTables().AvatarConfigContainer.Get(selectedAvatar.Inventory.TemplateId);
+            if (avatarConfig != null)
+            {
+                avatarItem.SetSprite(avatarConfig.IconRes);
+            }
         }
 
         private void OnSetTextSuccess(object sender, GameEventArgs e)
@@ -73,6 +90,11 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         public void OnSetButtonClick()
         {
             GameEntry.UI.OpenUIForm(UIFormId.SettingForm);
+        }
+
+        public void OnAvatarButtonClick()
+        {
+            procedureHome.OpenUIForm(UIFormId.AvatarForm);
         }
 
         public void OnChangeNameButtonClick()
