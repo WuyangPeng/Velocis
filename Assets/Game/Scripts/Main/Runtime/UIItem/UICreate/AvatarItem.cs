@@ -1,5 +1,5 @@
-﻿using System;
-using Game.Scripts.Main.Runtime.DataTable;
+﻿﻿using System;
+using Celeritas.Config.game;
 using GameFramework.Resource;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -36,7 +36,7 @@ namespace Game.Scripts.Main.Runtime.UIItem.UICreate
                     (assetName, status, errorMessage, userData) => { Log.Error($"头像加载失败:{errorMessage}"); }));
         }
 
-        public void SetData(int index, DRAvatar data, Action<int> clickCallback)
+        public void SetData(int index, avatar_config data, Action<int> clickCallback)
         {
             selfIndex = index;
             onClick = clickCallback;
@@ -47,7 +47,7 @@ namespace Game.Scripts.Main.Runtime.UIItem.UICreate
                 avatarHandle = null;
             }
 
-            GameEntry.Resource.LoadAsset(data.Path, typeof(Sprite), 0,
+            GameEntry.Resource.LoadAsset(data.IconRes, typeof(Sprite), 0,
                 new LoadAssetCallbacks(
                     (assetName, asset, duration, userData) =>
                     {
@@ -62,6 +62,12 @@ namespace Game.Scripts.Main.Runtime.UIItem.UICreate
             imageBackground.color = selected ? Color.yellow : Color.white;
         }
 
+        public void SetGrayscale(bool isGrayscale)
+        {
+            imageAvatar.color = isGrayscale ? Color.gray : Color.white;
+        }
+       
+
         public override void OnRecycle()
         {
             if (avatarHandle != null)
@@ -71,6 +77,7 @@ namespace Game.Scripts.Main.Runtime.UIItem.UICreate
             }
 
             imageAvatar.sprite = null;
+            imageAvatar.color = Color.white;
             onClick = null;
         }
     }

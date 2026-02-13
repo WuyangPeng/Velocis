@@ -1,11 +1,15 @@
 ﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
+using UnityEngine;
 using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.UI.UIHome
 {
     public class AvatarForm : UGuiForm
     {
+        [SerializeField] private AvatarScrollDisplay avatarScrollDisplay;
+
         private ProcedureHome procedureHome;
 
         protected override void OnOpen(object userData)
