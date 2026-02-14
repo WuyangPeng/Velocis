@@ -1,5 +1,6 @@
 ﻿using Celeritas.Proto.Client;
 using Celeritas.Proto.Common;
+using Game.Scripts.Main.Runtime.Event;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Network.PacketHandler;
 using UnityGameFramework.Runtime;
@@ -16,6 +17,8 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
             userModule.SetUserId(header.ToGateway.UserId);
 
             Log.Info("login_.CurrentTime ='{0}'.", message.CurrentTime);
+
+            GameEntry.Event.Fire(this, LoginProgressEventArgs.Create(0.5f));
         }
     }
 }
