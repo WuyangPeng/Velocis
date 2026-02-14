@@ -71,6 +71,9 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         private void OnServerListClose(object sender, GameEventArgs e)
         {
             RemoveUIForm(UIFormId.ServerListForm);
+
+            var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+            accountModule.Clear();
         }
 
         private static void LoadAccountData()
