@@ -51,6 +51,13 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
             _currentLoginServerInfo = null;
             _loginServerInfo.Clear();
             _token = new Token();
+            currentIndex = -1;
+        }
+
+        public void ClearCurrentLogin()
+        {
+            _currentLoginServerInfo = null;
+            currentIndex = -1;
         }
 
         public int getCurrentIndex()

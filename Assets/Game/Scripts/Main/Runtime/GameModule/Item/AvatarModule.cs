@@ -16,7 +16,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Item
         {
             foreach (var itemSelectedData in SelectedItems.Where(itemSelectedData => itemSelectedData.Value.ItemType == item_type.avatar))
             {
-                return Items.GetValueOrDefault(itemSelectedData.Value.Id);
+                return Items.GetValueOrDefault(itemSelectedData.Value.SelectedId);
             }
 
             throw new GameException("avatar is empty.");

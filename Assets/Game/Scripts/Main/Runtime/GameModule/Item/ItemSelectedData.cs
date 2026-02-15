@@ -28,7 +28,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Item
 
         private int Parameter { get; set; }
 
-        private long SelectedId { get; set; }
+        public long SelectedId { get; set; }
 
         public ItemSelectedData Clone()
         {

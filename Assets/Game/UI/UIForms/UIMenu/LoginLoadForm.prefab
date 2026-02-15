@@ -371,30 +371,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 91683457587702479}
     m_Modifications:
-    - target: {fileID: 7896438908710788839, guid: a155a3feafef1814cb7d86112f294910,
-        type: 3}
-      propertyPath: m_Value
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7896438908721344267, guid: a155a3feafef1814cb7d86112f294910,
         type: 3}
       propertyPath: m_Name
       value: LoginLoadSlider
-      objectReference: {fileID: 0}
-    - target: {fileID: 7896438908735343809, guid: a155a3feafef1814cb7d86112f294910,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7896438908735343809, guid: a155a3feafef1814cb7d86112f294910,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7896438908735343809, guid: a155a3feafef1814cb7d86112f294910,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7896438908735393153, guid: a155a3feafef1814cb7d86112f294910,
         type: 3}
