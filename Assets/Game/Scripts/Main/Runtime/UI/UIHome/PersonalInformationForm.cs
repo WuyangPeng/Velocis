@@ -60,6 +60,19 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             {
                 avatarItem.SetSprite(avatarConfig.IconRes);
             }
+
+            var frameModule = GameEntry.ModuleComponent.GetModule<FrameModule>();
+            var selectedFrame = frameModule.GetSelectedFrame();
+            if (selectedFrame == null)
+            {
+                return;
+            }
+
+            var frameConfig = GameEntry.GameConfig.GetGameConfig().GetTables().FrameConfigContainer.Get(selectedFrame.Inventory.TemplateId);
+            if (frameConfig != null)
+            {
+                avatarItem.SetFrameSprite(frameConfig.IconRes);
+            }
         }
 
         private void OnSetTextSuccess(object sender, GameEventArgs e)
