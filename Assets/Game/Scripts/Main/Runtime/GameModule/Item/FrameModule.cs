@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Celeritas.Config;
 using Game.Scripts.Main.Runtime.GameModule.Base;
+using Game.Scripts.Main.Runtime.RuntimeException;
 
 namespace Game.Scripts.Main.Runtime.GameModule.Item
 {
@@ -33,6 +36,16 @@ namespace Game.Scripts.Main.Runtime.GameModule.Item
         public void RemoveSelectedItem(long id)
         {
             SelectedItems.Remove(id);
+        }
+
+        public FrameData GetSelectedFrame()
+        {
+            foreach (var itemSelectedData in SelectedItems.Where(itemSelectedData => itemSelectedData.Value.ItemType == item_type.frame))
+            {
+                return Items.GetValueOrDefault(itemSelectedData.Value.SelectedId);
+            }
+
+            throw new GameException("frame is empty.");
         }
     }
 }

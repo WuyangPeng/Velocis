@@ -12,9 +12,9 @@ using Luban;
 
 namespace Celeritas.Config.game
 {
-public sealed partial class avatar_config : Luban.BeanBase
+public sealed partial class frame_config : Luban.BeanBase
 {
-    public avatar_config(ByteBuf _buf) 
+    public frame_config(ByteBuf _buf) 
     {
         ItemTemplateId = _buf.ReadInt();
         Quality = (quality_type)_buf.ReadInt();
@@ -27,13 +27,13 @@ public sealed partial class avatar_config : Luban.BeanBase
         {int n0 = _buf.ReadSize(); Attribute = new System.Collections.Generic.List<attribute_bonus>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { attribute_bonus _e0;  _e0 = global::Celeritas.Config.attribute_bonus.Deserializeattribute_bonus(_buf); Attribute.Add(_e0);}}
     }
 
-    public static avatar_config Deserializeavatar_config(ByteBuf _buf)
+    public static frame_config Deserializeframe_config(ByteBuf _buf)
     {
-        return new game.avatar_config(_buf);
+        return new game.frame_config(_buf);
     }
 
     /// <summary>
-    /// 头像编号
+    /// 头像框编号
     /// </summary>
     public readonly int ItemTemplateId;
     /// <summary>
@@ -69,7 +69,7 @@ public sealed partial class avatar_config : Luban.BeanBase
     /// </summary>
     public readonly System.Collections.Generic.List<attribute_bonus> Attribute;
    
-    public const int __ID__ = -2081427476;
+    public const int __ID__ = -2093864240;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(tables tables)

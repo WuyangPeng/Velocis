@@ -2,7 +2,7 @@
 {
     public class FrameData
     {
-        private InventoryData Inventory { get; set; }
+        public InventoryData Inventory { get; set; }
 
         public FrameData() { Inventory = new InventoryData(); }
 

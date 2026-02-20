@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using Celeritas.Config.game;
 using GameFramework.Resource;
 using UnityEngine;
@@ -22,6 +22,14 @@ namespace Game.Scripts.Main.Runtime.UIItem.UICreate
         public void OnPointerClick(PointerEventData eventData)
         {
             onClick?.Invoke(selfIndex);
+        }
+
+        public void SetFrameSprite(string path)
+        {
+            GameEntry.Resource.LoadAsset(path, typeof(Sprite), 0,
+                new LoadAssetCallbacks(
+                    (assetName, asset, duration, userData) => { imageBackground.sprite = asset as Sprite; },
+                    (assetName, status, errorMessage, userData) => { Log.Error($"头像加载失败:{errorMessage}"); }));
         }
 
         public void SetSprite(string path)
@@ -66,7 +74,7 @@ namespace Game.Scripts.Main.Runtime.UIItem.UICreate
         {
             imageAvatar.color = isGrayscale ? Color.gray : Color.white;
         }
-       
+
 
         public override void OnRecycle()
         {

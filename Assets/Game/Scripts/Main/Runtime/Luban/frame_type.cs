@@ -11,25 +11,16 @@
 
 namespace Celeritas.Config
 { 
-    public enum task_component_type
+    public enum frame_type
     {
         /// <summary>
-        /// 主线
+        /// 无
         /// </summary>
-        main = 0,
+        none = 0,
         /// <summary>
-        /// 每日
+        /// 普通
         /// </summary>
-        daily = 1,
-        /// <summary>
-        /// 头像
-        /// </summary>
-        avatar = 2,
-        /// <summary>
-        /// 头像框
-        /// </summary>
-        frame = 3,
-        max = 4,
+        common = 1,
     }
 
 } 
