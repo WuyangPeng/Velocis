@@ -45,6 +45,10 @@ namespace Celeritas.Config
         /// 英雄
         /// </summary>
         hero = 7,
+        /// <summary>
+        /// 经验
+        /// </summary>
+        exp = 8,
     }
 
 } 

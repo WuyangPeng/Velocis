@@ -22,6 +22,8 @@ public sealed partial class item_config : Luban.BeanBase
         Quality = (quality_type)_buf.ReadInt();
         Squares = _buf.ReadBool();
         UnlockTaskId = _buf.ReadInt();
+        Parameter0 = _buf.ReadInt();
+        Parameter1 = _buf.ReadInt();
     }
 
     public static item_config Deserializeitem_config(ByteBuf _buf)
@@ -53,6 +55,14 @@ public sealed partial class item_config : Luban.BeanBase
     /// 解锁条件id
     /// </summary>
     public readonly int UnlockTaskId;
+    /// <summary>
+    /// 关联参数0
+    /// </summary>
+    public readonly int Parameter0;
+    /// <summary>
+    /// 关联参数1
+    /// </summary>
+    public readonly int Parameter1;
    
     public const int __ID__ = 1115922930;
     public override int GetTypeId() => __ID__;
@@ -70,6 +80,8 @@ public sealed partial class item_config : Luban.BeanBase
         + "quality:" + Quality + ","
         + "squares:" + Squares + ","
         + "unlockTaskId:" + UnlockTaskId + ","
+        + "parameter0:" + Parameter0 + ","
+        + "parameter1:" + Parameter1 + ","
         + "}";
     }
 }

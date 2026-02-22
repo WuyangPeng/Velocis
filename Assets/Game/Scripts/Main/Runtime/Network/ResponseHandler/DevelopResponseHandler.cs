@@ -13,6 +13,9 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
     public class DevelopResponseHandler : CeleritasHandlerBase<develop_response>
     {
         private HeroDevelopModule _heroDevelopModule;
+        private RoleDevelopModule _roleDevelopModule;
+        private VipDevelopModule _vipDevelopModule;
+
 
         public override void Handle(object sender, header header, develop_response message)
         {
@@ -26,7 +29,21 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
                 return;
             }
 
+            if (message.IsLogin)
+            {
+                ClearAllDevelopModules();
+            }
+
             StoreDevelopData(message.Develop);
+        }
+
+        private void ClearAllDevelopModules()
+        {
+            _roleDevelopModule?.ClearItems();
+            _vipDevelopModule?.ClearItems();
+            _heroDevelopModule?.ClearItems();
+
+            Log.Info("DevelopResponse: cleared all module item collections due to login refresh (IsLogin=true).");
         }
 
         private bool EnsureModule()
@@ -35,6 +52,22 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
             if (moduleComponent == null)
             {
                 Log.Warning("ModuleComponent is null in DevelopResponseHandler.EnsureModule.");
+                return false;
+            }
+
+            _roleDevelopModule ??= moduleComponent.GetModule<RoleDevelopModule>();
+
+            if (_roleDevelopModule == null)
+            {
+                Log.Warning("RoleDevelopModule is null in DevelopResponseHandler.EnsureModule.");
+                return false;
+            }
+
+            _vipDevelopModule ??= moduleComponent.GetModule<VipDevelopModule>();
+
+            if (_vipDevelopModule == null)
+            {
+                Log.Warning("VipDevelopModule is null in DevelopResponseHandler.EnsureModule.");
                 return false;
             }
 
@@ -77,6 +110,16 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
 
             switch ((develop_system_type)develop.SystemId)
             {
+                case develop_system_type.role:
+                {
+                    _roleDevelopModule.Items[key] = data;
+                    break;
+                }
+                case develop_system_type.vip:
+                {
+                    _vipDevelopModule.Items[key] = data;
+                    break;
+                }
                 case develop_system_type.hero:
                 {
                     _heroDevelopModule.Items[key] = data;

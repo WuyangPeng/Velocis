@@ -18,9 +18,17 @@ namespace Celeritas.Config
         /// </summary>
         none = 0,
         /// <summary>
+        /// 角色
+        /// </summary>
+        role = 1,
+        /// <summary>
+        /// vip
+        /// </summary>
+        vip = 2,
+        /// <summary>
         /// 英雄
         /// </summary>
-        hero = 1,
+        hero = 3,
     }
 
 } 

@@ -17,8 +17,7 @@ public sealed partial class develop_level_config : Luban.BeanBase
     public develop_level_config(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
-        DevelopSystemType = (develop_system_type)_buf.ReadInt();
-        DevelopSubType = (develop_sub_type)_buf.ReadInt();
+        DevelopId = _buf.ReadInt();
         Level = _buf.ReadInt();
         {int n0 = _buf.ReadSize(); PlayerItem = new System.Collections.Generic.List<item>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { item _e0;  _e0 = global::Celeritas.Config.item.Deserializeitem(_buf); PlayerItem.Add(_e0);}}
     }
@@ -32,8 +31,7 @@ public sealed partial class develop_level_config : Luban.BeanBase
     /// id
     /// </summary>
     public readonly int Id;
-    public readonly develop_system_type DevelopSystemType;
-    public readonly develop_sub_type DevelopSubType;
+    public readonly int DevelopId;
     public readonly int Level;
     public readonly System.Collections.Generic.List<item> PlayerItem;
    
@@ -49,8 +47,7 @@ public sealed partial class develop_level_config : Luban.BeanBase
     {
         return "{ "
         + "id:" + Id + ","
-        + "developSystemType:" + DevelopSystemType + ","
-        + "developSubType:" + DevelopSubType + ","
+        + "developId:" + DevelopId + ","
         + "level:" + Level + ","
         + "playerItem:" + Luban.StringUtil.CollectionToString(PlayerItem) + ","
         + "}";

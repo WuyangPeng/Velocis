@@ -27,30 +27,31 @@ namespace Celeritas.Proto.Client {
             "CiFwcm90by9jbGllbnQvcGxheWVyL2RldmVsb3AucHJvdG8SFmNlbGVyaXRh",
             "cy5wcm90by5jbGllbnQiUgoMZGV2ZWxvcF9kYXRhEhEKCXN5c3RlbV9pZBgB",
             "IAEoBRITCgtpbnN0YW5jZV9pZBgCIAEoAxINCgVsZXZlbBgDIAEoBRILCgNl",
-            "eHAYBCABKAMiSQoQZGV2ZWxvcF9yZXNwb25zZRI1CgdkZXZlbG9wGAEgAygL",
-            "MiQuY2VsZXJpdGFzLnByb3RvLmNsaWVudC5kZXZlbG9wX2RhdGEiTgoVZGV2",
-            "ZWxvcF9sZXZlbF9yZXF1ZXN0EjUKB2RldmVsb3AYASABKAsyJC5jZWxlcml0",
-            "YXMucHJvdG8uY2xpZW50LmRldmVsb3BfZGF0YSJPChZkZXZlbG9wX2xldmVs",
-            "X3Jlc3BvbnNlEjUKB2RldmVsb3AYASABKAsyJC5jZWxlcml0YXMucHJvdG8u",
-            "Y2xpZW50LmRldmVsb3BfZGF0YSJOChVkZXZlbG9wX3Jlc2V0X3JlcXVlc3QS",
-            "NQoHZGV2ZWxvcBgBIAEoCzIkLmNlbGVyaXRhcy5wcm90by5jbGllbnQuZGV2",
-            "ZWxvcF9kYXRhIk8KFmRldmVsb3BfcmVzZXRfcmVzcG9uc2USNQoHZGV2ZWxv",
-            "cBgBIAEoCzIkLmNlbGVyaXRhcy5wcm90by5jbGllbnQuZGV2ZWxvcF9kYXRh",
-            "IrMBChZjbGllbnRfZGV2ZWxvcF9yZXF1ZXN0EkYKDWRldmVsb3BfbGV2ZWwY",
-            "ASABKAsyLS5jZWxlcml0YXMucHJvdG8uY2xpZW50LmRldmVsb3BfbGV2ZWxf",
-            "cmVxdWVzdEgAEkYKDWRldmVsb3BfcmVzZXQYAiABKAsyLS5jZWxlcml0YXMu",
-            "cHJvdG8uY2xpZW50LmRldmVsb3BfcmVzZXRfcmVxdWVzdEgAQgkKB3BheWxv",
-            "YWQi8wEKF2NsaWVudF9kZXZlbG9wX3Jlc3BvbnNlEjsKB2RldmVsb3AYASAB",
-            "KAsyKC5jZWxlcml0YXMucHJvdG8uY2xpZW50LmRldmVsb3BfcmVzcG9uc2VI",
-            "ABJHCg1kZXZlbG9wX2xldmVsGAIgASgLMi4uY2VsZXJpdGFzLnByb3RvLmNs",
-            "aWVudC5kZXZlbG9wX2xldmVsX3Jlc3BvbnNlSAASRwoNZGV2ZWxvcF9yZXNl",
-            "dBgDIAEoCzIuLmNlbGVyaXRhcy5wcm90by5jbGllbnQuZGV2ZWxvcF9yZXNl",
-            "dF9yZXNwb25zZUgAQgkKB3BheWxvYWRiBnByb3RvMw=="));
+            "eHAYBCABKAMiWwoQZGV2ZWxvcF9yZXNwb25zZRI1CgdkZXZlbG9wGAEgAygL",
+            "MiQuY2VsZXJpdGFzLnByb3RvLmNsaWVudC5kZXZlbG9wX2RhdGESEAoIaXNf",
+            "bG9naW4YAiABKAgiTgoVZGV2ZWxvcF9sZXZlbF9yZXF1ZXN0EjUKB2RldmVs",
+            "b3AYASABKAsyJC5jZWxlcml0YXMucHJvdG8uY2xpZW50LmRldmVsb3BfZGF0",
+            "YSJPChZkZXZlbG9wX2xldmVsX3Jlc3BvbnNlEjUKB2RldmVsb3AYASABKAsy",
+            "JC5jZWxlcml0YXMucHJvdG8uY2xpZW50LmRldmVsb3BfZGF0YSJOChVkZXZl",
+            "bG9wX3Jlc2V0X3JlcXVlc3QSNQoHZGV2ZWxvcBgBIAEoCzIkLmNlbGVyaXRh",
+            "cy5wcm90by5jbGllbnQuZGV2ZWxvcF9kYXRhIk8KFmRldmVsb3BfcmVzZXRf",
+            "cmVzcG9uc2USNQoHZGV2ZWxvcBgBIAEoCzIkLmNlbGVyaXRhcy5wcm90by5j",
+            "bGllbnQuZGV2ZWxvcF9kYXRhIrMBChZjbGllbnRfZGV2ZWxvcF9yZXF1ZXN0",
+            "EkYKDWRldmVsb3BfbGV2ZWwYASABKAsyLS5jZWxlcml0YXMucHJvdG8uY2xp",
+            "ZW50LmRldmVsb3BfbGV2ZWxfcmVxdWVzdEgAEkYKDWRldmVsb3BfcmVzZXQY",
+            "AiABKAsyLS5jZWxlcml0YXMucHJvdG8uY2xpZW50LmRldmVsb3BfcmVzZXRf",
+            "cmVxdWVzdEgAQgkKB3BheWxvYWQi8wEKF2NsaWVudF9kZXZlbG9wX3Jlc3Bv",
+            "bnNlEjsKB2RldmVsb3AYASABKAsyKC5jZWxlcml0YXMucHJvdG8uY2xpZW50",
+            "LmRldmVsb3BfcmVzcG9uc2VIABJHCg1kZXZlbG9wX2xldmVsGAIgASgLMi4u",
+            "Y2VsZXJpdGFzLnByb3RvLmNsaWVudC5kZXZlbG9wX2xldmVsX3Jlc3BvbnNl",
+            "SAASRwoNZGV2ZWxvcF9yZXNldBgDIAEoCzIuLmNlbGVyaXRhcy5wcm90by5j",
+            "bGllbnQuZGV2ZWxvcF9yZXNldF9yZXNwb25zZUgAQgkKB3BheWxvYWRiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_data), global::Celeritas.Proto.Client.develop_data.Parser, new[]{ "SystemId", "InstanceId", "Level", "Exp" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_response), global::Celeritas.Proto.Client.develop_response.Parser, new[]{ "Develop" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_response), global::Celeritas.Proto.Client.develop_response.Parser, new[]{ "Develop", "IsLogin" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_level_request), global::Celeritas.Proto.Client.develop_level_request.Parser, new[]{ "Develop" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_level_response), global::Celeritas.Proto.Client.develop_level_response.Parser, new[]{ "Develop" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_reset_request), global::Celeritas.Proto.Client.develop_reset_request.Parser, new[]{ "Develop" }, null, null, null, null),
@@ -408,6 +409,7 @@ namespace Celeritas.Proto.Client {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public develop_response(develop_response other) : this() {
       develop_ = other.develop_.Clone();
+      isLogin_ = other.isLogin_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -428,6 +430,18 @@ namespace Celeritas.Proto.Client {
       get { return develop_; }
     }
 
+    /// <summary>Field number for the "is_login" field.</summary>
+    public const int IsLoginFieldNumber = 2;
+    private bool isLogin_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsLogin {
+      get { return isLogin_; }
+      set {
+        isLogin_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -444,6 +458,7 @@ namespace Celeritas.Proto.Client {
         return true;
       }
       if(!develop_.Equals(other.develop_)) return false;
+      if (IsLogin != other.IsLogin) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -452,6 +467,7 @@ namespace Celeritas.Proto.Client {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= develop_.GetHashCode();
+      if (IsLogin != false) hash ^= IsLogin.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -471,6 +487,10 @@ namespace Celeritas.Proto.Client {
       output.WriteRawMessage(this);
     #else
       develop_.WriteTo(output, _repeated_develop_codec);
+      if (IsLogin != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(IsLogin);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -482,6 +502,10 @@ namespace Celeritas.Proto.Client {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       develop_.WriteTo(ref output, _repeated_develop_codec);
+      if (IsLogin != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(IsLogin);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -493,6 +517,9 @@ namespace Celeritas.Proto.Client {
     public int CalculateSize() {
       int size = 0;
       size += develop_.CalculateSize(_repeated_develop_codec);
+      if (IsLogin != false) {
+        size += 1 + 1;
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -506,6 +533,9 @@ namespace Celeritas.Proto.Client {
         return;
       }
       develop_.Add(other.develop_);
+      if (other.IsLogin != false) {
+        IsLogin = other.IsLogin;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -529,6 +559,10 @@ namespace Celeritas.Proto.Client {
             develop_.AddEntriesFrom(input, _repeated_develop_codec);
             break;
           }
+          case 16: {
+            IsLogin = input.ReadBool();
+            break;
+          }
         }
       }
     #endif
@@ -550,6 +584,10 @@ namespace Celeritas.Proto.Client {
             break;
           case 10: {
             develop_.AddEntriesFrom(ref input, _repeated_develop_codec);
+            break;
+          }
+          case 16: {
+            IsLogin = input.ReadBool();
             break;
           }
         }
