@@ -140,6 +140,11 @@
         /// <summary>
         ///     头像。
         /// </summary>
-        AvatarForm = 406
+        AvatarForm = 406,
+
+        /// <summary>
+        ///     头像。
+        /// </summary>
+        VipForm = 407
     }
 }

@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Celeritas.Config;
 using Game.Scripts.Main.Runtime.Event;
 using Game.Scripts.Main.Runtime.GameModule.Develop;
@@ -10,8 +13,6 @@ using GameFramework.Event;
 using TMPro;
 using UnityEngine;
 using UnityGameFramework.Runtime;
-using System.Collections.Generic;
-using System.Linq;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UIHome
@@ -25,13 +26,6 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         [SerializeField] private TMP_Text roleLevel;
 
         [SerializeField] private TMP_Text vipLevel;
-
-        [System.Serializable]
-        public class ResourceTextMapping
-        {
-            public currency_type resourceType;
-            public TMP_Text textComponent;
-        }
 
         [SerializeField] private List<ResourceTextMapping> resourceTextMappings = new();
         private readonly Dictionary<currency_type, TMP_Text> _resourceTextDict = new();
@@ -74,7 +68,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             roleName.text = roleModule.GetFullName();
 
             var roleDevelopModule = GameEntry.ModuleComponent.GetModule<RoleDevelopModule>();
-            roleLevel.text = roleDevelopModule.GetLevel() + GameEntry.Localization.GetString("Home.Level");
+            roleLevel.text = roleDevelopModule.GetLevel().ToString();
 
             var vipDevelopModule = GameEntry.ModuleComponent.GetModule<VipDevelopModule>();
             vipLevel.text = vipDevelopModule.GetLevel().ToString();
@@ -84,7 +78,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             {
                 _resourceTextDict[mapping.resourceType] = mapping.textComponent;
             }
-  
+
             var customModule = GameEntry.ModuleComponent.GetModule<CustomModule>();
             foreach (var kvp in _resourceTextDict)
             {
@@ -117,7 +111,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
                 case develop_system_type.role:
                 {
                     var roleDevelopModule = GameEntry.ModuleComponent.GetModule<RoleDevelopModule>();
-                    roleLevel.text = roleDevelopModule.GetLevel() + GameEntry.Localization.GetString("Home.Level");
+                    roleLevel.text = roleDevelopModule.GetLevel().ToString();
                     break;
                 }
                 case develop_system_type.vip:
@@ -149,6 +143,18 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         public void OnPersonalInformationButtonClick()
         {
             _procedureHome.OpenUIForm(UIFormId.PersonalInformationForm);
+        }
+
+        public void OnVipButtonClick()
+        {
+            _procedureHome.OpenUIForm(UIFormId.VipForm);
+        }
+
+        [Serializable]
+        public class ResourceTextMapping
+        {
+            public currency_type resourceType;
+            public TMP_Text textComponent;
         }
     }
 }
