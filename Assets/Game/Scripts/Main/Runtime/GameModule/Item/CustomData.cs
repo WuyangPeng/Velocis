@@ -18,7 +18,7 @@
             ExpireTime = expireTime;
         }
 
-        private InventoryData Inventory { get; }
+        public InventoryData Inventory { get; }
 
         public long ExpireTime { get; set; }
 

@@ -17,10 +17,14 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
         private EquipmentModule _equipmentModule;
         private FrameModule _frameModule;
         private HeroModule _heroModule;
+
+        private bool _isLogin;
         private TitleModule _titleModule;
 
         public override void Handle(object sender, header header, item_response message)
         {
+            _isLogin = message.IsLogin;
+
             if (message.Inventory.Count == 0)
             {
                 return;
@@ -31,7 +35,7 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
                 return;
             }
 
-            if (message.IsLogin)
+            if (_isLogin)
             {
                 ClearAllItemModules();
             }
@@ -102,7 +106,7 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
                 case inventory_data.PayloadOneofCase.Custom:
                 {
                     var data = new CustomData(inventory.Clone().ToInventoryData());
-                    _customModule.Items[key] = data;
+                    _customModule.AddItem(data, _isLogin);
                     break;
                 }
                 case inventory_data.PayloadOneofCase.Consumable:

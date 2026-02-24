@@ -12,7 +12,7 @@ namespace Game.Scripts.Main.Runtime.Event
             SystemType = systemType;
         }
 
-        public develop_system_type SystemType { get; }
+        public develop_system_type SystemType { get; private set; }
 
         public override int Id => EventId;
 
@@ -23,6 +23,7 @@ namespace Game.Scripts.Main.Runtime.Event
 
         public override void Clear()
         {
+            SystemType = develop_system_type.none;
         }
     }
 }

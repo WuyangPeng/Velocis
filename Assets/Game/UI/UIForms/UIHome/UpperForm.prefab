@@ -159,6 +159,21 @@ MonoBehaviour:
   roleName: {fileID: 7630935891698565625}
   roleLevel: {fileID: 7630935891698565625}
   vipLevel: {fileID: 7630935891698565625}
+  resourceTextMappings:
+  - resourceType: 1001001
+    textComponent: {fileID: 7630935891698565625}
+  - resourceType: 1001002
+    textComponent: {fileID: 7630935891698565625}
+  - resourceType: 1001003
+    textComponent: {fileID: 7630935891698565625}
+  - resourceType: 1021001
+    textComponent: {fileID: 7630935891698565625}
+  - resourceType: 1021002
+    textComponent: {fileID: 7630935891698565625}
+  - resourceType: 1021003
+    textComponent: {fileID: 7630935891698565625}
+  - resourceType: 1021004
+    textComponent: {fileID: 7630935891698565625}
 --- !u!1 &5810416532724033972
 GameObject:
   m_ObjectHideFlags: 0
