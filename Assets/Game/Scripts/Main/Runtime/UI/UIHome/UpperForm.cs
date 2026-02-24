@@ -1,9 +1,11 @@
+using Game.Scripts.Main.Runtime.Event;
 using Game.Scripts.Main.Runtime.GameModule.Develop;
 using Game.Scripts.Main.Runtime.GameModule.Item;
 using Game.Scripts.Main.Runtime.GameModule.Role;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UIItem.UICreate;
+using GameFramework.Event;
 using TMPro;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -58,10 +60,28 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
             var roleDevelopModule = GameEntry.ModuleComponent.GetModule<RoleDevelopModule>();
             roleName.text = roleDevelopModule.GetLevel() + GameEntry.Localization.GetString("Home.Level");
+
+            GameEntry.Event.Subscribe(ChangeNameEventArgs.EventId, OnChangeName);
+            GameEntry.Event.Subscribe(ChangeLevelEventArgs.EventId, OnChangeLevel);
+        }
+
+        private void OnChangeLevel(object sender, GameEventArgs e)
+        {
+            var roleDevelopModule = GameEntry.ModuleComponent.GetModule<RoleDevelopModule>();
+            roleName.text = roleDevelopModule.GetLevel() + GameEntry.Localization.GetString("Home.Level");
+        }
+
+        private void OnChangeName(object sender, GameEventArgs e)
+        {
+            var roleModule = GameEntry.ModuleComponent.GetModule<RoleModule>();
+            roleName.text = roleModule.GetFullName();
         }
 
         protected override void OnClose(bool isShutdown, object userData)
         {
+            GameEntry.Event.Unsubscribe(ChangeNameEventArgs.EventId, OnChangeName);
+            GameEntry.Event.Unsubscribe(ChangeLevelEventArgs.EventId, OnChangeLevel);
+
             _procedureHome = null;
 
             base.OnClose(isShutdown, userData);

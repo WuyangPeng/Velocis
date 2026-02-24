@@ -112,7 +112,7 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
             {
                 case develop_system_type.role:
                 {
-                    _roleDevelopModule.Items[key] = data;
+                    _roleDevelopModule.AddItem(data);
                     break;
                 }
                 case develop_system_type.vip:
