@@ -1,3 +1,4 @@
+using Celeritas.Config;
 using Game.Scripts.Main.Runtime.Event;
 using Game.Scripts.Main.Runtime.GameModule.Develop;
 using Game.Scripts.Main.Runtime.GameModule.Item;
@@ -20,6 +21,8 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         [SerializeField] private TMP_Text roleName;
 
         [SerializeField] private TMP_Text roleLevel;
+
+        [SerializeField] private TMP_Text vipLevel;
 
         private ProcedureHome _procedureHome;
 
@@ -61,14 +64,32 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             var roleDevelopModule = GameEntry.ModuleComponent.GetModule<RoleDevelopModule>();
             roleName.text = roleDevelopModule.GetLevel() + GameEntry.Localization.GetString("Home.Level");
 
+            var vipDevelopModule = GameEntry.ModuleComponent.GetModule<VipDevelopModule>();
+            vipLevel.text = vipDevelopModule.GetLevel().ToString();
+
             GameEntry.Event.Subscribe(ChangeNameEventArgs.EventId, OnChangeName);
             GameEntry.Event.Subscribe(ChangeLevelEventArgs.EventId, OnChangeLevel);
         }
 
         private void OnChangeLevel(object sender, GameEventArgs e)
         {
-            var roleDevelopModule = GameEntry.ModuleComponent.GetModule<RoleDevelopModule>();
-            roleName.text = roleDevelopModule.GetLevel() + GameEntry.Localization.GetString("Home.Level");
+            var changeLevelEventArgs = (ChangeLevelEventArgs)e;
+
+            switch (changeLevelEventArgs.SystemType)
+            {
+                case develop_system_type.role:
+                {
+                    var roleDevelopModule = GameEntry.ModuleComponent.GetModule<RoleDevelopModule>();
+                    roleName.text = roleDevelopModule.GetLevel() + GameEntry.Localization.GetString("Home.Level");
+                    break;
+                }
+                case develop_system_type.vip:
+                {
+                    var vipDevelopModule = GameEntry.ModuleComponent.GetModule<VipDevelopModule>();
+                    vipLevel.text = vipDevelopModule.GetLevel().ToString();
+                    break;
+                }
+            }
         }
 
         private void OnChangeName(object sender, GameEventArgs e)

@@ -13,12 +13,15 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
     public class DevelopResponseHandler : CeleritasHandlerBase<develop_response>
     {
         private HeroDevelopModule _heroDevelopModule;
+        private bool _isLogin;
         private RoleDevelopModule _roleDevelopModule;
         private VipDevelopModule _vipDevelopModule;
 
 
         public override void Handle(object sender, header header, develop_response message)
         {
+            _isLogin = message.IsLogin;
+
             if (message.Develop.Count == 0)
             {
                 return;
@@ -29,7 +32,7 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
                 return;
             }
 
-            if (message.IsLogin)
+            if (_isLogin)
             {
                 ClearAllDevelopModules();
             }
@@ -112,12 +115,12 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
             {
                 case develop_system_type.role:
                 {
-                    _roleDevelopModule.AddItem(data);
+                    _roleDevelopModule.AddItem(data, _isLogin);
                     break;
                 }
                 case develop_system_type.vip:
                 {
-                    _vipDevelopModule.Items[key] = data;
+                    _vipDevelopModule.AddItem(data, _isLogin);
                     break;
                 }
                 case develop_system_type.hero:

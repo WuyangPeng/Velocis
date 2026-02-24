@@ -158,6 +158,7 @@ MonoBehaviour:
   avatarItem: {fileID: 8529740892354768955}
   roleName: {fileID: 7630935891698565625}
   roleLevel: {fileID: 7630935891698565625}
+  vipLevel: {fileID: 7630935891698565625}
 --- !u!1 &5810416532724033972
 GameObject:
   m_ObjectHideFlags: 0

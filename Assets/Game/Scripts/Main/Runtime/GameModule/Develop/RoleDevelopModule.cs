@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Celeritas.Config;
 using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.Event;
 using Game.Scripts.Main.Runtime.GameModule.Base;
@@ -16,11 +17,14 @@ namespace Game.Scripts.Main.Runtime.GameModule.Develop
             Items.Clear();
         }
 
-        public void AddItem(DevelopData item)
+        public void AddItem(DevelopData item, bool isLogin)
         {
             Items.Add(item.InstanceId, item);
-            
-            GameEntry.Event.Fire(this, ChangeLevelEventArgs.Create());
+
+            if (!isLogin)
+            {
+                GameEntry.Event.Fire(this, ChangeLevelEventArgs.Create(develop_system_type.role));
+            }
         }
 
         public void DeleteItem(long instanceId)
