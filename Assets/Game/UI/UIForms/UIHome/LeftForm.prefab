@@ -193,7 +193,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 193354}
+      objectReference: {fileID: 4119260140040428037}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -206,6 +206,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnTaskButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -213,6 +218,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Game.Scripts.Main.Runtime.UI.UICommon.UGuiForm, Velocis.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Scripts.Main.Runtime.UI.UIHome.LeftForm, Velocis.Runtime
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -377,7 +387,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 193354}
+      objectReference: {fileID: 4119260140040428037}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -390,6 +400,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnFriendButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -397,6 +412,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Game.Scripts.Main.Runtime.UI.UICommon.UGuiForm, Velocis.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Scripts.Main.Runtime.UI.UIHome.LeftForm, Velocis.Runtime
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -496,7 +516,7 @@ PrefabInstance:
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -561,7 +581,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 193354}
+      objectReference: {fileID: 4119260140040428037}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -574,6 +594,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnSectButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
       objectReference: {fileID: 0}
@@ -581,6 +606,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Game.Scripts.Main.Runtime.UI.UICommon.UGuiForm, Velocis.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Scripts.Main.Runtime.UI.UIHome.LeftForm, Velocis.Runtime
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -680,7 +710,7 @@ PrefabInstance:
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}

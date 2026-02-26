@@ -51,25 +51,25 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             procedureHome.OpenUIForm(UIFormId.DebugForm);
         }
 
-        public void OnRoleButtonClick()
+        public void OnActivityButtonClick()
         {
+            procedureHome.OpenUIForm(UIFormId.ActivityForm);
         }
 
-        public void OnSkillButtonClick()
+        public void OnShopButtonClick()
         {
+            procedureHome.OpenUIForm(UIFormId.ShopForm);
         }
 
-        public void OnMainCityButtonClick()
+        public void OnRankingButtonClick()
         {
+            procedureHome.OpenUIForm(UIFormId.RankingForm);
         }
 
 
-        public void OnCopyButtonClick()
+        public void OnMailButtonClick()
         {
-        }
-
-        public void OnBackpackButtonClick()
-        {
+            procedureHome.OpenUIForm(UIFormId.MailForm);
         }
     }
 }

@@ -33,15 +33,18 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         public void OnSkillButtonClick()
         {
+            procedureHome.OpenUIForm(UIFormId.SkillForm);
         }
 
         public void OnMainCityButtonClick()
         {
+            procedureHome.OpenUIForm(UIFormId.MainCityForm);
         }
 
 
         public void OnCopyButtonClick()
         {
+            procedureHome.OpenUIForm(UIFormId.CopyForm);
         }
 
         public void OnBackpackButtonClick()

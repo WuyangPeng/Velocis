@@ -1,10 +1,10 @@
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.UI.UIHome
 {
-    public class LeftForm : UGuiForm
+    public class TaskForm : UGuiForm
     {
         private ProcedureHome procedureHome;
 
@@ -15,9 +15,10 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             procedureHome = (ProcedureHome)GetCurrentProcedure();
             if (procedureHome == null)
             {
-                Log.Warning("ProcedureHome is invalid when open LeftForm.");
+                Log.Warning("ProcedureHome is invalid when open TaskForm.");
             }
         }
+
 
         protected override void OnClose(bool isShutdown, object userData)
         {
@@ -26,19 +27,9 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             base.OnClose(isShutdown, userData);
         }
 
-        public void OnFriendButtonClick()
+        public void OnReturnButtonClick()
         {
-            procedureHome.OpenUIForm(UIFormId.FriendForm);
-        }
-
-        public void OnTaskButtonClick()
-        {
-            procedureHome.OpenUIForm(UIFormId.TaskForm);
-        }
-
-        public void OnSectButtonClick()
-        {
-            procedureHome.OpenUIForm(UIFormId.SectForm);
+            procedureHome.RemoveUIForm(UIFormId.TaskForm);
         }
     }
 }

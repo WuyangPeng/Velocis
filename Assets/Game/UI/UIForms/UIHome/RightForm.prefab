@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45b676c265c6d6148bc3ccf35a726532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commonButton: {fileID: 0}
+  commonButton: {fileID: 3288261757242691383}
 --- !u!1001 &1442010163848035421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 193354}
+      objectReference: {fileID: 6217737542323333547}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -206,6 +206,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnActivityButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -219,8 +224,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Scripts.Main.Runtime.UI.UIHome.RightForm, Velocis.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Game.Scripts.Main.Runtime.UI.UICommon.UGuiForm, Velocis.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -310,7 +325,7 @@ PrefabInstance:
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -418,6 +433,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
+      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -504,7 +524,7 @@ PrefabInstance:
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -200
+      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -526,6 +546,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd37ce4d05a51664a948da4e51576346, type: 3}
+--- !u!114 &3288261757242691383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+    type: 3}
+  m_PrefabInstance: {fileID: 1639620468382561568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5079836f95c2a44b96fa331487ebb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3288261757244267029 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
@@ -569,7 +601,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 193354}
+      objectReference: {fileID: 6217737542323333547}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -579,6 +611,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnMailButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -592,8 +629,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Scripts.Main.Runtime.UI.UIHome.RightForm, Velocis.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Game.Scripts.Main.Runtime.UI.UICommon.UGuiForm, Velocis.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -683,7 +730,7 @@ PrefabInstance:
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -748,7 +795,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 193354}
+      objectReference: {fileID: 6217737542323333547}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -758,6 +805,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnRankingButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -771,8 +823,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Scripts.Main.Runtime.UI.UIHome.RightForm, Velocis.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Game.Scripts.Main.Runtime.UI.UICommon.UGuiForm, Velocis.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -862,7 +924,7 @@ PrefabInstance:
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -927,7 +989,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 193354}
+      objectReference: {fileID: 6217737542323333547}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -937,6 +999,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayUISound
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnShopButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
@@ -950,8 +1017,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Scripts.Main.Runtime.UI.UIHome.RightForm, Velocis.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Game.Scripts.Main.Runtime.UI.UICommon.UGuiForm, Velocis.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 4279363595803114007, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}

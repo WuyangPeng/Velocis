@@ -145,6 +145,56 @@
         /// <summary>
         ///     头像。
         /// </summary>
-        VipForm = 407
+        VipForm = 407,
+
+        /// <summary>
+        ///     技能。
+        /// </summary>
+        SkillForm = 408,
+
+        /// <summary>
+        ///     主城。
+        /// </summary>
+        MainCityForm = 409,
+
+        /// <summary>
+        ///     副本。
+        /// </summary>
+        CopyForm = 410,
+
+        /// <summary>
+        ///     好友。
+        /// </summary>
+        FriendForm = 411,
+
+        /// <summary>
+        ///     任务。
+        /// </summary>
+        TaskForm = 412,
+
+        /// <summary>
+        ///     门派。
+        /// </summary>
+        SectForm = 413,
+
+        /// <summary>
+        ///     活动。
+        /// </summary>
+        ActivityForm = 414,
+
+        /// <summary>
+        ///     排行榜。
+        /// </summary>
+        RankingForm = 415,
+
+        /// <summary>
+        ///     商店。
+        /// </summary>
+        ShopForm = 416,
+
+        /// <summary>
+        ///     邮件。
+        /// </summary>
+        MailForm = 417
     }
 }
