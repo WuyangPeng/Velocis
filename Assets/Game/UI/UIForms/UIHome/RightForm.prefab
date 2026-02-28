@@ -242,6 +242,17 @@ PrefabInstance:
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803120517, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803120517, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 751ad37e4ed22d54eb13292e61851765,
+        type: 3}
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: m_Pivot.x
@@ -441,6 +452,17 @@ PrefabInstance:
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803120517, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803120517, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c1da3cc1c7a0fa9418f26d8778a427d6,
+        type: 3}
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: m_Pivot.x
@@ -647,6 +669,17 @@ PrefabInstance:
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803120517, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803120517, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aa2b5873cc2c57d47bdc136c9c74cccd,
+        type: 3}
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: m_Pivot.x
@@ -841,6 +874,17 @@ PrefabInstance:
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803120517, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803120517, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 37df712d362052b409e9f4c3e44371a0,
+        type: 3}
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1035,6 +1079,17 @@ PrefabInstance:
       propertyPath: onHover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803120517, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279363595803120517, guid: fd37ce4d05a51664a948da4e51576346,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d28acca0eb443e942942555b2b29e83f,
+        type: 3}
     - target: {fileID: 4279363595817266997, guid: fd37ce4d05a51664a948da4e51576346,
         type: 3}
       propertyPath: m_Pivot.x
