@@ -25,39 +25,49 @@ namespace Celeritas.Proto.Client {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiFwcm90by9jbGllbnQvcGxheWVyL2RldmVsb3AucHJvdG8SFmNlbGVyaXRh",
-            "cy5wcm90by5jbGllbnQiUgoMZGV2ZWxvcF9kYXRhEhEKCXN5c3RlbV9pZBgB",
+            "cy5wcm90by5jbGllbnQiaAoMZGV2ZWxvcF9kYXRhEhEKCXN5c3RlbV9pZBgB",
             "IAEoBRITCgtpbnN0YW5jZV9pZBgCIAEoAxINCgVsZXZlbBgDIAEoBRILCgNl",
-            "eHAYBCABKAMiWwoQZGV2ZWxvcF9yZXNwb25zZRI1CgdkZXZlbG9wGAEgAygL",
-            "MiQuY2VsZXJpdGFzLnByb3RvLmNsaWVudC5kZXZlbG9wX2RhdGESEAoIaXNf",
-            "bG9naW4YAiABKAgiTgoVZGV2ZWxvcF9sZXZlbF9yZXF1ZXN0EjUKB2RldmVs",
-            "b3AYASABKAsyJC5jZWxlcml0YXMucHJvdG8uY2xpZW50LmRldmVsb3BfZGF0",
-            "YSJPChZkZXZlbG9wX2xldmVsX3Jlc3BvbnNlEjUKB2RldmVsb3AYASABKAsy",
-            "JC5jZWxlcml0YXMucHJvdG8uY2xpZW50LmRldmVsb3BfZGF0YSJOChVkZXZl",
-            "bG9wX3Jlc2V0X3JlcXVlc3QSNQoHZGV2ZWxvcBgBIAEoCzIkLmNlbGVyaXRh",
-            "cy5wcm90by5jbGllbnQuZGV2ZWxvcF9kYXRhIk8KFmRldmVsb3BfcmVzZXRf",
-            "cmVzcG9uc2USNQoHZGV2ZWxvcBgBIAEoCzIkLmNlbGVyaXRhcy5wcm90by5j",
-            "bGllbnQuZGV2ZWxvcF9kYXRhIrMBChZjbGllbnRfZGV2ZWxvcF9yZXF1ZXN0",
-            "EkYKDWRldmVsb3BfbGV2ZWwYASABKAsyLS5jZWxlcml0YXMucHJvdG8uY2xp",
-            "ZW50LmRldmVsb3BfbGV2ZWxfcmVxdWVzdEgAEkYKDWRldmVsb3BfcmVzZXQY",
-            "AiABKAsyLS5jZWxlcml0YXMucHJvdG8uY2xpZW50LmRldmVsb3BfcmVzZXRf",
-            "cmVxdWVzdEgAQgkKB3BheWxvYWQi8wEKF2NsaWVudF9kZXZlbG9wX3Jlc3Bv",
-            "bnNlEjsKB2RldmVsb3AYASABKAsyKC5jZWxlcml0YXMucHJvdG8uY2xpZW50",
-            "LmRldmVsb3BfcmVzcG9uc2VIABJHCg1kZXZlbG9wX2xldmVsGAIgASgLMi4u",
-            "Y2VsZXJpdGFzLnByb3RvLmNsaWVudC5kZXZlbG9wX2xldmVsX3Jlc3BvbnNl",
-            "SAASRwoNZGV2ZWxvcF9yZXNldBgDIAEoCzIuLmNlbGVyaXRhcy5wcm90by5j",
-            "bGllbnQuZGV2ZWxvcF9yZXNldF9yZXNwb25zZUgAQgkKB3BheWxvYWRiBnBy",
-            "b3RvMw=="));
+            "eHAYBCABKAMSFAoMcmV3YXJkX2xldmVsGAUgASgFIlsKEGRldmVsb3BfcmVz",
+            "cG9uc2USNQoHZGV2ZWxvcBgBIAMoCzIkLmNlbGVyaXRhcy5wcm90by5jbGll",
+            "bnQuZGV2ZWxvcF9kYXRhEhAKCGlzX2xvZ2luGAIgASgIIk4KFWRldmVsb3Bf",
+            "bGV2ZWxfcmVxdWVzdBI1CgdkZXZlbG9wGAEgASgLMiQuY2VsZXJpdGFzLnBy",
+            "b3RvLmNsaWVudC5kZXZlbG9wX2RhdGEiTwoWZGV2ZWxvcF9sZXZlbF9yZXNw",
+            "b25zZRI1CgdkZXZlbG9wGAEgASgLMiQuY2VsZXJpdGFzLnByb3RvLmNsaWVu",
+            "dC5kZXZlbG9wX2RhdGEiTgoVZGV2ZWxvcF9yZXNldF9yZXF1ZXN0EjUKB2Rl",
+            "dmVsb3AYASABKAsyJC5jZWxlcml0YXMucHJvdG8uY2xpZW50LmRldmVsb3Bf",
+            "ZGF0YSJPChZkZXZlbG9wX3Jlc2V0X3Jlc3BvbnNlEjUKB2RldmVsb3AYASAB",
+            "KAsyJC5jZWxlcml0YXMucHJvdG8uY2xpZW50LmRldmVsb3BfZGF0YSJVChxk",
+            "ZXZlbG9wX2NsYWltX3Jld2FyZF9yZXF1ZXN0EjUKB2RldmVsb3AYASABKAsy",
+            "JC5jZWxlcml0YXMucHJvdG8uY2xpZW50LmRldmVsb3BfZGF0YSJWCh1kZXZl",
+            "bG9wX2NsYWltX3Jld2FyZF9yZXNwb25zZRI1CgdkZXZlbG9wGAEgASgLMiQu",
+            "Y2VsZXJpdGFzLnByb3RvLmNsaWVudC5kZXZlbG9wX2RhdGEiiQIKFmNsaWVu",
+            "dF9kZXZlbG9wX3JlcXVlc3QSRgoNZGV2ZWxvcF9sZXZlbBgBIAEoCzItLmNl",
+            "bGVyaXRhcy5wcm90by5jbGllbnQuZGV2ZWxvcF9sZXZlbF9yZXF1ZXN0SAAS",
+            "RgoNZGV2ZWxvcF9yZXNldBgCIAEoCzItLmNlbGVyaXRhcy5wcm90by5jbGll",
+            "bnQuZGV2ZWxvcF9yZXNldF9yZXF1ZXN0SAASVAoUZGV2ZWxvcF9jbGFpbV9y",
+            "ZXdhcmQYAyABKAsyNC5jZWxlcml0YXMucHJvdG8uY2xpZW50LmRldmVsb3Bf",
+            "Y2xhaW1fcmV3YXJkX3JlcXVlc3RIAEIJCgdwYXlsb2FkIsoCChdjbGllbnRf",
+            "ZGV2ZWxvcF9yZXNwb25zZRI7CgdkZXZlbG9wGAEgASgLMiguY2VsZXJpdGFz",
+            "LnByb3RvLmNsaWVudC5kZXZlbG9wX3Jlc3BvbnNlSAASRwoNZGV2ZWxvcF9s",
+            "ZXZlbBgCIAEoCzIuLmNlbGVyaXRhcy5wcm90by5jbGllbnQuZGV2ZWxvcF9s",
+            "ZXZlbF9yZXNwb25zZUgAEkcKDWRldmVsb3BfcmVzZXQYAyABKAsyLi5jZWxl",
+            "cml0YXMucHJvdG8uY2xpZW50LmRldmVsb3BfcmVzZXRfcmVzcG9uc2VIABJV",
+            "ChRkZXZlbG9wX2NsYWltX3Jld2FyZBgEIAEoCzI1LmNlbGVyaXRhcy5wcm90",
+            "by5jbGllbnQuZGV2ZWxvcF9jbGFpbV9yZXdhcmRfcmVzcG9uc2VIAEIJCgdw",
+            "YXlsb2FkYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_data), global::Celeritas.Proto.Client.develop_data.Parser, new[]{ "SystemId", "InstanceId", "Level", "Exp" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_data), global::Celeritas.Proto.Client.develop_data.Parser, new[]{ "SystemId", "InstanceId", "Level", "Exp", "RewardLevel" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_response), global::Celeritas.Proto.Client.develop_response.Parser, new[]{ "Develop", "IsLogin" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_level_request), global::Celeritas.Proto.Client.develop_level_request.Parser, new[]{ "Develop" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_level_response), global::Celeritas.Proto.Client.develop_level_response.Parser, new[]{ "Develop" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_reset_request), global::Celeritas.Proto.Client.develop_reset_request.Parser, new[]{ "Develop" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_reset_response), global::Celeritas.Proto.Client.develop_reset_response.Parser, new[]{ "Develop" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_develop_request), global::Celeritas.Proto.Client.client_develop_request.Parser, new[]{ "DevelopLevel", "DevelopReset" }, new[]{ "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_develop_response), global::Celeritas.Proto.Client.client_develop_response.Parser, new[]{ "Develop", "DevelopLevel", "DevelopReset" }, new[]{ "Payload" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_claim_reward_request), global::Celeritas.Proto.Client.develop_claim_reward_request.Parser, new[]{ "Develop" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.develop_claim_reward_response), global::Celeritas.Proto.Client.develop_claim_reward_response.Parser, new[]{ "Develop" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_develop_request), global::Celeritas.Proto.Client.client_develop_request.Parser, new[]{ "DevelopLevel", "DevelopReset", "DevelopClaimReward" }, new[]{ "Payload" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Celeritas.Proto.Client.client_develop_response), global::Celeritas.Proto.Client.client_develop_response.Parser, new[]{ "Develop", "DevelopLevel", "DevelopReset", "DevelopClaimReward" }, new[]{ "Payload" }, null, null, null)
           }));
     }
     #endregion
@@ -103,6 +113,7 @@ namespace Celeritas.Proto.Client {
       instanceId_ = other.instanceId_;
       level_ = other.level_;
       exp_ = other.exp_;
+      rewardLevel_ = other.rewardLevel_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -160,6 +171,18 @@ namespace Celeritas.Proto.Client {
       }
     }
 
+    /// <summary>Field number for the "reward_level" field.</summary>
+    public const int RewardLevelFieldNumber = 5;
+    private int rewardLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int RewardLevel {
+      get { return rewardLevel_; }
+      set {
+        rewardLevel_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -179,6 +202,7 @@ namespace Celeritas.Proto.Client {
       if (InstanceId != other.InstanceId) return false;
       if (Level != other.Level) return false;
       if (Exp != other.Exp) return false;
+      if (RewardLevel != other.RewardLevel) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -190,6 +214,7 @@ namespace Celeritas.Proto.Client {
       if (InstanceId != 0L) hash ^= InstanceId.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
       if (Exp != 0L) hash ^= Exp.GetHashCode();
+      if (RewardLevel != 0) hash ^= RewardLevel.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -224,6 +249,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(32);
         output.WriteInt64(Exp);
       }
+      if (RewardLevel != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(RewardLevel);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -250,6 +279,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(32);
         output.WriteInt64(Exp);
       }
+      if (RewardLevel != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(RewardLevel);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -271,6 +304,9 @@ namespace Celeritas.Proto.Client {
       }
       if (Exp != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Exp);
+      }
+      if (RewardLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RewardLevel);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -295,6 +331,9 @@ namespace Celeritas.Proto.Client {
       }
       if (other.Exp != 0L) {
         Exp = other.Exp;
+      }
+      if (other.RewardLevel != 0) {
+        RewardLevel = other.RewardLevel;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -331,6 +370,10 @@ namespace Celeritas.Proto.Client {
             Exp = input.ReadInt64();
             break;
           }
+          case 40: {
+            RewardLevel = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -364,6 +407,10 @@ namespace Celeritas.Proto.Client {
           }
           case 32: {
             Exp = input.ReadInt64();
+            break;
+          }
+          case 40: {
+            RewardLevel = input.ReadInt32();
             break;
           }
         }
@@ -1426,6 +1473,420 @@ namespace Celeritas.Proto.Client {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class develop_claim_reward_request : pb::IMessage<develop_claim_reward_request>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<develop_claim_reward_request> _parser = new pb::MessageParser<develop_claim_reward_request>(() => new develop_claim_reward_request());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<develop_claim_reward_request> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Client.DevelopReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public develop_claim_reward_request() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public develop_claim_reward_request(develop_claim_reward_request other) : this() {
+      develop_ = other.develop_ != null ? other.develop_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public develop_claim_reward_request Clone() {
+      return new develop_claim_reward_request(this);
+    }
+
+    /// <summary>Field number for the "develop" field.</summary>
+    public const int DevelopFieldNumber = 1;
+    private global::Celeritas.Proto.Client.develop_data develop_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Client.develop_data Develop {
+      get { return develop_; }
+      set {
+        develop_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as develop_claim_reward_request);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(develop_claim_reward_request other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Develop, other.Develop)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (develop_ != null) hash ^= Develop.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (develop_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Develop);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (develop_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Develop);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (develop_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Develop);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(develop_claim_reward_request other) {
+      if (other == null) {
+        return;
+      }
+      if (other.develop_ != null) {
+        if (develop_ == null) {
+          Develop = new global::Celeritas.Proto.Client.develop_data();
+        }
+        Develop.MergeFrom(other.Develop);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (develop_ == null) {
+              Develop = new global::Celeritas.Proto.Client.develop_data();
+            }
+            input.ReadMessage(Develop);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (develop_ == null) {
+              Develop = new global::Celeritas.Proto.Client.develop_data();
+            }
+            input.ReadMessage(Develop);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class develop_claim_reward_response : pb::IMessage<develop_claim_reward_response>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<develop_claim_reward_response> _parser = new pb::MessageParser<develop_claim_reward_response>(() => new develop_claim_reward_response());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<develop_claim_reward_response> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Celeritas.Proto.Client.DevelopReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public develop_claim_reward_response() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public develop_claim_reward_response(develop_claim_reward_response other) : this() {
+      develop_ = other.develop_ != null ? other.develop_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public develop_claim_reward_response Clone() {
+      return new develop_claim_reward_response(this);
+    }
+
+    /// <summary>Field number for the "develop" field.</summary>
+    public const int DevelopFieldNumber = 1;
+    private global::Celeritas.Proto.Client.develop_data develop_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Client.develop_data Develop {
+      get { return develop_; }
+      set {
+        develop_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as develop_claim_reward_response);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(develop_claim_reward_response other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Develop, other.Develop)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (develop_ != null) hash ^= Develop.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (develop_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Develop);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (develop_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Develop);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (develop_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Develop);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(develop_claim_reward_response other) {
+      if (other == null) {
+        return;
+      }
+      if (other.develop_ != null) {
+        if (develop_ == null) {
+          Develop = new global::Celeritas.Proto.Client.develop_data();
+        }
+        Develop.MergeFrom(other.Develop);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (develop_ == null) {
+              Develop = new global::Celeritas.Proto.Client.develop_data();
+            }
+            input.ReadMessage(Develop);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (develop_ == null) {
+              Develop = new global::Celeritas.Proto.Client.develop_data();
+            }
+            input.ReadMessage(Develop);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class client_develop_request : pb::IMessage<client_develop_request>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1440,7 +1901,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.DevelopReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Celeritas.Proto.Client.DevelopReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1466,6 +1927,9 @@ namespace Celeritas.Proto.Client {
           break;
         case PayloadOneofCase.DevelopReset:
           DevelopReset = other.DevelopReset.Clone();
+          break;
+        case PayloadOneofCase.DevelopClaimReward:
+          DevelopClaimReward = other.DevelopClaimReward.Clone();
           break;
       }
 
@@ -1502,12 +1966,25 @@ namespace Celeritas.Proto.Client {
       }
     }
 
+    /// <summary>Field number for the "develop_claim_reward" field.</summary>
+    public const int DevelopClaimRewardFieldNumber = 3;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Client.develop_claim_reward_request DevelopClaimReward {
+      get { return payloadCase_ == PayloadOneofCase.DevelopClaimReward ? (global::Celeritas.Proto.Client.develop_claim_reward_request) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.DevelopClaimReward;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
       None = 0,
       DevelopLevel = 1,
       DevelopReset = 2,
+      DevelopClaimReward = 3,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1540,6 +2017,7 @@ namespace Celeritas.Proto.Client {
       }
       if (!object.Equals(DevelopLevel, other.DevelopLevel)) return false;
       if (!object.Equals(DevelopReset, other.DevelopReset)) return false;
+      if (!object.Equals(DevelopClaimReward, other.DevelopClaimReward)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1550,6 +2028,7 @@ namespace Celeritas.Proto.Client {
       int hash = 1;
       if (payloadCase_ == PayloadOneofCase.DevelopLevel) hash ^= DevelopLevel.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.DevelopReset) hash ^= DevelopReset.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.DevelopClaimReward) hash ^= DevelopClaimReward.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1577,6 +2056,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(18);
         output.WriteMessage(DevelopReset);
       }
+      if (payloadCase_ == PayloadOneofCase.DevelopClaimReward) {
+        output.WriteRawTag(26);
+        output.WriteMessage(DevelopClaimReward);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1595,6 +2078,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(18);
         output.WriteMessage(DevelopReset);
       }
+      if (payloadCase_ == PayloadOneofCase.DevelopClaimReward) {
+        output.WriteRawTag(26);
+        output.WriteMessage(DevelopClaimReward);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1610,6 +2097,9 @@ namespace Celeritas.Proto.Client {
       }
       if (payloadCase_ == PayloadOneofCase.DevelopReset) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(DevelopReset);
+      }
+      if (payloadCase_ == PayloadOneofCase.DevelopClaimReward) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DevelopClaimReward);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1635,6 +2125,12 @@ namespace Celeritas.Proto.Client {
             DevelopReset = new global::Celeritas.Proto.Client.develop_reset_request();
           }
           DevelopReset.MergeFrom(other.DevelopReset);
+          break;
+        case PayloadOneofCase.DevelopClaimReward:
+          if (DevelopClaimReward == null) {
+            DevelopClaimReward = new global::Celeritas.Proto.Client.develop_claim_reward_request();
+          }
+          DevelopClaimReward.MergeFrom(other.DevelopClaimReward);
           break;
       }
 
@@ -1675,6 +2171,15 @@ namespace Celeritas.Proto.Client {
             DevelopReset = subBuilder;
             break;
           }
+          case 26: {
+            global::Celeritas.Proto.Client.develop_claim_reward_request subBuilder = new global::Celeritas.Proto.Client.develop_claim_reward_request();
+            if (payloadCase_ == PayloadOneofCase.DevelopClaimReward) {
+              subBuilder.MergeFrom(DevelopClaimReward);
+            }
+            input.ReadMessage(subBuilder);
+            DevelopClaimReward = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -1712,6 +2217,15 @@ namespace Celeritas.Proto.Client {
             DevelopReset = subBuilder;
             break;
           }
+          case 26: {
+            global::Celeritas.Proto.Client.develop_claim_reward_request subBuilder = new global::Celeritas.Proto.Client.develop_claim_reward_request();
+            if (payloadCase_ == PayloadOneofCase.DevelopClaimReward) {
+              subBuilder.MergeFrom(DevelopClaimReward);
+            }
+            input.ReadMessage(subBuilder);
+            DevelopClaimReward = subBuilder;
+            break;
+          }
         }
       }
     }
@@ -1734,7 +2248,7 @@ namespace Celeritas.Proto.Client {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Celeritas.Proto.Client.DevelopReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Celeritas.Proto.Client.DevelopReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1763,6 +2277,9 @@ namespace Celeritas.Proto.Client {
           break;
         case PayloadOneofCase.DevelopReset:
           DevelopReset = other.DevelopReset.Clone();
+          break;
+        case PayloadOneofCase.DevelopClaimReward:
+          DevelopClaimReward = other.DevelopClaimReward.Clone();
           break;
       }
 
@@ -1811,6 +2328,18 @@ namespace Celeritas.Proto.Client {
       }
     }
 
+    /// <summary>Field number for the "develop_claim_reward" field.</summary>
+    public const int DevelopClaimRewardFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Celeritas.Proto.Client.develop_claim_reward_response DevelopClaimReward {
+      get { return payloadCase_ == PayloadOneofCase.DevelopClaimReward ? (global::Celeritas.Proto.Client.develop_claim_reward_response) payload_ : null; }
+      set {
+        payload_ = value;
+        payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.DevelopClaimReward;
+      }
+    }
+
     private object payload_;
     /// <summary>Enum of possible cases for the "payload" oneof.</summary>
     public enum PayloadOneofCase {
@@ -1818,6 +2347,7 @@ namespace Celeritas.Proto.Client {
       Develop = 1,
       DevelopLevel = 2,
       DevelopReset = 3,
+      DevelopClaimReward = 4,
     }
     private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1851,6 +2381,7 @@ namespace Celeritas.Proto.Client {
       if (!object.Equals(Develop, other.Develop)) return false;
       if (!object.Equals(DevelopLevel, other.DevelopLevel)) return false;
       if (!object.Equals(DevelopReset, other.DevelopReset)) return false;
+      if (!object.Equals(DevelopClaimReward, other.DevelopClaimReward)) return false;
       if (PayloadCase != other.PayloadCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1862,6 +2393,7 @@ namespace Celeritas.Proto.Client {
       if (payloadCase_ == PayloadOneofCase.Develop) hash ^= Develop.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.DevelopLevel) hash ^= DevelopLevel.GetHashCode();
       if (payloadCase_ == PayloadOneofCase.DevelopReset) hash ^= DevelopReset.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.DevelopClaimReward) hash ^= DevelopClaimReward.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1893,6 +2425,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(26);
         output.WriteMessage(DevelopReset);
       }
+      if (payloadCase_ == PayloadOneofCase.DevelopClaimReward) {
+        output.WriteRawTag(34);
+        output.WriteMessage(DevelopClaimReward);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1915,6 +2451,10 @@ namespace Celeritas.Proto.Client {
         output.WriteRawTag(26);
         output.WriteMessage(DevelopReset);
       }
+      if (payloadCase_ == PayloadOneofCase.DevelopClaimReward) {
+        output.WriteRawTag(34);
+        output.WriteMessage(DevelopClaimReward);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1933,6 +2473,9 @@ namespace Celeritas.Proto.Client {
       }
       if (payloadCase_ == PayloadOneofCase.DevelopReset) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(DevelopReset);
+      }
+      if (payloadCase_ == PayloadOneofCase.DevelopClaimReward) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DevelopClaimReward);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1964,6 +2507,12 @@ namespace Celeritas.Proto.Client {
             DevelopReset = new global::Celeritas.Proto.Client.develop_reset_response();
           }
           DevelopReset.MergeFrom(other.DevelopReset);
+          break;
+        case PayloadOneofCase.DevelopClaimReward:
+          if (DevelopClaimReward == null) {
+            DevelopClaimReward = new global::Celeritas.Proto.Client.develop_claim_reward_response();
+          }
+          DevelopClaimReward.MergeFrom(other.DevelopClaimReward);
           break;
       }
 
@@ -2013,6 +2562,15 @@ namespace Celeritas.Proto.Client {
             DevelopReset = subBuilder;
             break;
           }
+          case 34: {
+            global::Celeritas.Proto.Client.develop_claim_reward_response subBuilder = new global::Celeritas.Proto.Client.develop_claim_reward_response();
+            if (payloadCase_ == PayloadOneofCase.DevelopClaimReward) {
+              subBuilder.MergeFrom(DevelopClaimReward);
+            }
+            input.ReadMessage(subBuilder);
+            DevelopClaimReward = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -2057,6 +2615,15 @@ namespace Celeritas.Proto.Client {
             }
             input.ReadMessage(subBuilder);
             DevelopReset = subBuilder;
+            break;
+          }
+          case 34: {
+            global::Celeritas.Proto.Client.develop_claim_reward_response subBuilder = new global::Celeritas.Proto.Client.develop_claim_reward_response();
+            if (payloadCase_ == PayloadOneofCase.DevelopClaimReward) {
+              subBuilder.MergeFrom(DevelopClaimReward);
+            }
+            input.ReadMessage(subBuilder);
+            DevelopClaimReward = subBuilder;
             break;
           }
         }

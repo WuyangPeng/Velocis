@@ -20,6 +20,7 @@ public sealed partial class develop_level_config : Luban.BeanBase
         DevelopId = _buf.ReadInt();
         Level = _buf.ReadInt();
         {int n0 = _buf.ReadSize(); PlayerItem = new System.Collections.Generic.List<item>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { item _e0;  _e0 = global::Celeritas.Config.item.Deserializeitem(_buf); PlayerItem.Add(_e0);}}
+        {int n0 = _buf.ReadSize(); Reward = new System.Collections.Generic.List<item>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { item _e0;  _e0 = global::Celeritas.Config.item.Deserializeitem(_buf); Reward.Add(_e0);}}
     }
 
     public static develop_level_config Deserializedevelop_level_config(ByteBuf _buf)
@@ -34,6 +35,7 @@ public sealed partial class develop_level_config : Luban.BeanBase
     public readonly int DevelopId;
     public readonly int Level;
     public readonly System.Collections.Generic.List<item> PlayerItem;
+    public readonly System.Collections.Generic.List<item> Reward;
    
     public const int __ID__ = 1411329915;
     public override int GetTypeId() => __ID__;
@@ -41,6 +43,7 @@ public sealed partial class develop_level_config : Luban.BeanBase
     public  void ResolveRef(tables tables)
     {
         foreach (var _e in PlayerItem) { _e?.ResolveRef(tables); }
+        foreach (var _e in Reward) { _e?.ResolveRef(tables); }
     }
 
     public override string ToString()
@@ -50,6 +53,7 @@ public sealed partial class develop_level_config : Luban.BeanBase
         + "developId:" + DevelopId + ","
         + "level:" + Level + ","
         + "playerItem:" + Luban.StringUtil.CollectionToString(PlayerItem) + ","
+        + "reward:" + Luban.StringUtil.CollectionToString(Reward) + ","
         + "}";
     }
 }

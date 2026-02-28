@@ -159,6 +159,14 @@ namespace Game.Scripts.Main.Runtime.Network.Packet
             return Celeritas.CeleritasRequest.Client.Player.Develop.DevelopReset;
         }
 
+        public develop_claim_reward_request Mutable_ClientPlayer_ClientDevelop_DevelopClaimReward()
+        {
+            Mutable_ClientPlayer_ClientDevelop();
+            Celeritas.CeleritasRequest.Client.Player.Develop.DevelopClaimReward = new develop_claim_reward_request();
+
+            return Celeritas.CeleritasRequest.Client.Player.Develop.DevelopClaimReward;
+        }
+
         private client_mail_request Mutable_ClientPlayer_ClientMail()
         {
             Mutable_ClientPlayer();

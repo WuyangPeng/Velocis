@@ -59,6 +59,20 @@ namespace Game.Scripts.Main.Runtime.Network.Generate
 
                     break;
                 }
+                case client_develop_response.PayloadOneofCase.DevelopClaimReward:
+                {
+                    var handler = GameEntry.CeleritasHandler.GetCeleritasHandler<develop_claim_reward_response>();
+                    if (handler != null)
+                    {
+                        handler.Handle(sender, header, message.DevelopClaimReward);
+                    }
+                    else
+                    {
+                        Log.Error("Can not find handler for 'develop_claim_reward'.");
+                    }
+
+                    break;
+                }
                 case client_develop_response.PayloadOneofCase.None:
                 {
                     break;

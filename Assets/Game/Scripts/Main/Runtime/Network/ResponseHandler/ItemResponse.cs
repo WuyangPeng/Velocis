@@ -12,14 +12,15 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
     public class ItemResponse : CeleritasHandlerBase<item_response>
     {
         private AvatarModule _avatarModule;
+        private BuildingModule _buildingModule;
         private ConsumableModule _consumableModule;
         private CustomModule _customModule;
         private EquipmentModule _equipmentModule;
         private FrameModule _frameModule;
         private HeroModule _heroModule;
+        private TitleModule _titleModule;
 
         private bool _isLogin;
-        private TitleModule _titleModule;
 
         public override void Handle(object sender, header header, item_response message)
         {
@@ -74,6 +75,7 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
             _frameModule ??= moduleComponent.GetModule<FrameModule>();
             _heroModule ??= moduleComponent.GetModule<HeroModule>();
             _titleModule ??= moduleComponent.GetModule<TitleModule>();
+            _buildingModule ??= moduleComponent.GetModule<BuildingModule>();
 
             return true;
         }
@@ -87,6 +89,7 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
             _frameModule?.ClearItems();
             _heroModule?.ClearItems();
             _titleModule?.ClearItems();
+            _buildingModule?.ClearItems();
 
             Log.Info("ItemResponse: cleared all module item collections due to login refresh (IsLogin=true).");
         }
@@ -154,6 +157,17 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
                 {
                     var data = new HeroData(inventory.Clone().ToInventoryData());
                     _heroModule.Items[key] = data;
+                    break;
+                }
+                case inventory_data.PayloadOneofCase.Building:
+                {
+                    var data = new BuildingData(inventory.Clone().ToInventoryData());
+                    if (inventory.Building != null)
+                    {
+                        data.Level = inventory.Building.Level;
+                    }
+
+                    _buildingModule.Items[key] = data;
                     break;
                 }
                 case inventory_data.PayloadOneofCase.None:
