@@ -59,6 +59,7 @@
         <String Key="Button.Task" Value="任务"/>
         <String Key="Button.Friend" Value="好友"/>
         <String Key="Button.Debug" Value="测试"/>
+        <String Key="Home.Avatar" Value="头像"/>
         <String Key="Home.PersonalInformation" Value="个人信息"/>
         <String Key="Home.ChangeName" Value="改名"/>
         <String Key="Home.UserId" Value="玩家id："/>
@@ -67,6 +68,16 @@
         <String Key="Home.Version" Value="客户端版本："/>
         <String Key="Home.OperationSuccessful" Value="操作成功"/>
         <String Key="Home.Level" Value="级"/>
+        <String Key="Title.6011001" Value="从戎校尉"/>
+        <String Key="Title.6011002" Value="讨逆先锋"/>
+        <String Key="Title.6011003" Value="百战悍将"/>
+        <String Key="Title.6011004" Value="持节偏军"/>
+        <String Key="Title.6011005" Value="威武都督"/>
+        <String Key="Title.6011006" Value="镇国大将军"/>
+        <String Key="Title.6011007" Value="名震寰宇"/>
+        <String Key="Title.6011008" Value="兵圣传人"/>
+        <String Key="Title.6011009" Value="开国元勋"/>
+        <String Key="Title.6011010" Value="千古战神"/>
         <String Key="PropertyGroup.Base" Value="基础属性"/>
         <String Key="PropertyGroup.Base.Description" Value="基础属性"/>
         <String Key="PropertyGroup.Default" Value="默认属性"/>

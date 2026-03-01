@@ -29,7 +29,11 @@ namespace Celeritas.Config
         /// 头像框
         /// </summary>
         frame = 3,
-        max = 4,
+        /// <summary>
+        /// 称号
+        /// </summary>
+        title = 4,
+        max = 5,
     }
 
 } 

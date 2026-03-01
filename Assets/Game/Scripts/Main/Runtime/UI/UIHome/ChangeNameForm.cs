@@ -3,6 +3,7 @@ using Game.Scripts.Main.Runtime.GameModule.Role;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework.Event;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
@@ -12,8 +13,8 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 {
     public class ChangeNameForm : UGuiForm
     {
-        [SerializeField] private InputField surnameInputField;
-        [SerializeField] private InputField nameInputField;
+        [SerializeField] private TMP_InputField surnameInputField;
+        [SerializeField] private TMP_InputField nameInputField;
         private ProcedureHome procedureHome;
 
         protected override void OnOpen(object userData)

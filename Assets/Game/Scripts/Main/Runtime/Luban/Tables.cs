@@ -46,6 +46,10 @@ public partial class tables
     /// </summary>
     public game.frame_config_container FrameConfigContainer {get; }
     /// <summary>
+    /// 称号
+    /// </summary>
+    public game.title_config_container TitleConfigContainer {get; }
+    /// <summary>
     /// 英雄
     /// </summary>
     public game.hero_config_container HeroConfigContainer {get; }
@@ -72,6 +76,7 @@ public partial class tables
         DefaultItemConfigContainer = new game.default_item_config_container(loader("default_item_config_container"));
         AvatarConfigContainer = new game.avatar_config_container(loader("avatar_config_container"));
         FrameConfigContainer = new game.frame_config_container(loader("frame_config_container"));
+        TitleConfigContainer = new game.title_config_container(loader("title_config_container"));
         HeroConfigContainer = new game.hero_config_container(loader("hero_config_container"));
         DevelopConfigContainer = new game.develop_config_container(loader("develop_config_container"));
         DevelopLevelConfigContainer = new game.develop_level_config_container(loader("develop_level_config_container"));
@@ -89,6 +94,7 @@ public partial class tables
         DefaultItemConfigContainer.ResolveRef(this);
         AvatarConfigContainer.ResolveRef(this);
         FrameConfigContainer.ResolveRef(this);
+        TitleConfigContainer.ResolveRef(this);
         HeroConfigContainer.ResolveRef(this);
         DevelopConfigContainer.ResolveRef(this);
         DevelopLevelConfigContainer.ResolveRef(this);
