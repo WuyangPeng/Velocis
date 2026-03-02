@@ -2,7 +2,7 @@
 {
     public class TitleData
     {
-        private InventoryData Inventory { get; set; }
+        public InventoryData Inventory { get; set; }
 
         public TitleData() { Inventory = new InventoryData(); }
 

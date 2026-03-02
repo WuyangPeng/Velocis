@@ -6,6 +6,7 @@ using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UIItem.UICreate;
 using GameFramework.Event;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
@@ -15,7 +16,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 {
     public class PersonalInformationForm : UGuiForm
     {
-        [SerializeField] private Text roleName;
+        [SerializeField] private TMP_Text roleName;
 
         [SerializeField] private Text userId;
 
@@ -24,6 +25,8 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         [SerializeField] private Text version;
 
         [SerializeField] private AvatarItem avatarItem;
+
+        [SerializeField] private TMP_Text title;
 
         private ProcedureHome procedureHome;
 
@@ -72,6 +75,20 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             if (frameConfig != null)
             {
                 avatarItem.SetFrameSprite(frameConfig.IconRes);
+            }
+
+
+            var titleModule = GameEntry.ModuleComponent.GetModule<TitleModule>();
+            var selectedTitle = titleModule.GetSelectedTitle();
+            if (selectedTitle == null)
+            {
+                return;
+            }
+
+            var titleConfig = GameEntry.GameConfig.GetGameConfig().GetTables().TitleConfigContainer.Get(selectedTitle.Inventory.TemplateId);
+            if (titleConfig != null)
+            {
+                title.text = GameEntry.Localization.GetString(titleConfig.Text);
             }
         }
 
