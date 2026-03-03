@@ -18,11 +18,11 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
     {
         [SerializeField] private TMP_Text roleName;
 
-        [SerializeField] private Text userId;
+        [SerializeField] private TMP_Text userId;
 
-        [SerializeField] private Text serverName;
+        [SerializeField] private TMP_Text serverName;
 
-        [SerializeField] private Text version;
+        [SerializeField] private TMP_Text version;
 
         [SerializeField] private AvatarItem avatarItem;
 
@@ -82,13 +82,19 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
             var selectedTitle = titleModule.GetSelectedTitle();
             if (selectedTitle == null)
             {
+                title.text = "";
                 return;
             }
+             
 
             var titleConfig = GameEntry.GameConfig.GetGameConfig().GetTables().TitleConfigContainer.Get(selectedTitle.Inventory.TemplateId);
             if (titleConfig != null)
             {
                 title.text = GameEntry.Localization.GetString(titleConfig.Text);
+            }
+            else
+            {
+                title.text = "";
             }
         }
 

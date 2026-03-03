@@ -45,7 +45,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Item
                 return Items.GetValueOrDefault(itemSelectedData.Value.SelectedId);
             }
 
-            throw new GameException("title is empty.");
+            return null;
         }
     }
 }
