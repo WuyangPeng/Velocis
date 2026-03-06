@@ -236,6 +236,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avatarScrollDisplay: {fileID: 6680507138129253743}
+  frameScrollDisplay: {fileID: 0}
+  titleScrollDisplay: {fileID: 0}
+  avatarButton: {fileID: 0}
+  frameButton: {fileID: 0}
+  titleButton: {fileID: 0}
 --- !u!1001 &809108119200171848
 PrefabInstance:
   m_ObjectHideFlags: 0
