@@ -2,7 +2,6 @@
 using System.Linq;
 using Celeritas.Config;
 using Game.Scripts.Main.Runtime.GameModule.Base;
-using Game.Scripts.Main.Runtime.RuntimeException;
 
 namespace Game.Scripts.Main.Runtime.GameModule.Item
 {
@@ -46,6 +45,16 @@ namespace Game.Scripts.Main.Runtime.GameModule.Item
             }
 
             return null;
+        }
+
+        public bool HasItem(int itemTemplateId)
+        {
+            return Items.Any(item => item.Value.Inventory.ItemId == itemTemplateId);
+        }
+
+        public TitleData GetItem(int itemTemplateId)
+        {
+            return (from item in Items where item.Value.Inventory.ItemId == itemTemplateId select item.Value).FirstOrDefault();
         }
     }
 }

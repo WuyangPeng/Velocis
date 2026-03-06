@@ -47,5 +47,15 @@ namespace Game.Scripts.Main.Runtime.GameModule.Item
 
             throw new GameException("frame is empty.");
         }
+
+        public bool HasItem(int itemTemplateId)
+        {
+            return Items.Any(item => item.Value.Inventory.ItemId == itemTemplateId);
+        }
+
+        public FrameData GetItem(int itemTemplateId)
+        {
+            return (from item in Items where item.Value.Inventory.ItemId == itemTemplateId select item.Value).FirstOrDefault();
+        }
     }
 }
