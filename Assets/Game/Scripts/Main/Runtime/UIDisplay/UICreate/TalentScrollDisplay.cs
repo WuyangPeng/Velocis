@@ -21,17 +21,17 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
         [SerializeField] private Text talentDescription;
 
-        private readonly List<TalentItemObject> activeTalentItemObject = new();
-        private readonly List<GameObject> rowGameObjects = new();
-        private readonly List<int> selectedIndex = new();
-        private readonly List<DRTalent> talentData = new();
+        private readonly List<TalentItemObject> _activeTalentItemObject = new();
+        private readonly List<GameObject> _rowGameObjects = new();
+        private readonly List<int> _selectedIndex = new();
+        private readonly List<DRTalent> _talentData = new();
 
-        private IObjectPool<TalentItemObject> pool;
+        private IObjectPool<TalentItemObject> _pool;
 
         private void Start()
         {
             const string poolName = "TalentItemPool";
-            pool = GameEntry.ObjectPool.HasObjectPool<TalentItemObject>(poolName)
+            _pool = GameEntry.ObjectPool.HasObjectPool<TalentItemObject>(poolName)
                 ? GameEntry.ObjectPool.GetObjectPool<TalentItemObject>(poolName)
                 : GameEntry.ObjectPool.CreateSingleSpawnObjectPool<TalentItemObject>(poolName, poolCapacity, 30f, 16);
 
@@ -47,11 +47,10 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
         private void SetAvatarData()
         {
-            talentData.Clear();
-            selectedIndex.Clear();
+            _talentData.Clear();
+            _selectedIndex.Clear();
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>(); 
 
             var talents = GameEntry.DataTable.GetDataTable<DRTalent>();
             foreach (var talent in talents)
@@ -63,17 +62,17 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
                 if (userModule.HasSelectedTalent(talent.Id))
                 {
-                    selectedIndex.Add(talentData.Count);
+                    _selectedIndex.Add(_talentData.Count);
                 }
 
-                talentData.Add(talent);
+                _talentData.Add(talent);
             }
         }
 
 
         private void SpawnAvatar()
         {
-            var rowCount = Mathf.CeilToInt((float)talentData.Count / PerRow);
+            var rowCount = Mathf.CeilToInt((float)_talentData.Count / PerRow);
 
             for (var row = 0; row < rowCount; row++)
                 if (!SpawnAvatar(row))
@@ -88,7 +87,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
         {
             var rowGameObject = GetRowGameObject(row);
 
-            rowGameObjects.Add(rowGameObject);
+            _rowGameObjects.Add(rowGameObject);
 
             for (var column = 0; column < PerRow; column++)
                 if (!SpawnAvatar(row, column, rowGameObject))
@@ -102,7 +101,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
         private bool SpawnAvatar(int row, int column, GameObject rowGameObject)
         {
             var idx = row * PerRow + column;
-            if (idx >= talentData.Count)
+            if (idx >= _talentData.Count)
             {
                 return true;
             }
@@ -113,19 +112,19 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
                 return false;
             }
 
-            activeTalentItemObject.Add(spawn);
+            _activeTalentItemObject.Add(spawn);
 
             var avatarItem = (TalentItem)spawn.Target;
             avatarItem.transform.SetParent(rowGameObject.transform, false);
-            avatarItem.SetData(idx, talentData[idx], OnItemClick);
-            avatarItem.SetSelected(selectedIndex.Contains(idx));
+            avatarItem.SetData(idx, _talentData[idx], OnItemClick);
+            avatarItem.SetSelected(_selectedIndex.Contains(idx));
 
             return true;
         }
 
         private void UnSpawnAvatar()
         {
-            foreach (var element in activeTalentItemObject)
+            foreach (var element in _activeTalentItemObject)
             {
                 var item = (TalentItem)element.Target;
                 if (item != null && item.gameObject != null)
@@ -133,19 +132,19 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
                     item.transform.SetParent(null, false);
                 }
 
-                pool.Unspawn(element);
+                _pool.Unspawn(element);
             }
 
-            activeTalentItemObject.Clear();
+            _activeTalentItemObject.Clear();
 
-            foreach (var rowGameObject in rowGameObjects) DestroyImmediate(rowGameObject);
+            foreach (var rowGameObject in _rowGameObjects) DestroyImmediate(rowGameObject);
 
-            rowGameObjects.Clear();
+            _rowGameObjects.Clear();
         }
 
         private TalentItemObject GetSpawn()
         {
-            var result = pool.Spawn();
+            var result = _pool.Spawn();
             if (result != null)
             {
                 return result;
@@ -155,9 +154,9 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
             if (itemGameObject.TryGetComponent<TalentItem>(out var item))
             {
                 var avatarItemObject = TalentItemObject.Create(item);
-                pool.Register(avatarItemObject, true);
-                pool.Unspawn(avatarItemObject);
-                result = pool.Spawn();
+                _pool.Register(avatarItemObject, true);
+                _pool.Unspawn(avatarItemObject);
+                result = _pool.Spawn();
 
                 return result;
             }
@@ -169,25 +168,25 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
         private void OnItemClick(int index)
         {
-            talentDescription.text = GameEntry.Localization.GetString(talentData[index].Description);
+            talentDescription.text = GameEntry.Localization.GetString(_talentData[index].Description);
 
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            if (userModule.HasTalent(talentData[index].Id))
+            if (userModule.HasTalent(_talentData[index].Id))
             {
-                userModule.RemoveTalent(talentData[index].Id);
-                selectedIndex.Remove(index);
+                userModule.RemoveTalent(_talentData[index].Id);
+                _selectedIndex.Remove(index);
                 UpdateSelected();
             }
             else
             {
-                if (!userModule.CanAddTalent(talentData[index].Id))
+                if (!userModule.CanAddTalent(_talentData[index].Id))
                 {
                     return;
                 }
 
-                selectedIndex.Add(index);
+                _selectedIndex.Add(index);
 
-                userModule.AddTalent(talentData[index].Id);
+                userModule.AddTalent(_talentData[index].Id);
 
                 UpdateSelected();
             }
@@ -195,10 +194,10 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
         private void UpdateSelected()
         {
-            for (var i = 0; i < activeTalentItemObject.Count; i++)
+            for (var i = 0; i < _activeTalentItemObject.Count; i++)
             {
-                var avatarItem = (TalentItem)activeTalentItemObject[i].Target;
-                avatarItem.SetSelected(selectedIndex.Contains(i));
+                var avatarItem = (TalentItem)_activeTalentItemObject[i].Target;
+                avatarItem.SetSelected(_selectedIndex.Contains(i));
             }
         }
     }

@@ -2,34 +2,29 @@
 using GameFramework;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
     public class DialogForm : UGuiForm
     {
-        [SerializeField]
-        private TMP_Text titleText = null;
+        [SerializeField] private TMP_Text titleText;
 
-        [SerializeField]
-        private TMP_Text messageText = null;
+        [SerializeField] private TMP_Text messageText;
 
-        [SerializeField]
-        private GameObject[] modeObjects = null;
+        [SerializeField] private GameObject[] modeObjects;
 
-        [SerializeField]
-        private TMP_Text[] confirmTexts = null;
+        [SerializeField] private TMP_Text[] confirmTexts;
 
-        [SerializeField]
-        private TMP_Text[] cancelTexts = null;
+        [SerializeField] private TMP_Text[] cancelTexts;
 
-        [SerializeField]
-        private TMP_Text[] otherTexts = null;
+        [SerializeField] private TMP_Text[] otherTexts;
 
-        private GameFrameworkAction<object> onClickConfirm = null;
-        private GameFrameworkAction<object> onClickCancel = null;
-        private GameFrameworkAction<object> onClickOther = null;
+        private GameFrameworkAction<object> _onClickCancel;
+
+        private GameFrameworkAction<object> _onClickConfirm;
+        private GameFrameworkAction<object> _onClickOther;
 
         public int DialogMode { get; private set; } = 1;
 
@@ -41,21 +36,21 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             Close();
 
-            onClickConfirm?.Invoke(UserData);
+            _onClickConfirm?.Invoke(UserData);
         }
 
         public void OnCancelButtonClick()
         {
             Close();
 
-            onClickCancel?.Invoke(UserData);
+            _onClickCancel?.Invoke(UserData);
         }
 
         public void OnOtherButtonClick()
         {
             Close();
 
-            onClickOther?.Invoke(UserData);
+            _onClickOther?.Invoke(UserData);
         }
 
         protected override void OnOpen(object userData)
@@ -81,13 +76,13 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             UserData = dialogParams.UserData;
 
             RefreshConfirmText(dialogParams.ConfirmText);
-            onClickConfirm = dialogParams.OnClickConfirm;
+            _onClickConfirm = dialogParams.OnClickConfirm;
 
             RefreshCancelText(dialogParams.CancelText);
-            onClickCancel = dialogParams.OnClickCancel;
+            _onClickCancel = dialogParams.OnClickCancel;
 
             RefreshOtherText(dialogParams.OtherText);
-            onClickOther = dialogParams.OnClickOther;
+            _onClickOther = dialogParams.OnClickOther;
         }
 
 
@@ -95,7 +90,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             if (PauseGame)
             {
-                Base.GameEntry.Base.ResumeGame();
+                GameEntry.Base.ResumeGame();
             }
 
             DialogMode = 1;
@@ -105,13 +100,13 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             UserData = null;
 
             RefreshConfirmText(string.Empty);
-            onClickConfirm = null;
+            _onClickConfirm = null;
 
             RefreshCancelText(string.Empty);
-            onClickCancel = null;
+            _onClickCancel = null;
 
             RefreshOtherText(string.Empty);
-            onClickOther = null;
+            _onClickOther = null;
 
             base.OnClose(isShutdown, userData);
         }
@@ -128,7 +123,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             if (PauseGame)
             {
-                Base.GameEntry.Base.PauseGame();
+                GameEntry.Base.PauseGame();
             }
         }
 
@@ -136,7 +131,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             if (string.IsNullOrEmpty(confirmText))
             {
-                confirmText = Base.GameEntry.Localization.GetString("Dialog.ConfirmButton");
+                confirmText = GameEntry.Localization.GetString("Dialog.ConfirmButton");
             }
 
             foreach (var text in confirmTexts)
@@ -149,7 +144,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             if (string.IsNullOrEmpty(cancelText))
             {
-                cancelText = Base.GameEntry.Localization.GetString("Dialog.CancelButton");
+                cancelText = GameEntry.Localization.GetString("Dialog.CancelButton");
             }
 
             foreach (var text in cancelTexts)
@@ -162,7 +157,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             if (string.IsNullOrEmpty(otherText))
             {
-                otherText = Base.GameEntry.Localization.GetString("Dialog.OtherButton");
+                otherText = GameEntry.Localization.GetString("Dialog.OtherButton");
             }
 
             foreach (var text in otherTexts)

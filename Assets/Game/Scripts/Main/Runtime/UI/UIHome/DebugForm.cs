@@ -17,14 +17,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         [SerializeField] private InputField parameterInputField;
         [SerializeField] private Dropdown typeDropdown;
 
-        private ProcedureHome procedureHome;
+        private ProcedureHome _procedureHome;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            procedureHome = (ProcedureHome)GetCurrentProcedure();
-            if (procedureHome == null)
+            _procedureHome = (ProcedureHome)GetCurrentProcedure();
+            if (_procedureHome == null)
             {
                 Log.Warning("ProcedureHome is invalid when open DebugForm.");
             }
@@ -35,14 +35,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureHome = null;
+            _procedureHome = null;
 
             base.OnClose(isShutdown, userData);
         }
 
         public void OnReturnButtonClick()
         {
-            procedureHome.RemoveUIForm(UIFormId.DebugForm);
+            _procedureHome.RemoveUIForm(UIFormId.DebugForm);
         }
 
         private void InitDropdown()

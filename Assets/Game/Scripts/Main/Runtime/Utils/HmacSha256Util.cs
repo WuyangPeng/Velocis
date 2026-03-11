@@ -5,13 +5,13 @@ using System.Text;
 namespace Game.Scripts.Main.Runtime.Utils
 {
     /// <summary>
-    /// HMAC-SHA256 签名工具类。
+    ///     HMAC-SHA256 签名工具类。
     /// </summary>
     public static class HmacSha256Util
     {
         /// <summary>
-        /// 使用 HMAC-SHA256 算法计算签名。
-        /// 该方法接受一个或多个字符串参数，并将它们按传入顺序直接拼接后进行签名。
+        ///     使用 HMAC-SHA256 算法计算签名。
+        ///     该方法接受一个或多个字符串参数，并将它们按传入顺序直接拼接后进行签名。
         /// </summary>
         /// <param name="secret">用于签名的密钥。</param>
         /// <param name="parametersToSign">一个或多个待签名的字符串参数（不定参数）。</param>
@@ -31,18 +31,17 @@ namespace Game.Scripts.Main.Runtime.Utils
             var dataBytes = Encoding.UTF8.GetBytes(stringToSign);
 
             // 3. 计算 HMAC-SHA256 哈希值。
-            using (var hmac = new HMACSHA256(keyBytes))
-            {
-                var hashBytes = hmac.ComputeHash(dataBytes);
+            using var hmac = new HMACSHA256(keyBytes);
+            var hashBytes = hmac.ComputeHash(dataBytes);
 
-                // 4. 将哈希字节数组转换为小写十六进制字符串。
-                var builder = new StringBuilder();
-                foreach (var b in hashBytes)
-                {
-                    builder.Append(b.ToString("x2"));
-                }
-                return builder.ToString();
+            // 4. 将哈希字节数组转换为小写十六进制字符串。
+            var builder = new StringBuilder();
+            foreach (var b in hashBytes)
+            {
+                builder.Append(b.ToString("x2"));
             }
+
+            return builder.ToString();
         }
     }
 }

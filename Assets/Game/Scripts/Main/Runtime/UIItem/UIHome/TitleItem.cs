@@ -5,25 +5,25 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Game.Scripts.Main.Runtime.UIItem.UICreate
+namespace Game.Scripts.Main.Runtime.UIItem.UIHome
 {
     public class TitleItem : ItemBase, IPointerClickHandler
     {
         [SerializeField] private Image imageBackground;
         [SerializeField] private TMP_Text textTitle;
 
-        private Action<int> onClick;
-        private int selfIndex;
+        private Action<int> _onClick;
+        private int _selfIndex;
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            onClick?.Invoke(selfIndex);
+            _onClick?.Invoke(_selfIndex);
         }
 
         public void SetData(int index, title_config data, Action<int> clickCallback)
         {
-            selfIndex = index;
-            onClick = clickCallback;
+            _selfIndex = index;
+            _onClick = clickCallback;
 
             if (textTitle != null)
             {
@@ -52,7 +52,7 @@ namespace Game.Scripts.Main.Runtime.UIItem.UICreate
                 textTitle.color = Color.white;
             }
 
-            onClick = null;
+            _onClick = null;
         }
     }
 }

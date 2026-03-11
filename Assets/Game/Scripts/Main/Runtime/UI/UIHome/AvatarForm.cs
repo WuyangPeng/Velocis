@@ -1,6 +1,7 @@
 ﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
+using Game.Scripts.Main.Runtime.UIDisplay.UIHome;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
@@ -24,15 +25,15 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         [SerializeField] private GameObject frameButton;
         [SerializeField] private GameObject titleButton;
         
-        private AvatarFormTab currentTab = AvatarFormTab.Avatar;
-        private ProcedureHome procedureHome;
+        private AvatarFormTab _currentTab = AvatarFormTab.Avatar;
+        private ProcedureHome _procedureHome;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            procedureHome = (ProcedureHome)GetCurrentProcedure();
-            if (procedureHome == null)
+            _procedureHome = (ProcedureHome)GetCurrentProcedure();
+            if (_procedureHome == null)
             {
                 Log.Warning("ProcedureHome is invalid when open AvatarForm.");
             }
@@ -42,14 +43,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureHome = null;
+            _procedureHome = null;
 
             base.OnClose(isShutdown, userData);
         }
 
         public void OnReturnButtonClick()
         {
-            procedureHome.RemoveUIForm(UIFormId.AvatarForm);
+            _procedureHome.RemoveUIForm(UIFormId.AvatarForm);
         }
 
         public void OnAvatarButtonClick()
@@ -69,7 +70,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         private void SwitchTab(AvatarFormTab tab)
         {
-            currentTab = tab;
+            _currentTab = tab;
 
 
             if (avatarScrollDisplay != null)
@@ -98,7 +99,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
                 var img = avatarButton.GetComponent<Image>();
                 if (img != null)
                 {
-                    img.color = currentTab == AvatarFormTab.Avatar ? Color.yellow : Color.white;
+                    img.color = _currentTab == AvatarFormTab.Avatar ? Color.yellow : Color.white;
                 }
             }
 
@@ -107,7 +108,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
                 var img = frameButton.GetComponent<Image>();
                 if (img != null)
                 {
-                    img.color = currentTab == AvatarFormTab.Frame ? Color.yellow : Color.white;
+                    img.color = _currentTab == AvatarFormTab.Frame ? Color.yellow : Color.white;
                 }
             }
 
@@ -116,7 +117,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
                 var img = titleButton.GetComponent<Image>();
                 if (img != null)
                 {
-                    img.color = currentTab == AvatarFormTab.Title ? Color.yellow : Color.white;
+                    img.color = _currentTab == AvatarFormTab.Title ? Color.yellow : Color.white;
                 }
             }
         }

@@ -10,23 +10,17 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
 {
     public class HeadDataItem : MonoBehaviour
     {
-        [SerializeField] 
-        private Text titleText;
+        [SerializeField] private Text titleText;
 
-        [SerializeField] 
-        private Text dateText;
+        [SerializeField] private Text dateText;
 
-        [SerializeField] 
-        private Text cultivationRealmText;
+        [SerializeField] private Text cultivationRealmText;
 
-        [SerializeField] 
-        private Text gameDifficultyText;
+        [SerializeField] private Text gameDifficultyText;
 
-        [SerializeField] 
-        private Image avatarImage;
+        [SerializeField] private Image avatarImage;
 
-        [SerializeField] 
-        private Text createNewGame;
+        [SerializeField] private Text createNewGame;
 
         public void SetData(HeadSaveData headSaveData)
         {
@@ -87,14 +81,8 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
             {
                 GameEntry.Resource.LoadAsset(avatarRow.Path, typeof(Sprite), 0,
                     new LoadAssetCallbacks(
-                        (assetName, asset, duration, userData) =>
-                        {
-                            avatarImage.sprite = asset as Sprite;
-                        },
-                        (assetName, asset, duration, userData) =>
-                        {
-                            Debug.LogError("LoadAsset " + avatarRow.Path + " error:" + duration);
-                        }));
+                        (_, asset, _, _) => { avatarImage.sprite = asset as Sprite; },
+                        (_, _, duration, _) => { Debug.LogError("LoadAsset " + avatarRow.Path + " error:" + duration); }));
             }
             else
             {

@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using Celeritas.Config.game;
 using Game.Scripts.Main.Runtime.GameModule.Item;
-using Game.Scripts.Main.Runtime.UIItem.UICreate;
+using Game.Scripts.Main.Runtime.UIItem.UIHome;
 using Game.Scripts.Main.Runtime.UIObject.UICreate;
 using GameFramework.ObjectPool;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
-namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
+namespace Game.Scripts.Main.Runtime.UIDisplay.UIHome
 {
     public class AvatarScrollDisplay : ScrollDisplayBase
     {
@@ -18,26 +18,26 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
         [SerializeField] private int poolCapacity = 20;
 
-        private readonly List<AvatarItemObject> activeAvatarItemObject = new();
-        private readonly List<avatar_config> holdAvatarConfig = new();
-        private readonly List<avatar_config> notUnlockedAvatarConfig = new();
-        private readonly List<GameObject> rowGameObjects = new();
+        private readonly List<AvatarItemObject> _activeAvatarItemObject = new();
+        private readonly List<avatar_config> _holdAvatarConfig = new();
+        private readonly List<avatar_config> _notUnlockedAvatarConfig = new();
+        private readonly List<GameObject> _rowGameObjects = new();
 
-        private IObjectPool<AvatarItemObject> pool;
-        private int selectedIndex = -1;
+        private IObjectPool<AvatarItemObject> _pool;
+        private int _selectedIndex = -1;
 
         private void Start()
         {
             const string poolName = "AvatarItemPool";
-            pool = GameEntry.ObjectPool.HasObjectPool<AvatarItemObject>(poolName) ? GameEntry.ObjectPool.GetObjectPool<AvatarItemObject>(poolName) : GameEntry.ObjectPool.CreateSingleSpawnObjectPool<AvatarItemObject>(poolName, poolCapacity, 30f, 16);
+            _pool = GameEntry.ObjectPool.HasObjectPool<AvatarItemObject>(poolName) ? GameEntry.ObjectPool.GetObjectPool<AvatarItemObject>(poolName) : GameEntry.ObjectPool.CreateSingleSpawnObjectPool<AvatarItemObject>(poolName, poolCapacity, 30f, 16);
 
             Refresh();
         }
 
         private void SetAvatarData()
         {
-            holdAvatarConfig.Clear();
-            selectedIndex = -1;
+            _holdAvatarConfig.Clear();
+            _selectedIndex = -1;
 
             var avatarModule = GameEntry.ModuleComponent.GetModule<AvatarModule>();
             var selectedAvatar = avatarModule.GetSelectedAvatar();
@@ -47,26 +47,26 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
                 var item = avatarModule.GetItem(avatarConfig.ItemTemplateId);
                 if (item != null)
                 {
-                    holdAvatarConfig.Add(avatarConfig);
+                    _holdAvatarConfig.Add(avatarConfig);
                     if (selectedAvatar != null && selectedAvatar.Inventory.ItemId == item.Inventory.ItemId)
                     {
-                        selectedIndex = index;
+                        _selectedIndex = index;
                     }
 
                     ++index;
                 }
                 else if (!avatarConfig.Hidden)
                 {
-                    notUnlockedAvatarConfig.Add(avatarConfig);
+                    _notUnlockedAvatarConfig.Add(avatarConfig);
                 }
             }
 
-            if (selectedIndex >= 0)
+            if (_selectedIndex >= 0)
             {
                 return;
             }
 
-            selectedIndex = 0;
+            _selectedIndex = 0;
         }
 
         public void Refresh()
@@ -78,7 +78,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
         private void SpawnAvatar()
         {
-            var rowCount = Mathf.CeilToInt((float)(holdAvatarConfig.Count + notUnlockedAvatarConfig.Count) / PerRow);
+            var rowCount = Mathf.CeilToInt((float)(_holdAvatarConfig.Count + _notUnlockedAvatarConfig.Count) / PerRow);
 
             for (var row = 0; row < rowCount; row++)
             {
@@ -93,7 +93,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
         {
             var rowGameObject = GetRowGameObject(row);
 
-            rowGameObjects.Add(rowGameObject);
+            _rowGameObjects.Add(rowGameObject);
 
             for (var column = 0; column < PerRow; column++)
             {
@@ -109,7 +109,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
         private bool SpawnAvatar(int row, int column, GameObject rowGameObject)
         {
             var idx = row * PerRow + column;
-            if (idx >= holdAvatarConfig.Count + notUnlockedAvatarConfig.Count)
+            if (idx >= _holdAvatarConfig.Count + _notUnlockedAvatarConfig.Count)
             {
                 return true;
             }
@@ -120,32 +120,32 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
                 return false;
             }
 
-            activeAvatarItemObject.Add(spawn);
+            _activeAvatarItemObject.Add(spawn);
 
             var avatarItem = (AvatarItem)spawn.Target;
             avatarItem.transform.SetParent(rowGameObject.transform, false);
             
-            var isUnlocked = idx < holdAvatarConfig.Count;
+            var isUnlocked = idx < _holdAvatarConfig.Count;
             
             if (isUnlocked)
             {
-                avatarItem.SetData(idx, holdAvatarConfig[idx], OnItemClick);
+                avatarItem.SetData(idx, _holdAvatarConfig[idx], OnItemClick);
                 avatarItem.SetGrayscale(false);
             }
             else
             {
-                avatarItem.SetData(idx, notUnlockedAvatarConfig[idx - holdAvatarConfig.Count], OnItemClick);
+                avatarItem.SetData(idx, _notUnlockedAvatarConfig[idx - _holdAvatarConfig.Count], OnItemClick);
                 avatarItem.SetGrayscale(true);
             }
          
-            avatarItem.SetSelected(idx == selectedIndex);
+            avatarItem.SetSelected(idx == _selectedIndex);
 
             return true;
         }
 
         private void UnSpawnAvatar()
         {
-            foreach (var obj in activeAvatarItemObject)
+            foreach (var obj in _activeAvatarItemObject)
             {
                 var item = (AvatarItem)obj.Target;
                 if (item != null && item.gameObject != null)
@@ -153,22 +153,22 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
                     item.transform.SetParent(null, false);
                 }
 
-                pool.Unspawn(obj);
+                _pool.Unspawn(obj);
             }
 
-            activeAvatarItemObject.Clear();
+            _activeAvatarItemObject.Clear();
 
-            foreach (var rowGameObject in rowGameObjects)
+            foreach (var rowGameObject in _rowGameObjects)
             {
                 DestroyImmediate(rowGameObject);
             }
 
-            rowGameObjects.Clear();
+            _rowGameObjects.Clear();
         }
 
         private AvatarItemObject GetSpawn()
         {
-            var result = pool.Spawn();
+            var result = _pool.Spawn();
             if (result != null)
             {
                 return result;
@@ -178,9 +178,9 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
             if (itemGameObject.TryGetComponent<AvatarItem>(out var item))
             {
                 var avatarItemObject = AvatarItemObject.Create(item);
-                pool.Register(avatarItemObject, true);
-                pool.Unspawn(avatarItemObject);
-                result = pool.Spawn();
+                _pool.Register(avatarItemObject, true);
+                _pool.Unspawn(avatarItemObject);
+                result = _pool.Spawn();
 
                 return result;
             }
@@ -192,12 +192,12 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
         private void OnItemClick(int index)
         {
-            selectedIndex = index;
+            _selectedIndex = index;
 
-            for (var i = 0; i < activeAvatarItemObject.Count; i++)
+            for (var i = 0; i < _activeAvatarItemObject.Count; i++)
             {
-                var avatarItem = (AvatarItem)activeAvatarItemObject[i].Target;
-                avatarItem.SetSelected(i == selectedIndex);
+                var avatarItem = (AvatarItem)_activeAvatarItemObject[i].Target;
+                avatarItem.SetSelected(i == _selectedIndex);
             }
         }
     }

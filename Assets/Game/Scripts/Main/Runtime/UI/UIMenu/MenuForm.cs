@@ -4,7 +4,6 @@ using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 

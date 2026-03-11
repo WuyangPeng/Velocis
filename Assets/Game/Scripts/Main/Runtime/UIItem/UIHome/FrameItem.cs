@@ -7,41 +7,41 @@ using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
-namespace Game.Scripts.Main.Runtime.UIItem.UICreate
+namespace Game.Scripts.Main.Runtime.UIItem.UIHome
 {
     public class FrameItem : ItemBase, IPointerClickHandler
     {
         [SerializeField] private Image imageBackground;
         [SerializeField] private Image imageFrame;
 
-        private object frameHandle;
-        private Action<int> onClick;
-        private int selfIndex;
+        private object _frameHandle;
+        private Action<int> _onClick;
+        private int _selfIndex;
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            onClick?.Invoke(selfIndex);
+            _onClick?.Invoke(_selfIndex);
         }
 
         public void SetData(int index, frame_config data, Action<int> clickCallback)
         {
-            selfIndex = index;
-            onClick = clickCallback;
+            _selfIndex = index;
+            _onClick = clickCallback;
 
-            if (frameHandle != null)
+            if (_frameHandle != null)
             {
-                GameEntry.Resource.UnloadAsset(frameHandle);
-                frameHandle = null;
+                GameEntry.Resource.UnloadAsset(_frameHandle);
+                _frameHandle = null;
             }
 
             GameEntry.Resource.LoadAsset(data.IconRes, typeof(Sprite), 0,
                 new LoadAssetCallbacks(
-                    (assetName, asset, duration, userData) =>
+                    (_, asset, _, _) =>
                     {
-                        frameHandle = asset;
+                        _frameHandle = asset;
                         imageFrame.sprite = asset as Sprite;
                     },
-                    (assetName, status, errorMessage, userData) => { Log.Error($"头像框加载失败:{errorMessage}"); }));
+                    (_, _, errorMessage, _) => { Log.Error($"头像框加载失败:{errorMessage}"); }));
         }
 
         public void SetSelected(bool selected)
@@ -56,15 +56,15 @@ namespace Game.Scripts.Main.Runtime.UIItem.UICreate
 
         public override void OnRecycle()
         {
-            if (frameHandle != null)
+            if (_frameHandle != null)
             {
-                GameEntry.Resource.UnloadAsset(frameHandle);
-                frameHandle = null;
+                GameEntry.Resource.UnloadAsset(_frameHandle);
+                _frameHandle = null;
             }
 
             imageFrame.sprite = null;
             imageFrame.color = Color.white;
-            onClick = null;
+            _onClick = null;
         }
     }
 }

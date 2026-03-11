@@ -33,7 +33,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         [SerializeField] private Toggle koreanToggle;
 
-        private Language selectedLanguage = Language.Unspecified;
+        private Language _selectedLanguage = Language.Unspecified;
 
         public void OnMusicMuteChanged(bool isOn)
         {
@@ -75,7 +75,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 return;
             }
 
-            selectedLanguage = Language.English;
+            _selectedLanguage = Language.English;
             RefreshLanguageTips();
         }
 
@@ -86,7 +86,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 return;
             }
 
-            selectedLanguage = Language.ChineseSimplified;
+            _selectedLanguage = Language.ChineseSimplified;
             RefreshLanguageTips();
         }
 
@@ -97,7 +97,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 return;
             }
 
-            selectedLanguage = Language.ChineseTraditional;
+            _selectedLanguage = Language.ChineseTraditional;
             RefreshLanguageTips();
         }
 
@@ -108,19 +108,19 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 return;
             }
 
-            selectedLanguage = Language.Korean;
+            _selectedLanguage = Language.Korean;
             RefreshLanguageTips();
         }
 
         public void OnSubmitButtonClick()
         {
-            if (selectedLanguage == GameEntry.Localization.Language)
+            if (_selectedLanguage == GameEntry.Localization.Language)
             {
                 Close();
                 return;
             }
 
-            GameEntry.Setting.SetString(Constant.Setting.Language, selectedLanguage.ToString());
+            GameEntry.Setting.SetString(Constant.Setting.Language, _selectedLanguage.ToString());
             GameEntry.Setting.Save();
 
             GameEntry.Sound.StopMusic();
@@ -141,8 +141,8 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             uiSoundMuteToggle.isOn = !GameEntry.Sound.IsMuted("UISound");
             uiSoundVolumeSlider.value = GameEntry.Sound.GetVolume("UISound");
 
-            selectedLanguage = GameEntry.Localization.Language;
-            switch (selectedLanguage)
+            _selectedLanguage = GameEntry.Localization.Language;
+            switch (_selectedLanguage)
             {
                 case Language.English:
                     englishToggle.isOn = true;
@@ -175,7 +175,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         private void RefreshLanguageTips()
         {
-            languageTipsCanvasGroup.gameObject.SetActive(selectedLanguage != GameEntry.Localization.Language);
+            languageTipsCanvasGroup.gameObject.SetActive(_selectedLanguage != GameEntry.Localization.Language);
         }
     }
 }

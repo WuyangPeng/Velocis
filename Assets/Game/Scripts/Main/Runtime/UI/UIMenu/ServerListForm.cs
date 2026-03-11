@@ -8,14 +8,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
     public class ServerListForm : UGuiForm
     {
-        private ProcedureBase _ProcedureBase;
+        private ProcedureBase _procedureBase;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            _ProcedureBase = GetCurrentProcedure();
-            if (_ProcedureBase == null)
+            _procedureBase = GetCurrentProcedure();
+            if (_procedureBase == null)
             {
                 Log.Warning("ProcedureBase is invalid when open ServerListForm.");
             }
@@ -23,7 +23,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            _ProcedureBase = null;
+            _procedureBase = null;
 
             base.OnClose(isShutdown, userData);
         }

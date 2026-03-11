@@ -5,29 +5,29 @@ using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.UIObject
 {
-    public abstract class ItemObjectBase<Item> : ObjectBase where Item : ItemBase
+    public abstract class ItemObjectBase<TItem> : ObjectBase where TItem : ItemBase
     {
-        public static Owner Create<Owner>(Item item) where Owner : ItemObjectBase<Item>, new()
+        protected static TOwner Create<TOwner>(TItem item) where TOwner : ItemObjectBase<TItem>, new()
         {
-            var owner = ReferencePool.Acquire<Owner>();
+            var owner = ReferencePool.Acquire<TOwner>();
             owner.Initialize(item);
             return owner;
         }
 
         protected override void OnSpawn()
         {
-            ((Item)Target).gameObject.SetActive(true);
+            ((TItem)Target).gameObject.SetActive(true);
         }
 
 
         protected override void OnUnspawn()
         {
-            ((Item)Target).gameObject.SetActive(false);
+            ((TItem)Target).gameObject.SetActive(false);
         }
 
         protected override void Release(bool isShutdown)
         {
-            if (Target is not Item item || item == null)
+            if (Target is not TItem item || item == null)
             {
                 return;
             }

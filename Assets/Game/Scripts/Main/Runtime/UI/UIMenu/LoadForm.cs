@@ -10,31 +10,30 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
     public class LoadForm : UGuiForm
     {
-        private ProcedureMenu procedureMenu;
+        [SerializeField] private HeadDataDisplay headDataDisplay;
 
-        [SerializeField]
-        private HeadDataDisplay headDataDisplay;
+        private ProcedureMenu _procedureMenu;
 
         public void OnReturnButtonClick()
         {
-            procedureMenu.RemoveUIForm(UIFormId.LoadForm);
+            _procedureMenu.RemoveUIForm(UIFormId.LoadForm);
         }
 
         public void OnEnterButtonClick(int index)
         {
-            if (procedureMenu.HasHeadData(index))
+            if (_procedureMenu.HasHeadData(index))
             {
                 var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
                 userModule.SetInitWorld();
 
-                procedureMenu.LoadGame();
+                _procedureMenu.LoadGame();
             }
             else
             {
                 var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
                 userModule.SetSaveIndex(index);
 
-                procedureMenu.StartGame();
+                _procedureMenu.StartGame();
             }
         }
 
@@ -42,24 +41,24 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             base.OnOpen(userData);
 
-            procedureMenu = (ProcedureMenu)GetCurrentProcedure();
+            _procedureMenu = (ProcedureMenu)GetCurrentProcedure();
 
-            if (procedureMenu == null)
+            if (_procedureMenu == null)
             {
                 Log.Warning("ProcedureMenu is invalid when open LoadForm.");
                 return;
             }
 
-            procedureMenu.LoadHeadData();
+            _procedureMenu.LoadHeadData();
 
-            var headData = procedureMenu.GetHeadData();
+            var headData = _procedureMenu.GetHeadData();
 
             headDataDisplay.Refresh(headData);
         }
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureMenu = null;
+            _procedureMenu = null;
 
             base.OnClose(isShutdown, userData);
 

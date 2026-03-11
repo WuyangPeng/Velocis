@@ -6,14 +6,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 {
     public class FriendForm : UGuiForm
     {
-        private ProcedureHome procedureHome;
+        private ProcedureHome _procedureHome;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            procedureHome = (ProcedureHome)GetCurrentProcedure();
-            if (procedureHome == null)
+            _procedureHome = (ProcedureHome)GetCurrentProcedure();
+            if (_procedureHome == null)
             {
                 Log.Warning("ProcedureHome is invalid when open FriendForm.");
             }
@@ -22,14 +22,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureHome = null;
+            _procedureHome = null;
 
             base.OnClose(isShutdown, userData);
         }
 
         public void OnReturnButtonClick()
         {
-            procedureHome.RemoveUIForm(UIFormId.FriendForm);
+            _procedureHome.RemoveUIForm(UIFormId.FriendForm);
         }
     }
 }

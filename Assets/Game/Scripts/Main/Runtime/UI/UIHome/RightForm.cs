@@ -12,14 +12,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
     public class RightForm : UGuiForm
     {
         [SerializeField] private CommonButton commonButton;
-        private ProcedureHome procedureHome;
+        private ProcedureHome _procedureHome;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
             SetCommonButton();
-            procedureHome = (ProcedureHome)GetCurrentProcedure();
-            if (procedureHome == null)
+            _procedureHome = (ProcedureHome)GetCurrentProcedure();
+            if (_procedureHome == null)
             {
                 Log.Warning("ProcedureHome is invalid when open RightForm.");
             }
@@ -40,7 +40,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureHome = null;
+            _procedureHome = null;
             GameEntry.Event.Unsubscribe(DebugInfoEventArgs.EventId, OnDebugInfoChange);
 
             base.OnClose(isShutdown, userData);
@@ -48,28 +48,28 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         public void OnDebugButtonClick()
         {
-            procedureHome.OpenUIForm(UIFormId.DebugForm);
+            _procedureHome.OpenUIForm(UIFormId.DebugForm);
         }
 
         public void OnActivityButtonClick()
         {
-            procedureHome.OpenUIForm(UIFormId.ActivityForm);
+            _procedureHome.OpenUIForm(UIFormId.ActivityForm);
         }
 
         public void OnShopButtonClick()
         {
-            procedureHome.OpenUIForm(UIFormId.ShopForm);
+            _procedureHome.OpenUIForm(UIFormId.ShopForm);
         }
 
         public void OnRankingButtonClick()
         {
-            procedureHome.OpenUIForm(UIFormId.RankingForm);
+            _procedureHome.OpenUIForm(UIFormId.RankingForm);
         }
 
 
         public void OnMailButtonClick()
         {
-            procedureHome.OpenUIForm(UIFormId.MailForm);
+            _procedureHome.OpenUIForm(UIFormId.MailForm);
         }
     }
 }

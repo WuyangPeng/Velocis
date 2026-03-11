@@ -15,14 +15,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
     {
         [SerializeField] private TMP_InputField surnameInputField;
         [SerializeField] private TMP_InputField nameInputField;
-        private ProcedureHome procedureHome;
+        private ProcedureHome _procedureHome;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            procedureHome = (ProcedureHome)GetCurrentProcedure();
-            if (procedureHome == null)
+            _procedureHome = (ProcedureHome)GetCurrentProcedure();
+            if (_procedureHome == null)
             {
                 Log.Warning("ProcedureHome is invalid when open ChangeNameForm.");
             }
@@ -36,7 +36,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         private void OnSetTextSuccess(object sender, GameEventArgs e)
         {
-            procedureHome.RemoveUIForm(UIFormId.ChangeNameForm);
+            _procedureHome.RemoveUIForm(UIFormId.ChangeNameForm);
         }
 
 
@@ -44,14 +44,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         {
             GameEntry.Event.Unsubscribe(ChangeNameEventArgs.EventId, OnSetTextSuccess);
 
-            procedureHome = null;
+            _procedureHome = null;
 
             base.OnClose(isShutdown, userData);
         }
 
         public void OnReturnButtonClick()
         {
-            procedureHome.RemoveUIForm(UIFormId.ChangeNameForm);
+            _procedureHome.RemoveUIForm(UIFormId.ChangeNameForm);
         }
 
         public void OnChangeNameButtonClick()

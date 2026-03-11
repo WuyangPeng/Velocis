@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
-namespace Game.Scripts.Main.Runtime.UIItem.UICreate
+namespace Game.Scripts.Main.Runtime.UIItem.UIHome
 {
     public class AvatarItem : ItemBase, IPointerClickHandler
     {
@@ -15,54 +15,54 @@ namespace Game.Scripts.Main.Runtime.UIItem.UICreate
 
         [SerializeField] private Image imageAvatar;
 
-        private object avatarHandle;
-        private Action<int> onClick;
-        private int selfIndex;
+        private object _avatarHandle;
+        private Action<int> _onClick;
+        private int _selfIndex;
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            onClick?.Invoke(selfIndex);
+            _onClick?.Invoke(_selfIndex);
         }
 
         public void SetFrameSprite(string path)
         {
             GameEntry.Resource.LoadAsset(path, typeof(Sprite), 0,
                 new LoadAssetCallbacks(
-                    (assetName, asset, duration, userData) => { imageBackground.sprite = asset as Sprite; },
-                    (assetName, status, errorMessage, userData) => { Log.Error($"头像加载失败:{errorMessage}"); }));
+                    (_, asset, _, _) => { imageBackground.sprite = asset as Sprite; },
+                    (_, _, errorMessage, _) => { Log.Error($"头像加载失败:{errorMessage}"); }));
         }
 
         public void SetSprite(string path)
         {
             GameEntry.Resource.LoadAsset(path, typeof(Sprite), 0,
                 new LoadAssetCallbacks(
-                    (assetName, asset, duration, userData) =>
+                    (_, asset, _, _) =>
                     {
-                        avatarHandle = asset;
+                        _avatarHandle = asset;
                         imageAvatar.sprite = asset as Sprite;
                     },
-                    (assetName, status, errorMessage, userData) => { Log.Error($"头像加载失败:{errorMessage}"); }));
+                    (_, _, errorMessage, _) => { Log.Error($"头像加载失败:{errorMessage}"); }));
         }
 
         public void SetData(int index, avatar_config data, Action<int> clickCallback)
         {
-            selfIndex = index;
-            onClick = clickCallback;
+            _selfIndex = index;
+            _onClick = clickCallback;
 
-            if (avatarHandle != null)
+            if (_avatarHandle != null)
             {
-                GameEntry.Resource.UnloadAsset(avatarHandle);
-                avatarHandle = null;
+                GameEntry.Resource.UnloadAsset(_avatarHandle);
+                _avatarHandle = null;
             }
 
             GameEntry.Resource.LoadAsset(data.IconRes, typeof(Sprite), 0,
                 new LoadAssetCallbacks(
-                    (assetName, asset, duration, userData) =>
+                    (_, asset, _, _) =>
                     {
-                        avatarHandle = asset;
+                        _avatarHandle = asset;
                         imageAvatar.sprite = asset as Sprite;
                     },
-                    (assetName, status, errorMessage, userData) => { Log.Error($"头像加载失败:{errorMessage}"); }));
+                    (_, _, errorMessage, _) => { Log.Error($"头像加载失败:{errorMessage}"); }));
         }
 
         public void SetSelected(bool selected)
@@ -78,15 +78,15 @@ namespace Game.Scripts.Main.Runtime.UIItem.UICreate
 
         public override void OnRecycle()
         {
-            if (avatarHandle != null)
+            if (_avatarHandle != null)
             {
-                GameEntry.Resource.UnloadAsset(avatarHandle);
-                avatarHandle = null;
+                GameEntry.Resource.UnloadAsset(_avatarHandle);
+                _avatarHandle = null;
             }
 
             imageAvatar.sprite = null;
             imageAvatar.color = Color.white;
-            onClick = null;
+            _onClick = null;
         }
     }
 }

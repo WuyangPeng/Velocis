@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
+﻿using System;
+using Game.Scripts.Main.Runtime.DataTable;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,19 +9,22 @@ namespace Game.Scripts.Main.Runtime.UIItem.UICreate
 {
     public class TalentItem : ItemBase, IPointerClickHandler
     {
-        [SerializeField] 
-        private Image imageBackground;
+        [SerializeField] private Image imageBackground;
 
-        [SerializeField] 
-        private Text talentText;
+        [SerializeField] private Text talentText;
 
-        private System.Action<int> onClick;
-        private int selfIndex;
+        private Action<int> _onClick;
+        private int _selfIndex;
 
-        public void SetData(int index, DRTalent data, System.Action<int> clickCallback)
+        public void OnPointerClick(PointerEventData eventData)
         {
-            selfIndex = index;
-            onClick = clickCallback;
+            _onClick?.Invoke(_selfIndex);
+        }
+
+        public void SetData(int index, DRTalent data, Action<int> clickCallback)
+        {
+            _selfIndex = index;
+            _onClick = clickCallback;
             talentText.text = GameEntry.Localization.GetString(data.Name);
         }
 
@@ -29,15 +33,9 @@ namespace Game.Scripts.Main.Runtime.UIItem.UICreate
             imageBackground.color = selected ? Color.blue : Color.yellow;
         }
 
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            onClick?.Invoke(selfIndex);
-        }
-       
         public override void OnRecycle()
         {
-            onClick = null;
+            _onClick = null;
         }
     }
-
 }

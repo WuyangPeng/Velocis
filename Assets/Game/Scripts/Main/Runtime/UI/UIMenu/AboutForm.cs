@@ -3,18 +3,17 @@ using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
     public class AboutForm : UGuiForm
     {
-        [SerializeField]
-        private RectTransform rectTransform = null;
+        [SerializeField] private RectTransform rectTransform;
 
-        [SerializeField]
-        private float scrollSpeed = 1f;
+        [SerializeField] private float scrollSpeed = 1f;
 
-        private float initPosition = 0f;
+        private float _initPosition;
 
         protected override void OnInit(object userData)
         {
@@ -27,17 +26,17 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 return;
             }
 
-            initPosition = -0.5f * canvasScaler.referenceResolution.x * Screen.height / Screen.width;
+            _initPosition = -0.5f * canvasScaler.referenceResolution.x * Screen.height / Screen.width;
         }
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            rectTransform.SetLocalPositionY(initPosition);
+            rectTransform.SetLocalPositionY(_initPosition);
 
             // 换个音乐
-            Base.GameEntry.Sound.PlayMusic(3);
+            GameEntry.Sound.PlayMusic(3);
         }
 
 
@@ -48,7 +47,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             // 还原音乐
             if (!isShutdown)
             {
-                Base.GameEntry.Sound.PlayMusic(1);
+                GameEntry.Sound.PlayMusic(1);
             }
         }
 
@@ -58,9 +57,9 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
             rectTransform.AddLocalPositionY(scrollSpeed * elapseSeconds);
-            if (rectTransform.localPosition.y > rectTransform.sizeDelta.y - initPosition)
+            if (rectTransform.localPosition.y > rectTransform.sizeDelta.y - _initPosition)
             {
-                rectTransform.SetLocalPositionY(initPosition);
+                rectTransform.SetLocalPositionY(_initPosition);
             }
         }
     }

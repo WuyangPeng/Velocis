@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using Celeritas.Config.game;
 using Game.Scripts.Main.Runtime.GameModule.Item;
-using Game.Scripts.Main.Runtime.UIItem.UICreate;
+using Game.Scripts.Main.Runtime.UIItem.UIHome;
 using Game.Scripts.Main.Runtime.UIObject.UICreate;
 using GameFramework.ObjectPool;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
-namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
+namespace Game.Scripts.Main.Runtime.UIDisplay.UIHome
 {
     public class TitleScrollDisplay : ScrollDisplayBase
     {
@@ -17,18 +17,18 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
         [SerializeField] private TitleItem itemPrefab;
         [SerializeField] private int poolCapacity = 20;
 
-        private readonly List<TitleItemObject> activeTitleItemObject = new();
-        private readonly List<title_config> holdTitleConfig = new();
-        private readonly List<title_config> notUnlockedTitleConfig = new();
-        private readonly List<GameObject> rowGameObjects = new();
+        private readonly List<TitleItemObject> _activeTitleItemObject = new();
+        private readonly List<title_config> _holdTitleConfig = new();
+        private readonly List<title_config> _notUnlockedTitleConfig = new();
+        private readonly List<GameObject> _rowGameObjects = new();
 
-        private IObjectPool<TitleItemObject> pool;
-        private int selectedIndex = -1;
+        private IObjectPool<TitleItemObject> _pool;
+        private int _selectedIndex = -1;
 
         private void Start()
         {
             const string poolName = "TitleItemPool";
-            pool = GameEntry.ObjectPool.HasObjectPool<TitleItemObject>(poolName) 
+            _pool = GameEntry.ObjectPool.HasObjectPool<TitleItemObject>(poolName) 
                 ? GameEntry.ObjectPool.GetObjectPool<TitleItemObject>(poolName) 
                 : GameEntry.ObjectPool.CreateSingleSpawnObjectPool<TitleItemObject>(poolName, poolCapacity, 30f, 16);
 
@@ -37,8 +37,8 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
         private void SetTitleData()
         {
-            holdTitleConfig.Clear();
-            selectedIndex = -1;
+            _holdTitleConfig.Clear();
+            _selectedIndex = -1;
 
             var titleModule = GameEntry.ModuleComponent.GetModule<TitleModule>();
             var selectedTitle = titleModule.GetSelectedTitle();
@@ -49,22 +49,22 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
                 var item = titleModule.GetItem(titleConfig.ItemTemplateId);
                 if (item != null)
                 {
-                    holdTitleConfig.Add(titleConfig);
+                    _holdTitleConfig.Add(titleConfig);
                     if (selectedTitle != null && selectedTitle.Inventory.ItemId == item.Inventory.ItemId)
                     {
-                        selectedIndex = index;
+                        _selectedIndex = index;
                     }
                     ++index;
                 }
                 else if (!titleConfig.Hidden)
                 {
-                    notUnlockedTitleConfig.Add(titleConfig);
+                    _notUnlockedTitleConfig.Add(titleConfig);
                 }
             }
 
-            if (selectedIndex < 0)
+            if (_selectedIndex < 0)
             {
-                selectedIndex = 0;
+                _selectedIndex = 0;
             }
         }
 
@@ -77,7 +77,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
         private void SpawnTitle()
         {
-            var rowCount = Mathf.CeilToInt((float)(holdTitleConfig.Count + notUnlockedTitleConfig.Count) / PerRow);
+            var rowCount = Mathf.CeilToInt((float)(_holdTitleConfig.Count + _notUnlockedTitleConfig.Count) / PerRow);
 
             for (var row = 0; row < rowCount; row++)
             {
@@ -91,7 +91,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
         private bool SpawnTitle(int row)
         {
             var rowGameObject = GetRowGameObject(row);
-            rowGameObjects.Add(rowGameObject);
+            _rowGameObjects.Add(rowGameObject);
 
             for (var column = 0; column < PerRow; column++)
             {
@@ -107,7 +107,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
         private bool SpawnTitle(int row, int column, GameObject rowGameObject)
         {
             var idx = row * PerRow + column;
-            if (idx >= holdTitleConfig.Count + notUnlockedTitleConfig.Count)
+            if (idx >= _holdTitleConfig.Count + _notUnlockedTitleConfig.Count)
             {
                 return true;
             }
@@ -118,32 +118,32 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
                 return false;
             }
 
-            activeTitleItemObject.Add(spawn);
+            _activeTitleItemObject.Add(spawn);
 
             var titleItem = (TitleItem)spawn.Target;
             titleItem.transform.SetParent(rowGameObject.transform, false);
             
-            var isUnlocked = idx < holdTitleConfig.Count;
+            var isUnlocked = idx < _holdTitleConfig.Count;
             
             if (isUnlocked)
             {
-                titleItem.SetData(idx, holdTitleConfig[idx], OnItemClick);
+                titleItem.SetData(idx, _holdTitleConfig[idx], OnItemClick);
                 titleItem.SetGrayscale(false);
             }
             else
             {
-                titleItem.SetData(idx, notUnlockedTitleConfig[idx - holdTitleConfig.Count], OnItemClick);
+                titleItem.SetData(idx, _notUnlockedTitleConfig[idx - _holdTitleConfig.Count], OnItemClick);
                 titleItem.SetGrayscale(true);
             }
          
-            titleItem.SetSelected(idx == selectedIndex);
+            titleItem.SetSelected(idx == _selectedIndex);
 
             return true;
         }
 
         private void UnSpawnTitle()
         {
-            foreach (var obj in activeTitleItemObject)
+            foreach (var obj in _activeTitleItemObject)
             {
                 var item = (TitleItem)obj.Target;
                 if (item != null && item.gameObject != null)
@@ -151,22 +151,22 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
                     item.transform.SetParent(null, false);
                 }
 
-                pool.Unspawn(obj);
+                _pool.Unspawn(obj);
             }
 
-            activeTitleItemObject.Clear();
+            _activeTitleItemObject.Clear();
 
-            foreach (var rowGameObject in rowGameObjects)
+            foreach (var rowGameObject in _rowGameObjects)
             {
                 DestroyImmediate(rowGameObject);
             }
 
-            rowGameObjects.Clear();
+            _rowGameObjects.Clear();
         }
 
         private TitleItemObject GetSpawn()
         {
-            var result = pool.Spawn();
+            var result = _pool.Spawn();
             if (result != null)
             {
                 return result;
@@ -176,9 +176,9 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
             if (itemGameObject.TryGetComponent<TitleItem>(out var item))
             {
                 var titleItemObject = TitleItemObject.Create(item);
-                pool.Register(titleItemObject, true);
-                pool.Unspawn(titleItemObject);
-                result = pool.Spawn();
+                _pool.Register(titleItemObject, true);
+                _pool.Unspawn(titleItemObject);
+                result = _pool.Spawn();
 
                 return result;
             }
@@ -190,12 +190,12 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
         private void OnItemClick(int index)
         {
-            selectedIndex = index;
+            _selectedIndex = index;
 
-            for (var i = 0; i < activeTitleItemObject.Count; i++)
+            for (var i = 0; i < _activeTitleItemObject.Count; i++)
             {
-                var titleItem = (TitleItem)activeTitleItemObject[i].Target;
-                titleItem.SetSelected(i == selectedIndex);
+                var titleItem = (TitleItem)_activeTitleItemObject[i].Target;
+                titleItem.SetSelected(i == _selectedIndex);
             }
         }
     }

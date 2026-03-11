@@ -4,11 +4,10 @@ using Game.Scripts.Main.Runtime.GameModule.Role;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
-using Game.Scripts.Main.Runtime.UIItem.UICreate;
+using Game.Scripts.Main.Runtime.UIItem.UIHome;
 using GameFramework.Event;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
@@ -28,14 +27,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         [SerializeField] private TMP_Text title;
 
-        private ProcedureHome procedureHome;
+        private ProcedureHome _procedureHome;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            procedureHome = (ProcedureHome)GetCurrentProcedure();
-            if (procedureHome == null)
+            _procedureHome = (ProcedureHome)GetCurrentProcedure();
+            if (_procedureHome == null)
             {
                 Log.Warning("ProcedureHome is invalid when open PersonalInformationForm.");
             }
@@ -85,7 +84,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
                 title.text = "";
                 return;
             }
-             
+
 
             var titleConfig = GameEntry.GameConfig.GetGameConfig().GetTables().TitleConfigContainer.Get(selectedTitle.Inventory.TemplateId);
             if (titleConfig != null)
@@ -113,14 +112,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         {
             GameEntry.Event.Unsubscribe(ChangeNameEventArgs.EventId, OnSetTextSuccess);
 
-            procedureHome = null;
+            _procedureHome = null;
 
             base.OnClose(isShutdown, userData);
         }
 
         public void OnReturnButtonClick()
         {
-            procedureHome.RemoveUIForm(UIFormId.PersonalInformationForm);
+            _procedureHome.RemoveUIForm(UIFormId.PersonalInformationForm);
         }
 
         public void OnSetButtonClick()
@@ -130,17 +129,17 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         public void OnAvatarButtonClick()
         {
-            procedureHome.OpenUIForm(UIFormId.AvatarForm);
+            _procedureHome.OpenUIForm(UIFormId.AvatarForm);
         }
 
         public void OnChangeNameButtonClick()
         {
-            procedureHome.OpenUIForm(UIFormId.ChangeNameForm);
+            _procedureHome.OpenUIForm(UIFormId.ChangeNameForm);
         }
 
         public void OnServerListButtonClick()
         {
-            procedureHome.OpenUIForm(UIFormId.ServerListForm);
+            _procedureHome.OpenUIForm(UIFormId.ServerListForm);
         }
     }
 }
