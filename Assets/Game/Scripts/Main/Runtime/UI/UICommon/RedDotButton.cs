@@ -12,14 +12,14 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
     {
         [SerializeField] private red_dot_type redDotType;
 
-        private int value;
+        private int _value;
 
         private void Awake()
         {
             GameEntry.Event.Subscribe(EventId, OnChangeRedDotSuccess);
 
             var redDotModule = GameEntry.ModuleComponent.GetModule<RedDotModule>();
-            value = redDotModule.GetRedDotNodeValue(redDotType);
+            _value = redDotModule.GetRedDotNodeValue(redDotType);
         }
 
         private void OnDisable()
@@ -30,7 +30,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
         private void OnChangeRedDotSuccess(object sender, GameEventArgs e)
         {
             var changeRedDotEventArgs = (ChangeRedDotEventArgs)e;
-            if (changeRedDotEventArgs.RedDot.TryGetValue(redDotType, out value))
+            if (changeRedDotEventArgs.RedDot.TryGetValue(redDotType, out _value))
             {
             }
         }

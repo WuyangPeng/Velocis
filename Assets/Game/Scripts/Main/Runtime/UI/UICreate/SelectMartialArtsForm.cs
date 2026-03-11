@@ -14,20 +14,18 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectMartialArtsForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate;
+        [SerializeField] private MartialArtsDisplay martialArtsDisplay;
 
-        [SerializeField]
-        private MartialArtsDisplay martialArtsDisplay;
-
+        private ProcedureCreate _procedureCreate;
 
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
 
-            if (procedureCreate == null)
+            if (_procedureCreate == null)
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectMartialArtsForm.");
             }
@@ -37,14 +35,14 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureCreate = null;
+            _procedureCreate = null;
 
             base.OnClose(isShutdown, userData);
         }
 
         public void OnReturnButtonClick()
         {
-            procedureCreate.RemoveUIForm(UIFormId.SelectMartialArtsForm);
+            _procedureCreate.RemoveUIForm(UIFormId.SelectMartialArtsForm);
         }
 
         public void OnEnterButtonClick()
@@ -62,22 +60,22 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            procedureCreate.OpenUIForm(UIFormId.SelectTechniqueForm);
+            _procedureCreate.OpenUIForm(UIFormId.SelectTechniqueForm);
         }
 
         private void OpenDialog(string title, string message)
         {
-            GameEntry.UI.OpenDialog(new DialogParams()
+            GameEntry.UI.OpenDialog(new DialogParams
             {
                 Mode = 2,
                 Title = GameEntry.Localization.GetString(title),
                 Message = GameEntry.Localization.GetString(message),
-                OnClickConfirm = delegate (object userData)
+                OnClickConfirm = delegate
                 {
                     GameEntry.UI.CloseUIForm(GameEntry.UI.GetUIForm(UIFormId.DialogForm));
 
-                    procedureCreate.OpenUIForm(UIFormId.SelectTechniqueForm);
-                },
+                    _procedureCreate.OpenUIForm(UIFormId.SelectTechniqueForm);
+                }
             });
         }
 

@@ -1,4 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.DataTable; 
+﻿using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
@@ -13,31 +13,26 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectGameParameterForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate;
+        [SerializeField] private GameParameterDisplay gameParameterDisplay;
 
-        [SerializeField]
-        private GameParameterDisplay gameParameterDisplay;
+        [SerializeField] private Toggle[] mapSizeToggle;
 
-        [SerializeField]
-        private Toggle[] mapSizeToggle;
+        [SerializeField] private Toggle[] npcCountToggle;
 
-        [SerializeField]
-        private Toggle[] npcCountToggle;
+        [SerializeField] private Toggle[] sectCountToggle;
 
-        [SerializeField]
-        private Toggle[] sectCountToggle;
+        [SerializeField] private Toggle[] familyCountToggle;
 
-        [SerializeField]
-        private Toggle[] familyCountToggle;
+        private ProcedureCreate _procedureCreate;
 
         public void OnReturnButtonClick()
         {
-            procedureCreate.RemoveUIForm(UIFormId.SelectGameParameterForm);
+            _procedureCreate.RemoveUIForm(UIFormId.SelectGameParameterForm);
         }
 
         public void OnEnterButtonClick()
         {
-            procedureCreate.OpenUIForm(UIFormId.SelectAvatarForm);
+            _procedureCreate.OpenUIForm(UIFormId.SelectAvatarForm);
         }
 
         public void OnSmallMapSizeButtonClick(bool isOn)
@@ -128,6 +123,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             userModule.SetSectCount(GameParameterType.Middle);
         }
+
         public void OnBigSectCountButtonClick(bool isOn)
         {
             if (!isOn)
@@ -176,9 +172,9 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         {
             base.OnOpen(userData);
 
-            procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
 
-            if (procedureCreate == null)
+            if (_procedureCreate == null)
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectGameParameterForm.");
             }
@@ -231,7 +227,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureCreate = null;
+            _procedureCreate = null;
 
             base.OnClose(isShutdown, userData);
         }

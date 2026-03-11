@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework.Event;
+using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
@@ -8,14 +9,13 @@ namespace Game.Scripts.Main.Runtime.UI.UIForm
 {
     public class FormComponent
     {
-
-        private readonly Dictionary<UIFormId, UGuiForm> uGuiForm = new();
+        private readonly Dictionary<UIFormId, UGuiForm> _uGuiForm = new();
 
         public void OnEnter(ProcedureOwner procedureOwner)
         {
-            GameEntry.Event.Subscribe(UnityGameFramework.Runtime.OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
+            GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
 
-            foreach (var form in uGuiForm)
+            foreach (var form in _uGuiForm)
             {
                 GameEntry.UI.OpenUIForm(form.Key, new FormComponentUserData(this, form.Key));
             }
@@ -29,23 +29,23 @@ namespace Game.Scripts.Main.Runtime.UI.UIForm
 
         public void AddForm(UIFormId form)
         {
-            uGuiForm.Add(form, null);
+            _uGuiForm.Add(form, null);
         }
 
         public void RemoveUIForm(UIFormId form)
         {
-            var ui = uGuiForm[form];
+            var ui = _uGuiForm[form];
             if (ui != null)
             {
                 ui.Close();
             }
 
-            uGuiForm.Remove(form);
+            _uGuiForm.Remove(form);
         }
 
         private void OnOpenUIFormSuccess(object sender, GameEventArgs e)
         {
-            var ne = (UnityGameFramework.Runtime.OpenUIFormSuccessEventArgs)e;
+            var ne = (OpenUIFormSuccessEventArgs)e;
 
             if (ne.UserData is not FormComponentUserData userData)
             {
@@ -57,19 +57,19 @@ namespace Game.Scripts.Main.Runtime.UI.UIForm
                 return;
             }
 
-            uGuiForm[userData.FormId] = (UGuiForm)ne.UIForm.Logic;
+            _uGuiForm[userData.FormId] = (UGuiForm)ne.UIForm.Logic;
         }
 
         public void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
-            GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
+            GameEntry.Event.Unsubscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
 
-            foreach (var form in uGuiForm)
+            foreach (var form in _uGuiForm)
             {
                 form.Value.Close(true);
             }
 
-            uGuiForm.Clear();
+            _uGuiForm.Clear();
         }
     }
 }

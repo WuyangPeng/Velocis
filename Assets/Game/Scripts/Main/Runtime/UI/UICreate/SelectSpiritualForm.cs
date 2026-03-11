@@ -14,18 +14,17 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectSpiritualForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate;
+        [SerializeField] private SpiritualDisplay spiritualDisplay;
 
-        [SerializeField]
-        private SpiritualDisplay spiritualDisplay;
+        private ProcedureCreate _procedureCreate;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
 
-            if (procedureCreate == null)
+            if (_procedureCreate == null)
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectSpiritualForm.");
             }
@@ -35,29 +34,29 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureCreate = null;
+            _procedureCreate = null;
 
             base.OnClose(isShutdown, userData);
         }
 
         public void OnReturnButtonClick()
         {
-            procedureCreate.RemoveUIForm(UIFormId.SelectSpiritualForm);
+            _procedureCreate.RemoveUIForm(UIFormId.SelectSpiritualForm);
         }
 
         private void OpenDialog(string title, string message)
         {
-            GameEntry.UI.OpenDialog(new DialogParams()
+            GameEntry.UI.OpenDialog(new DialogParams
             {
                 Mode = 2,
                 Title = GameEntry.Localization.GetString(title),
                 Message = GameEntry.Localization.GetString(message),
-                OnClickConfirm = delegate (object userData)
+                OnClickConfirm = delegate
                 {
                     GameEntry.UI.CloseUIForm(GameEntry.UI.GetUIForm(UIFormId.DialogForm));
 
-                    procedureCreate.OpenUIForm(UIFormId.SelectMartialArtsForm);
-                },
+                    _procedureCreate.OpenUIForm(UIFormId.SelectMartialArtsForm);
+                }
             });
         }
 
@@ -76,7 +75,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            procedureCreate.OpenUIForm(UIFormId.SelectMartialArtsForm);
+            _procedureCreate.OpenUIForm(UIFormId.SelectMartialArtsForm);
         }
 
         public void OnReduceButtonClick(int spiritualId)
@@ -108,6 +107,5 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             userModule.AddSpiritual(spiritualId);
             spiritualDisplay.Refresh();
         }
-
     }
 }

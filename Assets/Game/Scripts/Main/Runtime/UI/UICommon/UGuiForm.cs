@@ -12,18 +12,18 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
 {
     public abstract class UGuiForm : UIFormLogic
     {
-        public const int DepthFactor = 100;
+        private const int DepthFactor = 100;
         private const float FadeTime = 0.3f;
 
-        private static Font s_MainFont;
-        private static TMP_FontAsset s_MainTMPFont;
-        private readonly List<Canvas> cachedCanvasContainer = new();
-        private Canvas cachedCanvas;
-        private CanvasGroup canvasGroup;
+        private static Font _mainFont;
+        private static TMP_FontAsset _mainTMPFont;
+        private readonly List<Canvas> _cachedCanvasContainer = new();
+        private Canvas _cachedCanvas;
+        private CanvasGroup _canvasGroup;
 
         public int OriginalDepth { get; private set; }
 
-        public int Depth => cachedCanvas.sortingOrder;
+        public int Depth => _cachedCanvas.sortingOrder;
 
         public void Close()
         {
@@ -57,7 +57,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
                 return;
             }
 
-            s_MainFont = mainFont;
+            _mainFont = mainFont;
         }
 
         public static void SetMainTMPFont(TMP_FontAsset mainTMPFont)
@@ -68,18 +68,18 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
                 return;
             }
 
-            s_MainTMPFont = mainTMPFont;
+            _mainTMPFont = mainTMPFont;
         }
 
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
 
-            cachedCanvas = gameObject.GetOrAddComponent<Canvas>();
-            cachedCanvas.overrideSorting = true;
-            OriginalDepth = cachedCanvas.sortingOrder;
+            _cachedCanvas = gameObject.GetOrAddComponent<Canvas>();
+            _cachedCanvas.overrideSorting = true;
+            OriginalDepth = _cachedCanvas.sortingOrder;
 
-            canvasGroup = gameObject.GetOrAddComponent<CanvasGroup>();
+            _canvasGroup = gameObject.GetOrAddComponent<CanvasGroup>();
 
             var rectTransform = GetComponent<RectTransform>();
             rectTransform.anchorMin = Vector2.zero;
@@ -92,7 +92,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             var texts = GetComponentsInChildren<Text>(true);
             foreach (var text in texts)
             {
-                text.font = s_MainFont;
+                text.font = _mainFont;
                 if (!string.IsNullOrEmpty(text.text))
                 {
                     text.text = GameEntry.Localization.GetString(text.text);
@@ -102,9 +102,9 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             var tmpTexts = GetComponentsInChildren<TMP_Text>(true);
             foreach (var tmpText in tmpTexts)
             {
-                if (s_MainTMPFont != null)
+                if (_mainTMPFont != null)
                 {
-                    tmpText.font = s_MainTMPFont;
+                    tmpText.font = _mainTMPFont;
                 }
 
                 if (!string.IsNullOrEmpty(tmpText.text))
@@ -118,18 +118,18 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
         {
             base.OnOpen(userData);
 
-            canvasGroup.alpha = 0f;
+            _canvasGroup.alpha = 0f;
             StopAllCoroutines();
-            StartCoroutine(canvasGroup.FadeToAlpha(1f, FadeTime));
+            StartCoroutine(_canvasGroup.FadeToAlpha(1f, FadeTime));
         }
 
         protected override void OnResume()
         {
             base.OnResume();
 
-            canvasGroup.alpha = 0f;
+            _canvasGroup.alpha = 0f;
             StopAllCoroutines();
-            StartCoroutine(canvasGroup.FadeToAlpha(1f, FadeTime));
+            StartCoroutine(_canvasGroup.FadeToAlpha(1f, FadeTime));
         }
 
         protected override void OnDepthChanged(int uiGroupDepth, int depthInUIGroup)
@@ -137,18 +137,18 @@ namespace Game.Scripts.Main.Runtime.UI.UICommon
             var oldDepth = Depth;
             base.OnDepthChanged(uiGroupDepth, depthInUIGroup);
             var deltaDepth = UGuiGroupHelper.DepthFactor * uiGroupDepth + DepthFactor * depthInUIGroup - oldDepth + OriginalDepth;
-            GetComponentsInChildren(true, cachedCanvasContainer);
-            foreach (var container in cachedCanvasContainer)
+            GetComponentsInChildren(true, _cachedCanvasContainer);
+            foreach (var container in _cachedCanvasContainer)
             {
                 container.sortingOrder += deltaDepth;
             }
 
-            cachedCanvasContainer.Clear();
+            _cachedCanvasContainer.Clear();
         }
 
         private IEnumerator CloseCo(float duration)
         {
-            yield return canvasGroup.FadeToAlpha(0f, duration);
+            yield return _canvasGroup.FadeToAlpha(0f, duration);
             GameEntry.UI.CloseUIForm(this);
         }
 

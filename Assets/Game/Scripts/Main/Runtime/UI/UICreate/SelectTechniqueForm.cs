@@ -14,19 +14,18 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectTechniqueForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate;
+        [SerializeField] private TechniqueDisplay techniqueDisplay;
 
-        [SerializeField]
-        private TechniqueDisplay techniqueDisplay;
+        private ProcedureCreate _procedureCreate;
 
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
 
-            if (procedureCreate == null)
+            if (_procedureCreate == null)
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectTechniqueForm.");
             }
@@ -36,29 +35,29 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureCreate = null;
+            _procedureCreate = null;
 
             base.OnClose(isShutdown, userData);
         }
 
         public void OnReturnButtonClick()
         {
-            procedureCreate.RemoveUIForm(UIFormId.SelectTechniqueForm);
+            _procedureCreate.RemoveUIForm(UIFormId.SelectTechniqueForm);
         }
 
         private void OpenDialog(string title, string message)
         {
-            GameEntry.UI.OpenDialog(new DialogParams()
+            GameEntry.UI.OpenDialog(new DialogParams
             {
                 Mode = 2,
                 Title = GameEntry.Localization.GetString(title),
                 Message = GameEntry.Localization.GetString(message),
-                OnClickConfirm = delegate (object userData)
+                OnClickConfirm = delegate
                 {
                     GameEntry.UI.CloseUIForm(GameEntry.UI.GetUIForm(UIFormId.DialogForm));
 
-                    procedureCreate.OpenUIForm(UIFormId.SelectTalentForm);
-                },
+                    _procedureCreate.OpenUIForm(UIFormId.SelectTalentForm);
+                }
             });
         }
 
@@ -77,7 +76,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            procedureCreate.OpenUIForm(UIFormId.SelectTalentForm);
+            _procedureCreate.OpenUIForm(UIFormId.SelectTalentForm);
         }
 
         public void OnReduceButtonClick(int techniqueId)

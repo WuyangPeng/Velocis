@@ -13,26 +13,23 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectAvatarForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate;
+        [SerializeField] private GameSexDisplay gameSexDisplay;
 
-        [SerializeField]
-        private GameSexDisplay gameSexDisplay;
-
-        [SerializeField]
-        private AvatarScrollDisplay avatarScrollDisplay;
+        [SerializeField] private AvatarScrollDisplay avatarScrollDisplay;
 
 
-        [SerializeField]
-        private Toggle[] sexToggle;
+        [SerializeField] private Toggle[] sexToggle;
+
+        private ProcedureCreate _procedureCreate;
 
         public void OnReturnButtonClick()
         {
-            procedureCreate.RemoveUIForm(UIFormId.SelectAvatarForm);
+            _procedureCreate.RemoveUIForm(UIFormId.SelectAvatarForm);
         }
 
         public void OnEnterButtonClick()
         {
-            procedureCreate.OpenUIForm(UIFormId.SelectCampForm);
+            _procedureCreate.OpenUIForm(UIFormId.SelectCampForm);
         }
 
         public void OnSelectMaleButtonClick(bool isOn)
@@ -65,9 +62,9 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         {
             base.OnOpen(userData);
 
-            procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
 
-            if (procedureCreate == null)
+            if (_procedureCreate == null)
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectAvatarForm.");
             }
@@ -81,7 +78,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureCreate = null;
+            _procedureCreate = null;
 
             base.OnClose(isShutdown, userData);
         }

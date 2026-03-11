@@ -5,7 +5,6 @@ using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
@@ -15,23 +14,19 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectCampForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate;
+        [SerializeField] private CampDisplay campDisplay;
 
-        [SerializeField]
-        private CampDisplay campDisplay;
+        [SerializeField] private Toggle[] rulesToggle;
 
-        [SerializeField]
-        private Toggle[] rulesToggle;
-
-        [SerializeField]
-        private Toggle[] moralityToggle;
+        [SerializeField] private Toggle[] moralityToggle;
 
         [SerializeField] private InputField inputField;
 
         [SerializeField] private Dropdown surnameDropdown;
 
 
-        private readonly List<DRSurname> surnames = new();
+        private readonly List<DRSurname> _surnames = new();
+        private ProcedureCreate _procedureCreate;
 
         public void OnClickConfirm()
         {
@@ -42,7 +37,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         private void OnNameSelected(int index)
         {
-            var chosen = surnames[index].Id;
+            var chosen = _surnames[index].Id;
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             userModule.SetSurname(chosen);
         }
@@ -79,7 +74,6 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             userModule.SetRulesType(RulesType.Chaos);
         }
-
 
 
         public void OnLeftMoralityButtonClick(bool isOn)
@@ -119,9 +113,9 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         {
             base.OnOpen(userData);
 
-            procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
 
-            if (procedureCreate == null)
+            if (_procedureCreate == null)
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectCampForm.");
             }
@@ -150,14 +144,12 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
                 surnameDropdown.options.Add(optionData);
 
-                surnames.Add(element);
+                _surnames.Add(element);
             }
 
             surnameDropdown.onValueChanged.AddListener(OnNameSelected);
 
             surnameDropdown.value = 0;
-
-      
         }
 
         private void InitCamp()
@@ -187,20 +179,19 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureCreate = null;
+            _procedureCreate = null;
 
             base.OnClose(isShutdown, userData);
         }
 
         public void OnReturnButtonClick()
         {
-            procedureCreate.RemoveUIForm(UIFormId.SelectCampForm);
+            _procedureCreate.RemoveUIForm(UIFormId.SelectCampForm);
         }
 
         public void OnEnterButtonClick()
         {
-            procedureCreate.OpenUIForm(UIFormId.SelectRaceForm);
+            _procedureCreate.OpenUIForm(UIFormId.SelectRaceForm);
         }
-
     }
 }

@@ -9,15 +9,15 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectTalentForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate;
+        private ProcedureCreate _procedureCreate;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
 
-            if (procedureCreate == null)
+            if (_procedureCreate == null)
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectTalentForm.");
             }
@@ -25,14 +25,14 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureCreate = null;
+            _procedureCreate = null;
 
             base.OnClose(isShutdown, userData);
         }
 
         public void OnReturnButtonClick()
         {
-            procedureCreate.RemoveUIForm(UIFormId.SelectTalentForm);
+            _procedureCreate.RemoveUIForm(UIFormId.SelectTalentForm);
         }
 
         public void OnEnterButtonClick()
@@ -40,19 +40,18 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             if (!userModule.HasSelectTalent())
             {
-                GameEntry.UI.OpenDialog(new DialogParams()
+                GameEntry.UI.OpenDialog(new DialogParams
                 {
                     Mode = 1,
                     Title = GameEntry.Localization.GetString("Talent.OpenTalent.Title"),
                     Message = GameEntry.Localization.GetString("Talent.OpenTalent.Content")
                 });
-          
+
                 return;
             }
-      
-            procedureCreate.SaveData();
-            procedureCreate.EnterGame();
-        }
 
+            _procedureCreate.SaveData();
+            _procedureCreate.EnterGame();
+        }
     }
 }

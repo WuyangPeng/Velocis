@@ -1,4 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.DataTable; 
+﻿using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.Procedure.Scene;
@@ -13,25 +13,22 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectRaceForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate;
+        [SerializeField] private RaceDisplay raceDisplay;
 
-        [SerializeField]
-        private RaceDisplay raceDisplay;
-
-        [SerializeField]
-        private Text raceTitle;
+        [SerializeField] private Text raceTitle;
 
 
-        [SerializeField]
-        private Text raceDescriptionTitle;
+        [SerializeField] private Text raceDescriptionTitle;
+
+        private ProcedureCreate _procedureCreate;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
 
-            if (procedureCreate == null)
+            if (_procedureCreate == null)
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectRaceForm.");
             }
@@ -82,20 +79,19 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureCreate = null;
+            _procedureCreate = null;
 
             base.OnClose(isShutdown, userData);
         }
 
         public void OnReturnButtonClick()
         {
-            procedureCreate.RemoveUIForm(UIFormId.SelectRaceForm);
+            _procedureCreate.RemoveUIForm(UIFormId.SelectRaceForm);
         }
 
         public void OnEnterButtonClick()
         {
-            procedureCreate.OpenUIForm(UIFormId.SelectPropertyForm);
+            _procedureCreate.OpenUIForm(UIFormId.SelectPropertyForm);
         }
-
     }
 }

@@ -9,7 +9,7 @@ namespace Game.Scripts.Main.Runtime.Sound
     public static class SoundExtension
     {
         private const float FadeVolumeDuration = 1f;
-        private static int? s_MusicSerialId;
+        private static int? _musicSerialId;
 
         public static int? PlayMusic(this SoundComponent soundComponent, int musicId, object userData = null)
         {
@@ -29,19 +29,19 @@ namespace Game.Scripts.Main.Runtime.Sound
             playSoundParams.VolumeInSoundGroup = 1f;
             playSoundParams.FadeInSeconds = FadeVolumeDuration;
             playSoundParams.SpatialBlend = 0f;
-            s_MusicSerialId = soundComponent.PlaySound(AssetUtility.GetMusicAsset(drMusic.AssetName), "Music", Definition.Constant.Constant.AssetPriority.MusicAsset, playSoundParams, null, userData);
-            return s_MusicSerialId;
+            _musicSerialId = soundComponent.PlaySound(AssetUtility.GetMusicAsset(drMusic.AssetName), "Music", Definition.Constant.Constant.AssetPriority.MusicAsset, playSoundParams, null, userData);
+            return _musicSerialId;
         }
 
         public static void StopMusic(this SoundComponent soundComponent)
         {
-            if (!s_MusicSerialId.HasValue)
+            if (!_musicSerialId.HasValue)
             {
                 return;
             }
 
-            soundComponent.StopSound(s_MusicSerialId.Value, FadeVolumeDuration);
-            s_MusicSerialId = null;
+            soundComponent.StopSound(_musicSerialId.Value, FadeVolumeDuration);
+            _musicSerialId = null;
         }
 
         public static int? PlaySound(this SoundComponent soundComponent, int soundId, Entity.EntityLogic.Entity bindingEntity = null, object userData = null)

@@ -14,14 +14,13 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectPropertyForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate;
+        [SerializeField] private PropertyDisplay propertyDisplay;
 
-        [SerializeField]
-        private PropertyDisplay propertyDisplay;
+        private ProcedureCreate _procedureCreate;
 
         public void OnReturnButtonClick()
         {
-            procedureCreate.RemoveUIForm(UIFormId.SelectPropertyForm);
+            _procedureCreate.RemoveUIForm(UIFormId.SelectPropertyForm);
         }
 
         public void OnEnterButtonClick()
@@ -29,28 +28,27 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             if (0 < userModule.GetPropertyCount())
             {
-                GameEntry.UI.OpenDialog(new DialogParams()
+                GameEntry.UI.OpenDialog(new DialogParams
                 {
                     Mode = 2,
                     Title = GameEntry.Localization.GetString("Property.Allocate.Title"),
                     Message = GameEntry.Localization.GetString("Property.Allocate.Content"),
-                    OnClickConfirm = delegate (object userData) {
+                    OnClickConfirm = delegate
+                    {
                         GameEntry.UI.CloseUIForm(GameEntry.UI.GetUIForm(UIFormId.DialogForm));
-                        
-                        procedureCreate.OpenUIForm(UIFormId.SelectSpiritualForm); },
+
+                        _procedureCreate.OpenUIForm(UIFormId.SelectSpiritualForm);
+                    }
                 });
                 return;
             }
 
 
-            procedureCreate.OpenUIForm(UIFormId.SelectSpiritualForm);
+            _procedureCreate.OpenUIForm(UIFormId.SelectSpiritualForm);
         }
 
         public void OnReduceButtonClick(int propertyId)
         {
-            var property = GameEntry.DataTable.GetDataTable<DRProperty>();
-
-            var row = property.GetDataRow(propertyId);
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             var baseProperty = userModule.GetBaseProperty((BasePropertyType)propertyId);
             var initBaseProperty = userModule.GetInitBaseProperty((BasePropertyType)propertyId);
@@ -83,9 +81,9 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         {
             base.OnOpen(userData);
 
-            procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
 
-            if (procedureCreate == null)
+            if (_procedureCreate == null)
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectPropertyForm.");
             }
@@ -95,7 +93,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureCreate = null;
+            _procedureCreate = null;
 
             base.OnClose(isShutdown, userData);
         }

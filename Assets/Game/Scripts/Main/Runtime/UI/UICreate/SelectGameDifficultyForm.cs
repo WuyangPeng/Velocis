@@ -11,14 +11,13 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectGameDifficultyForm : UGuiForm
     {
-        private ProcedureCreate procedureCreate;
+        [SerializeField] private GameDifficultyDisplay gameDifficultyDisplay;
 
-        [SerializeField]
-        private GameDifficultyDisplay gameDifficultyDisplay;
+        private ProcedureCreate _procedureCreate;
 
         public void OnReturnButtonClick()
         {
-            procedureCreate.ReturnMenu();
+            _procedureCreate.ReturnMenu();
         }
 
         public void OnEnterButtonClick(int gameDifficulty)
@@ -26,16 +25,16 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             userModule.SetGameDifficulty((GameDifficultyType)gameDifficulty);
 
-            procedureCreate.OpenUIForm(UIFormId.SelectGameParameterForm);
+            _procedureCreate.OpenUIForm(UIFormId.SelectGameParameterForm);
         }
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
 
-            if (procedureCreate == null)
+            if (_procedureCreate == null)
             {
                 Log.Warning("ProcedureCreate is invalid when open SelectGameDifficultyForm.");
             }
@@ -45,7 +44,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            procedureCreate = null;
+            _procedureCreate = null;
 
             base.OnClose(isShutdown, userData);
         }
