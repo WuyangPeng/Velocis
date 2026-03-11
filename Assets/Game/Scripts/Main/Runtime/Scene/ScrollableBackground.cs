@@ -5,19 +5,19 @@ namespace Game.Scripts.Main.Runtime.Scene
     public class ScrollableBackground : MonoBehaviour
     {
         [SerializeField]
-        private float m_ScrollSpeed = -0.25f;
+        private float scrollSpeed = -0.25f;
 
         [SerializeField]
-        private float m_TileSize = 30f;
+        private float tileSize = 30f;
 
         [SerializeField]
-        private BoxCollider m_VisibleBoundary;
+        private BoxCollider visibleBoundary;
 
         [SerializeField]
-        private BoxCollider m_PlayerMoveBoundary;
+        private BoxCollider playerMoveBoundary;
 
         [SerializeField]
-        private BoxCollider m_EnemySpawnBoundary;
+        private BoxCollider enemySpawnBoundary;
 
         private Transform m_CachedTransform;
         private Vector3 m_StartPosition = Vector3.zero;
@@ -30,14 +30,14 @@ namespace Game.Scripts.Main.Runtime.Scene
 
         private void Update()
         {
-            var newPosition = Mathf.Repeat(Time.time * m_ScrollSpeed, m_TileSize);
+            var newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSize);
             m_CachedTransform.position = m_StartPosition + Vector3.forward * newPosition;
         }
 
-        public BoxCollider VisibleBoundary => m_VisibleBoundary;
+        public BoxCollider VisibleBoundary => visibleBoundary;
 
-        public BoxCollider PlayerMoveBoundary => m_PlayerMoveBoundary;
+        public BoxCollider PlayerMoveBoundary => playerMoveBoundary;
 
-        public BoxCollider EnemySpawnBoundary => m_EnemySpawnBoundary;
+        public BoxCollider EnemySpawnBoundary => enemySpawnBoundary;
     }
 }
