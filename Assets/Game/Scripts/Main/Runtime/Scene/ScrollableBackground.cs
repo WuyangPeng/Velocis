@@ -19,19 +19,19 @@ namespace Game.Scripts.Main.Runtime.Scene
         [SerializeField]
         private BoxCollider enemySpawnBoundary;
 
-        private Transform m_CachedTransform;
-        private Vector3 m_StartPosition = Vector3.zero;
+        private Transform _cachedTransform;
+        private Vector3 _startPosition = Vector3.zero;
 
         private void Start()
         {
-            m_CachedTransform = transform;
-            m_StartPosition = m_CachedTransform.position;
+            _cachedTransform = transform;
+            _startPosition = _cachedTransform.position;
         }
 
         private void Update()
         {
             var newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSize);
-            m_CachedTransform.position = m_StartPosition + Vector3.forward * newPosition;
+            _cachedTransform.position = _startPosition + Vector3.forward * newPosition;
         }
 
         public BoxCollider VisibleBoundary => visibleBoundary;
