@@ -16,11 +16,12 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
         private ConsumableModule _consumableModule;
         private CustomModule _customModule;
         private EquipmentModule _equipmentModule;
+        private ExpModule _expModule;
         private FrameModule _frameModule;
         private HeroModule _heroModule;
-        private TitleModule _titleModule;
 
         private bool _isLogin;
+        private TitleModule _titleModule;
 
         public override void Handle(object sender, header header, item_response message)
         {
@@ -76,6 +77,7 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
             _heroModule ??= moduleComponent.GetModule<HeroModule>();
             _titleModule ??= moduleComponent.GetModule<TitleModule>();
             _buildingModule ??= moduleComponent.GetModule<BuildingModule>();
+            _expModule ??= moduleComponent.GetModule<ExpModule>();
 
             return true;
         }
@@ -90,6 +92,7 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
             _heroModule?.ClearItems();
             _titleModule?.ClearItems();
             _buildingModule?.ClearItems();
+            _expModule?.ClearItems();
 
             Log.Info("ItemResponse: cleared all module item collections due to login refresh (IsLogin=true).");
         }
@@ -168,6 +171,12 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
                     }
 
                     _buildingModule.Items[key] = data;
+                    break;
+                }
+                case inventory_data.PayloadOneofCase.Exp:
+                {
+                    var data = new ExpData(inventory.Clone().ToInventoryData());
+                    _expModule.Items[key] = data;
                     break;
                 }
                 case inventory_data.PayloadOneofCase.None:

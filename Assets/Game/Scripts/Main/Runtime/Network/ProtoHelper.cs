@@ -6,11 +6,11 @@ namespace Game.Scripts.Main.Runtime.Network
 {
     public class ProtoHelper
     {
-        private static int rpc;
+        private static int _rpc;
 
         public static int GetRpc()
         {
-            return ++rpc;
+            return ++_rpc;
         }
 
         public static CSCeleritas GetProto()

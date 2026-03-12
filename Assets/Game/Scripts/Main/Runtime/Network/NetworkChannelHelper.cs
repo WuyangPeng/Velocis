@@ -8,7 +8,6 @@ using Celeritas.Proto.Common;
 using Game.Scripts.Main.Runtime.Event;
 using Game.Scripts.Main.Runtime.Login;
 using Game.Scripts.Main.Runtime.Network.Packet;
-using Game.Scripts.Main.Runtime.Network.PacketHandler;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Network;
@@ -25,9 +24,9 @@ namespace Game.Scripts.Main.Runtime.Network
 {
     public class NetworkChannelHelper : INetworkChannelHelper
     {
-        private readonly MemoryStream m_CachedStream = new(1024 * 8);
-        private readonly Dictionary<int, Type> m_ServerToClientPacketTypes = new();
-        private INetworkChannel m_NetworkChannel;
+        private readonly MemoryStream _cachedStream = new(1024 * 8);
+        private readonly Dictionary<int, Type> _serverToClientPacketTypes = new();
+        private INetworkChannel _networkChannel;
 
 
         /// <summary>
@@ -41,12 +40,11 @@ namespace Game.Scripts.Main.Runtime.Network
         /// <param name="networkChannel">网络频道。</param>
         public void Initialize(INetworkChannel networkChannel)
         {
-            m_NetworkChannel = networkChannel;
+            _networkChannel = networkChannel;
 
             // 反射注册包和包处理函数。
             var packetBaseType = typeof(SCPacketBase);
             var packetHandlerBaseType = typeof(PacketHandlerBase);
-            var celeritasHandlerBaseType = typeof(ICeleritasHandler);
             var assembly = Assembly.GetExecutingAssembly();
             var types = assembly.GetTypes();
             foreach (var type in types)
@@ -67,12 +65,12 @@ namespace Game.Scripts.Main.Runtime.Network
                         continue;
                     }
 
-                    m_ServerToClientPacketTypes.Add(packetBase.Id, type);
+                    _serverToClientPacketTypes.Add(packetBase.Id, type);
                 }
                 else if (type.BaseType == packetHandlerBaseType)
                 {
                     var packetHandler = (IPacketHandler)Activator.CreateInstance(type);
-                    m_NetworkChannel.RegisterHandler(packetHandler);
+                    _networkChannel.RegisterHandler(packetHandler);
                 }
             }
 
@@ -94,7 +92,7 @@ namespace Game.Scripts.Main.Runtime.Network
             GameEntry.Event.Unsubscribe(NetworkErrorEventArgs.EventId, OnNetworkError);
             GameEntry.Event.Unsubscribe(NetworkCustomErrorEventArgs.EventId, OnNetworkCustomError);
 
-            m_NetworkChannel = null;
+            _networkChannel = null;
         }
 
         /// <summary>
@@ -102,8 +100,8 @@ namespace Game.Scripts.Main.Runtime.Network
         /// </summary>
         public void PrepareForConnecting()
         {
-            m_NetworkChannel.Socket.ReceiveBufferSize = 1024 * 64;
-            m_NetworkChannel.Socket.SendBufferSize = 1024 * 64;
+            _networkChannel.Socket.ReceiveBufferSize = 1024 * 64;
+            _networkChannel.Socket.SendBufferSize = 1024 * 64;
         }
 
         /// <summary>
@@ -118,7 +116,7 @@ namespace Game.Scripts.Main.Runtime.Network
 
             packet.Mutable_ClientPlayer_ClientHeartbeat_Heartbeat();
 
-            m_NetworkChannel.Send(packet);
+            _networkChannel.Send(packet);
 
             return true;
         }
@@ -150,24 +148,24 @@ namespace Game.Scripts.Main.Runtime.Network
                 return false;
             }
 
-            m_CachedStream.SetLength(0);
+            _cachedStream.SetLength(0);
 
             var packetHeader = ReferencePool.Acquire<MessageHeader>();
-            packetHeader.headerSize = (short)celeritas.Common.CalculateSize();
-            packetHeader.bodySize = celeritas.Celeritas.CalculateSize();
+            packetHeader.HeaderSize = (short)celeritas.Common.CalculateSize();
+            packetHeader.BodySize = celeritas.Celeritas.CalculateSize();
 
-            using (var writer = new BinaryWriter(m_CachedStream, Encoding.UTF8, true))
+            using (var writer = new BinaryWriter(_cachedStream, Encoding.UTF8, true))
             {
                 packetHeader.WriteTo(writer);
             }
 
-            celeritas.Common.WriteTo(m_CachedStream);
-            celeritas.Celeritas.WriteTo(m_CachedStream);
+            celeritas.Common.WriteTo(_cachedStream);
+            celeritas.Celeritas.WriteTo(_cachedStream);
 
             ReferencePool.Release(packetHeader);
             ReferencePool.Release(packetImpl);
 
-            m_CachedStream.WriteTo(destination);
+            _cachedStream.WriteTo(destination);
 
             return true;
         }
@@ -218,7 +216,7 @@ namespace Game.Scripts.Main.Runtime.Network
 
             try
             {
-                var commonData = new byte[messageHeader.headerSize];
+                var commonData = new byte[messageHeader.HeaderSize];
                 var bytesRead = source.Read(commonData, 0, commonData.Length);
                 if (bytesRead < commonData.Length)
                 {
@@ -229,7 +227,7 @@ namespace Game.Scripts.Main.Runtime.Network
                 var common = header.Parser.ParseFrom(commonData);
 
 
-                var bodyData = new byte[messageHeader.bodySize];
+                var bodyData = new byte[messageHeader.BodySize];
                 bytesRead = source.Read(bodyData, 0, bodyData.Length);
                 if (bytesRead < bodyData.Length)
                 {
@@ -259,13 +257,13 @@ namespace Game.Scripts.Main.Runtime.Network
 
         private Type GetServerToClientPacketType(int id)
         {
-            return m_ServerToClientPacketTypes.GetValueOrDefault(id);
+            return _serverToClientPacketTypes.GetValueOrDefault(id);
         }
 
         private void OnNetworkConnected(object sender, GameEventArgs e)
         {
             var ne = (NetworkConnectedEventArgs)e;
-            if (ne.NetworkChannel != m_NetworkChannel)
+            if (ne.NetworkChannel != _networkChannel)
             {
                 return;
             }
@@ -280,7 +278,7 @@ namespace Game.Scripts.Main.Runtime.Network
         private void OnNetworkClosed(object sender, GameEventArgs e)
         {
             var ne = (NetworkClosedEventArgs)e;
-            if (ne.NetworkChannel != m_NetworkChannel)
+            if (ne.NetworkChannel != _networkChannel)
             {
                 return;
             }
@@ -293,7 +291,7 @@ namespace Game.Scripts.Main.Runtime.Network
         private void OnNetworkMissHeartBeat(object sender, GameEventArgs e)
         {
             var ne = (NetworkMissHeartBeatEventArgs)e;
-            if (ne.NetworkChannel != m_NetworkChannel)
+            if (ne.NetworkChannel != _networkChannel)
             {
                 return;
             }
@@ -312,7 +310,7 @@ namespace Game.Scripts.Main.Runtime.Network
         private void OnNetworkError(object sender, GameEventArgs e)
         {
             var ne = (NetworkErrorEventArgs)e;
-            if (ne.NetworkChannel != m_NetworkChannel)
+            if (ne.NetworkChannel != _networkChannel)
             {
                 return;
             }
@@ -328,7 +326,7 @@ namespace Game.Scripts.Main.Runtime.Network
         private void OnNetworkCustomError(object sender, GameEventArgs e)
         {
             var ne = (NetworkCustomErrorEventArgs)e;
-            if (ne.NetworkChannel != m_NetworkChannel)
+            if (ne.NetworkChannel != _networkChannel)
             {
             }
         }

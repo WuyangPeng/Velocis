@@ -8,7 +8,7 @@ namespace Game.Scripts.Main.Runtime.Network
 {
     public class CeleritasHandlerComponent : GameFrameworkComponent
     {
-        private readonly Dictionary<Type, object> m_CeleritasHandlers = new();
+        private readonly Dictionary<Type, object> _celeritasHandlers = new();
 
         private void Start()
         {
@@ -24,39 +24,43 @@ namespace Game.Scripts.Main.Runtime.Network
                     continue;
                 }
 
-                if (celeritasHandlerBaseType.IsAssignableFrom(type))
+                if (!celeritasHandlerBaseType.IsAssignableFrom(type))
                 {
-                    var handler = Activator.CreateInstance(type);
+                    continue;
+                }
 
-                    var baseType = type.BaseType;
-                    while (baseType != null)
+                var handler = Activator.CreateInstance(type);
+
+                var baseType = type.BaseType;
+                while (baseType != null)
+                {
+                    if (baseType.IsGenericType &&
+                        baseType.GetGenericTypeDefinition() == typeof(CeleritasHandlerBase<>))
                     {
-                        if (baseType.IsGenericType &&
-                            baseType.GetGenericTypeDefinition() == typeof(CeleritasHandlerBase<>))
+                        var messageType = baseType.GetGenericArguments()[0];
+                        if (_celeritasHandlers.TryGetValue(messageType, out var celeritasHandler))
                         {
-                            var messageType = baseType.GetGenericArguments()[0];
-                            if (m_CeleritasHandlers.ContainsKey(messageType))
-                            {
-                                Log.Warning("Duplicate handler for message type '{0}': '{1}' and '{2}'",
-                                    messageType.Name, m_CeleritasHandlers[messageType].GetType().Name, type.Name);
-                            }
-                            else
-                            {
-                                m_CeleritasHandlers.Add(messageType, handler);
-                            }
-
-                            break;
+                            Log.Warning("Duplicate handler for message type '{0}': '{1}' and '{2}'",
+                                messageType.Name,
+                                celeritasHandler.GetType().Name,
+                                type.Name);
+                        }
+                        else
+                        {
+                            _celeritasHandlers.Add(messageType, handler);
                         }
 
-                        baseType = baseType.BaseType;
+                        break;
                     }
+
+                    baseType = baseType.BaseType;
                 }
             }
         }
 
         public CeleritasHandlerBase<T> GetCeleritasHandler<T>()
         {
-            if (m_CeleritasHandlers.TryGetValue(typeof(T), out var handler))
+            if (_celeritasHandlers.TryGetValue(typeof(T), out var handler))
             {
                 return handler as CeleritasHandlerBase<T>;
             }

@@ -13,9 +13,11 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
     public class ItemSelectedResponse : CeleritasHandlerBase<item_selected_response>
     {
         private AvatarModule _avatarModule;
+        private BuildingModule _buildingModule;
         private ConsumableModule _consumableModule;
         private CustomModule _customModule;
         private EquipmentModule _equipmentModule;
+        private ExpModule _expModule;
         private FrameModule _frameModule;
         private HeroModule _heroModule;
         private TitleModule _titleModule;
@@ -71,6 +73,8 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
             _frameModule ??= moduleComponent.GetModule<FrameModule>();
             _heroModule ??= moduleComponent.GetModule<HeroModule>();
             _titleModule ??= moduleComponent.GetModule<TitleModule>();
+            _buildingModule ??= moduleComponent.GetModule<BuildingModule>();
+            _expModule ??= moduleComponent.GetModule<ExpModule>();
 
             return true;
         }
@@ -84,6 +88,8 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
             _frameModule?.ClearSelectedItems();
             _heroModule?.ClearSelectedItems();
             _titleModule?.ClearSelectedItems();
+            _buildingModule?.ClearSelectedItems();
+            _expModule?.ClearSelectedItems();
 
             Log.Info("ItemSelectedResponse: cleared all module selected item collections due to login refresh (IsLogin=true).");
         }
@@ -129,6 +135,12 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
                     break;
                 case item_type.hero:
                     _heroModule.AddOrUpdateSelectedItem(itemSelectedData);
+                    break;
+                case item_type.building:
+                    _buildingModule.AddOrUpdateSelectedItem(itemSelectedData);
+                    break;
+                case item_type.exp:
+                    _expModule.AddOrUpdateSelectedItem(itemSelectedData);
                     break;
                 case item_type.none:
                 default:

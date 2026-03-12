@@ -7,22 +7,22 @@ namespace Game.Scripts.Main.Runtime.Network
 {
     public class MessageHeader : IReference, IPacketHeader
     {
-        public int bodySize;
-        public short headerSize;
-        public short headerType;
+        public int BodySize { get; set; }
+        public short HeaderSize { get; set; }
+        private short HeaderType { get; set; }
 
-        public int PacketLength => headerSize + bodySize;
+        public int PacketLength => HeaderSize + BodySize;
 
         public void Clear()
         {
-            bodySize = 0;
-            headerSize = 0;
-            headerType = 0;
+            BodySize = 0;
+            HeaderSize = 0;
+            HeaderType = 0;
         }
 
         public bool IsEffective()
         {
-            return headerSize <= 0xFF && bodySize <= 16 * 1024 * 1024;
+            return HeaderSize <= 0xFF && BodySize <= 16 * 1024 * 1024;
         }
 
         /// <summary>
@@ -32,9 +32,9 @@ namespace Game.Scripts.Main.Runtime.Network
         public void WriteTo(BinaryWriter writer)
         {
             // 在写入前，将字段从主机字节序转换成网络字节序 (Big-Endian)
-            var headerTypeNet = IPAddress.HostToNetworkOrder(headerType);
-            var headerSizeNet = IPAddress.HostToNetworkOrder(headerSize);
-            var bodySizeNet = IPAddress.HostToNetworkOrder(bodySize);
+            var headerTypeNet = IPAddress.HostToNetworkOrder(HeaderType);
+            var headerSizeNet = IPAddress.HostToNetworkOrder(HeaderSize);
+            var bodySizeNet = IPAddress.HostToNetworkOrder(BodySize);
 
             writer.Write(headerTypeNet);
             writer.Write(headerSizeNet);
@@ -53,9 +53,9 @@ namespace Game.Scripts.Main.Runtime.Network
             var bodySizeNet = reader.ReadInt32();
 
             // 将读取到的数据转换回主机字节序
-            headerType = IPAddress.NetworkToHostOrder(headerTypeNet);
-            headerSize = IPAddress.NetworkToHostOrder(headerSizeNet);
-            bodySize = IPAddress.NetworkToHostOrder(bodySizeNet);
+            HeaderType = IPAddress.NetworkToHostOrder(headerTypeNet);
+            HeaderSize = IPAddress.NetworkToHostOrder(headerSizeNet);
+            BodySize = IPAddress.NetworkToHostOrder(bodySizeNet);
         }
     }
 }

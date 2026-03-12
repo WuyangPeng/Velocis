@@ -63,6 +63,16 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
                             moduleComponent.GetModule<HeroModule>().DeleteItem(itemDeleteData.ItemId);
                         }
                             break;
+                        case item_type.exp:
+                        {
+                            moduleComponent.GetModule<ExpModule>().DeleteItem(itemDeleteData.ItemId);
+                        }
+                            break;
+                        case item_type.building:
+                        {
+                            moduleComponent.GetModule<BuildingModule>().DeleteItem(itemDeleteData.ItemId);
+                        }
+                            break;
                         case item_type.none:
                         default:
                             throw new GameException("Unknown item type.");

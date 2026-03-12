@@ -39,13 +39,13 @@ namespace Game.Scripts.Main.Runtime.Network.ResponseHandler
 
             _mailModule ??= moduleComponent.GetModule<MailModule>();
 
-            if (_mailModule == null)
+            if (_mailModule != null)
             {
-                Log.Warning("MailModule is null in MailDeleteResponseHandler.EnsureModule.");
-                return false;
+                return true;
             }
 
-            return true;
+            Log.Warning("MailModule is null in MailDeleteResponseHandler.EnsureModule.");
+            return false;
         }
     }
 }
