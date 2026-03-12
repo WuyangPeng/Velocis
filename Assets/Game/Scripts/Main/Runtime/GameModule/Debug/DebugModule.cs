@@ -8,7 +8,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Debug
     [Module]
     public class DebugModule : BaseModule
     {
-        public bool IsDebug { get; set; } = false;
+        public bool IsDebug { get; set; }
 
         public void SendDebugMessage(debug_type type, long id, long parameter)
         {

@@ -7,12 +7,10 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
 {
     public class MyAircraft : Aircraft
     {
-        [SerializeField]
-        private MyAircraftData myAircraftData;
+        [SerializeField] private MyAircraftData myAircraftData;
 
-        private Rect playerMoveBoundary;
-        private Vector3 targetPosition = Vector3.zero;
-
+        private Rect _playerMoveBoundary;
+        private Vector3 _targetPosition = Vector3.zero;
 
 
         protected override void OnShow(object userData)
@@ -33,7 +31,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
                 return;
             }
 
-            playerMoveBoundary = new Rect(sceneBackground.PlayerMoveBoundary.bounds.min.x,
+            _playerMoveBoundary = new Rect(sceneBackground.PlayerMoveBoundary.bounds.min.x,
                 sceneBackground.PlayerMoveBoundary.bounds.min.z,
                 sceneBackground.PlayerMoveBoundary.bounds.size.x,
                 sceneBackground.PlayerMoveBoundary.bounds.size.z);
@@ -53,7 +51,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
                 }
 
                 var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                targetPosition = new Vector3(point.x, 0f, point.z);
+                _targetPosition = new Vector3(point.x, 0f, point.z);
 
                 foreach (var weapon in weapons)
                 {
@@ -61,7 +59,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
                 }
             }
 
-            var direction = targetPosition - CachedTransform.localPosition;
+            var direction = _targetPosition - CachedTransform.localPosition;
             if (direction.sqrMagnitude <= Vector3.kEpsilon)
             {
                 return;
@@ -70,9 +68,9 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
             var speed = Vector3.ClampMagnitude(direction.normalized * (myAircraftData.Speed * elapseSeconds), direction.magnitude);
             CachedTransform.localPosition = new Vector3
             (
-                Mathf.Clamp(CachedTransform.localPosition.x + speed.x, playerMoveBoundary.xMin, playerMoveBoundary.xMax),
+                Mathf.Clamp(CachedTransform.localPosition.x + speed.x, _playerMoveBoundary.xMin, _playerMoveBoundary.xMax),
                 0f,
-                Mathf.Clamp(CachedTransform.localPosition.z + speed.z, playerMoveBoundary.yMin, playerMoveBoundary.yMax)
+                Mathf.Clamp(CachedTransform.localPosition.z + speed.z, _playerMoveBoundary.yMin, _playerMoveBoundary.yMax)
             );
         }
     }

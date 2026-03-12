@@ -27,7 +27,7 @@ namespace Game.Scripts.Main.Runtime.Game
             protected set;
         }
 
-        private MyAircraft myAircraft;
+        private MyAircraft _myAircraft;
 
         public virtual void Initialize()
         {
@@ -49,7 +49,7 @@ namespace Game.Scripts.Main.Runtime.Game
             });
 
             GameOver = false;
-            myAircraft = null;
+            _myAircraft = null;
         }
 
         public virtual void Shutdown()
@@ -60,7 +60,7 @@ namespace Game.Scripts.Main.Runtime.Game
 
         public virtual void Update(float elapseSeconds, float realElapseSeconds)
         {
-            if (myAircraft == null || !myAircraft.IsDead) return;
+            if (_myAircraft == null || !_myAircraft.IsDead) return;
             GameOver = true;
         }
 
@@ -69,7 +69,7 @@ namespace Game.Scripts.Main.Runtime.Game
             var ne = (ShowEntitySuccessEventArgs)e;
             if (ne.EntityLogicType == typeof(MyAircraft))
             {
-                myAircraft = (MyAircraft)ne.Entity.Logic;
+                _myAircraft = (MyAircraft)ne.Entity.Logic;
             }
         }
 

@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using UnityGameFramework.Runtime;
 using GameFramework.FileSystem;
+using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using Path = System.IO.Path;
 
 namespace Game.Scripts.Main.Runtime.FileSystem
 {
-
     public class FileSystemComponent : GameFrameworkComponent
     {
-        private readonly Dictionary<string, IFileSystem> fileSystem = new();
+        private readonly Dictionary<string, IFileSystem> _fileSystem = new();
 
         public IFileSystem GetFileSystem(string rootPath)
         {
@@ -31,7 +30,7 @@ namespace Game.Scripts.Main.Runtime.FileSystem
 
             var rootPath = Path.Combine(directory, pathName);
 
-            if (fileSystem.TryGetValue(rootPath, out var result))
+            if (_fileSystem.TryGetValue(rootPath, out var result))
             {
                 return result;
             }
@@ -40,7 +39,7 @@ namespace Game.Scripts.Main.Runtime.FileSystem
 
             if (file != null)
             {
-                fileSystem.Add(rootPath, file);
+                _fileSystem.Add(rootPath, file);
             }
 
             return file;

@@ -1,15 +1,17 @@
-﻿using Game.Scripts.Main.Runtime.Base;
+﻿using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.RuntimeException;
 using GameFramework;
-using System.Collections.Generic;
 using Constant = Game.Scripts.Main.Runtime.Definition.Constant.Constant;
 
 namespace Game.Scripts.Main.Runtime.GameData.User
 {
     public class UserData
     {
+        private int _age;
+
         public int SaveIndex { get; set; } = 0;
         public GameDifficultyType GameDifficultyType { get; set; } = GameDifficultyType.Mortal;
 
@@ -50,18 +52,14 @@ namespace Game.Scripts.Main.Runtime.GameData.User
 
         public long SectId { get; set; }
 
-        private int age;
-
-        public UserData()
-        {
-
-        }
-
         public void InitGameParameter()
         {
             var gameParameter = GameEntry.DataTable.GetDataTable<DRGameParameter>();
             var gameParameterRow = gameParameter.GetDataRow((int)GameParameterType.Middle);
-            if (gameParameterRow == null) return;
+            if (gameParameterRow == null)
+            {
+                return;
+            }
 
             InitMapSize = Utility.Random.GetRandom(gameParameterRow.MinMapSize, gameParameterRow.MaxMapSize + 1);
             InitNpcCount = Utility.Random.GetRandom(gameParameterRow.MinNpcCount, gameParameterRow.MaxNpcCount + 1);
@@ -108,6 +106,7 @@ namespace Game.Scripts.Main.Runtime.GameData.User
             var row = gameParameter.GetDataRow((int)gameParameterType);
             return row ?? throw new GameException(Utility.Text.Format("Can not get game parameter '{0}' from data table.", gameParameterType.ToString()));
         }
+
         public void SetRulesType(RulesType rulesType)
         {
             var clean = (int)CampType & (int)RulesType.Empty;

@@ -5,25 +5,22 @@ using Game.Scripts.Main.Runtime.Sound;
 using GameFramework;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
 {
     /// <summary>
-    /// 战机类。
+    ///     战机类。
     /// </summary>
     public abstract class Aircraft : TargetableObject
     {
-        [SerializeField]
-        private AircraftData aircraftData;
+        [SerializeField] protected Thruster thruster;
 
-        [SerializeField]
-        protected Thruster thruster;
+        [SerializeField] protected List<Weapon> weapons = new();
 
-        [SerializeField]
-        protected List<Weapon> weapons = new();
+        [SerializeField] protected List<Armor> armors = new();
 
-        [SerializeField]
-        protected List<Armor> armors = new();
+        [SerializeField] private AircraftData aircraftData;
 
 
         protected override void OnShow(object userData)
@@ -39,25 +36,19 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
 
             Name = Utility.Text.Format("Aircraft ({0})", Id);
 
-            Base.GameEntry.Entity.ShowThruster(aircraftData.GetThrusterData());
+            GameEntry.Entity.ShowThruster(aircraftData.GetThrusterData());
 
             var weaponDatas = aircraftData.GetAllWeaponDatas();
             foreach (var data in weaponDatas)
             {
-                Base.GameEntry.Entity.ShowWeapon(data);
+                GameEntry.Entity.ShowWeapon(data);
             }
 
             var armorDatas = aircraftData.GetAllArmorDatas();
             foreach (var data in armorDatas)
             {
-                Base.GameEntry.Entity.ShowArmor(data);
+                GameEntry.Entity.ShowArmor(data);
             }
-        }
-
-
-        protected override void OnHide(bool isShutdown, object userData)
-        {
-            base.OnHide(isShutdown, userData);
         }
 
 
@@ -102,11 +93,11 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
         {
             base.OnDead(attacker);
 
-            Base.GameEntry.Entity.ShowEffect(new EffectData(Base.GameEntry.Entity.GenerateSerialId(), aircraftData.DeadEffectId)
+            GameEntry.Entity.ShowEffect(new EffectData(GameEntry.Entity.GenerateSerialId(), aircraftData.DeadEffectId)
             {
-                Position = CachedTransform.localPosition,
+                Position = CachedTransform.localPosition
             });
-            Base.GameEntry.Sound.PlaySound(aircraftData.DeadSoundId);
+            GameEntry.Sound.PlaySound(aircraftData.DeadSoundId);
         }
 
         public override ImpactData GetImpactData()

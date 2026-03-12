@@ -1,9 +1,11 @@
 ﻿using System;
 using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.Definition.Constant;
 using Game.Scripts.Main.Runtime.Entity.EntityData;
 using Game.Scripts.Main.Runtime.Entity.EntityLogic;
 using Game.Scripts.Main.Runtime.GameUtility;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.Entity
 {
@@ -13,7 +15,7 @@ namespace Game.Scripts.Main.Runtime.Entity
         // 0 为无效
         // 正值用于和服务器通信的实体（如玩家角色、NPC、怪等，服务器只产生正值）
         // 负值用于本地生成的临时实体（如特效、FakeObject等）
-        private static int s_SerialId = 0;
+        private static int _serialId;
 
         public static EntityLogic.Entity GetGameEntity(this EntityComponent entityComponent, int entityId)
         {
@@ -38,42 +40,42 @@ namespace Game.Scripts.Main.Runtime.Entity
 
         public static void ShowMyAircraft(this EntityComponent entityComponent, MyAircraftData data)
         {
-            entityComponent.ShowEntity(typeof(MyAircraft), "Aircraft", Definition.Constant.Constant.AssetPriority.MyAircraftAsset, data);
+            entityComponent.ShowEntity(typeof(MyAircraft), "Aircraft", Constant.AssetPriority.MyAircraftAsset, data);
         }
 
         public static void ShowAircraft(this EntityComponent entityComponent, AircraftData data)
         {
-            entityComponent.ShowEntity(typeof(Aircraft), "Aircraft", Definition.Constant.Constant.AssetPriority.AircraftAsset, data);
+            entityComponent.ShowEntity(typeof(Aircraft), "Aircraft", Constant.AssetPriority.AircraftAsset, data);
         }
 
         public static void ShowThruster(this EntityComponent entityComponent, ThrusterData data)
         {
-            entityComponent.ShowEntity(typeof(Thruster), "Thruster", Definition.Constant.Constant.AssetPriority.ThrusterAsset, data);
+            entityComponent.ShowEntity(typeof(Thruster), "Thruster", Constant.AssetPriority.ThrusterAsset, data);
         }
 
         public static void ShowWeapon(this EntityComponent entityComponent, WeaponData data)
         {
-            entityComponent.ShowEntity(typeof(Weapon), "Weapon", Definition.Constant.Constant.AssetPriority.WeaponAsset, data);
+            entityComponent.ShowEntity(typeof(Weapon), "Weapon", Constant.AssetPriority.WeaponAsset, data);
         }
 
         public static void ShowArmor(this EntityComponent entityComponent, ArmorData data)
         {
-            entityComponent.ShowEntity(typeof(Armor), "Armor", Definition.Constant.Constant.AssetPriority.ArmorAsset, data);
+            entityComponent.ShowEntity(typeof(Armor), "Armor", Constant.AssetPriority.ArmorAsset, data);
         }
 
         public static void ShowBullet(this EntityComponent entityComponent, BulletData data)
         {
-            entityComponent.ShowEntity(typeof(Bullet), "Bullet", Definition.Constant.Constant.AssetPriority.BulletAsset, data);
+            entityComponent.ShowEntity(typeof(Bullet), "Bullet", Constant.AssetPriority.BulletAsset, data);
         }
 
         public static void ShowAsteroid(this EntityComponent entityComponent, AsteroidData data)
         {
-            entityComponent.ShowEntity(typeof(Asteroid), "Asteroid", Definition.Constant.Constant.AssetPriority.AsteroiAsset, data);
+            entityComponent.ShowEntity(typeof(Asteroid), "Asteroid", Constant.AssetPriority.AsteroiAsset, data);
         }
 
         public static void ShowEffect(this EntityComponent entityComponent, EffectData data)
         {
-            entityComponent.ShowEntity(typeof(Effect), "Effect", Definition.Constant.Constant.AssetPriority.EffectAsset, data);
+            entityComponent.ShowEntity(typeof(Effect), "Effect", Constant.AssetPriority.EffectAsset, data);
         }
 
         private static void ShowEntity(this EntityComponent entityComponent, Type logicType, string entityGroup, int priority, EntityData.EntityData data)
@@ -84,7 +86,7 @@ namespace Game.Scripts.Main.Runtime.Entity
                 return;
             }
 
-            var dtEntity = Base.GameEntry.DataTable.GetDataTable<DREntity>();
+            var dtEntity = GameEntry.DataTable.GetDataTable<DREntity>();
             var drEntity = dtEntity.GetDataRow(data.TypeId);
             if (drEntity == null)
             {
@@ -97,7 +99,7 @@ namespace Game.Scripts.Main.Runtime.Entity
 
         public static int GenerateSerialId(this EntityComponent entityComponent)
         {
-            return --s_SerialId;
+            return --_serialId;
         }
     }
 }

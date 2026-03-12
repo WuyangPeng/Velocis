@@ -1,18 +1,18 @@
 ﻿using Game.Scripts.Main.Runtime.Entity.EntityData;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
 {
     /// <summary>
-    /// 特效类。
+    ///     特效类。
     /// </summary>
     public class Effect : Entity
     {
-        [SerializeField]
-        private EffectData effectData;
+        [SerializeField] private EffectData effectData;
 
-        private float mElapseSeconds;
+        private float _elapseSeconds;
 
 
         protected override void OnShow(object userData)
@@ -26,7 +26,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
                 return;
             }
 
-            mElapseSeconds = 0f;
+            _elapseSeconds = 0f;
         }
 
 
@@ -34,10 +34,10 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
-            mElapseSeconds += elapseSeconds;
-            if (mElapseSeconds >= effectData.KeepTime)
+            _elapseSeconds += elapseSeconds;
+            if (_elapseSeconds >= effectData.KeepTime)
             {
-                Base.GameEntry.Entity.HideEntity(this);
+                GameEntry.Entity.HideEntity(this);
             }
         }
     }

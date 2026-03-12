@@ -14,7 +14,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
         [SerializeField]
         private AsteroidData asteroidData;
 
-        private Vector3 rotateSphere = Vector3.zero;
+        private Vector3 _rotateSphere = Vector3.zero;
 
 
         protected override void OnShow(object userData)
@@ -28,7 +28,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
                 return;
             }
 
-            rotateSphere = Random.insideUnitSphere;
+            _rotateSphere = Random.insideUnitSphere;
         }
 
 
@@ -37,7 +37,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
             CachedTransform.Translate(Vector3.back * (asteroidData.Speed * elapseSeconds), Space.World);
-            CachedTransform.Rotate(rotateSphere * (asteroidData.AngularSpeed * elapseSeconds), Space.Self);
+            CachedTransform.Rotate(_rotateSphere * (asteroidData.AngularSpeed * elapseSeconds), Space.Self);
         }
 
         protected override void OnDead(Entity attacker)

@@ -16,7 +16,7 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
         [SerializeField]
         private WeaponData weaponData;
 
-        private float nextAttackTime;
+        private float _nextAttackTime;
 
         protected override void OnShow(object userData)
         {
@@ -43,12 +43,12 @@ namespace Game.Scripts.Main.Runtime.Entity.EntityLogic
 
         public void TryAttack()
         {
-            if (Time.time < nextAttackTime)
+            if (Time.time < _nextAttackTime)
             {
                 return;
             }
 
-            nextAttackTime = Time.time + weaponData.AttackInterval;
+            _nextAttackTime = Time.time + weaponData.AttackInterval;
             Base.GameEntry.Entity.ShowBullet(new BulletData(Base.GameEntry.Entity.GenerateSerialId(), weaponData.BulletId, weaponData.OwnerId, weaponData.OwnerCamp, weaponData.Attack, weaponData.BulletSpeed)
             {
                 Position = CachedTransform.position,

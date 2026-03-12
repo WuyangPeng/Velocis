@@ -12,8 +12,10 @@ namespace Game.Scripts.Main.Runtime.Event
 
         public static LoginProgressEventArgs Create(float progress)
         {
-            var eventArgs = new LoginProgressEventArgs();
-            eventArgs.Progress = progress;
+            var eventArgs = new LoginProgressEventArgs
+            {
+                Progress = progress
+            };
             return eventArgs;
         }
 

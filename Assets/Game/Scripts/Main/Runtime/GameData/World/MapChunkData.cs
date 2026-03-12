@@ -1,25 +1,17 @@
-﻿using Game.Scripts.Main.Runtime.Base;
+﻿using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.DataTable;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.GameData.World
 {
     public class MapChunkData
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        private readonly HashSet<long> _entity = new();
 
-        public int ResourceId { get; set; }
+        private readonly HashSet<long> _family = new();
 
-        public int CurrentResource { get; set; }
+        private readonly HashSet<long> _sect = new();
 
-        private HashSet<long> entity = new();
-
-        private readonly HashSet<long> family = new();
-
-        private readonly HashSet<long> sect = new();
         public MapChunkData(int x, int y, int resourceId)
         {
             X = x;
@@ -30,32 +22,41 @@ namespace Game.Scripts.Main.Runtime.GameData.World
             CurrentResource = resourceTable.GetDataRow(resourceId).InitValue;
         }
 
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public int ResourceId { get; set; }
+
+        public int CurrentResource { get; set; }
+
         public void AddFamily(long id)
         {
-            family.Add(id);
+            _family.Add(id);
         }
 
         public void AddSect(long id)
         {
-            sect.Add(id);
+            _sect.Add(id);
         }
 
         public bool HasFamily(long familyId)
         {
-            return family.Contains(familyId);
+            return _family.Contains(familyId);
         }
+
         public bool HasEntity(long entityId)
         {
-            return entity.Contains(entityId);
+            return _entity.Contains(entityId);
         }
+
         public void AddEntity(long playerId)
         {
-            entity.Add(playerId);
+            _entity.Add(playerId);
         }
 
         public bool HasSect(long sectId)
         {
-            return sect.Contains(sectId);
+            return _sect.Contains(sectId);
         }
     }
 }
