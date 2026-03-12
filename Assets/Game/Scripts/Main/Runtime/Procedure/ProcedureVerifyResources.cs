@@ -7,7 +7,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureVerifyResources : ProcedureBase
     {
-        private bool m_VerifyResourcesComplete = false;
+        private bool _verifyResourcesComplete;
 
         public override bool UseNativeDialog => true;
 
@@ -19,7 +19,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             GameEntry.Event.Subscribe(ResourceVerifySuccessEventArgs.EventId, OnResourceVerifySuccess);
             GameEntry.Event.Subscribe(ResourceVerifyFailureEventArgs.EventId, OnResourceVerifyFailure);
 
-            m_VerifyResourcesComplete = false;
+            _verifyResourcesComplete = false;
             GameEntry.Resource.VerifyResources(OnVerifyResourcesComplete);
         }
 
@@ -36,7 +36,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (!m_VerifyResourcesComplete)
+            if (!_verifyResourcesComplete)
             {
                 return;
             }
@@ -46,7 +46,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
 
         private void OnVerifyResourcesComplete(bool result)
         {
-            m_VerifyResourcesComplete = true;
+            _verifyResourcesComplete = true;
             Log.Info("Verify resources complete, result is '{0}'.", result);
         }
 

@@ -1,5 +1,4 @@
 ﻿using Game.Scripts.Main.Runtime.GameData.User;
-using UnityEngine;
 
 namespace Game.Scripts.Main.Runtime.SaveData
 {

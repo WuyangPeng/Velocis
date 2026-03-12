@@ -17,42 +17,41 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
     public class ProcedureMenu : ProcedureBase
     {
-        private readonly FormComponent formComponent = new();
-        private readonly List<HeadSaveData> headData = new();
-
-        public readonly int SaveMaxCount = 2;
-        private int m_NextSceneId;
+        private const int SaveMaxCount = 2;
+        private readonly FormComponent _formComponent = new();
+        private readonly List<HeadSaveData> _headData = new();
+        private int _mNextSceneId;
 
         public override bool UseNativeDialog => false;
 
         public void LoadGame()
         {
-            m_NextSceneId = GameEntry.Config.GetInt("Scene.InitGame");
+            _mNextSceneId = GameEntry.Config.GetInt("Scene.InitGame");
         }
 
         public void StartGame()
         {
-            m_NextSceneId = GameEntry.Config.GetInt("Scene.Home");
+            _mNextSceneId = GameEntry.Config.GetInt("Scene.Home");
         }
 
         public void OpenUIForm(UIFormId form)
         {
-            formComponent.OpenUIForm(form);
+            _formComponent.OpenUIForm(form);
         }
 
         public void RemoveUIForm(UIFormId form)
         {
-            formComponent.RemoveUIForm(form);
+            _formComponent.RemoveUIForm(form);
         }
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
 
-            m_NextSceneId = 0;
+            _mNextSceneId = 0;
 
-            formComponent.AddForm(UIFormId.MenuForm);
-            formComponent.OnEnter(procedureOwner);
+            _formComponent.AddForm(UIFormId.MenuForm);
+            _formComponent.OnEnter(procedureOwner);
 
             GameEntry.ModuleComponent.ResetModule();
 
@@ -90,7 +89,7 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
             base.OnLeave(procedureOwner, isShutdown);
 
-            formComponent.OnLeave(procedureOwner, isShutdown);
+            _formComponent.OnLeave(procedureOwner, isShutdown);
         }
 
         private void OnNetworkClosed(object sender, GameEventArgs e)
@@ -106,12 +105,12 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (m_NextSceneId <= 0)
+            if (_mNextSceneId <= 0)
             {
                 return;
             }
 
-            procedureOwner.SetData<VarInt32>("NextSceneId", m_NextSceneId);
+            procedureOwner.SetData<VarInt32>("NextSceneId", _mNextSceneId);
             procedureOwner.SetData<VarByte>("GameMode", (byte)GameMode.Survival);
             ChangeState<ProcedureChangeScene>(procedureOwner);
         }
@@ -131,18 +130,18 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
                 var json = Encoding.UTF8.GetString(bytes);
                 var data = Utility.Json.ToObject<HeadSaveData>(json);
-                headData.Add(data);
+                _headData.Add(data);
             }
         }
 
         public bool HasHeadData(int index)
         {
-            return headData.Any(data => data.Index == index);
+            return _headData.Any(data => data.Index == index);
         }
 
         public List<HeadSaveData> GetHeadData()
         {
-            return headData;
+            return _headData;
         }
     }
 }

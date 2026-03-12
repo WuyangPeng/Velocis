@@ -49,7 +49,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             "ResourceLevel"
         };
 
-        private readonly Dictionary<string, bool> m_LoadedFlag = new();
+        private readonly Dictionary<string, bool> _loadedFlag = new();
 
         public override bool UseNativeDialog => true;
 
@@ -64,7 +64,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             GameEntry.Event.Subscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
             GameEntry.Event.Subscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
 
-            m_LoadedFlag.Clear();
+            _loadedFlag.Clear();
 
             PreloadResources();
         }
@@ -85,7 +85,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (m_LoadedFlag.Any(loadedFlag => !loadedFlag.Value))
+            if (_loadedFlag.Any(loadedFlag => !loadedFlag.Value))
             {
                 return;
             }
@@ -120,51 +120,51 @@ namespace Game.Scripts.Main.Runtime.Procedure
         private void LoadConfig(string configName)
         {
             var configAssetName = AssetUtility.GetConfigAsset(configName, false);
-            m_LoadedFlag.Add(configAssetName, false);
+            _loadedFlag.Add(configAssetName, false);
             GameEntry.Config.ReadData(configAssetName, this);
         }
 
         private void LoadDataTable(string dataTableName)
         {
             var dataTableAssetName = AssetUtility.GetDataTableAsset(dataTableName, false);
-            m_LoadedFlag.Add(dataTableAssetName, false);
+            _loadedFlag.Add(dataTableAssetName, false);
             GameEntry.DataTable.LoadDataTable(dataTableName, dataTableAssetName, this);
         }
 
         private void LoadDictionary(string dictionaryName)
         {
             var dictionaryAssetName = AssetUtility.GetDictionaryAsset(dictionaryName, false);
-            m_LoadedFlag.Add(dictionaryAssetName, false);
+            _loadedFlag.Add(dictionaryAssetName, false);
             GameEntry.Localization.ReadData(dictionaryAssetName, this);
         }
 
         private void LoadFont(string fontName)
         {
-            m_LoadedFlag.Add(Utility.Text.Format("Font.{0}", fontName), false);
+            _loadedFlag.Add(Utility.Text.Format("Font.{0}", fontName), false);
             GameEntry.Resource.LoadAsset(AssetUtility.GetFontAsset(fontName), Constant.AssetPriority.FontAsset, new LoadAssetCallbacks(
-                (assetName, asset, duration, userData) =>
+                (_, asset, _, _) =>
                 {
-                    m_LoadedFlag[Utility.Text.Format("Font.{0}", fontName)] = true;
+                    _loadedFlag[Utility.Text.Format("Font.{0}", fontName)] = true;
                     UGuiForm.SetMainFont((Font)asset);
                     Log.Info("Load font '{0}' OK.", fontName);
                 },
-                (assetName, status, errorMessage, userData) => { Log.Error("Can not load font '{0}' from '{1}' with error message '{2}'.", fontName, assetName, errorMessage); }));
+                (assetName, _, errorMessage, _) => { Log.Error("Can not load font '{0}' from '{1}' with error message '{2}'.", fontName, assetName, errorMessage); }));
         }
 
         private void LoadTMPFont(string fontName)
         {
-            m_LoadedFlag.Add(Utility.Text.Format("TMPFont.{0}", fontName), false);
+            _loadedFlag.Add(Utility.Text.Format("TMPFont.{0}", fontName), false);
             GameEntry.Resource.LoadAsset(AssetUtility.GetTMPFontAsset(fontName), Constant.AssetPriority.FontAsset, new LoadAssetCallbacks(
-                (assetName, asset, duration, userData) =>
+                (_, asset, _, _) =>
                 {
-                    m_LoadedFlag[Utility.Text.Format("TMPFont.{0}", fontName)] = true;
+                    _loadedFlag[Utility.Text.Format("TMPFont.{0}", fontName)] = true;
                     UGuiForm.SetMainTMPFont((TMP_FontAsset)asset);
                     Log.Info("Load TMP font '{0}' OK.", fontName);
                 },
-                (assetName, status, errorMessage, userData) =>
+                (assetName, _, errorMessage, _) =>
                 {
                     Log.Warning("Can not load TMP font '{0}' from '{1}' with error message '{2}'. TextMeshPro will use default font.", fontName, assetName, errorMessage);
-                    m_LoadedFlag[Utility.Text.Format("TMPFont.{0}", fontName)] = true;
+                    _loadedFlag[Utility.Text.Format("TMPFont.{0}", fontName)] = true;
                 }));
         }
 
@@ -176,7 +176,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
                 return;
             }
 
-            m_LoadedFlag[ne.ConfigAssetName] = true;
+            _loadedFlag[ne.ConfigAssetName] = true;
             Log.Info("Load config '{0}' OK.", ne.ConfigAssetName);
         }
 
@@ -199,7 +199,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
                 return;
             }
 
-            m_LoadedFlag[ne.DataTableAssetName] = true;
+            _loadedFlag[ne.DataTableAssetName] = true;
             Log.Info("Load data table '{0}' OK.", ne.DataTableAssetName);
         }
 
@@ -222,7 +222,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
                 return;
             }
 
-            m_LoadedFlag[ne.DictionaryAssetName] = true;
+            _loadedFlag[ne.DictionaryAssetName] = true;
             Log.Info("Load dictionary '{0}' OK.", ne.DictionaryAssetName);
         }
 

@@ -10,48 +10,48 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
     {
         private const float GameOverDelayedSeconds = 2f;
 
-        private readonly Dictionary<GameMode, GameBase> m_Games = new Dictionary<GameMode, GameBase>();
-        private GameBase m_CurrentGame;
-        private bool m_GotoMenu;
-        private float m_GotoMenuDelaySeconds;
+        private readonly Dictionary<GameMode, GameBase> _games = new();
+        private GameBase _currentGame;
+        private bool _gotoMenu;
+        private float _gotoMenuDelaySeconds;
 
         public override bool UseNativeDialog => false;
 
         public void GotoMenu()
         {
-            m_GotoMenu = true;
+            _gotoMenu = true;
         }
 
         protected override void OnInit(ProcedureOwner procedureOwner)
         {
             base.OnInit(procedureOwner);
 
-            m_Games.Add(GameMode.Survival, new SurvivalGame());
+            _games.Add(GameMode.Survival, new SurvivalGame());
         }
 
         protected override void OnDestroy(ProcedureOwner procedureOwner)
         {
             base.OnDestroy(procedureOwner);
 
-            m_Games.Clear();
+            _games.Clear();
         }
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
 
-            m_GotoMenu = false;
+            _gotoMenu = false;
             var gameMode = (GameMode)procedureOwner.GetData<VarByte>("GameMode").Value;
-            m_CurrentGame = m_Games[gameMode];
-            m_CurrentGame.Initialize();
+            _currentGame = _games[gameMode];
+            _currentGame.Initialize();
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
-            if (m_CurrentGame != null)
+            if (_currentGame != null)
             {
-                m_CurrentGame.Shutdown();
-                m_CurrentGame = null;
+                _currentGame.Shutdown();
+                _currentGame = null;
             }
 
             base.OnLeave(procedureOwner, isShutdown);
@@ -61,20 +61,24 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (m_CurrentGame is { GameOver: false })
+            if (_currentGame is { GameOver: false })
             {
-                m_CurrentGame.Update(elapseSeconds, realElapseSeconds);
+                _currentGame.Update(elapseSeconds, realElapseSeconds);
                 return;
             }
 
-            if (!m_GotoMenu)
+            if (!_gotoMenu)
             {
-                m_GotoMenu = true;
-                m_GotoMenuDelaySeconds = 0;
+                _gotoMenu = true;
+                _gotoMenuDelaySeconds = 0;
             }
 
-            m_GotoMenuDelaySeconds += elapseSeconds;
-            if (!(m_GotoMenuDelaySeconds >= GameOverDelayedSeconds)) return;
+            _gotoMenuDelaySeconds += elapseSeconds;
+            if (!(_gotoMenuDelaySeconds >= GameOverDelayedSeconds))
+            {
+                return;
+            }
+
             procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
             ChangeState<ProcedureChangeScene>(procedureOwner);
         }

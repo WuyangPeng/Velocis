@@ -12,15 +12,14 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
     public class ProcedureHome : ProcedureBase
     {
-        private const float GameOverDelayedSeconds = 2f;
-        private readonly FormComponent formComponent = new();
+        private readonly FormComponent _formComponent = new();
 
-        private readonly Dictionary<GameMode, GameBase> m_Games = new();
+        private readonly Dictionary<GameMode, GameBase> _games = new();
 
-        private GameBase m_CurrentGame;
+        private GameBase _currentGame;
 
-        //private bool m_GotoMenu;
-        private float m_GotoMenuDelaySeconds;
+
+        private float _gotoMenuDelaySeconds;
 
         public override bool UseNativeDialog => false;
 
@@ -28,31 +27,31 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
         {
             base.OnInit(procedureOwner);
 
-            m_Games.Add(GameMode.Survival, new SurvivalGame());
+            _games.Add(GameMode.Survival, new SurvivalGame());
         }
 
         protected override void OnDestroy(ProcedureOwner procedureOwner)
         {
             base.OnDestroy(procedureOwner);
 
-            m_Games.Clear();
+            _games.Clear();
         }
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
 
-            // m_GotoMenu = false;
+
             var gameMode = (GameMode)procedureOwner.GetData<VarByte>("GameMode").Value;
-            m_CurrentGame = m_Games[gameMode];
-            m_CurrentGame.Initialize();
+            _currentGame = _games[gameMode];
+            _currentGame.Initialize();
 
-            formComponent.AddForm(UIFormId.BottomForm);
-            formComponent.AddForm(UIFormId.UpperForm);
-            formComponent.AddForm(UIFormId.LeftForm);
-            formComponent.AddForm(UIFormId.RightForm);
+            _formComponent.AddForm(UIFormId.BottomForm);
+            _formComponent.AddForm(UIFormId.UpperForm);
+            _formComponent.AddForm(UIFormId.LeftForm);
+            _formComponent.AddForm(UIFormId.RightForm);
 
-            formComponent.OnEnter(procedureOwner);
+            _formComponent.OnEnter(procedureOwner);
 
             GameEntry.Event.Subscribe(ServerListEventArgs.EventId, OnServerListClose);
         }
@@ -64,27 +63,27 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 
         public void OpenUIForm(UIFormId form)
         {
-            formComponent.OpenUIForm(form);
+            _formComponent.OpenUIForm(form);
         }
 
         public void RemoveUIForm(UIFormId formId)
         {
-            formComponent.RemoveUIForm(formId);
+            _formComponent.RemoveUIForm(formId);
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             GameEntry.Event.Unsubscribe(ServerListEventArgs.EventId, OnServerListClose);
 
-            if (m_CurrentGame != null)
+            if (_currentGame != null)
             {
-                m_CurrentGame.Shutdown();
-                m_CurrentGame = null;
+                _currentGame.Shutdown();
+                _currentGame = null;
             }
 
             base.OnLeave(procedureOwner, isShutdown);
 
-            formComponent.OnLeave(procedureOwner, isShutdown);
+            _formComponent.OnLeave(procedureOwner, isShutdown);
         }
 
 
@@ -93,25 +92,10 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
 
-            if (m_CurrentGame is { GameOver: false })
+            if (_currentGame is { GameOver: false })
             {
-                m_CurrentGame.Update(elapseSeconds, realElapseSeconds);
+                _currentGame.Update(elapseSeconds, realElapseSeconds);
             }
-
-            /* if (!m_GotoMenu)
-             {
-                 m_GotoMenu = true;
-                 m_GotoMenuDelaySeconds = 0;
-             }
-
-             m_GotoMenuDelaySeconds += elapseSeconds;
-             if (!(m_GotoMenuDelaySeconds >= GameOverDelayedSeconds))
-             {
-                 return;
-             }
-
-             procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
-             ChangeState<ProcedureChangeScene>(procedureOwner);*/
         }
     }
 }

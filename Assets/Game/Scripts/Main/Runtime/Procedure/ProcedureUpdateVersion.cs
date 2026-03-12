@@ -7,8 +7,8 @@ namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureUpdateVersion : ProcedureBase
     {
-        private bool m_UpdateVersionComplete = false;
-        private UpdateVersionListCallbacks m_UpdateVersionListCallbacks = null;
+        private bool _updateVersionComplete;
+        private UpdateVersionListCallbacks _updateVersionListCallbacks;
 
         public override bool UseNativeDialog => true;
 
@@ -16,16 +16,16 @@ namespace Game.Scripts.Main.Runtime.Procedure
         {
             base.OnInit(procedureOwner);
 
-            m_UpdateVersionListCallbacks = new UpdateVersionListCallbacks(OnUpdateVersionListSuccess, OnUpdateVersionListFailure);
+            _updateVersionListCallbacks = new UpdateVersionListCallbacks(OnUpdateVersionListSuccess, OnUpdateVersionListFailure);
         }
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
 
-            m_UpdateVersionComplete = false;
+            _updateVersionComplete = false;
 
-            GameEntry.Resource.UpdateVersionList(procedureOwner.GetData<VarInt32>("VersionListLength"), procedureOwner.GetData<VarInt32>("VersionListHashCode"), procedureOwner.GetData<VarInt32>("VersionListCompressedLength"), procedureOwner.GetData<VarInt32>("VersionListCompressedHashCode"), m_UpdateVersionListCallbacks);
+            GameEntry.Resource.UpdateVersionList(procedureOwner.GetData<VarInt32>("VersionListLength"), procedureOwner.GetData<VarInt32>("VersionListHashCode"), procedureOwner.GetData<VarInt32>("VersionListCompressedLength"), procedureOwner.GetData<VarInt32>("VersionListCompressedHashCode"), _updateVersionListCallbacks);
             procedureOwner.RemoveData("VersionListLength");
             procedureOwner.RemoveData("VersionListHashCode");
             procedureOwner.RemoveData("VersionListCompressedLength");
@@ -36,7 +36,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (!m_UpdateVersionComplete)
+            if (!_updateVersionComplete)
             {
                 return;
             }
@@ -46,7 +46,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
 
         private void OnUpdateVersionListSuccess(string downloadPath, string downloadUri)
         {
-            m_UpdateVersionComplete = true;
+            _updateVersionComplete = true;
             Log.Info("Update version list from '{0}' success.", downloadUri);
         }
 

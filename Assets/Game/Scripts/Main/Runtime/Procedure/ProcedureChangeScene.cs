@@ -13,9 +13,9 @@ namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureChangeScene : ProcedureBase
     {
-        private SceneType sceneType = SceneType.Home;
-        private bool m_IsChangeSceneComplete;
-        private int m_BackgroundMusicId;
+        private int _backgroundMusicId;
+        private bool _isChangeSceneComplete;
+        private SceneType _sceneType = SceneType.Home;
 
         public override bool UseNativeDialog => false;
 
@@ -23,7 +23,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
         {
             base.OnEnter(procedureOwner);
 
-            m_IsChangeSceneComplete = false;
+            _isChangeSceneComplete = false;
 
             GameEntry.Event.Subscribe(LoadSceneSuccessEventArgs.EventId, OnLoadSceneSuccess);
             GameEntry.Event.Subscribe(LoadSceneFailureEventArgs.EventId, OnLoadSceneFailure);
@@ -49,7 +49,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             GameEntry.Base.ResetNormalGameSpeed();
 
             int sceneId = procedureOwner.GetData<VarInt32>("NextSceneId");
-            sceneType = (SceneType)sceneId;
+            _sceneType = (SceneType)sceneId;
             var dtScene = GameEntry.DataTable.GetDataTable<DRScene>();
             var drScene = dtScene.GetDataRow(sceneId);
             if (drScene == null)
@@ -59,7 +59,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             }
 
             GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(drScene.AssetName), Constant.AssetPriority.SceneAsset, this);
-            m_BackgroundMusicId = drScene.BackgroundMusicId;
+            _backgroundMusicId = drScene.BackgroundMusicId;
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -76,43 +76,43 @@ namespace Game.Scripts.Main.Runtime.Procedure
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (!m_IsChangeSceneComplete)
+            if (!_isChangeSceneComplete)
             {
                 return;
             }
 
-            switch (sceneType)
+            switch (_sceneType)
             {
                 case SceneType.Menu:
-                    {
-                        ChangeState<ProcedureMenu>(procedureOwner);
-                        break;
-                    }
+                {
+                    ChangeState<ProcedureMenu>(procedureOwner);
+                    break;
+                }
                 case SceneType.Main:
-                    {
-                        ChangeState<ProcedureMain>(procedureOwner);
-                        break;
-                    }
+                {
+                    ChangeState<ProcedureMain>(procedureOwner);
+                    break;
+                }
                 case SceneType.Create:
-                    {
-                        ChangeState<ProcedureCreate>(procedureOwner);
-                        break;
-                    }
+                {
+                    ChangeState<ProcedureCreate>(procedureOwner);
+                    break;
+                }
                 case SceneType.InitGame:
                 {
                     ChangeState<ProcedureInitGame>(procedureOwner);
                     break;
                 }
                 case SceneType.Home:
-                    {
-                        ChangeState<ProcedureHome>(procedureOwner);
-                        break;
-                    }
+                {
+                    ChangeState<ProcedureHome>(procedureOwner);
+                    break;
+                }
                 case SceneType.Battle:
-                    {
-                        ChangeState<ProcedureBattle>(procedureOwner);
-                        break;
-                    }
+                {
+                    ChangeState<ProcedureBattle>(procedureOwner);
+                    break;
+                }
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -128,12 +128,12 @@ namespace Game.Scripts.Main.Runtime.Procedure
 
             Log.Info("Load scene '{0}' OK.", ne.SceneAssetName);
 
-            if (m_BackgroundMusicId > 0)
+            if (_backgroundMusicId > 0)
             {
-                GameEntry.Sound.PlayMusic(m_BackgroundMusicId);
+                GameEntry.Sound.PlayMusic(_backgroundMusicId);
             }
 
-            m_IsChangeSceneComplete = true;
+            _isChangeSceneComplete = true;
         }
 
         private void OnLoadSceneFailure(object sender, GameEventArgs e)

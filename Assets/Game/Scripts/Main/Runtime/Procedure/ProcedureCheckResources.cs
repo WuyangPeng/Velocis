@@ -6,10 +6,10 @@ namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureCheckResources : ProcedureBase
     {
-        private bool m_CheckResourcesComplete = false;
-        private bool m_NeedUpdateResources = false;
-        private int m_UpdateResourceCount = 0;
-        private long m_UpdateResourceTotalCompressedLength = 0L;
+        private bool _checkResourcesComplete;
+        private bool _needUpdateResources;
+        private int _updateResourceCount;
+        private long _updateResourceTotalCompressedLength;
 
         public override bool UseNativeDialog => true;
 
@@ -17,10 +17,10 @@ namespace Game.Scripts.Main.Runtime.Procedure
         {
             base.OnEnter(procedureOwner);
 
-            m_CheckResourcesComplete = false;
-            m_NeedUpdateResources = false;
-            m_UpdateResourceCount = 0;
-            m_UpdateResourceTotalCompressedLength = 0L;
+            _checkResourcesComplete = false;
+            _needUpdateResources = false;
+            _updateResourceCount = 0;
+            _updateResourceTotalCompressedLength = 0L;
 
             GameEntry.Resource.CheckResources(OnCheckResourcesComplete);
         }
@@ -29,15 +29,15 @@ namespace Game.Scripts.Main.Runtime.Procedure
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (!m_CheckResourcesComplete)
+            if (!_checkResourcesComplete)
             {
                 return;
             }
 
-            if (m_NeedUpdateResources)
+            if (_needUpdateResources)
             {
-                procedureOwner.SetData<VarInt32>("UpdateResourceCount", m_UpdateResourceCount);
-                procedureOwner.SetData<VarInt64>("UpdateResourceTotalCompressedLength", m_UpdateResourceTotalCompressedLength);
+                procedureOwner.SetData<VarInt32>("UpdateResourceCount", _updateResourceCount);
+                procedureOwner.SetData<VarInt64>("UpdateResourceTotalCompressedLength", _updateResourceTotalCompressedLength);
                 ChangeState<ProcedureUpdateResources>(procedureOwner);
             }
             else
@@ -48,10 +48,10 @@ namespace Game.Scripts.Main.Runtime.Procedure
 
         private void OnCheckResourcesComplete(int movedCount, int removedCount, int updateCount, long updateTotalLength, long updateTotalCompressedLength)
         {
-            m_CheckResourcesComplete = true;
-            m_NeedUpdateResources = updateCount > 0;
-            m_UpdateResourceCount = updateCount;
-            m_UpdateResourceTotalCompressedLength = updateTotalCompressedLength;
+            _checkResourcesComplete = true;
+            _needUpdateResources = updateCount > 0;
+            _updateResourceCount = updateCount;
+            _updateResourceTotalCompressedLength = updateTotalCompressedLength;
             Log.Info("Check resources complete, '{0}' resources need to update, compressed length is '{1}', uncompressed length is '{2}'.", updateCount.ToString(), updateTotalCompressedLength.ToString(), updateTotalLength.ToString());
         }
     }

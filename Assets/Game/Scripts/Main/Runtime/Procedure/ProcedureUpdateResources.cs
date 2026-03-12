@@ -1,25 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Game.Scripts.Main.Runtime.UI;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using GameFramework;
 using GameFramework.Event;
+using GameFramework.Resource;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
+using ResourceUpdateChangedEventArgs = UnityGameFramework.Runtime.ResourceUpdateChangedEventArgs;
+using ResourceUpdateFailureEventArgs = UnityGameFramework.Runtime.ResourceUpdateFailureEventArgs;
+using ResourceUpdateStartEventArgs = UnityGameFramework.Runtime.ResourceUpdateStartEventArgs;
+using ResourceUpdateSuccessEventArgs = UnityGameFramework.Runtime.ResourceUpdateSuccessEventArgs;
 
 namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureUpdateResources : ProcedureBase
     {
-        private bool m_UpdateResourcesComplete = false;
-        private int m_UpdateCount = 0;
-        private long m_UpdateTotalCompressedLength = 0L;
-        private int m_UpdateSuccessCount = 0;
-        private readonly List<UpdateLengthData> m_UpdateLengthData = new List<UpdateLengthData>();
-        private UpdateResourceForm m_UpdateResourceForm = null;
+        private readonly List<UpdateLengthData> _updateLengthData = new();
+        private int _updateCount;
+        private UpdateResourceForm _updateResourceForm;
+        private bool _updateResourcesComplete;
+        private int _updateSuccessCount;
+        private long _updateTotalCompressedLength;
 
         public override bool UseNativeDialog => true;
 
@@ -27,14 +31,14 @@ namespace Game.Scripts.Main.Runtime.Procedure
         {
             base.OnEnter(procedureOwner);
 
-            m_UpdateResourcesComplete = false;
-            m_UpdateCount = procedureOwner.GetData<VarInt32>("UpdateResourceCount");
+            _updateResourcesComplete = false;
+            _updateCount = procedureOwner.GetData<VarInt32>("UpdateResourceCount");
             procedureOwner.RemoveData("UpdateResourceCount");
-            m_UpdateTotalCompressedLength = procedureOwner.GetData<VarInt64>("UpdateResourceTotalCompressedLength");
+            _updateTotalCompressedLength = procedureOwner.GetData<VarInt64>("UpdateResourceTotalCompressedLength");
             procedureOwner.RemoveData("UpdateResourceTotalCompressedLength");
-            m_UpdateSuccessCount = 0;
-            m_UpdateLengthData.Clear();
-            m_UpdateResourceForm = null;
+            _updateSuccessCount = 0;
+            _updateLengthData.Clear();
+            _updateResourceForm = null;
 
             GameEntry.Event.Subscribe(ResourceUpdateStartEventArgs.EventId, OnResourceUpdateStart);
             GameEntry.Event.Subscribe(ResourceUpdateChangedEventArgs.EventId, OnResourceUpdateChanged);
@@ -51,7 +55,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
                     ConfirmText = GameEntry.Localization.GetString("UpdateResourceViaCarrierDataNetwork.UpdateButton"),
                     OnClickConfirm = StartUpdateResources,
                     CancelText = GameEntry.Localization.GetString("UpdateResourceViaCarrierDataNetwork.QuitButton"),
-                    OnClickCancel = delegate (object userData) { UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Quit); },
+                    OnClickCancel = delegate { UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Quit); }
                 });
 
                 return;
@@ -62,10 +66,10 @@ namespace Game.Scripts.Main.Runtime.Procedure
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
-            if (m_UpdateResourceForm != null)
+            if (_updateResourceForm != null)
             {
-                Object.Destroy(m_UpdateResourceForm.gameObject);
-                m_UpdateResourceForm = null;
+                Object.Destroy(_updateResourceForm.gameObject);
+                _updateResourceForm = null;
             }
 
             GameEntry.Event.Unsubscribe(ResourceUpdateStartEventArgs.EventId, OnResourceUpdateStart);
@@ -80,7 +84,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (!m_UpdateResourcesComplete)
+            if (!_updateResourcesComplete)
             {
                 return;
             }
@@ -90,9 +94,9 @@ namespace Game.Scripts.Main.Runtime.Procedure
 
         private void StartUpdateResources(object userData)
         {
-            if (m_UpdateResourceForm == null)
+            if (_updateResourceForm == null)
             {
-                m_UpdateResourceForm = Object.Instantiate(GameEntry.BuiltinData.UpdateResourceFormTemplate);
+                _updateResourceForm = Object.Instantiate(GameEntry.BuiltinData.UpdateResourceFormTemplate);
             }
 
             Log.Info("Start update resources...");
@@ -101,11 +105,11 @@ namespace Game.Scripts.Main.Runtime.Procedure
 
         private void RefreshProgress()
         {
-            var currentTotalUpdateLength = m_UpdateLengthData.Aggregate(0L, (current, data) => current + data.Length);
+            var currentTotalUpdateLength = _updateLengthData.Aggregate(0L, (current, data) => current + data.Length);
 
-            var progressTotal = (float)currentTotalUpdateLength / m_UpdateTotalCompressedLength;
-            var descriptionText = GameEntry.Localization.GetString("UpdateResource.Tips", m_UpdateSuccessCount.ToString(), m_UpdateCount.ToString(), GetByteLengthString(currentTotalUpdateLength), GetByteLengthString(m_UpdateTotalCompressedLength), progressTotal, GetByteLengthString((int)GameEntry.Download.CurrentSpeed));
-            m_UpdateResourceForm.SetProgress(progressTotal, descriptionText);
+            var progressTotal = (float)currentTotalUpdateLength / _updateTotalCompressedLength;
+            var descriptionText = GameEntry.Localization.GetString("UpdateResource.Tips", _updateSuccessCount.ToString(), _updateCount.ToString(), GetByteLengthString(currentTotalUpdateLength), GetByteLengthString(_updateTotalCompressedLength), progressTotal, GetByteLengthString((int)GameEntry.Download.CurrentSpeed));
+            _updateResourceForm.SetProgress(progressTotal, descriptionText);
         }
 
         private static string GetByteLengthString(long byteLength)
@@ -128,11 +132,11 @@ namespace Game.Scripts.Main.Runtime.Procedure
             };
         }
 
-        private void OnUpdateResourcesComplete(GameFramework.Resource.IResourceGroup resourceGroup, bool result)
+        private void OnUpdateResourcesComplete(IResourceGroup resourceGroup, bool result)
         {
             if (result)
             {
-                m_UpdateResourcesComplete = true;
+                _updateResourcesComplete = true;
                 Log.Info("Update resources complete with no errors.");
             }
             else
@@ -145,7 +149,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
         {
             var ne = (ResourceUpdateStartEventArgs)e;
 
-            foreach (var data in m_UpdateLengthData.Where(data => data.Name == ne.Name))
+            foreach (var data in _updateLengthData.Where(data => data.Name == ne.Name))
             {
                 Log.Warning("Update resource '{0}' is invalid.", ne.Name);
                 data.Length = 0;
@@ -153,14 +157,14 @@ namespace Game.Scripts.Main.Runtime.Procedure
                 return;
             }
 
-            m_UpdateLengthData.Add(new UpdateLengthData(ne.Name));
+            _updateLengthData.Add(new UpdateLengthData(ne.Name));
         }
 
         private void OnResourceUpdateChanged(object sender, GameEventArgs e)
         {
             var ne = (ResourceUpdateChangedEventArgs)e;
 
-            foreach (var data in m_UpdateLengthData.Where(data => data.Name == ne.Name))
+            foreach (var data in _updateLengthData.Where(data => data.Name == ne.Name))
             {
                 data.Length = ne.CurrentLength;
                 RefreshProgress();
@@ -175,10 +179,10 @@ namespace Game.Scripts.Main.Runtime.Procedure
             var ne = (ResourceUpdateSuccessEventArgs)e;
             Log.Info("Update resource '{0}' success.", ne.Name);
 
-            foreach (var data in m_UpdateLengthData.Where(data => data.Name == ne.Name))
+            foreach (var data in _updateLengthData.Where(data => data.Name == ne.Name))
             {
                 data.Length = ne.CompressedLength;
-                m_UpdateSuccessCount++;
+                _updateSuccessCount++;
                 RefreshProgress();
                 return;
             }
@@ -194,15 +198,17 @@ namespace Game.Scripts.Main.Runtime.Procedure
                 Log.Error("Update resource '{0}' failure from '{1}' with error message '{2}', retry count '{3}'.", ne.Name, ne.DownloadUri, ne.ErrorMessage, ne.RetryCount.ToString());
                 return;
             }
-            else
-            {
-                Log.Info("Update resource '{0}' failure from '{1}' with error message '{2}', retry count '{3}'.", ne.Name, ne.DownloadUri, ne.ErrorMessage, ne.RetryCount.ToString());
-            }
 
-            for (var i = 0; i < m_UpdateLengthData.Count; i++)
+            Log.Info("Update resource '{0}' failure from '{1}' with error message '{2}', retry count '{3}'.", ne.Name, ne.DownloadUri, ne.ErrorMessage, ne.RetryCount.ToString());
+
+            for (var i = 0; i < _updateLengthData.Count; i++)
             {
-                if (m_UpdateLengthData[i].Name != ne.Name) continue;
-                m_UpdateLengthData.Remove(m_UpdateLengthData[i]);
+                if (_updateLengthData[i].Name != ne.Name)
+                {
+                    continue;
+                }
+
+                _updateLengthData.Remove(_updateLengthData[i]);
                 RefreshProgress();
                 return;
             }
@@ -219,11 +225,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
 
             public string Name { get; }
 
-            public int Length
-            {
-                get;
-                set;
-            }
+            public int Length { get; set; }
         }
     }
 }

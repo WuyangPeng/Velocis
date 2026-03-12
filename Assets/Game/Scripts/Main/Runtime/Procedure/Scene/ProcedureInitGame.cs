@@ -1,6 +1,7 @@
 ﻿using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.InitGame;
+using Game.Scripts.Main.Runtime.LoadGame;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
@@ -9,63 +10,42 @@ namespace Game.Scripts.Main.Runtime.Procedure.Scene
 {
     public class ProcedureInitGame : ProcedureBase
     {
-        public override bool UseNativeDialog => false;
-
         private const float DelayedSeconds = 2f;
 
-        private float gotoHomeDelaySeconds;
+        private float _gotoHomeDelaySeconds;
 
-        private InitGameType initGameType = InitGameType.Begin;
+        private InitGameType _initGameType = InitGameType.Begin;
+        public override bool UseNativeDialog => false;
 
-        protected override void OnInit(ProcedureOwner procedureOwner)
-        {
-            base.OnInit(procedureOwner);
-        }
-
-        protected override void OnDestroy(ProcedureOwner procedureOwner)
-        {
-            base.OnDestroy(procedureOwner);
-        }
-
-        protected override void OnEnter(ProcedureOwner procedureOwner)
-        {
-            base.OnEnter(procedureOwner);
-
-        }
-
-        protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
-        {
-            base.OnLeave(procedureOwner, isShutdown);
-        }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
-            gotoHomeDelaySeconds += elapseSeconds;
+            _gotoHomeDelaySeconds += elapseSeconds;
 
             var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
             if (userModule.IsInitWorld())
             {
-                var loadGameBase = LoadGame.LoadGameBase.Create(initGameType);
+                var loadGameBase = LoadGameBase.Create(_initGameType);
                 loadGameBase.LoadGame();
             }
             else
             {
-                var initGame = InitGameBase.Create(initGameType);
+                var initGame = InitGameBase.Create(_initGameType);
                 initGame.InitGame();
             }
 
-            if (initGameType < InitGameType.End)
+            if (_initGameType < InitGameType.End)
             {
-                ++initGameType;
+                ++_initGameType;
             }
 
-            if (gotoHomeDelaySeconds < DelayedSeconds)
+            if (_gotoHomeDelaySeconds < DelayedSeconds)
             {
                 return;
             }
 
-            if (initGameType < InitGameType.End)
+            if (_initGameType < InitGameType.End)
             {
                 return;
             }

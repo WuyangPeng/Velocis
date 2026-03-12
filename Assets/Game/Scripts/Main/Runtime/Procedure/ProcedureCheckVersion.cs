@@ -1,5 +1,5 @@
-﻿using Game.Scripts.Main.Runtime.Definition.DataStruct;
-using Game.Scripts.Main.Runtime.UI;
+﻿using System;
+using Game.Scripts.Main.Runtime.Definition.DataStruct;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using GameFramework;
@@ -9,14 +9,15 @@ using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
+using Version = GameFramework.Version;
 
 namespace Game.Scripts.Main.Runtime.Procedure
 {
     public class ProcedureCheckVersion : ProcedureBase
     {
-        private bool m_CheckVersionComplete = false;
-        private bool m_NeedUpdateVersion = false;
-        private VersionInfo m_VersionInfo = null;
+        private bool _checkVersionComplete;
+        private bool _needUpdateVersion;
+        private VersionInfo _versionInfo;
 
         public override bool UseNativeDialog => true;
 
@@ -24,9 +25,9 @@ namespace Game.Scripts.Main.Runtime.Procedure
         {
             base.OnEnter(procedureOwner);
 
-            m_CheckVersionComplete = false;
-            m_NeedUpdateVersion = false;
-            m_VersionInfo = null;
+            _checkVersionComplete = false;
+            _needUpdateVersion = false;
+            _versionInfo = null;
 
             GameEntry.Event.Subscribe(WebRequestSuccessEventArgs.EventId, OnWebRequestSuccess);
             GameEntry.Event.Subscribe(WebRequestFailureEventArgs.EventId, OnWebRequestFailure);
@@ -47,17 +48,17 @@ namespace Game.Scripts.Main.Runtime.Procedure
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (!m_CheckVersionComplete)
+            if (!_checkVersionComplete)
             {
                 return;
             }
 
-            if (m_NeedUpdateVersion)
+            if (_needUpdateVersion)
             {
-                procedureOwner.SetData<VarInt32>("VersionListLength", m_VersionInfo.VersionListLength);
-                procedureOwner.SetData<VarInt32>("VersionListHashCode", m_VersionInfo.VersionListHashCode);
-                procedureOwner.SetData<VarInt32>("VersionListCompressedLength", m_VersionInfo.VersionListCompressedLength);
-                procedureOwner.SetData<VarInt32>("VersionListCompressedHashCode", m_VersionInfo.VersionListCompressedHashCode);
+                procedureOwner.SetData<VarInt32>("VersionListLength", _versionInfo.VersionListLength);
+                procedureOwner.SetData<VarInt32>("VersionListHashCode", _versionInfo.VersionListHashCode);
+                procedureOwner.SetData<VarInt32>("VersionListCompressedLength", _versionInfo.VersionListCompressedLength);
+                procedureOwner.SetData<VarInt32>("VersionListCompressedHashCode", _versionInfo.VersionListCompressedHashCode);
                 ChangeState<ProcedureUpdateVersion>(procedureOwner);
             }
             else
@@ -95,16 +96,16 @@ namespace Game.Scripts.Main.Runtime.Procedure
             // 解析版本信息
             var versionInfoBytes = ne.GetWebResponseBytes();
             var versionInfoString = Utility.Converter.GetString(versionInfoBytes);
-            m_VersionInfo = Utility.Json.ToObject<VersionInfo>(versionInfoString);
-            if (m_VersionInfo == null)
+            _versionInfo = Utility.Json.ToObject<VersionInfo>(versionInfoString);
+            if (_versionInfo == null)
             {
                 Log.Error("Parse VersionInfo failure.");
                 return;
             }
 
-            Log.Info("Latest game version is '{0} ({1})', local game version is '{2} ({3})'.", m_VersionInfo.LatestGameVersion, m_VersionInfo.InternalGameVersion.ToString(), Version.GameVersion, Version.InternalGameVersion.ToString());
+            Log.Info("Latest game version is '{0} ({1})', local game version is '{2} ({3})'.", _versionInfo.LatestGameVersion, _versionInfo.InternalGameVersion.ToString(), Version.GameVersion, Version.InternalGameVersion.ToString());
 
-            if (m_VersionInfo.ForceUpdateGame)
+            if (_versionInfo.ForceUpdateGame)
             {
                 // 需要强制更新游戏应用
                 GameEntry.UI.OpenDialog(new DialogParams
@@ -115,17 +116,17 @@ namespace Game.Scripts.Main.Runtime.Procedure
                     ConfirmText = GameEntry.Localization.GetString("ForceUpdate.UpdateButton"),
                     OnClickConfirm = GotoUpdateApp,
                     CancelText = GameEntry.Localization.GetString("ForceUpdate.QuitButton"),
-                    OnClickCancel = delegate (object userData) { UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Quit); },
+                    OnClickCancel = delegate { UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Quit); }
                 });
 
                 return;
             }
 
             // 设置资源更新下载地址
-            GameEntry.Resource.UpdatePrefixUri = Utility.Path.GetRegularPath(m_VersionInfo.UpdatePrefixUri);
+            GameEntry.Resource.UpdatePrefixUri = Utility.Path.GetRegularPath(_versionInfo.UpdatePrefixUri);
 
-            m_CheckVersionComplete = true;
-            m_NeedUpdateVersion = GameEntry.Resource.CheckVersionList(m_VersionInfo.InternalResourceVersion) == CheckVersionListResult.NeedUpdate;
+            _checkVersionComplete = true;
+            _needUpdateVersion = GameEntry.Resource.CheckVersionList(_versionInfo.InternalResourceVersion) == CheckVersionListResult.NeedUpdate;
         }
 
         private void OnWebRequestFailure(object sender, GameEventArgs e)
@@ -147,7 +148,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
                 RuntimePlatform.OSXEditor or RuntimePlatform.OSXPlayer => "MacOS",
                 RuntimePlatform.IPhonePlayer => "IOS",
                 RuntimePlatform.Android => "Android",
-                _ => throw new System.NotSupportedException(Utility.Text.Format("Platform '{0}' is not supported.", Application.platform))
+                _ => throw new NotSupportedException(Utility.Text.Format("Platform '{0}' is not supported.", Application.platform))
             };
         }
     }
