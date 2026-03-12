@@ -18,13 +18,15 @@ namespace Game.Scripts.Main.Runtime.GameModule.Develop
 
         public DevelopData(develop_data protoData)
         {
-            if (protoData != null)
+            if (protoData == null)
             {
-                SystemId = protoData.SystemId;
-                InstanceId = protoData.InstanceId;
-                Level = protoData.Level;
-                Exp = protoData.Exp;
+                return;
             }
+
+            SystemId = protoData.SystemId;
+            InstanceId = protoData.InstanceId;
+            Level = protoData.Level;
+            Exp = protoData.Exp;
         }
 
         public int SystemId { get; set; }

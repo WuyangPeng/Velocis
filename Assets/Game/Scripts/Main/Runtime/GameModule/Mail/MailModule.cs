@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Celeritas.Proto.Client;
+﻿using System.Collections.Generic; 
 using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.Network;
 using Game.Scripts.Main.Runtime.GameModule.Base;

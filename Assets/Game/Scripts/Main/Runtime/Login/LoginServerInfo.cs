@@ -12,7 +12,7 @@ namespace Game.Scripts.Main.Runtime.Login
         public string server_name = "";
         public ServerStatusType server_status;
 
-        public string getPlayerName()
+        public string GetPlayerName()
         {
             if (player_role == null)
             {

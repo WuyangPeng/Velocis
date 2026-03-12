@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Main.Runtime.Base;
+﻿using System.Text;
+using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameData.World;
 using Game.Scripts.Main.Runtime.GameEnum;
@@ -6,18 +7,18 @@ using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.GameModule.World;
 using Game.Scripts.Main.Runtime.GameUtility;
 using Game.Scripts.Main.Runtime.SaveData;
-using System.Text;
 using GameFramework;
 
 namespace Game.Scripts.Main.Runtime.InitGame
 {
     public class SectInitGame : InitGameBase
     {
-        private readonly UserModule userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-        private readonly SectModule sectModule = GameEntry.ModuleComponent.GetModule<SectModule>();
-        private readonly MapModule mapModule = GameEntry.ModuleComponent.GetModule<MapModule>();
-        private readonly WeightRandom<int> moralityWeightRandom = new();
-        private readonly WeightRandom<int> sectWeightRandom = new();
+        private readonly MapModule _mapModule = GameEntry.ModuleComponent.GetModule<MapModule>();
+        private readonly WeightRandom<int> _moralityWeightRandom = new();
+        private readonly SectModule _sectModule = GameEntry.ModuleComponent.GetModule<SectModule>();
+        private readonly WeightRandom<int> _sectWeightRandom = new();
+        private readonly UserModule _userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+
         public override void InitGame()
         {
             InitMorality();
@@ -33,10 +34,9 @@ namespace Game.Scripts.Main.Runtime.InitGame
             {
                 if (element.Group == (int)MoralityType.Empty)
                 {
-                    moralityWeightRandom.Add(element.Id, element.Weight);
+                    _moralityWeightRandom.Add(element.Id, element.Weight);
                 }
             }
-
         }
 
         private void InitSect()
@@ -45,39 +45,39 @@ namespace Game.Scripts.Main.Runtime.InitGame
 
             foreach (var element in sectTable)
             {
-                sectWeightRandom.Add(element.Id, element.Weight);
+                _sectWeightRandom.Add(element.Id, element.Weight);
             }
         }
 
         private void DoInitGame()
         {
-            for (var i = 0; i < userModule.GetInitSectCount() - 1; i++)
+            for (var i = 0; i < _userModule.GetInitSectCount() - 1; i++)
             {
-                if (sectWeightRandom.Count == 0)
+                if (_sectWeightRandom.Count == 0)
                 {
                     InitSect();
                 }
 
                 var sectBaseData = new SectBaseData
                 {
-                    ID = sectModule.GetNextSectId(),
-                    MoralityType = (MoralityType)moralityWeightRandom.Roll(), 
-                    SectId = sectWeightRandom.Roll()
+                    ID = _sectModule.GetNextSectId(),
+                    MoralityType = (MoralityType)_moralityWeightRandom.Roll(),
+                    SectId = _sectWeightRandom.Roll()
                 };
 
-                sectModule.AddSect(sectBaseData);
-                mapModule.AddSectToRandomChunk(sectBaseData);
+                _sectModule.AddSect(sectBaseData);
+                _mapModule.AddSectToRandomChunk(sectBaseData);
 
-                sectWeightRandom.Remove(sectBaseData.SectId);
+                _sectWeightRandom.Remove(sectBaseData.SectId);
             }
         }
 
         public override void SaveGame()
         {
-            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + userModule.GetSaveIndex(), "SectData.idx");
+            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + _userModule.GetSaveIndex(), "SectData.idx");
             var sectSaveData = new SectSaveData
             {
-                Data = sectModule.GetSectData()
+                Data = _sectModule.GetSectData()
             };
 
             var json = Utility.Json.ToJson(sectSaveData);

@@ -1,37 +1,37 @@
-﻿using Game.Scripts.Main.Runtime.GameData.World;
+﻿using System.Collections.Generic;
+using Game.Scripts.Main.Runtime.GameData.World;
 using Game.Scripts.Main.Runtime.GameModule.Base;
-using System.Collections.Generic;
 
 namespace Game.Scripts.Main.Runtime.GameModule.World
 {
     [Module]
     public class SectModule : BaseModule
     {
-        private SectData sectData = new();
+        private SectData _sectData = new();
 
         public long GetNextSectId()
         {
-            return sectData.GetNextSectId();
+            return _sectData.GetNextSectId();
         }
 
         public void AddSect(SectBaseData sectBaseData)
         {
-            sectData.AddSect(sectBaseData);
+            _sectData.AddSect(sectBaseData);
         }
 
         public SectData GetSectData()
         {
-            return sectData;
+            return _sectData;
         }
 
         public void Init(SectData data)
         {
-            sectData = data;
+            _sectData = data;
         }
 
         public List<SectBaseData> GetSects()
         {
-            return sectData.GetSects();
+            return _sectData.GetSects();
         }
     }
 }

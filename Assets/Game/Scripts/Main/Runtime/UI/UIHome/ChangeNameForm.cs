@@ -5,7 +5,6 @@ using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework.Event;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
@@ -57,7 +56,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         public void OnChangeNameButtonClick()
         {
             var roleModule = GameEntry.ModuleComponent.GetModule<RoleModule>();
-            roleModule.ChangeName(surnameInputField.text, nameInputField.text);
+            RoleModule.ChangeName(surnameInputField.text, nameInputField.text);
         }
     }
 }

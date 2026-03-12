@@ -3,6 +3,7 @@ using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.HPBar
 {
@@ -12,15 +13,42 @@ namespace Game.Scripts.Main.Runtime.HPBar
         private const float KeepSeconds = 0.4f;
         private const float FadeOutSeconds = 0.3f;
 
-        [SerializeField]
-        private Slider hpBar;
+        [SerializeField] private Slider hpBar;
 
-        private Canvas mParentCanvas;
-        private RectTransform cachedTransform;
-        private CanvasGroup cachedCanvasGroup;
-        private int ownerId;
+        private CanvasGroup _cachedCanvasGroup;
+        private RectTransform _cachedTransform;
+        private int _ownerId;
+
+        private Canvas _parentCanvas;
 
         public Entity.EntityLogic.Entity Owner { get; private set; }
+
+        private void Awake()
+        {
+            _cachedTransform = GetComponent<RectTransform>();
+            if (_cachedTransform == null)
+            {
+                Log.Error("RectTransform is invalid.");
+                return;
+            }
+
+            _cachedCanvasGroup = GetComponent<CanvasGroup>();
+            if (_cachedCanvasGroup != null)
+            {
+                return;
+            }
+
+            Log.Error("CanvasGroup is invalid.");
+        }
+
+        public void Reset()
+        {
+            StopAllCoroutines();
+            _cachedCanvasGroup.alpha = 1f;
+            hpBar.value = 1f;
+            Owner = null;
+            gameObject.SetActive(false);
+        }
 
         public void Init(Entity.EntityLogic.Entity owner, Canvas parentCanvas, float fromHpRatio, float toHpRatio)
         {
@@ -30,17 +58,17 @@ namespace Game.Scripts.Main.Runtime.HPBar
                 return;
             }
 
-            mParentCanvas = parentCanvas;
+            _parentCanvas = parentCanvas;
 
             gameObject.SetActive(true);
             StopAllCoroutines();
 
-            cachedCanvasGroup.alpha = 1f;
-            if (Owner != owner || ownerId != owner.Id)
+            _cachedCanvasGroup.alpha = 1f;
+            if (Owner != owner || _ownerId != owner.Id)
             {
                 hpBar.value = fromHpRatio;
                 Owner = owner;
-                ownerId = owner.Id;
+                _ownerId = owner.Id;
             }
 
             Refresh();
@@ -50,54 +78,32 @@ namespace Game.Scripts.Main.Runtime.HPBar
 
         public bool Refresh()
         {
-            if (cachedCanvasGroup.alpha <= 0f)
+            if (_cachedCanvasGroup.alpha <= 0f)
             {
                 return false;
             }
 
-            if (Owner == null || !Owner.Available || Owner.Id != ownerId) return true;
-            var worldPosition = Owner.CachedTransform.position + Vector3.forward;
-            var screenPosition = Base.GameEntry.Scene.MainCamera.WorldToScreenPoint(worldPosition);
-
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)mParentCanvas.transform, screenPosition, mParentCanvas.worldCamera, out var position))
+            if (Owner == null || !Owner.Available || Owner.Id != _ownerId)
             {
-                cachedTransform.localPosition = position;
+                return true;
+            }
+
+            var worldPosition = Owner.CachedTransform.position + Vector3.forward;
+            var screenPosition = GameEntry.Scene.MainCamera.WorldToScreenPoint(worldPosition);
+
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)_parentCanvas.transform, screenPosition, _parentCanvas.worldCamera, out var position))
+            {
+                _cachedTransform.localPosition = position;
             }
 
             return true;
-        }
-
-        public void Reset()
-        {
-            StopAllCoroutines();
-            cachedCanvasGroup.alpha = 1f;
-            hpBar.value = 1f;
-            Owner = null;
-            gameObject.SetActive(false);
-        }
-
-        private void Awake()
-        {
-            cachedTransform = GetComponent<RectTransform>();
-            if (cachedTransform == null)
-            {
-                Log.Error("RectTransform is invalid.");
-                return;
-            }
-
-            cachedCanvasGroup = GetComponent<CanvasGroup>();
-            if (cachedCanvasGroup != null)
-            {
-                return;
-            }
-            Log.Error("CanvasGroup is invalid.");
         }
 
         private IEnumerator HpBarCo(float value, float animationDuration, float keepDuration, float fadeOutDuration)
         {
             yield return hpBar.SmoothValue(value, animationDuration);
             yield return new WaitForSeconds(keepDuration);
-            yield return cachedCanvasGroup.FadeToAlpha(0f, fadeOutDuration);
+            yield return _cachedCanvasGroup.FadeToAlpha(0f, fadeOutDuration);
         }
     }
 }

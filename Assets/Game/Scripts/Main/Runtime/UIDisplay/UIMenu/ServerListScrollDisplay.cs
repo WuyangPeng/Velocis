@@ -130,7 +130,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIMenu
         private void OnItemClick(int index)
         {
             var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
-            if (accountModule.getCurrentIndex() == index)
+            if (accountModule.GetCurrentIndex() == index)
             {
                 GameEntry.UI.OpenDialog(new DialogParams
                 {

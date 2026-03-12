@@ -1,4 +1,4 @@
-﻿namespace Game.Scripts.Main.Runtime.Account
+﻿namespace Game.Scripts.Main.Runtime.GameModule.User
 {
     public class Token
     {

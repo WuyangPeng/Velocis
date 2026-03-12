@@ -29,7 +29,7 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIMenu
             _selfIndex = index;
             _onClick = clickCallback;
             serverNameText.text = loginServerInfo.server_name;
-            playerNameText.text = loginServerInfo.getPlayerName();
+            playerNameText.text = loginServerInfo.GetPlayerName();
             SetSelected(loginServerInfo.server_status);
         }
 

@@ -1,64 +1,62 @@
 ﻿using Game.Scripts.Main.Runtime.GameData.World;
 using Game.Scripts.Main.Runtime.GameModule.Base;
-using Game.Scripts.Main.Runtime.SaveData;
 
 namespace Game.Scripts.Main.Runtime.GameModule.World
 {
     [Module]
     public class MapModule : BaseModule
     {
-        private MapData mapData = new();
+        private MapData _mapData = new();
+
         public void AddMapChunkData(MapChunkData mapChunkData)
         {
-            mapData.AddMapChunkData(mapChunkData);
+            _mapData.AddMapChunkData(mapChunkData);
         }
 
         public void SetMapSize(int mapSize)
         {
-            mapData.MapSize = mapSize;
+            _mapData.MapSize = mapSize;
         }
 
         public MapData GetMapData()
         {
-            return mapData;
+            return _mapData;
         }
 
         public void AddFamilyToRandomChunk(FamilyBaseData familyBaseData)
         {
-            mapData.AddFamilyToRandomChunk(familyBaseData);
+            _mapData.AddFamilyToRandomChunk(familyBaseData);
         }
 
         public void AddSectToRandomChunk(SectBaseData sectBaseData)
         {
-            mapData.AddSectToRandomChunk(sectBaseData);
+            _mapData.AddSectToRandomChunk(sectBaseData);
         }
 
         public void Init(MapData data)
         {
-            mapData = data;
+            _mapData = data;
         }
 
         public void SetChunkByFamilyId(long entityId, long familyId)
         {
-            mapData.SetChunkByFamilyId(entityId, familyId);
+            _mapData.SetChunkByFamilyId(entityId, familyId);
         }
 
         public void SetChunkBySectId(long entityId, long sectId)
         {
-            mapData.SetChunkBySectId(entityId, sectId);
-
+            _mapData.SetChunkBySectId(entityId, sectId);
         }
 
 
         public bool HasEntity(long entityId)
         {
-            return mapData.HasEntity(entityId);
-
+            return _mapData.HasEntity(entityId);
         }
 
         public void AddEntityToRandomChunk(long entityId)
         {
-            mapData.AddEntityToRandomChunk(entityId);
+            _mapData.AddEntityToRandomChunk(entityId);
         }
     }
 }

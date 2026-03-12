@@ -1,25 +1,25 @@
-﻿using Game.Scripts.Main.Runtime.Base;
+﻿using System.Text;
+using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.Definition.Constant;
 using Game.Scripts.Main.Runtime.GameData.World;
 using Game.Scripts.Main.Runtime.GameEnum;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.GameModule.World;
 using Game.Scripts.Main.Runtime.GameUtility;
 using Game.Scripts.Main.Runtime.SaveData;
-using System.Text;
-using Game.Scripts.Main.Runtime.Definition.Constant;
 using GameFramework;
 
 namespace Game.Scripts.Main.Runtime.InitGame
 {
     public class FamilyInitGame : InitGameBase
     {
-        private readonly UserModule userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-        private readonly MapModule mapModule = GameEntry.ModuleComponent.GetModule<MapModule>();
-        private readonly FamilyModule familyModule = GameEntry.ModuleComponent.GetModule<FamilyModule>();
-        private readonly WeightRandom<int> moralityWeightRandom = new();
-        private readonly WeightRandom<int> raceWeightRandom = new();
-        private readonly WeightRandom<int> surnameWeightRandom = new();
+        private readonly FamilyModule _familyModule = GameEntry.ModuleComponent.GetModule<FamilyModule>();
+        private readonly MapModule _mapModule = GameEntry.ModuleComponent.GetModule<MapModule>();
+        private readonly WeightRandom<int> _moralityWeightRandom = new();
+        private readonly WeightRandom<int> _raceWeightRandom = new();
+        private readonly WeightRandom<int> _surnameWeightRandom = new();
+        private readonly UserModule _userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
 
         public override void InitGame()
         {
@@ -29,6 +29,7 @@ namespace Game.Scripts.Main.Runtime.InitGame
             InitPlayerFamily();
             InitOtherFamily();
         }
+
         private void InitMorality()
         {
             var campTable = GameEntry.DataTable.GetDataTable<DRCamp>();
@@ -37,18 +38,18 @@ namespace Game.Scripts.Main.Runtime.InitGame
             {
                 if (element.Group == (int)MoralityType.Empty)
                 {
-                    moralityWeightRandom.Add(element.Id, element.Weight);
+                    _moralityWeightRandom.Add(element.Id, element.Weight);
                 }
             }
-
         }
+
         private void InitRace()
         {
             var raceTable = GameEntry.DataTable.GetDataTable<DRRace>();
 
             foreach (var element in raceTable)
             {
-                raceWeightRandom.Add(element.Id, element.Weight);
+                _raceWeightRandom.Add(element.Id, element.Weight);
             }
         }
 
@@ -58,7 +59,7 @@ namespace Game.Scripts.Main.Runtime.InitGame
 
             foreach (var element in surnameTable)
             {
-                surnameWeightRandom.Add(element.Id, element.Weight);
+                _surnameWeightRandom.Add(element.Id, element.Weight);
             }
         }
 
@@ -66,51 +67,51 @@ namespace Game.Scripts.Main.Runtime.InitGame
         {
             var familyBaseData = new FamilyBaseData
             {
-                ID = familyModule.GetNextFamilyId(),
-                MoralityType = userModule.GetMoralityType(),
-                RaceType = userModule.GetRaceType(),
-                Surname = userModule.GetSurname(),
+                ID = _familyModule.GetNextFamilyId(),
+                MoralityType = _userModule.GetMoralityType(),
+                RaceType = _userModule.GetRaceType(),
+                Surname = _userModule.GetSurname()
             };
 
-            familyModule.AddFamily(familyBaseData);
-            mapModule.AddFamilyToRandomChunk(familyBaseData);
+            _familyModule.AddFamily(familyBaseData);
+            _mapModule.AddFamilyToRandomChunk(familyBaseData);
 
-            surnameWeightRandom.Remove(familyBaseData.Surname);
-            userModule.SetFamilyId(familyBaseData.ID);
-            mapModule.SetChunkByFamilyId(Constant.Game.PlayerId, familyBaseData.ID);
+            _surnameWeightRandom.Remove(familyBaseData.Surname);
+            _userModule.SetFamilyId(familyBaseData.ID);
+            _mapModule.SetChunkByFamilyId(Constant.Game.PlayerId, familyBaseData.ID);
         }
 
         private void InitOtherFamily()
         {
-            for (var i = 0; i < userModule.GetInitFamilyCount() - 1; i++)
+            for (var i = 0; i < _userModule.GetInitFamilyCount() - 1; i++)
             {
-                if (surnameWeightRandom.Count == 0)
+                if (_surnameWeightRandom.Count == 0)
                 {
                     InitSurname();
                 }
 
                 var familyBaseData = new FamilyBaseData
                 {
-                    ID = familyModule.GetNextFamilyId(),
-                    MoralityType = (MoralityType)moralityWeightRandom.Roll(),
-                    RaceType = (RaceType)raceWeightRandom.Roll(),
-                    Surname = surnameWeightRandom.Roll()
+                    ID = _familyModule.GetNextFamilyId(),
+                    MoralityType = (MoralityType)_moralityWeightRandom.Roll(),
+                    RaceType = (RaceType)_raceWeightRandom.Roll(),
+                    Surname = _surnameWeightRandom.Roll()
                 };
 
-                familyModule.AddFamily(familyBaseData);
-                mapModule.AddFamilyToRandomChunk(familyBaseData);
+                _familyModule.AddFamily(familyBaseData);
+                _mapModule.AddFamilyToRandomChunk(familyBaseData);
 
-                surnameWeightRandom.Remove(familyBaseData.Surname);
+                _surnameWeightRandom.Remove(familyBaseData.Surname);
             }
         }
 
         public override void SaveGame()
         {
-            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + userModule.GetSaveIndex(), "FamilyData.idx");
+            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + _userModule.GetSaveIndex(), "FamilyData.idx");
             var familySaveData = new FamilySaveData
             {
-                CurrentFamilyId = familyModule.GetCurrentFamilyId(),
-                FamilyBaseDataContainer = familyModule.GetFamilies()
+                CurrentFamilyId = _familyModule.GetCurrentFamilyId(),
+                FamilyBaseDataContainer = _familyModule.GetFamilies()
             };
 
             var json = Utility.Json.ToJson(familySaveData);

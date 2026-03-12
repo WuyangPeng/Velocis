@@ -1,17 +1,18 @@
-﻿using Game.Scripts.Main.Runtime.Base;
+﻿using System.Text;
+using Game.Scripts.Main.Runtime.Base;
 using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.SaveData;
-using System.Text;
 using GameFramework;
 
 namespace Game.Scripts.Main.Runtime.LoadGame
 {
     public class BeginLoadGame : LoadGameBase
     {
-        private readonly UserModule userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+        private readonly UserModule _userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+
         public override void LoadGame()
         {
-            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + userModule.GetSaveIndex(), "UserData.idx");
+            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + _userModule.GetSaveIndex(), "UserData.idx");
             var bytes = fileSystems?.ReadFile("GameSaves");
 
             if (bytes == null)
@@ -22,7 +23,7 @@ namespace Game.Scripts.Main.Runtime.LoadGame
             var json = Encoding.UTF8.GetString(bytes);
             var data = Utility.Json.ToObject<UserSavaData>(json);
 
-            userModule.Init(data.UserData, data.PropertyData);
+            _userModule.Init(data.UserData, data.PropertyData);
         }
     }
 }

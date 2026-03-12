@@ -53,7 +53,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Role
             return GameEntry.Localization.GetString(_surname) + GameEntry.Localization.GetString(_name);
         }
 
-        public void ChangeName(string surname, string name)
+        public static void ChangeName(string surname, string name)
         {
             var packet = ProtoHelper.GetProto();
 

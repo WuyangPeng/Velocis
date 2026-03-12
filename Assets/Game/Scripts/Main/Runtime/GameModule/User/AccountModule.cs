@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Game.Scripts.Main.Runtime.Account;
 using Game.Scripts.Main.Runtime.GameModule.Base;
 using Game.Scripts.Main.Runtime.Login;
 
@@ -8,10 +7,10 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
     [Module]
     public class AccountModule : BaseModule
     {
+        private int _currentIndex = -1;
         private LoginServerInfo _currentLoginServerInfo;
         private List<LoginServerInfo> _loginServerInfo = new();
         private Token _token = new();
-        private int currentIndex = -1;
 
 
         public void SetToken(string token, long expireMilliseconds)
@@ -51,23 +50,23 @@ namespace Game.Scripts.Main.Runtime.GameModule.User
             _currentLoginServerInfo = null;
             _loginServerInfo.Clear();
             _token = new Token();
-            currentIndex = -1;
+            _currentIndex = -1;
         }
 
         public void ClearCurrentLogin()
         {
             _currentLoginServerInfo = null;
-            currentIndex = -1;
+            _currentIndex = -1;
         }
 
-        public int getCurrentIndex()
+        public int GetCurrentIndex()
         {
-            return currentIndex;
+            return _currentIndex;
         }
 
         public LoginServerInfo SetCurrentLoginServerInfo(int index)
         {
-            currentIndex = index;
+            _currentIndex = index;
 
             _currentLoginServerInfo = _loginServerInfo[index];
 

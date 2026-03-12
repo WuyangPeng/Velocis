@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using Celeritas.Proto.Client;
 using Celeritas.Proto.Common;
-using System.Collections.Generic;
 
 namespace Game.Scripts.Main.Runtime.GameModule.Mail
 {
@@ -12,24 +12,26 @@ namespace Game.Scripts.Main.Runtime.GameModule.Mail
 
         public MailData(mail_data protoData)
         {
-            if (protoData != null)
+            if (protoData == null)
             {
-                MailId = protoData.MailId;
-                Type = protoData.Type;
-                Multilingual = protoData.Multilingual;
-                Title = protoData.Title;
-                Content = protoData.Content;
-                SendTime = protoData.SendTime;
-                ExpireTime = protoData.ExpireTime;
-                Read = protoData.Read;
-                AttachmentCollected = protoData.AttachmentCollected;
-                
-                // 复制附件数据
-                Attachments = new List<inventory_data>();
-                foreach (var attachment in protoData.Attachments)
-                {
-                    Attachments.Add(attachment.Clone());
-                }
+                return;
+            }
+
+            MailId = protoData.MailId;
+            Type = protoData.Type;
+            Multilingual = protoData.Multilingual;
+            Title = protoData.Title;
+            Content = protoData.Content;
+            SendTime = protoData.SendTime;
+            ExpireTime = protoData.ExpireTime;
+            Read = protoData.Read;
+            AttachmentCollected = protoData.AttachmentCollected;
+
+            // 复制附件数据
+            Attachments = new List<inventory_data>();
+            foreach (var attachment in protoData.Attachments)
+            {
+                Attachments.Add(attachment.Clone());
             }
         }
 
@@ -51,7 +53,7 @@ namespace Game.Scripts.Main.Runtime.GameModule.Mail
 
         public bool AttachmentCollected { get; set; }
 
-        public List<inventory_data> Attachments { get; set; } = new List<inventory_data>();
+        public List<inventory_data> Attachments { get; set; } = new();
 
         public MailData Clone()
         {

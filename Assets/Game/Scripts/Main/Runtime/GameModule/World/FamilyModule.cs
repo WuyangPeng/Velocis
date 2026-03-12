@@ -7,40 +7,40 @@ namespace Game.Scripts.Main.Runtime.GameModule.World
     [Module]
     public class FamilyModule : BaseModule
     {
-        private FamilyData familyData = new();
+        private readonly FamilyData _familyData = new();
 
         public long GetNextFamilyId()
         {
-            return familyData.GetNextFamilyId();
+            return _familyData.GetNextFamilyId();
         }
 
         public void AddFamily(FamilyBaseData familyBaseData)
         {
-            familyData.AddFamily(familyBaseData);
+            _familyData.AddFamily(familyBaseData);
         }
 
         public FamilyData GetFamilyData()
         {
-            return familyData;
+            return _familyData;
         }
 
         public List<FamilyBaseData> GetFamilies()
         {
-            return familyData.GetFamilies();
+            return _familyData.GetFamilies();
         }
 
 
         public long GetCurrentFamilyId()
         {
-            return familyData.GetNextFamilyId();
+            return _familyData.GetNextFamilyId();
         }
 
         public void Init(long currentFamilyId, List<FamilyBaseData> familyBaseDataContainer)
         {
-            familyData.SetCurrentFamilyId(currentFamilyId);
+            _familyData.SetCurrentFamilyId(currentFamilyId);
             foreach (var familyBaseData in familyBaseDataContainer)
             {
-                familyData.AddFamily(familyBaseData);
+                _familyData.AddFamily(familyBaseData);
             }
         }
     }

@@ -7,11 +7,12 @@ using Game.Scripts.Main.Runtime.Entity;
 using Game.Scripts.Main.Runtime.Entity.EntityLogic;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.GameUtility
 {
     /// <summary>
-    /// AI 工具类。
+    ///     AI 工具类。
     /// </summary>
     public static class AIUtility
     {
@@ -49,12 +50,12 @@ namespace Game.Scripts.Main.Runtime.GameUtility
         }
 
         /// <summary>
-        /// 获取两个阵营之间的关系。
+        ///     获取两个阵营之间的关系。
         /// </summary>
         /// <param name="first">阵营一。</param>
         /// <param name="second">阵营二。</param>
         /// <returns>阵营间关系。</returns>
-        public static RelationType GetRelation(CampType first, CampType second)
+        private static RelationType GetRelation(CampType first, CampType second)
         {
             if (first > second)
             {
@@ -71,7 +72,7 @@ namespace Game.Scripts.Main.Runtime.GameUtility
         }
 
         /// <summary>
-        /// 获取和指定具有特定关系的所有阵营。
+        ///     获取和指定具有特定关系的所有阵营。
         /// </summary>
         /// <param name="camp">指定阵营。</param>
         /// <param name="relation">关系。</param>
@@ -95,7 +96,7 @@ namespace Game.Scripts.Main.Runtime.GameUtility
         }
 
         /// <summary>
-        /// 获取实体间的距离。
+        ///     获取实体间的距离。
         /// </summary>
         /// <returns>实体间的距离。</returns>
         public static float GetDistance(Entity.EntityLogic.Entity fromEntity, Entity.EntityLogic.Entity toEntity)
@@ -124,7 +125,6 @@ namespace Game.Scripts.Main.Runtime.GameUtility
             {
                 PerformCollision(entity, bullet);
             }
-
         }
 
         private static void PerformCollision(TargetableObject entity, Bullet bullet)
@@ -139,7 +139,7 @@ namespace Game.Scripts.Main.Runtime.GameUtility
             var entityDamageHp = CalcDamageHp(bulletImpactData.Attack, entityImpactData.Defense);
 
             entity.ApplyDamage(bullet, entityDamageHp);
-            Base.GameEntry.Entity.HideEntity(bullet);
+            GameEntry.Entity.HideEntity(bullet);
         }
 
         private static void PerformCollision(TargetableObject entity, TargetableObject target)
