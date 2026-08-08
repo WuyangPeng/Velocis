@@ -2,7 +2,11 @@
     "name": "Velocis.HotfixMain",
     "rootNamespace": "",
     "references": [
-        "GUID:363c5eb08ff8e6a439b85e37b8c20d96"
+        "GUID:028603ab2e55def4c8f721892ecb5427",
+        "GUID:363c5eb08ff8e6a439b85e37b8c20d96",
+        "GUID:993f33c7da924c84e941c846f5382942",
+        "GUID:96cef0fd6ddfb134487f05ac2e71987d",
+        "GUID:92cd0461c8c0f0e4092809e7ecf7ee87"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

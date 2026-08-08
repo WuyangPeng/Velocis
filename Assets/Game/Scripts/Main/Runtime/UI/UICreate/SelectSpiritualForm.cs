@@ -1,7 +1,7 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
-using Game.Scripts.Main.Runtime.GameModule.User;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+// using Game.Scripts.Main.Runtime.GameModule.User;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
@@ -16,13 +16,13 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
     {
         [SerializeField] private SpiritualDisplay spiritualDisplay;
 
-        private ProcedureCreate _procedureCreate;
+        private IProcedureCreateHost _procedureCreate;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (IProcedureCreateHost)GetCurrentProcedure();
 
             if (_procedureCreate == null)
             {
@@ -62,50 +62,50 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnEnterButtonClick()
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            if (!userModule.HasSpiritual())
-            {
-                OpenDialog("Spiritual.OpenSpiritual.Title", "Spiritual.OpenSpiritual.Content");
-                return;
-            }
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // if (!userModule.HasSpiritual())
+            // {
+            //     OpenDialog("Spiritual.OpenSpiritual.Title", "Spiritual.OpenSpiritual.Content");
+            //     return;
+            // }
 
-            if (0 < userModule.GetSpiritualCount())
-            {
-                OpenDialog("Spiritual.Allocate.Title", "Spiritual.Allocate.Content");
-                return;
-            }
+            // if (0 < userModule.GetSpiritualCount())
+            // {
+            //     OpenDialog("Spiritual.Allocate.Title", "Spiritual.Allocate.Content");
+            //     return;
+            // }
 
             _procedureCreate.OpenUIForm(UIFormId.SelectMartialArtsForm);
         }
 
         public void OnReduceButtonClick(int spiritualId)
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var spiritual = userModule.GetSpiritual((SpiritualType)spiritualId);
-            var initSpiritual = UserModule.GetInitSpiritual((SpiritualType)spiritualId);
-            if (spiritual <= initSpiritual || userModule.GetSpiritualCount() >= Constant.Game.InitSpiritualCount)
-            {
-                return;
-            }
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // var spiritual = userModule.GetSpiritual((SpiritualType)spiritualId);
+            // var initSpiritual = UserModule.GetInitSpiritual((SpiritualType)spiritualId);
+            // if (spiritual <= initSpiritual || userModule.GetSpiritualCount() >= Constant.Game.InitSpiritualCount)
+            // {
+            //     return;
+            // }
 
-            userModule.ReduceSpiritual(spiritualId);
-            spiritualDisplay.Refresh();
+            // userModule.ReduceSpiritual(spiritualId);
+            // spiritualDisplay.Refresh();
         }
 
         public void OnAddButtonClick(int spiritualId)
         {
-            var spiritualTable = GameEntry.DataTable.GetDataTable<DRSpiritual>();
+            // var spiritualTable = GameEntry.DataTable.GetDataTable<DRSpiritual>();
 
-            var row = spiritualTable.GetDataRow(spiritualId);
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var spiritual = userModule.GetSpiritual((SpiritualType)spiritualId);
-            if (spiritual >= row.MaxValue || userModule.GetSpiritualCount() <= 0)
-            {
-                return;
-            }
+            // var row = spiritualTable.GetDataRow(spiritualId);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // var spiritual = userModule.GetSpiritual((SpiritualType)spiritualId);
+            // if (spiritual >= row.MaxValue || userModule.GetSpiritualCount() <= 0)
+            // {
+            //     return;
+            // }
 
-            userModule.AddSpiritual(spiritualId);
-            spiritualDisplay.Refresh();
+            // userModule.AddSpiritual(spiritualId);
+            // spiritualDisplay.Refresh();
         }
     }
 }

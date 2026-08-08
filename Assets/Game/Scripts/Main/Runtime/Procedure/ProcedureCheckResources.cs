@@ -42,7 +42,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
             }
             else
             {
-                ChangeState<ProcedurePreload>(procedureOwner);
+                ChangeState<ProcedureLoadAssembly>(procedureOwner);
             }
         }
 

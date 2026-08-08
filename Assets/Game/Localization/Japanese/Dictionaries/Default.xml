@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dictionaries>
+    <Dictionary Language="Japanese">
+        <String Key="Game.Name" Value="Velocis"/>
+        <String Key="Game.Title" Value="鎮守孤城"/>
+        <String Key="Game.Subtitle" Value="The Lonely Citadel"/>
+        <String Key="Game.AccountInput" Value="署名して詔令を待つ"/>
+        <String Key="Game.Technology" Value="このゲームは celeritas と Velocis を使用して開発されています。"/>
+        <String Key="Game.Concept" Value="これは、戦略管理（SLG）とロールプレイング（RPG）の要素を融合したゲームです。"/>
+        <String Key="Game.Genre" Value="シミュレーションRPG (Strategy/Simulation RPG)"/>
+        <String Key="Game.Description" Value="Velocis デモプログラム"/>
+        <String Key="Game.Website" Value="https://GameFramework.cn/"/>
+        <String Key="Game.Summary" Value="これは Game Framework を使用して作成されたゲームデモプロジェクトです。"/>
+        <String Key="Game.Introduction" Value="Game Framework は Unity エンジンに基づいたゲームフレームワークです。"/>
+        <String Key="Game.ServerList" Value="サーバーリスト"/>
+        <String Key="Login.LoginFailed" Value="ログイン失敗"/>
+        <String Key="Login.ConnectServerFailed" Value="サーバーに接続できません。後でもう一度お試しください。"/>
+        <String Key="Login.ConnectServerExceptional" Value="不明なエラーが発生しました。ログを確認してください。"/>
+        <String Key="Server.Error" Value="サーバーエラー"/>
+        <String Key="Server.ErrorCode0" Value="unknown error"/>
+        <String Key="Menu.StartButton" Value="開始"/>
+        <String Key="Menu.GuestLoginButton" Value="ゲストログイン"/>
+        <String Key="Menu.SettingButton" Value="設定"/>
+        <String Key="Menu.AboutButton" Value="情報"/>
+        <String Key="Menu.QuitButton" Value="終了"/>
+        <String Key="Menu.ReturnButton" Value="戻る"/>
+        <String Key="Menu.ConfirmButton" Value="確定"/>
+        <String Key="Menu.LoadGame" Value="ゲームに入る"/>
+        <String Key="Menu.CreateNewGame" Value="新規ゲーム作成"/>
+
+        <String Key="ForceUpdate.Title" Value="強制アップデート"/>
+        <String Key="ForceUpdate.Message" Value="現在のゲームバージョンが古すぎます。アップデートしますか？"/>
+        <String Key="ForceUpdate.UpdateButton" Value="アップデート"/>
+        <String Key="ForceUpdate.QuitButton" Value="終了"/>
+        <String Key="AskQuitGame.Title" Value="終了確認"/>
+        <String Key="AskQuitGame.Message" Value="ゲームを終了しますか？"/>
+        <String Key="Setting.Title" Value="設定"/>
+        <String Key="Setting.Music" Value="音楽"/>
+        <String Key="Setting.Sound" Value="効果音"/>
+        <String Key="Setting.UISound" Value="UI効果音"/>
+        <String Key="Setting.Language" Value="言語"/>
+        <String Key="Setting.LanguageTips" Value="言語を変更するにはゲームを再起動する必要があります"/>
+        <String Key="Home.Version" Value="クライアントバージョン："/>
+
+        <!-- 主入口 UI 多语言 -->
+        <String Key="MainEntry.Title" Value="九州"/>
+        <String Key="MainEntry.InputPlaceholder" Value="客卿アカウントを入力してください"/>
+        <String Key="MainEntry.BtnEnterGame" Value="九州を制覇する"/>
+        <String Key="MainEntry.BtnSetting" Value="軍政設定"/>
+        <String Key="MainEntry.BtnGameIntro" Value="九州通鑑"/>
+        <String Key="MainEntry.BtnAnnouncement" Value="官府告示"/>
+        <String Key="MainEntry.BtnCustomerService" Value="軍師に相談"/>
+        <String Key="MainEntry.BtnQuit" Value="解甲帰田"/>
+        <String Key="MainEntry.HealthyGameAdvice" Value="健康的なゲーム生活の忠告：不良なゲームを拒否し、海賊版ゲームを拒絶する。自己防衛に留意し、詐欺に引っかからないようにする。&#xA;適度なゲームは脳を活性化させ、過度なゲームは体を害する。時間を合理的に配分し、健康的な生活を送りましょう。"/>
+        <String Key="MainEntry.CopyrightText" Value="© 2026 Taiyi Studio All Rights Reserved."/>
+        
+        <!-- 提示框 -->
+        <String Key="Dialog.ConfirmButton" Value="確認"/>
+        <String Key="Dialog.CancelButton" Value="否決"/>
+        <String Key="Dialog.OtherButton" Value="保留"/>
+        <String Key="Dialog.AskQuitGameTitle" Value="解甲確認"/>
+        <String Key="Dialog.AskQuitGameMessage" Value="天下は未定まらず。主公、本当に解甲帰田し、一時撤退されますか？"/>
+        
+        <!-- システム設定 -->
+        <String Key="SystemSetting.Title" Value="軍政設定"/>
+        <String Key="SystemSetting.Music" Value="BGM"/>
+        <String Key="SystemSetting.Sound" Value="効果音"/>
+        <String Key="SystemSetting.UISound" Value="UI効果音"/>
+        <String Key="SystemSetting.Language" Value="言語設定"/>
+        <String Key="SystemSetting.GraphicQuality" Value="画質設定"/>
+        <String Key="SystemSetting.Vibration" Value="バイブレーション"/>
+        <String Key="SystemSetting.Fullscreen" Value="フルスクリーン"/>
+        <String Key="SystemSetting.GraphicQuality.High" Value="高"/>
+        <String Key="SystemSetting.GraphicQuality.Medium" Value="中"/>
+        <String Key="SystemSetting.GraphicQuality.Low" Value="低"/>
+        <String Key="SystemSetting.Language.ChineseSimplified" Value="簡体字中国語"/>
+        <String Key="SystemSetting.Language.ChineseTraditional" Value="繁体字中国語"/>
+        <String Key="SystemSetting.Language.English" Value="英語"/>
+        <String Key="SystemSetting.Language.Korean" Value="韓国語"/>
+        <String Key="SystemSetting.Language.Japanese" Value="日本語"/>
+        
+        <!-- ヘルプ画面 -->
+        <String Key="HelpForm.Title" Value="九州通鑑"/>
+        <String Key="HelpForm.NoContent" Value="コンテンツなし"/>
+        <String Key="HelpForm.LoadFailed" Value="コンテンツを読み込み中、または一時的に利用できません"/>
+        <String Key="HelpForm.PageFormat" Value="{0} / {1}"/>
+        <String Key="HelpForm.BtnClose" Value="巻物を閉じる"/>
+
+        <!-- ヘルプ · カテゴリ -->
+        <String Key="HelpForm.Category.Beginner" Value="九州初識"/>
+        <String Key="HelpForm.Category.LordDestiny" Value="主公の命途"/>
+        <String Key="HelpForm.Category.GeneralsBonds" Value="名将交情"/>
+        <String Key="HelpForm.Category.Progression" Value="武将育成"/>
+        <String Key="HelpForm.Category.Exploration" Value="砂盤探索"/>
+        <String Key="HelpForm.Category.FAQ" Value="乱世百問"/>
+
+        <!-- ヘルプ · ページ -->
+        <String Key="HelpForm.Page.GameIntro" Value="乱世の序章"/>
+        <String Key="HelpForm.Page.BasicControls" Value="画面と基本操作"/>
+        <String Key="HelpForm.Page.FateChoices" Value="運命の決断"/>
+        <String Key="HelpForm.Page.FiefdomManage" Value="領地建設"/>
+        <String Key="HelpForm.Page.GeneralRecruit" Value="人材登用"/>
+        <String Key="HelpForm.Page.LordGenBonds" Value="君臣の絆"/>
+        <String Key="HelpForm.Page.StatsTalents" Value="ステータスと成長"/>
+        <String Key="HelpForm.Page.DivineGear" Value="神兵宝物"/>
+        <String Key="HelpForm.Page.WorldExplore" Value="大地図探索"/>
+        <String Key="HelpForm.Page.TacticsBattle" Value="戦場対決"/>
+        <String Key="HelpForm.Page.FAQGrowth" Value="ストーリーと育成の疑問"/>
+        <String Key="HelpForm.Page.FAQExplore" Value="戦闘と探索の疑問"/>
+
+        <!-- ヘルプ · 項目タイトル -->
+        <String Key="HelpForm.Item.GameWorld.Title" Value="『九州』世界観紹介"/>
+        <String Key="HelpForm.Item.LordPath.Title" Value="主公の道と天下の大勢"/>
+        <String Key="HelpForm.Item.DifficultyMode.Title" Value="難度選択の説明"/>
+        <String Key="HelpForm.Item.MainUI.Title" Value="メイン画面の軍政庁機能"/>
+        <String Key="HelpForm.Item.MapExploration.Title" Value="大マップ移動と探索"/>
+        <String Key="HelpForm.Item.InventoryUsage.Title" Value="行嚢とアイテムの使用"/>
+        <String Key="HelpForm.Item.BranchingStory.Title" Value="ストーリー分岐と選択"/>
+        <String Key="HelpForm.Item.LordPersonality.Title" Value="主公の性格偏向"/>
+        <String Key="HelpForm.Item.PersonalityInfluence.Title" Value="性格が局勢と名将に与える影響"/>
+        <String Key="HelpForm.Item.FiefdomGovernance.Title" Value="軍政庁と内政官任命"/>
+        <String Key="HelpForm.Item.PeopleQuests.Title" Value="民生事件の処理"/>
+        <String Key="HelpForm.Item.FiefdomVault.Title" Value="領地府庫の資源産出"/>
+        <String Key="HelpForm.Item.RecruitVisit.Title" Value="賢者を訪ねる登用"/>
+        <String Key="HelpForm.Item.GeneralGifts.Title" Value="贈り物と好感度アップ"/>
+        <String Key="HelpForm.Item.GeneralLoyalty.Title" Value="忠誠度の変化と離脱危機"/>
+        <String Key="HelpForm.Item.BondLevel.Title" Value="絆レベルと交情開放"/>
+        <String Key="HelpForm.Item.GeneralBiography.Title" Value="武将列伝と名将逸話"/>
+        <String Key="HelpForm.Item.ComboTactics.Title" Value="連携戦法と協同防御"/>
+        <String Key="HelpForm.Item.FourAttributes.Title" Value="四維ステータスの効果"/>
+        <String Key="HelpForm.Item.GeneralTalents.Title" Value="武将の特長と天賦ツリー"/>
+        <String Key="HelpForm.Item.GeneralBreakthrough.Title" Value="武将の境界突破と覚醒"/>
+        <String Key="HelpForm.Item.DivineWeapon.Title" Value="専用神兵の鋳造と鍛錬"/>
+        <String Key="HelpForm.Item.TacticalBooks.Title" Value="兵法奇書と家伝の宝物"/>
+        <String Key="HelpForm.Item.GearEquipment.Title" Value="装備着用とステータス精錬"/>
+        <String Key="HelpForm.Item.FogAndPasses.Title" Value="霧と関所の障害"/>
+        <String Key="HelpForm.Item.RandomEncounters.Title" Value="マップランダム遭遇と逸話任務"/>
+        <String Key="HelpForm.Item.MysteryRuins.Title" Value="秘境と古跡の攻略"/>
+        <String Key="HelpForm.Item.UnitCounters.Title" Value="兵種相性関係"/>
+        <String Key="HelpForm.Item.BattleFormations.Title" Value="古代陣形配置"/>
+        <String Key="HelpForm.Item.TacticReleases.Title" Value="主動戦法と指揮戦法発動"/>
+        <String Key="HelpForm.Item.FaqPrestige.Title" Value="主公の名望を早く上げるには？"/>
+        <String Key="HelpForm.Item.FaqAffection.Title" Value="好感度が上がらなくなったら？"/>
+        <String Key="HelpForm.Item.FaqWeaponMaterials.Title" Value="専用神兵の材料の獲得方法は？"/>
+        <String Key="HelpForm.Item.FaqComboFail.Title" Value="なぜ戦闘中に連携戦法を発動できないのか？"/>
+        <String Key="HelpForm.Item.FaqDefeatGuide.Title" Value="勝てない敵軍に遭遇した場合は？"/>
+        <String Key="HelpForm.Item.FaqLostGeneral.Title" Value="離脱した名将を再登用するには？"/>
+
+        <!-- お知らせ -->
+        <String Key="Tag.New" Value="新"/>
+        <String Key="Tag.Hot" Value="熱"/>
+        <String Key="Tag.Maintenance" Value="維"/>
+        <String Key="AnnouncementForm.Title" Value="官府告示"/>
+        <String Key="AnnouncementForm.BtnRead" Value="確認済"/>
+        <String Key="AnnouncementForm.NoContent" Value="告示なし"/>
+        <String Key="AnnouncementForm.FetchFailedTitle" Value="告示取得失敗"/>
+        <String Key="AnnouncementForm.FetchFailedMessage" Value="官府告示を取得できませんでした。ネットワークを確認して再試行してください。"/>
+        <String Key="AnnouncementForm.Retry" Value="再試行"/>
+        <String Key="AnnouncementForm.Close" Value="取りやめ"/>
+
+        <!-- フィードバック -->
+        <String Key="FeedbackForm.Title" Value="軍師に相談"/>
+        <String Key="FeedbackForm.InputPlaceholder" Value="事由をご記入ください（10-500文字）"/>
+        <String Key="FeedbackForm.CharCountFormat" Value="{0} / {1}"/>
+        <String Key="FeedbackForm.UploadHint" Value="スクリーンショット"/>
+        <String Key="FeedbackForm.SelectImageTitle" Value="画像を選択"/>
+        <String Key="FeedbackForm.BtnUpload" Value="画像添付"/>
+        <String Key="FeedbackForm.BtnSubmit" Value="奉呈"/>
+        <String Key="FeedbackForm.BtnCancel" Value="保留"/>
+        <String Key="FeedbackForm.CooldownFormat" Value="{0}s"/>
+        <String Key="Feedback.Type.Bug" Value="不具合報告"/>
+        <String Key="Feedback.Type.Suggestion" Value="ご意見"/>
+        <String Key="Feedback.Type.Report" Value="通報"/>
+        <String Key="Feedback.MinLengthError" Value="文字数が不足しています。最低10文字必要です。"/>
+        <String Key="Feedback.SubmitSuccess" Value="上奏状は朝廷へ届けられました。"/>
+        <String Key="Feedback.CooldownError" Value="{0}秒後に再度お試しください。"/>
+        <String Key="Feedback.ImageTooLarge" Value="画像が5MBを超えています。"/>
+        <String Key="Feedback.ImageLoadFailed" Value="画像の読み込みに失敗しました。"/>
+        <String Key="Feedback.UploadImageFailed" Value="画像のアップロードに失敗しました。"/>
+        <String Key="Feedback.SubmitFailed" Value="送信に失敗しました。ネットワークをご確認ください。"/>
+        <String Key="FeedbackForm.ServerLabel" Value="サーバー："/>
+        <String Key="FeedbackForm.PlayerIdLabel" Value="プレイヤーID："/>
+        <String Key="FeedbackForm.AnonymousLabel" Value="匿名"/>
+        <String Key="FeedbackForm.ServerPlaceholder" Value="サーバー名を入力..."/>
+        <String Key="FeedbackForm.PlayerIdPlaceholder" Value="プレイヤーIDを入力..."/>
+        <String Key="Feedback.ServerEmptyError" Value="サーバー名を入力してください。"/>
+        <String Key="Feedback.PlayerIdEmptyError" Value="プレイヤーIDを入力してください。"/>
+
+        <!-- サーバーリスト -->
+        <String Key="ServerList.Title" Value="割拠の地を選択"/>
+        <String Key="ServerList.TabRecommended" Value="推奨/履歴"/>
+        <String Key="ServerList.BtnConfirm" Value="立足を確定"/>
+        <String Key="ServerList.StatusSmooth" Value="順調"/>
+        <String Key="ServerList.StatusHot" Value="混雑"/>
+        <String Key="ServerList.StatusFull" Value="満員"/>
+        <String Key="ServerList.StatusMaintain" Value="メンテナンス"/>
+        <String Key="ServerList.HasCharacter" Value="主公"/>
+        <String Key="ServerList.Zone.1" Value="司隷"/>
+        <String Key="ServerList.Zone.2" Value="豫州"/>
+        <String Key="ServerList.Zone.3" Value="冀州"/>
+        <String Key="ServerList.Zone.4" Value="兗州"/>
+        <String Key="ServerList.Zone.5" Value="徐州"/>
+        <String Key="ServerList.Zone.6" Value="青州"/>
+        <String Key="ServerList.Zone.7" Value="荊州"/>
+        <String Key="ServerList.Zone.8" Value="揚州"/>
+        <String Key="ServerList.Zone.9" Value="益州"/>
+        <String Key="ServerList.Zone.10" Value="幽州"/>
+        <String Key="ServerList.Server.test-1" Value="夏王朝 #1"/>
+        <String Key="ServerList.Server.test-2" Value="殷商 #2"/>
+        <String Key="ServerList.Server.test-3" Value="西周 #3"/>
+        <String Key="ServerList.Server.test-4" Value="東周 #4"/>
+        <String Key="ServerList.Server.test-5" Value="春秋・鄭 #5"/>
+        <String Key="ServerList.Server.test-6" Value="春秋・斉 #6"/>
+        <String Key="ServerList.Server.test-7" Value="春秋・魯 #7"/>
+        <String Key="ServerList.Server.test-8" Value="春秋・宋 #8"/>
+        <String Key="ServerList.Server.test-9" Value="春秋・衛 #9"/>
+        <String Key="ServerList.Server.test-10" Value="春秋・晋 #10"/>
+        <String Key="ServerList.Server.test-11" Value="春秋・陳 #11"/>
+        <String Key="ServerList.Server.test-12" Value="春秋・楚 #12"/>
+        <String Key="ServerList.Server.test-13" Value="春秋・秦 #13"/>
+        <String Key="ServerList.Server.test-14" Value="春秋・燕 #14"/>
+        <String Key="ServerList.Server.test-15" Value="春秋・呉 #15"/>
+        <String Key="ServerList.Server.test-16" Value="春秋・越 #16"/>
+        <String Key="ServerList.Server.test-17" Value="戦国・斉 #17"/>
+        <String Key="ServerList.Server.test-18" Value="戦国・楚 #18"/>
+        <String Key="ServerList.Server.test-19" Value="戦国・燕 #19"/>
+        <String Key="ServerList.Server.test-20" Value="戦国・韓 #20"/>
+        <String Key="ServerList.Server.test-21" Value="戦国・趙 #21"/>
+        <String Key="ServerList.Server.test-22" Value="戦国・魏 #22"/>
+        <String Key="ServerList.Server.test-23" Value="戦国・秦 #23"/>
+        <String Key="ServerList.Server.test-24" Value="戦国・中山 #24"/>
+        <String Key="ServerList.Server.test-25" Value="戦国・巴 #25"/>
+        <String Key="ServerList.Server.test-26" Value="戦国・蜀 #26"/>
+        <String Key="ServerList.Server.test-27" Value="秦朝 #27"/>
+        <String Key="ServerList.Server.test-28" Value="西楚 #28"/>
+        <String Key="ServerList.Server.test-29" Value="前漢 #29"/>
+        <String Key="ServerList.Server.test-30" Value="新朝 #30"/>
+        <String Key="ServerList.Server.test-31" Value="後漢 #31"/>
+        <String Key="ServerList.Server.test-32" Value="三国・魏 #32"/>
+        <String Key="ServerList.Server.test-33" Value="三国・蜀漢 #33"/>
+        <String Key="ServerList.Server.test-34" Value="三国・呉 #34"/>
+        <String Key="ServerList.Server.test-35" Value="西晋 #35"/>
+        <String Key="ServerList.Server.test-36" Value="東晋 #36"/>
+        <String Key="ServerList.Server.test-37" Value="五胡十六国・前趙 #37"/>
+        <String Key="ServerList.Server.test-38" Value="五胡十六国・成漢 #38"/>
+        <String Key="ServerList.Server.test-39" Value="五胡十六国・前涼 #39"/>
+        <String Key="ServerList.Server.test-40" Value="五胡十六国・後趙 #40"/>
+        <String Key="ServerList.Server.test-41" Value="五胡十六国・前燕 #41"/>
+        <String Key="ServerList.Server.test-42" Value="五胡十六国・前秦 #42"/>
+        <String Key="ServerList.Server.test-43" Value="五胡十六国・後燕 #43"/>
+        <String Key="ServerList.Server.test-44" Value="五胡十六国・後秦 #44"/>
+        <String Key="ServerList.Server.test-45" Value="五胡十六国・西秦 #45"/>
+        <String Key="ServerList.Server.test-46" Value="五胡十六国・後涼 #46"/>
+        <String Key="ServerList.Server.test-47" Value="五胡十六国・南涼 #47"/>
+        <String Key="ServerList.Server.test-48" Value="五胡十六国・南燕 #48"/>
+        <String Key="ServerList.Server.test-49" Value="五胡十六国・西涼 #49"/>
+        <String Key="ServerList.Server.test-50" Value="五胡十六国・北燕 #50"/>
+        <String Key="ServerList.Server.test-51" Value="五胡十六国・北涼 #51"/>
+        <String Key="ServerList.Server.test-52" Value="五胡十六国・夏 #52"/>
+        <String Key="ServerList.Server.test-53" Value="西燕 #53"/>
+        <String Key="ServerList.Server.test-54" Value="吐谷渾 #54"/>
+        <String Key="ServerList.Server.test-55" Value="南朝・宋 #55"/>
+        <String Key="ServerList.Server.test-56" Value="南朝・斉 #56"/>
+        <String Key="ServerList.Server.test-57" Value="南朝・梁 #57"/>
+        <String Key="ServerList.Server.test-58" Value="南朝・陳 #58"/>
+        <String Key="ServerList.Server.test-59" Value="北朝・北魏 #59"/>
+        <String Key="ServerList.Server.test-60" Value="北朝・東魏 #60"/>
+        <String Key="ServerList.Server.test-61" Value="北朝・西魏 #61"/>
+        <String Key="ServerList.Server.test-62" Value="北朝・北斉 #62"/>
+        <String Key="ServerList.Server.test-63" Value="北朝・北周 #63"/>
+        <String Key="ServerList.Server.test-64" Value="隋朝 #64"/>
+        <String Key="ServerList.Server.test-65" Value="唐朝 #65"/>
+        <String Key="ServerList.Server.test-66" Value="武周 #66"/>
+        <String Key="ServerList.Server.test-67" Value="渤海 #67"/>
+        <String Key="ServerList.Server.test-68" Value="南詔 #68"/>
+        <String Key="ServerList.Server.test-69" Value="吐蕃 #69"/>
+        <String Key="ServerList.Server.test-70" Value="五代・後梁 #70"/>
+        <String Key="ServerList.Server.test-71" Value="五代・後唐 #71"/>
+        <String Key="ServerList.Server.test-72" Value="五代・後晋 #72"/>
+        <String Key="ServerList.Server.test-73" Value="五代・後漢 #73"/>
+        <String Key="ServerList.Server.test-74" Value="五代・後周 #74"/>
+        <String Key="ServerList.Server.test-75" Value="十国・呉 #75"/>
+        <String Key="ServerList.Server.test-76" Value="十国・南唐 #76"/>
+        <String Key="ServerList.Server.test-77" Value="十国・前蜀 #77"/>
+        <String Key="ServerList.Server.test-78" Value="十国・後蜀 #78"/>
+        <String Key="ServerList.Server.test-79" Value="十国・南漢 #79"/>
+        <String Key="ServerList.Server.test-80" Value="十国・楚 #80"/>
+        <String Key="ServerList.Server.test-81" Value="十国・呉越 #81"/>
+        <String Key="ServerList.Server.test-82" Value="十国・閩 #82"/>
+        <String Key="ServerList.Server.test-83" Value="十国・荊南 #83"/>
+        <String Key="ServerList.Server.test-84" Value="十国・北漢 #84"/>
+        <String Key="ServerList.Server.test-85" Value="遼朝 #85"/>
+        <String Key="ServerList.Server.test-86" Value="北宋 #86"/>
+        <String Key="ServerList.Server.test-87" Value="西夏 #87"/>
+        <String Key="ServerList.Server.test-88" Value="西遼 #88"/>
+        <String Key="ServerList.Server.test-89" Value="金朝 #89"/>
+        <String Key="ServerList.Server.test-90" Value="南宋 #90"/>
+        <String Key="ServerList.Server.test-91" Value="大理国 #91"/>
+        <String Key="ServerList.Server.test-92" Value="モンゴル帝国 #92"/>
+        <String Key="ServerList.Server.test-93" Value="元朝 #93"/>
+        <String Key="ServerList.Server.test-94" Value="北元 #94"/>
+        <String Key="ServerList.Server.test-95" Value="明朝 #95"/>
+        <String Key="ServerList.Server.test-96" Value="南明 #96"/>
+        <String Key="ServerList.Server.test-97" Value="大順 #97"/>
+        <String Key="ServerList.Server.test-98" Value="大西 #98"/>
+        <String Key="ServerList.Server.test-99" Value="後金 #99"/>
+        <String Key="ServerList.Server.test-100" Value="清朝 #100"/>
+
+        <!-- ローディング画面 -->
+        <String Key="Loading.TextPrefix" Value="軍隊を配置中..."/>
+        <String Key="Login.ConnectServerTimeout" Value="ログインサーバーがタイムアウトしました。メインエントリに戻って再試行してください。"/>
+
+        <!-- サーバーエラーコード -->
+        <!-- 汎用エラー -->
+        <String Key="ServerError.100" Value="パラメータエラー。"/>
+        <String Key="ServerError.101" Value="リクエストの期限が切れました。"/>
+        <String Key="ServerError.102" Value="署名検証に失敗しました。"/>
+        <String Key="ServerError.103" Value="送信頻度が高すぎます。"/>
+        <String Key="ServerError.104" Value="認証コードの期限が切れました。"/>
+        <String Key="ServerError.105" Value="認証コードが正しくありません。"/>
+        <String Key="ServerError.106" Value="トークンが無効です。再ログインしてください。"/>
+        <String Key="ServerError.107" Value="パスワードが正しくありません。"/>
+        <String Key="ServerError.108" Value="SDKエラー。"/>
+        <String Key="ServerError.109" Value="サーバーエラーが発生しました。"/>
+        <String Key="ServerError.110" Value="サーバー起動中。"/>
+
+        <!-- 管理サーバーエラー 30000 - 39999 -->
+        <String Key="ServerError.30000" Value="主公様、本日の問題報告は上限（1日5回）に達しました。明日再度お試しください。"/>
+    </Dictionary>
+</Dictionaries>

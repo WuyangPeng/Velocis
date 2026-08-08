@@ -122,7 +122,9 @@ namespace Game.Scripts.Main.Editor.BuildEvent
                 return;
             }
 
-            if (platform != Platform.Windows)
+            // StarForce sample only copies Platform.Windows (x86). This project builds
+            // Windows64 players, so copy both desktop Windows package outputs.
+            if (platform is not (Platform.Windows or Platform.Windows64))
             {
                 return;
             }

@@ -100,3 +100,10 @@ InitTestScene*.unity*
 
 # 忽略临时文件夹
 /GameSaves/*/*.idx
+
+/HybridCLRData/
+/Assets/AssetBundles/
+/Assets/StreamingAssets/*
+!/Assets/StreamingAssets/.gitkeep
+/Assets/Game/HotfixDll/
+/exe/*

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Game.Scripts.Main.Runtime.Sound;
 using GameFramework.Localization;
 using UnityGameFramework.Runtime;
@@ -66,7 +66,8 @@ namespace Game.Scripts.Main.Runtime.Procedure
             if (language != Language.English &&
                 language != Language.ChineseSimplified &&
                 language != Language.ChineseTraditional &&
-                language != Language.Korean)
+                language != Language.Korean &&
+                language != Language.Japanese)
             {
                 // 若是暂不支持的语言，则使用英语
                 language = Language.English;
@@ -93,6 +94,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
                 Language.ChineseSimplified => "zh-cn",
                 Language.ChineseTraditional => "zh-tw",
                 Language.Korean => "ko-kr",
+                Language.Japanese => "ja-jp",
                 _ => "zh-cn"
             };
 

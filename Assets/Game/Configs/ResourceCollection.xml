@@ -2,157 +2,774 @@
 <UnityGameFramework>
   <ResourceCollection>
     <Resources>
+      <Resource Name="Bin/avatar_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/building_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/default_item_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/develop_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/develop_level_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/event_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/frame_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/gather_node_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/global_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/help_category_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/help_item_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/help_page_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/hero_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/interval_buff_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/item_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/maintenance_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/month_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/name_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/official_position_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/recipe_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/red_dot_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/rename_cost_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/surname_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/task_config_container" LoadType="0" Packed="False" />
+      <Resource Name="Bin/title_config_container" LoadType="0" Packed="False" />
       <Resource Name="Configs" FileSystem="GameData" LoadType="0" Packed="True" ResourceGroups="Base" />
       <Resource Name="DataTables" FileSystem="GameData" LoadType="0" Packed="True" ResourceGroups="Base" />
       <Resource Name="Entities" FileSystem="Resources" LoadType="0" Packed="True" />
       <Resource Name="Fonts" FileSystem="UI" LoadType="0" Packed="True" ResourceGroups="Base" />
-      <Resource Name="Localization/Dictionaries" Variant="en-us" FileSystem="UI" LoadType="0" Packed="True" ResourceGroups="Base" />
-      <Resource Name="Localization/Dictionaries" Variant="ko-kr" FileSystem="UI" LoadType="0" Packed="True" ResourceGroups="Base" />
-      <Resource Name="Localization/Dictionaries" Variant="zh-cn" FileSystem="UI" LoadType="0" Packed="True" ResourceGroups="Base" />
-      <Resource Name="Localization/Dictionaries" Variant="zh-tw" FileSystem="UI" LoadType="0" Packed="True" ResourceGroups="Base" />
+      <Resource Name="HotfixDll" FileSystem="GameData" LoadType="0" Packed="True" ResourceGroups="Base" />
+      <Resource Name="Localization/ChineseSimplified/Dictionaries/Default" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_BattleFormations" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_BondLevel" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_BranchingStory" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_ComboTactics" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_DifficultyMode" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_DivineWeapon" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_FaqAffection" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_FaqComboFail" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_FaqDefeatGuide" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_FaqLostGeneral" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_FaqPrestige" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_FaqWeaponMaterials" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_FiefdomGovernance" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_FiefdomVault" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_FogAndPasses" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_FourAttributes" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_GameWorld" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_GearEquipment" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_GeneralBiography" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_GeneralBreakthrough" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_GeneralGifts" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_GeneralLoyalty" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_GeneralTalents" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_InventoryUsage" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_LordPath" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_LordPersonality" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_MainUI" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_MapExploration" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_MysteryRuins" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_PeopleQuests" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_PersonalityInfluence" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_RandomEncounters" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_RecruitVisit" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_TacticalBooks" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_TacticReleases" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseSimplified/Help/help_desc_UnitCounters" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Dictionaries/Default" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_BattleFormations" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_BondLevel" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_BranchingStory" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_ComboTactics" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_DifficultyMode" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_DivineWeapon" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_FaqAffection" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_FaqComboFail" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_FaqDefeatGuide" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_FaqLostGeneral" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_FaqPrestige" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_FaqWeaponMaterials" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_FiefdomGovernance" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_FiefdomVault" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_FogAndPasses" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_FourAttributes" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_GameWorld" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_GearEquipment" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_GeneralBiography" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_GeneralBreakthrough" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_GeneralGifts" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_GeneralLoyalty" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_GeneralTalents" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_InventoryUsage" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_LordPath" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_LordPersonality" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_MainUI" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_MapExploration" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_MysteryRuins" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_PeopleQuests" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_PersonalityInfluence" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_RandomEncounters" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_RecruitVisit" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_TacticalBooks" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_TacticReleases" LoadType="0" Packed="False" />
+      <Resource Name="Localization/ChineseTraditional/Help/help_desc_UnitCounters" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Dictionaries/Default" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_BattleFormations" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_BondLevel" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_BranchingStory" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_ComboTactics" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_DifficultyMode" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_DivineWeapon" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_FaqAffection" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_FaqComboFail" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_FaqDefeatGuide" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_FaqLostGeneral" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_FaqPrestige" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_FaqWeaponMaterials" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_FiefdomGovernance" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_FiefdomVault" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_FogAndPasses" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_FourAttributes" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_GameWorld" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_GearEquipment" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_GeneralBiography" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_GeneralBreakthrough" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_GeneralGifts" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_GeneralLoyalty" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_GeneralTalents" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_InventoryUsage" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_LordPath" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_LordPersonality" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_MainUI" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_MapExploration" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_MysteryRuins" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_PeopleQuests" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_PersonalityInfluence" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_RandomEncounters" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_RecruitVisit" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_TacticalBooks" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_TacticReleases" LoadType="0" Packed="False" />
+      <Resource Name="Localization/English/Help/help_desc_UnitCounters" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Dictionaries/Default" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_BattleFormations" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_BondLevel" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_BranchingStory" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_ComboTactics" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_DifficultyMode" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_DivineWeapon" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_FaqAffection" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_FaqComboFail" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_FaqDefeatGuide" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_FaqLostGeneral" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_FaqPrestige" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_FaqWeaponMaterials" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_FiefdomGovernance" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_FiefdomVault" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_FogAndPasses" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_FourAttributes" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_GameWorld" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_GearEquipment" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_GeneralBiography" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_GeneralBreakthrough" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_GeneralGifts" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_GeneralLoyalty" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_GeneralTalents" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_InventoryUsage" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_LordPath" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_LordPersonality" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_MainUI" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_MapExploration" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_MysteryRuins" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_PeopleQuests" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_PersonalityInfluence" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_RandomEncounters" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_RecruitVisit" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_TacticalBooks" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_TacticReleases" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Japanese/Help/help_desc_UnitCounters" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Dictionaries/Default" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_BattleFormations" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_BondLevel" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_BranchingStory" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_ComboTactics" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_DifficultyMode" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_DivineWeapon" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_FaqAffection" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_FaqComboFail" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_FaqDefeatGuide" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_FaqLostGeneral" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_FaqPrestige" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_FaqWeaponMaterials" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_FiefdomGovernance" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_FiefdomVault" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_FogAndPasses" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_FourAttributes" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_GameWorld" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_GearEquipment" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_GeneralBiography" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_GeneralBreakthrough" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_GeneralGifts" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_GeneralLoyalty" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_GeneralTalents" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_InventoryUsage" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_LordPath" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_LordPersonality" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_MainUI" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_MapExploration" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_MysteryRuins" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_PeopleQuests" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_PersonalityInfluence" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_RandomEncounters" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_RecruitVisit" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_TacticalBooks" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_TacticReleases" LoadType="0" Packed="False" />
+      <Resource Name="Localization/Korean/Help/help_desc_UnitCounters" LoadType="0" Packed="False" />
       <Resource Name="Materials" FileSystem="Resources" LoadType="0" Packed="True" />
       <Resource Name="Meshes" FileSystem="Resources" LoadType="0" Packed="True" />
-      <Resource Name="Music/About" FileSystem="Resources" LoadType="0" Packed="True" ResourceGroups="Music" />
-      <Resource Name="Music/Background" FileSystem="Resources" LoadType="0" Packed="True" ResourceGroups="Music" />
-      <Resource Name="Music/Menu" FileSystem="Resources" LoadType="0" Packed="True" ResourceGroups="Music" />
+      <Resource Name="Music/Item/sfx_item_rare_get" LoadType="0" Packed="False" />
+      <Resource Name="Music/Item/sfx_item_red" LoadType="0" Packed="False" />
+      <Resource Name="Music/Menu/music_main_entry" LoadType="0" Packed="False" />
+      <Resource Name="Music/music_about" LoadType="0" Packed="False" />
+      <Resource Name="Music/music_background" LoadType="0" Packed="False" />
+      <Resource Name="Music/music_menu" LoadType="0" Packed="False" />
       <Resource Name="Scenes" FileSystem="Resources" LoadType="0" Packed="True" />
       <Resource Name="Sounds" FileSystem="Resources" LoadType="0" Packed="True" />
       <Resource Name="Textures" FileSystem="Resources" LoadType="0" Packed="True" />
       <Resource Name="UI/UIForms" FileSystem="UI" LoadType="0" Packed="True" />
-      <Resource Name="UI/UISounds" FileSystem="UI" LoadType="0" Packed="True" />
       <Resource Name="UI/UISprites/Common" FileSystem="UI" LoadType="0" Packed="True" />
       <Resource Name="UI/UISprites/Icons" FileSystem="UI" LoadType="0" Packed="True" />
       <Resource Name="UI/UISprites/Logos" FileSystem="UI" LoadType="0" Packed="True" />
+      <Resource Name="UISounds/click" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/Menu/Button/circle_button_click" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/Menu/Button/circle_button_hover" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/Menu/Button/rectangle_button_click" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/Menu/Button/rectangle_button_hover" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/Menu/Dialog/dialog_cancel" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/Menu/Dialog/dialog_confirm" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/Menu/Dialog/dialog_other" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/Menu/Dropdown/dropdown_click" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/Menu/Dropdown/dropdown_select" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/Menu/Input/input_click" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/Menu/Input/input_type" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/Menu/Setting/setting_option_switch" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/Menu/Setting/setting_slider_drag" LoadType="0" Packed="False" />
+      <Resource Name="UISounds/select" LoadType="0" Packed="False" />
     </Resources>
     <Assets>
+      <Asset Guid="008bba27a917a824599137afe94d2821" ResourceName="Textures" />
+      <Asset Guid="013f138bc208b3648b7914b96dc82c98" ResourceName="Localization/ChineseSimplified/Help/help_desc_RandomEncounters" />
+      <Asset Guid="014cc8599dcfe0c49b279348dde53781" ResourceName="Localization/Japanese/Help/help_desc_ComboTactics" />
       <Asset Guid="0179316b5fc7c2946a67c5877c02fc30" ResourceName="UI/UISprites/Common" />
-      <Asset Guid="04d7dde7615d71b4db1a0c8d67a62e95" ResourceName="UI/UIForms" />
+      <Asset Guid="02f9da85da7ae6a48a2c63d29020a5a7" ResourceName="Textures" />
+      <Asset Guid="03da15a650be72246bde020b3d19d25c" ResourceName="Localization/ChineseSimplified/Help/help_desc_UnitCounters" />
+      <Asset Guid="04d4259f95633ac4eaddfcd2db8344d9" ResourceName="UI/UIForms" />
+      <Asset Guid="04d6c8f43966c2d49bac18dae513ef2e" ResourceName="HotfixDll" />
       <Asset Guid="04dbc0581071c254ea6564b2ff06ff9b" ResourceName="Textures" />
-      <Asset Guid="093f8873cfe371d41b854ed9fb6bff69" ResourceName="Music/About" />
+      <Asset Guid="061342ac418f7664f84943665337a2d8" ResourceName="DataTables" />
+      <Asset Guid="0843fb513b9b444394aa62eb828f111f" ResourceName="UI/UIForms" />
+      <Asset Guid="084a8f3aa61cd9d4db4a2e73c6e559fa" ResourceName="UI/UIForms" />
+      <Asset Guid="085d200f95eabf14988e4f2714b715f0" ResourceName="DataTables" />
+      <Asset Guid="08a1aa0083654ca459ae7bce0ff3b6b0" ResourceName="Localization/ChineseSimplified/Help/help_desc_GeneralBiography" />
+      <Asset Guid="093f8873cfe371d41b854ed9fb6bff69" ResourceName="Music/music_about" />
       <Asset Guid="0963e6c65b2b1f74d9f455e21901e2dc" ResourceName="Textures" />
+      <Asset Guid="096997a101c0ac94c95f51758bd61d32" ResourceName="Localization/Korean/Help/help_desc_PeopleQuests" />
       <Asset Guid="0992f89f84d762f478fd32f8225168b0" ResourceName="Entities" />
-      <Asset Guid="09966b19e546cc94aa84d0743cb2a83d" ResourceName="UI/UIForms" />
+      <Asset Guid="099d3b9addda79b4ea60cf6daf673c1f" ResourceName="Localization/English/Help/help_desc_FaqWeaponMaterials" />
       <Asset Guid="0a65a68c01a76ea4b8b574827a6467aa" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="0aecfe74ee8df524082121f4bc0bd493" ResourceName="Localization/ChineseTraditional/Help/help_desc_FourAttributes" />
+      <Asset Guid="0bb2f4d41a5042ab90e812238f560cd0" ResourceName="UISounds/Menu/Button/circle_button_hover" />
+      <Asset Guid="0be12d15f7a1ac7498154b38027e0c79" ResourceName="Textures" />
+      <Asset Guid="0c2f20f3a3f0d9648b73750f93d3ac66" ResourceName="UI/UIForms" />
+      <Asset Guid="0c90e3fa3a422ab49b524cb1a3b28726" ResourceName="UI/UIForms" />
+      <Asset Guid="0cb45700c37558047aae5fe0845bbb55" ResourceName="Localization/English/Help/help_desc_LordPath" />
+      <Asset Guid="0e10df474a2d3e04f82db1c656fb0001" ResourceName="Localization/ChineseTraditional/Help/help_desc_GeneralBreakthrough" />
+      <Asset Guid="0e3e187f59b47f9469bab76be937de2b" ResourceName="Textures" />
       <Asset Guid="0ed73dc47f4cb38489020d05e9f02c99" ResourceName="Materials" />
+      <Asset Guid="0f0e9e4e0b718724983df36e18ed79e5" ResourceName="Localization/ChineseTraditional/Help/help_desc_FaqWeaponMaterials" />
+      <Asset Guid="0f1aa061c2beabf4f88a1e4f8fa4f336" ResourceName="Localization/Korean/Help/help_desc_MainUI" />
+      <Asset Guid="0f949a7f73d128547b1314a7e471f19f" ResourceName="Configs" />
       <Asset Guid="0f995b3145e0e7247a42da6cef1dbf23" ResourceName="Materials" />
-      <Asset Guid="1053b0070685be347ab58587156842dc" ResourceName="Localization/Dictionaries" ResourceVariant="zh-tw" />
+      <Asset Guid="102e3f2acb82ff542b751e02b8ae75c3" ResourceName="Localization/Japanese/Help/help_desc_BondLevel" />
+      <Asset Guid="1053b0070685be347ab58587156842dc" ResourceName="Localization/ChineseTraditional/Dictionaries/Default" />
+      <Asset Guid="10f48bcd29e46f5459051c4da46092cf" ResourceName="Localization/ChineseSimplified/Help/help_desc_RecruitVisit" />
       <Asset Guid="11e27c26ac87b40f0a62ec40d7261989" ResourceName="Entities" />
+      <Asset Guid="129537e20dc9d6740aca8e38e79e30ee" ResourceName="Textures" />
+      <Asset Guid="12f6012276639db45a4cb1b94ab3ce77" ResourceName="UI/UIForms" />
       <Asset Guid="1478894bc9a1ed241b05b0862a7b8bce" ResourceName="Textures" />
-      <Asset Guid="14869ac0d4433f04db1704e39d03412e" ResourceName="Localization/Dictionaries" ResourceVariant="en-us" />
+      <Asset Guid="14869ac0d4433f04db1704e39d03412e" ResourceName="Localization/English/Dictionaries/Default" />
+      <Asset Guid="14add433cc955eb468b337da4314e447" ResourceName="Fonts" />
+      <Asset Guid="1534b7320d25b514c8ebf50e200b1d09" ResourceName="Bin/help_category_config_container" />
       <Asset Guid="156d241f796508c4da4fc354a7fbf5a8" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="1581ac84caa3a39449a918dfdeed9e0f" ResourceName="Localization/ChineseSimplified/Help/help_desc_GeneralTalents" />
       <Asset Guid="160925a6fe2664f2a978566b819f0af0" ResourceName="Entities" />
+      <Asset Guid="167a63d2fe0f3d346bd24d9ee7f0625c" ResourceName="Localization/Korean/Help/help_desc_DivineWeapon" />
+      <Asset Guid="1681c7b0a63203e419052022e06a54dd" ResourceName="Localization/Korean/Help/help_desc_BattleFormations" />
+      <Asset Guid="16e5b77fb17f46d459a57054462630f5" ResourceName="Localization/ChineseSimplified/Help/help_desc_BattleFormations" />
+      <Asset Guid="1731b67748c2d8646bf7dfae9295b228" ResourceName="HotfixDll" />
       <Asset Guid="185f97f18bd603a478461ce9c08bd039" ResourceName="Materials" />
+      <Asset Guid="1a0ea61c99c0f1f49b83643dec64c8c1" ResourceName="UI/UIForms" />
+      <Asset Guid="1aa6c191714c419478317292cfa8476a" ResourceName="DataTables" />
+      <Asset Guid="1ad75056f99ec9a4aaf568654e43786f" ResourceName="Localization/English/Help/help_desc_BranchingStory" />
+      <Asset Guid="1af6e886f47818c419ae31a25de773b7" ResourceName="Localization/Korean/Help/help_desc_PersonalityInfluence" />
       <Asset Guid="1b4bad6cea5a94611b21f9757fe41444" ResourceName="Materials" />
       <Asset Guid="1be4472894949437694aead55c6da60f" ResourceName="Sounds" />
+      <Asset Guid="1c1b1223566939a4794d6de81b49a01c" ResourceName="Localization/ChineseSimplified/Help/help_desc_FiefdomVault" />
       <Asset Guid="1c89236d45255234ebd1d39657ff7e02" ResourceName="Textures" />
+      <Asset Guid="1c8dfe4a315d79e44a7f1fbfbf64c6a6" ResourceName="Localization/English/Help/help_desc_LordPersonality" />
       <Asset Guid="1cfe02ffd0b74854ea5bcd1a3c63ac3c" ResourceName="Materials" />
       <Asset Guid="1d46a17a95a444c08830612bc1146d1d" ResourceName="Materials" />
       <Asset Guid="1e0350b97c61bfb4a91c62d756d01727" ResourceName="Materials" />
+      <Asset Guid="1e24b7cc8fcc23d4e850482ec38831b5" ResourceName="Scenes" />
+      <Asset Guid="1e48cbc731dc8624cbf1ab8f1830ed7f" ResourceName="Localization/English/Help/help_desc_FaqAffection" />
+      <Asset Guid="1e7e34bbf202fd04697f56d242251c25" ResourceName="Localization/ChineseSimplified/Help/help_desc_LordPath" />
+      <Asset Guid="1ef2577418a3a4f40949dac3e7d4c313" ResourceName="Localization/English/Help/help_desc_UnitCounters" />
+      <Asset Guid="1f98daab23f838349a1e54e7a93c01f9" ResourceName="Localization/English/Help/help_desc_FourAttributes" />
+      <Asset Guid="20c17bd3bfdd3394eae4452e4c01dc27" ResourceName="UI/UIForms" />
+      <Asset Guid="21e5c6575c637664ba270a88efb69c4c" ResourceName="Localization/Japanese/Help/help_desc_BranchingStory" />
+      <Asset Guid="220a940f4de84cd419116460248e5dce" ResourceName="Localization/ChineseTraditional/Help/help_desc_PersonalityInfluence" />
+      <Asset Guid="2232f55b9ea3163429fca0266be656a8" ResourceName="Textures" />
+      <Asset Guid="231eee9db770ced4cbca748749fb37cb" ResourceName="Textures" />
+      <Asset Guid="2352773aba46a5748a5e147d0a7a3a15" ResourceName="Textures" />
       <Asset Guid="236433a27ce40a7429b87d14d8fa3035" ResourceName="UI/UISprites/Common" />
       <Asset Guid="239366f83979ffa48a45dac2f0f1e8cb" ResourceName="DataTables" />
+      <Asset Guid="23f9618de98fc804f8568aa57a96dbbb" ResourceName="Localization/Japanese/Help/help_desc_PeopleQuests" />
       <Asset Guid="24ca310f92a6796408f1db7647ec4e55" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="252184f0c627d2e4390cf129d4de8382" ResourceName="UI/UIForms" />
+      <Asset Guid="25418ab0e153a104e92bb368e601c4ec" ResourceName="Localization/ChineseTraditional/Help/help_desc_GearEquipment" />
+      <Asset Guid="2553c4c634a68334fbfaf762f5bb439d" ResourceName="Localization/ChineseTraditional/Help/help_desc_FogAndPasses" />
+      <Asset Guid="25d0d6ce75ae3c64eb70f3f864c57c36" ResourceName="Bin/rename_cost_config_container" />
+      <Asset Guid="25edaab56b4e50d44a5b1cbda0a227fc" ResourceName="Bin/hero_config_container" />
+      <Asset Guid="26079f8d6969ab848a6754c29190f783" ResourceName="Localization/Korean/Help/help_desc_GeneralGifts" />
+      <Asset Guid="2635332085630fd45bdd3c133078e57f" ResourceName="UISounds/Menu/Button/rectangle_button_click" />
+      <Asset Guid="26ee21c5c5cae474896283cd38ed7629" ResourceName="UI/UIForms" />
       <Asset Guid="2768a9a4c8d289840918dcb879705893" ResourceName="Meshes" />
+      <Asset Guid="28cef71678c03ad4c8cff7bc0e46dbb3" ResourceName="Scenes" />
+      <Asset Guid="2950e2e9b4b867148984dab8da991836" ResourceName="UI/UIForms" />
+      <Asset Guid="297647386e4bfb44bbe2f08e116bbd4a" ResourceName="Localization/English/Help/help_desc_DifficultyMode" />
+      <Asset Guid="2992f58955fd18040b203a3108b568dd" ResourceName="DataTables" />
+      <Asset Guid="2a3abf056bc80a84f81d882997eaa6b0" ResourceName="UISounds/Menu/Dialog/dialog_confirm" />
+      <Asset Guid="2b14c37e824a2bc4cb24aa38d686ac60" ResourceName="Localization/ChineseTraditional/Help/help_desc_GeneralGifts" />
+      <Asset Guid="2b277bde2ee9aa5448c68af579f0cb8d" ResourceName="Localization/English/Help/help_desc_PersonalityInfluence" />
+      <Asset Guid="2b69c8f6855fdf147a5c991faf32d85a" ResourceName="Localization/Japanese/Help/help_desc_FaqDefeatGuide" />
+      <Asset Guid="2bbe649b948172f4295df4536437587b" ResourceName="Textures" />
+      <Asset Guid="2beb96d2c1bee874599467f26f50f908" ResourceName="Localization/English/Help/help_desc_TacticReleases" />
       <Asset Guid="2cb5eef4d7d7bf6459dd13a3f8d90246" ResourceName="Textures" />
+      <Asset Guid="2deaf4664bcf8af46a4001a9da34f6f7" ResourceName="DataTables" />
+      <Asset Guid="2ed01b72386864546993aac998453bb8" ResourceName="Localization/Japanese/Help/help_desc_GeneralLoyalty" />
+      <Asset Guid="2f332141c5da2cb48b388633968a62b1" ResourceName="UI/UIForms" />
       <Asset Guid="315e8ed2db27c254cb3366ff0793cd90" ResourceName="DataTables" />
+      <Asset Guid="317684db95e6e384786b6af7b9da07e1" ResourceName="Textures" />
+      <Asset Guid="31c02e5ff59209e4a9242d1ea76c41d5" ResourceName="Localization/ChineseSimplified/Help/help_desc_LordPersonality" />
+      <Asset Guid="31c2db0b64d90c44d96a1b3bb6c083d9" ResourceName="UI/UIForms" />
+      <Asset Guid="31d950b52a09c0241a98248afad5510b" ResourceName="Localization/Japanese/Help/help_desc_FiefdomGovernance" />
+      <Asset Guid="323e8afc741e7db4486898d716ae36e6" ResourceName="DataTables" />
+      <Asset Guid="32e42ec4a32d4834b82ac68f1bdfed1e" ResourceName="Localization/Japanese/Help/help_desc_FaqPrestige" />
+      <Asset Guid="32f15b63f0b2c4a47b7f60a2196d12ae" ResourceName="Localization/Japanese/Help/help_desc_FaqWeaponMaterials" />
       <Asset Guid="3455fe69f7ddc4604b95bf9b0a1e88d7" ResourceName="Entities" />
+      <Asset Guid="345b36ab8f9a7334b9357a3cbf52030f" ResourceName="Localization/ChineseSimplified/Help/help_desc_GameWorld" />
+      <Asset Guid="348dc14b4346988478626986e6d22558" ResourceName="UI/UIForms" />
+      <Asset Guid="34de24aca8046a44a9948472a12c157a" ResourceName="Localization/Korean/Help/help_desc_BondLevel" />
       <Asset Guid="352da872791696c48af3b21132e3e3c3" ResourceName="DataTables" />
+      <Asset Guid="36904e53852f39e43b6000f033462b7a" ResourceName="Localization/Korean/Help/help_desc_FaqPrestige" />
       <Asset Guid="372a8b1e52bedc64b9207b12d167afaa" ResourceName="DataTables" />
+      <Asset Guid="3793c0944f329b14f973d5f08c3456e9" ResourceName="HotfixDll" />
+      <Asset Guid="38f4154cd46041339dc6e8b48bbffdef" ResourceName="UI/UIForms" />
+      <Asset Guid="39bf2aa5f72a3f34bb8c56e686ea7dbf" ResourceName="Localization/Korean/Help/help_desc_FaqWeaponMaterials" />
+      <Asset Guid="3a25f32d8eb1ae6449638fcc4034b7f5" ResourceName="Localization/Japanese/Help/help_desc_RecruitVisit" />
+      <Asset Guid="3a98b5ffac69256408bf04ea384a60d5" ResourceName="UI/UIForms" />
       <Asset Guid="3aa539b1e46111d4299a83c73ebe762c" ResourceName="UI/UIForms" />
+      <Asset Guid="3b28c6ca97710c84ba397022ec5c6f6f" ResourceName="Localization/ChineseSimplified/Help/help_desc_FourAttributes" />
+      <Asset Guid="3b2e6a0277dc7cd47b0a4a719687418c" ResourceName="UI/UIForms" />
+      <Asset Guid="3ba180c34d7f49543a30337f40017d68" ResourceName="Localization/Korean/Help/help_desc_TacticalBooks" />
       <Asset Guid="3be3fac3611f4584695662c4889f722d" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="3c5c47d8e55244f46b0f4e13b69c2c1d" ResourceName="UI/UIForms" />
+      <Asset Guid="3ced748b1344a924389a354c58cdb323" ResourceName="Localization/Japanese/Help/help_desc_GeneralGifts" />
+      <Asset Guid="3d209abe69481434992a2f47a1d109e7" ResourceName="UI/UIForms" />
+      <Asset Guid="3d2ec9a7b9ba47546ad91cdd64869022" ResourceName="UI/UIForms" />
       <Asset Guid="3dc7455402dfa462b89a4bbd513955e9" ResourceName="Sounds" />
       <Asset Guid="3e504a46a8fcec34db3c4776530c6eb2" ResourceName="Textures" />
+      <Asset Guid="3ea77845b35d94c478dee8a04ee62854" ResourceName="UI/UIForms" />
       <Asset Guid="3f54fcfdac53aec42ae18a6a1c6d8cb1" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="3f7680dbe7ef47e42a8c51890a491246" ResourceName="Localization/Korean/Help/help_desc_LordPath" />
+      <Asset Guid="3f788e4016e2b94479a564ed5e10b2a1" ResourceName="DataTables" />
+      <Asset Guid="3fd7e40af31b27844919ef4ebca509c3" ResourceName="UI/UIForms" />
+      <Asset Guid="3fdc0a3da45adea43a44a07c402dbc5e" ResourceName="UI/UIForms" />
+      <Asset Guid="400e41f5b8c2c434abf6957ab7078479" ResourceName="Textures" />
+      <Asset Guid="4029ddf0b7289c64ab5384b8aa4560b7" ResourceName="Localization/Korean/Help/help_desc_LordPersonality" />
+      <Asset Guid="407b2ed0f281a564f9a2ae8d63dc47ff" ResourceName="Localization/Japanese/Help/help_desc_TacticReleases" />
+      <Asset Guid="41159bd396ed4ab4c8112d66bac555b4" ResourceName="UI/UIForms" />
+      <Asset Guid="418f913c2aca88c4a92c17d33a3b20c0" ResourceName="DataTables" />
+      <Asset Guid="4245af914b6b92241a7c983cdc1b4481" ResourceName="Localization/ChineseSimplified/Help/help_desc_FaqPrestige" />
+      <Asset Guid="4308f0341428fb94dabffec108ce1a81" ResourceName="Localization/English/Help/help_desc_DivineWeapon" />
+      <Asset Guid="436b87d68ed64dc47b6d592b0de9f560" ResourceName="Textures" />
+      <Asset Guid="444cd102076a50946bcaa81fb99b4bc0" ResourceName="Textures" />
       <Asset Guid="4473d81b14ddb0143addf0e6050d8491" ResourceName="Scenes" />
+      <Asset Guid="447f342f3c01c8d46a4140f99c1b742b" ResourceName="Textures" />
+      <Asset Guid="448343b2690e9354d8470b2f0066bbe3" ResourceName="Localization/Japanese/Help/help_desc_FogAndPasses" />
       <Asset Guid="44c8db52241385c45bbb14a1718f17bf" ResourceName="Configs" />
+      <Asset Guid="47715f401911966488c0828d22ab34b9" ResourceName="UI/UIForms" />
+      <Asset Guid="49bf68ac53ef7fd43b031e2c22c047bc" ResourceName="UI/UIForms" />
+      <Asset Guid="49f3f075e9b8c4546bbcf67f314f5ecb" ResourceName="Localization/English/Help/help_desc_PeopleQuests" />
       <Asset Guid="4a17d2c656f5c6b44a31e3ee547a76b0" ResourceName="DataTables" />
+      <Asset Guid="4a6f4dc9e723a1b42a25952c5d806c8d" ResourceName="Localization/English/Help/help_desc_GeneralLoyalty" />
+      <Asset Guid="4adaebb52cab6014f84d332600b41c50" ResourceName="Localization/English/Help/help_desc_MysteryRuins" />
+      <Asset Guid="4bb743085332868448687a0df0fa682e" ResourceName="UI/UIForms" />
       <Asset Guid="4c3865b2ac420cd46a9cde6ab468d016" ResourceName="Materials" />
+      <Asset Guid="4d4393ed6239bf6489cd53dc2b9971ee" ResourceName="UI/UIForms" />
       <Asset Guid="4db6a299939bfe94893585eb387f577a" ResourceName="DataTables" />
+      <Asset Guid="4dfa6f81223cadb43815804788b0e59e" ResourceName="Localization/ChineseTraditional/Help/help_desc_ComboTactics" />
+      <Asset Guid="4f407766998e3e54b9110ae243a0dac6" ResourceName="UISounds/Menu/Setting/setting_option_switch" />
       <Asset Guid="4f688097e85071841a2c3ba165000c20" ResourceName="Textures" />
+      <Asset Guid="5076f3369eab2b64d9275e17ad875654" ResourceName="UI/UIForms" />
+      <Asset Guid="5113e7ec8eb70fd4c96bb9bb02dbbe8a" ResourceName="UISounds/Menu/Input/input_type" />
       <Asset Guid="5282f20eba4d44213820e21af8481932" ResourceName="Meshes" />
+      <Asset Guid="52b2e4ae412f25944b661df682bd0980" ResourceName="UI/UIForms" />
+      <Asset Guid="53908b36f7cd282408203c755c9bf2f6" ResourceName="Localization/English/Help/help_desc_GeneralTalents" />
+      <Asset Guid="53f0322c36d743f49897a6b670d5ad90" ResourceName="Bin/develop_level_config_container" />
+      <Asset Guid="5415cabea0de0e043943ec97f4498aba" ResourceName="Localization/Korean/Help/help_desc_FiefdomGovernance" />
+      <Asset Guid="54404a312b3f4d0459f34620b3358c4c" ResourceName="Localization/ChineseSimplified/Help/help_desc_ComboTactics" />
+      <Asset Guid="548746672632d1246935b5dba8a7ee32" ResourceName="Localization/ChineseTraditional/Help/help_desc_PeopleQuests" />
       <Asset Guid="56b8df63bbad60749a69e38bc687fadf" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="574be5c845804b6479de0945e51d4c87" ResourceName="Localization/English/Help/help_desc_GeneralBiography" />
       <Asset Guid="578af1667322bab45b652b79a40bb4fb" ResourceName="Materials" />
+      <Asset Guid="57d09cf72ccde8e4db0314a978707b3b" ResourceName="Fonts" />
+      <Asset Guid="57db30343658cb745bd8a934e0a3fa07" ResourceName="Localization/ChineseSimplified/Help/help_desc_TacticReleases" />
+      <Asset Guid="5804b0bec002cb2488b5621d1c05ba9d" ResourceName="Localization/Japanese/Help/help_desc_GeneralTalents" />
       <Asset Guid="583ff7026dac91849b7c7b2468ba456b" ResourceName="Materials" />
-      <Asset Guid="5dcd89912e222bf4c87f76db4044bc5e" ResourceName="Localization/Dictionaries" ResourceVariant="ko-kr" />
+      <Asset Guid="589f7520d3c6a174baca2dd790eee598" ResourceName="Localization/Korean/Help/help_desc_RecruitVisit" />
+      <Asset Guid="5916ca62bf9416848a9fc8235612c5ab" ResourceName="Localization/Korean/Help/help_desc_GameWorld" />
+      <Asset Guid="596a1d2838e742e44ad4ec5bf9098148" ResourceName="UI/UIForms" />
+      <Asset Guid="59a2545287ec09240b9c1910bf24f8ee" ResourceName="UI/UIForms" />
+      <Asset Guid="5a8f1cdc0951e46478653bde809e13a1" ResourceName="DataTables" />
+      <Asset Guid="5b011b5a719ada5478dd00aa9fb00c3c" ResourceName="Localization/ChineseTraditional/Help/help_desc_MainUI" />
+      <Asset Guid="5b0ca910fbcdda3479c18a83f16b4252" ResourceName="UI/UIForms" />
+      <Asset Guid="5bacef0c9b54d8e498fac9920277ae1d" ResourceName="Localization/Japanese/Help/help_desc_UnitCounters" />
+      <Asset Guid="5c2eff7fc3e834f458aa4db282e1db2d" ResourceName="UI/UIForms" />
+      <Asset Guid="5dcd89912e222bf4c87f76db4044bc5e" ResourceName="Localization/Korean/Dictionaries/Default" />
+      <Asset Guid="5e2d8f7771170bc44871d084d06fa865" ResourceName="UISounds/Menu/Button/circle_button_click" />
+      <Asset Guid="5f2658f5cb73b2d499ea07198ef02fa1" ResourceName="Localization/Korean/Help/help_desc_DifficultyMode" />
+      <Asset Guid="60ac8615f7562c347b2354b66a4d056d" ResourceName="Textures" />
+      <Asset Guid="6154954fff00e1e43a464984ffc1856f" ResourceName="Localization/Korean/Help/help_desc_GeneralBiography" />
+      <Asset Guid="61890aa1ac9047744b7b56a641b65905" ResourceName="UI/UIForms" />
+      <Asset Guid="6286178b83803e443842b74095358f42" ResourceName="Textures" />
       <Asset Guid="62af9e5c8f39cfa49af9e10ccf42f1da" ResourceName="UI/UISprites/Common" />
-      <Asset Guid="638ff8ae4a0d15047839cd265d3bc296" ResourceName="Music/Background" />
+      <Asset Guid="638ff8ae4a0d15047839cd265d3bc296" ResourceName="Music/music_background" />
       <Asset Guid="63fe6ff9ab9e1433f8db4ebd940f2442" ResourceName="Materials" />
+      <Asset Guid="64232542ad9e1e04f96cbf95113b7b44" ResourceName="Localization/ChineseTraditional/Help/help_desc_GameWorld" />
+      <Asset Guid="64bf887470047e54f9b1ecb83afeb824" ResourceName="Textures" />
       <Asset Guid="64f3bb52c6a54854688fcc656af2b1c9" ResourceName="DataTables" />
+      <Asset Guid="669804ae2b6f808419eb8a4537e045ca" ResourceName="Localization/English/Help/help_desc_FiefdomGovernance" />
+      <Asset Guid="66dfdb6d22824b6498b12636efac0a59" ResourceName="Localization/ChineseTraditional/Help/help_desc_DifficultyMode" />
+      <Asset Guid="66e02b108b325d94fa3bcf33a359d7b4" ResourceName="UI/UIForms" />
+      <Asset Guid="67c5c9fb2153b9247973ef2538ea29d5" ResourceName="DataTables" />
+      <Asset Guid="67c635f0b4099c14f98777ca68538b01" ResourceName="Localization/ChineseTraditional/Help/help_desc_TacticalBooks" />
+      <Asset Guid="683c4fc271cf4624b900538f6a212ed5" ResourceName="Textures" />
+      <Asset Guid="686972f69cef03041af428630c0c3584" ResourceName="UI/UIForms" />
+      <Asset Guid="687f0cc7fdcf32c4c8d5979dda6bda0e" ResourceName="UI/UIForms" />
+      <Asset Guid="68d31a973c1ed114f839b33066774278" ResourceName="Localization/Japanese/Help/help_desc_MapExploration" />
+      <Asset Guid="68e62e65a04599b48a86baebd8b8d691" ResourceName="Localization/ChineseTraditional/Help/help_desc_UnitCounters" />
+      <Asset Guid="690340c5902867c4c852ad087e06012d" ResourceName="Localization/Japanese/Help/help_desc_FaqAffection" />
+      <Asset Guid="692a719c2bb2c4849bbb7d17d95b8624" ResourceName="UI/UIForms" />
+      <Asset Guid="69cbeec3a3e479b4a98c3b77ae3a83d9" ResourceName="UI/UIForms" />
+      <Asset Guid="6a8b3e623399d1a4c86c78f9949ed0a5" ResourceName="Bin/name_config_container" />
+      <Asset Guid="6c07fb04a7f72e94184779b4977805e7" ResourceName="Bin/gather_node_config_container" />
+      <Asset Guid="6c308b6ae30097140a0f52e4452f1790" ResourceName="Localization/ChineseSimplified/Help/help_desc_GeneralLoyalty" />
       <Asset Guid="6cbc2c323b77f804fb958fa4eca33998" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="6d6ab5328ab891e47a055662fb7bb9f9" ResourceName="UI/UIForms" />
       <Asset Guid="6d9b42ac01f24bf4d98923573f103575" ResourceName="Textures" />
       <Asset Guid="6db0c8354d868834abf29840037591b1" ResourceName="Textures" />
+      <Asset Guid="6db9184ed385f6a47ab71c815845fd4b" ResourceName="Textures" />
+      <Asset Guid="6dea534ad778107438ed9482641cb354" ResourceName="DataTables" />
       <Asset Guid="6e023ca4283b3a7469cd61d24c83048c" ResourceName="Textures" />
       <Asset Guid="6e3730451fa077346abd4ac642ea71d8" ResourceName="Textures" />
+      <Asset Guid="6e54d7d44040853478345b3319c86d05" ResourceName="Localization/ChineseSimplified/Help/help_desc_GeneralGifts" />
+      <Asset Guid="6e5cfa46df4fae642832d7bd520aaade" ResourceName="Localization/Japanese/Dictionaries/Default" />
       <Asset Guid="6e5d026bf0652ed4380f6a66f4aa26c5" ResourceName="Textures" />
+      <Asset Guid="6f4679b52c8a7ea4b8f68742f2e4df9f" ResourceName="Textures" />
+      <Asset Guid="6f8a3bd765f3b4f478a71bbaf4a694e6" ResourceName="Localization/ChineseSimplified/Help/help_desc_DifficultyMode" />
+      <Asset Guid="6fe2e2a0d167e2e42b678bb68e84f22d" ResourceName="Configs" />
+      <Asset Guid="70d5248428440db4f925a7aacdcc709c" ResourceName="Localization/English/Help/help_desc_FaqPrestige" />
       <Asset Guid="71646ebaae78d43aeb8b53cacdb69671" ResourceName="Textures" />
+      <Asset Guid="717136a95ad84d84fb4e3714dd9728c6" ResourceName="Localization/Korean/Help/help_desc_FaqDefeatGuide" />
       <Asset Guid="72e76810224064300b7d32e8322a5d12" ResourceName="Sounds" />
+      <Asset Guid="72f1db67025cd2e4a82bcd38874efdb7" ResourceName="UI/UIForms" />
       <Asset Guid="738bdf56857a65f479c367c7b62c4ad7" ResourceName="Entities" />
+      <Asset Guid="745a1661822503548a306d2f35e8a343" ResourceName="Bin/recipe_config_container" />
+      <Asset Guid="7464b322c6cad1747a7384feb97267c5" ResourceName="UI/UIForms" />
+      <Asset Guid="74bdb8edd34627e4b8aac9d3d75ec9a4" ResourceName="Localization/ChineseTraditional/Help/help_desc_FiefdomVault" />
+      <Asset Guid="753a50f22a76daf48a119e5fec4b91e8" ResourceName="Bin/month_config_container" />
+      <Asset Guid="75cc3084961235a4a90f5c33a2d69079" ResourceName="DataTables" />
+      <Asset Guid="765fe9e84f0942647b89fff5b52be94e" ResourceName="Localization/ChineseSimplified/Help/help_desc_FaqWeaponMaterials" />
+      <Asset Guid="778cb200d7ee9664eb9ca44f749d3099" ResourceName="UI/UIForms" />
       <Asset Guid="77cbb7c5404c10242ab59953e0746314" ResourceName="Fonts" />
+      <Asset Guid="78318dc44c3f22943ad34813223f99e5" ResourceName="Localization/English/Help/help_desc_FaqComboFail" />
+      <Asset Guid="787deb454c8ea8e479c361897cc1a3b3" ResourceName="Bin/global_config_container" />
+      <Asset Guid="7af6a23e0a5641e429d6471d254ee777" ResourceName="Localization/ChineseSimplified/Help/help_desc_FaqAffection" />
+      <Asset Guid="7b602e50e6a99d14bbb47a0d36c09841" ResourceName="DataTables" />
+      <Asset Guid="7bb835b64b3c5734a911a1fa9c63bd47" ResourceName="DataTables" />
+      <Asset Guid="7bb8f3f45253244439a38c46c19f5ad6" ResourceName="Localization/Japanese/Help/help_desc_FaqLostGeneral" />
+      <Asset Guid="7c2c8a1eee2553944a23948fc128262a" ResourceName="Localization/Japanese/Help/help_desc_GeneralBreakthrough" />
+      <Asset Guid="7cf832ae31d5a7846ad0c91a68cb672c" ResourceName="Localization/Japanese/Help/help_desc_FourAttributes" />
+      <Asset Guid="7d1cacd6f54ddc847a56c327f5331add" ResourceName="UI/UIForms" />
       <Asset Guid="7d5f7699d6d1d48e485ac71126e12061" ResourceName="Entities" />
+      <Asset Guid="7e7d6fe598af1c74fb11fa58223a6b48" ResourceName="Localization/ChineseTraditional/Help/help_desc_FaqLostGeneral" />
       <Asset Guid="7e91cd9bad7babf4b975882a4b7453cb" ResourceName="Textures" />
       <Asset Guid="7eae0d2701845a54aa570b07c55dab44" ResourceName="Textures" />
+      <Asset Guid="7ec6a2cad396d5646b89cf6341d46315" ResourceName="Bin/title_config_container" />
       <Asset Guid="7f5aee8da226edf4991598327cb32ce0" ResourceName="UI/UISprites/Logos" />
+      <Asset Guid="7fccb37437297e841b5ea14ea3b03b76" ResourceName="Localization/Japanese/Help/help_desc_GameWorld" />
       <Asset Guid="7fd11dc5d29076d469d414dec2818f11" ResourceName="Configs" />
+      <Asset Guid="7fe44aa1f1d94604e8caae8030114608" ResourceName="UI/UIForms" />
+      <Asset Guid="7ff3e5278512fe14b84566c35b754a9b" ResourceName="Localization/English/Help/help_desc_MainUI" />
+      <Asset Guid="825128b8ee09c82488ed8a0983cca15f" ResourceName="UI/UIForms" />
+      <Asset Guid="82b9f6494c191f743acfbaa86a47009a" ResourceName="Localization/English/Help/help_desc_ComboTactics" />
       <Asset Guid="834bfaee90a9d4e04b1e8c1ca22cc88e" ResourceName="Entities" />
       <Asset Guid="836be25be3e1e8c41ae5545bc8a9a4d7" ResourceName="Textures" />
+      <Asset Guid="83e50433a2ece1d409d4de7decfbafe3" ResourceName="Localization/English/Help/help_desc_FiefdomVault" />
+      <Asset Guid="863c159b4d9884548a77a2fcd69620b6" ResourceName="UI/UIForms" />
+      <Asset Guid="865bc21a6f4f4828ac7d21c0db185e5e" ResourceName="UISounds/Menu/Button/rectangle_button_hover" />
+      <Asset Guid="86a1d3769b4cae64980dc3691b17bbdb" ResourceName="Localization/ChineseSimplified/Help/help_desc_GeneralBreakthrough" />
+      <Asset Guid="8899136cb09ee9c43a0d7cf7a5176775" ResourceName="Bin/official_position_config_container" />
       <Asset Guid="8940b037a9b441c4cbd3d2b446838424" ResourceName="Materials" />
+      <Asset Guid="8953a260cee48f54da0be82f458bdd80" ResourceName="UI/UIForms" />
+      <Asset Guid="8a02b3b3113c8474ea67f46140afccf1" ResourceName="Localization/ChineseTraditional/Help/help_desc_MysteryRuins" />
+      <Asset Guid="8a36df2fa54a1e245a4c924382ea95b9" ResourceName="DataTables" />
       <Asset Guid="8b1acacd22538f34cb85287a0781ea5e" ResourceName="DataTables" />
+      <Asset Guid="8c76535022f16174da1eb37fc9f64020" ResourceName="UISounds/Menu/Setting/setting_slider_drag" />
+      <Asset Guid="8ca17dca792e2df48b447ef2392867a2" ResourceName="Localization/ChineseTraditional/Help/help_desc_GeneralBiography" />
+      <Asset Guid="8cd2f76f7d4f02a44b478c0ff8fe929e" ResourceName="Bin/event_config_container" />
+      <Asset Guid="8ce3071a459108d4fb9ab7fd4f6a73c8" ResourceName="Localization/Japanese/Help/help_desc_DifficultyMode" />
       <Asset Guid="8cf749fdfa5edc3478d16893efeaa0eb" ResourceName="Entities" />
       <Asset Guid="8e114ded6a865324588170636872943c" ResourceName="DataTables" />
+      <Asset Guid="8e189930dcd731248ae5b78c8c405e86" ResourceName="Localization/ChineseSimplified/Help/help_desc_PersonalityInfluence" />
+      <Asset Guid="8e19079b632df094199a1484b3f532d2" ResourceName="Localization/Japanese/Help/help_desc_GeneralBiography" />
       <Asset Guid="8e27380ee68aa4a219b4db9018e7da31" ResourceName="Materials" />
+      <Asset Guid="9089dccef8d64974fb8ace0951e9ca6f" ResourceName="UI/UIForms" />
+      <Asset Guid="908a10ef28f19204bb9349353fded4d5" ResourceName="Localization/Korean/Help/help_desc_InventoryUsage" />
+      <Asset Guid="9132365a51979ee4f85c73b8c64d23ba" ResourceName="UI/UIForms" />
       <Asset Guid="9143e2b62ad50488482f9b73672fc331" ResourceName="Entities" />
+      <Asset Guid="914feb74c79fc0e429cc62d7e45a021b" ResourceName="Localization/Japanese/Help/help_desc_LordPersonality" />
+      <Asset Guid="91efbcb82faed794c859fe91aae593a3" ResourceName="Bin/maintenance_config_container" />
+      <Asset Guid="924de6d533baffa47a8eca14b2236691" ResourceName="Bin/default_item_config_container" />
+      <Asset Guid="931e2bdbf74d7f644bb38fdbf49e0c8c" ResourceName="Localization/Korean/Help/help_desc_FaqLostGeneral" />
+      <Asset Guid="933437a1ab1332c43aac09dc22a5a1bf" ResourceName="Localization/ChineseTraditional/Help/help_desc_RecruitVisit" />
+      <Asset Guid="94f8775fc3ea46029db532cc586e3a2e" ResourceName="UI/UIForms" />
+      <Asset Guid="9538e72c155990d418f6d0f93effe250" ResourceName="Bin/red_dot_config_container" />
       <Asset Guid="955000b4d1441470e8cbf94f483228b5" ResourceName="Materials" />
+      <Asset Guid="9585b6ebb4ff4d742bfdbc6c8e9b9da2" ResourceName="Localization/English/Help/help_desc_GeneralGifts" />
+      <Asset Guid="95e3a7c2843517047aa8f87ff5cd1dc9" ResourceName="Sounds" />
+      <Asset Guid="96770b8396375e3458d8dfba00a75a3e" ResourceName="UISounds/Menu/Dropdown/dropdown_select" />
+      <Asset Guid="974314f02ea218d469e7f39d71646327" ResourceName="Localization/Japanese/Help/help_desc_FaqComboFail" />
       <Asset Guid="97b1f8b25cca2bc458cb9d6127c8d186" ResourceName="Materials" />
       <Asset Guid="97d117308cf86924289e81e7e71dd5dd" ResourceName="DataTables" />
+      <Asset Guid="97fe07e871a0cea40bef3824db25d15a" ResourceName="Localization/Japanese/Help/help_desc_LordPath" />
+      <Asset Guid="981ee603782322447975e8fbbbfbb229" ResourceName="DataTables" />
+      <Asset Guid="9897cedba35d4f3f846c23bceebeb42f" ResourceName="UI/UIForms" />
+      <Asset Guid="98e87b1d1afc3424f8378f28300f8ad7" ResourceName="UI/UIForms" />
+      <Asset Guid="99a0aac7ac557444fac01fa7a9e2a548" ResourceName="Scenes" />
+      <Asset Guid="99db93c0ecc01c6478fba31ad91c3704" ResourceName="Localization/English/Help/help_desc_RandomEncounters" />
+      <Asset Guid="9aaea813eafdb6342a46aa1f82dff7a5" ResourceName="Localization/ChineseTraditional/Help/help_desc_MapExploration" />
+      <Asset Guid="9ac2760fc1a5f9d47adb9906050e45c9" ResourceName="Localization/ChineseTraditional/Help/help_desc_FaqAffection" />
       <Asset Guid="9afa958d6d8235941b9badb42aae4370" ResourceName="Meshes" />
+      <Asset Guid="9b25b06ff43ffef40b4432c17d39b183" ResourceName="Scenes" />
       <Asset Guid="9b433f0bb7fef6f4085c316a0d88c307" ResourceName="DataTables" />
-      <Asset Guid="9be2e1e45f4edd74c8764538ad306b78" ResourceName="Localization/Dictionaries" ResourceVariant="zh-cn" />
+      <Asset Guid="9be2e1e45f4edd74c8764538ad306b78" ResourceName="Localization/ChineseSimplified/Dictionaries/Default" />
+      <Asset Guid="9c08b3ff8e1c71c41ab17da96dc20857" ResourceName="Localization/Korean/Help/help_desc_UnitCounters" />
       <Asset Guid="9c3961f379234354e813d7b38146424d" ResourceName="DataTables" />
       <Asset Guid="9c3faac13c8ced84a9f3018303b7bb98" ResourceName="DataTables" />
+      <Asset Guid="9c7b8195ba1e00a4487feae5f09f32cc" ResourceName="Textures" />
+      <Asset Guid="9c7bfd0671a9e6c42a51d68526d550e1" ResourceName="DataTables" />
+      <Asset Guid="9d249dc5a410a2c4e855aca0c5ca6203" ResourceName="Localization/Korean/Help/help_desc_MapExploration" />
+      <Asset Guid="9d8c37992a007f54eaa5dbfee5794d2f" ResourceName="UI/UIForms" />
+      <Asset Guid="9dab698365ecce64f9d13d02a62c2022" ResourceName="Localization/English/Help/help_desc_InventoryUsage" />
       <Asset Guid="9ddab293e2a8af3499dac05f5fd6169c" ResourceName="Meshes" />
+      <Asset Guid="9eae1c0f39c92cc4d89734dec1647d52" ResourceName="Localization/Japanese/Help/help_desc_BattleFormations" />
       <Asset Guid="9f847ec5e66e03e4ead1d3c5f7b510e8" ResourceName="UI/UISprites/Common" />
       <Asset Guid="a019ae3af8e864616b85773c509f5285" ResourceName="Sounds" />
+      <Asset Guid="a155a3feafef1814cb7d86112f294910" ResourceName="UI/UIForms" />
+      <Asset Guid="a192c3bf5a0fd1e4b845bc94db49e140" ResourceName="UI/UIForms" />
+      <Asset Guid="a2138248a0966f84f8a0b061cf8bcf2a" ResourceName="DataTables" />
       <Asset Guid="a23eef5e20ff8cb46adf33491fc443fb" ResourceName="Materials" />
+      <Asset Guid="a26387ee0ebab874ea19a076f0b979c9" ResourceName="Textures" />
+      <Asset Guid="a30ebc000a161e945a9fda852278360e" ResourceName="Localization/ChineseSimplified/Help/help_desc_MapExploration" />
       <Asset Guid="a33e23ae848110243820cda82120b105" ResourceName="DataTables" />
+      <Asset Guid="a3c12a11a00cb2b4d94dfc18a25ffb48" ResourceName="Localization/ChineseTraditional/Help/help_desc_FaqPrestige" />
+      <Asset Guid="a479e9a090def924187c6669a1dd2722" ResourceName="Localization/Japanese/Help/help_desc_DivineWeapon" />
+      <Asset Guid="a4bb0487e09e2b44896dc99d4cafee20" ResourceName="Localization/English/Help/help_desc_GameWorld" />
+      <Asset Guid="a5c381d1b0195d54cbdfab5e531b14fb" ResourceName="Localization/Korean/Help/help_desc_FourAttributes" />
+      <Asset Guid="a6b56ff961db4fd41a407560dd1e98bc" ResourceName="Textures" />
+      <Asset Guid="a6c731de80e9d824d8f657301a357269" ResourceName="UI/UIForms" />
+      <Asset Guid="a6d523324466fa4429abbd4909ad2826" ResourceName="Bin/item_config_container" />
       <Asset Guid="a6d58f54ce5934781962a4f887e834f3" ResourceName="Entities" />
       <Asset Guid="a71f8bb1b1b2c51438e2bafc884cb02c" ResourceName="DataTables" />
       <Asset Guid="a7b030cffa2dc44478c14e49a22771c2" ResourceName="Materials" />
+      <Asset Guid="a7cba83cf8d68e04e8d4d33c6de5e784" ResourceName="Localization/Japanese/Help/help_desc_PersonalityInfluence" />
       <Asset Guid="a8c07bbe04fdaf04b80e27f651a8edd6" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="a93ea62cd6f58d040a384b9646c6b55f" ResourceName="UISounds/Menu/Dialog/dialog_cancel" />
       <Asset Guid="ab45c3f613f388d43bbf43ec05eb92e2" ResourceName="UI/UISprites/Common" />
       <Asset Guid="ab4774faf71b57a40a29a9e902403fe3" ResourceName="DataTables" />
+      <Asset Guid="abcee116de2719e4d8cfdc580e10c2fb" ResourceName="Localization/Japanese/Help/help_desc_InventoryUsage" />
       <Asset Guid="abd1565e9e268f04cac3631d022b4ace" ResourceName="Entities" />
+      <Asset Guid="ac297de7aff32514c98b984d02907704" ResourceName="UI/UIForms" />
+      <Asset Guid="ad39316e49cdb354e8a49bcb5334b082" ResourceName="UI/UIForms" />
+      <Asset Guid="ad4de7f98dab69544beb07b6482de598" ResourceName="Textures" />
       <Asset Guid="ad56aae2bb0f2ce4a86711287e14e223" ResourceName="DataTables" />
+      <Asset Guid="ad62c6baf75c47f4a970ea6adac5e759" ResourceName="Localization/English/Help/help_desc_GearEquipment" />
+      <Asset Guid="ad727d31b4d63c444a5d42b8d0678082" ResourceName="DataTables" />
+      <Asset Guid="ae46d101184650545969a199de057e6d" ResourceName="UI/UIForms" />
       <Asset Guid="ae6a7f967521769458b0913fa39caaf4" ResourceName="Textures" />
+      <Asset Guid="ae6c4242527c396458ab51a72250ca6b" ResourceName="UI/UIForms" />
+      <Asset Guid="ae9eb5e7691dfed4f9e0dd5365754025" ResourceName="Localization/Korean/Help/help_desc_RandomEncounters" />
       <Asset Guid="afc18fc39ade3744397c0c993b57be53" ResourceName="Entities" />
+      <Asset Guid="affb41c0fb6ee664ea4ee0ea2aa8a5f2" ResourceName="UI/UIForms" />
+      <Asset Guid="b01da464b393ddb48b898be87eaca849" ResourceName="DataTables" />
       <Asset Guid="b031b4f2980561542a7f7ba41391edc3" ResourceName="Scenes" />
+      <Asset Guid="b049210942525514f9b4e12ccd843392" ResourceName="Textures" />
       <Asset Guid="b0c7cf51d3fecb446ab93bf854419715" ResourceName="Materials" />
+      <Asset Guid="b13ad3ba986196a43b0ebf709a600a6e" ResourceName="Textures" />
+      <Asset Guid="b20dfa57f6d51b943a06387cfb592cf8" ResourceName="Localization/Korean/Help/help_desc_GeneralBreakthrough" />
       <Asset Guid="b2cebe04343227945bab3729ca9a3493" ResourceName="DataTables" />
+      <Asset Guid="b2d6d7700ca846549bae338a75c106ef" ResourceName="Localization/ChineseTraditional/Help/help_desc_FaqDefeatGuide" />
+      <Asset Guid="b3326ad657f139e40856972ab385fe7d" ResourceName="Localization/Korean/Help/help_desc_FaqComboFail" />
+      <Asset Guid="b3890355c9b97154083e96ec07214c20" ResourceName="Localization/ChineseTraditional/Help/help_desc_LordPersonality" />
+      <Asset Guid="b46aea4cabaed4446a846305c758c658" ResourceName="Localization/ChineseTraditional/Help/help_desc_FiefdomGovernance" />
+      <Asset Guid="b4bef4eed5081a9439f51341e83b4d3f" ResourceName="Localization/Korean/Help/help_desc_ComboTactics" />
+      <Asset Guid="b5412e6ff5ba4d688b52e769f1e38f48" ResourceName="UI/UIForms" />
+      <Asset Guid="b57747c443c92b1479e17b4a96084859" ResourceName="DataTables" />
+      <Asset Guid="b59e9a408a3f52a4f98d733a6163b171" ResourceName="Configs" />
+      <Asset Guid="b5e83e5f727876040b0a30eb888b8495" ResourceName="Localization/Japanese/Help/help_desc_MysteryRuins" />
+      <Asset Guid="b5fc32c72f40e6945a9c4bba78d63eca" ResourceName="Localization/English/Help/help_desc_FaqDefeatGuide" />
+      <Asset Guid="b60922fd869195249b340e78b37bf05b" ResourceName="Textures" />
+      <Asset Guid="b671421485a7b044ba611481180db451" ResourceName="Localization/Korean/Help/help_desc_GearEquipment" />
+      <Asset Guid="b79ba63b82e5fbf4785ba03aa3feda8d" ResourceName="Localization/English/Help/help_desc_FogAndPasses" />
+      <Asset Guid="b857a477c8816ce4b9aeaed24f04c42b" ResourceName="Scenes" />
+      <Asset Guid="b8765615a39bf024a8e606cc423d2998" ResourceName="Bin/surname_config_container" />
+      <Asset Guid="b9116befa0c1eb844a4dfbd0e1b2030c" ResourceName="Textures" />
       <Asset Guid="ba157ba55f72c424a9e88f3c029997c4" ResourceName="Textures" />
       <Asset Guid="baedbbad82997f445a8cb4da210404e0" ResourceName="Meshes" />
+      <Asset Guid="bba8b23ea049cdc40baba699debc24ac" ResourceName="Bin/frame_config_container" />
+      <Asset Guid="bbe60abc67d6270459b056f959c9431e" ResourceName="Localization/ChineseSimplified/Help/help_desc_BranchingStory" />
       <Asset Guid="bbfd75fe6fe00e1448fe988173ede7f9" ResourceName="UI/UIForms" />
+      <Asset Guid="bdbcc2654bec0454bba4da4fe7b05c25" ResourceName="Localization/ChineseTraditional/Help/help_desc_RandomEncounters" />
+      <Asset Guid="be4dd2465a137704e9b8a513dd37fdd7" ResourceName="Localization/Korean/Help/help_desc_MysteryRuins" />
+      <Asset Guid="beb34a70623453e43bd5805c43353404" ResourceName="DataTables" />
+      <Asset Guid="bec7d5c2753be5241aebabff651787e0" ResourceName="UI/UIForms" />
+      <Asset Guid="bf1c831d7dd50ed4d9df628c5703859d" ResourceName="UI/UIForms" />
+      <Asset Guid="bf4a74772ca3460429b390b03d20aa8b" ResourceName="UI/UIForms" />
       <Asset Guid="bf75b984df8a84987bcf3a8bf6e2862d" ResourceName="Sounds" />
+      <Asset Guid="bfa5809378e61654da35466e2dfde0ed" ResourceName="DataTables" />
+      <Asset Guid="c0552054cb3a65c4d95c740dfc5a384d" ResourceName="UI/UIForms" />
+      <Asset Guid="c0d6ee676c49bda4b8712df4d267d519" ResourceName="Localization/ChineseSimplified/Help/help_desc_TacticalBooks" />
+      <Asset Guid="c1bb8d18b1a27f04098c7ef7c86d83b6" ResourceName="Localization/Japanese/Help/help_desc_GearEquipment" />
+      <Asset Guid="c1d5162ae0b364c47b32541f7b112bc9" ResourceName="UI/UIForms" />
+      <Asset Guid="c278e39f5519c254a9ac9ce630a5dae7" ResourceName="Bin/help_page_config_container" />
+      <Asset Guid="c4504e6363f100c4bb7eb614274cf12c" ResourceName="Music/Menu/music_main_entry" />
       <Asset Guid="c547624e174de984882f0a14b4bb32e1" ResourceName="Materials" />
       <Asset Guid="c58c9afddbd36d14d837fa218d772996" ResourceName="Materials" />
-      <Asset Guid="c7d1e11dd37634b48a9dd4012b8e4306" ResourceName="UI/UISounds" />
-      <Asset Guid="caa829ab2ffc71340a69253afdf58365" ResourceName="Music/Menu" />
+      <Asset Guid="c60128b5096448b43a9f10fe119b30a2" ResourceName="DataTables" />
+      <Asset Guid="c60a4c1fc48d0b14ab580779cfbf6ae2" ResourceName="Textures" />
+      <Asset Guid="c616f04ddca157e4e90f6fd733eef4d2" ResourceName="Localization/ChineseSimplified/Help/help_desc_FaqLostGeneral" />
+      <Asset Guid="c6a4398724fe9654f8deb0a2ec4005a5" ResourceName="Localization/Japanese/Help/help_desc_FiefdomVault" />
+      <Asset Guid="c6ea23b342bcce14dab075b0eb527cb5" ResourceName="UI/UIForms" />
+      <Asset Guid="c78ebbaa4a31a7d479f34e45b1dd3bc2" ResourceName="Localization/English/Help/help_desc_MapExploration" />
+      <Asset Guid="c79af61122a1a214bbef61b7b49e9636" ResourceName="Localization/Japanese/Help/help_desc_RandomEncounters" />
+      <Asset Guid="c7d1e11dd37634b48a9dd4012b8e4306" ResourceName="UISounds/click" />
+      <Asset Guid="c850168f80f03a24a81f4d99635792a3" ResourceName="Localization/ChineseSimplified/Help/help_desc_FaqComboFail" />
+      <Asset Guid="c8c61aa513b887f4b8e051bfd9c38bbf" ResourceName="DataTables" />
+      <Asset Guid="c8fe05e73b72a2f40822ece7cdf275fd" ResourceName="Bin/building_config_container" />
+      <Asset Guid="c952a090dac58e941ac35de20623a4f0" ResourceName="UI/UIForms" />
+      <Asset Guid="caa829ab2ffc71340a69253afdf58365" ResourceName="Music/music_menu" />
       <Asset Guid="cadd0764941c8b646ae79b51d0ea8285" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="cb4ebbb093b9eeb44b55b36404a41d2b" ResourceName="UI/UIForms" />
+      <Asset Guid="cc7a9e6fca02856439fb3221057b36ae" ResourceName="Localization/English/Help/help_desc_TacticalBooks" />
+      <Asset Guid="ccbd5badb1b18e540a13dd6e8f500469" ResourceName="Textures" />
+      <Asset Guid="ccfd8ea215ad29d4da4d8cadb91b4947" ResourceName="Localization/ChineseTraditional/Help/help_desc_FaqComboFail" />
+      <Asset Guid="cd119ec7464a74d40b2471e8bb161732" ResourceName="Music/Item/sfx_item_red" />
+      <Asset Guid="cd880817a0b50b149b12b59e5f5e3272" ResourceName="Textures" />
+      <Asset Guid="cf03197b483a8ac42afc72db21fd0c79" ResourceName="Localization/ChineseSimplified/Help/help_desc_MysteryRuins" />
       <Asset Guid="cfe53cf384344bd47a8680f8c5f97a7b" ResourceName="DataTables" />
+      <Asset Guid="d14909d567f4242488bac25ef5e2ffd8" ResourceName="DataTables" />
+      <Asset Guid="d248d031c082e494e8c6e5d1c6917e2c" ResourceName="Localization/Korean/Help/help_desc_FaqAffection" />
+      <Asset Guid="d27936d8635b5dc4a9deb9c78242e732" ResourceName="Localization/ChineseSimplified/Help/help_desc_BondLevel" />
+      <Asset Guid="d2b5cab574067e24da19beba467d21c8" ResourceName="Music/Item/sfx_item_rare_get" />
+      <Asset Guid="d36c7c7c11c3b6a4e9504fd2b0a04ca0" ResourceName="Localization/ChineseSimplified/Help/help_desc_InventoryUsage" />
+      <Asset Guid="d370b959817e6b14681aebb5f41daa9c" ResourceName="Localization/Japanese/Help/help_desc_TacticalBooks" />
+      <Asset Guid="d3e2676204b18824abdbc0a55ce62099" ResourceName="DataTables" />
+      <Asset Guid="d414ad4a0f92e5a499e938df894397c7" ResourceName="Localization/Korean/Help/help_desc_FogAndPasses" />
+      <Asset Guid="d44175bb21d5e1a42bb87d3bca64e4b7" ResourceName="UI/UIForms" />
+      <Asset Guid="d4cee83efbff8e1479b8608cdb5548d1" ResourceName="DataTables" />
+      <Asset Guid="d5f07ddebdb59f84298ecbef1b1527dc" ResourceName="Bin/interval_buff_config_container" />
+      <Asset Guid="d65462b9beba8964d87562ab4f4f1251" ResourceName="Localization/Korean/Help/help_desc_GeneralTalents" />
+      <Asset Guid="d676eda9f39daea4c9c4abfd606b05ed" ResourceName="Bin/avatar_config_container" />
+      <Asset Guid="d6932f3298d303a45a853f6be232ea3d" ResourceName="UISounds/Menu/Dialog/dialog_other" />
+      <Asset Guid="d6f335bef176acf46a604d0d9fa16d9f" ResourceName="Localization/Korean/Help/help_desc_GeneralLoyalty" />
+      <Asset Guid="d75bcabd20df1734a85088977d4672a4" ResourceName="UISounds/Menu/Input/input_click" />
+      <Asset Guid="d7b9169a8fc8e3344a591eaa82a9bcce" ResourceName="Localization/Korean/Help/help_desc_TacticReleases" />
+      <Asset Guid="d7f73edbdb6e850439841285a8b41303" ResourceName="Localization/ChineseTraditional/Help/help_desc_DivineWeapon" />
+      <Asset Guid="d807e02661b5ad442b98473791762380" ResourceName="Textures" />
+      <Asset Guid="d8ec8c05d80e43d418e010cf51808420" ResourceName="UI/UIForms" />
       <Asset Guid="d9808401c68af274a8edfbed3d1b53c7" ResourceName="Meshes" />
+      <Asset Guid="d9cdd6dae7fbad34793b84252ec2ca75" ResourceName="Localization/ChineseTraditional/Help/help_desc_LordPath" />
+      <Asset Guid="db24bcd3003f8174daf7af086014b07f" ResourceName="UI/UIForms" />
       <Asset Guid="db58965402f12ed47b4dad61a9e48c9d" ResourceName="UI/UISprites/Icons" />
+      <Asset Guid="dcd6e7c8da477da4cb440ebba1b605e3" ResourceName="DataTables" />
+      <Asset Guid="dce5f74540aa08447b21a0e24db81d0e" ResourceName="Localization/ChineseTraditional/Help/help_desc_BranchingStory" />
+      <Asset Guid="deae8e7dc3268e74db351eea09ccc631" ResourceName="Localization/ChineseSimplified/Help/help_desc_FiefdomGovernance" />
+      <Asset Guid="df0cc43eda048da48acdeb0b64ed9722" ResourceName="Localization/ChineseTraditional/Help/help_desc_GeneralTalents" />
       <Asset Guid="e0792649e7774a24d8e7cceba0231c61" ResourceName="DataTables" />
+      <Asset Guid="e209177e1b2b3ba40946661e8d83b60a" ResourceName="Localization/Korean/Help/help_desc_FiefdomVault" />
+      <Asset Guid="e215592afd9dba14a9a96444e9822b76" ResourceName="Localization/Korean/Help/help_desc_BranchingStory" />
+      <Asset Guid="e2e2792a0c75f714a8718c94d57a93bb" ResourceName="Textures" />
+      <Asset Guid="e3f9a10a182bbe244aaf74a282fcd358" ResourceName="DataTables" />
+      <Asset Guid="e4247ecd5215dc445a1a1beba4c7fb58" ResourceName="Localization/English/Help/help_desc_FaqLostGeneral" />
+      <Asset Guid="e426b7332789d0d478daa24d0ef325f9" ResourceName="DataTables" />
+      <Asset Guid="e50289c38921be34bb9bba7948fdeda7" ResourceName="UI/UIForms" />
       <Asset Guid="e5ca26c53b6ab8a46b52817008d7c7fa" ResourceName="UI/UISprites/Icons" />
+      <Asset Guid="e6e41e36e1ecb6f41ab73beef80c9ba2" ResourceName="Localization/ChineseSimplified/Help/help_desc_DivineWeapon" />
       <Asset Guid="e82837c9099f69a48b48fc44eb8d119d" ResourceName="UI/UISprites/Common" />
-      <Asset Guid="e830964cdb85ff3429bca484c16bab44" ResourceName="UI/UISounds" />
+      <Asset Guid="e830964cdb85ff3429bca484c16bab44" ResourceName="UISounds/select" />
       <Asset Guid="e85864330b68dde498dcb6e8711815d3" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="e9438c35ba61cd04e909ea439875d0db" ResourceName="DataTables" />
+      <Asset Guid="e9ca03f1ccf33214daf6719e721c338a" ResourceName="Bin/task_config_container" />
       <Asset Guid="eabb37cb6d738b443b398b701a64cd88" ResourceName="Textures" />
+      <Asset Guid="eb0b74b4f9a685b4b9e1b1b205beda97" ResourceName="Localization/ChineseTraditional/Help/help_desc_BondLevel" />
+      <Asset Guid="eb549f96c6d51be40ba1db459017e6aa" ResourceName="Localization/ChineseSimplified/Help/help_desc_FogAndPasses" />
+      <Asset Guid="ec1c9432d9b44f647815c4d98d1e4848" ResourceName="DataTables" />
+      <Asset Guid="ec6ee2c5ff46ebe4e95f183dccccb058" ResourceName="Localization/ChineseTraditional/Help/help_desc_TacticReleases" />
+      <Asset Guid="ece9503afa87bf64bacd81edff8678b9" ResourceName="Localization/English/Help/help_desc_GeneralBreakthrough" />
+      <Asset Guid="ee39272266b5d7742bebb4e198c8396d" ResourceName="Textures" />
+      <Asset Guid="ef7a729abd0e5254292d1b0ed90cc681" ResourceName="Localization/ChineseSimplified/Help/help_desc_PeopleQuests" />
+      <Asset Guid="ef93e578b6875c9419ec81f33b3a77b3" ResourceName="Localization/English/Help/help_desc_RecruitVisit" />
+      <Asset Guid="eff09d66b6352ae439ffd1e5b18fde80" ResourceName="UI/UIForms" />
+      <Asset Guid="f108a991b28e76240aaeeb31de23ed31" ResourceName="UI/UIForms" />
+      <Asset Guid="f18f2778e68c1274d8a25f38babba534" ResourceName="UI/UIForms" />
+      <Asset Guid="f1b8314bc59be1c4a8f31725b27f25b0" ResourceName="UI/UIForms" />
+      <Asset Guid="f294915c87ebe6f41a0c3b4af8c57269" ResourceName="UI/UIForms" />
+      <Asset Guid="f2c3005ba183d734bb02e71cbfb14abe" ResourceName="UI/UIForms" />
       <Asset Guid="f2f4df0b7211e4c42a5638273525d8ee" ResourceName="UI/UISprites/Common" />
       <Asset Guid="f2f97a713beae744181ba934f9c4113a" ResourceName="DataTables" />
       <Asset Guid="f36c72c738c55f741afcd674a0b1245f" ResourceName="Materials" />
       <Asset Guid="f438a72a91e1c3c4a9ced40888ffec96" ResourceName="UI/UISprites/Icons" />
+      <Asset Guid="f4e90657200836e46b7c2c1273233dab" ResourceName="Bin/help_item_config_container" />
       <Asset Guid="f4ec271e525e14ca9927a07e6a2e153d" ResourceName="Entities" />
+      <Asset Guid="f59fac2b9cb88ef469be562e80800017" ResourceName="HotfixDll" />
+      <Asset Guid="f5bf3a3c8f4eb1444be9dd4c441fa0c2" ResourceName="Localization/ChineseSimplified/Help/help_desc_GearEquipment" />
+      <Asset Guid="f65a3d5b90f0b2942bd4c053caa3bffb" ResourceName="UI/UIForms" />
+      <Asset Guid="f68cb41b873152847872b1192ae289f4" ResourceName="Localization/ChineseTraditional/Help/help_desc_GeneralLoyalty" />
       <Asset Guid="f6db5bbdfe0e9894798706814cd6b336" ResourceName="Textures" />
+      <Asset Guid="f746866e90eaf50458242386060b0392" ResourceName="Localization/ChineseSimplified/Help/help_desc_FaqDefeatGuide" />
+      <Asset Guid="f7bb35a5b3b35624b8f3ad2daf469fc6" ResourceName="Localization/ChineseTraditional/Help/help_desc_BattleFormations" />
+      <Asset Guid="f83c8a43bc92c4c409044fb06ff900d7" ResourceName="UI/UIForms" />
+      <Asset Guid="f88b2afc9a8fd12488c6f1ea040a84c5" ResourceName="Localization/ChineseTraditional/Help/help_desc_InventoryUsage" />
+      <Asset Guid="f8b3e59cbe999e34fb770ed2ad60e7d3" ResourceName="UI/UIForms" />
+      <Asset Guid="f8d53a8034c96d5488bff61e022a5057" ResourceName="Localization/English/Help/help_desc_BattleFormations" />
+      <Asset Guid="f93803f5a03906c418f4b1907c72247c" ResourceName="Bin/develop_config_container" />
+      <Asset Guid="f95001c11fb247b4eb74e083ee4f6d92" ResourceName="UI/UIForms" />
+      <Asset Guid="fcaea75f76773774e9130422e68538d2" ResourceName="UI/UIForms" />
+      <Asset Guid="fcd0adeb8197b894483017f0a6203a05" ResourceName="UISounds/Menu/Dropdown/dropdown_click" />
+      <Asset Guid="fd37ce4d05a51664a948da4e51576346" ResourceName="UI/UIForms" />
       <Asset Guid="fd3cbf51780694849b9b019b36a3938e" ResourceName="Textures" />
       <Asset Guid="fdb5edd099d06b045af609ba3172400a" ResourceName="DataTables" />
+      <Asset Guid="fe2463d1a1906124b8b16ce2c9cfece0" ResourceName="Localization/ChineseSimplified/Help/help_desc_MainUI" />
+      <Asset Guid="fe563039ebb2f1343967843f109f07d7" ResourceName="Textures" />
+      <Asset Guid="fe7a43c91a4d56e45982eab8816f2edc" ResourceName="DataTables" />
+      <Asset Guid="fe81d53886f321f4aa3ade5f327346fd" ResourceName="Localization/English/Help/help_desc_BondLevel" />
+      <Asset Guid="fea19d55877fa10469b7c38f901a3ca0" ResourceName="Localization/Japanese/Help/help_desc_MainUI" />
       <Asset Guid="fedd25a3c60e7ae499fc6efab9ee180b" ResourceName="Entities" />
+      <Asset Guid="ff21c1ebfdefe8544b17649a0f25b60e" ResourceName="Textures" />
     </Assets>
   </ResourceCollection>
 </UnityGameFramework>

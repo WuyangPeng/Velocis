@@ -1,6 +1,6 @@
-﻿using Game.Scripts.Main.Runtime.GameEnum;
-using Game.Scripts.Main.Runtime.GameModule.User;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+using Game.Scripts.Main.Runtime.GameEnum;
+// using Game.Scripts.Main.Runtime.GameModule.User;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
 using UnityEngine;
@@ -13,7 +13,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
     {
         [SerializeField] private GameDifficultyDisplay gameDifficultyDisplay;
 
-        private ProcedureCreate _procedureCreate;
+        private IProcedureCreateHost _procedureCreate;
 
         public void OnReturnButtonClick()
         {
@@ -22,8 +22,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnEnterButtonClick(int gameDifficulty)
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetGameDifficulty((GameDifficultyType)gameDifficulty);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetGameDifficulty((GameDifficultyType)gameDifficulty);
 
             _procedureCreate.OpenUIForm(UIFormId.SelectGameParameterForm);
         }
@@ -32,7 +32,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         {
             base.OnOpen(userData);
 
-            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (IProcedureCreateHost)GetCurrentProcedure();
 
             if (_procedureCreate == null)
             {

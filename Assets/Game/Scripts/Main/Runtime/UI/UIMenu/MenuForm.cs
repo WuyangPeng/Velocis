@@ -1,7 +1,6 @@
-﻿using Game.Scripts.Main.Runtime.Game;
 using Game.Scripts.Main.Runtime.Login;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
 using Game.Scripts.Main.Runtime.UI.UICommon;
+using GameFramework.Procedure;
 using TMPro;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -19,7 +18,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         private LoginController _loginController;
 
-        private ProcedureMenu _procedureMenu;
+        private ProcedureBase _procedureMenu;
 
         private ServerListController _serverListController;
 
@@ -32,7 +31,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         {
             base.OnOpen(userData);
 
-            _procedureMenu = (ProcedureMenu)GetCurrentProcedure();
+            _procedureMenu = GetCurrentProcedure();
             if (_procedureMenu == null)
             {
                 Log.Warning("ProcedureMenu is invalid when open MenuForm.");
@@ -56,6 +55,50 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
             base.OnClose(isShutdown, userData);
         }
+
+        #region Login Callbacks
+
+        /// <summary>
+        ///     由 LoginController 在登录失败时调用。
+        /// </summary>
+        public void OnLoginFailure(string errorMessage)
+        {
+            // 重新启用按钮
+            guestLoginButton.enabled = true;
+
+            GameEntry.UI.OpenDialog(new DialogParams
+            {
+                Mode = 1,
+                Title = GameEntry.Localization.GetString("Login.LoginFailed"),
+                Message = string.IsNullOrEmpty(errorMessage)
+                    ? GameEntry.Localization.GetString("Login.ConnectServerFailed")
+                    : errorMessage
+            });
+        }
+
+        #endregion
+
+        #region ServerList Callbacks
+
+        /// <summary>
+        ///     由 ServerListController 在失败时调用。
+        /// </summary>
+        public void OnServerListFailure(string errorMessage)
+        {
+            // 重新启用按钮
+            guestLoginButton.enabled = true;
+
+            GameEntry.UI.OpenDialog(new DialogParams
+            {
+                Mode = 1,
+                Title = GameEntry.Localization.GetString("Login.LoginFailed"),
+                Message = string.IsNullOrEmpty(errorMessage)
+                    ? GameEntry.Localization.GetString("Login.ConnectServerFailed")
+                    : errorMessage
+            });
+        }
+
+        #endregion
 
         #region UI Event
 
@@ -83,83 +126,6 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
                 Title = GameEntry.Localization.GetString("AskQuitGame.Title"),
                 Message = GameEntry.Localization.GetString("AskQuitGame.Message"),
                 OnClickConfirm = delegate { UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Quit); }
-            });
-        }
-
-        #endregion
-
-        #region Login Callbacks
-
-        /// <summary>
-        ///     由 LoginController 在登录成功时调用。
-        /// </summary>
-        public void OnLoginSuccess(TokenHttpResponse responseData)
-        {
-            Log.Info($"Login successful. Token: {responseData.token}");
-
-            _serverListController.ServerList();
-        }
-
-        /// <summary>
-        ///     由 LoginController 在登录失败时调用。
-        /// </summary>
-        public void OnLoginFailure(string errorMessage)
-        {
-            // 重新启用按钮
-            guestLoginButton.enabled = true;
-
-            GameEntry.UI.OpenDialog(new DialogParams
-            {
-                Mode = 1,
-                Title = GameEntry.Localization.GetString("Login.LoginFailed"),
-                Message = string.IsNullOrEmpty(errorMessage)
-                    ? GameEntry.Localization.GetString("Login.ConnectServerFailed")
-                    : errorMessage
-            });
-        }
-
-        #endregion
-
-        #region ServerList Callbacks
-
-        /// <summary>
-        ///     由 ServerListController 在成功时调用。
-        /// </summary>
-        public void OnServerListSuccess(LoginServersResponse responseData)
-        {
-            // 重新启用按钮
-            guestLoginButton.enabled = true;
-
-            if (responseData.code == GameErrorType.Success)
-            {
-                _procedureMenu.OpenUIForm(UIFormId.ServerListForm);
-            }
-            else
-            {
-                GameEntry.UI.OpenDialog(new DialogParams
-                {
-                    Mode = 1,
-                    Title = GameEntry.Localization.GetString("Login.LoginFailed"),
-                    Message = GameEntry.Localization.GetString("Login.ConnectServerFailed")
-                });
-            }
-        }
-
-        /// <summary>
-        ///     由 ServerListController 在失败时调用。
-        /// </summary>
-        public void OnServerListFailure(string errorMessage)
-        {
-            // 重新启用按钮
-            guestLoginButton.enabled = true;
-
-            GameEntry.UI.OpenDialog(new DialogParams
-            {
-                Mode = 1,
-                Title = GameEntry.Localization.GetString("Login.LoginFailed"),
-                Message = string.IsNullOrEmpty(errorMessage)
-                    ? GameEntry.Localization.GetString("Login.ConnectServerFailed")
-                    : errorMessage
             });
         }
 

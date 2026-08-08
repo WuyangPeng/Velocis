@@ -1,0 +1,62 @@
+// 创建时间：2026-08-02
+// 修改时间：2026-08-02
+// 审核时间：2026-08-02
+
+using Celeritas.Proto.Client;
+using Celeritas.Proto.Common;
+using Game.Scripts.Hotfix.HotfixCommon.GameModule.Mail;
+using Game.Scripts.Hotfix.HotfixCommon.Network.PacketHandler;
+using UnityGameFramework.Runtime;
+using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
+
+namespace Game.Scripts.Hotfix.HotfixCommon.Network.ResponseHandler
+{
+    /// <summary>
+    /// 领取单封邮件附件的响应处理器。
+    /// </summary>
+    public class MailCollectAttachmentResponseHandler : CeleritasHandlerBase<mail_collect_attachment_response>
+    {
+        private MailModule _mailModule;
+
+        protected override void Handle(object sender, header header, mail_collect_attachment_response message)
+        {
+            if (message == null || message.MailId == 0)
+            {
+                Log.Warning("MailCollectAttachmentResponseHandler: Invalid mail collect attachment response.");
+                return;
+            }
+
+            if (!EnsureModule())
+            {
+                return;
+            }
+
+            _mailModule.UpdateMailAttachmentCollected(message.MailId, true);
+            Log.Info("MailCollectAttachmentResponseHandler: Updated mail attachment collected status for MailId={0}", message.MailId);
+        }
+
+        /// <summary>
+        /// 确保并获取邮件模块实例。
+        /// </summary>
+        /// <returns>若邮件模块获取成功返回 true，否则返回 false。</returns>
+        private bool EnsureModule()
+        {
+            var moduleComponent = GameEntry.ModuleComponent;
+            if (moduleComponent == null)
+            {
+                Log.Warning("ModuleComponent is null in MailCollectAttachmentResponseHandler.EnsureModule.");
+                return false;
+            }
+
+            _mailModule ??= moduleComponent.GetModule<MailModule>();
+
+            if (_mailModule != null)
+            {
+                return true;
+            }
+
+            Log.Warning("MailModule is null in MailCollectAttachmentResponseHandler.EnsureModule.");
+            return false;
+        }
+    }
+}

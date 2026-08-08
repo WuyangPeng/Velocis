@@ -1,0 +1,3 @@
+Players explore Kyushu by moving "rows" on a large map. During the exploration process, grain and grass will be consumed, and if the grain and grass are exhausted, the fatigue value of the general and the pawn will soar.
+
+Reasonably planning the march route and clearing the mountain bandit strongholds can replenish the supply for the march and unlock a broader perspective.

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Dictionaries>
     <Dictionary Language="Korean">
         <String Key="Game.Name" Value="Velocis"/>
@@ -30,10 +30,7 @@
         <String Key="Menu.ConfirmButton" Value="确定"/>
         <String Key="Menu.LoadGame" Value="进入游戏"/>
         <String Key="Menu.CreateNewGame" Value="创建新游戏"/>
-        <String Key="Game.ServerList" Value="服务器列表"/>
-        <String Key="Dialog.ConfirmButton" Value="확인"/>
-        <String Key="Dialog.CancelButton" Value="취소"/>
-        <String Key="Dialog.OtherButton" Value=""/>
+
         <String Key="ForceUpdate.Title" Value="필수 업데이트"/>
         <String Key="ForceUpdate.Message" Value="새로운 게임 버전이 있는데 업데이트를 원하십니까?"/>
         <String Key="ForceUpdate.UpdateButton" Value="업데이트"/>
@@ -2869,5 +2866,520 @@
         <String Key="Name.ShiHuai" Value="诗槐"/>
         <String Key="Name.XinXuan" Value="馨玄"/>
         <String Key="Name.TuoLuo" Value="拓珞"/>
+
+        <!-- ==================== Item System (1.1.1.1) ==================== -->
+        <String Key="Item.GetToast" Value="{0} x {1} 획득"/>
+        <String Key="Item.ExpireRemind" Value="기간 한정 아이템 &quot;{0}&quot;이(가) 3일 후 만료됩니다!"/>
+        <String Key="Item.LockedErr" Value="아이템이 잠겨 있어 해당 작업을 수행할 수 없습니다!"/>
+        <String Key="Item.BroadcastRareGet" Value="{0} 님이 희귀 아이템 {1}을(를) 획득하셨습니다!"/>
+        <String Key="Item.DecomposeWarning" Value="경고: 분해 후 장비는 영구적으로 사라지며 복구할 수 없습니다!"/>
+        <String Key="Item.ConfirmVerifyText" Value="분해 확인"/>
+        <String Key="Item.ConfirmInputPrompt" Value="계속하려면 아래에 &quot;분해 확인&quot;을 입력하세요"/>
+        <String Key="Item.GetNormalTitle" Value="물자 획득"/>
+        <String Key="Item.GetRareTitle" Value="희귀 물자 획득"/>
+
+        <!-- ==================== Item Data (item.xlsx) ==================== -->
+
+        <!-- 화폐 및 커스텀 아이템 (Currency & Custom Items) -->
+        <String Key="Item.Name_1001001" Value="황금"/>
+        <String Key="Item.Desc_1001001" Value="최고급 화폐 (충전/이벤트), 가속 및 특권 구매에 사용"/>
+        <String Key="Item.Name_1001002" Value="은화"/>
+        <String Key="Item.Desc_1001002" Value="고급 화폐, 장수 봉록 및 희귀 아이템 구매에 사용"/>
+        <String Key="Item.Name_1001003" Value="동전"/>
+        <String Key="Item.Desc_1001003" Value="기본 화폐, 시장 거래 및 하급 모집에 사용"/>
+        <String Key="Item.Name_1001004" Value="인구"/>
+        <String Key="Item.Desc_1001004" Value="병사 모집에 필요한 기본 인구 자원"/>
+        <String Key="Item.Name_1011001" Value="개명 카드"/>
+        <String Key="Item.Desc_1011001" Value=""/>
+        <String Key="Item.Name_1021001" Value="명성"/>
+        <String Key="Item.Desc_1021001" Value="퀘스트 및 이벤트 완료로 획득, 고급 작위 및 특수 NPC 상호작용 해금"/>
+        <String Key="Item.Name_1021002" Value="공훈"/>
+        <String Key="Item.Desc_1021002" Value="PVP 전투 및 국가 퀘스트로 획득, 전용 장비 및 칭호 교환 가능"/>
+
+        <!-- 아바타 (Avatar Items) -->
+        <String Key="Item.Name_4011001" Value="기본 아바타"/>
+        <String Key="Item.Desc_4011001" Value=""/>
+        <String Key="Item.Name_4024001" Value="아바타 - 영정"/>
+        <String Key="Item.Desc_4024001" Value=""/>
+        <String Key="Item.Name_4024002" Value="아바타 - 유철"/>
+        <String Key="Item.Desc_4024002" Value=""/>
+        <String Key="Item.Name_4024003" Value="아바타 - 이세민"/>
+        <String Key="Item.Desc_4024003" Value=""/>
+        <String Key="Item.Name_4034001" Value="아바타 - 조비연"/>
+        <String Key="Item.Desc_4034001" Value=""/>
+        <String Key="Item.Name_4034002" Value="아바타 - 채문희"/>
+        <String Key="Item.Desc_4034002" Value=""/>
+        <String Key="Item.Name_4034003" Value="아바타 - 양옥환"/>
+        <String Key="Item.Desc_4034003" Value=""/>
+        <String Key="Item.Name_4044001" Value="아바타 - 백기"/>
+        <String Key="Item.Desc_4044001" Value=""/>
+        <String Key="Item.Name_4044002" Value="아바타 - 장건"/>
+        <String Key="Item.Desc_4044002" Value=""/>
+        <String Key="Item.Name_4044003" Value="아바타 - 방현령"/>
+        <String Key="Item.Desc_4044003" Value=""/>
+
+        <!-- 아바타 프레임 (Frame Items) -->
+        <String Key="Item.Name_5011001" Value="기본 프레임"/>
+        <String Key="Item.Desc_5011001" Value=""/>
+        <String Key="Item.Name_5011002" Value="프레임 - 흰색"/>
+        <String Key="Item.Desc_5011002" Value=""/>
+        <String Key="Item.Name_5011003" Value="프레임 - 녹색"/>
+        <String Key="Item.Desc_5011003" Value=""/>
+        <String Key="Item.Name_5011004" Value="프레임 - 파란색"/>
+        <String Key="Item.Desc_5011004" Value=""/>
+        <String Key="Item.Name_5011005" Value="프레임 - 보라색"/>
+        <String Key="Item.Desc_5011005" Value=""/>
+        <String Key="Item.Name_5011006" Value="프레임 - 주황색"/>
+        <String Key="Item.Desc_5011006" Value=""/>
+        <String Key="Item.Name_5011007" Value="프레임 - 빨간색"/>
+        <String Key="Item.Desc_5011007" Value=""/>
+
+        <!-- 칭호 (Title Items) -->
+        <String Key="Item.Name_6011001" Value="하급 교위"/>
+        <String Key="Item.Desc_6011001" Value=""/>
+        <String Key="Item.Name_6011002" Value="선봉대"/>
+        <String Key="Item.Desc_6011002" Value=""/>
+        <String Key="Item.Name_6011003" Value="백전노장"/>
+        <String Key="Item.Desc_6011003" Value=""/>
+        <String Key="Item.Name_6011004" Value="변방 사령관"/>
+        <String Key="Item.Desc_6011004" Value=""/>
+        <String Key="Item.Name_6011005" Value="위풍당당 도독"/>
+        <String Key="Item.Desc_6011005" Value=""/>
+        <String Key="Item.Name_6011006" Value="대원수"/>
+        <String Key="Item.Desc_6011006" Value=""/>
+        <String Key="Item.Name_6011007" Value="천하를 울린 전설"/>
+        <String Key="Item.Desc_6011007" Value=""/>
+        <String Key="Item.Name_6011008" Value="병성의 후계자"/>
+        <String Key="Item.Desc_6011008" Value=""/>
+        <String Key="Item.Name_6011009" Value="개국 공신"/>
+        <String Key="Item.Desc_6011009" Value=""/>
+        <String Key="Item.Name_6011010" Value="영원한 전쟁의 신"/>
+        <String Key="Item.Desc_6011010" Value=""/>
+
+        <!-- 영웅 (Hero Items) -->
+        <String Key="Item.Name_7024001" Value="영정"/>
+        <String Key="Item.Desc_7024001" Value=""/>
+        <String Key="Item.Name_7024002" Value="유철"/>
+        <String Key="Item.Desc_7024002" Value=""/>
+        <String Key="Item.Name_7024003" Value="이세민"/>
+        <String Key="Item.Desc_7024003" Value=""/>
+        <String Key="Item.Name_7034001" Value="조비연"/>
+        <String Key="Item.Desc_7034001" Value=""/>
+        <String Key="Item.Name_7034002" Value="채문희"/>
+        <String Key="Item.Desc_7034002" Value=""/>
+        <String Key="Item.Name_7034003" Value="양옥환"/>
+        <String Key="Item.Desc_7034003" Value=""/>
+        <String Key="Item.Name_7044001" Value="백기"/>
+        <String Key="Item.Desc_7044001" Value=""/>
+        <String Key="Item.Name_7044002" Value="장건"/>
+        <String Key="Item.Desc_7044002" Value=""/>
+        <String Key="Item.Name_7044003" Value="방현령"/>
+        <String Key="Item.Desc_7044003" Value=""/>
+
+        <!-- 경험치 (Exp Items) -->
+        <String Key="Item.Name_8001001" Value="영웅 경험치"/>
+        <String Key="Item.Desc_8001001" Value=""/>
+        <String Key="Item.Name_8001002" Value="VIP 경험치"/>
+        <String Key="Item.Desc_8001002" Value=""/>
+
+        <!-- 건물 (Building Items) -->
+        <String Key="Item.Name_9011001" Value="농지"/>
+        <String Key="Item.Desc_9011001" Value=""/>
+        <String Key="Item.Name_9021002" Value="벌목장"/>
+        <String Key="Item.Desc_9021002" Value=""/>
+        <String Key="Item.Name_9031003" Value="채석장"/>
+        <String Key="Item.Desc_9031003" Value=""/>
+        <String Key="Item.Name_9041004" Value="광산"/>
+        <String Key="Item.Desc_9041004" Value=""/>
+        <String Key="Item.Name_9051005" Value="민가"/>
+        <String Key="Item.Desc_9051005" Value=""/>
+        <String Key="Item.Name_9061006" Value="관아"/>
+        <String Key="Item.Desc_9061006" Value=""/>
+        <String Key="Item.Name_9071007" Value="병영"/>
+        <String Key="Item.Desc_9071007" Value=""/>
+        <String Key="Item.Name_9081008" Value="사격장"/>
+        <String Key="Item.Desc_9081008" Value=""/>
+        <String Key="Item.Name_9091009" Value="마구간"/>
+        <String Key="Item.Desc_9091009" Value=""/>
+        <String Key="Item.Name_9101010" Value="공방"/>
+        <String Key="Item.Desc_9101010" Value=""/>
+        <String Key="Item.Name_9111011" Value="성벽"/>
+        <String Key="Item.Desc_9111011" Value=""/>
+        <String Key="Item.Name_9121012" Value="화살탑"/>
+        <String Key="Item.Desc_9121012" Value=""/>
+        <String Key="Item.Name_9131013" Value="의원"/>
+        <String Key="Item.Desc_9131013" Value=""/>
+        <String Key="Item.Name_9141014" Value="서원"/>
+        <String Key="Item.Desc_9141014" Value=""/>
+        <String Key="Item.Name_9151015" Value="시장"/>
+        <String Key="Item.Desc_9151015" Value=""/>
+
+        <!-- 자원 (Resource Items) -->
+        <String Key="Item.Name_10001001" Value="식량"/>
+        <String Key="Item.Desc_10001001" Value="군대와 인구를 유지하는 기본 자원"/>
+        <String Key="Item.Name_10001002" Value="목재"/>
+        <String Key="Item.Desc_10001002" Value="건물 업그레이드 및 기계 제작의 주요 자원"/>
+        <String Key="Item.Name_10001003" Value="석재"/>
+        <String Key="Item.Desc_10001003" Value="성벽 강화 및 고급 건물에 필수적인 자원"/>
+        <String Key="Item.Name_10001004" Value="철광석"/>
+        <String Key="Item.Desc_10001004" Value="무기 제조 및 중장비의 핵심 자원"/>
+
+        <!-- 장비 (Equipment Items) -->
+        <String Key="Item.Name_3001001" Value="무기"/>
+        <String Key="Item.Desc_3001001" Value="장수와 병사의 공격력 증가"/>
+        <String Key="Item.Name_3001002" Value="방어구"/>
+        <String Key="Item.Desc_3001002" Value="장수와 병사의 방어력 증가"/>
+        <String Key="Item.Name_3001003" Value="장신구"/>
+        <String Key="Item.Desc_3001003" Value="장수의 추가 속성 강화"/>
+
+        <!-- 병사 (Soldier Items) -->
+        <String Key="Item.Name_11001001" Value="도검 보병"/>
+        <String Key="Item.Desc_11001001" Value="방어력이 좋은 기본 보병"/>
+        <String Key="Item.Name_11001002" Value="창병"/>
+        <String Key="Item.Desc_11001002" Value="기병에 강하며 수비 반격에 능함"/>
+        <String Key="Item.Name_11001003" Value="궁수"/>
+        <String Key="Item.Desc_11001003" Value="원거리 딜러, 높은 피해이나 취약함"/>
+        <String Key="Item.Name_11001004" Value="석궁수"/>
+        <String Key="Item.Desc_11001004" Value="높은 관통력과 안정적인 피해"/>
+        <String Key="Item.Name_11001005" Value="경기병"/>
+        <String Key="Item.Desc_11001005" Value="빠른 기동력, 기습에 능함"/>
+        <String Key="Item.Name_11001006" Value="중기병"/>
+        <String Key="Item.Desc_11001006" Value="강력한 돌격력, 적진을 돌파"/>
+        <String Key="Item.Name_11001007" Value="신비 궁수"/>
+        <String Key="Item.Desc_11001007" Value="초장거리 정예 사수"/>
+        <String Key="Item.Name_11001008" Value="모도대"/>
+        <String Key="Item.Desc_11001008" Value="중장 보병, 보병 최강의 전투력"/>
+
+        <!-- 공성 기계 (Machine Items) -->
+        <String Key="Item.Name_12001001" Value="투석기"/>
+        <String Key="Item.Desc_12001001" Value="원거리 파괴, 공성의 핵심 무기"/>
+        <String Key="Item.Name_12001002" Value="충차"/>
+        <String Key="Item.Desc_12001002" Value="성문 공격에 특화된 무기"/>
+        <String Key="Item.Name_12001003" Value="운제"/>
+        <String Key="Item.Desc_12001003" Value="빠르게 성벽을 오르며 보병 공성 지원"/>
+        <String Key="Item.Name_12001004" Value="쇠뇌포"/>
+        <String Key="Item.Desc_12001004" Value="강력한 원거리 무기, 수비와 야전 모두 유효"/>
+        <String Key="Item.Name_12001005" Value="통나무 &amp; 바위"/>
+        <String Key="Item.Desc_12001005" Value="방어용 소모품, 성 아래 적군에게 치명적인 타격"/>
+        <String Key="Item.Name_12001006" Value="화염 항아리"/>
+        <String Key="Item.Desc_12001006" Value="화염 공격, 지속적인 범위 피해"/>
+
+        <!-- 道具系统 UI 多语言 -->
+        <String Key="Item.SlotWeapon" Value="슬롯: 무기"/>
+        <String Key="Item.SlotNone" Value="슬롯: 없음"/>
+        <String Key="Item.SlotArmor" Value="슬롯: 방어구"/>
+        <String Key="Item.SlotAccessory" Value="슬롯: 장신구"/>
+        <String Key="Item.TypeConsumable" Value="소모품"/>
+        <String Key="Item.TypeEquipment" Value="장비"/>
+        <String Key="Item.TypeResource" Value="군비 자원"/>
+        <String Key="Item.TypeUnknown" Value="일반 아이템"/>
+        <String Key="Item.DurabilityFormat" Value="내구도: {0} / {1}"/>
+        <String Key="Item.ActionUse" Value="사용"/>
+        <String Key="Item.ActionBatchUse" Value="일괄 사용"/>
+        <String Key="Item.ActionEquip" Value="장착"/>
+        <String Key="Item.ActionUnequip" Value="해제"/>
+        <String Key="Item.ActionLock" Value="잠금"/>
+        <String Key="Item.ActionUnlock" Value="잠금 해제"/>
+        <String Key="Item.ActionRecast" Value="재주조"/>
+        <String Key="Item.ActionDecompose" Value="분해"/>
+        <String Key="Item.SourceTitle" Value="획득 경로"/>
+        <String Key="Item.SourceEmptyTip" Value="획득 경로가 없습니다."/>
+        <String Key="Item.GetClickCloseTip" Value="아무 데나 클릭하여 닫기"/>
+        <String Key="Item.DecomposeWarningLocked" Value="이 아이템은 잠겨 있습니다. 위험 요소를 확인하고 아래에 [분해 확인]을 입력하여 잠금을 해제하고 분해하십시오!"/>
+        <String Key="Item.DecomposeWarningNormal" Value="분해 후 장비는 영구히 소멸되며 복구할 수 없습니다!"/>
+        <String Key="Item.DecomposeOutputTitle" Value="예상 반환 재료:\n{0}"/>
+        <String Key="Item.AttributePhysicsAttack" Value="물리 공격력"/>
+        <String Key="Item.AttributeCritRate" Value="치명타율"/>
+        <String Key="Item.AttributeRandomAffix" Value="무작위 속성"/>
+        <String Key="Item.SourceTypeCampaign" Value="전투"/>
+        <String Key="Item.SourceCampaignDemo" Value="제3장 한철 광산 (도전)"/>
+        <String Key="Item.SourceTypeShop" Value="상점"/>
+        <String Key="Item.SourceShopDemo" Value="아레나 군비 상점"/>
+        <String Key="Item.SourceTypeActivity" Value="이벤트"/>
+        <String Key="Item.SourceActivityDemo" Value="기간 한정 공성 방어전"/>
+
+        <!-- 主入口 UI 多语言 -->
+        <String Key="MainEntry.Title" Value="구주"/>
+        <String Key="MainEntry.InputPlaceholder" Value="객경 계정을 입력하십시오"/>
+        <String Key="MainEntry.BtnEnterGame" Value="구주 제패"/>
+        <String Key="MainEntry.BtnSetting" Value="군정 설정"/>
+        <String Key="MainEntry.BtnGameIntro" Value="구주통감"/>
+        <String Key="MainEntry.BtnAnnouncement" Value="관부 고시"/>
+        <String Key="MainEntry.BtnCustomerService" Value="군사 상의"/>
+        <String Key="MainEntry.BtnQuit" Value="해갑귀전"/>
+        <String Key="MainEntry.HealthyGameAdvice" Value="불량 게임을 보이콧하고, 불법 복제 게임을 거부합니다. 자기 보호에 유의하고, 사기 피해를 예방합니다.&#xA;적당한 게임은 두뇌에 좋고, 지나친 게임은 건강을 해칩니다. 시간을 합리적으로 배분하여 건강한 삶을 누리십시오."/>
+        <String Key="MainEntry.CopyrightText" Value="© 2026 Taiyi Studio All Rights Reserved."/>
+        
+        <!-- 提示框 -->
+        <String Key="Dialog.ConfirmButton" Value="확인"/>
+        <String Key="Dialog.CancelButton" Value="부결"/>
+        <String Key="Dialog.OtherButton" Value="보류"/>
+        <String Key="Dialog.AskQuitGameTitle" Value="해갑 확인"/>
+        <String Key="Dialog.AskQuitGameMessage" Value="천하가 아직 평정되지 않았습니다. 주공, 정말로 해갑귀전하시겠습니까?"/>
+        
+        <!-- 시스템 설정 -->
+        <String Key="SystemSetting.Title" Value="군정 설정"/>
+        <String Key="SystemSetting.Music" Value="배경음악"/>
+        <String Key="SystemSetting.Sound" Value="효과음"/>
+        <String Key="SystemSetting.UISound" Value="UI 효과음"/>
+        <String Key="SystemSetting.Language" Value="언어 설정"/>
+        <String Key="SystemSetting.GraphicQuality" Value="화질 설정"/>
+        <String Key="SystemSetting.Vibration" Value="진동"/>
+        <String Key="SystemSetting.Fullscreen" Value="전체 화면"/>
+        <String Key="SystemSetting.GraphicQuality.High" Value="상"/>
+        <String Key="SystemSetting.GraphicQuality.Medium" Value="중"/>
+        <String Key="SystemSetting.GraphicQuality.Low" Value="하"/>
+        <String Key="SystemSetting.Language.ChineseSimplified" Value="중국어 간체"/>
+        <String Key="SystemSetting.Language.ChineseTraditional" Value="중국어 번체"/>
+        <String Key="SystemSetting.Language.English" Value="영어"/>
+        <String Key="SystemSetting.Language.Korean" Value="한국어"/>
+        <String Key="SystemSetting.Language.Japanese" Value="일본어"/>
+        
+        <!-- 도움말 화면 -->
+        <String Key="HelpForm.Title" Value="구주통감"/>
+        <String Key="HelpForm.NoContent" Value="콘텐츠 없음"/>
+        <String Key="HelpForm.LoadFailed" Value="콘텐츠를 불러오는 중이거나 일시적으로 사용할 수 없습니다"/>
+        <String Key="HelpForm.PageFormat" Value="{0} / {1}"/>
+        <String Key="HelpForm.BtnClose" Value="두루마리 닫기"/>
+
+        <!-- 도움말 · 1단계 카테고리 -->
+        <String Key="HelpForm.Category.Beginner" Value="구주 첫걸음"/>
+        <String Key="HelpForm.Category.LordDestiny" Value="군주의 운명"/>
+        <String Key="HelpForm.Category.GeneralsBonds" Value="명장 교제"/>
+        <String Key="HelpForm.Category.Progression" Value="장수 육성"/>
+        <String Key="HelpForm.Category.Exploration" Value="모래판 탐색"/>
+        <String Key="HelpForm.Category.FAQ" Value="난세 질의응답"/>
+
+        <!-- 도움말 · 2단계 페이지 -->
+        <String Key="HelpForm.Page.GameIntro" Value="난세의 서막"/>
+        <String Key="HelpForm.Page.BasicControls" Value="화면 및 기본 조작"/>
+        <String Key="HelpForm.Page.FateChoices" Value="운명의 선택"/>
+        <String Key="HelpForm.Page.FiefdomManage" Value="영지 건설"/>
+        <String Key="HelpForm.Page.GeneralRecruit" Value="인재 영입"/>
+        <String Key="HelpForm.Page.LordGenBonds" Value="군신 유대"/>
+        <String Key="HelpForm.Page.StatsTalents" Value="속성 및 성장"/>
+        <String Key="HelpForm.Page.DivineGear" Value="신병 보물"/>
+        <String Key="HelpForm.Page.WorldExplore" Value="대지도 탐색"/>
+        <String Key="HelpForm.Page.TacticsBattle" Value="전장 대결"/>
+        <String Key="HelpForm.Page.FAQGrowth" Value="스토리 및 육성 문제"/>
+        <String Key="HelpForm.Page.FAQExplore" Value="전투 및 탐색 문제"/>
+
+        <!-- 도움말 · 3단계 항목 제목 -->
+        <String Key="HelpForm.Item.GameWorld.Title" Value="《구주》 세계관 소개"/>
+        <String Key="HelpForm.Item.LordPath.Title" Value="군주의 길과 천하 대세"/>
+        <String Key="HelpForm.Item.DifficultyMode.Title" Value="게임 난이도와 운명 모드"/>
+        <String Key="HelpForm.Item.MainUI.Title" Value="메인 화면 군정청 기능"/>
+        <String Key="HelpForm.Item.MapExploration.Title" Value="군영 대지도 이동 및 탐색"/>
+        <String Key="HelpForm.Item.InventoryUsage.Title" Value="가방 및 도구 사용"/>
+        <String Key="HelpForm.Item.BranchingStory.Title" Value="스토리 분기 및 선택"/>
+        <String Key="HelpForm.Item.LordPersonality.Title" Value="군주 성격 성향"/>
+        <String Key="HelpForm.Item.PersonalityInfluence.Title" Value="성격이 정세 및 명장에 미치는 영향"/>
+        <String Key="HelpForm.Item.FiefdomGovernance.Title" Value="군정청과 내정 직무 위임"/>
+        <String Key="HelpForm.Item.PeopleQuests.Title" Value="민생 사건 처리"/>
+        <String Key="HelpForm.Item.FiefdomVault.Title" Value="영지 부고 자원 생산"/>
+        <String Key="HelpForm.Item.RecruitVisit.Title" Value="명사 탐방과 직접 방문"/>
+        <String Key="HelpForm.Item.GeneralGifts.Title" Value="선물과 호감도 상승"/>
+        <String Key="HelpForm.Item.GeneralLoyalty.Title" Value="충성도 변화와 이탈 위기"/>
+        <String Key="HelpForm.Item.BondLevel.Title" Value="유대 등급과 교제 해제"/>
+        <String Key="HelpForm.Item.GeneralBiography.Title" Value="전용 열전과 명장 일화"/>
+        <String Key="HelpForm.Item.ComboTactics.Title" Value="합격 전법과 협동 방어"/>
+        <String Key="HelpForm.Item.FourAttributes.Title" Value="사维 속성 역할"/>
+        <String Key="HelpForm.Item.GeneralTalents.Title" Value="장수 특기 및 특성 트리"/>
+        <String Key="HelpForm.Item.GeneralBreakthrough.Title" Value="장수 경지 돌파와 각성"/>
+        <String Key="HelpForm.Item.DivineWeapon.Title" Value="전용 신병 제작 및 제련"/>
+        <String Key="HelpForm.Item.TacticalBooks.Title" Value="병법 기서와 가문 보물"/>
+        <String Key="HelpForm.Item.GearEquipment.Title" Value="장비 착용과 스탯 재련"/>
+        <String Key="HelpForm.Item.FogAndPasses.Title" Value="안개와 관문 차단"/>
+        <String Key="HelpForm.Item.RandomEncounters.Title" Value="지도 무작위 조우 및 야사 임무"/>
+        <String Key="HelpForm.Item.MysteryRuins.Title" Value="비경 고적 공략"/>
+        <String Key="HelpForm.Item.UnitCounters.Title" Value="병종 상성 관계"/>
+        <String Key="HelpForm.Item.BattleFormations.Title" Value="고전 진법 배치"/>
+        <String Key="HelpForm.Item.TacticReleases.Title" Value="액티브 및 지휘 전법 발동"/>
+        <String Key="HelpForm.Item.FaqPrestige.Title" Value="군주 명성을 빠르게 올리는 방법?"/>
+        <String Key="HelpForm.Item.FaqAffection.Title" Value="장수 호감도가 오르지 않을 때는?"/>
+        <String Key="HelpForm.Item.FaqWeaponMaterials.Title" Value="전용 신병 재료 획득 방법?"/>
+        <String Key="HelpForm.Item.FaqComboFail.Title" Value="왜 전투 중 합격 전법이 발동되지 않나요?"/>
+        <String Key="HelpForm.Item.FaqDefeatGuide.Title" Value="이길 수 없는 적군을 만났을 때는?"/>
+        <String Key="HelpForm.Item.FaqLostGeneral.Title" Value="대지도에서 이탈한 명장을 다시 영입하려면?"/>
+
+        <!-- 공지 -->
+        <String Key="Tag.New" Value="신"/>
+        <String Key="Tag.Hot" Value="인기"/>
+        <String Key="Tag.Maintenance" Value="점검"/>
+        <String Key="AnnouncementForm.Title" Value="관부 고시"/>
+        <String Key="AnnouncementForm.BtnRead" Value="확인"/>
+        <String Key="AnnouncementForm.NoContent" Value="고시 없음"/>
+        <String Key="AnnouncementForm.FetchFailedTitle" Value="고시 수신 실패"/>
+        <String Key="AnnouncementForm.FetchFailedMessage" Value="관부 고시를 가져오지 못했습니다. 네트워크를 확인한 뒤 다시 시도하세요."/>
+        <String Key="AnnouncementForm.Retry" Value="다시 시도"/>
+        <String Key="AnnouncementForm.Close" Value="그만두기"/>
+
+        <!-- 피드백 -->
+        <String Key="FeedbackForm.Title" Value="군사에게 도움 요청"/>
+        <String Key="FeedbackForm.InputPlaceholder" Value="사연을 적어 주십시오 (10-500자)"/>
+        <String Key="FeedbackForm.CharCountFormat" Value="{0} / {1}"/>
+        <String Key="FeedbackForm.UploadHint" Value="스크린샷 미리보기"/>
+        <String Key="FeedbackForm.SelectImageTitle" Value="이미지 선택"/>
+        <String Key="FeedbackForm.BtnUpload" Value="이미지 첨부"/>
+        <String Key="FeedbackForm.BtnSubmit" Value="제출"/>
+        <String Key="FeedbackForm.BtnCancel" Value="보류"/>
+        <String Key="FeedbackForm.CooldownFormat" Value="{0}s"/>
+        <String Key="Feedback.Type.Bug" Value="문제 제보"/>
+        <String Key="Feedback.Type.Suggestion" Value="의견 제안"/>
+        <String Key="Feedback.Type.Report" Value="신고"/>
+        <String Key="Feedback.MinLengthError" Value="내용이 너무 짧습니다. 최소 10자가 필요합니다."/>
+        <String Key="Feedback.SubmitSuccess" Value="상소문이 조정에 전달되었습니다."/>
+        <String Key="Feedback.CooldownError" Value="{0}초 후에 다시 제출해 주십시오."/>
+        <String Key="Feedback.ImageTooLarge" Value="이미지가 5MB를 초과합니다."/>
+        <String Key="Feedback.ImageLoadFailed" Value="이미지 불러오기에 실패했습니다."/>
+        <String Key="Feedback.UploadImageFailed" Value="이미지 업로드에 실패했습니다."/>
+        <String Key="Feedback.SubmitFailed" Value="제출에 실패했습니다. 네트워크를 확인해 주십시오."/>
+        <String Key="FeedbackForm.ServerLabel" Value="서버: "/>
+        <String Key="FeedbackForm.PlayerIdLabel" Value="플레이어 ID: "/>
+        <String Key="FeedbackForm.AnonymousLabel" Value="익명"/>
+        <String Key="FeedbackForm.ServerPlaceholder" Value="서버 입력..."/>
+        <String Key="FeedbackForm.PlayerIdPlaceholder" Value="플레이어 ID 입력..."/>
+        <String Key="Feedback.ServerEmptyError" Value="서버 이름을 입력해 주십시오."/>
+        <String Key="Feedback.PlayerIdEmptyError" Value="플레이어 ID를 입력해 주십시오."/>
+        <!-- Server List -->
+        <String Key="ServerList.Title" Value="할거지 선택"/>
+        <String Key="ServerList.TabRecommended" Value="추천/기록"/>
+        <String Key="ServerList.BtnConfirm" Value="기반 확정"/>
+        <String Key="ServerList.StatusSmooth" Value="원활"/>
+        <String Key="ServerList.StatusHot" Value="혼잡"/>
+        <String Key="ServerList.StatusFull" Value="포화"/>
+        <String Key="ServerList.StatusMaintain" Value="점검"/>
+        <String Key="ServerList.HasCharacter" Value="주공"/>
+        <String Key="ServerList.Zone.1" Value="사례"/>
+        <String Key="ServerList.Zone.2" Value="예주"/>
+        <String Key="ServerList.Zone.3" Value="기주"/>
+        <String Key="ServerList.Zone.4" Value="연주"/>
+        <String Key="ServerList.Zone.5" Value="서주"/>
+        <String Key="ServerList.Zone.6" Value="청주"/>
+        <String Key="ServerList.Zone.7" Value="형주"/>
+        <String Key="ServerList.Zone.8" Value="양주"/>
+        <String Key="ServerList.Zone.9" Value="익주"/>
+        <String Key="ServerList.Zone.10" Value="유주"/>
+        <String Key="ServerList.Server.test-1" Value="하나라 #1"/>
+        <String Key="ServerList.Server.test-2" Value="상나라 #2"/>
+        <String Key="ServerList.Server.test-3" Value="서주 #3"/>
+        <String Key="ServerList.Server.test-4" Value="동주 #4"/>
+        <String Key="ServerList.Server.test-5" Value="춘추·정 #5"/>
+        <String Key="ServerList.Server.test-6" Value="춘추·제 #6"/>
+        <String Key="ServerList.Server.test-7" Value="춘추·노 #7"/>
+        <String Key="ServerList.Server.test-8" Value="춘추·송 #8"/>
+        <String Key="ServerList.Server.test-9" Value="춘추·위 #9"/>
+        <String Key="ServerList.Server.test-10" Value="춘추·진 #10"/>
+        <String Key="ServerList.Server.test-11" Value="춘추·진 #11"/>
+        <String Key="ServerList.Server.test-12" Value="춘추·초 #12"/>
+        <String Key="ServerList.Server.test-13" Value="춘추·진 #13"/>
+        <String Key="ServerList.Server.test-14" Value="춘추·연 #14"/>
+        <String Key="ServerList.Server.test-15" Value="춘추·오 #15"/>
+        <String Key="ServerList.Server.test-16" Value="춘추·월 #16"/>
+        <String Key="ServerList.Server.test-17" Value="전국·제 #17"/>
+        <String Key="ServerList.Server.test-18" Value="전국·초 #18"/>
+        <String Key="ServerList.Server.test-19" Value="전국·연 #19"/>
+        <String Key="ServerList.Server.test-20" Value="전국·한 #20"/>
+        <String Key="ServerList.Server.test-21" Value="전국·조 #21"/>
+        <String Key="ServerList.Server.test-22" Value="전국·위 #22"/>
+        <String Key="ServerList.Server.test-23" Value="전국·진 #23"/>
+        <String Key="ServerList.Server.test-24" Value="전국·동산 #24"/>
+        <String Key="ServerList.Server.test-25" Value="전국·파 #25"/>
+        <String Key="ServerList.Server.test-26" Value="전국·촉 #26"/>
+        <String Key="ServerList.Server.test-27" Value="진나라 #27"/>
+        <String Key="ServerList.Server.test-28" Value="서초 #28"/>
+        <String Key="ServerList.Server.test-29" Value="서한 #29"/>
+        <String Key="ServerList.Server.test-30" Value="신나라 #30"/>
+        <String Key="ServerList.Server.test-31" Value="동한 #31"/>
+        <String Key="ServerList.Server.test-32" Value="삼국·위 #32"/>
+        <String Key="ServerList.Server.test-33" Value="삼국·촉한 #33"/>
+        <String Key="ServerList.Server.test-34" Value="삼국·오 #34"/>
+        <String Key="ServerList.Server.test-35" Value="서진 #35"/>
+        <String Key="ServerList.Server.test-36" Value="동진 #36"/>
+        <String Key="ServerList.Server.test-37" Value="십육국·전조 #37"/>
+        <String Key="ServerList.Server.test-38" Value="십육국·성한 #38"/>
+        <String Key="ServerList.Server.test-39" Value="십육국·전량 #39"/>
+        <String Key="ServerList.Server.test-40" Value="십육국·후조 #40"/>
+        <String Key="ServerList.Server.test-41" Value="십육국·전연 #41"/>
+        <String Key="ServerList.Server.test-42" Value="십육국·전진 #42"/>
+        <String Key="ServerList.Server.test-43" Value="십육국·후연 #43"/>
+        <String Key="ServerList.Server.test-44" Value="십육국·후진 #44"/>
+        <String Key="ServerList.Server.test-45" Value="십육국·서진 #45"/>
+        <String Key="ServerList.Server.test-46" Value="십육국·후량 #46"/>
+        <String Key="ServerList.Server.test-47" Value="십육국·남량 #47"/>
+        <String Key="ServerList.Server.test-48" Value="십육국·남연 #48"/>
+        <String Key="ServerList.Server.test-49" Value="십육국·서량 #49"/>
+        <String Key="ServerList.Server.test-50" Value="십육국·북연 #50"/>
+        <String Key="ServerList.Server.test-51" Value="십육국·북량 #51"/>
+        <String Key="ServerList.Server.test-52" Value="십육국·하 #52"/>
+        <String Key="ServerList.Server.test-53" Value="서연 #53"/>
+        <String Key="ServerList.Server.test-54" Value="토욕혼 #54"/>
+        <String Key="ServerList.Server.test-55" Value="남조·송 #55"/>
+        <String Key="ServerList.Server.test-56" Value="남조·제 #56"/>
+        <String Key="ServerList.Server.test-57" Value="남조·양 #57"/>
+        <String Key="ServerList.Server.test-58" Value="남조·진 #58"/>
+        <String Key="ServerList.Server.test-59" Value="북조·북위 #59"/>
+        <String Key="ServerList.Server.test-60" Value="북조·동위 #60"/>
+        <String Key="ServerList.Server.test-61" Value="북조·서위 #61"/>
+        <String Key="ServerList.Server.test-62" Value="북조·북제 #62"/>
+        <String Key="ServerList.Server.test-63" Value="북조·북주 #63"/>
+        <String Key="ServerList.Server.test-64" Value="수나라 #64"/>
+        <String Key="ServerList.Server.test-65" Value="당나라 #65"/>
+        <String Key="ServerList.Server.test-66" Value="무주 #66"/>
+        <String Key="ServerList.Server.test-67" Value="발해 #67"/>
+        <String Key="ServerList.Server.test-68" Value="남조 #68"/>
+        <String Key="ServerList.Server.test-69" Value="토번 #69"/>
+        <String Key="ServerList.Server.test-70" Value="오대·후량 #70"/>
+        <String Key="ServerList.Server.test-71" Value="오대·후당 #71"/>
+        <String Key="ServerList.Server.test-72" Value="오대·후진 #72"/>
+        <String Key="ServerList.Server.test-73" Value="오대·후한 #73"/>
+        <String Key="ServerList.Server.test-74" Value="오대·후주 #74"/>
+        <String Key="ServerList.Server.test-75" Value="십국·오 #75"/>
+        <String Key="ServerList.Server.test-76" Value="십국·남당 #76"/>
+        <String Key="ServerList.Server.test-77" Value="십국·전촉 #77"/>
+        <String Key="ServerList.Server.test-78" Value="십국·후촉 #78"/>
+        <String Key="ServerList.Server.test-79" Value="십국·남한 #79"/>
+        <String Key="ServerList.Server.test-80" Value="십국·초 #80"/>
+        <String Key="ServerList.Server.test-81" Value="십국·오월 #81"/>
+        <String Key="ServerList.Server.test-82" Value="십국·민 #82"/>
+        <String Key="ServerList.Server.test-83" Value="십국·형남 #83"/>
+        <String Key="ServerList.Server.test-84" Value="십국·북한 #84"/>
+        <String Key="ServerList.Server.test-85" Value="요나라 #85"/>
+        <String Key="ServerList.Server.test-86" Value="북송 #86"/>
+        <String Key="ServerList.Server.test-87" Value="서하 #87"/>
+        <String Key="ServerList.Server.test-88" Value="서요 #88"/>
+        <String Key="ServerList.Server.test-89" Value="금나라 #89"/>
+        <String Key="ServerList.Server.test-90" Value="남송 #90"/>
+        <String Key="ServerList.Server.test-91" Value="대리국 #91"/>
+        <String Key="ServerList.Server.test-92" Value="몽골 제국 #92"/>
+        <String Key="ServerList.Server.test-93" Value="원나라 #93"/>
+        <String Key="ServerList.Server.test-94" Value="북원 #94"/>
+        <String Key="ServerList.Server.test-95" Value="명나라 #95"/>
+        <String Key="ServerList.Server.test-96" Value="남명 #96"/>
+        <String Key="ServerList.Server.test-97" Value="대순 #97"/>
+        <String Key="ServerList.Server.test-98" Value="대서 #98"/>
+        <String Key="ServerList.Server.test-99" Value="후금 #99"/>
+        <String Key="ServerList.Server.test-100" Value="청나라 #100"/>
+
+        <!-- 로딩 화면 -->
+        <String Key="Loading.TextPrefix" Value="군대를 배치하는 중..."/>
+        <String Key="Login.ConnectServerTimeout" Value="로그인 서버가 시간 초과되었습니다. 메인 화면으로 돌아가서 다시 시도해 주십시오."/>
+
+        <!-- Server Error Codes -->
+        <!-- General Errors -->
+        <String Key="ServerError.100" Value="매개변수 오류입니다."/>
+        <String Key="ServerError.101" Value="요청이 만료되었습니다."/>
+        <String Key="ServerError.102" Value="서명 검증 실패."/>
+        <String Key="ServerError.103" Value="요청이 너무 잦습니다. 잠시 후 다시 시도해 주십시오."/>
+        <String Key="ServerError.104" Value="인증 번호가 만료되었습니다."/>
+        <String Key="ServerError.105" Value="인증 번호가 올바르지 않습니다."/>
+        <String Key="ServerError.106" Value="토큰이 유효하지 않습니다. 다시 로그인해 주십시오."/>
+        <String Key="ServerError.107" Value="비밀번호가 올바르지 않습니다."/>
+        <String Key="ServerError.108" Value="SDK 서비스 오류."/>
+        <String Key="ServerError.109" Value="서버 오류가 발생했습니다. 잠시 후 다시 시도해 주십시오."/>
+        <String Key="ServerError.110" Value="서버 시작 중입니다. 잠시 후 다시 시도해 주십시오."/>
+
+        <!-- Admin Server Errors 30000 - 39999 -->
+        <String Key="ServerError.30000" Value="주공, 오늘 건의 제출 한도(일일 최대 5회)에 도달했습니다. 내일 다시 시도해 주십시오."/>
     </Dictionary>
 </Dictionaries>

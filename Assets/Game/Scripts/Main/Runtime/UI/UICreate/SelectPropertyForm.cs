@@ -1,7 +1,7 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
-using Game.Scripts.Main.Runtime.GameModule.User;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+// using Game.Scripts.Main.Runtime.GameModule.User;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
@@ -16,7 +16,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
     {
         [SerializeField] private PropertyDisplay propertyDisplay;
 
-        private ProcedureCreate _procedureCreate;
+        private IProcedureCreateHost _procedureCreate;
 
         public void OnReturnButtonClick()
         {
@@ -25,23 +25,23 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnEnterButtonClick()
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            if (0 < userModule.GetPropertyCount())
-            {
-                GameEntry.UI.OpenDialog(new DialogParams
-                {
-                    Mode = 2,
-                    Title = GameEntry.Localization.GetString("Property.Allocate.Title"),
-                    Message = GameEntry.Localization.GetString("Property.Allocate.Content"),
-                    OnClickConfirm = delegate
-                    {
-                        GameEntry.UI.CloseUIForm(GameEntry.UI.GetUIForm(UIFormId.DialogForm));
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // if (0 < userModule.GetPropertyCount())
+            // {
+            //     GameEntry.UI.OpenDialog(new DialogParams
+            //     {
+            //         Mode = 2,
+            //         Title = GameEntry.Localization.GetString("Property.Allocate.Title"),
+            //         Message = GameEntry.Localization.GetString("Property.Allocate.Content"),
+            //         OnClickConfirm = delegate
+            //         {
+            //             GameEntry.UI.CloseUIForm(GameEntry.UI.GetUIForm(UIFormId.DialogForm));
 
-                        _procedureCreate.OpenUIForm(UIFormId.SelectSpiritualForm);
-                    }
-                });
-                return;
-            }
+            //             _procedureCreate.OpenUIForm(UIFormId.SelectSpiritualForm);
+            //         }
+            //     });
+            //     return;
+            // }
 
 
             _procedureCreate.OpenUIForm(UIFormId.SelectSpiritualForm);
@@ -49,39 +49,39 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnReduceButtonClick(int propertyId)
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var baseProperty = userModule.GetBaseProperty((BasePropertyType)propertyId);
-            var initBaseProperty = userModule.GetInitBaseProperty((BasePropertyType)propertyId);
-            if (baseProperty <= initBaseProperty || userModule.GetPropertyCount() >= Constant.Game.InitPropertyCount)
-            {
-                return;
-            }
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // var baseProperty = userModule.GetBaseProperty((BasePropertyType)propertyId);
+            // var initBaseProperty = userModule.GetInitBaseProperty((BasePropertyType)propertyId);
+            // if (baseProperty <= initBaseProperty || userModule.GetPropertyCount() >= Constant.Game.InitPropertyCount)
+            // {
+            //     return;
+            // }
 
-            userModule.ReduceBaseProperty(propertyId);
-            propertyDisplay.Refresh();
+            // userModule.ReduceBaseProperty(propertyId);
+            // propertyDisplay.Refresh();
         }
 
         public void OnAddButtonClick(int propertyId)
         {
-            var property = GameEntry.DataTable.GetDataTable<DRProperty>();
+            // var property = GameEntry.DataTable.GetDataTable<DRProperty>();
 
-            var row = property.GetDataRow(propertyId);
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var baseProperty = userModule.GetBaseProperty((BasePropertyType)propertyId);
-            if (baseProperty >= row.MaxValue || userModule.GetPropertyCount() <= 0)
-            {
-                return;
-            }
+            // var row = property.GetDataRow(propertyId);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // var baseProperty = userModule.GetBaseProperty((BasePropertyType)propertyId);
+            // if (baseProperty >= row.MaxValue || userModule.GetPropertyCount() <= 0)
+            // {
+            //     return;
+            // }
 
-            userModule.AddBaseProperty(propertyId);
-            propertyDisplay.Refresh();
+            // userModule.AddBaseProperty(propertyId);
+            // propertyDisplay.Refresh();
         }
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (IProcedureCreateHost)GetCurrentProcedure();
 
             if (_procedureCreate == null)
             {

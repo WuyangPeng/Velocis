@@ -1,0 +1,4 @@
+Combos usually fail because:
+1. The current bond level of the two generals participating in the joint attack is too low (at least "confidante" or above is required);
+2. The relative distance between the two people on the battlefield is too far (must be adjacent);
+3. One of the two is inflicted with control effects such as "Stun" or "Silence" by enemy tactics.

@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using Celeritas.Config.game;
-using Game.Scripts.Main.Runtime.GameModule.Item;
 using Game.Scripts.Main.Runtime.UIItem.UIHome;
 using Game.Scripts.Main.Runtime.UIObject.UICreate;
 using GameFramework.ObjectPool;
@@ -18,8 +16,9 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIHome
         [SerializeField] private int poolCapacity = 20;
 
         private readonly List<TitleItemObject> _activeTitleItemObject = new();
-        private readonly List<title_config> _holdTitleConfig = new();
-        private readonly List<title_config> _notUnlockedTitleConfig = new();
+
+        //   private readonly List<title_config> _holdTitleConfig = new();
+        //  private readonly List<title_config> _notUnlockedTitleConfig = new();
         private readonly List<GameObject> _rowGameObjects = new();
 
         private IObjectPool<TitleItemObject> _pool;
@@ -28,8 +27,8 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIHome
         private void Start()
         {
             const string poolName = "TitleItemPool";
-            _pool = GameEntry.ObjectPool.HasObjectPool<TitleItemObject>(poolName) 
-                ? GameEntry.ObjectPool.GetObjectPool<TitleItemObject>(poolName) 
+            _pool = GameEntry.ObjectPool.HasObjectPool<TitleItemObject>(poolName)
+                ? GameEntry.ObjectPool.GetObjectPool<TitleItemObject>(poolName)
                 : GameEntry.ObjectPool.CreateSingleSpawnObjectPool<TitleItemObject>(poolName, poolCapacity, 30f, 16);
 
             Refresh();
@@ -37,35 +36,36 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIHome
 
         private void SetTitleData()
         {
-            _holdTitleConfig.Clear();
-            _selectedIndex = -1;
+            /*   _holdTitleConfig.Clear();
+               _selectedIndex = -1;
 
-            var titleModule = GameEntry.ModuleComponent.GetModule<TitleModule>();
-            var selectedTitle = titleModule.GetSelectedTitle();
-            var index = 0;
-            
-            foreach (var titleConfig in GameEntry.GameConfig.GetGameConfig().GetTables().TitleConfigContainer.DataList)
-            {
-                var item = titleModule.GetItem(titleConfig.ItemTemplateId);
-                if (item != null)
-                {
-                    _holdTitleConfig.Add(titleConfig);
-                    if (selectedTitle != null && selectedTitle.Inventory.ItemId == item.Inventory.ItemId)
-                    {
-                        _selectedIndex = index;
-                    }
-                    ++index;
-                }
-                else if (!titleConfig.Hidden)
-                {
-                    _notUnlockedTitleConfig.Add(titleConfig);
-                }
-            }
+               var titleModule = GameEntry.ModuleComponent.GetModule<TitleModule>();
+               var selectedTitle = titleModule.GetSelectedTitle();
+               var index = 0;
 
-            if (_selectedIndex < 0)
-            {
-                _selectedIndex = 0;
-            }
+//                foreach (var titleConfig in GameEntry.GameConfig.GetGameConfig().GetTables().TitleConfigContainer.DataList)
+//                {
+//                    var item = titleModule.GetItem(titleConfig.ItemTemplateId);
+//                    if (item != null)
+//                    {
+//                        _holdTitleConfig.Add(titleConfig);
+//                        if (selectedTitle != null && selectedTitle.Inventory.ItemId == item.Inventory.ItemId)
+//                        {
+//                            _selectedIndex = index;
+//                        }
+//
+//                        index++;
+//                    }
+//                }   else if (!titleConfig.Hidden)
+                   {
+                       _notUnlockedTitleConfig.Add(titleConfig);
+                   }
+               }
+
+               if (_selectedIndex < 0)
+               {
+                   _selectedIndex = 0;
+               }*/
         }
 
         public void Refresh()
@@ -77,15 +77,15 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIHome
 
         private void SpawnTitle()
         {
-            var rowCount = Mathf.CeilToInt((float)(_holdTitleConfig.Count + _notUnlockedTitleConfig.Count) / PerRow);
+            /*  var rowCount = Mathf.CeilToInt((float)(_holdTitleConfig.Count + _notUnlockedTitleConfig.Count) / PerRow);
 
-            for (var row = 0; row < rowCount; row++)
-            {
-                if (!SpawnTitle(row))
-                {
-                    return;
-                }
-            }
+              for (var row = 0; row < rowCount; row++)
+              {
+                  if (!SpawnTitle(row))
+                  {
+                      return;
+                  }
+              }*/
         }
 
         private bool SpawnTitle(int row)
@@ -106,37 +106,37 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIHome
 
         private bool SpawnTitle(int row, int column, GameObject rowGameObject)
         {
-            var idx = row * PerRow + column;
-            if (idx >= _holdTitleConfig.Count + _notUnlockedTitleConfig.Count)
-            {
-                return true;
-            }
+            /*    var idx = row * PerRow + column;
+                if (idx >= _holdTitleConfig.Count + _notUnlockedTitleConfig.Count)
+                {
+                    return true;
+                }
 
-            var spawn = GetSpawn();
-            if (spawn == null)
-            {
-                return false;
-            }
+                var spawn = GetSpawn();
+                if (spawn == null)
+                {
+                    return false;
+                }
 
-            _activeTitleItemObject.Add(spawn);
+                _activeTitleItemObject.Add(spawn);
 
-            var titleItem = (TitleItem)spawn.Target;
-            titleItem.transform.SetParent(rowGameObject.transform, false);
-            
-            var isUnlocked = idx < _holdTitleConfig.Count;
-            
-            if (isUnlocked)
-            {
-                titleItem.SetData(idx, _holdTitleConfig[idx], OnItemClick);
-                titleItem.SetGrayscale(false);
-            }
-            else
-            {
-                titleItem.SetData(idx, _notUnlockedTitleConfig[idx - _holdTitleConfig.Count], OnItemClick);
-                titleItem.SetGrayscale(true);
-            }
-         
-            titleItem.SetSelected(idx == _selectedIndex);
+                var titleItem = (TitleItem)spawn.Target;
+                titleItem.transform.SetParent(rowGameObject.transform, false);
+
+                var isUnlocked = idx < _holdTitleConfig.Count;
+
+                if (isUnlocked)
+                {
+                    titleItem.SetData(idx, _holdTitleConfig[idx], OnItemClick);
+                    titleItem.SetGrayscale(false);
+                }
+                else
+                {
+                    titleItem.SetData(idx, _notUnlockedTitleConfig[idx - _holdTitleConfig.Count], OnItemClick);
+                    titleItem.SetGrayscale(true);
+                }
+
+                titleItem.SetSelected(idx == _selectedIndex);*/
 
             return true;
         }

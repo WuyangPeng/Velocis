@@ -1,19 +1,14 @@
-﻿using UnityGameFramework.Runtime;
+using UnityGameFramework.Runtime;
 
 namespace Game.Scripts.Main.Runtime.Config
 {
     public class GameConfigComponent : GameFrameworkComponent
     {
-        private readonly GameConfig gameConfig = new();
+        public object ConfigInstance { get; private set; }
 
-        public void Initialize()
+        public void SetConfigInstance(object configInstance)
         {
-            gameConfig.Initialize();
-        }
-
-        public GameConfig GetGameConfig()
-        {
-            return gameConfig;
+            ConfigInstance = configInstance;
         }
     }
 }

@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using Celeritas.Config.game;
-using Game.Scripts.Main.Runtime.GameModule.Item;
 using Game.Scripts.Main.Runtime.UIItem.UIHome;
 using Game.Scripts.Main.Runtime.UIObject.UICreate;
 using GameFramework.ObjectPool;
@@ -18,8 +16,9 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIHome
         [SerializeField] private int poolCapacity = 20;
 
         private readonly List<FrameItemObject> _activeFrameItemObject = new();
-        private readonly List<frame_config> _holdFrameConfig = new();
-        private readonly List<frame_config> _notUnlockedFrameConfig = new();
+
+        //  private readonly List<frame_config> _holdFrameConfig = new();
+        // private readonly List<frame_config> _notUnlockedFrameConfig = new();
         private readonly List<GameObject> _rowGameObjects = new();
 
         private IObjectPool<FrameItemObject> _pool;
@@ -37,7 +36,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIHome
 
         private void SetFrameData()
         {
-            _holdFrameConfig.Clear();
+            /*_holdFrameConfig.Clear();
             _selectedIndex = -1;
 
             var frameModule = GameEntry.ModuleComponent.GetModule<FrameModule>();
@@ -66,7 +65,7 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIHome
             if (_selectedIndex < 0)
             {
                 _selectedIndex = 0;
-            }
+            }*/
         }
 
         public void Refresh()
@@ -78,15 +77,15 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIHome
 
         private void SpawnFrame()
         {
-            var rowCount = Mathf.CeilToInt((float)(_holdFrameConfig.Count + _notUnlockedFrameConfig.Count) / PerRow);
+            /* var rowCount = Mathf.CeilToInt((float)(_holdFrameConfig.Count + _notUnlockedFrameConfig.Count) / PerRow);
 
-            for (var row = 0; row < rowCount; row++)
-            {
-                if (!SpawnFrame(row))
-                {
-                    return;
-                }
-            }
+             for (var row = 0; row < rowCount; row++)
+             {
+                 if (!SpawnFrame(row))
+                 {
+                     return;
+                 }
+             }*/
         }
 
         private bool SpawnFrame(int row)
@@ -107,38 +106,38 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UIHome
 
         private bool SpawnFrame(int row, int column, GameObject rowGameObject)
         {
-            var idx = row * PerRow + column;
-            if (idx >= _holdFrameConfig.Count + _notUnlockedFrameConfig.Count)
-            {
-                return true;
-            }
+            /* var idx = row * PerRow + column;
+             if (idx >= _holdFrameConfig.Count + _notUnlockedFrameConfig.Count)
+             {
+                 return true;
+             }
 
-            var spawn = GetSpawn();
-            if (spawn == null)
-            {
-                return false;
-            }
+             var spawn = GetSpawn();
+             if (spawn == null)
+             {
+                 return false;
+             }
 
-            _activeFrameItemObject.Add(spawn);
+             _activeFrameItemObject.Add(spawn);
 
-            var frameItem = (FrameItem)spawn.Target;
-            frameItem.transform.SetParent(rowGameObject.transform, false);
+             var frameItem = (FrameItem)spawn.Target;
+             frameItem.transform.SetParent(rowGameObject.transform, false);
 
-            var isUnlocked = idx < _holdFrameConfig.Count;
+             var isUnlocked = idx < _holdFrameConfig.Count;
 
-            if (isUnlocked)
-            {
-                frameItem.SetData(idx, _holdFrameConfig[idx], OnItemClick);
-                frameItem.SetGrayscale(false);
-            }
-            else
-            {
-                frameItem.SetData(idx, _notUnlockedFrameConfig[idx - _holdFrameConfig.Count], OnItemClick);
-                frameItem.SetGrayscale(true);
-            }
+             if (isUnlocked)
+             {
+                 frameItem.SetData(idx, _holdFrameConfig[idx], OnItemClick);
+                 frameItem.SetGrayscale(false);
+             }
+             else
+             {
+                 frameItem.SetData(idx, _notUnlockedFrameConfig[idx - _holdFrameConfig.Count], OnItemClick);
+                 frameItem.SetGrayscale(true);
+             }
 
-            frameItem.SetSelected(idx == _selectedIndex);
-
+             frameItem.SetSelected(idx == _selectedIndex);
+ */
             return true;
         }
 

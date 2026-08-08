@@ -1,14 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Game.Scripts.Main.Runtime.Game;
-using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using Game.Scripts.Main.Runtime.Utils;
 using GameFramework.Event;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+// using Game.Scripts.Main.Runtime.GameModule.User;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.Login
@@ -112,20 +111,18 @@ namespace Game.Scripts.Main.Runtime.Login
                 Log.Error("Guest login request failed: The response was null or empty.");
                 _menuForm.OnLoginFailure(GameEntry.Localization.GetString("Login.ConnectServerFailed"));
             }
-            else
-            {
-                var tokenResponse = JsonUtility.FromJson<TokenHttpResponse>(responseJson);
+            /*  var tokenResponse = JsonUtility.FromJson<TokenHttpResponse>(responseJson);
                 if (tokenResponse == null)
                 {
                     Log.Error("Failed to deserialize the login response JSON.");
                     _menuForm.OnLoginFailure(GameEntry.Localization.GetString("Login.ConnectServerFailed"));
                 }
-                else if (tokenResponse.code == GameErrorType.Success)
+                else if (tokenResponse.code == 1)
                 {
                     Log.Info("Guest login successful.");
 
-                    var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
-                    accountModule.SetToken(tokenResponse.token, tokenResponse.expire_milliseconds);
+//                    var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+//                    accountModule.SetToken(tokenResponse.token, tokenResponse.expire_milliseconds);
 
                     // 直接将结果传递出去，不再持有它
                     _menuForm.OnLoginSuccess(tokenResponse);
@@ -135,8 +132,7 @@ namespace Game.Scripts.Main.Runtime.Login
                     Log.Warning(
                         $"Guest login failed with code: {tokenResponse.code}, Message: {tokenResponse.message}");
                     _menuForm.OnLoginFailure(tokenResponse.message);
-                }
-            }
+                }*/
         }
 
         private void OnWebRequestFailure(object sender, GameEventArgs args)

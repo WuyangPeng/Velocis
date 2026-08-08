@@ -1,4 +1,4 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2021 Jiang Yin. All rights reserved.
 // Homepage: https://gameframework.cn/
@@ -22,6 +22,7 @@ namespace UnityGameFramework.Editor
             "UnityGameFramework.Runtime",
 #endif
             "Assembly-CSharp",
+            "Velocis.Runtime",
         };
 
         private static readonly string[] RuntimeOrEditorAssemblyNames =
@@ -30,6 +31,7 @@ namespace UnityGameFramework.Editor
             "UnityGameFramework.Runtime",
 #endif
             "Assembly-CSharp",
+            "Velocis.Runtime",
 #if UNITY_2017_3_OR_NEWER
             "UnityGameFramework.Editor",
 #endif

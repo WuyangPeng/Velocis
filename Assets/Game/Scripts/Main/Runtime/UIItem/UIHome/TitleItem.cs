@@ -1,5 +1,4 @@
 using System;
-using Celeritas.Config.game;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -20,16 +19,16 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIHome
             _onClick?.Invoke(_selfIndex);
         }
 
-        public void SetData(int index, title_config data, Action<int> clickCallback)
-        {
-            _selfIndex = index;
-            _onClick = clickCallback;
+        /*  public void SetData(int index, title_config data, Action<int> clickCallback)
+          {
+              _selfIndex = index;
+              _onClick = clickCallback;
 
-            if (textTitle != null)
-            {
-                textTitle.text = data.Text;
-            }
-        }
+              if (textTitle != null)
+              {
+                  textTitle.text = data.Text;
+              }
+          }*/
 
         public void SetSelected(bool selected)
         {

@@ -1,4 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.Procedure.Scene;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityGameFramework.Runtime;
 
@@ -6,13 +6,13 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 {
     public class MailForm : UGuiForm
     {
-        private ProcedureHome _procedureHome;
+        private IProcedureFormHost _procedureHome;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            _procedureHome = (ProcedureHome)GetCurrentProcedure();
+            _procedureHome = (IProcedureFormHost)GetCurrentProcedure();
             if (_procedureHome == null)
             {
                 Log.Warning("ProcedureHome is invalid when open MailForm.");

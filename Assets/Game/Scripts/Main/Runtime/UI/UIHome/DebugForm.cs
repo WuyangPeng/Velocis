@@ -1,7 +1,7 @@
-﻿using System;
-using Celeritas.Proto.Client;
-using Game.Scripts.Main.Runtime.GameModule.Debug;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+using System;
+// using Celeritas.Proto.Client;
+// using Game.Scripts.Main.Runtime.GameModule.Debug;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,13 +17,13 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
         [SerializeField] private InputField parameterInputField;
         [SerializeField] private Dropdown typeDropdown;
 
-        private ProcedureHome _procedureHome;
+        private IProcedureFormHost _procedureHome;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            _procedureHome = (ProcedureHome)GetCurrentProcedure();
+            _procedureHome = (IProcedureFormHost)GetCurrentProcedure();
             if (_procedureHome == null)
             {
                 Log.Warning("ProcedureHome is invalid when open DebugForm.");
@@ -47,14 +47,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         private void InitDropdown()
         {
-            for (var i = debug_type.AddItem; i > debug_type.None; --i)
-            {
-                var optionData = new Dropdown.OptionData
-                {
-                    text = i.ToString()
-                };
-                typeDropdown.options.Add(optionData);
-            }
+            // for (var i = debug_type.AddItem; i > debug_type.None; --i)
+            // {
+            //     var optionData = new Dropdown.OptionData
+            //     {
+            //         text = i.ToString()
+            //     };
+            //     typeDropdown.options.Add(optionData);
+            // }
 
 
             typeDropdown.onValueChanged.AddListener(OnTypeSelected);
@@ -68,20 +68,20 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         public void OnDebugButtonClick()
         {
-            var debugModule = GameEntry.ModuleComponent.GetModule<DebugModule>();
-            long id = 0;
-            if (!string.IsNullOrEmpty(idInputField.text))
-            {
-                id = Convert.ToInt64(idInputField.text);
-            }
+            // var debugModule = GameEntry.ModuleComponent.GetModule<DebugModule>();
+            // long id = 0;
+            // if (!string.IsNullOrEmpty(idInputField.text))
+            // {
+            //     id = Convert.ToInt64(idInputField.text);
+            // }
 
-            long parameter = 0;
-            if (!string.IsNullOrEmpty(parameterInputField.text))
-            {
-                parameter = Convert.ToInt64(parameterInputField.text);
-            }
+            // long parameter = 0;
+            // if (!string.IsNullOrEmpty(parameterInputField.text))
+            // {
+            //     parameter = Convert.ToInt64(parameterInputField.text);
+            // }
 
-            debugModule.SendDebugMessage((debug_type)typeDropdown.value, id, parameter);
+            // debugModule.SendDebugMessage((debug_type)typeDropdown.value, id, parameter);
         }
     }
 }

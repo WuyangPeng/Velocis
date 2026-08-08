@@ -1,4 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.Definition.Constant;
+using Game.Scripts.Main.Runtime.Definition.Constant;
 using Game.Scripts.Main.Runtime.Sound;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework.Localization;
@@ -32,6 +32,8 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
         [SerializeField] private Toggle chineseTraditionalToggle;
 
         [SerializeField] private Toggle koreanToggle;
+
+        [SerializeField] private Toggle japaneseToggle;
 
         private Language _selectedLanguage = Language.Unspecified;
 
@@ -112,6 +114,17 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
             RefreshLanguageTips();
         }
 
+        public void OnJapaneseSelected(bool isOn)
+        {
+            if (!isOn)
+            {
+                return;
+            }
+
+            _selectedLanguage = Language.Japanese;
+            RefreshLanguageTips();
+        }
+
         public void OnSubmitButtonClick()
         {
             if (_selectedLanguage == GameEntry.Localization.Language)
@@ -158,6 +171,10 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
                 case Language.Korean:
                     koreanToggle.isOn = true;
+                    break;
+
+                case Language.Japanese:
+                    if (japaneseToggle != null) japaneseToggle.isOn = true;
                     break;
             }
         }

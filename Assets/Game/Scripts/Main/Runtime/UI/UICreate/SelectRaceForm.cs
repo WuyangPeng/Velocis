@@ -1,7 +1,7 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
-using Game.Scripts.Main.Runtime.GameModule.User;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+// using Game.Scripts.Main.Runtime.GameModule.User;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
 using UnityEngine;
@@ -20,13 +20,13 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         [SerializeField] private Text raceDescriptionTitle;
 
-        private ProcedureCreate _procedureCreate;
+        private IProcedureCreateHost _procedureCreate;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (IProcedureCreateHost)GetCurrentProcedure();
 
             if (_procedureCreate == null)
             {
@@ -40,15 +40,15 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         private void SetTitle()
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var raceType = userModule.GetRaceType();
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // var raceType = userModule.GetRaceType();
 
-            var races = GameEntry.DataTable.GetDataTable<DRRace>();
+            // var races = GameEntry.DataTable.GetDataTable<DRRace>();
 
-            var race = races.GetDataRow((int)raceType);
+            // var race = races.GetDataRow((int)raceType);
 
-            raceTitle.text = GameEntry.Localization.GetString(race.Name);
-            raceDescriptionTitle.text = GameEntry.Localization.GetString(race.Description);
+            // raceTitle.text = GameEntry.Localization.GetString(race.Name);
+            // raceDescriptionTitle.text = GameEntry.Localization.GetString(race.Description);
         }
 
         public void OnSelectHumanButtonClick(bool isOn)
@@ -58,8 +58,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetRaceType(RaceType.Human);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetRaceType(RaceType.Human);
 
             SetTitle();
         }
@@ -71,8 +71,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetRaceType(RaceType.Demon);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetRaceType(RaceType.Demon);
 
             SetTitle();
         }

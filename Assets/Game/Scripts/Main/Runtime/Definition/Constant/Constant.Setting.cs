@@ -1,4 +1,4 @@
-﻿namespace Game.Scripts.Main.Runtime.Definition.Constant
+namespace Game.Scripts.Main.Runtime.Definition.Constant
 {
     public static partial class Constant
     {
@@ -13,6 +13,12 @@
             public const string SoundVolume = "Setting.SoundVolume";
             public const string UISoundMuted = "Setting.UISoundMuted";
             public const string UISoundVolume = "Setting.UISoundVolume";
+            public const string LastAccount = "Setting.LastAccount";
+            public const string VibrationEnabled = "Setting.VibrationEnabled";
+            public const string FullscreenEnabled = "Setting.FullscreenEnabled";
+            public const string GraphicQuality = "Setting.GraphicQuality";
+            public const string FeedbackLastSubmitTime = "Setting.FeedbackLastSubmitTime";
+            public const string LastReadAnnouncementTime = "Setting.LastReadAnnouncementTime";
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
     public class HandlerGeneratorInstance
     {
         private readonly Dictionary<string, ProtoMessage> _messages = new();
-        private readonly string _outputDirAbs = Path.Combine(Application.dataPath, "Game", "Scripts", "Main", "Runtime", "Network", "Generate");
+        private readonly string _outputDirAbs = Path.Combine(Application.dataPath, "Game", "Scripts", "Hotfix", "HotfixCommon", "Network", "Generate");
         private readonly string _protoRootAbs = Path.Combine(Application.dataPath, "Game", "proto");
 
         public void Run()
@@ -82,12 +82,13 @@ namespace Game.Scripts.Main.Editor.Protobuf
             stringBuilder.AppendLine("//     Do not modify");
             stringBuilder.AppendLine("// </auto-generated>");
             stringBuilder.AppendLine();
-            foreach (var namespaces in requiredNamespaces.OrderBy(n => n))
+            foreach (var namespaces in requiredNamespaces.OrderBy(n => n).Where(n => n != "Celeritas.Proto.Common"))
             {
                 stringBuilder.AppendLine($"using {namespaces};");
             }
 
             stringBuilder.AppendLine("using Celeritas.Proto.Common;");
+            stringBuilder.AppendLine("using Game.Scripts.Hotfix.HotfixCommon.Network.PacketHandler;");
             stringBuilder.AppendLine("using Game.Scripts.Main.Runtime.Network.PacketHandler;");
             stringBuilder.AppendLine("using UnityGameFramework.Runtime;");
             stringBuilder.AppendLine("using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;");
@@ -100,11 +101,11 @@ namespace Game.Scripts.Main.Editor.Protobuf
         {
             var stringBuilder = new StringBuilder();
 
-            stringBuilder.AppendLine("namespace Game.Scripts.Main.Runtime.Network.Generate");
+            stringBuilder.AppendLine("namespace Game.Scripts.Hotfix.HotfixCommon.Network.Generate");
             stringBuilder.AppendLine("{");
             stringBuilder.AppendLine($"    public class {className} : CeleritasHandlerBase<{messageName}>");
             stringBuilder.AppendLine("    {");
-            stringBuilder.AppendLine($"        public override void Handle(object sender, header header, {messageName} message)");
+            stringBuilder.AppendLine($"        protected override void Handle(object sender, header header, {messageName} message)");
             stringBuilder.AppendLine("        {");
 
             stringBuilder.Append(GenerateHandleMethodBody(message, messageName));
@@ -201,8 +202,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
         {
             var files = Directory.GetFiles(rootPath, "*.proto", SearchOption.AllDirectories)
                 .Where(file =>
-                    !file.Contains(Path.DirectorySeparatorChar + "service" + Path.DirectorySeparatorChar) &&
-                    !file.Contains(Path.DirectorySeparatorChar + "common" + Path.DirectorySeparatorChar)
+                    !file.Contains(Path.DirectorySeparatorChar + "service" + Path.DirectorySeparatorChar)
                 );
 
             foreach (var file in files)
@@ -401,4 +401,4 @@ namespace Game.Scripts.Main.Editor.Protobuf
             }));
         }
     }
-}
+}    

@@ -10,7 +10,7 @@ namespace Game.Scripts.Main.Editor.BuildEvent.Generator
         [MenuItem("Velocis/Generate DataTables")]
         private static void GenerateDataTables()
         {
-            foreach (var dataTableName in ProcedurePreload.DataTableNames)
+            foreach (var dataTableName in PreloadDataTableNames.DataTableNames)
             {
                 if (!GenerateDataTables(dataTableName))
                 {

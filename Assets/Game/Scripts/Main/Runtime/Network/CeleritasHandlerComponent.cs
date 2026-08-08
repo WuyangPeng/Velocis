@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Game.Scripts.Main.Runtime.Network.PacketHandler;
@@ -12,57 +12,60 @@ namespace Game.Scripts.Main.Runtime.Network
 
         private void Start()
         {
-            // 反射注册包和包处理函数。
-
-            var celeritasHandlerBaseType = typeof(ICeleritasHandler);
-            var assembly = Assembly.GetExecutingAssembly();
-            var types = assembly.GetTypes();
-            foreach (var type in types)
+            // 反射注册包和包处理函数（支持热更程序集中的 Handler）。
+            var baseInterfaceType = typeof(ICeleritasHandler);
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            foreach (var assembly in assemblies)
             {
-                if (!type.IsClass || type.IsAbstract)
+                Type[] types;
+                try
+                {
+                    types = assembly.GetTypes();
+                }
+                catch
                 {
                     continue;
                 }
 
-                if (!celeritasHandlerBaseType.IsAssignableFrom(type))
+                foreach (var type in types)
                 {
-                    continue;
-                }
-
-                var handler = Activator.CreateInstance(type);
-
-                var baseType = type.BaseType;
-                while (baseType != null)
-                {
-                    if (baseType.IsGenericType &&
-                        baseType.GetGenericTypeDefinition() == typeof(CeleritasHandlerBase<>))
+                    if (!type.IsClass || type.IsAbstract || !baseInterfaceType.IsAssignableFrom(type))
                     {
-                        var messageType = baseType.GetGenericArguments()[0];
-                        if (_celeritasHandlers.TryGetValue(messageType, out var celeritasHandler))
-                        {
-                            Log.Warning("Duplicate handler for message type '{0}': '{1}' and '{2}'",
-                                messageType.Name,
-                                celeritasHandler.GetType().Name,
-                                type.Name);
-                        }
-                        else
-                        {
-                            _celeritasHandlers.Add(messageType, handler);
-                        }
-
-                        break;
+                        continue;
                     }
 
-                    baseType = baseType.BaseType;
+                    var interfaces = type.GetInterfaces();
+                    foreach (var iface in interfaces)
+                    {
+                        if (iface.IsGenericType && iface.GetGenericTypeDefinition() == typeof(ICeleritasHandler<>))
+                        {
+                            var messageType = iface.GetGenericArguments()[0];
+                            var handler = Activator.CreateInstance(type);
+
+                            if (_celeritasHandlers.TryGetValue(messageType, out var celeritasHandler))
+                            {
+                                Log.Warning("Duplicate handler for message type '{0}': '{1}' and '{2}'",
+                                    messageType.Name,
+                                    celeritasHandler.GetType().Name,
+                                    type.Name);
+                            }
+                            else
+                            {
+                                _celeritasHandlers.Add(messageType, handler);
+                            }
+
+                            break;
+                        }
+                    }
                 }
             }
         }
 
-        public CeleritasHandlerBase<T> GetCeleritasHandler<T>()
+        public ICeleritasHandler<T> GetCeleritasHandler<T>()
         {
             if (_celeritasHandlers.TryGetValue(typeof(T), out var handler))
             {
-                return handler as CeleritasHandlerBase<T>;
+                return handler as ICeleritasHandler<T>;
             }
 
             return null;

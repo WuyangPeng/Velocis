@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -53,7 +53,7 @@ namespace Game.Scripts.Main.Editor.Luban
 
         private static LubanOutputDirectories PrepareDirectories()
         {
-            var codeOutputDirectory = Path.Combine(Application.dataPath, "Game", "Scripts", "Main", "Runtime", "Luban");
+            var codeOutputDirectory = Path.Combine(Application.dataPath, "Game", "Scripts", "Hotfix", "HotfixCommon", "Luban");
             var dataOutputDirectory = Path.Combine(Application.dataPath, "Game", "Bin");
 
             if (!Directory.Exists(codeOutputDirectory))

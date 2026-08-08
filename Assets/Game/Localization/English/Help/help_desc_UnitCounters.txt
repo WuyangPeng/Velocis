@@ -1,0 +1,3 @@
+The basic units of the game are divided into three types: infantry, cavalry and archers.
+
+There is a strict cyclical restraint between arms: infantry restrains archers, archers restrains cavalry, and cavalry restrains infantry. When encountering a strong enemy, troops should be reasonably deployed to battle.

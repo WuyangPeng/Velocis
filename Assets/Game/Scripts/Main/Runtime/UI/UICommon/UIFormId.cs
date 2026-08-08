@@ -1,4 +1,7 @@
-﻿namespace Game.Scripts.Main.Runtime.UI.UICommon
+// 创建时间：2026-07-24
+// 修改时间：2026-07-24
+
+namespace Game.Scripts.Main.Runtime.UI.UICommon
 {
     /// <summary>
     ///     界面编号。
@@ -8,9 +11,9 @@
         Undefined = 0,
 
         /// <summary>
-        ///     弹出框。
+        ///     菜单弹出框。
         /// </summary>
-        DialogForm = 1,
+        MenuDialogForm = 1,
 
         /// <summary>
         ///     主菜单。
@@ -32,15 +35,8 @@
         /// </summary>
         LoadForm = 103,
 
-        /// <summary>
-        ///     登陆载入。
-        /// </summary>
-        LoginLoadForm = 104,
 
-        /// <summary>
-        ///     服务器列表。
-        /// </summary>
-        ServerListForm = 200,
+
 
         /// <summary>
         ///     选择难度。
@@ -195,6 +191,66 @@
         /// <summary>
         ///     邮件。
         /// </summary>
-        MailForm = 417
+        MailForm = 417,
+
+        /// <summary>
+        ///     道具详情面板。
+        /// </summary>
+        ItemDetailsForm = 500,
+
+        /// <summary>
+        ///     道具获取途径面板。
+        /// </summary>
+        ItemSourceForm = 501,
+
+        /// <summary>
+        ///     道具获得界面。
+        /// </summary>
+        ItemGetOverlayForm = 502,
+
+        /// <summary>
+        ///     安全确认与分解弹窗。
+        /// </summary>
+        ItemConfirmDialogForm = 503,
+
+        /// <summary>
+        ///     游戏主入口。
+        /// </summary>
+        MainEntryForm = 1000,
+
+        /// <summary>
+        ///     弹出框。
+        /// </summary>
+        DialogForm = 10000,
+
+        /// <summary>
+        ///     系统设置。
+        /// </summary>
+        SystemSettingForm = 10001,
+
+        /// <summary>
+        ///     帮助手册。
+        /// </summary>
+        HelpForm = 10002,
+
+        /// <summary>
+        ///     游戏公告（安民告示）。
+        /// </summary>
+        AnnouncementForm = 10003,
+
+        /// <summary>
+        ///     问题反馈（求助军师）。
+        /// </summary>
+        FeedbackForm = 10004,
+
+        /// <summary>
+        ///     服务器列表。
+        /// </summary>
+        ServerListForm = 10005,
+
+        /// <summary>
+        ///     登录加载界面。
+        /// </summary>
+        LoginLoadForm = 10006
     }
 }

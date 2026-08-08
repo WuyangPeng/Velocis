@@ -1,5 +1,5 @@
-﻿using Game.Scripts.Main.Runtime.GameModule.User;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+// using Game.Scripts.Main.Runtime.GameModule.User;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using UnityGameFramework.Runtime;
@@ -9,13 +9,13 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 {
     public class SelectTalentForm : UGuiForm
     {
-        private ProcedureCreate _procedureCreate;
+        private IProcedureCreateHost _procedureCreate;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (IProcedureCreateHost)GetCurrentProcedure();
 
             if (_procedureCreate == null)
             {
@@ -37,18 +37,18 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnEnterButtonClick()
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            if (!userModule.HasSelectTalent())
-            {
-                GameEntry.UI.OpenDialog(new DialogParams
-                {
-                    Mode = 1,
-                    Title = GameEntry.Localization.GetString("Talent.OpenTalent.Title"),
-                    Message = GameEntry.Localization.GetString("Talent.OpenTalent.Content")
-                });
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // if (!userModule.HasSelectTalent())
+            // {
+            //     GameEntry.UI.OpenDialog(new DialogParams
+            //     {
+            //         Mode = 1,
+            //         Title = GameEntry.Localization.GetString("Talent.OpenTalent.Title"),
+            //         Message = GameEntry.Localization.GetString("Talent.OpenTalent.Content")
+            //     });
 
-                return;
-            }
+            //     return;
+            // }
 
             _procedureCreate.SaveData();
             _procedureCreate.EnterGame();

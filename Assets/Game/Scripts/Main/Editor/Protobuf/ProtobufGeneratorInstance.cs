@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -24,7 +24,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
             var projectRoot = _directory.FullName;
             _protocPath = Path.Combine(projectRoot, "Assets", "Plugins", "libs", "Google.Protobuf", "protoc.exe");
             _protoDirectory = Path.Combine(projectRoot, "Assets", "Game");
-            _outputDirectory = Path.Combine(projectRoot, "Assets", "Game", "Scripts", "Main", "Runtime", "Protobuf");
+            _outputDirectory = Path.Combine(projectRoot, "Assets", "Game", "Scripts", "Hotfix", "HotfixCommon", "Protobuf");
         }
 
         public void Run()

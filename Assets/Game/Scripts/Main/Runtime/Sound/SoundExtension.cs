@@ -1,4 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameUtility;
 using GameFramework;
 using GameFramework.Sound;
@@ -59,6 +59,7 @@ namespace Game.Scripts.Main.Runtime.Sound
             playSoundParams.Loop = drSound.Loop;
             playSoundParams.VolumeInSoundGroup = drSound.Volume;
             playSoundParams.SpatialBlend = drSound.SpatialBlend;
+            Log.Debug("Play sound '{0}' (Asset: '{1}').", soundId.ToString(), drSound.AssetName);
             return soundComponent.PlaySound(AssetUtility.GetSoundAsset(drSound.AssetName), "Sound", Definition.Constant.Constant.AssetPriority.SoundAsset, playSoundParams, bindingEntity != null ? bindingEntity.Entity : null, userData);
         }
 
@@ -77,6 +78,7 @@ namespace Game.Scripts.Main.Runtime.Sound
             playSoundParams.Loop = false;
             playSoundParams.VolumeInSoundGroup = drUISound.Volume;
             playSoundParams.SpatialBlend = 0f;
+            Log.Debug("Play UI sound '{0}' (Asset: '{1}').", uiSoundId.ToString(), drUISound.AssetName);
             return soundComponent.PlaySound(AssetUtility.GetUISoundAsset(drUISound.AssetName), "UISound", Definition.Constant.Constant.AssetPriority.UISoundAsset, playSoundParams, userData);
         }
 

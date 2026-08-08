@@ -1,4 +1,4 @@
-﻿using Game.Scripts.Main.Runtime.Base;
+using Game.Scripts.Main.Runtime.Base;
 using GameFramework;
 
 namespace Game.Scripts.Main.Runtime.GameUtility
@@ -57,7 +57,7 @@ namespace Game.Scripts.Main.Runtime.GameUtility
 
         public static string GetUISoundAsset(string assetName)
         {
-            return Utility.Text.Format("Assets/Game/UI/UISounds/{0}.wav", assetName);
+            return Utility.Text.Format("Assets/Game/UISounds/{0}.wav", assetName);
         }
 
         public static string GetLubanAsset(string assetName)

@@ -1,0 +1,3 @@
+During the battle, the general accumulates rage points with normal attacks and hits.
+
+When the rage is full, you can manually tap the general avatar to unleash a powerful active tactic. The command method is a passive method of warfare, which will be triggered automatically at the beginning of the battle.

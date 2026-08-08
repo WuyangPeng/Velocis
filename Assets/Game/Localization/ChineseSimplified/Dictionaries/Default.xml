@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Dictionaries>
     <Dictionary Language="ChineseSimplified">
         <String Key="Game.Name" Value="Velocis"/>
@@ -30,9 +30,7 @@
         <String Key="Menu.ConfirmButton" Value="确定"/>
         <String Key="Menu.LoadGame" Value="进入游戏"/>
         <String Key="Menu.CreateNewGame" Value="创建新游戏"/>
-        <String Key="Dialog.ConfirmButton" Value="确定"/>
-        <String Key="Dialog.CancelButton" Value="取消"/>
-        <String Key="Dialog.OtherButton" Value=""/>
+
         <String Key="ForceUpdate.Title" Value="强制更新"/>
         <String Key="ForceUpdate.Message" Value="当前游戏版本过旧，是否前往更新？"/>
         <String Key="ForceUpdate.UpdateButton" Value="更新"/>
@@ -2869,5 +2867,525 @@
         <String Key="Name.XinXuan" Value="馨玄"/>
         <String Key="Name.TuoLuo" Value="拓珞"/>
 
+        <!-- ==================== Item System (1.1.1.1) ==================== -->
+        <String Key="Item.GetToast" Value="获得 {0} x {1}"/>
+        <String Key="Item.ExpireRemind" Value="限时物品&quot;{0}&quot;将在 3 天后过期！"/>
+        <String Key="Item.LockedErr" Value="道具已锁定，无法执行该操作！"/>
+        <String Key="Item.BroadcastRareGet" Value="恭喜玩家 {0} 获得了稀有道具 {1}！"/>
+        <String Key="Item.DecomposeWarning" Value="警告：分解后装备将永久消失，不可找回！"/>
+        <String Key="Item.ConfirmVerifyText" Value="确认分解"/>
+        <String Key="Item.ConfirmInputPrompt" Value="请在下方输入&quot;确认分解&quot;以继续操作"/>
+        <String Key="Item.GetNormalTitle" Value="获得物资"/>
+        <String Key="Item.GetRareTitle" Value="获得稀有物资"/>
+
+        <!-- ==================== Item Data (item.xlsx) ==================== -->
+
+        <!-- 货币与定制物品 (Currency & Custom Items) -->
+        <String Key="Item.Name_1001001" Value="黄金"/>
+        <String Key="Item.Desc_1001001" Value="顶级货币（充值/活动），用于加速、购买特权"/>
+        <String Key="Item.Name_1001002" Value="白银"/>
+        <String Key="Item.Desc_1001002" Value="高级货币，用于将领俸禄、稀有道具购买"/>
+        <String Key="Item.Name_1001003" Value="铜钱"/>
+        <String Key="Item.Desc_1001003" Value="基础货币，用于市场买卖、低级招募"/>
+        <String Key="Item.Name_1001004" Value="人口"/>
+        <String Key="Item.Desc_1001004" Value="招募士兵所需的基础人口资源"/>
+        <String Key="Item.Name_1011001" Value="改名卡"/>
+        <String Key="Item.Desc_1011001" Value=""/>
+        <String Key="Item.Name_1021001" Value="声望"/>
+        <String Key="Item.Desc_1021001" Value="通过完成任务和事件获得，解锁高级爵位与特殊NPC互动"/>
+        <String Key="Item.Name_1021002" Value="功勋"/>
+        <String Key="Item.Desc_1021002" Value="通过PVP战斗和国家任务获得，用于兑换专属装备与称号"/>
+
+        <!-- 头像 (Avatar Items) -->
+        <String Key="Item.Name_4011001" Value="默认头像"/>
+        <String Key="Item.Desc_4011001" Value=""/>
+        <String Key="Item.Name_4024001" Value="头像-嬴政"/>
+        <String Key="Item.Desc_4024001" Value=""/>
+        <String Key="Item.Name_4024002" Value="头像-刘彻"/>
+        <String Key="Item.Desc_4024002" Value=""/>
+        <String Key="Item.Name_4024003" Value="头像-李世民"/>
+        <String Key="Item.Desc_4024003" Value=""/>
+        <String Key="Item.Name_4034001" Value="头像-赵飞燕"/>
+        <String Key="Item.Desc_4034001" Value=""/>
+        <String Key="Item.Name_4034002" Value="头像-蔡文姬"/>
+        <String Key="Item.Desc_4034002" Value=""/>
+        <String Key="Item.Name_4034003" Value="头像-杨玉环"/>
+        <String Key="Item.Desc_4034003" Value=""/>
+        <String Key="Item.Name_4044001" Value="头像-白起"/>
+        <String Key="Item.Desc_4044001" Value=""/>
+        <String Key="Item.Name_4044002" Value="头像-张骞"/>
+        <String Key="Item.Desc_4044002" Value=""/>
+        <String Key="Item.Name_4044003" Value="头像-房玄龄"/>
+        <String Key="Item.Desc_4044003" Value=""/>
+
+        <!-- 头像框 (Frame Items) -->
+        <String Key="Item.Name_5011001" Value="默认头像框"/>
+        <String Key="Item.Desc_5011001" Value=""/>
+        <String Key="Item.Name_5011002" Value="头像框-白"/>
+        <String Key="Item.Desc_5011002" Value=""/>
+        <String Key="Item.Name_5011003" Value="头像框-绿"/>
+        <String Key="Item.Desc_5011003" Value=""/>
+        <String Key="Item.Name_5011004" Value="头像框-蓝"/>
+        <String Key="Item.Desc_5011004" Value=""/>
+        <String Key="Item.Name_5011005" Value="头像框-紫"/>
+        <String Key="Item.Desc_5011005" Value=""/>
+        <String Key="Item.Name_5011006" Value="头像框-橙"/>
+        <String Key="Item.Desc_5011006" Value=""/>
+        <String Key="Item.Name_5011007" Value="头像框-红"/>
+        <String Key="Item.Desc_5011007" Value=""/>
+
+        <!-- 称号 (Title Items) -->
+        <String Key="Item.Name_6011001" Value="从戎校尉"/>
+        <String Key="Item.Desc_6011001" Value=""/>
+        <String Key="Item.Name_6011002" Value="讨逆先锋"/>
+        <String Key="Item.Desc_6011002" Value=""/>
+        <String Key="Item.Name_6011003" Value="百战悍将"/>
+        <String Key="Item.Desc_6011003" Value=""/>
+        <String Key="Item.Name_6011004" Value="持节偏军"/>
+        <String Key="Item.Desc_6011004" Value=""/>
+        <String Key="Item.Name_6011005" Value="威武都督"/>
+        <String Key="Item.Desc_6011005" Value=""/>
+        <String Key="Item.Name_6011006" Value="镇国大将军"/>
+        <String Key="Item.Desc_6011006" Value=""/>
+        <String Key="Item.Name_6011007" Value="名震寰宇"/>
+        <String Key="Item.Desc_6011007" Value=""/>
+        <String Key="Item.Name_6011008" Value="兵圣传人"/>
+        <String Key="Item.Desc_6011008" Value=""/>
+        <String Key="Item.Name_6011009" Value="开国元勋"/>
+        <String Key="Item.Desc_6011009" Value=""/>
+        <String Key="Item.Name_6011010" Value="千古战神"/>
+        <String Key="Item.Desc_6011010" Value=""/>
+
+        <!-- 英雄 (Hero Items) -->
+        <String Key="Item.Name_7024001" Value="嬴政"/>
+        <String Key="Item.Desc_7024001" Value=""/>
+        <String Key="Item.Name_7024002" Value="刘彻"/>
+        <String Key="Item.Desc_7024002" Value=""/>
+        <String Key="Item.Name_7024003" Value="李世民"/>
+        <String Key="Item.Desc_7024003" Value=""/>
+        <String Key="Item.Name_7034001" Value="赵飞燕"/>
+        <String Key="Item.Desc_7034001" Value=""/>
+        <String Key="Item.Name_7034002" Value="蔡文姬"/>
+        <String Key="Item.Desc_7034002" Value=""/>
+        <String Key="Item.Name_7034003" Value="杨玉环"/>
+        <String Key="Item.Desc_7034003" Value=""/>
+        <String Key="Item.Name_7044001" Value="白起"/>
+        <String Key="Item.Desc_7044001" Value=""/>
+        <String Key="Item.Name_7044002" Value="张骞"/>
+        <String Key="Item.Desc_7044002" Value=""/>
+        <String Key="Item.Name_7044003" Value="房玄龄"/>
+        <String Key="Item.Desc_7044003" Value=""/>
+
+        <!-- 经验相关 (Exp Items) -->
+        <String Key="Item.Name_8001001" Value="英雄经验"/>
+        <String Key="Item.Desc_8001001" Value=""/>
+        <String Key="Item.Name_8001002" Value="VIP经验"/>
+        <String Key="Item.Desc_8001002" Value=""/>
+
+        <!-- 建筑 (Building Items) -->
+        <String Key="Item.Name_9011001" Value="农田"/>
+        <String Key="Item.Desc_9011001" Value=""/>
+        <String Key="Item.Name_9021002" Value="伐木场"/>
+        <String Key="Item.Desc_9021002" Value=""/>
+        <String Key="Item.Name_9031003" Value="采石场"/>
+        <String Key="Item.Desc_9031003" Value=""/>
+        <String Key="Item.Name_9041004" Value="矿场"/>
+        <String Key="Item.Desc_9041004" Value=""/>
+        <String Key="Item.Name_9051005" Value="民居"/>
+        <String Key="Item.Desc_9051005" Value=""/>
+        <String Key="Item.Name_9061006" Value="府衙"/>
+        <String Key="Item.Desc_9061006" Value=""/>
+        <String Key="Item.Name_9071007" Value="兵营"/>
+        <String Key="Item.Desc_9071007" Value=""/>
+        <String Key="Item.Name_9081008" Value="靶场"/>
+        <String Key="Item.Desc_9081008" Value=""/>
+        <String Key="Item.Name_9091009" Value="马厩"/>
+        <String Key="Item.Desc_9091009" Value=""/>
+        <String Key="Item.Name_9101010" Value="工坊"/>
+        <String Key="Item.Desc_9101010" Value=""/>
+        <String Key="Item.Name_9111011" Value="城墙"/>
+        <String Key="Item.Desc_9111011" Value=""/>
+        <String Key="Item.Name_9121012" Value="箭塔"/>
+        <String Key="Item.Desc_9121012" Value=""/>
+        <String Key="Item.Name_9131013" Value="医馆"/>
+        <String Key="Item.Desc_9131013" Value=""/>
+        <String Key="Item.Name_9141014" Value="书院"/>
+        <String Key="Item.Desc_9141014" Value=""/>
+        <String Key="Item.Name_9151015" Value="市场"/>
+        <String Key="Item.Desc_9151015" Value=""/>
+
+        <!-- 资源 (Resource Items) -->
+        <String Key="Item.Name_10001001" Value="粮食"/>
+        <String Key="Item.Desc_10001001" Value="维持军队和人口的基本资源"/>
+        <String Key="Item.Name_10001002" Value="木材"/>
+        <String Key="Item.Desc_10001002" Value="建筑升级和器械制造的主要资源"/>
+        <String Key="Item.Name_10001003" Value="石头"/>
+        <String Key="Item.Desc_10001003" Value="城墙加固和高级建筑的必备资源"/>
+        <String Key="Item.Name_10001004" Value="铁矿"/>
+        <String Key="Item.Desc_10001004" Value="兵器打造和重型装备的核心资源"/>
+
+        <!-- 装备 (Equipment Items) -->
+        <String Key="Item.Name_3001001" Value="武器"/>
+        <String Key="Item.Desc_3001001" Value="提升将领和士兵攻击力"/>
+        <String Key="Item.Name_3001002" Value="防具"/>
+        <String Key="Item.Desc_3001002" Value="提升将领和士兵防御力"/>
+        <String Key="Item.Name_3001003" Value="配饰"/>
+        <String Key="Item.Desc_3001003" Value="提升将领附加属性"/>
+
+        <!-- 士兵 (Soldier Items) -->
+        <String Key="Item.Name_11001001" Value="刀盾兵"/>
+        <String Key="Item.Desc_11001001" Value="基础步兵，防御较好"/>
+        <String Key="Item.Name_11001002" Value="长枪兵"/>
+        <String Key="Item.Desc_11001002" Value="克制骑兵，擅长防守反击"/>
+        <String Key="Item.Name_11001003" Value="弓箭手"/>
+        <String Key="Item.Desc_11001003" Value="远程输出，伤害高但脆弱"/>
+        <String Key="Item.Name_11001004" Value="弩手"/>
+        <String Key="Item.Desc_11001004" Value="高破甲，伤害稳定"/>
+        <String Key="Item.Name_11001005" Value="轻骑兵"/>
+        <String Key="Item.Desc_11001005" Value="快速机动，擅长突袭"/>
+        <String Key="Item.Name_11001006" Value="重骑兵"/>
+        <String Key="Item.Desc_11001006" Value="冲击力强，重装突入敌阵"/>
+        <String Key="Item.Name_11001007" Value="神臂弓手"/>
+        <String Key="Item.Desc_11001007" Value="超远射程的精锐射手"/>
+        <String Key="Item.Name_11001008" Value="陌刀队"/>
+        <String Key="Item.Desc_11001008" Value="重装步兵，步兵巅峰战力"/>
+
+        <!-- 器械 (Machine Items) -->
+        <String Key="Item.Name_12001001" Value="投石机"/>
+        <String Key="Item.Desc_12001001" Value="远程破坏，攻城利器"/>
+        <String Key="Item.Name_12001002" Value="冲车"/>
+        <String Key="Item.Desc_12001002" Value="专门用来攻击城门"/>
+        <String Key="Item.Name_12001003" Value="云梯"/>
+        <String Key="Item.Desc_12001003" Value="快速登城，辅助步兵攻城"/>
+        <String Key="Item.Name_12001004" Value="床弩"/>
+        <String Key="Item.Desc_12001004" Value="远程强力，防守和野战利器"/>
+        <String Key="Item.Name_12001005" Value="滚木礌石"/>
+        <String Key="Item.Desc_12001005" Value="防御消耗品，对城下敌军造成毁灭打击"/>
+        <String Key="Item.Name_12001006" Value="火油罐"/>
+        <String Key="Item.Desc_12001006" Value="燃烧攻击，造成持续范围伤害"/>
+
+        <!-- 道具系统 UI 多语言 -->
+        <String Key="Item.SlotWeapon" Value="槽位：武器"/>
+        <String Key="Item.SlotNone" Value="槽位：无"/>
+        <String Key="Item.SlotArmor" Value="槽位：防具"/>
+        <String Key="Item.SlotAccessory" Value="槽位：饰品"/>
+        <String Key="Item.TypeConsumable" Value="消耗品"/>
+        <String Key="Item.TypeEquipment" Value="装备"/>
+        <String Key="Item.TypeResource" Value="军备资源"/>
+        <String Key="Item.TypeUnknown" Value="普通物品"/>
+        <String Key="Item.DurabilityFormat" Value="耐久度: {0} / {1}"/>
+        <String Key="Item.ActionUse" Value="使用"/>
+        <String Key="Item.ActionBatchUse" Value="批量使用"/>
+        <String Key="Item.ActionEquip" Value="穿戴"/>
+        <String Key="Item.ActionUnequip" Value="卸下"/>
+        <String Key="Item.ActionLock" Value="锁定"/>
+        <String Key="Item.ActionUnlock" Value="解锁"/>
+        <String Key="Item.ActionRecast" Value="重铸"/>
+        <String Key="Item.ActionDecompose" Value="分解"/>
+        <String Key="Item.SourceTitle" Value="获取来源"/>
+        <String Key="Item.SourceEmptyTip" Value="暂无获取途径"/>
+        <String Key="Item.GetClickCloseTip" Value="点击任意位置关闭"/>
+        <String Key="Item.DecomposeWarningLocked" Value="该道具已锁定，请在勾选并在下方输入【确认分解】进行安全解锁并分解！"/>
+        <String Key="Item.DecomposeWarningNormal" Value="分解后装备将永久消失，不可找回！"/>
+        <String Key="Item.DecomposeOutputTitle" Value="预计返还材料：\n{0}"/>
+        <String Key="Item.AttributePhysicsAttack" Value="物理攻击力"/>
+        <String Key="Item.AttributeCritRate" Value="暴击率"/>
+        <String Key="Item.AttributeRandomAffix" Value="随机词条"/>
+        <String Key="Item.SourceTypeCampaign" Value="战役"/>
+        <String Key="Item.SourceCampaignDemo" Value="第3章 寒铁矿山 (挑战)"/>
+        <String Key="Item.SourceTypeShop" Value="商店"/>
+        <String Key="Item.SourceShopDemo" Value="竞技场军备商店"/>
+        <String Key="Item.SourceTypeActivity" Value="活动"/>
+        <String Key="Item.SourceActivityDemo" Value="限时围城保卫战"/>
+
+        <!-- 主入口 UI 多语言 -->
+        <String Key="MainEntry.Title" Value="九州"/>
+        <String Key="MainEntry.InputPlaceholder" Value="请输入您的客卿账号"/>
+        <String Key="MainEntry.BtnEnterGame" Value="入主九州"/>
+        <String Key="MainEntry.BtnSetting" Value="军政调整"/>
+        <String Key="MainEntry.BtnGameIntro" Value="九州通鉴"/>
+        <String Key="MainEntry.BtnAnnouncement" Value="安民告示"/>
+        <String Key="MainEntry.BtnCustomerService" Value="求助军师"/>
+        <String Key="MainEntry.BtnQuit" Value="解甲归田"/>
+        <String Key="MainEntry.HealthyGameAdvice" Value="抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。&#xA;适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。"/>
+        <String Key="MainEntry.CopyrightText" Value="© 2026 太一工作室 All Rights Reserved."/>
+        
+        <!-- 提示框 -->
+        <String Key="Dialog.ConfirmButton" Value="确认"/>
+        <String Key="Dialog.CancelButton" Value="否决"/>
+        <String Key="Dialog.OtherButton" Value="搁置"/>
+        <String Key="Dialog.AskQuitGameTitle" Value="解甲确认"/>
+        <String Key="Dialog.AskQuitGameMessage" Value="天下未定，主公是否确认解甲归田？"/>
+        
+        <!-- 系统设置 -->
+        <String Key="SystemSetting.Title" Value="军政调整"/>
+        <String Key="SystemSetting.Music" Value="背景音乐"/>
+        <String Key="SystemSetting.Sound" Value="音效"/>
+        <String Key="SystemSetting.UISound" Value="UI音效"/>
+        <String Key="SystemSetting.Language" Value="语言设置"/>
+        <String Key="SystemSetting.GraphicQuality" Value="特效选择"/>
+        <String Key="SystemSetting.Vibration" Value="开启震动"/>
+        <String Key="SystemSetting.Fullscreen" Value="开启全屏"/>
+        <String Key="SystemSetting.GraphicQuality.High" Value="高"/>
+        <String Key="SystemSetting.GraphicQuality.Medium" Value="中"/>
+        <String Key="SystemSetting.GraphicQuality.Low" Value="低"/>
+        <String Key="SystemSetting.Language.ChineseSimplified" Value="简体中文"/>
+        <String Key="SystemSetting.Language.ChineseTraditional" Value="繁体中文"/>
+        <String Key="SystemSetting.Language.English" Value="英文"/>
+        <String Key="SystemSetting.Language.Korean" Value="韩文"/>
+        <String Key="SystemSetting.Language.Japanese" Value="日文"/>
+        
+        <!-- 帮助界面 -->
+        <String Key="HelpForm.Prev" Value="上一页"/>
+        <String Key="HelpForm.Next" Value="下一页"/>
+        <String Key="HelpForm.Title" Value="九州通鉴"/>
+        <String Key="HelpForm.NoContent" Value="暂无内容"/>
+        <String Key="HelpForm.LoadFailed" Value="内容加载中或暂时不可用"/>
+        <String Key="HelpForm.PageFormat" Value="{0} / {1}"/>
+        <String Key="HelpForm.BtnClose" Value="合 卷"/>
+
+        <!-- 帮助手册 · 一级分类 -->
+        <String Key="HelpForm.Category.Beginner" Value="九州初识"/>
+        <String Key="HelpForm.Category.LordDestiny" Value="主公命途"/>
+        <String Key="HelpForm.Category.GeneralsBonds" Value="名将相交"/>
+        <String Key="HelpForm.Category.Progression" Value="将领培养"/>
+        <String Key="HelpForm.Category.Exploration" Value="沙盘探索"/>
+        <String Key="HelpForm.Category.FAQ" Value="乱世百问"/>
+
+        <!-- 帮助手册 · 二级页 -->
+        <String Key="HelpForm.Page.GameIntro" Value="乱世序章"/>
+        <String Key="HelpForm.Page.BasicControls" Value="界面与基本操作"/>
+        <String Key="HelpForm.Page.FateChoices" Value="命运抉择"/>
+        <String Key="HelpForm.Page.FiefdomManage" Value="封地建设"/>
+        <String Key="HelpForm.Page.GeneralRecruit" Value="招贤纳士"/>
+        <String Key="HelpForm.Page.LordGenBonds" Value="君臣羁绊"/>
+        <String Key="HelpForm.Page.StatsTalents" Value="属性与成长"/>
+        <String Key="HelpForm.Page.DivineGear" Value="神兵宝物"/>
+        <String Key="HelpForm.Page.WorldExplore" Value="大地图探索"/>
+        <String Key="HelpForm.Page.TacticsBattle" Value="战场对决"/>
+        <String Key="HelpForm.Page.FAQGrowth" Value="剧情与培养疑难"/>
+        <String Key="HelpForm.Page.FAQExplore" Value="战斗与探索疑难"/>
+
+        <!-- 帮助手册 · 三级条目标题 -->
+        <String Key="HelpForm.Item.GameWorld.Title" Value="《九州》世界观介绍"/>
+        <String Key="HelpForm.Item.LordPath.Title" Value="主公之路与天下大势"/>
+        <String Key="HelpForm.Item.DifficultyMode.Title" Value="游戏难度与命途模式"/>
+        <String Key="HelpForm.Item.MainUI.Title" Value="主界面军政厅功能区"/>
+        <String Key="HelpForm.Item.MapExploration.Title" Value="行辕大地图移动与探索"/>
+        <String Key="HelpForm.Item.InventoryUsage.Title" Value="行囊与道具使用"/>
+        <String Key="HelpForm.Item.BranchingStory.Title" Value="剧情分歧与选择"/>
+        <String Key="HelpForm.Item.LordPersonality.Title" Value="主公性格偏性"/>
+        <String Key="HelpForm.Item.PersonalityInfluence.Title" Value="性格对局势及名将的影响"/>
+        <String Key="HelpForm.Item.FiefdomGovernance.Title" Value="军政厅与内政职务委任"/>
+        <String Key="HelpForm.Item.PeopleQuests.Title" Value="民生事件处理"/>
+        <String Key="HelpForm.Item.FiefdomVault.Title" Value="封地府库资源产出"/>
+        <String Key="HelpForm.Item.RecruitVisit.Title" Value="寻访名士与登门拜访"/>
+        <String Key="HelpForm.Item.GeneralGifts.Title" Value="赠礼与好感度提升"/>
+        <String Key="HelpForm.Item.GeneralLoyalty.Title" Value="忠诚度变化与叛逃危机"/>
+        <String Key="HelpForm.Item.BondLevel.Title" Value="羁绊等级与交情解锁"/>
+        <String Key="HelpForm.Item.GeneralBiography.Title" Value="专属列传与名将逸闻"/>
+        <String Key="HelpForm.Item.ComboTactics.Title" Value="合击战法与协同防御"/>
+        <String Key="HelpForm.Item.FourAttributes.Title" Value="四维属性作用"/>
+        <String Key="HelpForm.Item.GeneralTalents.Title" Value="将领特长与天赋树"/>
+        <String Key="HelpForm.Item.GeneralBreakthrough.Title" Value="将领境界突破与觉醒"/>
+        <String Key="HelpForm.Item.DivineWeapon.Title" Value="专属神兵打造与淬炼"/>
+        <String Key="HelpForm.Item.TacticalBooks.Title" Value="兵法奇书与传家宝物"/>
+        <String Key="HelpForm.Item.GearEquipment.Title" Value="装备穿戴与词条洗炼"/>
+        <String Key="HelpForm.Item.FogAndPasses.Title" Value="迷雾与关隘阻隔"/>
+        <String Key="HelpForm.Item.RandomEncounters.Title" Value="地图随机遭遇与轶事任务"/>
+        <String Key="HelpForm.Item.MysteryRuins.Title" Value="秘境古迹攻略"/>
+        <String Key="HelpForm.Item.UnitCounters.Title" Value="兵种克制关系"/>
+        <String Key="HelpForm.Item.BattleFormations.Title" Value="古法战阵排列"/>
+        <String Key="HelpForm.Item.TacticReleases.Title" Value="主动与指挥战法释放"/>
+        <String Key="HelpForm.Item.FaqPrestige.Title" Value="如何快速提升主公名望？"/>
+        <String Key="HelpForm.Item.FaqAffection.Title" Value="将领好感度停滞不前怎么办？"/>
+        <String Key="HelpForm.Item.FaqWeaponMaterials.Title" Value="专属神兵材料如何获取？"/>
+        <String Key="HelpForm.Item.FaqComboFail.Title" Value="为什么战斗中无法发动合击技？"/>
+        <String Key="HelpForm.Item.FaqDefeatGuide.Title" Value="遇到打不过的敌军该如何应对？"/>
+        <String Key="HelpForm.Item.FaqLostGeneral.Title" Value="大地图上出走的名将如何重新寻访？"/>
+
+        <!-- 游戏公告 -->
+        <String Key="Tag.New" Value="新"/>
+        <String Key="Tag.Hot" Value="热"/>
+        <String Key="Tag.Maintenance" Value="维"/>
+        <String Key="AnnouncementForm.Title" Value="安民告示"/>
+        <String Key="AnnouncementForm.BtnRead" Value="已 阅"/>
+        <String Key="AnnouncementForm.NoContent" Value="暂无告示"/>
+        <String Key="AnnouncementForm.FetchFailedTitle" Value="告示难达"/>
+        <String Key="AnnouncementForm.FetchFailedMessage" Value="未能取得安民告示，请检查网络后重试。"/>
+        <String Key="AnnouncementForm.Retry" Value="再试一次"/>
+        <String Key="AnnouncementForm.Close" Value="作罢"/>
+
+        <!-- 问题反馈 -->
+        <String Key="FeedbackForm.Title" Value="求助军师"/>
+        <String Key="FeedbackForm.InputPlaceholder" Value="请主公详述事由（10-500字）"/>
+        <String Key="FeedbackForm.CharCountFormat" Value="{0} / {1}"/>
+        <String Key="FeedbackForm.UploadHint" Value="截图预览"/>
+        <String Key="FeedbackForm.SelectImageTitle" Value="选择截图"/>
+        <String Key="FeedbackForm.BtnUpload" Value="附上截图"/>
+        <String Key="FeedbackForm.BtnSubmit" Value="呈 送"/>
+        <String Key="FeedbackForm.BtnCancel" Value="搁 置"/>
+        <String Key="FeedbackForm.CooldownFormat" Value="{0}s"/>
+        <String Key="Feedback.Type.Bug" Value="问题反馈"/>
+        <String Key="Feedback.Type.Suggestion" Value="意见建议"/>
+        <String Key="Feedback.Type.Report" Value="举报他人"/>
+        <String Key="Feedback.MinLengthError" Value="上表字数不足，需至少阐明十字。"/>
+        <String Key="Feedback.SubmitSuccess" Value="启奏主公，折子已飞鸽呈送朝廷。"/>
+        <String Key="Feedback.CooldownError" Value="折子递交频繁，请主公 {0} 秒后再奏。"/>
+        <String Key="Feedback.ImageTooLarge" Value="截图过大，请控制在 5MB 以内。"/>
+        <String Key="Feedback.ImageLoadFailed" Value="截图读取失败，请重试。"/>
+        <String Key="Feedback.UploadImageFailed" Value="截图上传失败，请稍后重试。"/>
+        <String Key="Feedback.SubmitFailed" Value="呈送失败，请检查网络后重试。"/>
+        <String Key="FeedbackForm.ServerLabel" Value="服务器："/>
+        <String Key="FeedbackForm.PlayerIdLabel" Value="玩家ID："/>
+        <String Key="FeedbackForm.AnonymousLabel" Value="匿名呈报"/>
+        <String Key="FeedbackForm.ServerPlaceholder" Value="请输入服务器..."/>
+        <String Key="FeedbackForm.PlayerIdPlaceholder" Value="请输入玩家ID..."/>
+        <String Key="Feedback.ServerEmptyError" Value="请主公输入服务器名称。"/>
+        <String Key="Feedback.PlayerIdEmptyError" Value="请主公输入玩家ID。"/>
+        <String Key="FeedbackForm.SelectImageSourceMessage" Value="请选择附件图片获取方式："/>
+        <String Key="FeedbackForm.BtnCaptureScreen" Value="截取当前画面"/>
+        <String Key="FeedbackForm.BtnSelectFile" Value="选择本地文件"/>
+
+        <!-- 服务器列表 -->
+        <String Key="ServerList.Title" Value="选择割据之地"/>
+        <String Key="ServerList.TabRecommended" Value="推荐/历史"/>
+        <String Key="ServerList.BtnConfirm" Value="确定立足"/>
+        <String Key="ServerList.StatusSmooth" Value="风平浪静"/>
+        <String Key="ServerList.StatusHot" Value="兵马喧嚣"/>
+        <String Key="ServerList.StatusFull" Value="千军万马"/>
+        <String Key="ServerList.StatusMaintain" Value="闭关整顿"/>
+        <String Key="ServerList.HasCharacter" Value="主公"/>
+        <String Key="ServerList.Zone.1" Value="司隶"/>
+        <String Key="ServerList.Zone.2" Value="豫州"/>
+        <String Key="ServerList.Zone.3" Value="冀州"/>
+        <String Key="ServerList.Zone.4" Value="兖州"/>
+        <String Key="ServerList.Zone.5" Value="徐州"/>
+        <String Key="ServerList.Zone.6" Value="青州"/>
+        <String Key="ServerList.Zone.7" Value="荆州"/>
+        <String Key="ServerList.Zone.8" Value="扬州"/>
+        <String Key="ServerList.Zone.9" Value="益州"/>
+        <String Key="ServerList.Zone.10" Value="幽州"/>
+        <String Key="ServerList.Server.test-1" Value="夏朝 #1"/>
+        <String Key="ServerList.Server.test-2" Value="商朝 #2"/>
+        <String Key="ServerList.Server.test-3" Value="西周 #3"/>
+        <String Key="ServerList.Server.test-4" Value="东周 #4"/>
+        <String Key="ServerList.Server.test-5" Value="春秋·郑 #5"/>
+        <String Key="ServerList.Server.test-6" Value="春秋·齐 #6"/>
+        <String Key="ServerList.Server.test-7" Value="春秋·鲁 #7"/>
+        <String Key="ServerList.Server.test-8" Value="春秋·宋 #8"/>
+        <String Key="ServerList.Server.test-9" Value="春秋·卫 #9"/>
+        <String Key="ServerList.Server.test-10" Value="春秋·晋 #10"/>
+        <String Key="ServerList.Server.test-11" Value="春秋·陈 #11"/>
+        <String Key="ServerList.Server.test-12" Value="春秋·楚 #12"/>
+        <String Key="ServerList.Server.test-13" Value="春秋·秦 #13"/>
+        <String Key="ServerList.Server.test-14" Value="春秋·燕 #14"/>
+        <String Key="ServerList.Server.test-15" Value="春秋·吴 #15"/>
+        <String Key="ServerList.Server.test-16" Value="春秋·越 #16"/>
+        <String Key="ServerList.Server.test-17" Value="战国·齐 #17"/>
+        <String Key="ServerList.Server.test-18" Value="战国·楚 #18"/>
+        <String Key="ServerList.Server.test-19" Value="战国·燕 #19"/>
+        <String Key="ServerList.Server.test-20" Value="战国·韩 #20"/>
+        <String Key="ServerList.Server.test-21" Value="战国·赵 #21"/>
+        <String Key="ServerList.Server.test-22" Value="战国·魏 #22"/>
+        <String Key="ServerList.Server.test-23" Value="战国·秦 #23"/>
+        <String Key="ServerList.Server.test-24" Value="战国·中山 #24"/>
+        <String Key="ServerList.Server.test-25" Value="战国·巴 #25"/>
+        <String Key="ServerList.Server.test-26" Value="战国·蜀 #26"/>
+        <String Key="ServerList.Server.test-27" Value="秦朝 #27"/>
+        <String Key="ServerList.Server.test-28" Value="西楚 #28"/>
+        <String Key="ServerList.Server.test-29" Value="西汉 #29"/>
+        <String Key="ServerList.Server.test-30" Value="新朝 #30"/>
+        <String Key="ServerList.Server.test-31" Value="东汉 #31"/>
+        <String Key="ServerList.Server.test-32" Value="三国·魏 #32"/>
+        <String Key="ServerList.Server.test-33" Value="三国·蜀汉 #33"/>
+        <String Key="ServerList.Server.test-34" Value="三国·吴 #34"/>
+        <String Key="ServerList.Server.test-35" Value="西晋 #35"/>
+        <String Key="ServerList.Server.test-36" Value="东晋 #36"/>
+        <String Key="ServerList.Server.test-37" Value="十六国·前赵 #37"/>
+        <String Key="ServerList.Server.test-38" Value="十六国·成汉 #38"/>
+        <String Key="ServerList.Server.test-39" Value="十六国·前凉 #39"/>
+        <String Key="ServerList.Server.test-40" Value="十六国·后赵 #40"/>
+        <String Key="ServerList.Server.test-41" Value="十六国·前燕 #41"/>
+        <String Key="ServerList.Server.test-42" Value="十六国·前秦 #42"/>
+        <String Key="ServerList.Server.test-43" Value="十六国·后燕 #43"/>
+        <String Key="ServerList.Server.test-44" Value="十六国·后秦 #44"/>
+        <String Key="ServerList.Server.test-45" Value="十六国·西秦 #45"/>
+        <String Key="ServerList.Server.test-46" Value="十六国·后凉 #46"/>
+        <String Key="ServerList.Server.test-47" Value="十六国·南凉 #47"/>
+        <String Key="ServerList.Server.test-48" Value="十六国·南燕 #48"/>
+        <String Key="ServerList.Server.test-49" Value="十六国·西凉 #49"/>
+        <String Key="ServerList.Server.test-50" Value="十六国·北燕 #50"/>
+        <String Key="ServerList.Server.test-51" Value="十六国·北凉 #51"/>
+        <String Key="ServerList.Server.test-52" Value="十六国·胡夏 #52"/>
+        <String Key="ServerList.Server.test-53" Value="西燕 #53"/>
+        <String Key="ServerList.Server.test-54" Value="吐谷浑 #54"/>
+        <String Key="ServerList.Server.test-55" Value="南朝·宋 #55"/>
+        <String Key="ServerList.Server.test-56" Value="南朝·齐 #56"/>
+        <String Key="ServerList.Server.test-57" Value="南朝·梁 #57"/>
+        <String Key="ServerList.Server.test-58" Value="南朝·陈 #58"/>
+        <String Key="ServerList.Server.test-59" Value="北朝·北魏 #59"/>
+        <String Key="ServerList.Server.test-60" Value="北朝·东魏 #60"/>
+        <String Key="ServerList.Server.test-61" Value="北朝·西魏 #61"/>
+        <String Key="ServerList.Server.test-62" Value="北朝·北齐 #62"/>
+        <String Key="ServerList.Server.test-63" Value="北朝·北周 #63"/>
+        <String Key="ServerList.Server.test-64" Value="隋朝 #64"/>
+        <String Key="ServerList.Server.test-65" Value="唐朝 #65"/>
+        <String Key="ServerList.Server.test-66" Value="武周 #66"/>
+        <String Key="ServerList.Server.test-67" Value="渤海国 #67"/>
+        <String Key="ServerList.Server.test-68" Value="南诏 #68"/>
+        <String Key="ServerList.Server.test-69" Value="吐蕃 #69"/>
+        <String Key="ServerList.Server.test-70" Value="五代·后梁 #70"/>
+        <String Key="ServerList.Server.test-71" Value="五代·后唐 #71"/>
+        <String Key="ServerList.Server.test-72" Value="五代·后晋 #72"/>
+        <String Key="ServerList.Server.test-73" Value="五代·后汉 #73"/>
+        <String Key="ServerList.Server.test-74" Value="五代·后周 #74"/>
+        <String Key="ServerList.Server.test-75" Value="十国·吴 #75"/>
+        <String Key="ServerList.Server.test-76" Value="十国·南唐 #76"/>
+        <String Key="ServerList.Server.test-77" Value="十国·前蜀 #77"/>
+        <String Key="ServerList.Server.test-78" Value="十国·后蜀 #78"/>
+        <String Key="ServerList.Server.test-79" Value="十国·南汉 #79"/>
+        <String Key="ServerList.Server.test-80" Value="十国·楚 #80"/>
+        <String Key="ServerList.Server.test-81" Value="十国·吴越 #81"/>
+        <String Key="ServerList.Server.test-82" Value="十国·闽 #82"/>
+        <String Key="ServerList.Server.test-83" Value="十国·荆南 #83"/>
+        <String Key="ServerList.Server.test-84" Value="十国·北汉 #84"/>
+        <String Key="ServerList.Server.test-85" Value="辽朝 #85"/>
+        <String Key="ServerList.Server.test-86" Value="北宋 #86"/>
+        <String Key="ServerList.Server.test-87" Value="西夏 #87"/>
+        <String Key="ServerList.Server.test-88" Value="西辽 #88"/>
+        <String Key="ServerList.Server.test-89" Value="金朝 #89"/>
+        <String Key="ServerList.Server.test-90" Value="南宋 #90"/>
+        <String Key="ServerList.Server.test-91" Value="大理国 #91"/>
+        <String Key="ServerList.Server.test-92" Value="蒙古汗国 #92"/>
+        <String Key="ServerList.Server.test-93" Value="元朝 #93"/>
+        <String Key="ServerList.Server.test-94" Value="北元 #94"/>
+        <String Key="ServerList.Server.test-95" Value="明朝 #95"/>
+        <String Key="ServerList.Server.test-96" Value="南明 #96"/>
+        <String Key="ServerList.Server.test-97" Value="大顺 #97"/>
+        <String Key="ServerList.Server.test-98" Value="大西 #98"/>
+        <String Key="ServerList.Server.test-99" Value="后金 #99"/>
+        <String Key="ServerList.Server.test-100" Value="清朝 #100"/>
+
+        <!-- 登录加载界面 -->
+        <String Key="Loading.TextPrefix" Value="调兵遣将中..."/>
+        <String Key="Login.ConnectServerTimeout" Value="登录服务器超时，请返回主入口重试。"/>
+
+        <!-- 服务器错误码 -->
+        <!-- 通用错误 -->
+        <String Key="ServerError.100" Value="参数错误。"/>
+        <String Key="ServerError.101" Value="请求已过期。"/>
+        <String Key="ServerError.102" Value="签名校验失败。"/>
+        <String Key="ServerError.103" Value="发送过于频繁。"/>
+        <String Key="ServerError.104" Value="验证码已过期。"/>
+        <String Key="ServerError.105" Value="验证码错误。"/>
+        <String Key="ServerError.106" Value="Token已失效，请重新登录。"/>
+        <String Key="ServerError.107" Value="密码错误。"/>
+        <String Key="ServerError.108" Value="SDK服务异常。"/>
+        <String Key="ServerError.109" Value="服务器发生错误，请稍后再试。"/>
+        <String Key="ServerError.110" Value="服务器启动中，请稍后再试。"/>
+
+        <!-- 后台服务器错误 30000 - 39999 -->
+        <String Key="ServerError.30000" Value="启奏主公，今日折子已达上限（每天最多5次），请明日再奏。"/>
     </Dictionary>
 </Dictionaries>

@@ -454,71 +454,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.size
-      value: 16
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AvailableProcedureTypeNames.Array.data[0]
-      value: Game.Scripts.Main.Runtime.Procedure.ProcedureChangeScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[1]
       value: Game.Scripts.Main.Runtime.Procedure.ProcedureCheckResources
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[2]
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[1]
       value: Game.Scripts.Main.Runtime.Procedure.ProcedureCheckVersion
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[3]
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[2]
       value: Game.Scripts.Main.Runtime.Procedure.ProcedureInitResources
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[4]
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[3]
       value: Game.Scripts.Main.Runtime.Procedure.ProcedureLaunch
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[5]
-      value: Game.Scripts.Main.Runtime.Procedure.ProcedurePreload
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[4]
+      value: Game.Scripts.Main.Runtime.Procedure.ProcedureLoadAssembly
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[6]
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[5]
       value: Game.Scripts.Main.Runtime.Procedure.ProcedureSplash
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[7]
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[6]
       value: Game.Scripts.Main.Runtime.Procedure.ProcedureUpdateResources
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[8]
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[7]
       value: Game.Scripts.Main.Runtime.Procedure.ProcedureUpdateVersion
       objectReference: {fileID: 0}
     - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[9]
+      propertyPath: m_AvailableProcedureTypeNames.Array.data[8]
       value: Game.Scripts.Main.Runtime.Procedure.ProcedureVerifyResources
-      objectReference: {fileID: 0}
-    - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[10]
-      value: Game.Scripts.Main.Runtime.Procedure.Scene.ProcedureBattle
-      objectReference: {fileID: 0}
-    - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[11]
-      value: Game.Scripts.Main.Runtime.Procedure.Scene.ProcedureCreate
-      objectReference: {fileID: 0}
-    - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[12]
-      value: Game.Scripts.Main.Runtime.Procedure.Scene.ProcedureHome
-      objectReference: {fileID: 0}
-    - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[13]
-      value: Game.Scripts.Main.Runtime.Procedure.Scene.ProcedureInitGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[14]
-      value: Game.Scripts.Main.Runtime.Procedure.Scene.ProcedureMain
-      objectReference: {fileID: 0}
-    - target: {fileID: 11405216, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
-      propertyPath: m_AvailableProcedureTypeNames.Array.data[15]
-      value: Game.Scripts.Main.Runtime.Procedure.Scene.ProcedureMenu
       objectReference: {fileID: 0}
     - target: {fileID: 11413340, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_AudioMixer
@@ -763,7 +735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11499388, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_EditorLanguage
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11499388, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
       propertyPath: m_RunInBackground
@@ -1120,7 +1092,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 768, y: 1024}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1278,8 +1250,12 @@ MonoBehaviour:
   serverType: 1
   intranetGuestLoginUrl: http://127.0.0.1:30101/api/v1/login/guest
   intranetServerListUrl: http://127.0.0.1:30101/api/v1/login/servers
+  intranetAnnouncementUrl: http://127.0.0.1:30101/api/v1/announcements
+  intranetFeedbackUrl: http://127.0.0.1:30101/api/v1/feedback/submit
   externalGuestLoginUrl: https://celeritas.fjbgwl.com:37000/guest
   externalServerListUrl: https://celeritas.fjbgwl.com:37000/servers
+  externalAnnouncementUrl: https://celeritas.fjbgwl.com:37003
+  externalFeedbackUrl: https://celeritas.fjbgwl.com:37004
   appId: 1
   secret: aB8kL2mN9pQ3rS5tV7wX1yZ4cE6fH0jK
   appVersion: 1.0.0

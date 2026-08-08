@@ -1,10 +1,8 @@
-﻿using Game.Scripts.Main.Runtime.GameModule.User;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UIDisplay.UIMenu;
 using UnityEngine;
 using UnityGameFramework.Runtime;
-using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UI.UIMenu
 {
@@ -12,7 +10,7 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
     {
         [SerializeField] private HeadDataDisplay headDataDisplay;
 
-        private ProcedureMenu _procedureMenu;
+        private IProcedureMenuHost _procedureMenu;
 
         public void OnReturnButtonClick()
         {
@@ -21,27 +19,27 @@ namespace Game.Scripts.Main.Runtime.UI.UIMenu
 
         public void OnEnterButtonClick(int index)
         {
-            if (_procedureMenu.HasHeadData(index))
-            {
-                var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-                userModule.SetInitWorld();
+            /*  if (_procedureMenu.HasHeadData(index))
+              {
+                  var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+                  userModule.SetInitWorld();
 
-                _procedureMenu.LoadGame();
-            }
-            else
-            {
-                var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-                userModule.SetSaveIndex(index);
+                  _procedureMenu.LoadGame();
+              }
+              else
+              {
+                  var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+                  userModule.SetSaveIndex(index);
 
-                _procedureMenu.StartGame();
-            }
+                  _procedureMenu.StartGame();
+              }*/
         }
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            _procedureMenu = (ProcedureMenu)GetCurrentProcedure();
+            _procedureMenu = (IProcedureMenuHost)GetCurrentProcedure();
 
             if (_procedureMenu == null)
             {

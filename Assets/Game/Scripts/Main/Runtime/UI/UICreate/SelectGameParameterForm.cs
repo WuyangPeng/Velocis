@@ -1,7 +1,7 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
-using Game.Scripts.Main.Runtime.GameModule.User;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+// using Game.Scripts.Main.Runtime.GameModule.User;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
 using UnityEngine;
@@ -23,7 +23,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         [SerializeField] private Toggle[] familyCountToggle;
 
-        private ProcedureCreate _procedureCreate;
+        private IProcedureCreateHost _procedureCreate;
 
         public void OnReturnButtonClick()
         {
@@ -42,8 +42,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetMapSize(GameParameterType.Small);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetMapSize(GameParameterType.Small);
         }
 
         public void OnMiddleMapSizeButtonClick(bool isOn)
@@ -53,8 +53,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetMapSize(GameParameterType.Middle);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetMapSize(GameParameterType.Middle);
         }
 
         public void OnBigMapSizeButtonClick(bool isOn)
@@ -64,8 +64,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetMapSize(GameParameterType.Big);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetMapSize(GameParameterType.Big);
         }
 
         public void OnSmallNpcCountButtonClick(bool isOn)
@@ -75,8 +75,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetNpcCount(GameParameterType.Small);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetNpcCount(GameParameterType.Small);
         }
 
         public void OnMiddleNpcCountButtonClick(bool isOn)
@@ -86,8 +86,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetNpcCount(GameParameterType.Middle);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetNpcCount(GameParameterType.Middle);
         }
 
 
@@ -98,8 +98,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetNpcCount(GameParameterType.Big);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetNpcCount(GameParameterType.Big);
         }
 
         public void OnSmallSectCountButtonClick(bool isOn)
@@ -109,8 +109,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetSectCount(GameParameterType.Small);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetSectCount(GameParameterType.Small);
         }
 
         public void OnMiddleSectCountButtonClick(bool isOn)
@@ -120,8 +120,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetSectCount(GameParameterType.Middle);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetSectCount(GameParameterType.Middle);
         }
 
         public void OnBigSectCountButtonClick(bool isOn)
@@ -131,8 +131,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetSectCount(GameParameterType.Big);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetSectCount(GameParameterType.Big);
         }
 
         public void OnSmallFamilyCountButtonClick(bool isOn)
@@ -142,8 +142,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetFamilyCount(GameParameterType.Small);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetFamilyCount(GameParameterType.Small);
         }
 
         public void OnMiddleFamilyCountButtonClick(bool isOn)
@@ -153,8 +153,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetFamilyCount(GameParameterType.Middle);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetFamilyCount(GameParameterType.Middle);
         }
 
         public void OnBigFamilyCountButtonClick(bool isOn)
@@ -164,15 +164,15 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetFamilyCount(GameParameterType.Big);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetFamilyCount(GameParameterType.Big);
         }
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (IProcedureCreateHost)GetCurrentProcedure();
 
             if (_procedureCreate == null)
             {
@@ -186,19 +186,19 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         private void InitGameParameter()
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
 
-            var gameParameter = GameEntry.DataTable.GetDataTable<DRGameParameter>();
-            var rows = gameParameter.GetAllDataRows();
-            var initMapSize = userModule.GetInitMapSize();
-            var initNpcCount = userModule.GetInitNpcCount();
-            var initSectCount = userModule.GetInitSectCount();
-            var initFamilyCount = userModule.GetInitFamilyCount();
+            // var gameParameter = GameEntry.DataTable.GetDataTable<DRGameParameter>();
+            // var rows = gameParameter.GetAllDataRows();
+            // var initMapSize = userModule.GetInitMapSize();
+            // var initNpcCount = userModule.GetInitNpcCount();
+            // var initSectCount = userModule.GetInitSectCount();
+            // var initFamilyCount = userModule.GetInitFamilyCount();
 
-            for (var index = 0; index < rows.Length; ++index)
-            {
-                SetToggleOn(rows, index, initMapSize, initNpcCount, initSectCount, initFamilyCount);
-            }
+            // for (var index = 0; index < rows.Length; ++index)
+            // {
+            //     SetToggleOn(rows, index, initMapSize, initNpcCount, initSectCount, initFamilyCount);
+            // }
         }
 
         private void SetToggleOn(DRGameParameter[] rows, int index, int initMapSize, int initNpcCount, int initSectCount, int initFamilyCount)

@@ -1,6 +1,6 @@
-using Game.Scripts.Main.Runtime.Event;
-using Game.Scripts.Main.Runtime.GameModule.Debug;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+// using Game.Scripts.Main.Runtime.Event;
+// using Game.Scripts.Main.Runtime.GameModule.Debug;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using GameFramework.Event;
 using UnityEngine;
@@ -12,19 +12,19 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
     public class RightForm : UGuiForm
     {
         [SerializeField] private CommonButton commonButton;
-        private ProcedureHome _procedureHome;
+        private IProcedureFormHost _procedureHome;
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
             SetCommonButton();
-            _procedureHome = (ProcedureHome)GetCurrentProcedure();
+            _procedureHome = (IProcedureFormHost)GetCurrentProcedure();
             if (_procedureHome == null)
             {
                 Log.Warning("ProcedureHome is invalid when open RightForm.");
             }
 
-            GameEntry.Event.Subscribe(DebugInfoEventArgs.EventId, OnDebugInfoChange);
+//            GameEntry.Event.Subscribe(DebugInfoEventArgs.EventId, OnDebugInfoChange);
         }
 
         private void OnDebugInfoChange(object sender, GameEventArgs e)
@@ -34,14 +34,14 @@ namespace Game.Scripts.Main.Runtime.UI.UIHome
 
         private void SetCommonButton()
         {
-            var debugModule = GameEntry.ModuleComponent.GetModule<DebugModule>();
-            commonButton.gameObject.SetActive(debugModule.IsDebug);
+            // var debugModule = GameEntry.ModuleComponent.GetModule<DebugModule>();
+            // commonButton.gameObject.SetActive(debugModule.IsDebug);
         }
 
         protected override void OnClose(bool isShutdown, object userData)
         {
             _procedureHome = null;
-            GameEntry.Event.Unsubscribe(DebugInfoEventArgs.EventId, OnDebugInfoChange);
+//            GameEntry.Event.Unsubscribe(DebugInfoEventArgs.EventId, OnDebugInfoChange);
 
             base.OnClose(isShutdown, userData);
         }

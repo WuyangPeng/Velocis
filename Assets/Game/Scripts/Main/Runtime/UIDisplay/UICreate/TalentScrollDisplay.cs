@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.DataTable;
-using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.UIItem.UICreate;
 using Game.Scripts.Main.Runtime.UIObject.UICreate;
 using GameFramework.ObjectPool;
@@ -50,23 +49,23 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
             _talentData.Clear();
             _selectedIndex.Clear();
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>(); 
+            /* var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
 
-            var talents = GameEntry.DataTable.GetDataTable<DRTalent>();
-            foreach (var talent in talents)
-            {
-                if (!talent.DefaultEnabled)
-                {
-                    continue;
-                }
+             var talents = GameEntry.DataTable.GetDataTable<DRTalent>();
+             foreach (var talent in talents)
+             {
+                 if (!talent.DefaultEnabled)
+                 {
+                     continue;
+                 }
 
-                if (userModule.HasSelectedTalent(talent.Id))
-                {
-                    _selectedIndex.Add(_talentData.Count);
-                }
+                 if (userModule.HasSelectedTalent(talent.Id))
+                 {
+                     _selectedIndex.Add(_talentData.Count);
+                 }
 
-                _talentData.Add(talent);
-            }
+                 _talentData.Add(talent);
+             }*/
         }
 
 
@@ -75,10 +74,12 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
             var rowCount = Mathf.CeilToInt((float)_talentData.Count / PerRow);
 
             for (var row = 0; row < rowCount; row++)
+            {
                 if (!SpawnAvatar(row))
                 {
                     return;
                 }
+            }
 
             talentDescription.text = "";
         }
@@ -90,10 +91,12 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
             _rowGameObjects.Add(rowGameObject);
 
             for (var column = 0; column < PerRow; column++)
+            {
                 if (!SpawnAvatar(row, column, rowGameObject))
                 {
                     return false;
                 }
+            }
 
             return true;
         }
@@ -137,7 +140,10 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
 
             _activeTalentItemObject.Clear();
 
-            foreach (var rowGameObject in _rowGameObjects) DestroyImmediate(rowGameObject);
+            foreach (var rowGameObject in _rowGameObjects)
+            {
+                DestroyImmediate(rowGameObject);
+            }
 
             _rowGameObjects.Clear();
         }
@@ -170,26 +176,26 @@ namespace Game.Scripts.Main.Runtime.UIDisplay.UICreate
         {
             talentDescription.text = GameEntry.Localization.GetString(_talentData[index].Description);
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            if (userModule.HasTalent(_talentData[index].Id))
-            {
-                userModule.RemoveTalent(_talentData[index].Id);
-                _selectedIndex.Remove(index);
-                UpdateSelected();
-            }
-            else
-            {
-                if (!userModule.CanAddTalent(_talentData[index].Id))
-                {
-                    return;
-                }
+            /*  var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+              if (userModule.HasTalent(_talentData[index].Id))
+              {
+                  userModule.RemoveTalent(_talentData[index].Id);
+                  _selectedIndex.Remove(index);
+                  UpdateSelected();
+              }
+              else
+              {
+                  if (!userModule.CanAddTalent(_talentData[index].Id))
+                  {
+                      return;
+                  }
 
-                _selectedIndex.Add(index);
+                  _selectedIndex.Add(index);
 
-                userModule.AddTalent(_talentData[index].Id);
+                  userModule.AddTalent(_talentData[index].Id);
 
-                UpdateSelected();
-            }
+                  UpdateSelected();
+              }*/
         }
 
         private void UpdateSelected()

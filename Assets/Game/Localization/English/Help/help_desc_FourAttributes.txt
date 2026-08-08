@@ -1,0 +1,3 @@
+The general has the four-dimensional attributes of "commander", "force", "resourcefulness" and "politics".
+
+The commander-in-chief influences the amount of troops and defense; the force influences the normal attack and raid damage; the conspiracy influences the tactical damage and casting range; and the politics increases the fiefdoms' internal affairs output.

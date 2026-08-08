@@ -1,10 +1,7 @@
 using System;
-using Celeritas.Config.game;
-using GameFramework.Resource;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityGameFramework.Runtime;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.UIItem.UIHome
@@ -23,26 +20,26 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIHome
             _onClick?.Invoke(_selfIndex);
         }
 
-        public void SetData(int index, frame_config data, Action<int> clickCallback)
-        {
-            _selfIndex = index;
-            _onClick = clickCallback;
+        /* public void SetData(int index, frame_config data, Action<int> clickCallback)
+         {
+             _selfIndex = index;
+             _onClick = clickCallback;
 
-            if (_frameHandle != null)
-            {
-                GameEntry.Resource.UnloadAsset(_frameHandle);
-                _frameHandle = null;
-            }
+             if (_frameHandle != null)
+             {
+                 GameEntry.Resource.UnloadAsset(_frameHandle);
+                 _frameHandle = null;
+             }
 
-            GameEntry.Resource.LoadAsset(data.IconRes, typeof(Sprite), 0,
-                new LoadAssetCallbacks(
-                    (_, asset, _, _) =>
-                    {
-                        _frameHandle = asset;
-                        imageFrame.sprite = asset as Sprite;
-                    },
-                    (_, _, errorMessage, _) => { Log.Error($"头像框加载失败:{errorMessage}"); }));
-        }
+             GameEntry.Resource.LoadAsset(data.IconRes, typeof(Sprite), 0,
+                 new LoadAssetCallbacks(
+                     (_, asset, _, _) =>
+                     {
+                         _frameHandle = asset;
+                         imageFrame.sprite = asset as Sprite;
+                     },
+                     (_, _, errorMessage, _) => { Log.Error($"头像框加载失败:{errorMessage}"); }));
+         }*/
 
         public void SetSelected(bool selected)
         {

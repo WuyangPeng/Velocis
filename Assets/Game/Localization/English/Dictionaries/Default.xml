@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Dictionaries>
     <Dictionary Language="English">
         <String Key="Game.Name" Value="Velocis"/>
@@ -30,9 +30,7 @@
         <String Key="Menu.ConfirmButton" Value="确定"/>
         <String Key="Menu.LoadGame" Value="进入游戏"/>
         <String Key="Menu.CreateNewGame" Value="创建新游戏"/>
-        <String Key="Dialog.ConfirmButton" Value="OK"/>
-        <String Key="Dialog.CancelButton" Value="CANCEL"/>
-        <String Key="Dialog.OtherButton" Value=""/>
+
         <String Key="ForceUpdate.Title" Value="OUT OF DATE"/>
         <String Key="ForceUpdate.Message"
                 Value="The current game version is out-of-date. Would you like to go for update now?"/>
@@ -2869,5 +2867,524 @@
         <String Key="Name.ShiHuai" Value="诗槐"/>
         <String Key="Name.XinXuan" Value="馨玄"/>
         <String Key="Name.TuoLuo" Value="拓珞"/>
+
+        <!-- ==================== Item System (1.1.1.1) ==================== -->
+        <String Key="Item.GetToast" Value="Acquired {0} x {1}"/>
+        <String Key="Item.ExpireRemind" Value="The limited-time item &quot;{0}&quot; will expire in 3 days!"/>
+        <String Key="Item.LockedErr" Value="Item is locked and cannot be processed!"/>
+        <String Key="Item.BroadcastRareGet" Value="Congratulations to {0} on acquiring rare item {1}!"/>
+        <String Key="Item.DecomposeWarning" Value="Warning: Equipment will be permanently destroyed!"/>
+        <String Key="Item.ConfirmVerifyText" Value="Confirm Decompose"/>
+        <String Key="Item.ConfirmInputPrompt" Value="Enter &quot;Confirm Decompose&quot; below to proceed."/>
+        <String Key="Item.GetNormalTitle" Value="Materials Acquired"/>
+        <String Key="Item.GetRareTitle" Value="Rare Materials Acquired"/>
+
+        <!-- ==================== Item Data (item.xlsx) ==================== -->
+
+        <!-- Currency & Custom Items -->
+        <String Key="Item.Name_1001001" Value="Gold"/>
+        <String Key="Item.Desc_1001001" Value="Premium currency (top-up/events), used for speedups and privileges"/>
+        <String Key="Item.Name_1001002" Value="Silver"/>
+        <String Key="Item.Desc_1001002" Value="Advanced currency for general salaries and rare item purchases"/>
+        <String Key="Item.Name_1001003" Value="Copper Coins"/>
+        <String Key="Item.Desc_1001003" Value="Basic currency for market trading and low-level recruitment"/>
+        <String Key="Item.Name_1001004" Value="Population"/>
+        <String Key="Item.Desc_1001004" Value="Basic population resource required for recruiting soldiers"/>
+        <String Key="Item.Name_1011001" Value="Rename Card"/>
+        <String Key="Item.Desc_1011001" Value=""/>
+        <String Key="Item.Name_1021001" Value="Prestige"/>
+        <String Key="Item.Desc_1021001" Value="Earned by completing quests and events; unlocks noble titles and special NPC interactions"/>
+        <String Key="Item.Name_1021002" Value="Merit"/>
+        <String Key="Item.Desc_1021002" Value="Earned through PVP battles and national quests; redeemable for exclusive gear and titles"/>
+
+        <!-- Avatar Items -->
+        <String Key="Item.Name_4011001" Value="Default Avatar"/>
+        <String Key="Item.Desc_4011001" Value=""/>
+        <String Key="Item.Name_4024001" Value="Avatar - Ying Zheng"/>
+        <String Key="Item.Desc_4024001" Value=""/>
+        <String Key="Item.Name_4024002" Value="Avatar - Liu Che"/>
+        <String Key="Item.Desc_4024002" Value=""/>
+        <String Key="Item.Name_4024003" Value="Avatar - Li Shimin"/>
+        <String Key="Item.Desc_4024003" Value=""/>
+        <String Key="Item.Name_4034001" Value="Avatar - Zhao Feiyan"/>
+        <String Key="Item.Desc_4034001" Value=""/>
+        <String Key="Item.Name_4034002" Value="Avatar - Cai Wenji"/>
+        <String Key="Item.Desc_4034002" Value=""/>
+        <String Key="Item.Name_4034003" Value="Avatar - Yang Yuhuan"/>
+        <String Key="Item.Desc_4034003" Value=""/>
+        <String Key="Item.Name_4044001" Value="Avatar - Bai Qi"/>
+        <String Key="Item.Desc_4044001" Value=""/>
+        <String Key="Item.Name_4044002" Value="Avatar - Zhang Qian"/>
+        <String Key="Item.Desc_4044002" Value=""/>
+        <String Key="Item.Name_4044003" Value="Avatar - Fang Xuanling"/>
+        <String Key="Item.Desc_4044003" Value=""/>
+
+        <!-- Frame Items -->
+        <String Key="Item.Name_5011001" Value="Default Frame"/>
+        <String Key="Item.Desc_5011001" Value=""/>
+        <String Key="Item.Name_5011002" Value="Frame - White"/>
+        <String Key="Item.Desc_5011002" Value=""/>
+        <String Key="Item.Name_5011003" Value="Frame - Green"/>
+        <String Key="Item.Desc_5011003" Value=""/>
+        <String Key="Item.Name_5011004" Value="Frame - Blue"/>
+        <String Key="Item.Desc_5011004" Value=""/>
+        <String Key="Item.Name_5011005" Value="Frame - Purple"/>
+        <String Key="Item.Desc_5011005" Value=""/>
+        <String Key="Item.Name_5011006" Value="Frame - Orange"/>
+        <String Key="Item.Desc_5011006" Value=""/>
+        <String Key="Item.Name_5011007" Value="Frame - Red"/>
+        <String Key="Item.Desc_5011007" Value=""/>
+
+        <!-- Title Items -->
+        <String Key="Item.Name_6011001" Value="Junior Officer"/>
+        <String Key="Item.Desc_6011001" Value=""/>
+        <String Key="Item.Name_6011002" Value="Vanguard"/>
+        <String Key="Item.Desc_6011002" Value=""/>
+        <String Key="Item.Name_6011003" Value="Battle-Hardened General"/>
+        <String Key="Item.Desc_6011003" Value=""/>
+        <String Key="Item.Name_6011004" Value="Frontier Commander"/>
+        <String Key="Item.Desc_6011004" Value=""/>
+        <String Key="Item.Name_6011005" Value="Mighty Governor"/>
+        <String Key="Item.Desc_6011005" Value=""/>
+        <String Key="Item.Name_6011006" Value="Grand Marshal"/>
+        <String Key="Item.Desc_6011006" Value=""/>
+        <String Key="Item.Name_6011007" Value="Legend of the Realm"/>
+        <String Key="Item.Desc_6011007" Value=""/>
+        <String Key="Item.Name_6011008" Value="Heir of the War Saint"/>
+        <String Key="Item.Desc_6011008" Value=""/>
+        <String Key="Item.Name_6011009" Value="Founding Hero"/>
+        <String Key="Item.Desc_6011009" Value=""/>
+        <String Key="Item.Name_6011010" Value="Eternal God of War"/>
+        <String Key="Item.Desc_6011010" Value=""/>
+
+        <!-- Hero Items -->
+        <String Key="Item.Name_7024001" Value="Ying Zheng"/>
+        <String Key="Item.Desc_7024001" Value=""/>
+        <String Key="Item.Name_7024002" Value="Liu Che"/>
+        <String Key="Item.Desc_7024002" Value=""/>
+        <String Key="Item.Name_7024003" Value="Li Shimin"/>
+        <String Key="Item.Desc_7024003" Value=""/>
+        <String Key="Item.Name_7034001" Value="Zhao Feiyan"/>
+        <String Key="Item.Desc_7034001" Value=""/>
+        <String Key="Item.Name_7034002" Value="Cai Wenji"/>
+        <String Key="Item.Desc_7034002" Value=""/>
+        <String Key="Item.Name_7034003" Value="Yang Yuhuan"/>
+        <String Key="Item.Desc_7034003" Value=""/>
+        <String Key="Item.Name_7044001" Value="Bai Qi"/>
+        <String Key="Item.Desc_7044001" Value=""/>
+        <String Key="Item.Name_7044002" Value="Zhang Qian"/>
+        <String Key="Item.Desc_7044002" Value=""/>
+        <String Key="Item.Name_7044003" Value="Fang Xuanling"/>
+        <String Key="Item.Desc_7044003" Value=""/>
+
+        <!-- Exp Items -->
+        <String Key="Item.Name_8001001" Value="Hero EXP"/>
+        <String Key="Item.Desc_8001001" Value=""/>
+        <String Key="Item.Name_8001002" Value="VIP EXP"/>
+        <String Key="Item.Desc_8001002" Value=""/>
+
+        <!-- Building Items -->
+        <String Key="Item.Name_9011001" Value="Farmland"/>
+        <String Key="Item.Desc_9011001" Value=""/>
+        <String Key="Item.Name_9021002" Value="Lumber Mill"/>
+        <String Key="Item.Desc_9021002" Value=""/>
+        <String Key="Item.Name_9031003" Value="Quarry"/>
+        <String Key="Item.Desc_9031003" Value=""/>
+        <String Key="Item.Name_9041004" Value="Mine"/>
+        <String Key="Item.Desc_9041004" Value=""/>
+        <String Key="Item.Name_9051005" Value="Residence"/>
+        <String Key="Item.Desc_9051005" Value=""/>
+        <String Key="Item.Name_9061006" Value="Yamen"/>
+        <String Key="Item.Desc_9061006" Value=""/>
+        <String Key="Item.Name_9071007" Value="Barracks"/>
+        <String Key="Item.Desc_9071007" Value=""/>
+        <String Key="Item.Name_9081008" Value="Archery Range"/>
+        <String Key="Item.Desc_9081008" Value=""/>
+        <String Key="Item.Name_9091009" Value="Stable"/>
+        <String Key="Item.Desc_9091009" Value=""/>
+        <String Key="Item.Name_9101010" Value="Workshop"/>
+        <String Key="Item.Desc_9101010" Value=""/>
+        <String Key="Item.Name_9111011" Value="City Wall"/>
+        <String Key="Item.Desc_9111011" Value=""/>
+        <String Key="Item.Name_9121012" Value="Arrow Tower"/>
+        <String Key="Item.Desc_9121012" Value=""/>
+        <String Key="Item.Name_9131013" Value="Clinic"/>
+        <String Key="Item.Desc_9131013" Value=""/>
+        <String Key="Item.Name_9141014" Value="Academy"/>
+        <String Key="Item.Desc_9141014" Value=""/>
+        <String Key="Item.Name_9151015" Value="Market"/>
+        <String Key="Item.Desc_9151015" Value=""/>
+
+        <!-- Resource Items -->
+        <String Key="Item.Name_10001001" Value="Food"/>
+        <String Key="Item.Desc_10001001" Value="Basic resource to sustain troops and population"/>
+        <String Key="Item.Name_10001002" Value="Timber"/>
+        <String Key="Item.Desc_10001002" Value="Primary resource for building upgrades and machinery"/>
+        <String Key="Item.Name_10001003" Value="Stone"/>
+        <String Key="Item.Desc_10001003" Value="Essential resource for wall reinforcement and advanced buildings"/>
+        <String Key="Item.Name_10001004" Value="Iron Ore"/>
+        <String Key="Item.Desc_10001004" Value="Core resource for forging weapons and heavy equipment"/>
+
+        <!-- Equipment Items -->
+        <String Key="Item.Name_3001001" Value="Weapon"/>
+        <String Key="Item.Desc_3001001" Value="Increases attack power of generals and soldiers"/>
+        <String Key="Item.Name_3001002" Value="Armor"/>
+        <String Key="Item.Desc_3001002" Value="Increases defense of generals and soldiers"/>
+        <String Key="Item.Name_3001003" Value="Accessory"/>
+        <String Key="Item.Desc_3001003" Value="Enhances additional attributes of generals"/>
+
+        <!-- Soldier Items -->
+        <String Key="Item.Name_11001001" Value="Sword &amp; Shield Infantry"/>
+        <String Key="Item.Desc_11001001" Value="Basic infantry with solid defense"/>
+        <String Key="Item.Name_11001002" Value="Spearman"/>
+        <String Key="Item.Desc_11001002" Value="Counter-cavalry unit, excels at defensive counterattacks"/>
+        <String Key="Item.Name_11001003" Value="Archer"/>
+        <String Key="Item.Desc_11001003" Value="Ranged DPS, high damage but fragile"/>
+        <String Key="Item.Name_11001004" Value="Crossbowman"/>
+        <String Key="Item.Desc_11001004" Value="High armor penetration with stable damage output"/>
+        <String Key="Item.Name_11001005" Value="Light Cavalry"/>
+        <String Key="Item.Desc_11001005" Value="Fast and mobile, excels at ambushes"/>
+        <String Key="Item.Name_11001006" Value="Heavy Cavalry"/>
+        <String Key="Item.Desc_11001006" Value="Powerful charge, breaks through enemy lines"/>
+        <String Key="Item.Name_11001007" Value="Divine Arm Archer"/>
+        <String Key="Item.Desc_11001007" Value="Elite marksman with extreme range"/>
+        <String Key="Item.Name_11001008" Value="Podao Squad"/>
+        <String Key="Item.Desc_11001008" Value="Heavy infantry, the pinnacle of foot soldier combat power"/>
+
+        <!-- Machine Items -->
+        <String Key="Item.Name_12001001" Value="Trebuchet"/>
+        <String Key="Item.Desc_12001001" Value="Long-range siege weapon for destroying fortifications"/>
+        <String Key="Item.Name_12001002" Value="Battering Ram"/>
+        <String Key="Item.Desc_12001002" Value="Specialized for attacking city gates"/>
+        <String Key="Item.Name_12001003" Value="Siege Ladder"/>
+        <String Key="Item.Desc_12001003" Value="Quickly scales walls to support infantry assault"/>
+        <String Key="Item.Name_12001004" Value="Bed Crossbow"/>
+        <String Key="Item.Desc_12001004" Value="Powerful ranged weapon effective in both defense and field battles"/>
+        <String Key="Item.Name_12001005" Value="Rolling Logs &amp; Boulders"/>
+        <String Key="Item.Desc_12001005" Value="Defensive consumable that devastates enemies below the walls"/>
+        <String Key="Item.Name_12001006" Value="Fire Oil Jar"/>
+        <String Key="Item.Desc_12001006" Value="Burning attack that deals sustained area damage"/>
+
+        <!-- 道具系统 UI 多语言 -->
+        <String Key="Item.SlotWeapon" Value="Slot: Weapon"/>
+        <String Key="Item.SlotNone" Value="Slot: None"/>
+        <String Key="Item.SlotArmor" Value="Slot: Armor"/>
+        <String Key="Item.SlotAccessory" Value="Slot: Accessory"/>
+        <String Key="Item.TypeConsumable" Value="Consumable"/>
+        <String Key="Item.TypeEquipment" Value="Equipment"/>
+        <String Key="Item.TypeResource" Value="Military Resources"/>
+        <String Key="Item.TypeUnknown" Value="General Item"/>
+        <String Key="Item.DurabilityFormat" Value="Durability: {0} / {1}"/>
+        <String Key="Item.ActionUse" Value="Use"/>
+        <String Key="Item.ActionBatchUse" Value="Batch Use"/>
+        <String Key="Item.ActionEquip" Value="Equip"/>
+        <String Key="Item.ActionUnequip" Value="Unequip"/>
+        <String Key="Item.ActionLock" Value="Lock"/>
+        <String Key="Item.ActionUnlock" Value="Unlock"/>
+        <String Key="Item.ActionRecast" Value="Recast"/>
+        <String Key="Item.ActionDecompose" Value="Decompose"/>
+        <String Key="Item.SourceTitle" Value="Acquisition Sources"/>
+        <String Key="Item.SourceEmptyTip" Value="No acquisition source available."/>
+        <String Key="Item.GetClickCloseTip" Value="Click anywhere to close"/>
+        <String Key="Item.DecomposeWarningLocked" Value="This item is locked. Please check the risk and type [Confirm Decompose] below to unlock and decompose!"/>
+        <String Key="Item.DecomposeWarningNormal" Value="Equipment will be permanently lost after decomposition and cannot be retrieved!"/>
+        <String Key="Item.DecomposeOutputTitle" Value="Estimated Return Materials:\n{0}"/>
+        <String Key="Item.AttributePhysicsAttack" Value="Phys Attack"/>
+        <String Key="Item.AttributeCritRate" Value="Crit Rate"/>
+        <String Key="Item.AttributeRandomAffix" Value="Random Affix"/>
+        <String Key="Item.SourceTypeCampaign" Value="Campaign"/>
+        <String Key="Item.SourceCampaignDemo" Value="Chapter 3 Cold Iron Mine (Challenge)"/>
+        <String Key="Item.SourceTypeShop" Value="Shop"/>
+        <String Key="Item.SourceShopDemo" Value="Arena Armory Shop"/>
+        <String Key="Item.SourceTypeActivity" Value="Event"/>
+        <String Key="Item.SourceActivityDemo" Value="Time-limited Siege Defense"/>
+
+        <!-- 主入口 UI 多语言 -->
+        <String Key="MainEntry.Title" Value="The Nine Provinces"/>
+        <String Key="MainEntry.InputPlaceholder" Value="Please enter your Visiting Advisor account"/>
+        <String Key="MainEntry.BtnEnterGame" Value="Dominate the Realm"/>
+        <String Key="MainEntry.BtnSetting" Value="Military Affairs"/>
+        <String Key="MainEntry.BtnGameIntro" Value="Chronicles of Nine Provinces"/>
+        <String Key="MainEntry.BtnAnnouncement" Value="Imperial Proclamations"/>
+        <String Key="MainEntry.BtnCustomerService" Value="Consult Grand Strategist"/>
+        <String Key="MainEntry.BtnQuit" Value="Retire to the Fields"/>
+        <String Key="MainEntry.HealthyGameAdvice" Value="Resist unhealthy games, refuse pirated games. Mind self-protection, beware of being deceived.&#xA;Moderate gaming benefits the brain, addiction harms the body. Arrange time reasonably, enjoy a healthy life."/>
+        <String Key="MainEntry.CopyrightText" Value="© 2026 Taiyi Studio All Rights Reserved."/>
+        
+        <!-- Dialogs -->
+        <String Key="Dialog.ConfirmButton" Value="Confirm"/>
+        <String Key="Dialog.CancelButton" Value="Veto"/>
+        <String Key="Dialog.OtherButton" Value="Postpone"/>
+        <String Key="Dialog.AskQuitGameTitle" Value="CONFIRM DISARMAMENT"/>
+        <String Key="Dialog.AskQuitGameMessage" Value="The realm is not yet unified. My Lord, are you sure you want to retire to the fields?"/>
+        
+        <!-- System Settings -->
+        <String Key="SystemSetting.Title" Value="Military Affairs"/>
+        <String Key="SystemSetting.Music" Value="Music"/>
+        <String Key="SystemSetting.Sound" Value="Sound"/>
+        <String Key="SystemSetting.UISound" Value="UI Sound"/>
+        <String Key="SystemSetting.Language" Value="Language"/>
+        <String Key="SystemSetting.GraphicQuality" Value="Graphic Quality"/>
+        <String Key="SystemSetting.Vibration" Value="Vibration"/>
+        <String Key="SystemSetting.Fullscreen" Value="Fullscreen"/>
+        <String Key="SystemSetting.GraphicQuality.High" Value="High"/>
+        <String Key="SystemSetting.GraphicQuality.Medium" Value="Medium"/>
+        <String Key="SystemSetting.GraphicQuality.Low" Value="Low"/>
+        <String Key="SystemSetting.Language.ChineseSimplified" Value="Simplified Chinese"/>
+        <String Key="SystemSetting.Language.ChineseTraditional" Value="Traditional Chinese"/>
+        <String Key="SystemSetting.Language.English" Value="English"/>
+        <String Key="SystemSetting.Language.Korean" Value="Korean"/>
+        <String Key="SystemSetting.Language.Japanese" Value="Japanese"/>
+        
+        <!-- Help Form -->
+        <String Key="HelpForm.Title" Value="Chronicles of Nine Provinces"/>
+        <String Key="HelpForm.NoContent" Value="No Content"/>
+        <String Key="HelpForm.LoadFailed" Value="Content is loading or temporarily unavailable"/>
+        <String Key="HelpForm.PageFormat" Value="{0} / {1}"/>
+        <String Key="HelpForm.BtnClose" Value="Close Scroll"/>
+
+        <!-- Help · Category -->
+        <String Key="HelpForm.Category.Beginner" Value="About Nine Provinces"/>
+        <String Key="HelpForm.Category.LordDestiny" Value="Lord's Destiny"/>
+        <String Key="HelpForm.Category.GeneralsBonds" Value="Generals &amp; Bonds"/>
+        <String Key="HelpForm.Category.Progression" Value="General Cultivation"/>
+        <String Key="HelpForm.Category.Exploration" Value="World Exploration"/>
+        <String Key="HelpForm.Category.FAQ" Value="Troubleshooting"/>
+
+        <!-- Help · Page -->
+        <String Key="HelpForm.Page.GameIntro" Value="Prologue of Chaos"/>
+        <String Key="HelpForm.Page.BasicControls" Value="Interface &amp; Controls"/>
+        <String Key="HelpForm.Page.FateChoices" Value="Fate Choices"/>
+        <String Key="HelpForm.Page.FiefdomManage" Value="Fiefdom Governance"/>
+        <String Key="HelpForm.Page.GeneralRecruit" Value="Recruiting Talents"/>
+        <String Key="HelpForm.Page.LordGenBonds" Value="Lord-General Bonds"/>
+        <String Key="HelpForm.Page.StatsTalents" Value="Stats &amp; Talents"/>
+        <String Key="HelpForm.Page.DivineGear" Value="Divine Weapons"/>
+        <String Key="HelpForm.Page.WorldExplore" Value="World Map Exploration"/>
+        <String Key="HelpForm.Page.TacticsBattle" Value="Battlefield Tactics"/>
+        <String Key="HelpForm.Page.FAQGrowth" Value="Story &amp; Cultivation FAQ"/>
+        <String Key="HelpForm.Page.FAQExplore" Value="Combat &amp; Exploration FAQ"/>
+
+        <!-- Help · Item Titles -->
+        <String Key="HelpForm.Item.GameWorld.Title" Value="World View Introduction"/>
+        <String Key="HelpForm.Item.LordPath.Title" Value="Lord's Path &amp; World Trends"/>
+        <String Key="HelpForm.Item.DifficultyMode.Title" Value="Difficulty &amp; Destiny Modes"/>
+        <String Key="HelpForm.Item.MainUI.Title" Value="Main UI Fiefdom Hall Functions"/>
+        <String Key="HelpForm.Item.MapExploration.Title" Value="World Map Travel &amp; Search"/>
+        <String Key="HelpForm.Item.InventoryUsage.Title" Value="Inventory &amp; Items Usage"/>
+        <String Key="HelpForm.Item.BranchingStory.Title" Value="Branching Storylines &amp; Decisions"/>
+        <String Key="HelpForm.Item.LordPersonality.Title" Value="Lord's Personality Traits"/>
+        <String Key="HelpForm.Item.PersonalityInfluence.Title" Value="Personality Effects on NPCs"/>
+        <String Key="HelpForm.Item.FiefdomGovernance.Title" Value="Fiefdom Hall Office Assignments"/>
+        <String Key="HelpForm.Item.PeopleQuests.Title" Value="Handling Commoners' Requests"/>
+        <String Key="HelpForm.Item.FiefdomVault.Title" Value="Fiefdom Vault Resource Output"/>
+        <String Key="HelpForm.Item.RecruitVisit.Title" Value="Seeking &amp; Visiting Scholars"/>
+        <String Key="HelpForm.Item.GeneralGifts.Title" Value="Gifting &amp; Affection Increase"/>
+        <String Key="HelpForm.Item.GeneralLoyalty.Title" Value="Loyalty Shifts &amp; Defection Crises"/>
+        <String Key="HelpForm.Item.BondLevel.Title" Value="Bond Level &amp; Unlock Conditions"/>
+        <String Key="HelpForm.Item.GeneralBiography.Title" Value="Biographies &amp; Anecdotes"/>
+        <String Key="HelpForm.Item.ComboTactics.Title" Value="Combo Skills &amp; Cover Defense"/>
+        <String Key="HelpForm.Item.FourAttributes.Title" Value="Role of the Four Attributes"/>
+        <String Key="HelpForm.Item.GeneralTalents.Title" Value="Generals' Specialties &amp; Talent Trees"/>
+        <String Key="HelpForm.Item.GeneralBreakthrough.Title" Value="General Realm Breakthroughs"/>
+        <String Key="HelpForm.Item.DivineWeapon.Title" Value="Forging &amp; Tempering Divine Weapons"/>
+        <String Key="HelpForm.Item.TacticalBooks.Title" Value="Tactical Tomes &amp; Family Heirlooms"/>
+        <String Key="HelpForm.Item.GearEquipment.Title" Value="Equipping Gear &amp; Refitting Stats"/>
+        <String Key="HelpForm.Item.FogAndPasses.Title" Value="Misty Paths &amp; Closed Passes"/>
+        <String Key="HelpForm.Item.RandomEncounters.Title" Value="Random Encounters &amp; Side Quests"/>
+        <String Key="HelpForm.Item.MysteryRuins.Title" Value="Exploring Secret Historic Ruins"/>
+        <String Key="HelpForm.Item.UnitCounters.Title" Value="Unit Counter Relationships"/>
+        <String Key="HelpForm.Item.BattleFormations.Title" Value="Ancient Battle Formations"/>
+        <String Key="HelpForm.Item.TacticReleases.Title" Value="Active &amp; Commander Tactic Releases"/>
+        <String Key="HelpForm.Item.FaqPrestige.Title" Value="How to rapidly raise Lord's Prestige?"/>
+        <String Key="HelpForm.Item.FaqAffection.Title" Value="What if general affection stops rising?"/>
+        <String Key="HelpForm.Item.FaqWeaponMaterials.Title" Value="How to acquire divine forging materials?"/>
+        <String Key="HelpForm.Item.FaqComboFail.Title" Value="Why can't I trigger combined tactics in battle?"/>
+        <String Key="HelpForm.Item.FaqDefeatGuide.Title" Value="How to handle undefeated enemy armies?"/>
+        <String Key="HelpForm.Item.FaqLostGeneral.Title" Value="How to re-encounter generals who defected?"/>
+
+        <!-- Announcements -->
+        <String Key="Tag.New" Value="New"/>
+        <String Key="Tag.Hot" Value="Hot"/>
+        <String Key="Tag.Maintenance" Value="Maint."/>
+        <String Key="AnnouncementForm.Title" Value="Imperial Proclamations"/>
+        <String Key="AnnouncementForm.BtnRead" Value="Acknowledged"/>
+        <String Key="AnnouncementForm.NoContent" Value="No proclamations"/>
+        <String Key="AnnouncementForm.FetchFailedTitle" Value="Unable to Fetch"/>
+        <String Key="AnnouncementForm.FetchFailedMessage" Value="Failed to load proclamations. Please check your network and retry."/>
+        <String Key="AnnouncementForm.Retry" Value="Retry"/>
+        <String Key="AnnouncementForm.Close" Value="Dismiss"/>
+
+        <!-- Feedback -->
+        <String Key="FeedbackForm.Title" Value="Consult Strategist"/>
+        <String Key="FeedbackForm.InputPlaceholder" Value="Describe your petition (10-500 chars)"/>
+        <String Key="FeedbackForm.CharCountFormat" Value="{0} / {1}"/>
+        <String Key="FeedbackForm.UploadHint" Value="Screenshot Preview"/>
+        <String Key="FeedbackForm.SelectImageTitle" Value="Select Image"/>
+        <String Key="FeedbackForm.BtnUpload" Value="Attach Image"/>
+        <String Key="FeedbackForm.BtnSubmit" Value="Submit"/>
+        <String Key="FeedbackForm.BtnCancel" Value="Dismiss"/>
+        <String Key="FeedbackForm.CooldownFormat" Value="{0}s"/>
+        <String Key="Feedback.Type.Bug" Value="Bug Report"/>
+        <String Key="Feedback.Type.Suggestion" Value="Suggestion"/>
+        <String Key="Feedback.Type.Report" Value="Report Player"/>
+        <String Key="Feedback.MinLengthError" Value="Petition too short. At least 10 characters required."/>
+        <String Key="Feedback.SubmitSuccess" Value="Your petition has been delivered to the court."/>
+        <String Key="Feedback.CooldownError" Value="Please wait {0} seconds before submitting again."/>
+        <String Key="Feedback.ImageTooLarge" Value="Image exceeds 5MB limit."/>
+        <String Key="Feedback.ImageLoadFailed" Value="Failed to load image. Please retry."/>
+        <String Key="Feedback.UploadImageFailed" Value="Image upload failed. Please retry later."/>
+        <String Key="Feedback.SubmitFailed" Value="Submit failed. Please check your network."/>
+        <String Key="FeedbackForm.ServerLabel" Value="Server: "/>
+        <String Key="FeedbackForm.PlayerIdLabel" Value="Player ID: "/>
+        <String Key="FeedbackForm.AnonymousLabel" Value="Anonymous"/>
+        <String Key="FeedbackForm.ServerPlaceholder" Value="Enter server..."/>
+        <String Key="FeedbackForm.PlayerIdPlaceholder" Value="Enter player ID..."/>
+        <String Key="Feedback.ServerEmptyError" Value="Please enter your server name."/>
+        <String Key="Feedback.PlayerIdEmptyError" Value="Please enter your player ID."/>
+        <String Key="FeedbackForm.SelectImageSourceMessage" Value="Please select image source:"/>
+        <String Key="FeedbackForm.BtnCaptureScreen" Value="Capture Screen"/>
+        <String Key="FeedbackForm.BtnSelectFile" Value="Select Local File"/>
+
+        <!-- Server List -->
+        <String Key="ServerList.Title" Value="Select Territory"/>
+        <String Key="ServerList.TabRecommended" Value="Recommended/History"/>
+        <String Key="ServerList.BtnConfirm" Value="Confirm Start"/>
+        <String Key="ServerList.StatusSmooth" Value="Smooth"/>
+        <String Key="ServerList.StatusHot" Value="Hot"/>
+        <String Key="ServerList.StatusFull" Value="Full"/>
+        <String Key="ServerList.StatusMaintain" Value="Maintenance"/>
+        <String Key="ServerList.HasCharacter" Value="Lord"/>
+        <String Key="ServerList.Zone.1" Value="Sili"/>
+        <String Key="ServerList.Zone.2" Value="Yuzhou"/>
+        <String Key="ServerList.Zone.3" Value="Jizhou"/>
+        <String Key="ServerList.Zone.4" Value="Yanzhou"/>
+        <String Key="ServerList.Zone.5" Value="Xuzhou"/>
+        <String Key="ServerList.Zone.6" Value="Qingzhou"/>
+        <String Key="ServerList.Zone.7" Value="Jingzhou"/>
+        <String Key="ServerList.Zone.8" Value="Yangzhou"/>
+        <String Key="ServerList.Zone.9" Value="Yizhou"/>
+        <String Key="ServerList.Zone.10" Value="Youzhou"/>
+        <String Key="ServerList.Server.test-1" Value="Xia Dynasty #1"/>
+        <String Key="ServerList.Server.test-2" Value="Shang Dynasty #2"/>
+        <String Key="ServerList.Server.test-3" Value="Western Zhou #3"/>
+        <String Key="ServerList.Server.test-4" Value="Eastern Zhou #4"/>
+        <String Key="ServerList.Server.test-5" Value="Spring &amp; Autumn Zheng #5"/>
+        <String Key="ServerList.Server.test-6" Value="Spring &amp; Autumn Qi #6"/>
+        <String Key="ServerList.Server.test-7" Value="Spring &amp; Autumn Lu #7"/>
+        <String Key="ServerList.Server.test-8" Value="Spring &amp; Autumn Song #8"/>
+        <String Key="ServerList.Server.test-9" Value="Spring &amp; Autumn Wei #9"/>
+        <String Key="ServerList.Server.test-10" Value="Spring &amp; Autumn Jin #10"/>
+        <String Key="ServerList.Server.test-11" Value="Spring &amp; Autumn Chen #11"/>
+        <String Key="ServerList.Server.test-12" Value="Spring &amp; Autumn Chu #12"/>
+        <String Key="ServerList.Server.test-13" Value="Spring &amp; Autumn Qin #13"/>
+        <String Key="ServerList.Server.test-14" Value="Spring &amp; Autumn Yan #14"/>
+        <String Key="ServerList.Server.test-15" Value="Spring &amp; Autumn Wu #15"/>
+        <String Key="ServerList.Server.test-16" Value="Spring &amp; Autumn Yue #16"/>
+        <String Key="ServerList.Server.test-17" Value="Warring States Qi #17"/>
+        <String Key="ServerList.Server.test-18" Value="Warring States Chu #18"/>
+        <String Key="ServerList.Server.test-19" Value="Warring States Yan #19"/>
+        <String Key="ServerList.Server.test-20" Value="Warring States Han #20"/>
+        <String Key="ServerList.Server.test-21" Value="Warring States Zhao #21"/>
+        <String Key="ServerList.Server.test-22" Value="Warring States Wei #22"/>
+        <String Key="ServerList.Server.test-23" Value="Warring States Qin #23"/>
+        <String Key="ServerList.Server.test-24" Value="Warring States Zhongshan #24"/>
+        <String Key="ServerList.Server.test-25" Value="Warring States Ba #25"/>
+        <String Key="ServerList.Server.test-26" Value="Warring States Shu #26"/>
+        <String Key="ServerList.Server.test-27" Value="Qin Dynasty #27"/>
+        <String Key="ServerList.Server.test-28" Value="Western Chu #28"/>
+        <String Key="ServerList.Server.test-29" Value="Western Han #29"/>
+        <String Key="ServerList.Server.test-30" Value="Xin Dynasty #30"/>
+        <String Key="ServerList.Server.test-31" Value="Eastern Han #31"/>
+        <String Key="ServerList.Server.test-32" Value="Three Kingdoms Wei #32"/>
+        <String Key="ServerList.Server.test-33" Value="Three Kingdoms Shu #33"/>
+        <String Key="ServerList.Server.test-34" Value="Three Kingdoms Wu #34"/>
+        <String Key="ServerList.Server.test-35" Value="Western Jin #35"/>
+        <String Key="ServerList.Server.test-36" Value="Eastern Jin #36"/>
+        <String Key="ServerList.Server.test-37" Value="16 Kingdoms Former Zhao #37"/>
+        <String Key="ServerList.Server.test-38" Value="16 Kingdoms Cheng Han #38"/>
+        <String Key="ServerList.Server.test-39" Value="16 Kingdoms Former Liang #39"/>
+        <String Key="ServerList.Server.test-40" Value="16 Kingdoms Later Zhao #40"/>
+        <String Key="ServerList.Server.test-41" Value="16 Kingdoms Former Yan #41"/>
+        <String Key="ServerList.Server.test-42" Value="16 Kingdoms Former Qin #42"/>
+        <String Key="ServerList.Server.test-43" Value="16 Kingdoms Later Yan #43"/>
+        <String Key="ServerList.Server.test-44" Value="16 Kingdoms Later Qin #44"/>
+        <String Key="ServerList.Server.test-45" Value="16 Kingdoms Western Qin #45"/>
+        <String Key="ServerList.Server.test-46" Value="16 Kingdoms Later Liang #46"/>
+        <String Key="ServerList.Server.test-47" Value="16 Kingdoms Southern Liang #47"/>
+        <String Key="ServerList.Server.test-48" Value="16 Kingdoms Southern Yan #48"/>
+        <String Key="ServerList.Server.test-49" Value="16 Kingdoms Western Liang #49"/>
+        <String Key="ServerList.Server.test-50" Value="16 Kingdoms Northern Yan #50"/>
+        <String Key="ServerList.Server.test-51" Value="16 Kingdoms Northern Liang #51"/>
+        <String Key="ServerList.Server.test-52" Value="16 Kingdoms Hu Xia #52"/>
+        <String Key="ServerList.Server.test-53" Value="Western Yan #53"/>
+        <String Key="ServerList.Server.test-54" Value="Tuyuhun #54"/>
+        <String Key="ServerList.Server.test-55" Value="Southern Dynasties Song #55"/>
+        <String Key="ServerList.Server.test-56" Value="Southern Dynasties Qi #56"/>
+        <String Key="ServerList.Server.test-57" Value="Southern Dynasties Liang #57"/>
+        <String Key="ServerList.Server.test-58" Value="Southern Dynasties Chen #58"/>
+        <String Key="ServerList.Server.test-59" Value="Northern Dynasties Wei #59"/>
+        <String Key="ServerList.Server.test-60" Value="Northern Dynasties Eastern Wei #60"/>
+        <String Key="ServerList.Server.test-61" Value="Northern Dynasties Western Wei #61"/>
+        <String Key="ServerList.Server.test-62" Value="Northern Dynasties Northern Qi #62"/>
+        <String Key="ServerList.Server.test-63" Value="Northern Dynasties Northern Zhou #63"/>
+        <String Key="ServerList.Server.test-64" Value="Sui Dynasty #64"/>
+        <String Key="ServerList.Server.test-65" Value="Tang Dynasty #65"/>
+        <String Key="ServerList.Server.test-66" Value="Wu Zhou #66"/>
+        <String Key="ServerList.Server.test-67" Value="Bohai Kingdom #67"/>
+        <String Key="ServerList.Server.test-68" Value="Nanzhao #68"/>
+        <String Key="ServerList.Server.test-69" Value="Tubo #69"/>
+        <String Key="ServerList.Server.test-70" Value="Five Dynasties Later Liang #70"/>
+        <String Key="ServerList.Server.test-71" Value="Five Dynasties Later Tang #71"/>
+        <String Key="ServerList.Server.test-72" Value="Five Dynasties Later Jin #72"/>
+        <String Key="ServerList.Server.test-73" Value="Five Dynasties Later Han #73"/>
+        <String Key="ServerList.Server.test-74" Value="Five Dynasties Later Zhou #74"/>
+        <String Key="ServerList.Server.test-75" Value="Ten Kingdoms Wu #75"/>
+        <String Key="ServerList.Server.test-76" Value="Ten Kingdoms Southern Tang #76"/>
+        <String Key="ServerList.Server.test-77" Value="Ten Kingdoms Former Shu #77"/>
+        <String Key="ServerList.Server.test-78" Value="Ten Kingdoms Later Shu #78"/>
+        <String Key="ServerList.Server.test-79" Value="Ten Kingdoms Southern Han #79"/>
+        <String Key="ServerList.Server.test-80" Value="Ten Kingdoms Chu #80"/>
+        <String Key="ServerList.Server.test-81" Value="Ten Kingdoms Wuyue #81"/>
+        <String Key="ServerList.Server.test-82" Value="Ten Kingdoms Min #82"/>
+        <String Key="ServerList.Server.test-83" Value="Ten Kingdoms Jingnan #83"/>
+        <String Key="ServerList.Server.test-84" Value="Ten Kingdoms Northern Han #84"/>
+        <String Key="ServerList.Server.test-85" Value="Liao Dynasty #85"/>
+        <String Key="ServerList.Server.test-86" Value="Northern Song #86"/>
+        <String Key="ServerList.Server.test-87" Value="Western Xia #87"/>
+        <String Key="ServerList.Server.test-88" Value="Western Liao #88"/>
+        <String Key="ServerList.Server.test-89" Value="Jin Dynasty #89"/>
+        <String Key="ServerList.Server.test-90" Value="Southern Song #90"/>
+        <String Key="ServerList.Server.test-91" Value="Dali Kingdom #91"/>
+        <String Key="ServerList.Server.test-92" Value="Mongol Empire #92"/>
+        <String Key="ServerList.Server.test-93" Value="Yuan Dynasty #93"/>
+        <String Key="ServerList.Server.test-94" Value="Northern Yuan #94"/>
+        <String Key="ServerList.Server.test-95" Value="Ming Dynasty #95"/>
+        <String Key="ServerList.Server.test-96" Value="Southern Ming #96"/>
+        <String Key="ServerList.Server.test-97" Value="Dashun #97"/>
+        <String Key="ServerList.Server.test-98" Value="Daxi #98"/>
+        <String Key="ServerList.Server.test-99" Value="Later Jin #99"/>
+        <String Key="ServerList.Server.test-100" Value="Qing Dynasty #100"/>
+
+        <!-- Loading Screen -->
+        <String Key="Loading.TextPrefix" Value="Deploying forces..."/>
+        <String Key="Login.ConnectServerTimeout" Value="Login server timeout, please return to main entry and retry."/>
+
+        <!-- Server Error Codes -->
+        <!-- General Errors -->
+        <String Key="ServerError.100" Value="Invalid parameter."/>
+        <String Key="ServerError.101" Value="Request expired."/>
+        <String Key="ServerError.102" Value="Signature verification failed."/>
+        <String Key="ServerError.103" Value="Requests submitted too frequently."/>
+        <String Key="ServerError.104" Value="Verification code expired."/>
+        <String Key="ServerError.105" Value="Verification code error."/>
+        <String Key="ServerError.106" Value="Token invalid. Please log in again."/>
+        <String Key="ServerError.107" Value="Incorrect password."/>
+        <String Key="ServerError.108" Value="SDK service exception."/>
+        <String Key="ServerError.109" Value="Server error occurred. Please try again later."/>
+        <String Key="ServerError.110" Value="Server starting up. Please try again later."/>
+
+        <!-- Admin Server Errors 30000 - 39999 -->
+        <String Key="ServerError.30000" Value="My Lord, your feedback limit for today has been reached (max 5 times daily). Please try again tomorrow."/>
     </Dictionary>
 </Dictionaries>

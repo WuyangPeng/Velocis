@@ -1,7 +1,7 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
-using Game.Scripts.Main.Runtime.GameModule.User;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+// using Game.Scripts.Main.Runtime.GameModule.User;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
@@ -16,14 +16,14 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
     {
         [SerializeField] private MartialArtsDisplay martialArtsDisplay;
 
-        private ProcedureCreate _procedureCreate;
+        private IProcedureCreateHost _procedureCreate;
 
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (IProcedureCreateHost)GetCurrentProcedure();
 
             if (_procedureCreate == null)
             {
@@ -47,18 +47,18 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnEnterButtonClick()
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            if (!userModule.HasMartialArts())
-            {
-                OpenDialog("MartialArts.OpenMartialArts.Title", "MartialArts.OpenMartialArts.Content");
-                return;
-            }
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // if (!userModule.HasMartialArts())
+            // {
+            //     OpenDialog("MartialArts.OpenMartialArts.Title", "MartialArts.OpenMartialArts.Content");
+            //     return;
+            // }
 
-            if (0 < userModule.GetMartialArtsCount())
-            {
-                OpenDialog("MartialArts.Allocate.Title", "MartialArts.Allocate.Content");
-                return;
-            }
+            // if (0 < userModule.GetMartialArtsCount())
+            // {
+            //     OpenDialog("MartialArts.Allocate.Title", "MartialArts.Allocate.Content");
+            //     return;
+            // }
 
             _procedureCreate.OpenUIForm(UIFormId.SelectTechniqueForm);
         }
@@ -81,32 +81,32 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnReduceButtonClick(int martialArtsId)
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var martialArts = userModule.GetMartialArts((MartialArtsType)martialArtsId);
-            var initMartialArts = UserModule.GetInitMartialArts((MartialArtsType)martialArtsId);
-            if (martialArts <= initMartialArts || userModule.GetMartialArtsCount() >= Constant.Game.InitMartialArtsCount)
-            {
-                return;
-            }
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // var martialArts = userModule.GetMartialArts((MartialArtsType)martialArtsId);
+            // var initMartialArts = UserModule.GetInitMartialArts((MartialArtsType)martialArtsId);
+            // if (martialArts <= initMartialArts || userModule.GetMartialArtsCount() >= Constant.Game.InitMartialArtsCount)
+            // {
+            //     return;
+            // }
 
-            userModule.ReduceMartialArts(martialArtsId);
-            martialArtsDisplay.Refresh();
+            // userModule.ReduceMartialArts(martialArtsId);
+            // martialArtsDisplay.Refresh();
         }
 
         public void OnAddButtonClick(int martialArtsId)
         {
-            var martialArtsTable = GameEntry.DataTable.GetDataTable<DRMartialArts>();
+            // var martialArtsTable = GameEntry.DataTable.GetDataTable<DRMartialArts>();
 
-            var row = martialArtsTable.GetDataRow(martialArtsId);
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var martialArts = userModule.GetMartialArts((MartialArtsType)martialArtsId);
-            if (martialArts >= row.MaxValue || userModule.GetMartialArtsCount() <= 0)
-            {
-                return;
-            }
+            // var row = martialArtsTable.GetDataRow(martialArtsId);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // var martialArts = userModule.GetMartialArts((MartialArtsType)martialArtsId);
+            // if (martialArts >= row.MaxValue || userModule.GetMartialArtsCount() <= 0)
+            // {
+            //     return;
+            // }
 
-            userModule.AddMartialArts(martialArtsId);
-            martialArtsDisplay.Refresh();
+            // userModule.AddMartialArts(martialArtsId);
+            // martialArtsDisplay.Refresh();
         }
     }
 }

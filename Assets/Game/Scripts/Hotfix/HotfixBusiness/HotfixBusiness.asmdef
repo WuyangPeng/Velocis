@@ -2,8 +2,12 @@
     "name": "Velocis.HotfixBusiness",
     "rootNamespace": "",
     "references": [
+        "GUID:028603ab2e55def4c8f721892ecb5427",
         "GUID:363c5eb08ff8e6a439b85e37b8c20d96",
-        "GUID:6ced06aaaa65b5e4cbe69bb0ca0ed2e6"
+        "GUID:993f33c7da924c84e941c846f5382942",
+        "GUID:96cef0fd6ddfb134487f05ac2e71987d",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:ca259f6ba1d8b8a4293a378233419e1c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

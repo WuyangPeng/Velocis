@@ -1,6 +1,6 @@
-﻿using Game.Scripts.Main.Runtime.GameEnum;
-using Game.Scripts.Main.Runtime.GameModule.User;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+using Game.Scripts.Main.Runtime.GameEnum;
+// using Game.Scripts.Main.Runtime.GameModule.User;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
 using Game.Scripts.Main.Runtime.UIDisplay.UIHome;
@@ -20,7 +20,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         [SerializeField] private Toggle[] sexToggle;
 
-        private ProcedureCreate _procedureCreate;
+        private IProcedureCreateHost _procedureCreate;
 
         public void OnReturnButtonClick()
         {
@@ -39,8 +39,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetSexType(SexType.Male);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetSexType(SexType.Male);
 
             avatarScrollDisplay.Refresh();
         }
@@ -52,8 +52,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetSexType(SexType.Female);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetSexType(SexType.Female);
 
             avatarScrollDisplay.Refresh();
         }
@@ -62,7 +62,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
         {
             base.OnOpen(userData);
 
-            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (IProcedureCreateHost)GetCurrentProcedure();
 
             if (_procedureCreate == null)
             {
@@ -71,9 +71,9 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
             gameSexDisplay.Refresh();
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
 
-            sexToggle[(int)(userModule.GetSexType() - 1)].isOn = true;
+            // sexToggle[(int)(userModule.GetSexType() - 1)].isOn = true;
         }
 
         protected override void OnClose(bool isShutdown, object userData)

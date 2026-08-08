@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,7 +11,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
     public class CeleritasGeneratorInstance
     {
         private readonly Dictionary<string, ProtoMessage> _messages = new();
-        private readonly string _outputDirAbs = Path.Combine(Application.dataPath, "Game", "Scripts", "Main", "Runtime", "Network", "Packet", "CSCeleritas.cs");
+        private readonly string _outputDirAbs = Path.Combine(Application.dataPath, "Game", "Scripts", "Hotfix", "HotfixCommon", "Network", "Packet", "CSCeleritas.cs");
         private readonly string _protoRootAbs = Path.Combine(Application.dataPath, "Game", "proto");
 
         public void Run()
@@ -75,7 +75,7 @@ namespace Game.Scripts.Main.Editor.Protobuf
         {
             var stringBuilder = new StringBuilder();
 
-            stringBuilder.AppendLine("namespace Game.Scripts.Main.Runtime.Network.Packet");
+            stringBuilder.AppendLine("namespace Game.Scripts.Hotfix.HotfixCommon.Network.Packet");
             stringBuilder.AppendLine("{");
             stringBuilder.AppendLine("    [Serializable]");
             stringBuilder.AppendLine("    [ProtoContract(Name = @\"CSCeleritas\")]");

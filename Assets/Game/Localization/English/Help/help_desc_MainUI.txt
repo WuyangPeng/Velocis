@@ -1,0 +1,3 @@
+The Military and Government Office is the core of your coordination. From the ribbon at the bottom of the main screen, you can quickly see the fiefdoms, general status, wrapping bags and current map lines.
+
+When urgent matters (such as people's livelihood disputes or loyalty crises) occur, a specific imperial order prompt will light up at the top of the main interface, which needs to be approved in time.

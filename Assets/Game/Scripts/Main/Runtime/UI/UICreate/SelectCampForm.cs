@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
-using Game.Scripts.Main.Runtime.GameModule.User;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+// using Game.Scripts.Main.Runtime.GameModule.User;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
 using UnityEngine;
@@ -26,20 +26,20 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
 
         private readonly List<DRSurname> _surnames = new();
-        private ProcedureCreate _procedureCreate;
+        private IProcedureCreateHost _procedureCreate;
 
         public void OnClickConfirm()
         {
-            var playerName = inputField.text;
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetName(playerName);
+            // var playerName = inputField.text;
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetName(playerName);
         }
 
         private void OnNameSelected(int index)
         {
-            var chosen = _surnames[index].Id;
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetSurname(chosen);
+            // var chosen = _surnames[index].Id;
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetSurname(chosen);
         }
 
         public void OnLeftRulesButtonClick(bool isOn)
@@ -49,8 +49,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetRulesType(RulesType.Lawful);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetRulesType(RulesType.Lawful);
         }
 
         public void OnMiddleRulesButtonClick(bool isOn)
@@ -60,8 +60,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetRulesType(RulesType.Carefree);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetRulesType(RulesType.Carefree);
         }
 
         public void OnRightRulesButtonClick(bool isOn)
@@ -71,8 +71,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetRulesType(RulesType.Chaos);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetRulesType(RulesType.Chaos);
         }
 
 
@@ -83,8 +83,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetMoralityType(MoralityType.Benevolence);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetMoralityType(MoralityType.Benevolence);
         }
 
         public void OnMiddleMoralityButtonClick(bool isOn)
@@ -94,8 +94,8 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetMoralityType(MoralityType.Moderation);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetMoralityType(MoralityType.Moderation);
         }
 
         public void OnRightMoralityButtonClick(bool isOn)
@@ -105,15 +105,15 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
                 return;
             }
 
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            userModule.SetMoralityType(MoralityType.Craftiness);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // userModule.SetMoralityType(MoralityType.Craftiness);
         }
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (IProcedureCreateHost)GetCurrentProcedure();
 
             if (_procedureCreate == null)
             {
@@ -129,7 +129,7 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         private void InitInputField()
         {
-            inputField.text = GameEntry.ModuleComponent.GetModule<UserModule>().GetName();
+            // inputField.text = GameEntry.ModuleComponent.GetModule<UserModule>().GetName();
         }
 
         private void InitDropdown()
@@ -154,27 +154,27 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         private void InitCamp()
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
 
-            var rulesType = (int)userModule.GetRulesType() & (int)MoralityType.Empty;
+            // var rulesType = (int)userModule.GetRulesType() & (int)MoralityType.Empty;
 
-            for (var i = 0; i < rulesToggle.Length; i++)
-            {
-                if ((rulesType & (1 << i)) != 0)
-                {
-                    rulesToggle[i].isOn = true;
-                }
-            }
+            // for (var i = 0; i < rulesToggle.Length; i++)
+            // {
+            //     if ((rulesType & (1 << i)) != 0)
+            //     {
+            //         rulesToggle[i].isOn = true;
+            //     }
+            // }
 
-            var moralityType = (int)userModule.GetMoralityType() >> 3;
+            // var moralityType = (int)userModule.GetMoralityType() >> 3;
 
-            for (var i = 0; i < moralityToggle.Length; i++)
-            {
-                if ((moralityType & (1 << i)) != 0)
-                {
-                    moralityToggle[i].isOn = true;
-                }
-            }
+            // for (var i = 0; i < moralityToggle.Length; i++)
+            // {
+            //     if ((moralityType & (1 << i)) != 0)
+            //     {
+            //         moralityToggle[i].isOn = true;
+            //     }
+            // }
         }
 
         protected override void OnClose(bool isShutdown, object userData)

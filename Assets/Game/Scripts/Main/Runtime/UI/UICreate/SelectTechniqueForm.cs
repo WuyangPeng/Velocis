@@ -1,7 +1,7 @@
-﻿using Game.Scripts.Main.Runtime.DataTable;
+using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.GameEnum;
-using Game.Scripts.Main.Runtime.GameModule.User;
-using Game.Scripts.Main.Runtime.Procedure.Scene;
+// using Game.Scripts.Main.Runtime.GameModule.User;
+using Game.Scripts.Main.Runtime.Procedure;
 using Game.Scripts.Main.Runtime.UI.UICommon;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using Game.Scripts.Main.Runtime.UIDisplay.UICreate;
@@ -16,14 +16,14 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
     {
         [SerializeField] private TechniqueDisplay techniqueDisplay;
 
-        private ProcedureCreate _procedureCreate;
+        private IProcedureCreateHost _procedureCreate;
 
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
-            _procedureCreate = (ProcedureCreate)GetCurrentProcedure();
+            _procedureCreate = (IProcedureCreateHost)GetCurrentProcedure();
 
             if (_procedureCreate == null)
             {
@@ -63,50 +63,50 @@ namespace Game.Scripts.Main.Runtime.UI.UICreate
 
         public void OnEnterButtonClick()
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            if (!userModule.HasTechnique())
-            {
-                OpenDialog("Technique.OpenTechnique.Title", "Technique.OpenTechnique.Content");
-                return;
-            }
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // if (!userModule.HasTechnique())
+            // {
+            //     OpenDialog("Technique.OpenTechnique.Title", "Technique.OpenTechnique.Content");
+            //     return;
+            // }
 
-            if (0 < userModule.GetTechniqueCount())
-            {
-                OpenDialog("Technique.Allocate.Title", "Technique.Allocate.Content");
-                return;
-            }
+            // if (0 < userModule.GetTechniqueCount())
+            // {
+            //     OpenDialog("Technique.Allocate.Title", "Technique.Allocate.Content");
+            //     return;
+            // }
 
             _procedureCreate.OpenUIForm(UIFormId.SelectTalentForm);
         }
 
         public void OnReduceButtonClick(int techniqueId)
         {
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var technique = userModule.GetTechnique((TechniqueType)techniqueId);
-            var initTechnique = UserModule.GetInitTechnique((TechniqueType)techniqueId);
-            if (technique <= initTechnique || userModule.GetTechniqueCount() >= Constant.Game.InitTechniqueCount)
-            {
-                return;
-            }
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // var technique = userModule.GetTechnique((TechniqueType)techniqueId);
+            // var initTechnique = UserModule.GetInitTechnique((TechniqueType)techniqueId);
+            // if (technique <= initTechnique || userModule.GetTechniqueCount() >= Constant.Game.InitTechniqueCount)
+            // {
+            //     return;
+            // }
 
-            userModule.ReduceTechnique(techniqueId);
-            techniqueDisplay.Refresh();
+            // userModule.ReduceTechnique(techniqueId);
+            // techniqueDisplay.Refresh();
         }
 
         public void OnAddButtonClick(int techniqueId)
         {
-            var techniqueTable = GameEntry.DataTable.GetDataTable<DRTechnique>();
+            // var techniqueTable = GameEntry.DataTable.GetDataTable<DRTechnique>();
 
-            var row = techniqueTable.GetDataRow(techniqueId);
-            var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
-            var technique = userModule.GetTechnique((TechniqueType)techniqueId);
-            if (technique >= row.MaxValue || userModule.GetTechniqueCount() <= 0)
-            {
-                return;
-            }
+            // var row = techniqueTable.GetDataRow(techniqueId);
+            // var userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+            // var technique = userModule.GetTechnique((TechniqueType)techniqueId);
+            // if (technique >= row.MaxValue || userModule.GetTechniqueCount() <= 0)
+            // {
+            //     return;
+            // }
 
-            userModule.AddTechnique(techniqueId);
-            techniqueDisplay.Refresh();
+            // userModule.AddTechnique(techniqueId);
+            // techniqueDisplay.Refresh();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using Celeritas.Config.game;
 using GameFramework.Resource;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -44,26 +43,26 @@ namespace Game.Scripts.Main.Runtime.UIItem.UIHome
                     (_, _, errorMessage, _) => { Log.Error($"头像加载失败:{errorMessage}"); }));
         }
 
-        public void SetData(int index, avatar_config data, Action<int> clickCallback)
-        {
-            _selfIndex = index;
-            _onClick = clickCallback;
+        /* public void SetData(int index, avatar_config data, Action<int> clickCallback)
+         {
+             _selfIndex = index;
+             _onClick = clickCallback;
 
-            if (_avatarHandle != null)
-            {
-                GameEntry.Resource.UnloadAsset(_avatarHandle);
-                _avatarHandle = null;
-            }
+             if (_avatarHandle != null)
+             {
+                 GameEntry.Resource.UnloadAsset(_avatarHandle);
+                 _avatarHandle = null;
+             }
 
-            GameEntry.Resource.LoadAsset(data.IconRes, typeof(Sprite), 0,
-                new LoadAssetCallbacks(
-                    (_, asset, _, _) =>
-                    {
-                        _avatarHandle = asset;
-                        imageAvatar.sprite = asset as Sprite;
-                    },
-                    (_, _, errorMessage, _) => { Log.Error($"头像加载失败:{errorMessage}"); }));
-        }
+             GameEntry.Resource.LoadAsset(data.IconRes, typeof(Sprite), 0,
+                 new LoadAssetCallbacks(
+                     (_, asset, _, _) =>
+                     {
+                         _avatarHandle = asset;
+                         imageAvatar.sprite = asset as Sprite;
+                     },
+                     (_, _, errorMessage, _) => { Log.Error($"头像加载失败:{errorMessage}"); }));
+         }*/
 
         public void SetSelected(bool selected)
         {

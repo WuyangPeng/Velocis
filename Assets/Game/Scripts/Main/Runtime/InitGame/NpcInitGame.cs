@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Game.Scripts.Main.Runtime.Base;
@@ -6,8 +6,8 @@ using Game.Scripts.Main.Runtime.DataTable;
 using Game.Scripts.Main.Runtime.Definition.Constant;
 using Game.Scripts.Main.Runtime.GameData.World;
 using Game.Scripts.Main.Runtime.GameEnum;
-using Game.Scripts.Main.Runtime.GameModule.User;
-using Game.Scripts.Main.Runtime.GameModule.World;
+// using Game.Scripts.Main.Runtime.GameModule.User;
+// using Game.Scripts.Main.Runtime.GameModule.World;
 using Game.Scripts.Main.Runtime.GameUtility;
 using Game.Scripts.Main.Runtime.RuntimeException;
 using Game.Scripts.Main.Runtime.SaveData;
@@ -21,15 +21,15 @@ namespace Game.Scripts.Main.Runtime.InitGame
         private readonly Dictionary<SexType, WeightRandom<int>> _avatarWeightRandom = new();
         private readonly WeightRandom<int> _campWeightRandom = new();
         private readonly Dictionary<int, HashSet<int>> _existName = new();
-        private readonly FamilyModule _familyModule = GameEntry.ModuleComponent.GetModule<FamilyModule>();
-        private readonly MapModule _mapModule = GameEntry.ModuleComponent.GetModule<MapModule>();
+        // private readonly FamilyModule _familyModule = GameEntry.ModuleComponent.GetModule<FamilyModule>();
+        // private readonly MapModule _mapModule = GameEntry.ModuleComponent.GetModule<MapModule>();
         private readonly Dictionary<SexType, WeightRandom<int>> _nameWeightRandom = new();
-        private readonly NpcModule _npcModule = GameEntry.ModuleComponent.GetModule<NpcModule>();
+        // private readonly NpcModule _npcModule = GameEntry.ModuleComponent.GetModule<NpcModule>();
         private readonly WeightRandom<int> _raceWeightRandom = new();
-        private readonly SectModule _sectModule = GameEntry.ModuleComponent.GetModule<SectModule>();
+        // private readonly SectModule _sectModule = GameEntry.ModuleComponent.GetModule<SectModule>();
         private readonly WeightRandom<int> _surnameWeightRandom = new();
         private readonly WeightRandom<int> _talentWeightRandom = new();
-        private readonly UserModule _userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
+        // private readonly UserModule _userModule = GameEntry.ModuleComponent.GetModule<UserModule>();
 
         private void InitAvatar()
         {
@@ -92,25 +92,25 @@ namespace Game.Scripts.Main.Runtime.InitGame
 
         private void InitExistName()
         {
-            var surname = _userModule.GetSurname();
-            var name = _userModule.GetName();
-            if (!_existName.TryGetValue(surname, out var result))
-            {
-                result = new HashSet<int>();
-                _existName[surname] = result;
-            }
+            // var surname = _userModule.GetSurname();
+            // var name = _userModule.GetName();
+            // if (!_existName.TryGetValue(surname, out var result))
+            // {
+            //     result = new HashSet<int>();
+            //     _existName[surname] = result;
+            // }
 
-            var nameTable = GameEntry.DataTable.GetDataTable<DRName>();
-            foreach (var element in nameTable)
-            {
-                if (GameEntry.Localization.GetString(element.Name) != name)
-                {
-                    continue;
-                }
+            // var nameTable = GameEntry.DataTable.GetDataTable<DRName>();
+            // foreach (var element in nameTable)
+            // {
+            //     if (GameEntry.Localization.GetString(element.Name) != name)
+            //     {
+            //         continue;
+            //     }
 
-                result.Add(element.Id);
-                break;
-            }
+            //     result.Add(element.Id);
+            //     break;
+            // }
         }
 
         private void AddExistName(int surname, int name)
@@ -173,36 +173,36 @@ namespace Game.Scripts.Main.Runtime.InitGame
 
         private void InitFamily()
         {
-            var initNpcCount = _userModule.GetInitNpcCount();
-            foreach (var element in _familyModule.GetFamilies())
-            {
-                for (var i = 0; i < Constant.Game.FamilyNpcRandomCount; ++i)
-                {
-                    var sexType = GetSexType();
-                    var npcBaseData = new NpcBaseData
-                    {
-                        ID = _npcModule.GetNextNpcId(),
-                        SexType = sexType,
-                        AvatarId = GetAvatarId(sexType),
-                        CampType = (CampType)((_campWeightRandom.Roll() - (int)RulesType.Empty) | (element.MoralityType - MoralityType.Empty)),
-                        RaceType = element.RaceType,
-                        Surname = element.Surname,
-                        Name = GetName(element.Surname, sexType),
-                        FamilyId = element.ID
-                    };
+            // var initNpcCount = _userModule.GetInitNpcCount();
+            // foreach (var element in _familyModule.GetFamilies())
+            // {
+            //     for (var i = 0; i < Constant.Game.FamilyNpcRandomCount; ++i)
+            //     {
+            //         var sexType = GetSexType();
+            //         var npcBaseData = new NpcBaseData
+            //         {
+            //             ID = _npcModule.GetNextNpcId(),
+            //             SexType = sexType,
+            //             AvatarId = GetAvatarId(sexType),
+            //             CampType = (CampType)((_campWeightRandom.Roll() - (int)RulesType.Empty) | (element.MoralityType - MoralityType.Empty)),
+            //             RaceType = element.RaceType,
+            //             Surname = element.Surname,
+            //             Name = GetName(element.Surname, sexType),
+            //             FamilyId = element.ID
+            //         };
 
-                    AddExistName(npcBaseData.Surname, npcBaseData.Name);
-                    npcBaseData.Talent.UnionWith(_talentWeightRandom.RollMultiple(Constant.Game.MaxTalentCount));
+            //         AddExistName(npcBaseData.Surname, npcBaseData.Name);
+            //         npcBaseData.Talent.UnionWith(_talentWeightRandom.RollMultiple(Constant.Game.MaxTalentCount));
 
-                    _npcModule.AddNpc(npcBaseData);
-                    _mapModule.SetChunkByFamilyId(npcBaseData.ID, element.ID);
+            //         _npcModule.AddNpc(npcBaseData);
+            //         _mapModule.SetChunkByFamilyId(npcBaseData.ID, element.ID);
 
-                    if (_npcModule.GetNpcCount() > initNpcCount)
-                    {
-                        break;
-                    }
-                }
-            }
+            //         if (_npcModule.GetNpcCount() > initNpcCount)
+            //         {
+            //             break;
+            //         }
+            //     }
+            // }
         }
 
         private int GetName(int surname, SexType sexType)
@@ -257,27 +257,27 @@ namespace Game.Scripts.Main.Runtime.InitGame
 
         private void InitNpc()
         {
-            var initNpcCount = _userModule.GetInitNpcCount();
-            for (var i = _npcModule.GetNpcCount(); i < initNpcCount; ++i)
-            {
-                var sexType = GetSexType();
-                var surname = _surnameWeightRandom.Roll();
-                var npcBaseData = new NpcBaseData
-                {
-                    ID = _npcModule.GetNextNpcId(),
-                    SexType = sexType,
-                    AvatarId = GetAvatarId(sexType),
-                    CampType = (CampType)_campWeightRandom.Roll(),
-                    RaceType = (RaceType)_raceWeightRandom.Roll(),
-                    Surname = surname,
-                    Name = GetName(surname, sexType)
-                };
+            // var initNpcCount = _userModule.GetInitNpcCount();
+            // for (var i = _npcModule.GetNpcCount(); i < initNpcCount; ++i)
+            // {
+            //     var sexType = GetSexType();
+            //     var surname = _surnameWeightRandom.Roll();
+            //     var npcBaseData = new NpcBaseData
+            //     {
+            //         ID = _npcModule.GetNextNpcId(),
+            //         SexType = sexType,
+            //         AvatarId = GetAvatarId(sexType),
+            //         CampType = (CampType)_campWeightRandom.Roll(),
+            //         RaceType = (RaceType)_raceWeightRandom.Roll(),
+            //         Surname = surname,
+            //         Name = GetName(surname, sexType)
+            //     };
 
-                AddExistName(npcBaseData.Surname, npcBaseData.Name);
-                npcBaseData.Talent.UnionWith(_talentWeightRandom.RollMultiple(Constant.Game.MaxTalentCount));
+            //     AddExistName(npcBaseData.Surname, npcBaseData.Name);
+            //     npcBaseData.Talent.UnionWith(_talentWeightRandom.RollMultiple(Constant.Game.MaxTalentCount));
 
-                _npcModule.AddNpc(npcBaseData);
-            }
+            //     _npcModule.AddNpc(npcBaseData);
+            // }
         }
 
         private int GetAvatarId(SexType sexType)
@@ -292,61 +292,61 @@ namespace Game.Scripts.Main.Runtime.InitGame
 
         private void InitNpcSect()
         {
-            WeightRandom<long> npcWeightRandom = new();
-            npcWeightRandom.Add(Constant.Game.PlayerId, 1);
-            foreach (var element in _npcModule.GetNpc())
-            {
-                npcWeightRandom.Add(element.ID, 1);
-            }
+            // WeightRandom<long> npcWeightRandom = new();
+            // npcWeightRandom.Add(Constant.Game.PlayerId, 1);
+            // foreach (var element in _npcModule.GetNpc())
+            // {
+            //     npcWeightRandom.Add(element.ID, 1);
+            // }
 
-            foreach (var element in _sectModule.GetSects())
-            {
-                for (var i = 0; i < Constant.Game.SectNpcRandomCount; i++)
-                {
-                    if (npcWeightRandom.Count == 0)
-                    {
-                        return;
-                    }
+            // foreach (var element in _sectModule.GetSects())
+            // {
+            //     for (var i = 0; i < Constant.Game.SectNpcRandomCount; i++)
+            //     {
+            //         if (npcWeightRandom.Count == 0)
+            //         {
+            //             return;
+            //         }
 
-                    var id = npcWeightRandom.Roll();
-                    if (id == Constant.Game.PlayerId)
-                    {
-                        _userModule.SetSect(element.ID);
-                    }
-                    else
-                    {
-                        var npcBaseData = _npcModule.GetNpcBaseData(id);
-                        if (npcBaseData != null)
-                        {
-                            npcBaseData.SectId = element.ID;
-                            _mapModule.SetChunkBySectId(npcBaseData.ID, npcBaseData.SectId);
-                        }
-                    }
+            //         var id = npcWeightRandom.Roll();
+            //         if (id == Constant.Game.PlayerId)
+            //         {
+            //             _userModule.SetSect(element.ID);
+            //         }
+            //         else
+            //         {
+            //             var npcBaseData = _npcModule.GetNpcBaseData(id);
+            //             if (npcBaseData != null)
+            //             {
+            //                 npcBaseData.SectId = element.ID;
+            //                 _mapModule.SetChunkBySectId(npcBaseData.ID, npcBaseData.SectId);
+            //             }
+            //         }
 
-                    npcWeightRandom.Remove(id);
-                }
-            }
+            //         npcWeightRandom.Remove(id);
+            //     }
+            // }
         }
 
         private void InitNpcMap()
         {
-            foreach (var element in _npcModule.GetNpc().Where(element => !_mapModule.HasEntity(element.ID)))
-            {
-                _mapModule.AddEntityToRandomChunk(element.ID);
-            }
+            // foreach (var element in _npcModule.GetNpc().Where(element => !_mapModule.HasEntity(element.ID)))
+            // {
+            //     _mapModule.AddEntityToRandomChunk(element.ID);
+            // }
         }
 
         public override void SaveGame()
         {
-            var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + _userModule.GetSaveIndex(), "NpcData.idx");
-            var npcSaveData = new NpcSaveData
-            {
-                Data = _npcModule.GetNpcData()
-            };
+            // var fileSystems = GameEntry.FileSystemComponent.CreateFileSystem("GameSaves/" + _userModule.GetSaveIndex(), "NpcData.idx");
+            // var npcSaveData = new NpcSaveData
+            // {
+            //     Data = _npcModule.GetNpcData()
+            // };
 
-            var json = Utility.Json.ToJson(npcSaveData);
+            // var json = Utility.Json.ToJson(npcSaveData);
 
-            fileSystems.WriteFile("GameSaves", Encoding.UTF8.GetBytes(json));
+            // fileSystems.WriteFile("GameSaves", Encoding.UTF8.GetBytes(json));
         }
     }
 }

@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Game.Scripts.Main.Runtime.Game;
-using Game.Scripts.Main.Runtime.GameModule.User;
 using Game.Scripts.Main.Runtime.UI.UIMenu;
 using Game.Scripts.Main.Runtime.Utils;
 using GameFramework.Event;
-using UnityEngine;
 using UnityGameFramework.Runtime;
+// using Game.Scripts.Main.Runtime.GameModule.User;
 using GameEntry = Game.Scripts.Main.Runtime.Base.GameEntry;
 
 namespace Game.Scripts.Main.Runtime.Login
@@ -37,7 +35,7 @@ namespace Game.Scripts.Main.Runtime.Login
             GameEntry.Event.Unsubscribe(WebRequestFailureEventArgs.EventId, OnWebRequestFailure);
         }
 
-        public void ServerList()
+        public void ServerList(string zone = "")
         {
             if (_serialId != 0)
             {
@@ -46,8 +44,8 @@ namespace Game.Scripts.Main.Runtime.Login
             }
 
             var url = GameEntry.Account.ServerListUrl;
-            var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
-            var token = accountModule.GetToken();
+            // var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+            var token = ""; // accountModule.GetToken();
             var appId = GameEntry.Account.appId;
             var timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString();
             var onlyPreferred = false;
@@ -56,6 +54,7 @@ namespace Game.Scripts.Main.Runtime.Login
             var sign = HmacSha256Util.ComputeHash(GameEntry.Account.secret,
                 appId,
                 token,
+                zone,
                 onlyPreferred ? "1" : "0",
                 includeDetails ? "1" : "0",
                 websocket ? "1" : "0",
@@ -63,7 +62,7 @@ namespace Game.Scripts.Main.Runtime.Login
 
             var queryParams = new Dictionary<string, string>
             {
-                { "token", accountModule.GetToken() },
+                { "token", token },
                 { "app_id", appId },
                 { "timestamp", timestamp },
                 { "only_preferred", onlyPreferred ? "true" : "false" },
@@ -71,6 +70,12 @@ namespace Game.Scripts.Main.Runtime.Login
                 { "websocket", websocket ? "true" : "false" },
                 { "sign", sign }
             };
+
+            if (!string.IsNullOrEmpty(zone))
+            {
+                queryParams.Add("zone", zone);
+            }
+
             var queryString = string.Join("&",
                 queryParams.Select(kvp => $"{Uri.EscapeDataString(kvp.Key)}={Uri.EscapeDataString(kvp.Value)}"));
             var finalUri = $"{url}?{queryString}";
@@ -122,29 +127,29 @@ namespace Game.Scripts.Main.Runtime.Login
             {
                 Log.Info("Server List Response Json =" + responseJson);
 
-                var loginServersResponse = JsonUtility.FromJson<LoginServersResponse>(responseJson);
-                if (loginServersResponse == null)
-                {
-                    Log.Error("Failed to deserialize the login response JSON.");
-                    _menuForm.OnServerListFailure(GameEntry.Localization.GetString("Login.ConnectServerFailed"));
-                }
-                else if (loginServersResponse.code == GameErrorType.Success)
-                {
-                    Log.Info("Server List successful.");
+                /*  var loginServersResponse = JsonUtility.FromJson<LoginServersResponse>(responseJson);
+                  if (loginServersResponse == null)
+                  {
+                      Log.Error("Failed to deserialize the login response JSON.");
+                      _menuForm.OnServerListFailure(GameEntry.Localization.GetString("Login.ConnectServerFailed"));
+                  }
+                  else if (loginServersResponse.code == GameErrorType.Success)
+                  {
+                      Log.Info("Server List successful.");
 
-                    var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
+  //            var accountModule = GameEntry.ModuleComponent.GetModule<AccountModule>();
 
-                    accountModule.SetLoginServerInfo(loginServersResponse.login_server_info);
+  //            accountModule.SetLoginServerInfo(loginServersResponse.login_server_info);
 
-                    // 直接将结果传递出去，不再持有它
-                    _menuForm.OnServerListSuccess(loginServersResponse);
-                }
-                else
-                {
-                    Log.Warning(
-                        $"Server List failed with code: {loginServersResponse.code}, Message: {loginServersResponse.message}");
-                    _menuForm.OnServerListFailure(loginServersResponse.message);
-                }
+              // 直接将结果传递出去，不再持有它
+              _menuForm.OnServerListSuccess(loginServersResponse);
+                  }
+                  else
+                  {
+                      Log.Warning(
+                          $"Server List failed with code: {loginServersResponse.code}, Message: {loginServersResponse.message}");
+                      _menuForm.OnServerListFailure(loginServersResponse.message);
+                  }*/
             }
         }
 

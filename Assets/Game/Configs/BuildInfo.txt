@@ -6,5 +6,8 @@
   "MacOSAppUrl": "https://starforce.gameframework.cn",
   "IOSAppUrl": "https://starforce.gameframework.cn",
   "AndroidAppUrl": "https://starforce.gameframework.cn",
+  "AnnouncementUrl": "",
+  "FeedbackUrl": "",
+  "FeedbackOssUploadUrl": "",
   "END_OF_JSON": ""
 }

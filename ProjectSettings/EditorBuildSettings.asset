@@ -6,21 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game/Scenes/Main.unity
-    guid: 4473d81b14ddb0143addf0e6050d8491
+    path: Assets/Velocis.unity
+    guid: 782e47add4d3b4d44983484036272e88
   - enabled: 1
-    path: Assets/Game/Scenes/Menu.unity
-    guid: b031b4f2980561542a7f7ba41391edc3
+    path: Assets/Game/Scenes/Start.unity
+    guid: b857a477c8816ce4b9aeaed24f04c42b
   - enabled: 1
     path: Assets/Game/Scenes/Create.unity
     guid: 1e24b7cc8fcc23d4e850482ec38831b5
-  - enabled: 1
-    path: Assets/Game/Scenes/InitGame.unity
-    guid: 9b25b06ff43ffef40b4432c17d39b183
-  - enabled: 1
-    path: Assets/Game/Scenes/Home.unity
-    guid: 99a0aac7ac557444fac01fa7a9e2a548
-  - enabled: 1
-    path: Assets/Game/Scenes/Battle.unity
-    guid: 28cef71678c03ad4c8cff7bc0e46dbb3
   m_configObjects: {}

@@ -30,7 +30,7 @@ namespace Game.Scripts.Main.Runtime.Procedure
                 return;
             }
 
-            ChangeState<ProcedurePreload>(procedureOwner);
+            ChangeState<ProcedureLoadAssembly>(procedureOwner);
         }
 
         private void OnInitResourcesComplete()
